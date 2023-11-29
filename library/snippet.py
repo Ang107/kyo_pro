@@ -7,7 +7,7 @@ from bisect import bisect_left,insort_left,bisect_right,insort_right
 #permutations : 順列全探索
 #combinations : 組み合わせ（重複無し）
 #combinations_with_replacement : 組み合わせ（重複可）
-from sortedcontainers import SortedSet, SortedList, SortedDict
+#from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
 around4 = ((0, -1), (0, 1), (-1, 0), (1, 0))
 around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))

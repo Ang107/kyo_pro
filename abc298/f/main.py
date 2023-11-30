@@ -21,20 +21,6 @@ LMII = lambda : list(map(int,input().split()))
 Ary2 = lambda w,h,element : [[element] * w for _ in range(h)]
 is_not_Index_Er = lambda x,y,h,w : 0 <= x < h and 0 <= y < w    #範囲外参照
     
-n = II()
-l = 1
-r = n
-while r - l != 1:
-    avr = (l+r)//2
-    print("?", avr)
-    temp = II()
-    if temp == 1:
-        r = avr
-    else:
-        l = avr 
-    # print(l,r)
-print("!", l)
-
-
+    
 
 

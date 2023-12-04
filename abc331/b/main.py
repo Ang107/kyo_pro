@@ -23,15 +23,49 @@ is_not_Index_Er = lambda x,y,h,w : 0 <= x < h and 0 <= y < w    #範囲外参照
     
 n,s,m,l = MII()
 
-ans = inf
+# ans = inf
 
-for i in range(18):
-    for j in range(18):
-        for k in range(18):
-            if 6 * i + 8 * j + 12 * k >= n:
-                ans = min(ans,s*i+m*j+l*k)
+# for i in range(18):
+#     for j in range(18):
+#         for k in range(18):
+#             if 6 * i + 8 * j + 12 * k >= n:
+#                 ans = min(ans,s*i+m*j+l*k)
 
-print(ans)
+# print(ans)
+
+# dp = [inf] * (n+1)
+# dp[0] = 0
+
+# for i in range(1,n+1):
+#     if i <= 6:
+#         dp[i] = min(s,m,l)
+#     else:
+#         dp[i] = min(dp[i-6]+min(s,m,l),dp[max(i-8,0)]+min(m,l),dp[max(i-12,0)]+l)
+
+# print(dp[-1])
+
+cospa = s/6,m/8,l/12
+sml_num = [6,8,12]
+sml_price = [s,m,l]
+cospa_max = max(s/6,m/8,l/12)
+temp = cospa.index(cospa_max)
+ans = 0
+while n > 100:
+    n -= sml_num[temp]
+    ans += sml_price[temp]
+
+temp = inf
+for i in range(5):
+    for j in range(4):
+        for k in range(3):
+            if 6*i + 8*j + 12*k >= n:
+                temp = min(temp,s*i + m*j + l*k)
+
+print(ans+temp)
+
+
+
+
 
 
 

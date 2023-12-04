@@ -22,7 +22,9 @@ Ary2 = lambda w,h,element : [[element] * w for _ in range(h)]
 is_not_Index_Er = lambda x,y,h,w : 0 <= x < h and 0 <= y < w    #範囲外参照
 
 def Input():
-    global n,h,v,d,UDLR,ans,x,y,dirt,weight,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list
+    global n,h,v,d,UDLR,ans,x,y,dirt,weight,weight2,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list,score,score_list
+
+    score = 0
     count = 0
     visited_coordinate = set()
     n = II()
@@ -43,7 +45,9 @@ def Input():
     can_visit_list = [[0] * n for _ in range(n)]
 
 def Input_file():
-    global n,h,v,d,UDLR,ans,x,y,dirt,weight,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list
+    global n,h,v,d,UDLR,ans,x,y,dirt,weight,weight2,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list,score,score_list
+
+    score = 0
     visited_coordinate = set()
     count = 0
     f = open(f"ahc027\\a\\in\\{Input_file_name:04}.txt", 'r')
@@ -71,6 +75,7 @@ def Input_file():
     dirt = [[0] * n for _ in range(n)]
     #重みづけ
     weight = [[0] * n for _ in range(n)]
+    weight2 = [[0] * n for _ in range(n)]
     #訪れた回数
     visited_start = [[0] * n for _ in range(n)]
     visited_goal = [[0] * n for _ in range(n)]
@@ -113,15 +118,57 @@ def calc_can_visit():
 
 
 
+
+
+
 def calc_weight():
+    weight_avr = 0
     for x in range(n):
         for y in range(n):
+            weight_avr += d[x][y]/(n**2)
             temp = []
-            for i in range(-n//5,n//5 + 1):
-                for j in range(-n//5,n//5 + 1):
+            for i in range(-n//7,n//7 + 1):
+                for j in range(-n//7,n//7 + 1):
                     if 0 <= x+i < n and 0 <= y+j < n:
                         temp.append(d[x+i][y+j])
-            weight[x][y] = sum(temp)/len(temp)
+            weight[x][y] = (sum(temp)/len(temp))
+    for x in range(n):
+        for y in range(n):
+            weight[x][y] = weight[x][y] / weight_avr
+    # print(weight)
+
+def calc_weight_v2():
+    for x in range(n):
+        for y in range(n):
+            deq = deque()
+            deq.append((x,y,0))
+            temp = [d[x][y]]
+            visited = set()
+            while deq:
+                x1,y1,p = deq.pop()
+                visited.add((x1,y1))
+                Vec = can_visit_list[x1][y1]
+                l = []
+                for i,j in enumerate(Vec):
+                    if j and 0 <= x1+around4[i][0] < n and 0 <= y1+around4[i][1] < n and (x1+around4[i][0],y1+around4[i][1]) not in visited:
+                        l.append(d[x1+around4[i][0]][y1+around4[i][1]])
+                    else:
+                        l.append(0)
+                # print(l)
+                # print(x,y)
+                # print(visited)
+                temp.append(max(l))
+                temp1 = l.index(max(l))
+                if p <= n/5:
+                    deq.append((x1+around4[temp1][0],y1+around4[temp1][1],p+1))
+            gain = 0
+            # print(temp)
+
+            for i,j in enumerate(temp):
+                gain +=  j * (0.9 ** i)  / len(temp)     
+
+            weight2[x][y] = gain
+
 
 def calc_around_avr(x,y):
     temp = []
@@ -185,11 +232,15 @@ def All_visit():
         temp = l.index(min(l))
         ans.append(UDLR[temp])
         x,y = x+around4[temp][0] , y+around4[temp][1]
+        # calc_score()
 
 
-def mid():
+def run(coe1,coe2,coe3,coe4):
     global x,y,count
     while count < 10 ** 5 - 35000:
+        
+        if count >= 60000 and x == 0 and y == 0:
+            return 0
         for i in range(n):
             for j in range(n):
                 dirt[i][j] += d[i][j]
@@ -202,13 +253,18 @@ def mid():
         for i,j in enumerate(Vec):
             if j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n:
                 # print(calc_around_avr(x+around4[i][0],y+around4[i][1]),weight[x+around4[i][0]][y+around4[i][1]])
-                l.append( dirt[x+around4[i][0]][y+around4[i][1]]*calc_gain(x+around4[i][0],y+around4[i][1],0)*calc_around_avr(x+around4[i][0],y+around4[i][1]) * (1 - 100 * visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count)))
+                l.append(dirt[x+around4[i][0]][y+around4[i][1]]**coe1 *calc_gain(x+around4[i][0],y+around4[i][1],0)**coe2 *calc_around_avr(x+around4[i][0],y+around4[i][1])**coe3 * max(0.4,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] /  count)**coe4)
                 # print(1 - 100 * visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count))
+                # print((1 -  100*  visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count)) )
             else:
-                l.append(0)
+                l.append(-inf)
         temp = l.index(max(l))
         ans.append(UDLR[temp])
         x,y = x+around4[temp][0] , y+around4[temp][1]
+        # calc_score()
+
+    All_visit()
+    goal()
 
 
 def goal():
@@ -229,33 +285,82 @@ def goal():
         temp = l.index(min(l))
         ans.append(UDLR[temp])
         x,y = x+around4[temp][0] , y+around4[temp][1]
+        # calc_score()
 
+def calc_score():
+    global score
+    for i in range(n):
+        for j in range(n):
+            score += dirt[i][j]
 
+def get_last_score():
+    global score_list
+    score_list.append(score // (len(ans)-1))
+    # print(score // (len(ans)-1))
+    f = open(f"ahc027\\a\\out\\{Score_file_name}.txt", 'a')
+    f.write(f"{Input_file_name:04} : {score // (len(ans)-1)}\n")
+    f.close()
+
+def vertification(i,j,k):
+    print(score // (len(ans)-1))
+    f = open(f"ahc027\\a\\out\\{Score_file_name}.txt", 'a')
+    f.write(f"{i,j,k} : {score // (len(ans)-1)}\n")
+    f.close()
+
+def end():
+    print(sum(score_list)//len(score_list))
+
+    
 # calc_weight()
 # Input()
 # Output()
 
-#検証
+#検証1
 # def main():
-#     for i in range(20):
-#         global Input_file_name,Output_file_name
-#         Input_file_name = i
-#         Output_file_name = f"main7_{Input_file_name:04}"
-#         Input_file()
-#         calc_can_visit()
-#         mid()
-#         All_visit()
-#         goal()
-#         Output_file()
-#         print("finish:",i)
+#     global Input_file_name,Output_file_name,Score_file_name,score_list
+#     score_list = []
+#     for i in range(5):
+    #     Input_file_name = i
+    #     Output_file_name = f"main9_{Input_file_name:04}"
+    #     Score_file_name = "score_main9"
+    #     a,b,c = 0.5,0.75,1.25
+    #     print(a,b,c)
+    #     Input_file()
+    #     calc_can_visit()
+    #     run(a,b,c)
+    #     get_last_score()
+    #     Output_file()
+    #     print("finish:",i)
+    # end()
+
+#検証2
+# def main():
+#     global Input_file_name,Output_file_name,Score_file_name,score_list
+    
+#     l = [2]
+#     for i in l:
+#         for j in range(10):
+#             score_list = []
+#             Input_file_name = j
+#             Output_file_name = f"main9_{Input_file_name:04}"
+#             Score_file_name = "score_main9"
+#             a,b,c,d = 0.5,0.75,1.25,i
+#             print(a,b,c,d)
+#             Input_file()
+#             calc_can_visit()
+#             run(a,b,c,d)
+#             get_last_score()
+#             # Output_file()
+#             # print("finish:",j)
+#         end()
+        
 
 #提出
 def main():
+    a,b,c,d = 0.5,0.75,1.25,2
     Input()
     calc_can_visit()
-    mid()
-    All_visit()
-    goal()
+    run(a,b,c,d)
     Output()
 
 if __name__ == '__main__':

@@ -3,6 +3,8 @@ from  collections import deque,defaultdict
 from itertools import accumulate, product,permutations,combinations,combinations_with_replacement
 import math
 from bisect import bisect_left,insort_left,bisect_right,insort_right
+import copy
+import random
 #product : bit全探索 product(range(2),repeat=n)
 #permutations : 順列全探索
 #combinations : 組み合わせ（重複無し）
@@ -22,7 +24,7 @@ Ary2 = lambda w,h,element : [[element] * w for _ in range(h)]
 is_not_Index_Er = lambda x,y,h,w : 0 <= x < h and 0 <= y < w    #範囲外参照
 
 def Input():
-    global n,h,v,d,UDLR,ans,x,y,dirt,weight,weight2,weight3,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list,score,score_list
+    global n,h,v,d,UDLR,ans,x,y,dirt,weight,weight2,weight3,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list,score,score_list,UDLR_to_index
 
     score = 0
     count = 0
@@ -32,6 +34,7 @@ def Input():
     v = [input() for _ in range(n)]
     d = [LMII() for _ in range(n)]
     UDLR = ["U","D","L","R"]
+    UDLR_to_index = {"U":0,"D":1,"L":2,"R":3}
     ans = []
     x,y = 0,0
     #現在の汚れ 
@@ -39,7 +42,7 @@ def Input():
     #重みづけ
     weight = [[0] * n for _ in range(n)]
     weight2 = [[0] * n for _ in range(n)]
-    weight3 = defaultdict(list)
+    weight3 = [[]  for _ in range(3)]
     #訪れた回数
     visited_start = [[0] * n for _ in range(n)]
     visited_goal = [[0] * n for _ in range(n)]
@@ -47,7 +50,7 @@ def Input():
     can_visit_list = [[0] * n for _ in range(n)]
 
 def Input_file():
-    global n,h,v,d,UDLR,ans,x,y,dirt,weight,weight2,weight3,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list,score,score_list
+    global n,h,v,d,UDLR,ans,x,y,dirt,weight,weight2,weight3,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list,score,score_list,UDLR_to_index
 
     score = 0
     visited_coordinate = set()
@@ -71,6 +74,7 @@ def Input_file():
  
 
     UDLR = ["U","D","L","R"]
+    UDLR_to_index = {"U":0,"D":1,"L":2,"R":3}
     ans = []
     x,y = 0,0
     #現在の汚れ 
@@ -78,7 +82,7 @@ def Input_file():
     #重みづけ
     weight = [[0] * n for _ in range(n)]
     weight2 = [[0] * n for _ in range(n)]
-    weight3 = defaultdict(list)
+    weight3 = [[] for _ in range(3)]
     #訪れた回数
     visited_start = [[0] * n for _ in range(n)]
     visited_goal = [[0] * n for _ in range(n)]
@@ -101,23 +105,24 @@ def calc_can_visit():
         for y in range(n):
             Up,Down,Left,Right = False,False,False,False
             #上
-            if 0 <= x-1 < n-1 and 0 <= y < n:
+            if 0 <= x-1 < n-1 and 0 <= y < n and 0 <= x+around4[0][0] < n and 0 <= y+around4[0][1] < n:
                 if h[x-1][y] == "0":
                     Up = True
             #下
-            if 0 <= x < n-1 and 0 <= y < n:
+            if 0 <= x < n-1 and 0 <= y < n and 0 <= x+around4[1][0] < n and 0 <= y+around4[1][1] < n:
                 if h[x][y] == "0":
                     Down = True
             #左
-            if 0 <= y-1 < n-1 and 0 <= x < n:
+            if 0 <= y-1 < n-1 and 0 <= x < n and 0 <= x+around4[2][0] < n and 0 <= y+around4[2][1] < n:
                 if v[x][y-1] == "0":
                     Left = True
             #右
-            if 0 <= y < n-1 and 0 <= x < n:
+            if 0 <= y < n-1 and 0 <= x < n and 0 <= x+around4[3][0] < n and 0 <= y+around4[3][1] < n:
                 if v[x][y] == "0":
                     Right = True
             
             can_visit_list[x][y] = (Up,Down,Left,Right)
+    # print(can_visit_list)
 
 
 
@@ -174,7 +179,7 @@ def calc_weight2():
 def avr(x):
     return sum(x)/len(x)
 def calc_weight3():
-    global weight3_vec
+    global All_weight
     for x in range(n):
         for y in range(n):
             if n % 3 == 0:
@@ -209,12 +214,17 @@ def calc_weight3():
                     tempy = 1
                 elif 2*(n//3)+1 <= y <= n:
                     tempy = 2
-            weight3[(tempx,tempy)].append(d[x][y])
-    for k,v in weight3.items():
-        weight3[k] = sum(v)/len(v)
-
-    weight3_vec = {}
-    gensui = 0.8
+            weight3[tempx][tempy].append(d[x][y])
+    All_avr = 0
+    for i in range(3):
+        for j in range(3):
+            weight3[i][j] = sum(weight3[i][j])/len(weight3[i][j])
+            All_avr += weight3[i][j]//9
+    
+    All_weight = [sum(weight3[0])//3//All_avr,sum(weight3[-1])//3//All_avr,sum(weight3[0][0],weight3[1][0],weight3[2][0])//3//All_avr,sum(weight3[0][2],weight3[1][2],weight3[2][2])//3//All_avr]
+    print(All_weight)
+    # weight3_vec = {}
+    # gensui = 0.8
 
     # weight3_vec[(0,0)] = [0+gensui*max(weight3[(0,1)],weight3[(1,0)]),
     #                 weight3[(1,0)]+gensui*max(weight3[(1,1)],weight3[(2,0)]),
@@ -260,50 +270,50 @@ def calc_weight3():
     #                0+gensui*max(weight3[(1,2)],weight3[(2,1)]),
     #                weight3[(2,1)]+gensui*max(weight3[(1,1)],weight3[(2,0)]),
     #                0+gensui*max(weight3[(1,2)],weight3[(2,1)])]
-    weight3_vec[(0,0)] = [weight3[(0,0)]+gensui*avr((weight3[(0,1)],weight3[(1,0)])),
-                   weight3[(1,0)]+gensui*avr((weight3[(1,1)],weight3[(2,0)])),
-                    weight3[(0,0)]+gensui*avr((weight3[(0,1)],weight3[(1,0)])),
-                    weight3[(0,1)]+gensui*avr((weight3[(0,2)],weight3[(1,1)]))]
+    # weight3_vec[(0,0)] = [weight3[(0,0)]+gensui*avr((weight3[(0,1)],weight3[(1,0)])),
+    #                weight3[(1,0)]+gensui*avr((weight3[(1,1)],weight3[(2,0)])),
+    #                 weight3[(0,0)]+gensui*avr((weight3[(0,1)],weight3[(1,0)])),
+    #                 weight3[(0,1)]+gensui*avr((weight3[(0,2)],weight3[(1,1)]))]
 
-    weight3_vec[(0,1)] = [weight3[(0,1)]+gensui*avr((weight3[(0,0)],weight3[(0,2)],weight3[(1,1)])),
-                   weight3[(1,1)]+gensui*avr((weight3[(1,0)],weight3[(1,2)],weight3[(2,1)])),
-                   weight3[(0,0)]+gensui*avr((weight3[(0,1)],weight3[(1,0)])),
-                   weight3[(0,2)]+gensui*weight3[(1,2)]]
+    # weight3_vec[(0,1)] = [weight3[(0,1)]+gensui*avr((weight3[(0,0)],weight3[(0,2)],weight3[(1,1)])),
+    #                weight3[(1,1)]+gensui*avr((weight3[(1,0)],weight3[(1,2)],weight3[(2,1)])),
+    #                weight3[(0,0)]+gensui*avr((weight3[(0,1)],weight3[(1,0)])),
+    #                weight3[(0,2)]+gensui*weight3[(1,2)]]
 
-    weight3_vec[(0,2)] = [weight3[(0,2)]+gensui*avr((weight3[(0,1)],weight3[(1,2)])),
-                   weight3[(1,2)]+gensui*avr((weight3[(1,1)],weight3[(2,2)])),
-                   weight3[(0,1)]+gensui*avr((weight3[(0,0)],weight3[(1,1)])),
-                   weight3[(0,2)]+gensui*avr((weight3[(0,1)],weight3[(1,2)]))]
+    # weight3_vec[(0,2)] = [weight3[(0,2)]+gensui*avr((weight3[(0,1)],weight3[(1,2)])),
+    #                weight3[(1,2)]+gensui*avr((weight3[(1,1)],weight3[(2,2)])),
+    #                weight3[(0,1)]+gensui*avr((weight3[(0,0)],weight3[(1,1)])),
+    #                weight3[(0,2)]+gensui*avr((weight3[(0,1)],weight3[(1,2)]))]
 
-    weight3_vec[(1,0)] = [weight3[(0,0)]+gensui*weight3[(0,1)],
-                   weight3[(2,0)]+gensui*weight3[(2,1)],
-                   weight3[(1,0)]+gensui*avr((weight3[(0,0)],weight3[(1,1)],weight3[(2,0)])),
-                   weight3[(1,1)]+gensui*avr((weight3[(0,1)],weight3[(2,1)],weight3[(1,2)]))]
+    # weight3_vec[(1,0)] = [weight3[(0,0)]+gensui*weight3[(0,1)],
+    #                weight3[(2,0)]+gensui*weight3[(2,1)],
+    #                weight3[(1,0)]+gensui*avr((weight3[(0,0)],weight3[(1,1)],weight3[(2,0)])),
+    #                weight3[(1,1)]+gensui*avr((weight3[(0,1)],weight3[(2,1)],weight3[(1,2)]))]
 
-    weight3_vec[(1,1)] = [weight3[(0,1)]+gensui*avr((weight3[(0,0)],weight3[(0,2)])),
-                   weight3[(2,1)]+gensui*avr((weight3[(2,0)],weight3[(2,2)])),
-                   weight3[(1,0)]+gensui*avr((weight3[(0,0)],weight3[(2,0)])),
-                   weight3[(1,2)]+gensui*avr((weight3[(0,2)],weight3[(2,2)]))]
+    # weight3_vec[(1,1)] = [weight3[(0,1)]+gensui*avr((weight3[(0,0)],weight3[(0,2)])),
+    #                weight3[(2,1)]+gensui*avr((weight3[(2,0)],weight3[(2,2)])),
+    #                weight3[(1,0)]+gensui*avr((weight3[(0,0)],weight3[(2,0)])),
+    #                weight3[(1,2)]+gensui*avr((weight3[(0,2)],weight3[(2,2)]))]
 
-    weight3_vec[(1,2)] = [weight3[(0,2)]+gensui*weight3[(0,1)],
-                   weight3[(2,2)]+gensui*weight3[(2,1)],
-                   weight3[(1,1)]+gensui*avr((weight3[(0,1)],weight3[(1,0)],weight3[(2,1)])),
-                   weight3[(1,2)]+gensui*avr((weight3[(0,2)],weight3[(1,1)],weight3[(2,2)]))]
+    # weight3_vec[(1,2)] = [weight3[(0,2)]+gensui*weight3[(0,1)],
+    #                weight3[(2,2)]+gensui*weight3[(2,1)],
+    #                weight3[(1,1)]+gensui*avr((weight3[(0,1)],weight3[(1,0)],weight3[(2,1)])),
+    #                weight3[(1,2)]+gensui*avr((weight3[(0,2)],weight3[(1,1)],weight3[(2,2)]))]
 
-    weight3_vec[(2,0)] = [weight3[(1,0)]+gensui*avr((weight3[(0,0)],weight3[(1,1)])),
-                   weight3[(2,0)]+gensui*avr((weight3[(1,0)],weight3[(2,1)])),
-                   weight3[(2,0)]+gensui*avr((weight3[(1,0)],weight3[(2,1)])),
-                   weight3[(2,1)]+gensui*avr((weight3[(1,1)],weight3[(2,2)]))]
+    # weight3_vec[(2,0)] = [weight3[(1,0)]+gensui*avr((weight3[(0,0)],weight3[(1,1)])),
+    #                weight3[(2,0)]+gensui*avr((weight3[(1,0)],weight3[(2,1)])),
+    #                weight3[(2,0)]+gensui*avr((weight3[(1,0)],weight3[(2,1)])),
+    #                weight3[(2,1)]+gensui*avr((weight3[(1,1)],weight3[(2,2)]))]
 
-    weight3_vec[(2,1)] = [weight3[(1,1)]+gensui*avr((weight3[(1,0)],weight3[(0,1)],weight3[(1,2)])),
-                   weight3[(2,1)]+gensui*avr((weight3[(1,1)],weight3[(2,0)],weight3[(2,2)])),
-                   weight3[(2,0)]+gensui*weight3[(1,0)],
-                   weight3[(2,2)]+gensui*weight3[(1,2)]]
+    # weight3_vec[(2,1)] = [weight3[(1,1)]+gensui*avr((weight3[(1,0)],weight3[(0,1)],weight3[(1,2)])),
+    #                weight3[(2,1)]+gensui*avr((weight3[(1,1)],weight3[(2,0)],weight3[(2,2)])),
+    #                weight3[(2,0)]+gensui*weight3[(1,0)],
+    #                weight3[(2,2)]+gensui*weight3[(1,2)]]
 
-    weight3_vec[(2,2)] = [weight3[(1,2)]+gensui*avr((weight3[(1,1)],weight3[(0,2)])),
-                   weight3[(2,2)]+gensui*avr((weight3[(1,2)],weight3[(2,1)])),
-                   weight3[(2,1)]+gensui*avr((weight3[(1,1)],weight3[(2,0)])),
-                   weight3[(2,2)]+gensui*avr((weight3[(1,2)],weight3[(2,1)]))]
+    # weight3_vec[(2,2)] = [weight3[(1,2)]+gensui*avr((weight3[(1,1)],weight3[(0,2)])),
+    #                weight3[(2,2)]+gensui*avr((weight3[(1,2)],weight3[(2,1)])),
+    #                weight3[(2,1)]+gensui*avr((weight3[(1,1)],weight3[(2,0)])),
+    #                weight3[(2,2)]+gensui*avr((weight3[(1,2)],weight3[(2,1)]))]
 
     # print(weight3)
     # print(weight3_vec)
@@ -360,7 +370,7 @@ def calc_around_avr2(x,y):
     temp = []
     for i in range(-n//6,n//6 + 1):
         for j in range(-n//6,n//6 + 1):
-            if 0 <= x+i < n and 0 <= y+j < n and abs(i) + abs(j) <= n // 6:
+            if 0 <= x+i < n and 0 <= y+j < n and abs(i) + abs(j) <= n // 4:
                 temp.append(dirt[x+i][y+j] )
     return sum(temp)/len(temp)
 
@@ -467,6 +477,7 @@ def All_visit():
         x,y = x+around4[temp][0] , y+around4[temp][1]
         if not sub_mode:
             calc_score()
+    goal()
 
 def get_max_index():
     temp = 0
@@ -479,8 +490,7 @@ def get_max_index():
 
     return tempx,tempy
             
-def clamp(n, smallest, largest):
-    return max(smallest, min(n, largest))
+
 
 def run(coe1,coe2,coe3,coe4):
     global x,y,count,clean_max_root
@@ -490,7 +500,7 @@ def run(coe1,coe2,coe3,coe4):
     # clean_max_point = 0
     # clean_count = 0
     # clean_flag = False
-    while count < 65000:
+    while count < 60000:
         if count >= 55000 and x == 0 and y == 0 :
             break
         for i in range(n):
@@ -508,8 +518,7 @@ def run(coe1,coe2,coe3,coe4):
         for i,j in enumerate(Vec):
             if j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n:
                 # print(calc_around_avr(x+around4[i][0],y+around4[i][1]),weight[x+around4[i][0]][y+around4[i][1]])
-                # print(int(dirt[x+around4[i][0]][y+around4[i][1]]),int(calc_gain(x+around4[i][0],y+around4[i][1])),int(calc_around_avr(x+around4[i][0],y+around4[i][1])))
-                l.append(dirt[x+around4[i][0]][y+around4[i][1]]**coe1 *calc_gain(x+around4[i][0],y+around4[i][1])**coe2 *calc_around_avr(clamp(x+2*around4[i][0],0,n-1),clamp(y+2*around4[i][1],0,n-1))**coe3 * max(0.3,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] /  count)**coe4 )
+                l.append(dirt[x+around4[i][0]][y+around4[i][1]]**coe1 *calc_gain(x+around4[i][0],y+around4[i][1])**coe2 *calc_around_avr(x+around4[i][0],y+around4[i][1])**coe3 * max(0.3,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] /  count)**coe4 )
                 # print(1 - 100 * visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count))
                 # print((1 -  100*  visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count)) )
             else:
@@ -547,11 +556,257 @@ def run(coe1,coe2,coe3,coe4):
     All_visit()
     goal()
 
+def run2(coe1,coe2,coe3,coe4):
+    global x,y,count,clean_max_root
+    max_x,max_y = get_max_index()
+    visited_max_all = set()
+    clean_point = 0
+    clean_max_point = 0
+    clean_count = 0
+    clean_flag = False
+    first_max_visit = True
+    
+    exit_flag = False
+    while True:
+        if x == 0 and y == 0 and exit_flag:
+            break
+        for i in range(n):
+            for j in range(n):
+                dirt[i][j] += d[i][j]
+        # if clean_flag:
+        #     clean_point += dirt[x][y]
 
+        # visited_coordinate.add((x,y))
+        dirt[x][y] = 0
+        count += 1
+        visited_mid[x][y] += 1
+        Vec = can_visit_list[x][y]
+        l = []
+        for i,j in enumerate(Vec):
+            if j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n:
+                # print(calc_around_avr(x+around4[i][0],y+around4[i][1]),weight[x+around4[i][0]][y+around4[i][1]])
+                l.append(dirt[x+around4[i][0]][y+around4[i][1]]**coe1 *calc_gain(x+around4[i][0],y+around4[i][1])**coe2 *calc_around_avr(x+around4[i][0],y+around4[i][1])**coe3 * max(0.3,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] /  count)**coe4 )
+                # print(1 - 100 * visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count))
+                # print((1 -  100*  visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count)) )
+            else:
+                l.append(-inf)
+        temp = l.index(max(l))
+        
+
+        if x == max_x and y == max_y and not clean_flag:
+            clean_flag = True
+            clean_root = []
+            clean_max_root = []
+            count_roop = 0
+        elif x == max_x and y == max_y and len(visited_max_all) == n**2:
+            count_roop += 1
+            if count_roop == 1:
+                clean_root = []
+                visited_max_all = set()
+            elif count_roop == 2:
+                max_to_max_num = len(clean_root)
+                exit_flag = True
+            # print(clean_point//clean_count)
+    
+        if clean_flag:
+            visited_max_all.add((x,y))
+            clean_root.append(UDLR[temp])
+        ans.append(UDLR[temp])
+        x,y = x+around4[temp][0] , y+around4[temp][1]
+        # print(calc_around_avr(x+around4[i][0],y+around4[i][1]),calc_around_avr2(x+around4[i][0],y+around4[i][1]))
+        if not sub_mode:
+            calc_score() 
+    # while True:
+    #     if 90000 >= len(ans) + len(clean_max_root):
+    #         ans.extend(clean_max_root)
+    #     else:
+    #         break
+    rev_d = {"U":"D","D":"U","L":"R","R":"L"}
+    start_to_max = []
+    for i in range(len(clean_root)-1,max_to_max_num-1,-1):
+        start_to_max.append(rev_d[clean_root[i]])
+
+    first_ans = start_to_max + clean_root
+    # print("".join(first_ans))
+    yamanobori(first_ans)
+
+def run3(coe1,coe2,coe3,coe4):
+    global x,y,count,clean_max_root
+    max_x,max_y = get_max_index()
+    visited_max_all = set()
+    clean_point = 0
+    clean_max_point = 0
+    clean_count = 0
+    clean_flag = False
+    first_max_visit = True
+    
+    exit_flag = False
+    clean_flag = True
+    clean_root = []
+    clean_max_root = []
+    count_roop = 0
+    while True:
+
+        for i in range(n):
+            for j in range(n):
+                dirt[i][j] += d[i][j]
+        # if clean_flag:
+        #     clean_point += dirt[x][y]
+
+        # visited_coordinate.add((x,y))
+        dirt[x][y] = 0
+        count += 1
+        visited_mid[x][y] += 1
+        Vec = can_visit_list[x][y]
+        l = []
+        for i,j in enumerate(Vec):
+            if j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n:
+                # print(calc_around_avr(x+around4[i][0],y+around4[i][1]),weight[x+around4[i][0]][y+around4[i][1]])
+                l.append(dirt[x+around4[i][0]][y+around4[i][1]]**coe1 *calc_gain(x+around4[i][0],y+around4[i][1])**coe2 *calc_around_avr(x+around4[i][0],y+around4[i][1])**coe3 * max(0.3,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] /  count)**coe4 )
+                # print(1 - 100 * visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count))
+                # print((1 -  100*  visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count)) )
+            else:
+                l.append(-inf)
+        temp = l.index(max(l))
+        
+
+        # if x == max_x and y == max_y and not clean_flag:
+        
+        if x == 0 and y == 0 and len(visited_max_all) == n**2:
+
+            count_roop += 1
+            print(count_roop)
+            if count_roop == 1:
+                clean_root = []
+                visited_max_all = set()
+            elif count_roop == 2:
+                max_to_max_num = len(clean_root)
+                break
+            # print(clean_point//clean_count)
+    
+        if clean_flag:
+            visited_max_all.add((x,y))
+            clean_root.append(UDLR[temp])
+        ans.append(UDLR[temp])
+        x,y = x+around4[temp][0] , y+around4[temp][1]
+        # print(calc_around_avr(x+around4[i][0],y+around4[i][1]),calc_around_avr2(x+around4[i][0],y+around4[i][1]))
+        if not sub_mode:
+            calc_score() 
+    # while True:
+    #     if 90000 >= len(ans) + len(clean_max_root):
+    #         ans.extend(clean_max_root)
+    #     else:
+    #         break
+    # rev_d = {"U":"D","D":"U","L":"R","R":"L"}
+    # start_to_max = []
+    # for i in range(len(clean_root)-1,max_to_max_num-1,-1):
+    #     start_to_max.append(rev_d[clean_root[i]])
+
+    first_ans = clean_root
+    # print("".join(first_ans))
+    yamanobori(first_ans)
+
+def yamanobori(ans):
+    global ans_pos
+    ans_pos = [None] * len(ans) 
+    ans_pos[0] = (0,0)
+    for i in range(len(ans)):
+        if i != 0:
+            ans_pos[i] = ans_pos[i-1][0] + around4[UDLR_to_index[ans[i-1]]][0],ans_pos[i-1][1] + around4[UDLR_to_index[ans[i-1]]][1]
+    
+    max_score = get_score(ans)
+    print(max_score)
+    print("".join(ans))
+    print(len(ans))
+    change_count = 0
+    not_change_count = 0
+    for _ in range(1000):
+        l,r = get_cheange_index_num(ans)
+        if ans[l] != ans[r] and judge_touch(ans,l,r):
+   
+            change_index(ans,l,r)
+
+            temp_score = get_score(ans)
+            if max_score > temp_score:
+                change_count += 1
+                max_score = temp_score
+                change_root(ans,l,r)
+     
+                
+
+            else:
+                not_change_count += 1
+                change_index(ans,l,r)
+    print(max_score,change_count,not_change_count)
+    print("".join(ans))
+    
+
+def er_check():
+    for i,j in ans_pos:
+        if i < 0 or j < 0:
+            print(ans_pos)
+            exit()
+            
+
+
+def get_cheange_index_num(ans):
+    max_distance = 50
+    l = random.randint(0,len(ans)-max_distance-1)
+    r = l + random.randint(5,max_distance)
+    return l,r
+
+
+def judge_touch(ans,l,r):
+    x,y = ans_pos[l]
+
+    if can_visit_list[x][y][UDLR_to_index[ans[r]]]  :
+        x,y = x+around4[UDLR_to_index[ans[r]]][0],y+around4[UDLR_to_index[ans[r]]][1]
+    else:
+        return False
+    for i in range(l+1,r):
+        if can_visit_list[x][y][UDLR_to_index[ans[i]]]:
+            x,y = x+around4[UDLR_to_index[ans[i]]][0],y+around4[UDLR_to_index[ans[i]]][1]
+        else:
+            return False
+    if can_visit_list[x][y][UDLR_to_index[ans[l]]]:
+        x,y = x+around4[UDLR_to_index[ans[l]]][0],y+around4[UDLR_to_index[ans[l]]][1]
+    else:
+        return False
+    return True
+
+
+        
+def change_root(ans,l,r):
+    x,y = ans_pos[l]
+    for i in range(l+1,r+1):
+        x,y = x+around4[UDLR_to_index[ans[i-1]]][0],y+around4[UDLR_to_index[ans[i-1]]][1]
+        ans_pos[i] = x,y
+
+
+         
+def change_index(ans,l,r):
+    if 
+    ans[l],ans[r] = ans[r],ans[l]
+
+
+
+def get_score(ans):
+    dirt = [[0] * n for _ in range(n)]
+    x,y = 0,0
+    temp = 0
+    for v in ans:
+        dirt[x][y] = 0
+        for i in range(n):
+            for j in range(n):
+                temp += dirt[i][j]
+                dirt[i][j] += d[i][j]
+        
+        x,y = x+around4[UDLR_to_index[v]][0],y+around4[UDLR_to_index[v]][1]
+    return temp//len(ans)
 
 def goal():
     global x,y
-
+    print(x,y)
     while x != 0 or y != 0:
         for i in range(n):
             for j in range(n):
@@ -570,6 +825,7 @@ def goal():
         x,y = x+around4[temp][0] , y+around4[temp][1]
         if not sub_mode:
             calc_score()
+    yamanobori(ans)
 
 def calc_score():
     global score
@@ -580,7 +836,7 @@ def calc_score():
 def get_last_score():
     global score_list
     score_list.append(score // (len(ans)-1))
-    print(score // (len(ans)-1))
+    # print(score // (len(ans)-1))
     f = open(f"ahc027\\a\\out\\{Score_file_name}.txt", 'a')
     f.write(f"{Input_file_name:04} : {score // (len(ans)-1)}\n")
     f.close()
@@ -619,36 +875,37 @@ def end():
     # end()
 
 #検証2
-# def main():
-#     global Input_file_name,Output_file_name,Score_file_name,score_list,sub_mode
-#     sub_mode = False
-#     score_list = []
-#     for j in range(10):
+def main():
+    global Input_file_name,Output_file_name,Score_file_name,score_list,sub_mode
+    sub_mode = False
+    score_list = []
+    for j in range(1):
         
-#         Input_file_name = j
-#         Output_file_name = f"main10_{Input_file_name:04}"
-#         Score_file_name = "score_main9"
-#         a,b,c,d = 0.5,0.75,1.25,2
-#         print(a,b,c,d)
-#         Input_file()
-#         calc_weight3()
-#         calc_can_visit()
-#         run(a,b,c,d)
-#         get_last_score()
-#         Output_file()
-#         # print("finish:",j)
-#     end()
+        Input_file_name = j
+        Output_file_name = f"main10_{Input_file_name:04}"
+        Score_file_name = "score_main9"
+        a,b,c,d = 0.5,0.75,1.25,2
+        print(a,b,c,d)
+        Input_file()
+        calc_weight3()
+        calc_can_visit()
+        # run3(a,b,c,d)
+        All_visit()
+        get_last_score()
+        Output_file()
+        # print("finish:",j)
+    # end()
         
 
 #提出
-def main():
-    global sub_mode 
-    sub_mode = True
-    a,b,c,d = 0.5,0.75,1.25,2
-    Input()
-    calc_can_visit()
-    run(a,b,c,d)
-    Output()
+# def main():
+#     global sub_mode 
+#     sub_mode = True
+#     a,b,c,d = 0.5,0.75,1.5,2
+#     Input()
+#     calc_can_visit()
+#     run(a,b,c,d)
+#     Output()
 
 if __name__ == '__main__':
     main()

@@ -20,9 +20,10 @@ MII = lambda : map(int,input().split())
 LMII = lambda : list(map(int,input().split()))
 Ary2 = lambda w,h,element : [[element] * w for _ in range(h)]
 is_not_Index_Er = lambda x,y,h,w : 0 <= x < h and 0 <= y < w    #範囲外参照
+from statistics import mean, median,variance,stdev
 
 def Input():
-    global n,h,v,d,UDLR,ans,x,y,dirt,weight,weight2,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list,score,score_list
+    global n,h,v,d,UDLR,ans,x,y,dirt,weight,weight2,weight3,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list,score,score_list
 
     score = 0
     count = 0
@@ -31,7 +32,6 @@ def Input():
     h = [input() for _ in range(n-1)]
     v = [input() for _ in range(n)]
     d = [LMII() for _ in range(n)]
-    print(sum(map(sum,d)))
     UDLR = ["U","D","L","R"]
     ans = []
     x,y = 0,0
@@ -39,6 +39,8 @@ def Input():
     dirt = [[0] * n for _ in range(n)]
     #重みづけ
     weight = [[0] * n for _ in range(n)]
+
+    weight3 = [[] *3 for _ in range(3)]
     #訪れた回数
     visited_start = [[0] * n for _ in range(n)]
     visited_goal = [[0] * n for _ in range(n)]
@@ -46,7 +48,7 @@ def Input():
     can_visit_list = [[0] * n for _ in range(n)]
 
 def Input_file():
-    global n,h,v,d,UDLR,ans,x,y,dirt,weight,weight2,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list,score,score_list
+    global n,h,v,d,UDLR,ans,x,y,dirt,weight,weight2,weight3,visited_start,visited_goal,visited_mid,count,visited_coordinate,can_visit_list,score,score_list
 
     score = 0
     visited_coordinate = set()
@@ -77,6 +79,7 @@ def Input_file():
     #重みづけ
     weight = [[0] * n for _ in range(n)]
     weight2 = [[0] * n for _ in range(n)]
+    weight3 = [[[] for _ in range(3)] for _ in range(3)]
     #訪れた回数
     visited_start = [[0] * n for _ in range(n)]
     visited_goal = [[0] * n for _ in range(n)]
@@ -170,6 +173,51 @@ def calc_weight_v2():
 
             weight2[x][y] = gain
 
+def calc_weight3():
+    global All_weight
+    for x in range(n):
+        for y in range(n):
+            if n % 3 == 0:
+                tempx,tempy = (3*x // n),(3*y // n)
+            
+            elif n % 3 == 1:
+                if 0 <= x <= (n//3 - 1):
+                    tempx = 0
+                elif n // 3 <= x <= 2*(n//3) :
+                    tempx = 1
+                elif 2*(n//3)+1 <= x <= n:
+                    tempx = 2
+
+                if 0 <= y <= (n//3 - 1):
+                    tempy = 0
+                elif n // 3 <= y <= 2*(n//3) :
+                    tempy = 1
+                elif 2*(n//3)+1 <= y <= n:
+                    tempy = 2
+                
+            elif n % 3 == 2:
+                if 0 <= x <= n//3:
+                    tempx = 0
+                elif n // 3 + 1<= x <= 2*(n//3) :
+                    tempx = 1
+                elif 2*(n//3)+1 <= x <= n:
+                    tempx = 2
+
+                if 0 <= y <= (n//3 - 1):
+                    tempy = 0
+                elif n // 3 <= y <= 2*(n//3) :
+                    tempy = 1
+                elif 2*(n//3)+1 <= y <= n:
+                    tempy = 2
+            weight3[tempx][tempy].append(d[x][y])
+    All_avr = 0
+    for i in range(3):
+        for j in range(3):
+            weight3[i][j] = sum(weight3[i][j])/len(weight3[i][j])
+            All_avr += weight3[i][j]//9
+    
+    All_weight = [sum(weight3[0])//3/All_avr,sum(weight3[-1])//3/All_avr,(weight3[0][0]+weight3[1][0]+weight3[2][0])//3/All_avr,(weight3[0][2]*weight3[1][2]+weight3[2][2])//3/All_avr]
+    # print(All_weight)
 
 def calc_around_avr(x,y):
     temp = []
@@ -177,6 +225,43 @@ def calc_around_avr(x,y):
         for j in range(-n//7,n//7 + 1):
             if 0 <= x+i < n and 0 <= y+j < n:
                 temp.append(dirt[x+i][y+j])
+    return sum(temp)/len(temp)
+
+def calc_around_avr3(x,y,v):
+    if v == 0 :
+        numx_m = n//5
+        numx_p = n//8
+        numy_m = n//7
+        numy_p = n//7
+    elif v == 1 :
+        numx_m = n//8
+        numx_p = n//5
+        numy_m = n//7
+        numy_p = n//7
+    elif v == 2 :
+        numx_m = n//7
+        numx_p = n//7
+        numy_m = n//5
+        numy_p = n//8
+    elif v == 3 :
+        numx_m = n//7
+        numx_p = n//7
+        numy_m = n//8
+        numy_p = n//5
+    
+    temp = []
+    for i in range(-numx_m,numx_p + 1):
+        for j in range(-numy_m,numy_p + 1):
+            if 0 <= x+i < n and 0 <= y+j < n:
+                temp.append(dirt[x+i][y+j])
+    return sum(temp)/len(temp)
+
+def calc_around_avr2(x,y):
+    temp = []
+    for i in range(-n//6,n//6 + 1):
+        for j in range(-n//6,n//6 + 1):
+            if 0 <= x+i < n and 0 <= y+j < n and abs(i) + abs(j) <= n // 4:
+                temp.append(dirt[x+i][y+j] )
     return sum(temp)/len(temp)
 
 def calc_gain(x,y,p):
@@ -233,15 +318,16 @@ def All_visit():
         temp = l.index(min(l))
         ans.append(UDLR[temp])
         x,y = x+around4[temp][0] , y+around4[temp][1]
-        # calc_score()
+        if not submit:
+            calc_score()
 
 
 def run(coe1,coe2,coe3,coe4):
     global x,y,count
-    while count < 10 ** 5 - 35000:
+    while count < 10 ** 5 - 50000 :
         
-        if count >= 60000 and x == 0 and y == 0:
-            return 0
+        if count >= 40000 and x == 0 and y == 0 and len(visited_coordinate) == n**2:
+            break
         for i in range(n):
             for j in range(n):
                 dirt[i][j] += d[i][j]
@@ -251,22 +337,79 @@ def run(coe1,coe2,coe3,coe4):
         visited_mid[x][y] += 1
         Vec = can_visit_list[x][y]
         l = []
-        for i,j in enumerate(Vec):
-            if j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n:
-                # print(calc_around_avr(x+around4[i][0],y+around4[i][1]),weight[x+around4[i][0]][y+around4[i][1]])
-                l.append(dirt[x+around4[i][0]][y+around4[i][1]]**coe1 *calc_gain(x+around4[i][0],y+around4[i][1],0)**coe2 *calc_around_avr(x+around4[i][0],y+around4[i][1])**coe3 * max(0.4,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] /  count)**coe4)
-                # print(1 - 100 * visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count))
-                # print((1 -  100*  visited_mid[x+around4[i][0]][y+around4[i][1]] / (10000 + count)) )
-            else:
-                l.append(-inf)
-        temp = l.index(max(l))
+        # for i,j in enumerate(Vec):
+        #     if j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n:
+             
+        #         l.append( dirt[x+around4[i][0]][y+around4[i][1]]**coe1 *calc_gain(x+around4[i][0],y+around4[i][1],0)**coe2 *calc_around_avr3(x+around4[i][0],y+around4[i][1],i)**coe3 * max(0.3,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] / count )**coe4)
+    
+        #     else:
+        #         l.append(-inf)
+        # temp = l.index(max(l))
+        temp = beem(x,y)
         ans.append(UDLR[temp])
         x,y = x+around4[temp][0] , y+around4[temp][1]
-        # calc_score()
+        if not submit:
+            calc_score()
 
     All_visit()
     goal()
 
+def standard_d():
+    for i in range(n):
+        for j in range(n):
+            dirt[i][j] = 150*d[i][j]
+
+def beem(x,y):
+    # print(dirt)
+    # print(d)
+    deq = deque()
+    deq.append((None,x,y,{(x,y)},0,0))
+    while deq:
+        v,x,y,visited,deep,score = deq.popleft()
+        # print(v,x,y,visited,deep,score)
+        Vec = can_visit_list[x][y]
+        # print(x,y,Vec)
+        for i,j in enumerate(Vec):
+            # print(j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n)
+            if j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n:
+                visited_2 = visited | {(x+around4[i][0],y+around4[i][1])}
+                if (x+around4[i][0],y+around4[i][1]) in visited_2:
+                    score += d[x+around4[i][0]][y+around4[i][1]]*(deep+1)/2
+                else:
+                    score += dirt[x+around4[i][0]][y+around4[i][1]]
+                # print(d[x+around4[i][0]][y+around4[i][1]]*(deep+1)/2,dirt[x+around4[i][0]][y+around4[i][1]])
+                if deep == 0:
+                    deq.append((i,x+around4[i][0],y+around4[i][1],visited_2,deep+1,score))
+                else:
+                    deq.append((v,x+around4[i][0],y+around4[i][1],visited_2,deep+1,score))
+
+            if i == 3 and deq[0][4] != deep :
+                # print(deq)
+                if len(deq) == 1:
+                    temp = deq.popleft()
+                    return temp[0]
+
+                else:
+                    max1,max2 = [0] * 6,[0] * 6
+                    while deq: 
+                        temp = deq.popleft()
+                        if max1[5] > temp[5]:
+                            max1,max2 = temp,max1
+                        elif max2[5] > temp[5]:
+                            max2 = temp
+                    
+                    deq.append(max1)
+                    deq.append(max2)
+                #深さの決定
+                if deep == 4 or len({max1[0],max2[0]})  == 1:
+                    return max1[0]
+    
+                print(deq)
+                    
+
+
+   
+    
 
 def goal():
     global x,y
@@ -286,7 +429,8 @@ def goal():
         temp = l.index(min(l))
         ans.append(UDLR[temp])
         x,y = x+around4[temp][0] , y+around4[temp][1]
-        # calc_score()
+        if not submit:
+            calc_score()
 
 def calc_score():
     global score
@@ -296,21 +440,22 @@ def calc_score():
 
 def get_last_score():
     global score_list
-    score_list.append(score // (len(ans)-1))
+    score_list.append((score-150*sum(map(sum,d)))  // (len(ans)-1//1000))
     # print(score // (len(ans)-1))
     f = open(f"ahc027\\a\\out\\{Score_file_name}.txt", 'a')
     f.write(f"{Input_file_name:04} : {score // (len(ans)-1)}\n")
     f.close()
 
 def vertification(i,j,k):
-    print(score // (len(ans)-1))
+    print(score // (len(ans)-1//1000))
     f = open(f"ahc027\\a\\out\\{Score_file_name}.txt", 'a')
     f.write(f"{i,j,k} : {score // (len(ans)-1)}\n")
     f.close()
 
 def end():
-    print(sum(score_list)//len(score_list))
-
+    print(*score_list)
+    print("sum",sum(score_list)//10)
+    # print("s",int(stdev(score_list)//1000))
     
 # calc_weight()
 # Input()
@@ -335,35 +480,42 @@ def end():
     # end()
 
 #検証2
-# def main():
-#     global Input_file_name,Output_file_name,Score_file_name,score_list
+def main():
+    global Input_file_name,Output_file_name,Score_file_name,score_list,submit
+    submit = False
     
-#     l = [2]
-#     for i in l:
-#         for j in range(10):
-#             score_list = []
-#             Input_file_name = j
-#             Output_file_name = f"main9_{Input_file_name:04}"
-#             Score_file_name = "score_main9"
-#             a,b,c,d = 0.5,0.75,1.25,i
-#             print(a,b,c,d)
-#             Input_file()
-#             calc_can_visit()
-#             run(a,b,c,d)
-#             get_last_score()
-#             # Output_file()
-#             # print("finish:",j)
-#         end()
+    # l = [2]
+    # for i in l:
+    score_list = []
+    a,b,c,d = 0.5,0.75,1,2
+    print(a,b,c,d)
+    for j in range(10):
+        
+        Input_file_name = j
+        Output_file_name = f"main10_{Input_file_name:04}"
+        Score_file_name = "score_main10"
+        
+        Input_file()
+        # calc_weight3()
+        standard_d()
+        calc_can_visit()
+        run(a,b,c,d)
+        get_last_score()
+        Output_file()
+        # print("finish:",j)
+    end()
         
 
 #提出
-def main():
-    a,b,c,d = 0.5,0.75,1.25,2
-    Input()
-    
-    calc_can_visit()
-    run(a,b,c,d)
-    Output()
+# def main():
+#     global submit
+#     submit = True
+#     a,b,c,d = 0.5,0.75,1,2
+#     Input()
+#     standard_d()
+#     calc_can_visit()
+#     run(a,b,c,d)
+#     Output()
 
 if __name__ == '__main__':
     main()

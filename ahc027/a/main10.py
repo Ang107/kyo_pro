@@ -316,6 +316,7 @@ def All_visit():
             else:
                 l.append(inf)
         temp = l.index(min(l))
+        
         ans.append(UDLR[temp])
         x,y = x+around4[temp][0] , y+around4[temp][1]
         if not submit:
@@ -324,6 +325,7 @@ def All_visit():
 
 def run(coe1,coe2,coe3,coe4):
     global x,y,count
+    
     while count < 10 ** 5 - 50000 :
         
         if count >= 40000 and x == 0 and y == 0 and len(visited_coordinate) == n**2:
@@ -346,6 +348,9 @@ def run(coe1,coe2,coe3,coe4):
         #         l.append(-inf)
         # temp = l.index(max(l))
         temp = beem(x,y)
+        if count == 10:
+            exit()
+        print(temp)
         ans.append(UDLR[temp])
         x,y = x+around4[temp][0] , y+around4[temp][1]
         if not submit:
@@ -366,25 +371,21 @@ def beem(x,y):
     deq.append((None,x,y,{(x,y)},0,0))
     while deq:
         v,x,y,visited,deep,score = deq.popleft()
-        # print(v,x,y,visited,deep,score)
         Vec = can_visit_list[x][y]
-        # print(x,y,Vec)
         for i,j in enumerate(Vec):
-            # print(j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n)
             if j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n:
                 visited_2 = visited | {(x+around4[i][0],y+around4[i][1])}
                 if (x+around4[i][0],y+around4[i][1]) in visited_2:
                     score += d[x+around4[i][0]][y+around4[i][1]]*(deep+1)/2
                 else:
                     score += dirt[x+around4[i][0]][y+around4[i][1]]
-                # print(d[x+around4[i][0]][y+around4[i][1]]*(deep+1)/2,dirt[x+around4[i][0]][y+around4[i][1]])
+                # print(score)
                 if deep == 0:
                     deq.append((i,x+around4[i][0],y+around4[i][1],visited_2,deep+1,score))
                 else:
                     deq.append((v,x+around4[i][0],y+around4[i][1],visited_2,deep+1,score))
-
+            print("bef",deq)
             if i == 3 and deq[0][4] != deep :
-                # print(deq)
                 if len(deq) == 1:
                     temp = deq.popleft()
                     return temp[0]
@@ -393,18 +394,20 @@ def beem(x,y):
                     max1,max2 = [0] * 6,[0] * 6
                     while deq: 
                         temp = deq.popleft()
-                        if max1[5] > temp[5]:
+                        if max1[5] < temp[5]:
                             max1,max2 = temp,max1
-                        elif max2[5] > temp[5]:
+                        elif max2[5] < temp[5]:
                             max2 = temp
-                    
                     deq.append(max1)
                     deq.append(max2)
+
                 #深さの決定
-                if deep == 4 or len({max1[0],max2[0]})  == 1:
+                if deep == 6 or len({max1[0],max2[0]})  == 1:
                     return max1[0]
+            print("af",deq)
+        
     
-                print(deq)
+                
                     
 
 
@@ -489,7 +492,7 @@ def main():
     score_list = []
     a,b,c,d = 0.5,0.75,1,2
     print(a,b,c,d)
-    for j in range(10):
+    for j in range(1):
         
         Input_file_name = j
         Output_file_name = f"main10_{Input_file_name:04}"

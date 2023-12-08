@@ -21,6 +21,7 @@ MII = lambda : map(int,input().split())
 LMII = lambda : list(map(int,input().split()))
 Ary2 = lambda w,h,element : [[element] * w for _ in range(h)]
 is_not_Index_Er = lambda x,y,h,w : 0 <= x < h and 0 <= y < w    #範囲外参照
+import random
 from statistics import mean, median,variance,stdev
 
 def Input():
@@ -39,9 +40,9 @@ def Input():
     #現在の汚れ 
     dirt = [[0] * n for _ in range(n)]
     #重みづけ
-    weight = [[0] * n for _ in range(n)]
+    # weight = [[0] * n for _ in range(n)]
 
-    weight3 = [[] *3 for _ in range(3)]
+    # weight3 = [[] *3 for _ in range(3)]
     #訪れた回数
     visited_start = [[0] * n for _ in range(n)]
     visited_goal = [[0] * n for _ in range(n)]
@@ -324,13 +325,14 @@ def All_visit():
             calc_score()
 
 
+
 def run():
     global x,y,count,visited_mid
     
-    while count < 20000 or len(visited_coordinate) < n**2:
+    while  count < 25000 or len(visited_coordinate) < n**2:
         
-        if count >= 5000 and x == 0 and y == 0 and len(visited_coordinate) == n**2:
-            break
+        if count >= max(5000,n**2 * 5) and x == 0 and y == 0 and len(visited_coordinate) == n**2:
+            return
         for i in range(n):
             for j in range(n):
                 dirt[i][j] += d[i][j]
@@ -361,11 +363,19 @@ def run():
 
         ans.append(route)
         temp = 0
+    
         for i,j in xy:
             visited_mid[i][j] += 1
             visited_coordinate.add((i,j))
             dirt[i][j] = (len(xy) - temp) * d[i][j]
             temp += 1
+            if count >= max(5000,n**2 * 5) and i == 0 and j == 0 and len(visited_coordinate) == n**2:
+                # print(ans[-1])
+                # print(xy)
+                ans[-1] = ans[-1][:temp]
+                # print(ans[-1])
+                return
+
         x,y = xy[-1]
         count += len(route)-1
         if not submit:
@@ -402,8 +412,8 @@ def run2(coe1,coe2,coe3,coe4):
        
         ans.append(UDLR[temp])
         x,y = x+around4[temp][0] , y+around4[temp][1]
-        if not submit:
-            calc_score()
+        # if not submit:
+        #     calc_score()
 
     All_visit()
     goal()
@@ -429,7 +439,7 @@ def beem2(x,y):
                 if (x+around4[i][0],y+around4[i][1]) in visited:
                     score_temp = score + (d[x+around4[i][0]][y+around4[i][1]]*(deep+1)/2) 
                 else:
-                    score_temp = score + dirt[x+around4[i][0]][y+around4[i][1]] 
+                    score_temp = score + dirt[x+around4[i][0]][y+around4[i][1]]
                 visited_2 = visited | {(x+around4[i][0],y+around4[i][1])}
                 # print(score,dirt[x+around4[i][0]][y+around4[i][1]],d[x+around4[i][0]][y+around4[i][1]])
                 if deep == 0:
@@ -482,9 +492,9 @@ def beem(x,y):
             if j and 0 <= x+around4[i][0] < n and 0 <= y+around4[i][1] < n:
                 
                 if (x+around4[i][0],y+around4[i][1]) in visited:
-                    score_temp = score + (d[x+around4[i][0]][y+around4[i][1]]*(deep+1)/2) * max(0.3,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] / (count+deep) ) **1.5
+                    score_temp = score + (d[x+around4[i][0]][y+around4[i][1]]*(deep+1)//2) * max(0.3,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] / (count+deep) ) **1.75
                 else:
-                    score_temp = score + dirt[x+around4[i][0]][y+around4[i][1]]* max(0.3,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] / (count+deep) ) **1.5
+                    score_temp = score + (dirt[x+around4[i][0]][y+around4[i][1]])* max(0.3,1 -  200*  visited_mid[x+around4[i][0]][y+around4[i][1]] / (count+deep) ) **1.75
                 visited_2 = visited + [(x+around4[i][0],y+around4[i][1])]
                 # print(score,dirt[x+around4[i][0]][y+around4[i][1]],d[x+around4[i][0]][y+around4[i][1]])
                 if deep == 0:
@@ -503,7 +513,14 @@ def beem(x,y):
                 #深さの決定
 
                 #まとめて返す長さ
-                return_len = 8
+
+                return_len = random.choice([2,3,5,7])
+                return_len = 5
+                if count >= 7500:
+                    return_len = 10
+                elif count >= 15000:
+                    return_len = 31
+
                 if deep == n*3 or len(set(map(lambda x:x[0],sort_deq)))  == 1:
                     # print(max1,max2)
                     if len(sort_deq[0][3]) >= return_len:
@@ -593,42 +610,40 @@ def end():
     # end()
 
 #検証2
-def main():
-    global Input_file_name,Output_file_name,Score_file_name,score_list,submit
-    submit = False
+# def main():
+#     global Input_file_name,Output_file_name,Score_file_name,score_list,submit
+#     submit = False
     
-    # l = [2]
-    # for i in l:
-    score_list = []
-    a,b,c,d = 0.5,0.5,0.5,2
-    print(a,b,c,d)
-    for j in range(3):
-        print("fin:",j)
-        Input_file_name = j
-        Output_file_name = f"main12_{Input_file_name:04}"
-        Score_file_name = "score_main11"
+#     # l = [2]
+#     # for i in l:
+#     score_list = []
+#     for j in range(3,4):
+#         print("fin:",j)
+#         Input_file_name = j
+#         Output_file_name = f"main2_{Input_file_name:04}"
+#         Score_file_name = "score_main11"
         
-        Input_file()
-        # calc_weight3()
-        standard_d()
-        calc_can_visit()
-        run()
-        get_last_score()
-        Output_file()
-        # print("finish:",j)
-    end()
+#         Input_file()
+#         # calc_weight3()
+#         standard_d()
+#         calc_can_visit()
+#         run()
+#         get_last_score()
+#         Output_file()
+#         # print("finish:",j)
+#     end()
         
 
 #提出
-# def main():
-#     global submit
-#     submit = True
-#     a,b,c,d = 0.5,0.75,1,2
-#     Input()
-#     standard_d()
-#     calc_can_visit()
-#     run()
-#     Output()
+def main():
+    global submit
+    submit = True
+    # a,b,c,d = 0.5,0.75,1,2
+    Input()
+    standard_d()
+    calc_can_visit()
+    run()
+    Output()
 
 if __name__ == '__main__':
     main()

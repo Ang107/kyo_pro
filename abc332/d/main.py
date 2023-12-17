@@ -14,7 +14,7 @@ around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float('inf')
 deq = deque()
 dd = defaultdict()
-# import numpy as np
+import numpy as np
 
 II = lambda : int(input())
 MII = lambda : map(int,input().split())
@@ -35,66 +35,112 @@ def get_str_difference(s1: str,s2: str) -> int :
 
     
 h,w = MII()
-A = [LMII() for _ in range(h)]
-B = [LMII() for _ in range(h)]
-A_R = list(zip(*A))
-B_R = list(zip(*B))
+A = np.array([LMII() for _ in range(h)])
+B = np.array([LMII() for _ in range(h)])
+hper = list(permutations(range(h)))
+wper = list(permutations(range(w)))
 
-A_R = list(map(list,A_R))
-B_R = list(map(list,B_R))
-A1 = set()
-B1 = set()
-for i in range(h):
-    A1.add(tuple(sorted(A[i])))
-    B1.add(tuple(sorted(B[i])))
-
-for i in range(w):
-    A1.add(tuple(sorted(A_R[i])))
-    B1.add(tuple(sorted(B_R[i])))
-
-count_yoko = 0
-count_tate = 0
-# print(B_R)
-if A1 == B1:
-    for i in A:
-        count2 = inf
-        for j in B:
-            count1 = 0
-            if sorted(i) == sorted(j):
-                for k in range(len(i)-1,0,-1):
-                    if i[k] != j[k]:
-                        for p,q in enumerate(j):
-                            if q == i[k]:
-                                temp = p
-                        for p in range(temp,k):
-                            j[p],j[p+1] = j[p+1],j[p]
-                            count1 += 1
-        count2 = min(count2,count1)
-    count_yoko = max(count_yoko,count2)
+def calc(i,j):
+    # print(i,j)
+    temp = 0
+    for p in range(len(i)-1,0,-1):
         
-    for i in A_R:
-        count2 = inf
-        for j in B_R:
-            count1 = 0
-            if sorted(i) == sorted(j):
-                for k in range(len(i)-1,0,-1):
-                    if i[k] != j[k]:
-                        for p,q in enumerate(j):
-                            if q == i[k]:
-                                temp = p
-                        for p in range(temp,k):
-                            j[p],j[p+1] = j[p+1],j[p]
-                            count1 += 1
-        count2 = min(count2,count1)
-    count_tate = max(count_tate,count2)
+        for q in range(p):
+            # print(i[q],i[p])
+            if i[q] > i[p]:
+                temp += 1
+    tate = temp
+    temp = 0
+    for p in range(len(j)-1,0,-1):
         
-    print(count_yoko+count_tate)
-        
+        for q in range(p):
+            # print(j[q],j[p])
+            if j[q] > j[p]:
+                temp += 1
+    yoko = temp
+    return tate+yoko
+
+ans = inf
 
 
+for i in hper:
+    for j in wper:
+        # print(j,i)
 
-else:
+        # print(temp)
+        # print(temp[i,:])
+        if np.all(A[i,j] == B):
+            # print(calc(i,j))
+            # input()
+            # print(i,j,calc(i,j))
+            ans = min(ans,calc(i,j))
+            # print(i,j)
+
+if ans == inf:
     print(-1)
+else:   
+    print(ans)
+
+
+
+# A_R = list(zip(*A))
+# B_R = list(zip(*B))
+
+# A_R = list(map(list,A_R))
+# B_R = list(map(list,B_R))
+# A1 = set()
+# B1 = set()
+# for i in range(h):
+#     A1.add(tuple(sorted(A[i])))
+#     B1.add(tuple(sorted(B[i])))
+
+# for i in range(w):
+#     A1.add(tuple(sorted(A_R[i])))
+#     B1.add(tuple(sorted(B_R[i])))
+
+# count_yoko = 0
+# count_tate = 0
+# print(B_R)
+# if A1 == B1:
+#     for i in A:
+#         count2 = inf
+#         for j in B:
+#             count1 = 0
+#             if sorted(i) == sorted(j):
+#                 for k in range(len(i)-1,0,-1):
+#                     if i[k] != j[k]:
+#                         for p,q in enumerate(j):
+#                             if q == i[k]:
+#                                 temp = p
+#                         for p in range(temp,k):
+#                             j[p],j[p+1] = j[p+1],j[p]
+#                             count1 += 1
+#         count2 = min(count2,count1)
+#     count_yoko = max(count_yoko,count2)
+        
+#     for i in A_R:
+#         count2 = inf
+#         for j in B_R:
+#             count1 = 0
+#             if sorted(i) == sorted(j):
+#                 for k in range(len(i)-1,0,-1):
+#                     if i[k] != j[k]:
+#                         for p,q in enumerate(j):
+#                             if q == i[k]:
+#                                 temp = p
+#                         for p in range(temp,k):
+#                             j[p],j[p+1] = j[p+1],j[p]
+#                             count1 += 1
+#         count2 = min(count2,count1)
+#     count_tate = max(count_tate,count2)
+        
+#     print(count_yoko+count_tate)
+        
+
+
+
+# else:
+#     print(-1)
 
 
 

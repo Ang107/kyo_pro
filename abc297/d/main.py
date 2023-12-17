@@ -24,3 +24,23 @@ is_not_Index_Er = lambda x,y,h,w : 0 <= x < h and 0 <= y < w    #範囲外参照
     
 
 
+a,b = MII()
+ans = 0
+while True:
+    if a > b:
+        temp = a // b
+        a = a % b
+        ans += temp
+        if a == 0:
+            print(ans-1)
+            exit()
+    elif a < b:
+        temp = b // a
+        b = b % a
+        ans += temp
+        if b == 0:
+            print(ans-1)
+            exit()
+    elif a == b:
+        print(ans)
+        exit()

@@ -1,0 +1,20 @@
+{
+  "contest": {
+    "id": "ahc029",
+    "title": "RECRUIT Nihonbashi Half Marathon 2024 Winter（AtCoder Heuristic Contest 029）",
+    "url": "https://atcoder.jp/contests/ahc029"
+  },
+  "tasks": [
+    {
+      "id": "ahc029_a",
+      "label": "A",
+      "title": "Business Simulation Game",
+      "url": "https://atcoder.jp/contests/ahc029/tasks/ahc029_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

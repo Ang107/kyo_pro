@@ -4,6 +4,7 @@ from itertools import accumulate, product,permutations,combinations,combinations
 import math
 from bisect import bisect_left,insort_left,bisect_right,insort_right
 from pprint import pprint
+from heapq import heapify,heappop,heappush
 #product : bit全探索 product(range(2),repeat=n)
 #permutations : 順列全探索
 #combinations : 組み合わせ（重複無し）

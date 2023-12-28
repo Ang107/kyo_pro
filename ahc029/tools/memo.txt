@@ -1,0 +1,1 @@
+cargo run -r --bin tester python3 main.py < in/0000.txt > out.txt

@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "adt_medium_20240103_2",
+    "title": "AtCoder Daily Training MEDIUM 2024/1/3 18:00start",
+    "url": "https://atcoder.jp/contests/adt_medium_20240103_2"
+  },
+  "tasks": [
+    {
+      "id": "abc225_b",
+      "label": "C",
+      "title": "Star or Not",
+      "url": "https://atcoder.jp/contests/adt_medium_20240103_2/tasks/abc225_b",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc313_b",
+      "label": "D",
+      "title": "Who is Saikyo?",
+      "url": "https://atcoder.jp/contests/adt_medium_20240103_2/tasks/abc313_b",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc225_c",
+      "label": "E",
+      "title": "Calendar Validator",
+      "url": "https://atcoder.jp/contests/adt_medium_20240103_2/tasks/abc225_c",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc270_c",
+      "label": "F",
+      "title": "Simple path",
+      "url": "https://atcoder.jp/contests/adt_medium_20240103_2/tasks/abc270_c",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc232_d",
+      "label": "G",
+      "title": "Weak Takahashi",
+      "url": "https://atcoder.jp/contests/adt_medium_20240103_2/tasks/abc232_d",
+      "directory": {
+        "path": "g",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    }
+  ]
+}

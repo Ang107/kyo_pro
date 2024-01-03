@@ -1,67 +1,79 @@
+
+import fileinput
 import sys
-from  collections import deque,defaultdict
-from itertools import accumulate, product,permutations,combinations,combinations_with_replacement
+from collections import deque, defaultdict
+from itertools import accumulate, product, permutations, combinations, combinations_with_replacement
 import math
-from bisect import bisect_left,insort_left,bisect_right,insort_right
+from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
-from heapq import heapify,heappop,heappush
-#product : bit全探索 product(range(2),repeat=n)
-#permutations : 順列全探索
-#combinations : 組み合わせ（重複無し）
-#combinations_with_replacement : 組み合わせ（重複可）
+from heapq import heapify, heappop, heappush
+# product : bit全探索 product(range(2),repeat=n)
+# permutations : 順列全探索
+# combinations : 組み合わせ（重複無し）
+# combinations_with_replacement : 組み合わせ（重複可）
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
-around4 = ((-1, 0), (1, 0), (0, -1), (0, 1)) #上下左右
-around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
+# sys.set_int_max_str_digits(0)
+around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
+around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1),
+           (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float('inf')
 deq = deque()
 dd = defaultdict()
 mod = 998244353
 
-Pr = lambda x : print(x)
-PY = lambda : print("Yes")
-PN = lambda : print("No")
-I = lambda : input()
-II = lambda : int(input())
-MII = lambda : map(int,input().split())
-LMII = lambda : list(map(int,input().split()))
-is_not_Index_Er = lambda x,y,h,w : 0 <= x < h and 0 <= y < w    #範囲外参照
 
-import fileinput
-q = []
-for i,line in enumerate(fileinput.input()):
-    # print(line)
-    if i == 0:
-      Q = line 
-    else:
-        q.append(line.split())
+def Pr(x): return print(x)
+def PY(): return print("Yes")
+def PN(): return print("No")
+def I(): return input()
+def II(): return int(input())
 
-    
-# Q = int(input())
-# q = [input().split() for _ in range(Q)]
+
+def MII(): return map(int, input().split())
+def LMII(): return list(map(int, input().split()))
+
+
+def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+
+Q = int(input())
+q = [input().split() for _ in range(Q)]
 # print(q)
-
-deq = deque(["1"])
+MOD = mod
+num = 1
+keta = 1
 ans_list = []
+temp = 1
+ruizyou_10 = []
+# for i in range(10**5):
+#     ruizyou_10.append(temp)
+#     temp = temp * 10
+deq = deque([1])
 for i in q:
     # print(deq)
     if i[0] == "1":
-        deq.append(i[1])
+        num = (num*10 + int(i[1])) % mod
+        deq.append(int(i[1]))
+
     elif i[0] == "2":
+        num = num - pow(10, (len(deq)-1), mod) * deq[0]
         deq.popleft()
     elif i[0] == "3":
-        ans = int("".join(deq)) % mod
-        ans_list.append(ans)
-        # print(ans)
+        print(num % mod)
+    # print(num)
+    # deq = deque(list(str(ans)))
+    # print(deq)
+    # print(ans)
 
-print(len(ans))
-print(ans)
+# for i in ans_list:
+#     print(i)
 
 # temp = 1
 
 # for i in q:
 #     if i[0] == 1:
-#         temp = (temp * 10 + i[1]) 
+#         temp = (temp * 10 + i[1])
 #     elif i[0] == 2:
 #         keta = len(str(temp)) - 1
 #         temp = temp % 10**keta

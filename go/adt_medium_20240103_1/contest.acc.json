@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "adt_medium_20240103_1",
+    "title": "AtCoder Daily Training MEDIUM 2024/1/3 16:00start",
+    "url": "https://atcoder.jp/contests/adt_medium_20240103_1"
+  },
+  "tasks": [
+    {
+      "id": "abc222_b",
+      "label": "C",
+      "title": "Failing Grade",
+      "url": "https://atcoder.jp/contests/adt_medium_20240103_1/tasks/abc222_b",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc216_b",
+      "label": "D",
+      "title": "Same Name",
+      "url": "https://atcoder.jp/contests/adt_medium_20240103_1/tasks/abc216_b",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc282_c",
+      "label": "E",
+      "title": "String Delimiter",
+      "url": "https://atcoder.jp/contests/adt_medium_20240103_1/tasks/abc282_c",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc235_c",
+      "label": "F",
+      "title": "The Kth Time Query",
+      "url": "https://atcoder.jp/contests/adt_medium_20240103_1/tasks/abc235_c",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc224_d",
+      "label": "G",
+      "title": "8 Puzzle on Graph",
+      "url": "https://atcoder.jp/contests/adt_medium_20240103_1/tasks/abc224_d",
+      "directory": {
+        "path": "g",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    }
+  ]
+}

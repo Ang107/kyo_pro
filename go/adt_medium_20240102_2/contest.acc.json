@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "adt_medium_20240102_2",
+    "title": "AtCoder Daily Training MEDIUM 2024/1/2 17:30start",
+    "url": "https://atcoder.jp/contests/adt_medium_20240102_2"
+  },
+  "tasks": [
+    {
+      "id": "abc234_b",
+      "label": "C",
+      "title": "Longest Segment",
+      "url": "https://atcoder.jp/contests/adt_medium_20240102_2/tasks/abc234_b",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc268_b",
+      "label": "D",
+      "title": "Prefix?",
+      "url": "https://atcoder.jp/contests/adt_medium_20240102_2/tasks/abc268_b",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc234_c",
+      "label": "E",
+      "title": "Happy New Year!",
+      "url": "https://atcoder.jp/contests/adt_medium_20240102_2/tasks/abc234_c",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc285_c",
+      "label": "F",
+      "title": "abc285_brutmhyhiizp",
+      "url": "https://atcoder.jp/contests/adt_medium_20240102_2/tasks/abc285_c",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    },
+    {
+      "id": "abc304_d",
+      "label": "G",
+      "title": "A Piece of Cake",
+      "url": "https://atcoder.jp/contests/adt_medium_20240102_2/tasks/abc304_d",
+      "directory": {
+        "path": "g",
+        "testdir": "test",
+        "submit": "main.go"
+      }
+    }
+  ]
+}

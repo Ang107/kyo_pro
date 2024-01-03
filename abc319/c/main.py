@@ -1,77 +1,100 @@
 import sys
-import collections
-from collections import deque
-from copy import deepcopy
-from itertools import product
-import itertools
+from collections import deque, defaultdict
+from itertools import accumulate, product, permutations, combinations, combinations_with_replacement
+import math
+from bisect import bisect_left, insort_left, bisect_right, insort_right
+from pprint import pprint
+from heapq import heapify, heappop, heappush
+# product : bit全探索 product(range(2),repeat=n)
+# permutations : 順列全探索
+# combinations : 組み合わせ（重複無し）
+# combinations_with_replacement : 組み合わせ（重複可）
+# from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
-
+around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
+around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1),
+           (0, 1), (1, -1), (1, 0), (1, 1))
+inf = float('inf')
 deq = deque()
-l = []
-dic = {}
-dd = collections.defaultdict(int)
+dd = defaultdict()
+mod = 998244353
 
-#n = int(input())
 
-#a,b = map(int,input().split())
-    
+def Pr(x): return print(x)
+def PY(): return print("Yes")
+def PN(): return print("No")
+def I(): return input()
+def II(): return int(input())
+def MII(): return map(int, input().split())
+def LMII(): return list(map(int, input().split()))
+def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+
+c = []
 for i in range(3):
-    a= tuple(map(int,input().split()))
-    l.append(a)
+    c.extend(LMII())
 
-p = itertools.permutations(range(9),9)
-for i in p:
-    print(i)
-# p = product(range(0,9),repeat=3)
-# count = 0
-# for i in p:
-#     if i[0] != i[1] and i[1] != i[2] and i[0] != i[2]:
-#         if max(i) - min(i) == 2 or (i[0] + 1) % 3 == (i[1] + 1) % 3 == (i[2] + 1) % 3 or [0,4,8] == sorted(i) or [2,4,6] == sorted(i):
-#             if l[i[0]] == l[i[1]] and l[i[0]] != l[i[2]]:
-#                 count += 1
-#                 print(l[i[0]],l[i[1]],l[i[2]])
-        
-# print(count/48)
-# for i1 in range(0,9):
-#     for i2 in range(0,8):
-#         for i3 in range(0,7):
-#             for i4 in range(0,6):
-#                 for i5 in range(0,5):
-#                     for i6 in range(0,4):
-#                         for i7 in range(0,3):
-#                             for i8 in range(0,2):
-#                                 for i9 in range(0,1):
-#                                     if i1 != i2 != i3 != i4 != i5 != i6 != i7 != i8 != i9:
-                                        
-                                        
+temp = [[0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],]
 
-# count = 0
-# for x in range(3):
+tyn = [None for _ in range(8)]
+tyn[0], tyn[1], tyn[2] = c[0:3], c[3:6], c[6:9]
+tyn[3], tyn[4], tyn[5] = [c[i] for i in range(9) if i % 3 == 0], [
+    c[i] for i in range(9) if i % 3 == 1], [c[i] for i in range(9) if i % 3 == 2]
+tyn[6] = [c[0], c[4], c[8]]
+tyn[7] = [c[2], c[4], c[6]]
 
-#     if len(set(l[x][0],l[x][1],l[x][2])) < 3:
-#         count += 1
+out = []
+out_list = []
+for i, j in enumerate(tyn):
+    if len(set(j)) == 2:
+        p, q, r = temp[i]
+        out_list.extend((p, q, r))
+        if c[p] == c[q]:
+            out.append((p, q, r))
+        elif c[p] == c[r]:
+            out.append((p, r, q))
+        elif c[q] == c[r]:
+            out.append((q, r, p))
 
-#     if len(set(l[x])) < 3:
-#         count += 1
-
-# if len(set(l[0][0],l[1][1],l[2][2])) < 3:
-#     count += 1
-
-# if 
-    
+# print(tyn)
+# print(out)
+# print(out_list)
 
 
+def judge(x):
+    d = {}
+    for i in out_list:
+        d[i] = x.index(i)
+    for i, j, k in out:
+        if d[i] < d[k] and d[j] < d[k]:
+            return False
+    return True
 
-# l1 = range(1,10,1)   
-# l2 = range(1,9,1) 
-# l1 = range(1,8,1) 
-# for i in range(9*9*)
 
-#     for x in range(3):
-#         for y in range(3):
+# def judge(x):
+#     temp = [-1] * 9
+#     for j in x:
+#         temp[j] = c[j]
+#         for p in range(8):
+#             open_num = set()
+#             for q in range(3):
+#                 # print(temp[tyn[p][q]])
+#                 if temp[tyn[p][q]] != -1:
+#                     if temp[tyn[p][q]] not in open_num:
+#                         open_num.add(temp[tyn[p][q]])
+#                     else:
+#                         return False
+#     return True
+ans = 0
+for i in permutations(range(9)):
+    if judge(i):
+        ans += 1
 
-#     for x in range(3):
-#         for y in range(3):
-
-#     for x in range(3):
-#         for y in range(3):
+print(ans/(9*8*7*6*5*4*3*2))

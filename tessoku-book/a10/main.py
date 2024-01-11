@@ -15,11 +15,8 @@ around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1),
            (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float('inf')
-deq = deque()
-dd = defaultdict()
 mod = 998244353
-
-
+def input(): return sys.stdin.readline().rstrip()
 def Pr(x): return print(x)
 def PY(): return print("Yes")
 def PN(): return print("No")
@@ -28,3 +25,31 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+
+def dlist(*l, fill=0):
+    if len(l) == 1:
+        return [fill]*l[0]
+    ll = l[1:]
+    return [dlist(*ll, fill=fill) for _ in range(l[0])]
+
+n = II()
+a = LMII()
+d = II()
+
+l_prf = dlist(n)
+r_prf = dlist(n)
+tmp = 0
+for i in range(n):
+    tmp = max(tmp,a[i])
+    l_prf[i] = tmp
+tmp = 0
+for i in range(n-1,-1,-1):
+    tmp = max(tmp,a[i])
+    r_prf[i] = tmp
+
+# print(l_prf,r_prf)
+for i in range(d):
+    l,r = MII()
+    print(max(l_prf[l-2],r_prf[r]))
+    

@@ -28,3 +28,54 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+class Prefix_sum_2d:
+    def __init__(self,l):
+        h,w = len(l),len(l[0])
+        tmp = [[0] * w for _ in range(h)]
+        for i,j in enumerate(l):
+            tmp[i] = list(accumulate(j))
+        for i in range(1,h):
+            for j in range(w):
+                tmp[i][j] = tmp[i-1][j] + tmp[i][j]
+        self.prf_sum = tmp
+        
+    def get_all(self):
+        return self.prf_sum
+    
+    #左上のx,y,右下のx,y = a,b,c,d
+    def get_section_from_1(self,a,b,c,d):
+        tmp = self.prf_sum[c-1][d-1]
+        if a >= 2:
+            tmp -= self.prf_sum[a-2][d-1] 
+        if b >= 2:
+            tmp -= self.prf_sum[c-1][b-2]
+        if a >= 2 and b >= 2:
+            tmp += self.prf_sum[a-2][b-2]
+        return tmp
+    
+    def get_section_from_0(self,a,b,c,d):
+        tmp = self.prf_sum[c][d]
+        if a >= 1:
+            tmp -= self.prf_sum[a-1][d] 
+        if b >= 1:
+            tmp -= self.prf_sum[c][b-1]
+        if a >= 1 and b >= 1:
+            tmp += self.prf_sum[a-1][b-1]
+        return tmp
+    
+n = II()
+co = [[0]*1500 for _ in range(1500)]
+for i in range(n):
+    x,y = MII()
+    co[x-1][y-1] += 1
+
+prf_sum = Prefix_sum_2d(co)
+q = II()
+# print(co)
+# print(prf_sum.get_all())
+for i in range(q):
+    a,b,c,d = MII()
+
+    print(prf_sum.get_section_from_1(a,b,c,d))
+    
+    

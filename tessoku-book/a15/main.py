@@ -28,3 +28,14 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+n = II()
+a = LMII()
+
+s = sorted(set(a))
+d = {}
+for i,j in enumerate(s):
+    d[j] = i+1
+
+ans = [d[i] for i in a]
+print(*ans)

@@ -28,3 +28,17 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+n = II()
+l,r = 0,10**18+10
+while True:
+    mid = (r+l)/2
+    tmp = mid ** 3 + mid
+    if n - 0.0005 <= tmp <= n + 0.0005:
+        print(mid)
+        break
+    if tmp > n:
+        r = mid
+    elif tmp < n:
+        l = mid
+    

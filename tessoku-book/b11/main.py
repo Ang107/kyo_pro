@@ -28,3 +28,11 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+n = II()
+a = LMII()
+q = II()
+a.sort()
+for i in range(q):
+    num = II()
+    print(bisect_left(a,num))

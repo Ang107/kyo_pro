@@ -28,3 +28,16 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+n,k = MII()
+a = [0] + LMII()
+
+prf  = list(accumulate(a))
+# print(prf)
+ans = 0
+for i in range(1,n+1):
+    ans += bisect_right(prf,k+prf[i-1]) - i
+    # print(bisect_right(prf,k+prf[i-1]) - 1  - i)
+
+print(ans)
+    

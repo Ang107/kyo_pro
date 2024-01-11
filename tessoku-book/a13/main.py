@@ -28,3 +28,28 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+n,k = MII()
+a = LMII()
+l,r = 0,1
+ans = 0
+tmp = 0
+while l < n :
+    
+    num = a[l]
+    while r < n and a[r] - a[l] <= k:
+        tmp += 1
+        r += 1
+    # print(tmp)
+    ans += tmp
+    l += 1
+    tmp -= 1
+print(ans)
+        
+        
+# ans = 0
+# for i,j in enumerate(a):
+#     ans += bisect_right(a,j+k) - 1 - i
+
+# print(ans)
+    

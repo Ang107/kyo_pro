@@ -11,15 +11,43 @@ import (
 
 var sc = bufio.NewScanner(os.Stdin)
 var wr = bufio.NewWriter(os.Stdout)
+var Map map[int][]int
 
 func main() {
 	defer wr.Flush()
 	sc.Split(bufio.ScanWords)
 	sc.Buffer([]byte{}, math.MaxInt32)
-
-	// use getI(), getS(), getInts(), getF()
+	_, m := getI(), getI()
+	Map = make(map[int][]int)
+	visited = make(map[int]bool)
+	for i := 0; i < m; i++ {
+		u, v := getI(), getI()
+		Map[u] = append(Map[u], v)
+		Map[v] = append(Map[v], u)
+	}
+	ans = 0
+	dfs(1)
+	out(min(ans, 1000000)) // use getI(), getS(), getInts(), getF()
 }
 
+var visited map[int]bool
+var ans int
+
+func dfs(x int) {
+	ans += 1
+
+	if ans >= 1000000 {
+		return
+	}
+
+	for _, i := range Map[x] {
+		visited[x] = true
+		if !visited[i] {
+			dfs(i)
+		}
+		visited[x] = false
+	}
+}
 func out(x ...interface{}) {
 	fmt.Fprintln(wr, x...)
 }
@@ -171,4 +199,3 @@ func upperBound(a []int, x int) int {
 	})
 	return idx
 }
-

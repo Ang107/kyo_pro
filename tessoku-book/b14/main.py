@@ -28,3 +28,28 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+n,k = MII()
+a = LMII()
+
+l,r = a[:n//2],a[n//2:]
+s = set()
+for bits in product(range(2),repeat=len(l)):
+    tmp = 0
+    for i,j in enumerate(bits):
+        if j == 1:
+            tmp += l[i]
+    s.add(tmp)
+
+# print(l,r)
+# print(s)
+for bits in product(range(2), repeat=len(r)):
+    tmp = 0
+    for i,j in enumerate(bits):
+        if j == 1:
+            tmp += r[i]
+    if k - tmp in s:
+        print("Yes")
+        exit()
+
+print("No")

@@ -28,3 +28,19 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+n,k = MII()
+a,b,c,d = LMII(),LMII(),LMII(),LMII()
+
+a_plus_b = set()
+for i in a:
+    for j in b:
+        a_plus_b.add(i+j)
+
+for i in c:
+    for j in d:
+        if k - (i+j) in a_plus_b:
+            print("Yes")
+            exit()
+            
+print("No")

@@ -16,8 +16,35 @@ func main() {
 	defer wr.Flush()
 	sc.Split(bufio.ScanWords)
 	sc.Buffer([]byte{}, math.MaxInt32)
+	n := getI()
+	p := getInts(n)
+	num := 0
+	for i, j := range p {
+		num += j * int(math.Pow10(n-i-1))
+	}
 
+	num -= 1
+	var ans int
+	for true {
+		if solve(num) {
+			ans = num
+			break
+		} else {
+			num -= 1
+		}
+	}
+	for _, i := range toStr(ans) {
+		fmt.Print(string(i), " ")
+	}
 	// use getI(), getS(), getInts(), getF()
+}
+func solve(n int) bool {
+	tmp := make(map[rune]bool)
+	for _, i := range toStr(n) {
+		tmp[i] = true
+	}
+	return len(tmp) == len(toStr(n))
+
 }
 
 func out(x ...interface{}) {
@@ -171,4 +198,3 @@ func upperBound(a []int, x int) int {
 	})
 	return idx
 }
-

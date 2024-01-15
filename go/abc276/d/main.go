@@ -16,6 +16,8 @@ func main() {
 	defer wr.Flush()
 	sc.Split(bufio.ScanWords)
 	sc.Buffer([]byte{}, math.MaxInt32)
+	n := getI()
+	a := getInts(n)
 
 	// use getI(), getS(), getInts(), getF()
 }
@@ -171,4 +173,3 @@ func upperBound(a []int, x int) int {
 	})
 	return idx
 }
-

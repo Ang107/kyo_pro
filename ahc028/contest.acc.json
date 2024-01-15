@@ -1,0 +1,20 @@
+{
+  "contest": {
+    "id": "ahc028",
+    "title": "ALGO ARTIS Programming Contest 2023 Winter（AtCoder Heuristic Contest 028）",
+    "url": "https://atcoder.jp/contests/ahc028"
+  },
+  "tasks": [
+    {
+      "id": "ahc028_a",
+      "label": "A",
+      "title": "Lucky Words",
+      "url": "https://atcoder.jp/contests/ahc028/tasks/ahc028_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

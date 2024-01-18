@@ -37,3 +37,23 @@ def dlist(*l, fill=0):
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
+
+n = II()
+
+from functools import lru_cache
+
+
+memo = {}
+
+
+def solve(x):
+    if x == 0:
+        return 1
+    if x in memo:
+        return memo[x]
+
+    memo[x] = solve(x // 2) + solve(x // 3)
+    return memo[x]
+
+
+print(solve(n))

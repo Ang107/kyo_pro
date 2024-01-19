@@ -55,6 +55,8 @@ def base_10(num_n, n):
 
 # 10進数->n進数
 def base_n(num_10, n):
+    if num_10 == 0:
+        return 0
     str_n = ""
     while num_10:
         if num_10 % n >= 10:

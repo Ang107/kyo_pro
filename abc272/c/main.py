@@ -36,3 +36,26 @@ def dlist(*l, fill=0):
         return [fill] * l[0]
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
+
+n = II()
+a = LMII()
+a.sort(reverse=True)
+
+gusu_list = []
+kisu_list = []
+ans = 0
+for i in a:
+    if i % 2 == 0:
+        gusu_list.append(i)
+    else:
+        kisu_list.append(i)
+gusu,kisu = len(gusu_list),len(kisu_list)
+if gusu < 2 and kisu < 2:
+    print(-1)
+
+else:
+    if gusu >= 2:
+        ans = max(ans,sum(gusu_list[:2]))
+    if kisu >= 2:
+        ans = max(ans,sum(kisu_list[:2]))
+    print(ans)

@@ -28,3 +28,14 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+n = II()
+a = LMII()
+b = LMII()
+dp = [inf] * n
+dp[0] = 0
+for i in range(1,n):
+    if i >= 2:
+        dp[i] = min(dp[i],dp[i-2]+b[i-2])
+    dp[i] = min(dp[i],dp[i-1]+a[i-1])
+print(dp[-1])

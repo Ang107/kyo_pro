@@ -28,3 +28,31 @@ def II(): return int(input())
 def MII(): return map(int, input().split())
 def LMII(): return list(map(int, input().split()))
 def is_not_Index_Er(x, y, h, w): return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+n = II()
+h = LMII()
+
+#dpテーブル初期化
+dp = [inf] * n
+dp[0] = 0
+#一個前の地点を保存
+pre = [None] * n
+
+#dpテーブル埋め
+for i in range(1,n):
+    if dp[i] > dp[i-1] + abs(h[i] - h[i-1]):
+        dp[i] = dp[i-1] + abs(h[i] - h[i-1])
+        pre[i] = i-1
+    if i > 1:
+        if dp[i] > dp[i-2] + abs(h[i] - h[i-2]):
+            dp[i] = dp[i-2] + abs(h[i] - h[i-2])
+            pre[i] = i-2
+
+ans = [n]
+#経路復元
+while ans[-1] != 1:
+    ans.append(pre[ans[-1]-1]+1)
+ans = ans[::-1]
+
+print(len(ans))
+print(*ans)

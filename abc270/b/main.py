@@ -38,29 +38,20 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, s = MII()
+x, y, z = MII()
+# d = {"s": 0, "x": x, "y": y, "z": z}
+# tmp = sorted(d.items(), key=lambda x: x[1])
+# tmp = [i for i, j in tmp]
 
-Set = set([0])
-d = [defaultdict(int) for _ in range(n + 1)]
-# d[0][0] = [0]
-for i in range(n):
-    a, b = MII()
-    tmp = set()
-    for j in Set:
-        tmp.add(a + j)
-        tmp.add(b + j)
-        d[i + 1][a + j] = d[i][j] * 10 + 1
-        d[i + 1][b + j] = d[i][j] * 10 + 0
-    Set = tmp
-# print(d)
-if s in Set:
-    PY()
-    tmp = ["T", "H"]
-    ans = []
-    TH = "0" * (n - len(str(d[n][s]))) + str(d[n][s])
-    # print(TH)
-    for i in TH:
-        ans.append(tmp[int(i)])
-    print("".join(ans))
+
+if (x > 0 and y > 0 and z > 0) or (x < 0 and y < 0 and z < 0):
+    x, y, z = abs(x), abs(y), abs(z)
+    if y < z and y < x:
+        print(-1)
+    else:
+        print(abs(x))
 else:
-    PN()
+    if x < y < 0 < z or z < 0 < y < x:
+        print(abs(z) * 2 + abs(x))
+    else:
+        print(abs(x))

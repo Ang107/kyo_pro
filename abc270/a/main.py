@@ -38,29 +38,22 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, s = MII()
+a, b = MII()
+l = [1, 2, 4]
 
-Set = set([0])
-d = [defaultdict(int) for _ in range(n + 1)]
-# d[0][0] = [0]
-for i in range(n):
-    a, b = MII()
-    tmp = set()
-    for j in Set:
-        tmp.add(a + j)
-        tmp.add(b + j)
-        d[i + 1][a + j] = d[i][j] * 10 + 1
-        d[i + 1][b + j] = d[i][j] * 10 + 0
-    Set = tmp
-# print(d)
-if s in Set:
-    PY()
-    tmp = ["T", "H"]
-    ans = []
-    TH = "0" * (n - len(str(d[n][s]))) + str(d[n][s])
-    # print(TH)
-    for i in TH:
-        ans.append(tmp[int(i)])
-    print("".join(ans))
-else:
-    PN()
+for i in product(range(2), repeat=3):
+    tmp = 0
+    for j, k in enumerate(i):
+        if k:
+            tmp += l[j]
+    if tmp == a:
+        a_set = i
+    if tmp == b:
+        b_set = i
+
+ans = 0
+for idx, (i, j) in enumerate(zip(a_set, b_set)):
+    if i or j:
+        ans += l[idx]
+
+print(ans)

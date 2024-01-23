@@ -38,29 +38,36 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, s = MII()
+n, x, y = MII()
+x, y = x - 1, y - 1
+ed = [[] for _ in range(n)]
+for i in range(n - 1):
+    u, v = MII()
+    u, v = u - 1, v - 1
+    ed[u].append(v)
+    ed[v].append(u)
 
-Set = set([0])
-d = [defaultdict(int) for _ in range(n + 1)]
-# d[0][0] = [0]
-for i in range(n):
-    a, b = MII()
-    tmp = set()
-    for j in Set:
-        tmp.add(a + j)
-        tmp.add(b + j)
-        d[i + 1][a + j] = d[i][j] * 10 + 1
-        d[i + 1][b + j] = d[i][j] * 10 + 0
-    Set = tmp
-# print(d)
-if s in Set:
-    PY()
-    tmp = ["T", "H"]
-    ans = []
-    TH = "0" * (n - len(str(d[n][s]))) + str(d[n][s])
-    # print(TH)
-    for i in TH:
-        ans.append(tmp[int(i)])
-    print("".join(ans))
-else:
-    PN()
+pre_list = [None] * n
+ans = [y]
+
+
+def bfs():
+    deq = deque([x])
+    visited = set()
+    while deq:
+        v = deq.popleft()
+        for i in ed[v]:
+            if i not in visited:
+                visited.add(i)
+                deq.append(i)
+                pre_list[i] = v
+
+
+bfs()
+while True:
+    ans.append(pre_list[ans[-1]])
+    if ans[-1] == x:
+        break
+ans = ans[::-1]
+ans = [i + 1 for i in ans]
+print(*ans)

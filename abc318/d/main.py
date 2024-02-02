@@ -39,3 +39,29 @@ def dlist(*l, fill=0):
 
 
 n = II()
+d = [LMII() for _ in range(n - 1)]
+p = {}
+for i in range(n - 1):
+    for j in range(len(d[i])):
+        p[(i, i + j + 1)] = d[i][j]
+        p[(i + j + 1, i)] = d[i][j]
+
+
+dp = [-inf] * (2**n)
+# i番目までの頂点の中で集合jとなった時の最大値
+dp[0] = 0
+for i in range(n):
+    dp[1 << i] = 0
+# 集合
+for i in range(1, 2**n):
+    # 追加頂点
+    for j in range(n):
+        # 繋ぐ頂点
+        for k in range(n):
+            if j != k and i >> k & 1 and not i >> j & 1:
+                # print(j, k)
+                tmp = p[(j, k)]
+                dp[i | 1 << j] = max(dp[i | 1 << j], dp[i & ~(1 << k)] + tmp)
+
+# pprint(dp)
+print(dp[2**n - 1])

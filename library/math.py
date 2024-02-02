@@ -64,3 +64,13 @@ def base_n(num_10, n):
         str_n += str(num_10 % n)
         num_10 //= n
     return int(str_n[::-1])
+
+
+import math
+
+
+# 座標上の点を、原点を中心に回転（反時計回り）時計回りはdをマイナスに
+def ratate(a, b, d):
+    d_rad = math.radians(d)  # 角度法を弧度法に変換
+    rotated = (a + b * 1j) * math.e ** (1j * d_rad)
+    return rotated.real, rotated.imag

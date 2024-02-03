@@ -38,36 +38,6 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-h1, h2, h3, w1, w2, w3 = MII()
-ans = 0
-tmp = max(h1, h2, h3, w1, w2, w3)
-for a in range(1, tmp):
-    for b in range(1, tmp):
-        for d in range(1, tmp):
-            for e in range(1, tmp):
-                c = w1 - a - b
-                f = w2 - d - e
-                g = h1 - a - d
-                h = h2 - b - e
-                i = w3 - g - h
-                if (
-                    c + f + i == h3
-                    and 1 <= c
-                    and 1 <= f
-                    and 1 <= g
-                    and 1 <= h
-                    and 1 <= i
-                ):
-                    # print(
-                    #     a,
-                    #     b,
-                    #     c,
-                    #     d,
-                    #     e,
-                    #     f,
-                    #     g,
-                    #     h,
-                    #     i,
-                    # )
-                    ans += 1
-print(ans)
+r, c = MII()
+a = [LMII() for _ in range(2)]
+print(a[r - 1][c - 1])

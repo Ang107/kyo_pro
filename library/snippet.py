@@ -11,6 +11,12 @@ import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
 from heapq import heapify, heappop, heappush
+import string
+
+# 小文字アルファベットのリスト
+alph_s = list(string.ascii_lowercase)
+# 大文字アルファベットのリスト
+alph_l = list(string.ascii_uppercase)
 
 # product : bit全探索 product(range(2),repeat=n)
 # permutations : 順列全探索

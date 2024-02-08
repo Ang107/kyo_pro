@@ -1,12 +1,12 @@
 import sys
 from collections import deque, defaultdict
 from itertools import (
-     accumulate,
-     product,
-     permutations,
-     combinations,
-     combinations_with_replacement
-     )
+    accumulate,
+    product,
+    permutations,
+    combinations,
+    combinations_with_replacement,
+)
 import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
@@ -37,3 +37,21 @@ def dlist(*l, fill=0):
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
+
+n, q = MII()
+a = LMII()
+a.append(0)
+a.sort()
+
+prf = list(accumulate(a))
+a = a[1:]
+# print(len(a), len(prf))
+for i in range(q):
+    x = II()
+    l = bisect_left(a, x)
+    r = n - l
+    ans = 0
+    # print(l, r)
+    ans += x * l - prf[l]
+    ans += prf[-1] - prf[l] - x * r
+    print(ans)

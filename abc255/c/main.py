@@ -40,24 +40,41 @@ def dlist(*l, fill=0):
 
 x, a, d, n = MII()
 x -= a
-ans = []
-if d == 0:
+a = 0
+if d < 0:
+    d = abs(d)
+    x = -x
+elif d == 0:
     print(abs(x))
-elif (d * (n - 1) < x and d > 0) or (d * (n - 1) > x and d < 0):
-    print(abs(x - d * (n - 1)))
-elif (x < 0 and d > 0) or (x > 0 and d < 0):
-    print(abs(x))
-else:
-    tmp_min, tmp_max = x % d, d - x % d
-    if d > 0:
-        if x - tmp_min in range(d * (n - 1)):
-            ans.append(tmp_min)
-        if x + tmp_max in range(d * (n - 1)):
-            ans.append(tmp_max)
-    if d < 0:
-        if x - tmp_min in range(0, d * (n - 1), -1):
-            ans.append(tmp_min)
-        if x + tmp_max in range(0, d * (n - 1), -1):
-            ans.append(tmp_max)
+    exit()
+# print(a, x, d)
 
-    print(min(ans))
+if x < 0:
+    print(abs(x))
+elif d * (n - 1) < x:
+    print(x - d * (n - 1))
+else:
+    tmp = x / d
+    p, q = d * math.ceil(tmp), d * math.floor(tmp)
+    print(min(abs(q - x), abs(p - x)))
+
+# if d == 0:
+#     print(abs(x))
+# elif (d * (n - 1) < x and d > 0) or (d * (n - 1) > x and d < 0):
+#     print(abs(x - d * (n - 1)))
+# elif (x < 0 and d > 0) or (x > 0 and d < 0):
+#     print(abs(x))
+# else:
+#     tmp_min, tmp_max = x % d, d - x % d
+#     if d > 0:
+#         if x - tmp_min in range(d * (n - 1)):
+#             ans.append(tmp_min)
+#         if x + tmp_max in range(d * (n - 1)):
+#             ans.append(tmp_max)
+#     if d < 0:
+#         if x - tmp_min in range(0, d * (n - 1), -1):
+#             ans.append(tmp_min)
+#         if x + tmp_max in range(0, d * (n - 1), -1):
+#             ans.append(tmp_max)
+
+#     print(min(ans))

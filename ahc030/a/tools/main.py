@@ -290,10 +290,10 @@ def calc_next():
 
     # 石油が存在する可能性が高い地点を優先して選択(?)
     # もっと優先して送るべきクエリを選択するアルゴリズムがあるかも
-    # if len(tmp) > 50:
-    #     tmp = tmp[int(len(tmp) * 0.8) :]
-    # random.shuffle(tmp)
-    # print("# next_full", tmp)
+    if len(tmp) > 50:
+        tmp = tmp[int(len(tmp) * 0.9) :]
+    random.shuffle(tmp)
+    print("# next_full", tmp)
     return [(j, k) for i, j, k in tmp]
 
 

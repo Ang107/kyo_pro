@@ -1,0 +1,12 @@
+/mnt/c/Users/kosuk/Desktop/atcoder/ahc030/a/tools/target/release/deps/anstyle-37d0f205132d28c3.rmeta: /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/lib.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/macros.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/color.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/effect.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/reset.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/style.rs
+
+/mnt/c/Users/kosuk/Desktop/atcoder/ahc030/a/tools/target/release/deps/libanstyle-37d0f205132d28c3.rlib: /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/lib.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/macros.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/color.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/effect.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/reset.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/style.rs
+
+/mnt/c/Users/kosuk/Desktop/atcoder/ahc030/a/tools/target/release/deps/anstyle-37d0f205132d28c3.d: /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/lib.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/macros.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/color.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/effect.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/reset.rs /home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/style.rs
+
+/home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/lib.rs:
+/home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/macros.rs:
+/home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/color.rs:
+/home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/effect.rs:
+/home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/reset.rs:
+/home/kosuke/.cargo/registry/src/index.crates.io-6f17d22bba15001f/anstyle-1.0.0/src/style.rs:

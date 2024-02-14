@@ -1,0 +1,394 @@
+#c 0 0 blue
+# known 1
+# next 58
+q 1 6 5
+# ans 0
+# known 2
+# next 58
+q 1 9 11
+# ans 0
+# known 3
+# next 58
+q 1 10 6
+# ans 0
+# known 4
+# next 57
+q 1 10 10
+# ans 0
+# known 5
+# next 57
+q 1 5 12
+# ans 0
+# known 6
+# next 57
+q 1 4 10
+# ans 0
+# known 7
+# next 57
+q 1 6 11
+# ans 0
+# known 8
+# next 57
+q 1 13 9
+# ans 0
+# known 9
+# next 56
+q 1 2 6
+# ans 0
+# known 10
+# next 56
+q 1 9 14
+# ans 0
+# known 11
+# next 56
+q 1 11 4
+# ans 0
+# known 12
+# next 56
+q 1 7 3
+# ans 0
+# known 13
+# next 56
+q 1 14 5
+# ans 0
+# known 14
+# next 55
+q 1 3 12
+# ans 0
+# known 15
+# next 55
+q 1 11 12
+# ans 0
+# known 16
+# next 55
+q 1 8 9
+# ans 0
+# known 17
+# next 55
+q 1 4 7
+# ans 0
+# known 18
+# next 55
+q 1 14 10
+# ans 0
+# known 19
+# next 54
+q 1 2 14
+# ans 0
+# known 20
+# next 54
+q 1 5 3
+# ans 0
+# known 21
+# next 54
+q 1 5 13
+# ans 0
+# known 22
+# next 54
+q 1 11 9
+# ans 0
+# known 23
+# next 54
+q 1 14 14
+# ans 0
+# known 24
+# next 53
+q 1 14 2
+# ans 0
+# known 25
+# next 53
+q 1 13 12
+# ans 0
+# known 26
+# next 53
+q 1 12 12
+# ans 0
+# known 27
+# next 53
+q 1 11 14
+# ans 0
+# known 28
+# next 53
+q 1 3 11
+# ans 0
+# known 29
+# next 52
+q 1 13 2
+# ans 0
+# known 30
+# next 52
+q 1 12 11
+# ans 0
+# known 31
+# next 52
+q 1 15 10
+# ans 0
+# known 32
+# next 52
+q 1 10 12
+# ans 0
+# known 33
+# next 52
+q 1 13 1
+# ans 0
+# known 34
+# next 51
+q 1 13 15
+# ans 0
+# known 35
+# next 51
+q 1 9 12
+# ans 0
+# known 36
+# next 51
+q 1 13 8
+# ans 0
+#c 16 10 blue
+# known 38
+# next 51
+q 1 14 15
+# ans 0
+#c 16 16 blue
+# known 40
+# next 50
+q 1 1 2
+# ans 0
+#c 0 2 blue
+#c 1 0 blue
+# known 43
+# next 50
+q 1 8 5
+# ans 0
+# known 44
+# next 49
+q 1 13 11
+# ans 0
+# known 45
+# next 49
+q 1 2 13
+# ans 0
+# known 46
+# next 49
+q 1 12 15
+# ans 0
+# known 47
+# next 49
+q 1 12 10
+# ans 0
+# known 48
+# next 49
+q 1 4 2
+# ans 0
+# known 49
+# next 48
+q 1 10 13
+# ans 0
+# known 50
+# next 48
+q 1 14 3
+# ans 0
+# known 51
+# next 48
+q 1 3 14
+# ans 0
+# known 52
+# next 48
+q 1 4 14
+# ans 0
+# known 53
+# next 48
+q 1 5 8
+# ans 0
+# known 54
+# next 47
+q 1 3 15
+# ans 0
+# known 55
+# next 47
+q 1 15 2
+# ans 0
+#c 16 0 blue
+# known 57
+# next 47
+q 1 12 1
+q 1 3 2
+# ans 0
+# known 59
+# next 46
+q 1 3 3
+q 1 8 2
+# ans 0
+# known 61
+# next 46
+q 1 1 10
+q 1 2 12
+# ans 0
+# known 63
+# next 46
+q 1 10 1
+q 1 1 13
+# ans 0
+#c 0 13 blue
+#c 9 0 blue
+# known 67
+# next 45
+q 1 12 3
+q 1 14 12
+# ans 0
+# known 69
+# next 44
+q 1 12 4
+q 1 13 3
+# ans 0
+# known 71
+# next 44
+q 1 7 8
+q 1 4 13
+# ans 0
+# known 73
+# next 44
+q 1 5 4
+q 1 8 14
+# ans 0
+# known 75
+# next 43
+q 1 11 15
+q 1 5 2
+# ans 0
+#c 14 16 blue
+# known 78
+# next 43
+q 1 12 14
+q 1 5 15
+# ans 0
+# known 80
+# next 42
+q 1 2 2
+q 1 2 4
+# ans 0
+# known 82
+# next 42
+q 1 14 1
+q 1 15 11
+# ans 0
+#c 15 16 blue
+#c 16 15 blue
+# known 86
+# next 41
+q 1 1 14
+q 1 6 12
+# ans 0
+#c 0 14 blue
+# known 89
+# next 40
+q 1 3 4
+q 1 13 13
+# ans 0
+# known 91
+# next 40
+q 1 3 1
+q 1 11 2
+# ans 0
+#c 10 0 blue
+#c 11 0 blue
+# known 95
+# next 39
+q 1 11 7
+q 1 6 15
+# ans 0
+#c 8 8 blue
+#c 8 16 blue
+#c 9 15 blue
+#c 9 16 blue
+#c 10 16 blue
+# known 102
+# next 38
+q 1 10 3
+q 1 11 11
+# ans 0
+# known 104
+# next 37
+q 1 11 3
+q 1 11 13
+# ans 0
+# known 106
+# next 37
+q 1 2 3
+q 1 13 5
+# ans 0
+#c 16 7 blue
+# known 109
+# next 36
+q 1 5 14
+q 1 1 5
+# ans 0
+#c 6 14 blue
+# known 112
+# next 36
+q 1 4 3
+q 1 1 6
+# ans 0
+#c 0 7 blue
+# known 115
+# next 35
+q 1 7 12
+q 1 1 3
+# ans 0
+#c 0 3 blue
+#c 5 11 blue
+#c 6 13 blue
+#c 7 13 blue
+#c 7 14 blue
+#c 8 15 blue
+#c 9 13 blue
+# known 124
+# next 33
+q 1 14 9
+q 1 12 13
+# ans 0
+# known 126
+# next 33
+q 1 15 13
+q 1 5 6
+# ans 0
+#c 5 7 blue
+#c 5 10 blue
+#c 6 4 blue
+#c 6 6 blue
+#c 7 6 blue
+#c 7 7 blue
+#c 8 6 blue
+# known 135
+# next 31
+q 1 9 5
+q 1 4 15
+# ans 0
+# known 137
+# next 31
+q 1 12 2
+q 1 14 13
+q 1 13 10
+q 1 14 11
+# ans 0
+#c 11 1 blue
+#c 12 0 blue
+#c 16 2 blue
+# known 144
+# next 29
+q 1 10 5
+q 1 4 1
+q 1 13 14
+q 1 1 15
+# ans 0
+#c 0 1 blue
+#c 5 0 blue
+#c 8 1 blue
+# known 151
+# next 28
+q 1 3 9
+q 1 16 14
+q 1 10 4
+q 1 3 8
+# ans 1
+# count 0
+a 97 11 14 12 13 12 14 12 15 12 16 13 13 13 14 13 15 13 16 14 14 15 14 2 2 2 3 3 1 3 2 3 3 3 4 3 5 3 6 4 2 4 3 4 5 9 4 9 5 9 6 9 7 10 3 10 4 10 5 11 3 11 5 11 6 12 5 1 12 2 10 2 11 2 12 2 14 3 12 3 13 3 14 4 12 5 12 6 12 11 12 11 13 12 12 13 11 13 12 14 11 14 12 14 13 15 12 16 12 12 11 13 9 13 10 14 9 14 10 7 11 8 11 9 11 10 11 10 12 11 10 11 11 1 15 2 15 3 15 3 16 4 13 4 14 4 15 5 15 2 13 2 16 4 16 5 16 12 1 12 3 13 1 13 2 13 3 13 4 14 1 14 2 14 3 13 0 14 0 15 0 0 5 0 6 1 4 1 5 2 4 2 5 15 13

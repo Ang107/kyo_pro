@@ -1,0 +1,272 @@
+#c 0 0 blue
+# known 1
+# next 29
+q 1 8 8
+# ans 0
+# known 2
+# next 29
+q 1 3 4
+# ans 0
+# known 3
+# next 29
+q 1 5 8
+# ans 0
+# known 4
+# next 28
+q 1 2 7
+# ans 0
+# known 5
+# next 28
+q 1 6 2
+# ans 0
+# known 6
+# next 28
+q 1 7 3
+# ans 0
+# known 7
+# next 28
+q 1 6 5
+# ans 0
+# known 8
+# next 28
+q 1 4 2
+# ans 0
+# known 9
+# next 27
+q 1 2 3
+# ans 0
+# known 10
+# next 27
+q 1 4 5
+# ans 0
+# known 11
+# next 27
+q 1 7 7
+# ans 0
+# known 12
+# next 27
+q 1 3 8
+# ans 0
+# known 13
+# next 27
+q 1 10 9
+# ans 0
+# known 14
+# next 26
+q 1 10 6
+# ans 0
+# known 15
+# next 26
+q 1 4 6
+# ans 0
+# known 16
+# next 26
+q 1 2 5
+# ans 0
+# known 17
+# next 26
+q 1 5 3
+# ans 0
+# known 18
+# next 26
+q 1 8 3
+# ans 0
+# known 19
+# next 25
+q 1 8 10
+# ans 0
+# known 20
+# next 25
+q 1 5 5
+# ans 0
+# known 21
+# next 25
+q 1 3 10
+# ans 0
+# known 22
+# next 25
+q 1 4 4
+# ans 0
+# known 23
+# next 25
+q 1 5 4
+# ans 0
+# known 24
+# next 24
+q 1 6 9
+# ans 0
+# known 25
+# next 24
+q 1 8 2
+# ans 0
+# known 26
+# next 24
+q 1 1 9
+# ans 0
+#c 0 10 blue
+# known 28
+# next 24
+q 1 6 6
+# ans 0
+# known 29
+# next 23
+q 1 6 1
+# ans 0
+# known 30
+# next 23
+q 1 6 3
+# ans 0
+# known 31
+# next 23
+q 1 9 6
+# ans 0
+# known 32
+# next 23
+q 1 3 5
+# ans 0
+# known 33
+# next 23
+q 1 9 4
+# ans 0
+# known 34
+# next 22
+q 1 10 5
+# ans 0
+# known 35
+# next 22
+q 1 9 3
+# ans 0
+# known 36
+# next 22
+q 1 4 1
+# ans 0
+#c 4 0 blue
+#c 5 0 blue
+# known 39
+# next 21
+q 1 8 4
+# ans 0
+# known 40
+# next 21
+q 1 5 2
+# ans 0
+# known 41
+# next 21
+q 1 1 4
+# ans 0
+# known 42
+# next 21
+q 1 2 1
+# ans 0
+#c 2 0 blue
+# known 44
+# next 20
+q 1 3 6
+# ans 0
+# known 45
+# next 20
+q 1 7 5
+# ans 0
+# known 46
+# next 20
+q 1 5 7
+# ans 0
+#c 6 8 blue
+# known 48
+# next 20
+q 1 9 1
+# ans 0
+#c 9 0 blue
+# known 50
+# next 19
+q 1 5 1
+# ans 0
+# known 51
+# next 19
+q 1 2 4
+# ans 0
+# known 52
+# next 19
+q 1 1 7
+# ans 0
+#c 0 8 blue
+#c 0 9 blue
+#c 1 8 blue
+# known 56
+# next 18
+q 1 10 2
+# ans 6
+#c 0 1 green
+#c 0 2 green
+#c 0 11 green
+#c 1 0 green
+#c 1 10 green
+#c 1 11 green
+#c 2 2 green
+#c 2 8 green
+#c 2 9 green
+#c 2 10 green
+#c 2 11 green
+#c 3 0 green
+#c 3 1 green
+#c 3 2 green
+#c 3 9 green
+#c 3 11 green
+#c 4 8 green
+#c 4 9 green
+#c 4 10 green
+#c 4 11 green
+#c 5 9 green
+#c 5 10 green
+#c 5 11 green
+#c 6 10 green
+#c 6 11 green
+#c 7 0 green
+#c 7 1 green
+#c 7 6 green
+#c 7 8 green
+#c 7 9 green
+#c 7 10 green
+#c 7 11 green
+#c 8 0 green
+#c 8 1 green
+#c 8 5 green
+#c 8 6 green
+#c 8 7 green
+#c 8 9 green
+#c 8 11 green
+#c 9 2 green
+#c 9 5 green
+#c 9 7 green
+#c 9 8 green
+#c 9 9 green
+#c 9 10 green
+#c 9 11 green
+#c 10 0 green
+#c 10 1 green
+#c 10 3 green
+#c 10 4 green
+#c 10 7 green
+#c 10 8 green
+#c 10 10 green
+#c 10 11 green
+#c 11 0 green
+#c 11 1 green
+#c 11 2 green
+#c 11 3 green
+#c 11 4 green
+#c 11 5 green
+#c 11 6 green
+#c 11 7 green
+#c 11 8 green
+#c 11 9 green
+#c 11 10 green
+#c 11 11 green
+# [(6, 3, 3), (6, 4, 3), (6, 5, 6), (6, 6, 4), (6, 6, 7), (6, 7, 4), (1, 0, 3), (1, 0, 7), (1, 1, 1), (1, 2, 6), (2, 0, 4), (2, 0, 6), (2, 1, 2), (4, 1, 3), (4, 1, 5), (2, 1, 6), (2, 6, 0), (2, 7, 2), (3, 0, 5), (3, 3, 7), (3, 4, 7)]
+# known 123
+# next 21
+q 1 4 7
+# ans 3
+# count 1
+a 28 4 6 5 4 5 5 5 6 6 6 6 7 3 3 3 4 4 3 5 2 5 3 6 3 3 6 3 7 4 4 4 5 0 3 1 1 1 2 1 3 1 4 6 4 7 4 8 3 8 4 9 4 6 1 6 2
+a 28 4 6 5 4 5 5 5 6 6 6 6 7 3 3 3 4 4 3 5 2 5 3 6 3 3 6 3 7 4 4 4 5 0 4 1 2 1 3 1 4 1 5 6 4 7 4 8 3 8 4 9 4 6 1 6 2

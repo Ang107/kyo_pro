@@ -1,0 +1,1 @@
+/mnt/c/Users/kosuk/Desktop/atcoder/ahc030/a/tools/target/release/tester: /mnt/c/Users/kosuk/Desktop/atcoder/ahc030/a/tools/src/bin/tester.rs /mnt/c/Users/kosuk/Desktop/atcoder/ahc030/a/tools/src/lib.rs

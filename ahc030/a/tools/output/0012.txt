@@ -1,0 +1,140 @@
+# next 45
+q 1 6 3
+# ans 0
+# next 45
+q 1 6 7
+# ans 0
+# next 45
+q 1 7 11
+# ans 0
+# next 45
+q 1 3 10
+# ans 0
+# next 45
+q 1 9 7
+# ans 0
+# next 44
+q 1 10 4
+# ans 0
+# next 44
+q 1 5 12
+# ans 0
+# next 44
+q 1 3 5
+# ans 0
+# next 44
+q 1 12 10
+# ans 0
+# next 44
+q 1 3 2
+# ans 0
+# next 43
+q 1 11 11
+# ans 0
+# next 43
+q 1 3 12
+# ans 0
+# next 43
+q 1 6 9
+# ans 0
+# next 43
+q 1 13 7
+# ans 0
+# next 43
+q 1 4 8
+# ans 0
+# next 42
+q 1 7 5
+# ans 0
+# next 42
+q 1 8 2
+# ans 0
+# next 42
+q 1 9 9
+# ans 0
+# next 42
+q 1 6 12
+# ans 0
+# next 42
+q 1 10 13
+# ans 0
+# next 41
+q 1 8 13
+# ans 0
+# next 41
+q 1 13 1
+# ans 0
+#c 14 0 blue
+# next 41
+q 1 13 13
+# ans 0
+#c 11 13 blue
+#c 11 14 blue
+#c 12 13 blue
+#c 12 14 blue
+#c 13 14 blue
+#c 14 13 blue
+#c 14 14 blue
+# next 39
+q 1 12 2
+# ans 85932
+#c 13 0 blue
+# next 39
+q 1 1 8
+# ans 19952
+# next 39
+q 1 12 3
+# ans 16976
+#c 13 2 blue
+#c 14 1 blue
+# next 38
+q 1 4 13
+# ans 16256
+# next 38
+q 1 10 7
+# ans 13572
+#c 9 8 blue
+# next 37
+q 1 2 11
+# ans 2648
+# next 37
+q 1 2 5
+# ans 448
+# next 37
+q 1 1 9
+# ans 34
+# next 37
+q 1 5 11
+# ans 17
+# next 37
+q 1 5 14
+# ans 17
+# next 36
+q 1 7 12
+# ans 17
+# next 36
+q 1 13 4
+# ans 17
+#c 11 4 blue
+#c 13 3 blue
+#c 14 2 blue
+#c 14 3 blue
+#c 14 4 blue
+# next 35
+q 1 5 4
+# ans 17
+#c 6 4 blue
+#c 7 6 blue
+# next 34
+q 1 2 13
+# ans 17
+#c 0 13 blue
+#c 0 14 blue
+#c 1 13 blue
+#c 1 14 blue
+# next 33
+q 1 2 10
+# ans 3
+a 34 3 14 4 13 4 14 5 11 5 12 5 13 5 14 6 12 6 13 6 14 7 12 7 13 7 14 8 13 8 14 9 13 0 9 0 10 0 11 1 9 1 10 2 9 2 10 2 11 3 9 3 11 0 7 1 6 1 7 1 8 2 5 2 6 2 7 2 8
+a 35 3 14 4 13 4 14 5 11 5 12 5 13 5 14 6 12 6 13 6 14 7 12 7 13 7 14 8 13 8 14 9 13 0 9 0 10 0 11 1 9 1 10 2 9 2 10 2 11 3 9 3 11 1 8 2 7 2 8 0 4 0 5 1 4 1 5 2 4 2 5
+a 35 3 14 4 13 4 14 5 11 5 12 5 13 5 14 6 12 6 13 6 14 7 12 7 13 7 14 8 13 8 14 9 13 0 9 0 10 0 11 1 9 1 10 2 9 2 10 2 11 3 9 3 11 1 8 2 7 2 8 0 5 0 6 1 5 1 6 2 5 2 6

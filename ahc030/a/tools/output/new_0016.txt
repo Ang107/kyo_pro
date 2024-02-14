@@ -1,129 +1,306 @@
 #c 0 0 blue
 #c 14 0 blue
 #c 15 0 blue
+# count 516
 # known 3
-# next 51
-q 1 7 9
+# next 253
+q 1 9 9
 # ans 0
+# count 461
 # known 4
-# next 51
+# next 252
+q 1 5 7
+# ans 0
+# count 461
+# known 5
+# next 251
+q 1 5 6
+# ans 0
+# count 461
+# known 6
+# next 250
+q 1 4 8
+# ans 0
+# count 461
+# known 7
+# next 249
+q 1 4 7
+# ans 0
+# count 461
+# known 8
+# next 248
+q 1 4 6
+# ans 0
+# count 408
+# known 9
+# next 247
 q 1 9 5
 # ans 0
 #c 15 2 blue
-# known 6
-# next 50
-q 1 12 10
+# count 361
+# known 11
+# next 245
+q 1 4 11
 # ans 0
-#c 15 13 blue
-#c 15 15 blue
-# known 9
-# next 50
+#c 0 15 blue
+# count 315
+# known 13
+# next 243
 q 1 9 12
 # ans 0
-# known 10
-# next 50
-q 1 6 7
-# ans 0
-# known 11
-# next 49
-q 1 3 4
-# ans 0
-# known 12
-# next 49
-q 1 5 9
-# ans 0
-# known 13
-# next 49
-q 1 2 9
-# ans 0
+# count 315
 # known 14
-# next 49
-q 1 9 10
+# next 242
+q 1 8 12
 # ans 0
+# count 279
 # known 15
-# next 49
-q 1 6 4
+# next 241
+q 1 6 5
 # ans 0
+# count 279
 # known 16
-# next 48
-q 1 3 5
+# next 240
+q 1 11 8
 # ans 0
+# count 279
 # known 17
-# next 48
-q 1 5 5
+# next 239
+q 1 7 5
 # ans 0
+# count 250
 # known 18
-# next 48
-q 1 4 9
+# next 238
+q 1 12 9
 # ans 0
+# count 250
 # known 19
-# next 48
-q 1 6 13
-# ans 0
-#c 6 15 blue
-# known 21
-# next 47
-q 1 4 13
-# ans 0
-#c 4 15 blue
-#c 5 13 blue
-#c 5 14 blue
-#c 5 15 blue
-# known 26
-# next 46
-q 1 11 12
-# ans 0
-# known 27
-# next 46
-q 1 3 7
-# ans 0
-# known 28
-# next 46
-q 1 12 7
-# ans 0
-# known 29
-# next 46
+# next 237
 q 1 12 6
 # ans 0
-#c 15 8 blue
-#c 15 9 blue
-# known 32
-# next 45
-q 1 11 5
+# count 222
+# known 20
+# next 236
+q 1 11 11
 # ans 0
-# known 33
-# next 45
+# count 222
+# known 21
+# next 235
+q 1 5 9
+# ans 0
+# count 222
+# known 22
+# next 234
+q 1 5 8
+# ans 0
+# count 222
+# known 23
+# next 233
 q 1 3 10
 # ans 0
-# known 34
-# next 45
-q 1 1 4
+# count 222
+# known 24
+# next 232
+q 1 3 9
 # ans 0
-#c 0 1 blue
-#c 0 4 blue
-# known 37
-# next 44
-q 1 8 13
+# count 222
+# known 25
+# next 231
+q 1 11 12
 # ans 0
-#c 7 15 blue
-#c 8 15 blue
-# known 40
-# next 44
-q 1 5 6
+# count 222
+# known 26
+# next 230
+q 1 11 10
 # ans 0
-# known 41
-# next 43
-q 1 7 6
+# count 222
+# known 27
+# next 229
+q 1 11 9
 # ans 0
-# known 42
-# next 43
-q 1 2 4
-# ans 0
-# known 43
-# next 43
-q 1 5 4
+# count 222
+# known 28
+# next 228
+q 1 6 9
+# ans 8
+#c 0 1 green
+#c 0 2 green
+#c 0 3 green
+#c 0 4 green
+#c 0 5 green
+#c 0 6 green
+#c 0 7 green
+#c 0 8 green
+#c 0 9 green
+#c 0 10 green
+#c 0 11 green
+#c 0 12 green
+#c 0 13 green
+#c 0 14 green
+#c 1 0 green
+#c 1 1 green
+#c 1 2 green
+#c 1 3 green
+#c 1 4 green
+#c 1 5 green
+#c 1 6 green
+#c 1 7 green
+#c 1 8 green
+#c 1 9 green
+#c 1 10 green
+#c 1 11 green
+#c 1 12 green
+#c 1 13 green
+#c 1 14 green
+#c 1 15 green
+#c 2 0 green
+#c 2 1 green
+#c 2 2 green
+#c 2 3 green
+#c 2 5 green
+#c 2 6 green
+#c 2 7 green
+#c 2 8 green
+#c 2 9 green
+#c 2 10 green
+#c 2 11 green
+#c 2 12 green
+#c 2 13 green
+#c 2 14 green
+#c 2 15 green
+#c 3 0 green
+#c 3 1 green
+#c 3 6 green
+#c 3 11 green
+#c 3 12 green
+#c 3 13 green
+#c 3 14 green
+#c 3 15 green
+#c 4 0 green
+#c 4 1 green
+#c 4 2 green
+#c 4 12 green
+#c 4 13 green
+#c 4 14 green
+#c 4 15 green
+#c 5 0 green
+#c 5 1 green
+#c 5 2 green
+#c 5 4 green
+#c 5 10 green
+#c 5 11 green
+#c 5 12 green
+#c 5 13 green
+#c 5 14 green
+#c 5 15 green
+#c 6 0 green
+#c 6 1 green
+#c 6 2 green
+#c 6 3 green
+#c 6 4 green
+#c 6 8 green
+#c 6 10 green
+#c 6 11 green
+#c 6 12 green
+#c 6 13 green
+#c 6 14 green
+#c 6 15 green
+#c 7 0 green
+#c 7 1 green
+#c 7 2 green
+#c 7 3 green
+#c 7 4 green
+#c 7 8 green
+#c 7 9 green
+#c 7 10 green
+#c 7 11 green
+#c 7 12 green
+#c 7 13 green
+#c 7 14 green
+#c 7 15 green
+#c 8 0 green
+#c 8 1 green
+#c 8 2 green
+#c 8 3 green
+#c 8 4 green
+#c 8 5 green
+#c 8 6 green
+#c 8 8 green
+#c 8 9 green
+#c 8 10 green
+#c 8 11 green
+#c 8 13 green
+#c 8 14 green
+#c 8 15 green
+#c 9 0 green
+#c 9 1 green
+#c 9 2 green
+#c 9 3 green
+#c 9 4 green
+#c 9 6 green
+#c 9 10 green
+#c 9 14 green
+#c 9 15 green
+#c 10 0 green
+#c 10 1 green
+#c 10 2 green
+#c 10 3 green
+#c 10 4 green
+#c 10 10 green
+#c 10 14 green
+#c 10 15 green
+#c 11 0 green
+#c 11 1 green
+#c 11 2 green
+#c 11 3 green
+#c 11 4 green
+#c 11 6 green
+#c 11 15 green
+#c 12 0 green
+#c 12 1 green
+#c 12 2 green
+#c 12 3 green
+#c 12 4 green
+#c 12 5 green
+#c 12 15 green
+#c 13 0 green
+#c 13 1 green
+#c 13 2 green
+#c 13 3 green
+#c 13 4 green
+#c 13 5 green
+#c 13 6 green
+#c 13 12 green
+#c 13 13 green
+#c 13 14 green
+#c 13 15 green
+#c 14 1 green
+#c 14 2 green
+#c 14 3 green
+#c 14 4 green
+#c 14 5 green
+#c 14 6 green
+#c 14 7 green
+#c 14 8 green
+#c 14 13 green
+#c 14 14 green
+#c 14 15 green
+#c 15 1 green
+#c 15 3 green
+#c 15 4 green
+#c 15 5 green
+#c 15 6 green
+#c 15 7 green
+#c 15 8 green
+#c 15 9 green
+#c 15 13 green
+#c 15 14 green
+#c 15 15 green
+# known 202
+# next 54
+q 1 15 10
 # ans 4
-# count 0
-a 51 3 7 3 8 3 9 3 10 4 7 4 8 4 9 4 10 5 6 5 7 5 8 5 9 6 7 7 6 7 7 8 7 9 7 8 8 8 9 9 8 9 9 10 4 10 5 10 6 10 7 10 8 10 9 10 10 11 7 11 8 11 9 11 10 12 7 2 4 3 2 3 3 3 4 3 5 4 5 5 5 6 5 6 6 9 12 10 11 10 12 11 12 11 14 12 12 12 13 12 14 13 13
-a 49 3 7 3 8 3 9 3 10 4 7 4 8 4 9 4 10 5 6 5 7 5 8 5 9 6 7 7 6 7 7 8 7 9 7 9 12 9 13 10 12 10 13 11 8 11 9 11 10 11 11 11 12 11 13 11 14 12 11 12 12 12 13 12 14 13 11 2 4 3 2 3 3 3 4 3 5 4 5 5 5 6 5 6 6 10 9 11 7 12 7 12 9 13 9 13 10 14 10
+# count 1
+a 52 3 7 3 8 3 9 3 10 4 7 4 8 4 9 4 10 5 6 5 7 5 8 5 9 6 7 7 6 7 7 8 7 9 7 9 11 9 12 10 11 10 12 11 7 11 8 11 9 11 10 11 11 11 12 11 13 12 10 12 11 12 12 12 13 13 10 2 4 3 2 3 3 3 4 3 5 4 5 5 5 6 5 6 6 12 7 12 8 12 9 13 7 13 9 13 11 14 9 14 10 14 11 15 10
+a 49 3 7 3 8 3 9 3 10 4 7 4 8 4 9 4 10 5 6 5 7 5 8 5 9 6 7 7 6 7 7 8 7 9 7 9 11 9 12 10 11 10 12 11 7 11 8 11 9 11 10 11 11 11 12 11 13 12 10 12 11 12 12 12 13 13 10 12 7 12 8 12 9 14 10 14 12 15 10 15 11 15 12 3 5 4 3 4 4 4 5 5 3 5 5 6 5 6 6
 a 51 3 7 3 8 3 9 3 10 4 7 4 8 4 9 4 10 5 6 5 7 5 8 5 9 6 7 7 6 7 7 8 7 9 7 9 12 9 13 10 12 10 13 11 8 11 9 11 10 11 11 11 12 11 13 11 14 12 11 12 12 12 13 12 14 13 11 2 4 3 2 3 3 3 4 3 5 4 5 5 5 6 5 6 6 12 7 12 8 12 9 13 7 13 9 14 9 14 10 14 11 15 10

@@ -1,0 +1,12 @@
+/mnt/c/Users/kosuk/Desktop/atcoder/ahc030/a/tools/target/release/deps/libproconio-5b2b19a5989412bf.rmeta: /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/lib.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/marker.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/mod.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/line.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/once.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/tokens.rs
+
+/mnt/c/Users/kosuk/Desktop/atcoder/ahc030/a/tools/target/release/deps/libproconio-5b2b19a5989412bf.rlib: /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/lib.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/marker.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/mod.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/line.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/once.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/tokens.rs
+
+/mnt/c/Users/kosuk/Desktop/atcoder/ahc030/a/tools/target/release/deps/proconio-5b2b19a5989412bf.d: /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/lib.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/marker.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/mod.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/line.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/once.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/tokens.rs
+
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/lib.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/marker.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/mod.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/line.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/once.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proconio-0.4.5/src/source/tokens.rs:

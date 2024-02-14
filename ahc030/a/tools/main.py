@@ -45,7 +45,7 @@ def dlist(*l, fill=0):
 
 
 def FirstInput():
-    global N, M, E, D, sum_D, wariai, D_size
+    global N, M, E, D, sum_D, wariai, D_size, D_possib
     N, M, E = input().split()
     N, M = int(N), int(M)
     E = float(E)
@@ -69,6 +69,11 @@ def FirstInput():
             y = max(y, j)
         D_size.append((x, y))
 
+    D_possib = [set() for _ in range(M)]
+    for m in range(M):
+        for i in range(N):
+            for j in range(N):
+                D_possib[m].add((i, j))
     wariai = sum_D / N**2
 
 
@@ -152,7 +157,7 @@ def solve():
     count = 0
     known = 0
     next = calc_next()
-    kakute_x, kakutei_y, kakutei_num = None, None, None
+
     while True:
         print("# known", known)
         print("# next", len(next))
@@ -165,10 +170,10 @@ def solve():
             num = 2
         elif Tarn <= 150:
             num = 4
-        elif Tarn < 200:
+        elif Tarn <= 200:
             num = 8
         else:
-            num = 15
+            num = 12
 
         for i in range(num):
             while True:
@@ -232,7 +237,7 @@ def calc_next_from_ans(ans_list):
                 print(f"#c {i} {j} green")
 
     tmp.sort(key=lambda x: abs(x[0] - len(ans_list) / 2), reverse=True)
-    print("#", tmp)
+    # print("#", tmp)
     return [(j, k) for i, j, k in tmp]
 
 
@@ -242,27 +247,33 @@ def calc_next():
     global known
 
     next = [[0] * N for _ in range(N)]
+    count = 0
     for idx, d in enumerate(D):
-        for i in range(N - D_size[idx][0]):
-            for j in range(N - D_size[idx][1]):
-                tmp = []
-                flag = 0
-                for x, y in d:
-                    if i + x in range(N) and j + y in range(N):
-                        if B[i + x][j + y] == -100:
-                            tmp.append((i + x, j + y))
-                        elif B[i + x][j + y] >= 1:
-                            flag += 1
-                        else:
-                            flag = -1
-                            break
+        del_list = set()
+        for i, j in D_possib[idx]:
+            tmp = []
+            flag = 0
+            for x, y in d:
+                if i + x in range(N) and j + y in range(N):
+                    if B[i + x][j + y] == -100:
+                        tmp.append((i + x, j + y))
+                    elif B[i + x][j + y] >= 1:
+                        flag += 1
                     else:
                         flag = -1
                         break
+                else:
+                    flag = -1
+                    break
 
-                if flag >= 0:
-                    for p, q in tmp:
-                        next[p][q] += 1
+            if flag >= 0:
+                count += 1
+                for p, q in tmp:
+                    next[p][q] += 1
+            else:
+                del_list.add((i, j))
+        for i, j in del_list:
+            D_possib[idx].discard((i, j))
     tmp = []
 
     for i in range(N):
@@ -274,13 +285,14 @@ def calc_next():
                 known += 1
                 print(f"#c {i} {j} blue")
 
-    tmp.sort(key=lambda x: x[0])
+    print("# count", count)
+    tmp.sort(key=lambda x: abs(x[0] - count / 2), reverse=True)
 
     # 石油が存在する可能性が高い地点を優先して選択(?)
     # もっと優先して送るべきクエリを選択するアルゴリズムがあるかも
-    if len(tmp) > 50:
-        tmp = tmp[int(len(tmp) * 0.8) :]
-    random.shuffle(tmp)
+    # if len(tmp) > 50:
+    #     tmp = tmp[int(len(tmp) * 0.8) :]
+    # random.shuffle(tmp)
     # print("# next_full", tmp)
     return [(j, k) for i, j, k in tmp]
 
@@ -300,36 +312,35 @@ def get_Ans(B):
 
         idx, B, prv = deq.popleft()
         shape = D[idx]
-        for i in range(N - D_size[idx][0]):
-            for j in range(N - D_size[idx][1]):
-                flag = True
-                for x, y in shape:
-                    if (
-                        i + x in range(N)
-                        and j + y in range(N)
-                        and (B[i + x][j + y] <= -100 or B[i + x][j + y] >= 1)
-                    ):
-                        pass
-                    else:
-                        flag = False
-                        break
+        for i, j in D_possib[idx]:
+            flag = True
+            for x, y in shape:
+                if (
+                    i + x in range(N)
+                    and j + y in range(N)
+                    and (B[i + x][j + y] <= -100 or B[i + x][j + y] >= 1)
+                ):
+                    pass
+                else:
+                    flag = False
+                    break
 
-                if flag:
-                    prv_n = prv[:]
-                    prv_n.append((i, j))
-                    B_n = [k[:] for k in B]
-                    if idx == M - 1:
-                        for x, y in shape:
-                            B_n[i + x][j + y] -= 1
-                        if max([max(k) for k in B_n]) <= 0:
-                            ans.append(prv_n)
-                    else:
-                        for x, y in shape:
-                            B_n[i + x][j + y] -= 1
-                        if max([max(k) for k in B_n]) <= M - idx - 1:
-                            deq.append((idx + 1, B_n, prv_n))
-                        if len(deq) >= 3000:
-                            return False, []
+            if flag:
+                prv_n = prv[:]
+                prv_n.append((i, j))
+                B_n = [k[:] for k in B]
+                if idx == M - 1:
+                    for x, y in shape:
+                        B_n[i + x][j + y] -= 1
+                    if max([max(k) for k in B_n]) <= 0:
+                        ans.append(prv_n)
+                else:
+                    for x, y in shape:
+                        B_n[i + x][j + y] -= 1
+                    if max([max(k) for k in B_n]) <= M - idx - 1:
+                        deq.append((idx + 1, B_n, prv_n))
+                    if len(deq) >= 3000:
+                        return False, []
 
     return True, ans
 

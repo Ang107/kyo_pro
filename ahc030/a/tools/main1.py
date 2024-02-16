@@ -77,7 +77,7 @@ def Exit():
         for j in range(N):
             if B[i][j] >= 1:
                 ans.append((i, j))
-    print("#", Last_Output(ans))
+    Last_Output(ans)
     exit()
 
 
@@ -126,9 +126,34 @@ def solve():
     next = calc_next()
 
     while True:
+        print("# D", *[j for i, j, k in D])
+        D.sort(key=lambda x: x[1])
+        print("# D", *[j for i, j, k in D])
+        if len(next) == 0:
+            Exit()
+        # クエリを送信、Bの更新
+        if Tarn <= 150:
+            num = 1
+        elif Tarn <= 225:
+            num = 2
+        else:
+            num = 3
+
+        for i in range(num):
+            while True:
+                if next:
+                    x, y = next.pop()
+                else:
+                    break
+
+                if B[x][y] == -100:
+                    Tarn += 1
+                    B[x][y] = Output_Input([(x, y)])
+                    break
 
         # 答えの候補の取得
         flag, ans_list = get_Ans(B)
+        # print("# ans", len(ans_list))
 
         # 絞り込めたなら
         # ans_listの数の上限の決め方を吟味する->現在期待値5だが、一回のクエリで絞り込めるならそっちがお得
@@ -151,31 +176,6 @@ def solve():
                 next = calc_next_from_ans(ans_list)
             else:
                 next = calc_next()
-
-        D.sort(key=lambda x: x[1])
-
-        if len(next) == 0:
-            Exit()
-
-        # クエリを送信、Bの更新
-        if Tarn <= 150:
-            num = 1
-        elif Tarn <= 225:
-            num = 2
-        else:
-            num = 3
-
-        for i in range(num):
-            while True:
-                if next:
-                    x, y = next.pop()
-                else:
-                    break
-
-                if B[x][y] == -100:
-                    Tarn += 1
-                    B[x][y] = Output_Input([(x, y)])
-                    break
 
 
 def calc_next_from_ans(ans_list):
@@ -203,7 +203,6 @@ def calc_next_from_ans(ans_list):
 
 # 確定で0になるやつだけでなく、確定で１以上になるものなども記録できるとよい
 # 送るクエリ計算
-# 既に1以上確定している場所はそれを消化しなければいけないという視点
 def calc_next():
 
     next = [[0] * N for _ in range(N)]

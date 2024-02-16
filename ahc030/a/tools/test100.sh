@@ -16,7 +16,7 @@ for d in `seq ${start} ${last}`;
 do
     j=$(printf "%04d\n" "${d}")
     ##ここに実行コマンドを置く(以下はc++)　ファイルの場所は注意
-    # cargo run 2> score/score_old.txt -r --bin tester  pypy3 main1.py < in/${j}.txt > output/${j}.txt
+    # cargo run 2> score/score_old.txt -r --bin tester  pypy3 main1.py < in_default/${j}.txt > output/${j}.txt
     cargo run 2> score/score_new.txt -r --bin tester  pypy3 main.py < in_default/${j}.txt > output/new_${j}.txt    
     #"Score = " より後の文字列を抽出する（この部分は変わる可能性あり）
     # var=$(grep "Score = " ./score/score_old.txt | sed -e 's/[^0-9]//g')

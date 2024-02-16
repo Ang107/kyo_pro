@@ -1,4120 +1,493 @@
-# count 324
-# count 304
-# count 323
-# count 306
-# count 306
-# count 323
-# count 323
-# count 324
-# count 323
-# count 323
-# count 324
-# count 342
-# count 324
-# count 323
-# count 342
-# count 340
-# count 342
-# count 361
-# count 342
-# count 342
-# count 324
-# count 304
-# count 323
-# count 306
-# count 306
-# count 323
-# count 323
-# count 324
-# count 323
-# count 323
-# count 324
-# count 342
-# count 324
-# count 323
-# count 342
-# count 340
-# count 342
-# count 361
-# count 342
-# count 342
-q 1 15 12
-# count 298
-# count 300
-# count 300
-# count 317
-# count 317
-# count 317
-# count 318
-# count 318
-# count 318
-# count 318
-# count 318
-# count 319
-# count 319
-# count 336
-# count 337
-# count 337
-# count 338
-# count 338
-# count 357
-# count 357
+# next 14
+q 1 15 16
+# next 14
 q 1 15 5
-# count 298
-# count 300
-# count 300
-# count 317
-# count 317
-# count 317
-# count 318
-# count 318
-# count 318
-# count 318
-# count 318
-# count 319
-# count 319
-# count 336
-# count 337
-# count 337
-# count 338
-# count 338
-# count 357
-# count 357
-q 1 14 4
-# count 292
-# count 294
-# count 294
-# count 311
-# count 311
-# count 311
-# count 313
-# count 313
-# count 313
-# count 312
-# count 312
-# count 314
-# count 314
-# count 332
-# count 332
-# count 332
-# count 334
-# count 334
-# count 353
-# count 353
-q 1 14 8
-# count 286
-# count 288
-# count 288
-# count 305
-# count 305
-# count 305
-# count 306
-# count 306
-# count 308
-# count 308
-# count 308
-# count 309
-# count 309
-# count 328
-# count 327
-# count 327
-# count 330
-# count 330
-# count 349
-# count 349
-q 1 12 16
-# count 280
-# count 282
-# count 282
-# count 299
-# count 299
-# count 299
-# count 300
-# count 300
-# count 303
-# count 303
-# count 303
-# count 304
-# count 304
-# count 322
-# count 322
-# count 324
-# count 326
-# count 326
-# count 345
-# count 345
-q 1 11 6
-# count 274
-# count 276
-# count 276
-# count 293
-# count 293
-# count 293
-# count 294
-# count 294
-# count 298
-# count 298
-# count 298
-# count 299
-# count 299
-# count 317
-# count 317
-# count 320
-# count 322
-# count 322
-# count 341
-# count 341
-q 1 11 11
-# count 268
-# count 270
-# count 270
-# count 287
-# count 287
-# count 287
-# count 288
-# count 288
-# count 293
-# count 293
-# count 293
-# count 294
-# count 294
-# count 312
-# count 312
-# count 316
-# count 318
-# count 318
-# count 337
-# count 337
-q 1 8 15
-# count 262
-# count 264
-# count 264
-# count 281
-# count 281
-# count 281
-# count 282
-# count 282
-# count 288
-# count 288
-# count 288
-# count 289
-# count 289
-# count 307
-# count 307
-# count 312
-# count 314
-# count 314
-# count 333
-# count 333
-q 1 8 9
-# count 256
-# count 258
-# count 258
-# count 275
-# count 275
-# count 275
-# count 276
-# count 276
-# count 283
-# count 283
-# count 283
-# count 284
-# count 284
-# count 302
-# count 302
-# count 308
-# count 310
-# count 310
-# count 329
-# count 329
-q 1 7 3
-# count 250
-# count 252
-# count 252
-# count 269
-# count 269
-# count 269
-# count 270
-# count 270
-# count 278
-# count 278
-# count 278
-# count 279
-# count 279
-# count 297
-# count 297
-# count 304
-# count 306
-# count 306
-# count 325
-# count 325
-q 1 5 11
-# count 250
-# count 252
-# count 252
-# count 269
-# count 269
-# count 269
-# count 270
-# count 270
-# count 278
-# count 278
-# count 278
-# count 279
-# count 279
-# count 297
-# count 297
-# count 304
-# count 306
-# count 306
-# count 325
-# count 325
-q 1 4 14
-# count 244
-# count 246
-# count 246
-# count 263
-# count 263
-# count 263
-# count 264
-# count 264
-# count 273
-# count 273
-# count 273
-# count 274
-# count 274
-# count 292
-# count 292
-# count 300
-# count 302
-# count 302
-# count 321
-# count 321
-q 1 4 8
-# count 238
-# count 240
-# count 240
-# count 257
-# count 257
-# count 257
-# count 258
-# count 258
-# count 268
-# count 268
-# count 268
-# count 269
-# count 269
-# count 287
-# count 287
-# count 296
-# count 298
-# count 298
-# count 317
-# count 317
-q 1 16 16
-# count 234
-# count 234
-# count 234
-# count 251
-# count 251
-# count 251
-# count 252
-# count 252
-# count 263
-# count 263
-# count 263
-# count 264
-# count 264
-# count 282
-# count 282
-# count 292
-# count 294
-# count 294
-# count 313
-# count 313
-q 1 4 5
-# count 228
-# count 229
-# count 228
-# count 245
-# count 245
-# count 245
-# count 246
-# count 246
-# count 258
-# count 258
-# count 258
-# count 259
-# count 259
-# count 277
-# count 277
-# count 289
-# count 290
-# count 290
-# count 309
-# count 309
-q 1 11 3
-# count 223
-# count 222
-# count 224
-# count 239
-# count 239
-# count 240
-# count 240
-# count 240
-# count 254
-# count 254
-# count 253
-# count 254
-# count 254
-# count 272
-# count 272
-# count 286
-# count 286
-# count 286
-# count 305
-# count 305
-q 1 16 6
-# count 216
-# count 218
-# count 218
-# count 233
-# count 233
-# count 234
-# count 234
-# count 234
-# count 248
-# count 249
-# count 249
-# count 250
-# count 249
-# count 267
-# count 267
-# count 282
-# count 282
-# count 282
-# count 301
-# count 301
-q 1 6 11
-# count 216
-# count 218
-# count 218
-# count 233
-# count 233
-# count 234
-# count 234
-# count 234
-# count 248
-# count 249
-# count 249
-# count 249
-# count 250
-# count 267
-# count 267
-# count 282
-# count 282
-# count 282
-# count 301
-# count 301
-q 1 4 11
-# count 216
-# count 218
-# count 218
-# count 233
-# count 233
-# count 234
-# count 234
-# count 234
-# count 248
-# count 249
-# count 249
-# count 249
-# count 250
-# count 267
-# count 267
-# count 282
-# count 282
-# count 282
-# count 301
-# count 301
-q 1 16 2
-# count 210
-# count 213
-# count 213
-# count 228
-# count 228
-# count 228
-# count 228
-# count 228
-# count 244
-# count 244
-# count 244
-# count 244
-# count 245
-# count 262
-# count 262
-# count 279
-# count 278
-# count 278
-# count 297
-# count 297
-q 1 8 12
-# count 204
-# count 208
-# count 209
-# count 222
-# count 222
-# count 222
-# count 222
-# count 222
-# count 239
-# count 239
-# count 239
-# count 239
-# count 240
-# count 257
-# count 257
-# count 274
-# count 274
-# count 277
-# count 293
-# count 293
-q 1 2 10
-# count 199
-# count 204
-# count 203
-# count 216
-# count 216
-# count 217
-# count 216
-# count 216
-# count 234
-# count 235
-# count 235
-# count 234
-# count 235
-# count 252
-# count 252
-# count 270
-# count 270
-# count 273
-# count 289
-# count 289
-q 1 4 17
-# count 199
-# count 203
-# count 204
-# count 216
-# count 216
-# count 216
-# count 216
-# count 217
-# count 234
-# count 234
-# count 235
-# count 235
-# count 235
-# count 252
-# count 252
-# count 270
-# count 270
-# count 273
-# count 289
-# count 289
-q 1 3 3
-# count 193
-# count 197
-# count 200
-# count 210
-# count 212
-# count 211
-# count 211
-# count 211
-# count 229
-# count 230
-# count 230
-# count 230
-# count 231
-# count 247
-# count 247
-# count 266
-# count 266
-# count 269
-# count 285
-# count 285
-q 1 3 17
-# count 187
-# count 192
-# count 195
-# count 206
-# count 205
-# count 205
-# count 205
-# count 207
-# count 226
-# count 225
-# count 225
-# count 225
-# count 226
-# count 242
-# count 242
-# count 262
-# count 262
-# count 266
-# count 281
-# count 281
-q 1 16 10
-# count 182
-# count 188
-# count 190
-# count 200
-# count 199
-# count 199
-# count 202
-# count 201
-# count 220
-# count 220
-# count 220
-# count 223
-# count 222
-# count 237
-# count 238
-# count 258
-# count 258
-# count 262
-# count 277
-# count 277
-q 1 6 7
-# count 178
-# count 183
-# count 185
-# count 194
-# count 194
-# count 195
-# count 195
-# count 196
-# count 215
-# count 215
-# count 215
-# count 219
-# count 218
-# count 233
-# count 233
-# count 254
-# count 254
-# count 258
-# count 273
-# count 273
-q 1 12 14
-# count 178
-# count 183
-# count 185
-# count 194
-# count 194
-# count 195
-# count 195
-# count 196
-# count 215
-# count 215
-# count 215
-# count 218
-# count 219
-# count 233
-# count 233
-# count 254
-# count 254
-# count 258
-# count 273
-# count 273
-q 1 10 14
-# count 178
-# count 183
-# count 185
-# count 194
-# count 194
-# count 195
-# count 195
-# count 196
-# count 215
-# count 215
-# count 215
-# count 218
-# count 219
-# count 233
-# count 233
-# count 254
-# count 254
-# count 258
-# count 273
-# count 273
-q 1 8 5
-# count 172
-# count 177
-# count 180
-# count 189
-# count 189
-# count 190
-# count 191
-# count 190
-# count 211
-# count 211
-# count 211
-# count 213
-# count 215
-# count 228
-# count 228
-# count 250
-# count 250
-# count 254
-# count 269
-# count 269
-q 1 3 12
-# count 172
-# count 177
-# count 180
-# count 189
-# count 189
-# count 190
-# count 190
-# count 191
-# count 211
-# count 211
-# count 211
-# count 213
-# count 215
-# count 228
-# count 228
-# count 250
-# count 250
-# count 254
-# count 269
-# count 269
-q 1 13 14
-# count 167
-# count 173
-# count 174
-# count 183
-# count 183
-# count 185
-# count 186
-# count 185
-# count 206
-# count 206
-# count 206
-# count 210
-# count 210
-# count 223
-# count 224
-# count 246
-# count 246
-# count 250
-# count 265
-# count 265
-q 1 6 13
-# count 165
-# count 169
-# count 170
-# count 179
-# count 179
-# count 181
-# count 179
-# count 180
-# count 201
-# count 201
-# count 201
-# count 205
-# count 206
-# count 220
-# count 219
-# count 242
-# count 242
-# count 246
-# count 261
-# count 261
-q 1 6 17
-# count 160
-# count 164
-# count 166
-# count 173
-# count 174
-# count 174
-# count 175
-# count 175
-# count 196
-# count 196
-# count 196
-# count 201
-# count 201
-# count 214
-# count 215
-# count 238
-# count 238
-# count 243
-# count 257
-# count 257
-q 1 2 7
-# count 155
-# count 159
-# count 163
-# count 168
-# count 170
-# count 168
-# count 169
-# count 170
-# count 192
-# count 194
-# count 194
-# count 196
-# count 197
-# count 209
-# count 210
-# count 235
-# count 234
-# count 240
-# count 253
-# count 253
-q 1 12 9
-# count 152
-# count 156
-# count 159
-# count 163
-# count 163
-# count 165
-# count 165
-# count 166
-# count 187
-# count 189
-# count 189
-# count 193
-# count 192
-# count 205
-# count 206
-# count 230
-# count 231
-# count 236
-# count 249
-# count 249
-q 1 17 14
-# count 148
-# count 152
-# count 157
-# count 157
-# count 157
-# count 161
-# count 161
-# count 161
-# count 182
-# count 185
-# count 185
-# count 188
-# count 190
-# count 201
-# count 201
-# count 226
-# count 227
-# count 232
-# count 245
-# count 245
-q 1 6 10
-# count 144
-# count 149
-# count 153
-# count 152
-# count 151
-# count 155
-# count 156
-# count 156
-# count 177
-# count 180
-# count 180
-# count 185
-# count 185
-# count 196
-# count 197
-# count 222
-# count 223
-# count 230
-# count 241
-# count 241
-q 1 10 18
-# count 139
-# count 146
-# count 148
-# count 147
-# count 147
-# count 152
-# count 150
-# count 152
-# count 173
-# count 175
-# count 175
-# count 182
-# count 182
-# count 193
-# count 192
-# count 218
-# count 219
-# count 228
-# count 237
-# count 237
-q 1 2 15
-# count 139
-# count 146
-# count 147
-# count 147
-# count 148
-# count 150
-# count 152
-# count 152
-# count 173
-# count 175
-# count 175
-# count 182
-# count 182
-# count 192
-# count 193
-# count 218
-# count 219
-# count 228
-# count 237
-# count 237
-q 1 2 12
-# count 139
-# count 146
-# count 147
-# count 147
-# count 148
-# count 150
-# count 152
-# count 152
-# count 173
-# count 175
-# count 175
-# count 182
-# count 182
-# count 192
-# count 193
-# count 218
-# count 219
-# count 228
-# count 237
-# count 237
-q 1 4 12
-# count 139
-# count 146
-# count 147
-# count 147
-# count 148
-# count 150
-# count 152
-# count 152
-# count 173
-# count 175
-# count 175
-# count 182
-# count 182
-# count 192
-# count 193
-# count 218
-# count 219
-# count 228
-# count 237
-# count 237
-q 1 11 13
-# count 133
-# count 142
-# count 143
-# count 141
-# count 145
-# count 146
-# count 148
-# count 147
-# count 169
-# count 173
-# count 173
-# count 178
-# count 178
-# count 187
-# count 189
-# count 214
-# count 216
-# count 226
-# count 233
-# count 233
-q 1 13 1
-# count 133
-# count 141
-# count 142
-# count 143
-# count 145
-# count 146
-# count 147
-# count 148
-# count 169
-# count 173
-# count 173
-# count 178
-# count 178
-# count 187
-# count 189
-# count 214
-# count 216
-# count 226
-# count 233
-# count 233
-q 1 5 2
-# count 129
-# count 136
-# count 138
-# count 139
-# count 140
-# count 142
-# count 143
-# count 144
-# count 165
-# count 170
-# count 170
-# count 174
-# count 175
-# count 183
-# count 184
-# count 210
-# count 213
-# count 223
-# count 229
-# count 229
-q 1 10 7
-# count 125
-# count 132
-# count 134
-# count 135
-# count 135
-# count 137
-# count 139
-# count 141
-# count 161
-# count 165
-# count 165
-# count 171
-# count 172
-# count 180
-# count 181
-# count 207
-# count 209
-# count 219
-# count 226
-# count 226
-q 1 9 2
-# count 121
-# count 128
-# count 130
-# count 131
-# count 130
-# count 133
-# count 135
-# count 137
-# count 157
-# count 162
-# count 162
-# count 167
-# count 169
-# count 176
-# count 176
-# count 203
-# count 206
-# count 216
-# count 222
-# count 222
-q 1 14 18
-# count 116
-# count 123
-# count 127
-# count 127
-# count 126
-# count 127
-# count 131
-# count 134
-# count 153
-# count 157
-# count 157
-# count 165
-# count 166
-# count 171
-# count 173
-# count 199
-# count 202
-# count 214
-# count 218
-# count 218
-q 1 2 14
-# count 113
-# count 122
-# count 121
-# count 121
-# count 122
-# count 125
-# count 127
-# count 128
-# count 149
-# count 154
-# count 154
-# count 160
-# count 161
-# count 167
-# count 168
-# count 196
-# count 199
-# count 210
-# count 214
-# count 214
-q 1 17 5
-# count 113
-# count 121
-# count 121
-# count 122
-# count 122
-# count 125
-# count 127
-# count 128
-# count 149
-# count 154
-# count 154
-# count 160
-# count 161
-# count 167
-# count 168
-# count 196
-# count 199
-# count 210
-# count 214
-# count 214
-q 1 18 4
-# count 113
-# count 121
-# count 121
-# count 122
-# count 122
-# count 125
-# count 127
-# count 128
-# count 149
-# count 154
-# count 154
-# count 160
-# count 161
-# count 167
-# count 168
-# count 196
-# count 199
-# count 210
-# count 214
-# count 214
-q 1 14 1
-# count 113
-# count 121
-# count 121
-# count 122
-# count 122
-# count 125
-# count 127
-# count 128
-# count 149
-# count 154
-# count 154
-# count 160
-# count 161
-# count 167
-# count 168
-# count 196
-# count 199
-# count 210
-# count 214
-# count 214
-q 1 14 2
-# count 113
-# count 121
-# count 121
-# count 122
-# count 122
-# count 125
-# count 127
-# count 128
-# count 149
-# count 154
-# count 154
-# count 160
-# count 161
-# count 167
-# count 168
-# count 196
-# count 199
-# count 210
-# count 214
-# count 214
-q 1 12 1
-# count 113
-# count 121
-# count 121
-# count 122
-# count 122
-# count 125
-# count 127
-# count 128
-# count 149
-# count 154
-# count 154
-# count 160
-# count 161
-# count 167
-# count 168
-# count 196
-# count 199
-# count 210
-# count 214
-# count 214
-q 1 12 2
-# count 113
-# count 121
-# count 121
-# count 122
-# count 122
-# count 125
-# count 127
-# count 128
-# count 149
-# count 154
-# count 154
-# count 160
-# count 161
-# count 167
-# count 168
-# count 196
-# count 199
-# count 210
-# count 214
-# count 214
-q 1 18 8
-# count 110
-# count 118
-# count 116
-# count 121
-# count 116
-# count 122
-# count 123
-# count 122
-# count 145
-# count 152
-# count 152
-# count 157
-# count 156
-# count 164
-# count 163
-# count 193
-# count 196
-# count 206
-# count 210
-# count 210
-q 1 1 4
-# count 109
-# count 112
-# count 111
-# count 114
-# count 119
-# count 121
-# count 116
-# count 120
-# count 142
-# count 150
-# count 150
-# count 151
-# count 154
-# count 158
-# count 161
-# count 190
-# count 194
-# count 202
-# count 206
-# count 206
-q 1 17 4
-# count 106
-# count 107
-# count 108
-# count 109
-# count 112
-# count 118
-# count 116
-# count 118
-# count 138
-# count 146
-# count 146
-# count 148
-# count 150
-# count 154
-# count 156
-# count 186
-# count 190
-# count 198
-# count 202
-# count 202
-q 1 3 11
-# count 106
-# count 107
-# count 108
-# count 109
-# count 112
-# count 116
-# count 118
-# count 118
-# count 138
-# count 146
-# count 146
-# count 148
-# count 150
-# count 154
-# count 156
-# count 186
-# count 190
-# count 198
-# count 202
-# count 202
-q 1 9 14
-# count 104
-# count 104
-# count 105
-# count 107
-# count 109
-# count 114
-# count 115
-# count 115
-# count 135
-# count 142
-# count 142
-# count 145
-# count 146
-# count 151
-# count 154
-# count 183
-# count 186
-# count 194
-# count 199
-# count 199
-q 1 17 18
-# count 104
-# count 104
-# count 105
-# count 107
-# count 109
-# count 114
-# count 115
-# count 115
-# count 135
-# count 142
-# count 142
-# count 145
-# count 146
-# count 151
-# count 154
-# count 183
-# count 186
-# count 194
-# count 199
-# count 199
-q 1 18 12
-# count 103
-# count 98
-# count 102
-# count 104
-# count 105
-# count 111
-# count 115
-# count 113
-# count 131
-# count 140
-# count 140
-# count 142
-# count 143
-# count 147
-# count 151
-# count 180
-# count 183
-# count 190
-# count 195
-# count 195
-q 1 13 2
-# count 98
-# count 102
-# count 103
-# count 104
-# count 105
-# count 111
-# count 113
-# count 115
-# count 131
-# count 140
-# count 140
-# count 142
-# count 143
-# count 147
-# count 151
-# count 180
-# count 183
-# count 190
-# count 195
-# count 195
-q 1 12 5
-# count 98
-# count 102
-# count 103
-# count 104
-# count 105
-# count 111
-# count 113
-# count 115
-# count 131
-# count 140
-# count 140
-# count 142
-# count 143
-# count 147
-# count 151
-# count 180
-# count 183
-# count 190
-# count 195
-# count 195
-q 1 4 16
-# count 98
-# count 102
-# count 103
-# count 104
-# count 105
-# count 111
-# count 113
-# count 115
-# count 131
-# count 140
-# count 140
-# count 142
-# count 143
-# count 147
-# count 151
-# count 180
-# count 183
-# count 190
-# count 195
-# count 195
-q 1 17 17
-# count 96
-# count 99
-# count 100
-# count 100
-# count 101
-# count 107
-# count 111
-# count 113
-# count 128
-# count 138
-# count 138
-# count 138
-# count 141
-# count 143
-# count 147
-# count 177
-# count 180
-# count 188
-# count 192
-# count 192
-q 1 11 1
-# count 95
-# count 99
-# count 97
-# count 98
-# count 100
-# count 103
-# count 106
-# count 108
-# count 124
-# count 133
-# count 133
-# count 137
-# count 137
-# count 140
-# count 143
-# count 173
-# count 176
-# count 188
-# count 188
-# count 188
-q 1 5 16
-# count 94
-# count 94
-# count 96
-# count 96
-# count 96
-# count 101
-# count 102
-# count 105
-# count 122
-# count 130
-# count 130
-# count 133
-# count 136
-# count 136
-# count 140
-# count 170
-# count 173
-# count 184
-# count 185
-# count 185
-q 1 10 16
-# count 94
-# count 94
-# count 96
-# count 96
-# count 96
-# count 101
-# count 102
-# count 105
-# count 122
-# count 130
-# count 130
-# count 133
-# count 136
-# count 136
-# count 140
-# count 170
-# count 173
-# count 184
-# count 185
-# count 185
-q 1 13 11
-# count 94
-# count 94
-# count 96
-# count 96
-# count 96
-# count 101
-# count 102
-# count 105
-# count 122
-# count 130
-# count 130
-# count 133
-# count 136
-# count 136
-# count 140
-# count 170
-# count 173
-# count 184
-# count 185
-# count 185
-q 1 13 10
-# count 94
-# count 94
-# count 96
-# count 96
-# count 96
-# count 101
-# count 102
-# count 105
-# count 122
-# count 130
-# count 130
-# count 133
-# count 136
-# count 136
-# count 140
-# count 170
-# count 173
-# count 184
-# count 185
-# count 185
-q 1 14 11
-# count 94
-# count 94
-# count 96
-# count 96
-# count 96
-# count 101
-# count 102
-# count 105
-# count 122
-# count 130
-# count 130
-# count 133
-# count 136
-# count 136
-# count 140
-# count 170
-# count 173
-# count 184
-# count 185
-# count 185
-q 1 4 10
-# count 94
-# count 94
-# count 96
-# count 96
-# count 96
-# count 101
-# count 102
-# count 105
-# count 122
-# count 130
-# count 130
-# count 133
-# count 136
-# count 136
-# count 140
-# count 170
-# count 173
-# count 184
-# count 185
-# count 185
-q 1 13 3
-# count 91
-# count 92
-# count 93
-# count 92
-# count 91
-# count 99
-# count 100
-# count 104
-# count 120
-# count 128
-# count 128
-# count 128
-# count 135
-# count 132
-# count 137
-# count 168
-# count 171
-# count 180
-# count 182
-# count 182
-q 1 9 17
-# count 90
-# count 87
-# count 89
-# count 89
-# count 90
-# count 96
-# count 97
-# count 102
-# count 118
-# count 125
-# count 125
-# count 124
-# count 128
-# count 134
-# count 133
-# count 165
-# count 168
-# count 178
-# count 179
-# count 179
-q 1 3 1
-# count 87
-# count 89
-# count 89
-# count 90
-# count 90
-# count 96
-# count 97
-# count 102
-# count 118
-# count 124
-# count 125
-# count 125
-# count 128
-# count 133
-# count 134
-# count 165
-# count 168
-# count 178
-# count 179
-# count 179
-q 1 13 5
-# count 87
-# count 89
-# count 89
-# count 90
-# count 90
-# count 96
-# count 97
-# count 102
-# count 118
-# count 124
-# count 125
-# count 125
-# count 128
-# count 133
-# count 134
-# count 165
-# count 168
-# count 178
-# count 179
-# count 179
+# next 14
+q 1 15 8
+# next 14
 q 1 13 12
-# count 83
-# count 87
-# count 86
-# count 87
-# count 87
-# count 94
-# count 96
-# count 100
-# count 115
-# count 120
-# count 123
-# count 123
-# count 124
-# count 130
-# count 130
-# count 162
-# count 166
-# count 176
-# count 175
-# count 175
-q 1 15 15
-# count 79
-# count 83
-# count 84
-# count 84
-# count 85
-# count 91
-# count 94
-# count 97
-# count 113
-# count 116
-# count 122
-# count 122
-# count 120
-# count 127
-# count 129
-# count 159
-# count 164
-# count 172
-# count 173
-# count 173
-q 1 1 17
-# count 75
-# count 79
-# count 83
-# count 79
-# count 81
-# count 89
-# count 94
-# count 96
-# count 111
-# count 113
-# count 115
-# count 120
-# count 120
-# count 124
-# count 126
-# count 157
-# count 163
-# count 168
-# count 170
-# count 170
-q 1 10 10
-# count 70
-# count 76
-# count 76
-# count 79
-# count 80
-# count 86
-# count 92
-# count 93
-# count 109
-# count 108
-# count 111
-# count 119
-# count 119
-# count 121
-# count 125
-# count 154
-# count 161
-# count 165
-# count 167
-# count 167
-q 1 2 1
-# count 68
-# count 73
-# count 75
-# count 76
-# count 76
-# count 82
-# count 88
-# count 89
-# count 107
-# count 106
-# count 107
-# count 116
-# count 116
-# count 116
-# count 122
-# count 150
-# count 157
-# count 161
-# count 165
-# count 165
-q 1 6 4
-# count 65
-# count 71
-# count 72
-# count 74
-# count 74
-# count 80
-# count 86
-# count 85
-# count 103
-# count 104
-# count 104
-# count 114
-# count 114
-# count 114
-# count 119
-# count 147
-# count 154
-# count 158
-# count 162
-# count 162
-q 1 1 11
-# count 65
-# count 71
-# count 72
-# count 74
-# count 74
-# count 80
-# count 85
-# count 86
-# count 103
-# count 104
-# count 104
-# count 114
-# count 114
-# count 114
-# count 119
-# count 147
-# count 154
-# count 158
-# count 162
-# count 162
-q 1 7 1
-# count 64
-# count 71
-# count 71
-# count 72
-# count 71
-# count 77
-# count 81
-# count 82
-# count 100
-# count 103
-# count 101
-# count 111
-# count 111
-# count 110
-# count 116
-# count 143
-# count 151
-# count 154
-# count 162
-# count 162
-q 1 12 6
-# count 64
-# count 71
-# count 71
-# count 71
-# count 72
-# count 77
-# count 81
-# count 82
-# count 100
-# count 101
-# count 103
-# count 110
-# count 111
-# count 111
-# count 116
-# count 143
-# count 151
-# count 154
-# count 162
-# count 162
-q 1 14 6
-# count 62
-# count 69
-# count 69
-# count 68
-# count 69
-# count 73
-# count 80
-# count 80
-# count 96
-# count 98
-# count 100
-# count 106
-# count 107
-# count 107
-# count 111
-# count 140
-# count 148
-# count 150
-# count 162
-# count 162
-q 1 17 1
-# count 61
-# count 66
-# count 69
-# count 67
-# count 67
-# count 70
-# count 78
-# count 77
-# count 93
-# count 96
-# count 99
-# count 103
-# count 103
-# count 103
-# count 107
-# count 137
-# count 144
-# count 147
-# count 161
-# count 161
-q 1 9 4
-# count 59
-# count 65
-# count 65
-# count 64
-# count 68
-# count 67
-# count 75
-# count 76
-# count 90
-# count 94
-# count 96
-# count 101
-# count 100
-# count 100
-# count 104
-# count 134
-# count 141
-# count 144
-# count 159
-# count 159
-q 1 17 9
-# count 59
-# count 62
-# count 64
-# count 63
-# count 65
-# count 66
-# count 74
-# count 74
-# count 87
-# count 93
-# count 95
-# count 97
-# count 97
-# count 100
-# count 99
-# count 132
-# count 137
-# count 142
-# count 155
-# count 155
-q 1 5 10
-# count 59
-# count 62
-# count 63
-# count 64
-# count 65
-# count 66
-# count 74
-# count 74
-# count 87
-# count 93
-# count 95
-# count 97
-# count 97
-# count 99
-# count 100
-# count 132
-# count 137
-# count 142
-# count 155
-# count 155
-q 1 3 10
-# count 59
-# count 62
-# count 63
-# count 64
-# count 65
-# count 66
-# count 74
-# count 74
-# count 87
-# count 93
-# count 95
-# count 97
-# count 97
-# count 99
-# count 100
-# count 132
-# count 137
-# count 142
-# count 155
-# count 155
-q 1 3 6
-# count 59
-# count 61
-# count 61
-# count 62
-# count 64
-# count 65
-# count 71
-# count 71
-# count 84
-# count 92
-# count 94
-# count 93
-# count 93
-# count 96
-# count 99
-# count 130
-# count 133
-# count 140
-# count 152
-# count 152
-q 1 2 13
-# count 57
-# count 58
-# count 59
-# count 59
-# count 61
-# count 63
-# count 68
-# count 69
-# count 82
-# count 90
-# count 91
-# count 91
-# count 92
-# count 94
-# count 96
-# count 127
-# count 131
-# count 138
-# count 152
-# count 152
-q 1 3 9
-# count 57
-# count 58
-# count 59
-# count 59
-# count 61
-# count 63
-# count 68
-# count 69
-# count 82
-# count 90
-# count 91
-# count 91
-# count 92
-# count 94
-# count 96
-# count 127
-# count 131
-# count 138
-# count 152
-# count 152
-q 1 9 8
-# count 57
-# count 57
-# count 58
-# count 57
-# count 60
-# count 61
-# count 66
-# count 65
-# count 79
-# count 89
-# count 88
-# count 88
-# count 91
-# count 90
-# count 95
-# count 125
-# count 127
-# count 136
-# count 148
-# count 148
-q 1 5 12
-# count 56
-# count 53
-# count 54
-# count 55
-# count 58
-# count 59
-# count 62
-# count 63
-# count 76
-# count 85
-# count 85
-# count 87
-# count 88
-# count 90
-# count 91
-# count 122
-# count 124
-# count 133
-# count 144
-# count 144
-q 1 14 10
-# count 53
-# count 54
-# count 55
-# count 56
-# count 58
-# count 59
-# count 62
-# count 63
-# count 76
-# count 85
-# count 85
-# count 87
-# count 88
-# count 90
-# count 91
-# count 122
-# count 124
-# count 133
-# count 144
-# count 144
-q 1 1 9
-# count 50
-# count 53
-# count 52
-# count 53
-# count 57
-# count 57
-# count 61
-# count 61
-# count 75
-# count 84
-# count 84
-# count 84
-# count 88
-# count 87
-# count 88
-# count 120
-# count 123
-# count 130
-# count 140
-# count 140
-q 1 15 10
-# count 50
-# count 52
-# count 53
-# count 53
-# count 57
-# count 57
-# count 61
-# count 61
-# count 75
-# count 84
-# count 84
-# count 84
-# count 87
-# count 88
-# count 88
-# count 120
-# count 123
-# count 130
-# count 140
-# count 140
-q 1 1 12
-# count 47
-# count 49
-# count 52
-# count 50
-# count 56
-# count 55
-# count 59
-# count 59
-# count 74
-# count 83
-# count 83
-# count 81
-# count 84
-# count 88
-# count 85
-# count 118
-# count 122
-# count 127
-# count 137
-# count 137
-q 1 7 6
-# count 45
-# count 48
-# count 50
-# count 50
-# count 54
-# count 54
-# count 57
-# count 57
-# count 72
-# count 80
-# count 80
-# count 80
-# count 83
-# count 84
-# count 85
-# count 116
-# count 118
-# count 125
-# count 134
-# count 134
-q 1 15 1
-# count 45
-# count 48
-# count 50
-# count 50
-# count 54
-# count 54
-# count 57
-# count 57
-# count 72
-# count 80
-# count 80
-# count 80
-# count 83
-# count 84
-# count 85
-# count 116
-# count 118
-# count 125
-# count 134
-# count 134
-q 1 13 17
-# count 43
-# count 48
-# count 47
-# count 48
-# count 52
-# count 52
-# count 54
-# count 55
-# count 71
-# count 77
-# count 79
-# count 79
-# count 79
-# count 81
-# count 85
-# count 114
-# count 116
-# count 123
-# count 132
-# count 132
-q 1 1 15
-# count 43
-# count 47
-# count 48
-# count 48
-# count 52
-# count 52
-# count 54
-# count 55
-# count 71
-# count 77
-# count 79
-# count 79
-# count 79
-# count 81
-# count 85
-# count 114
-# count 116
-# count 123
-# count 132
-# count 132
-q 1 17 6
-# count 42
-# count 44
-# count 48
-# count 46
-# count 50
-# count 49
-# count 54
-# count 54
-# count 69
-# count 75
-# count 78
-# count 78
-# count 75
-# count 79
-# count 82
-# count 112
-# count 114
-# count 121
-# count 131
-# count 131
-q 1 7 16
-# count 42
-# count 44
-# count 46
-# count 48
-# count 49
-# count 50
-# count 54
-# count 54
-# count 69
-# count 75
-# count 75
-# count 78
-# count 78
-# count 79
-# count 82
-# count 112
-# count 114
-# count 121
-# count 131
-# count 131
-q 1 18 15
-# count 42
-# count 41
-# count 45
-# count 45
-# count 48
-# count 48
-# count 54
-# count 53
-# count 67
-# count 72
-# count 72
-# count 77
-# count 77
-# count 78
-# count 81
-# count 110
-# count 112
-# count 118
-# count 128
-# count 128
-q 1 15 3
-# count 41
-# count 41
-# count 44
-# count 42
-# count 47
-# count 46
-# count 52
-# count 52
-# count 65
-# count 71
-# count 72
-# count 75
-# count 75
-# count 77
-# count 77
-# count 108
-# count 110
-# count 116
-# count 124
-# count 124
-q 1 5 18
-# count 41
-# count 39
-# count 41
-# count 41
-# count 46
-# count 46
-# count 48
-# count 47
-# count 63
-# count 70
-# count 72
-# count 72
-# count 72
-# count 74
-# count 75
-# count 105
-# count 107
-# count 113
-# count 124
-# count 124
+# next 14
 q 1 11 15
-# count 39
-# count 41
-# count 41
-# count 41
-# count 46
-# count 46
-# count 47
-# count 48
-# count 63
-# count 70
-# count 72
-# count 72
-# count 72
-# count 74
-# count 75
-# count 105
-# count 107
-# count 113
-# count 124
-# count 124
-q 1 4 9
-# count 39
-# count 41
-# count 41
-# count 41
-# count 46
-# count 46
-# count 47
-# count 48
-# count 63
-# count 70
-# count 72
-# count 72
-# count 72
-# count 74
-# count 75
-# count 105
-# count 107
-# count 113
-# count 124
-# count 124
-q 1 12 4
-# count 37
-# count 41
-# count 39
-# count 40
-# count 45
-# count 45
-# count 47
-# count 46
-# count 61
-# count 69
-# count 71
-# count 69
-# count 69
-# count 72
-# count 74
-# count 103
-# count 105
-# count 111
-# count 120
-# count 120
-q 1 15 9
-# count 35
-# count 39
-# count 39
-# count 38
-# count 43
-# count 43
-# count 45
-# count 47
-# count 61
-# count 66
-# count 68
-# count 68
-# count 67
-# count 69
-# count 74
-# count 101
-# count 104
-# count 109
-# count 117
-# count 117
-q 1 13 0
-# count 34
-# count 37
-# count 38
-# count 39
-# count 43
-# count 42
-# count 44
-# count 43
-# count 60
-# count 64
-# count 66
-# count 66
-# count 66
-# count 67
-# count 72
-# count 98
-# count 101
-# count 107
-# count 117
-# count 117
-q 1 18 18
-# count 34
-# count 37
-# count 38
-# count 39
-# count 42
-# count 43
-# count 43
-# count 44
-# count 60
-# count 64
-# count 66
-# count 66
-# count 66
-# count 67
-# count 72
-# count 98
-# count 101
-# count 107
-# count 117
-# count 117
-q 1 16 13
-# count 33
-# count 35
-# count 38
-# count 37
-# count 41
-# count 41
-# count 40
-# count 43
-# count 59
-# count 62
-# count 63
-# count 66
-# count 66
-# count 65
-# count 72
-# count 96
-# count 99
-# count 105
-# count 115
-# count 115
-q 1 5 9
-# count 33
-# count 35
-# count 37
-# count 38
-# count 40
-# count 41
-# count 41
-# count 43
-# count 59
-# count 62
-# count 63
-# count 65
-# count 66
-# count 66
-# count 72
-# count 96
-# count 99
-# count 105
-# count 115
-# count 115
-q 1 3 15
-# count 33
-# count 35
-# count 37
-# count 38
-# count 40
-# count 41
-# count 41
-# count 43
-# count 59
-# count 62
-# count 63
-# count 65
-# count 66
-# count 66
-# count 72
-# count 96
-# count 99
-# count 105
-# count 115
-# count 115
-q 1 9 11
-# count 32
-# count 35
-# count 36
-# count 36
-# count 38
-# count 41
-# count 41
-# count 42
-# count 57
-# count 61
-# count 62
-# count 65
-# count 63
-# count 63
-# count 69
-# count 95
-# count 96
-# count 103
-# count 113
-# count 113
-q 1 11 16
-# count 31
-# count 33
-# count 35
-# count 32
-# count 36
-# count 39
-# count 40
-# count 42
-# count 54
-# count 59
-# count 60
-# count 63
-# count 63
-# count 64
-# count 67
-# count 93
-# count 94
-# count 101
-# count 110
-# count 110
-q 1 2 16
-# count 30
-# count 31
-# count 32
-# count 33
-# count 35
-# count 37
-# count 40
-# count 40
-# count 51
-# count 58
-# count 57
-# count 61
-# count 61
-# count 62
-# count 65
-# count 91
-# count 91
-# count 99
-# count 108
-# count 108
-q 1 18 5
-# count 30
-# count 31
-# count 32
-# count 33
-# count 35
-# count 37
-# count 40
-# count 40
-# count 51
-# count 57
-# count 58
-# count 61
-# count 61
-# count 62
-# count 65
-# count 91
-# count 91
-# count 99
-# count 108
-# count 108
-q 1 7 14
-# count 28
-# count 31
-# count 31
-# count 32
-# count 35
-# count 35
-# count 38
-# count 39
-# count 51
-# count 55
-# count 56
-# count 60
-# count 60
-# count 59
-# count 65
-# count 89
-# count 90
-# count 97
-# count 104
-# count 104
-q 1 18 3
-# count 28
-# count 31
-# count 31
-# count 32
-# count 35
-# count 35
-# count 38
-# count 39
-# count 51
-# count 55
-# count 56
-# count 59
-# count 60
-# count 60
-# count 65
-# count 89
-# count 90
-# count 97
-# count 104
-# count 104
-q 1 1 2
-# count 26
-# count 29
-# count 29
-# count 31
-# count 34
-# count 34
-# count 38
-# count 38
-# count 49
-# count 53
-# count 54
-# count 57
-# count 59
-# count 59
-# count 63
-# count 87
-# count 89
-# count 94
-# count 103
-# count 103
-q 1 2 18
-# count 24
-# count 29
-# count 29
-# count 30
-# count 33
-# count 32
-# count 38
-# count 35
-# count 48
-# count 53
-# count 54
-# count 54
-# count 57
-# count 57
-# count 63
-# count 84
-# count 86
-# count 92
-# count 103
-# count 103
-q 1 8 18
-# count 23
-# count 27
-# count 28
-# count 29
-# count 32
-# count 33
-# count 34
-# count 38
-# count 46
-# count 52
-# count 53
-# count 52
-# count 55
-# count 55
-# count 61
-# count 82
-# count 84
-# count 89
-# count 102
-# count 102
-q 1 16 18
-# count 21
-# count 26
-# count 28
-# count 28
-# count 31
-# count 32
-# count 32
-# count 38
-# count 44
-# count 52
-# count 50
-# count 52
-# count 51
-# count 51
-# count 58
-# count 80
-# count 81
-# count 86
-# count 102
-# count 102
-q 1 15 11
-# count 21
-# count 26
-# count 28
-# count 26
-# count 29
-# count 30
-# count 29
-# count 38
-# count 42
-# count 50
-# count 48
-# count 48
-# count 52
-# count 51
-# count 55
-# count 78
-# count 78
-# count 85
-# count 102
-# count 102
-q 1 4 1
-# count 21
-# count 26
-# count 26
-# count 28
-# count 29
-# count 29
-# count 30
-# count 38
-# count 42
-# count 48
-# count 48
-# count 50
-# count 51
-# count 52
-# count 55
-# count 78
-# count 78
-# count 85
-# count 102
-# count 102
-q 1 12 8
-# count 20
-# count 25
-# count 24
-# count 26
-# count 29
-# count 29
-# count 29
-# count 35
-# count 41
-# count 48
-# count 48
-# count 47
-# count 49
-# count 50
-# count 53
-# count 76
-# count 77
-# count 83
-# count 101
-# count 101
-q 1 19 4
-# count 20
-# count 24
-# count 25
-# count 26
-# count 29
-# count 29
-# count 29
-# count 35
-# count 41
-# count 47
-# count 48
-# count 48
-# count 49
-# count 50
-# count 53
-# count 76
-# count 77
-# count 83
-# count 101
-# count 101
-q 1 19 3
-# count 20
-# count 24
-# count 22
-# count 23
-# count 28
-# count 29
-# count 29
-# count 35
-# count 39
-# count 47
-# count 48
-# count 48
-# count 47
-# count 47
-# count 52
-# count 75
-# count 75
-# count 81
-# count 97
-# count 97
-q 1 1 7
-# count 19
-# count 20
-# count 20
-# count 24
-# count 26
-# count 29
-# count 29
-# count 34
-# count 38
-# count 46
-# count 44
-# count 44
-# count 47
-# count 47
-# count 51
-# count 74
-# count 75
-# count 79
-# count 96
-# count 96
-q 1 15 7
-# count 18
-# count 19
-# count 20
-# count 24
-# count 25
-# count 28
-# count 26
-# count 34
-# count 37
-# count 44
-# count 44
-# count 45
-# count 45
-# count 45
-# count 50
-# count 72
-# count 72
-# count 78
-# count 94
-# count 94
-q 1 5 1
-# count 17
-# count 19
-# count 20
-# count 23
-# count 24
-# count 25
-# count 27
-# count 33
-# count 36
-# count 43
-# count 44
-# count 42
-# count 42
-# count 42
-# count 49
-# count 70
-# count 70
-# count 76
-# count 94
-# count 94
-q 1 2 11
-# count 17
-# count 19
-# count 20
-# count 23
-# count 24
-# count 25
-# count 27
-# count 33
-# count 36
-# count 42
-# count 42
-# count 42
-# count 43
-# count 44
-# count 49
-# count 70
-# count 70
-# count 76
-# count 94
-# count 94
-q 1 13 15
-# count 17
-# count 19
-# count 20
-# count 23
-# count 24
-# count 25
-# count 27
-# count 33
-# count 36
-# count 42
-# count 42
-# count 42
-# count 43
-# count 44
-# count 49
-# count 70
-# count 70
-# count 76
-# count 94
-# count 94
-q 1 12 15
-# count 17
-# count 19
-# count 20
-# count 23
-# count 24
-# count 25
-# count 27
-# count 33
-# count 36
-# count 42
-# count 42
-# count 42
-# count 43
-# count 44
-# count 49
-# count 70
-# count 70
-# count 76
-# count 94
-# count 94
-q 1 7 9
-# count 16
-# count 19
-# count 19
-# count 22
-# count 23
-# count 24
-# count 27
-# count 31
-# count 35
-# count 41
-# count 41
-# count 41
-# count 42
-# count 42
-# count 47
-# count 69
-# count 68
-# count 75
-# count 91
-# count 91
-q 1 6 15
-# count 16
-# count 17
-# count 19
-# count 21
-# count 23
-# count 22
-# count 26
-# count 31
-# count 33
-# count 41
-# count 39
-# count 39
-# count 42
-# count 42
-# count 43
-# count 66
-# count 68
-# count 73
-# count 91
-# count 91
-q 1 5 4
-# count 14
-# count 16
-# count 19
-# count 20
-# count 22
-# count 21
-# count 25
-# count 30
-# count 32
-# count 38
-# count 38
-# count 40
-# count 42
-# count 40
-# count 41
-# count 65
-# count 67
-# count 72
-# count 89
-# count 89
-q 1 12 11
-# count 14
-# count 16
-# count 18
-# count 19
-# count 20
-# count 21
-# count 25
-# count 29
-# count 31
-# count 37
-# count 37
-# count 39
-# count 38
-# count 40
-# count 41
-# count 64
-# count 66
-# count 71
-# count 87
-# count 87
-q 1 18 10
-# count 14
-# count 15
-# count 16
-# count 18
-# count 20
-# count 21
-# count 25
-# count 29
-# count 29
-# count 37
-# count 37
-# count 35
-# count 38
-# count 39
-# count 39
-# count 63
-# count 65
-# count 68
-# count 87
-# count 87
-q 1 3 13
-# count 14
-# count 15
-# count 14
-# count 18
-# count 19
-# count 21
-# count 25
-# count 28
-# count 28
-# count 33
-# count 36
-# count 36
-# count 38
-# count 38
-# count 37
-# count 62
-# count 64
-# count 67
-# count 83
-# count 83
-q 1 5 8
-# count 13
-# count 13
-# count 15
-# count 16
-# count 17
-# count 21
-# count 23
-# count 25
-# count 27
-# count 31
-# count 35
-# count 35
-# count 36
-# count 37
-# count 37
-# count 61
-# count 63
-# count 66
-# count 79
-# count 79
-q 1 15 2
-# count 12
-# count 12
-# count 15
-# count 16
-# count 15
-# count 20
-# count 22
-# count 25
-# count 26
-# count 30
-# count 34
-# count 34
-# count 34
-# count 36
-# count 37
-# count 60
-# count 61
-# count 65
-# count 79
-# count 79
-q 1 2 5
-# count 10
-# count 12
-# count 15
-# count 14
-# count 15
-# count 20
-# count 21
-# count 24
-# count 26
-# count 29
-# count 34
-# count 34
-# count 33
-# count 33
-# count 37
-# count 59
-# count 59
-# count 63
-# count 77
-# count 77
-q 1 18 6
-# count 10
-# count 12
-# count 14
-# count 15
-# count 15
-# count 20
-# count 21
-# count 24
-# count 26
-# count 29
-# count 33
-# count 33
-# count 34
-# count 34
-# count 37
-# count 59
-# count 59
-# count 63
-# count 77
-# count 77
-q 1 14 13
-# count 10
-# count 12
-# count 14
-# count 15
-# count 15
-# count 20
-# count 20
-# count 23
-# count 25
-# count 28
-# count 32
-# count 33
-# count 32
-# count 32
-# count 36
-# count 57
-# count 58
-# count 62
-# count 73
-# count 73
+# next 14
+q 1 13 3
+# next 14
+q 1 10 10
+# next 14
+q 1 10 14
+# next 14
 q 1 10 5
+# next 14
 q 1 11 14
-# count 9
-# count 11
-# count 13
-# count 15
-# count 13
-# count 19
-# count 20
-# count 20
-# count 24
-# count 25
-# count 29
-# count 29
-# count 29
-# count 31
-# count 34
-# count 55
-# count 56
-# count 58
-# count 71
-# count 71
-q 1 12 18
-q 1 7 11
-# count 8
-# count 11
-# count 13
-# count 13
-# count 15
-# count 19
-# count 20
-# count 20
-# count 23
-# count 25
-# count 28
-# count 26
-# count 26
-# count 30
-# count 32
-# count 53
-# count 55
-# count 55
-# count 71
-# count 71
-q 1 18 16
-q 1 10 1
-# count 8
-# count 10
-# count 12
-# count 13
-# count 14
-# count 19
-# count 19
-# count 18
-# count 22
-# count 23
-# count 23
-# count 23
-# count 27
-# count 29
-# count 29
-# count 50
-# count 53
-# count 53
-# count 68
-# count 68
-q 1 19 6
-q 1 19 5
-# count 8
-# count 9
-# count 12
-# count 13
-# count 11
-# count 18
-# count 19
-# count 18
-# count 21
-# count 22
-# count 23
-# count 23
-# count 25
-# count 29
-# count 27
-# count 49
-# count 52
-# count 50
-# count 65
-# count 65
-q 1 0 15
-q 1 18 2
-# count 8
-# count 8
-# count 11
-# count 12
-# count 13
-# count 16
-# count 18
-# count 19
-# count 21
-# count 20
-# count 23
-# count 23
-# count 23
-# count 27
-# count 28
-# count 49
-# count 48
-# count 51
-# count 62
-# count 62
-q 1 8 16
-q 1 9 16
-# count 8
-# count 8
-# count 11
-# count 12
-# count 13
-# count 16
-# count 18
-# count 19
-# count 20
-# count 21
-# count 23
-# count 23
-# count 23
-# count 27
-# count 28
-# count 48
-# count 49
-# count 51
-# count 62
-# count 62
-q 1 13 16
-q 1 14 5
-# count 8
-# count 8
-# count 11
-# count 11
-# count 13
-# count 16
-# count 18
-# count 19
-# count 20
-# count 19
-# count 21
-# count 21
-# count 23
-# count 25
-# count 28
-# count 47
-# count 47
-# count 49
-# count 62
-# count 62
-q 1 0 14
-q 1 10 13
-# count 7
-# count 7
-# count 9
-# count 11
-# count 12
-# count 15
-# count 17
-# count 19
-# count 18
-# count 19
-# count 20
-# count 20
-# count 21
-# count 25
-# count 27
-# count 44
-# count 46
-# count 48
-# count 55
-# count 55
-q 1 19 13
-q 1 16 5
-# count 7
-# count 6
-# count 9
-# count 10
-# count 11
-# count 15
-# count 16
-# count 18
-# count 17
-# count 17
-# count 18
-# count 18
-# count 20
-# count 25
-# count 27
-# count 42
-# count 44
-# count 46
-# count 51
-# count 51
-q 1 14 0
-q 1 4 15
-# count 6
-# count 6
-# count 8
-# count 9
-# count 11
-# count 15
-# count 15
-# count 16
-# count 16
-# count 17
-# count 18
-# count 18
-# count 20
-# count 25
-# count 26
-# count 41
-# count 43
-# count 44
-# count 50
-# count 50
-q 1 13 9
-q 1 4 0
-# count 6
-# count 5
-# count 6
-# count 9
-# count 11
-# count 14
-# count 14
-# count 16
-# count 16
-# count 16
-# count 18
-# count 18
-# count 19
-# count 25
-# count 26
-# count 40
-# count 43
-# count 44
-# count 47
-# count 47
-q 1 8 17
-q 1 12 0
-# count 4
-# count 6
-# count 6
-# count 8
-# count 11
-# count 13
-# count 13
-# count 15
-# count 16
-# count 16
-# count 17
-# count 17
-# count 19
-# count 24
-# count 26
-# count 40
-# count 42
-# count 44
-# count 46
-# count 46
-q 1 8 0
-q 1 19 18
-# count 4
-# count 6
-# count 6
-# count 8
-# count 11
-# count 12
-# count 13
-# count 13
-# count 16
-# count 16
-# count 17
-# count 17
-# count 18
-# count 24
-# count 25
-# count 39
-# count 40
-# count 42
-# count 45
-# count 45
-q 1 13 6
-q 1 15 0
-# count 4
-# count 5
-# count 5
-# count 8
-# count 10
-# count 11
-# count 13
-# count 11
-# count 15
-# count 16
-# count 17
-# count 17
-# count 16
-# count 23
-# count 22
-# count 35
-# count 38
-# count 39
-# count 43
-# count 43
-q 1 11 5
-q 1 7 10
-# count 4
-# count 5
-# count 5
-# count 6
-# count 8
-# count 10
-# count 10
-# count 11
-# count 15
-# count 16
-# count 15
-# count 16
-# count 16
-# count 21
-# count 21
-# count 34
-# count 38
-# count 37
-# count 42
-# count 42
-q 1 17 7
-q 1 4 3
-# count 4
-# count 5
-# count 4
-# count 5
-# count 7
-# count 10
-# count 10
-# count 11
-# count 13
-# count 14
-# count 14
-# count 15
-# count 15
-# count 20
-# count 21
-# count 33
-# count 36
-# count 36
-# count 40
-# count 40
-q 1 7 17
-q 1 19 17
-# count 4
-# count 4
-# count 4
-# count 5
-# count 7
-# count 10
-# count 10
-# count 11
-# count 11
-# count 13
-# count 14
-# count 15
-# count 15
-# count 20
-# count 21
-# count 32
-# count 36
-# count 36
-# count 37
-# count 37
-q 1 6 12
-q 1 0 10
-# count 4
-# count 4
-# count 4
-# count 5
-# count 7
-# count 10
-# count 10
-# count 11
-# count 11
-# count 12
-# count 13
-# count 13
-# count 13
-# count 19
-# count 17
-# count 30
-# count 35
-# count 35
-# count 33
-# count 33
-q 1 2 8
-q 1 2 0
-# count 4
-# count 4
-# count 4
-# count 5
-# count 7
-# count 10
-# count 8
-# count 11
-# count 11
-# count 12
-# count 13
-# count 13
-# count 13
-# count 16
-# count 18
-# count 30
-# count 33
-# count 33
-# count 33
-# count 33
-q 1 8 7
-q 1 12 10
-# count 4
-# count 4
-# count 3
-# count 5
-# count 6
-# count 8
-# count 10
-# count 11
-# count 10
-# count 11
-# count 13
-# count 12
-# count 12
-# count 15
-# count 16
-# count 28
-# count 33
-# count 31
-# count 31
-# count 31
-q 1 17 11
-q 1 0 16
-# count 3
-# count 4
-# count 4
-# count 5
-# count 6
-# count 8
-# count 9
-# count 10
-# count 11
-# count 11
-# count 12
-# count 12
-# count 13
-# count 15
-# count 15
-# count 27
-# count 30
-# count 30
-# count 32
-# count 32
-q 1 4 13
-q 1 3 8
-# count 3
-# count 4
-# count 4
-# count 5
-# count 6
-# count 8
-# count 9
-# count 10
-# count 11
-# count 11
-# count 12
-# count 12
-# count 13
-# count 15
-# count 15
-# count 27
-# count 30
-# count 30
-# count 32
-# count 32
-q 1 6 18
-q 1 9 15
-# count 3
-# count 4
-# count 4
-# count 5
-# count 6
-# count 8
-# count 8
-# count 9
-# count 10
-# count 11
-# count 11
-# count 11
-# count 13
-# count 15
-# count 15
-# count 26
-# count 30
-# count 30
-# count 32
-# count 32
-q 1 0 5
-q 1 10 15
-# count 3
-# count 4
-# count 4
-# count 5
-# count 6
-# count 8
-# count 8
-# count 9
-# count 10
-# count 10
-# count 11
-# count 11
-# count 13
-# count 15
-# count 15
-# count 25
-# count 30
-# count 30
-# count 28
-# count 28
-q 1 4 19
-q 1 5 6
-# count 3
-# count 4
-# count 4
-# count 5
-# count 6
-# count 8
-# count 7
-# count 9
-# count 9
-# count 9
-# count 10
-# count 10
-# count 13
-# count 15
-# count 13
-# count 22
-# count 27
-# count 29
-# count 30
-# count 30
-q 1 1 16
-q 1 7 15
-# count 3
-# count 4
-# count 4
-# count 5
-# count 6
-# count 7
-# count 8
-# count 9
-# count 9
-# count 9
-# count 10
-# count 10
-# count 13
-# count 13
-# count 15
-# count 22
-# count 27
-# count 29
-# count 30
-# count 30
-q 1 15 18
-q 1 2 9
-# count 3
-# count 4
-# count 3
-# count 5
-# count 6
-# count 7
-# count 8
-# count 9
-# count 7
-# count 9
-# count 10
-# count 10
-# count 13
-# count 13
-# count 15
-# count 22
-# count 26
-# count 28
-# count 30
-# count 30
-q 1 8 2
-q 1 0 17
-# count 3
-# count 3
-# count 4
-# count 5
-# count 6
-# count 7
-# count 7
-# count 8
-# count 8
-# count 9
-# count 9
-# count 9
-# count 13
-# count 13
-# count 15
-# count 22
-# count 25
-# count 28
-# count 29
-# count 29
-q 1 0 18
-q 1 1 8
-# count 3
-# count 3
-# count 4
-# count 5
-# count 6
-# count 7
-# count 7
-# count 8
-# count 8
-# count 9
-# count 7
-# count 7
-# count 13
-# count 13
-# count 14
-# count 21
-# count 23
-# count 27
-# count 27
-# count 27
-q 1 2 4
-q 1 18 19
-# count 3
-# count 3
-# count 4
-# count 5
-# count 6
-# count 7
-# count 7
-# count 6
-# count 6
-# count 8
-# count 8
-# count 9
-# count 13
-# count 13
-# count 13
-# count 21
-# count 23
-# count 26
-# count 26
-# count 26
-q 1 10 17
-q 1 11 7
-# count 3
-# count 3
-# count 4
-# count 5
-# count 6
-# count 5
-# count 5
-# count 6
-# count 7
-# count 8
-# count 8
-# count 9
-# count 12
-# count 13
-# count 12
-# count 21
-# count 22
-# count 25
-# count 25
-# count 25
-q 1 1 14
-q 1 6 16
-# count 3
-# count 3
-# count 4
-# count 5
-# count 5
-# count 5
-# count 6
-# count 6
-# count 7
-# count 7
-# count 8
-# count 9
-# count 11
-# count 12
-# count 13
-# count 21
-# count 22
-# count 24
-# count 24
-# count 24
-q 1 6 0
-q 1 12 7
-# count 3
-# count 3
-# count 4
-# count 5
-# count 5
-# count 5
-# count 6
-# count 6
-# count 7
-# count 6
-# count 8
-# count 9
-# count 11
-# count 12
-# count 13
-# count 21
-# count 21
-# count 23
-# count 23
-# count 23
-q 1 12 3
-q 1 3 0
-# count 3
-# count 3
-# count 4
-# count 5
-# count 5
-# count 5
-# count 5
-# count 6
-# count 6
-# count 7
-# count 8
-# count 8
-# count 11
-# count 12
-# count 13
-# count 21
-# count 21
-# count 22
-# count 22
-# count 22
-q 1 19 19
-q 1 7 18
-# count 3
-# count 3
-# count 4
-# count 5
-# count 5
-# count 5
-# count 5
-# count 6
-# count 6
-# count 6
-# count 8
-# count 7
-# count 10
-# count 12
-# count 13
-# count 20
-# count 19
-# count 22
-# count 21
-# count 21
-q 1 14 3
-q 1 16 15
-# count 3
-# count 3
-# count 4
-# count 5
-# count 5
-# count 5
-# count 5
-# count 6
-# count 6
-# count 6
-# count 7
-# count 8
-# count 9
-# count 11
-# count 13
-# count 19
-# count 20
-# count 20
-# count 22
-# count 22
-q 1 14 15
-q 1 13 7
-# count 3
-# count 3
-# count 4
-# count 5
-# count 5
-# count 5
-# count 5
-# count 6
-# count 6
-# count 6
-# count 7
-# count 8
-# count 8
-# count 10
-# count 13
-# count 18
-# count 20
-# count 18
-# count 21
-# count 21
-q 1 17 0
-q 1 19 10
-# count 3
-# count 3
-# count 4
-# count 5
-# count 5
-# count 5
-# count 5
-# count 6
-# count 6
-# count 6
-# count 7
-# count 8
-# count 8
-# count 9
-# count 13
-# count 15
-# count 16
-# count 20
-# count 20
-# count 20
-q 1 3 2
+# next 14
+q 1 6 14
+# next 14
 q 1 6 9
-q 1 11 8
-# count 3
-# count 3
-# count 4
-# count 5
-# count 5
-# count 5
-# count 5
-# count 6
-# count 5
-# count 6
-# count 7
-# count 8
-# count 8
-# count 9
-# count 12
-# count 15
-# count 16
-# count 20
-# count 19
-# count 19
-q 1 16 3
-q 1 11 10
-q 1 0 1
-# count 3
-# count 3
-# count 4
-# count 5
-# count 5
-# count 5
-# count 5
-# count 5
-# count 6
-# count 6
-# count 6
-# count 8
-# count 6
-# count 9
-# count 12
-# count 12
-# count 14
-# count 19
-# count 19
-# count 19
-q 1 14 12
-q 1 12 13
-q 1 17 19
-# count 3
-# count 3
-# count 4
-# count 5
-# count 5
-# count 5
-# count 5
-# count 5
-# count 5
-# count 6
-# count 6
-# count 6
-# count 8
-# count 9
-# count 11
-# count 10
-# count 13
-# count 19
-# count 18
-# count 18
-q 1 5 0
-q 1 8 14
+# next 14
+q 1 4 6
+# next 14
+q 1 3 11
+# next 14
+q 1 6 3
+# next 14
+q 1 16 11
+# next 14
+q 1 3 15
+# next 14
+q 1 8 16
+# next 14
+q 1 3 12
+# next 14
+q 1 12 8
+# next 14
+q 1 9 16
+# next 14
+q 1 4 12
+# next 14
+q 1 16 4
+# next 14
+q 1 3 17
+# next 14
+q 1 9 17
+# next 14
+q 1 14 6
+# next 14
+q 1 2 13
+# next 14
+q 1 3 3
+# next 14
+q 1 7 6
+# next 14
+q 1 8 12
+# next 14
+q 1 12 16
+# next 14
+q 1 17 14
+# next 14
+q 1 4 10
+# next 14
+q 1 10 2
+# next 14
+q 1 8 8
+# next 14
+q 1 3 10
+# next 14
+q 1 5 11
+# next 14
+q 1 6 16
+# next 14
+q 1 2 8
+# next 14
+q 1 5 12
+# next 14
+q 1 15 2
+# next 14
+q 1 4 8
+# next 14
+q 1 2 9
+# next 14
+q 1 17 7
+# next 14
+q 1 8 15
+# next 14
+q 1 17 17
+# next 14
+q 1 2 10
+# next 14
+q 1 2 5
+# next 14
+q 1 8 4
+# next 14
+q 1 6 1
+# next 14
+q 1 15 14
+# next 14
+q 1 13 18
+# next 14
+q 1 2 15
+# next 14
+q 1 17 10
+# next 14
+q 1 1 15
+# next 14
+q 1 14 10
+# next 14
+q 1 3 14
+# next 14
+q 1 12 4
+# next 14
+q 1 2 7
+# next 14
+q 1 2 1
+# next 14
+q 1 17 2
+# next 14
+q 1 7 18
+# next 14
+q 1 14 9
+# next 14
+q 1 1 16
+# next 14
+q 1 10 7
+# next 14
+q 1 10 12
+# next 14
+q 1 5 10
+# next 14
+q 1 13 1
+# next 14
+q 1 2 16
+# next 14
+q 1 7 10
+# next 14
+q 1 12 1
+# next 14
+q 1 11 1
+# next 14
+q 1 6 5
+# next 14
+q 1 18 12
+# next 14
+q 1 18 5
+# next 14
+q 1 13 15
+# next 14
+q 1 18 4
+# next 14
+q 1 4 2
+# next 14
+q 1 17 5
+# next 14
+q 1 1 11
+# next 14
+q 1 13 14
+# next 14
+q 1 4 18
+# next 14
+q 1 10 18
+# next 14
+q 1 1 3
+# next 14
+q 1 15 12
+# next 14
+q 1 8 1
+# next 14
+q 1 12 10
+# next 14
+q 1 17 6
+# next 14
+q 1 16 18
+# next 14
+q 1 4 11
+# next 14
+q 1 1 8
+# next 14
+q 1 2 12
+# next 14
+q 1 18 16
+# next 14
+q 1 10 15
+# next 14
+q 1 12 6
+# next 14
+q 1 4 15
+# next 14
+q 1 7 13
+# next 14
+q 1 9 3
+# next 14
+q 1 15 1
+# next 14
+q 1 18 3
+# next 14
+q 1 13 6
+# next 14
+q 1 11 16
+# next 14
+q 1 1 17
+# next 14
+q 1 18 1
+# next 14
+q 1 1 12
+# next 14
+q 1 18 9
+# next 14
+q 1 6 11
+# next 14
+q 1 19 4
+# next 14
+q 1 9 8
+# next 14
+q 1 15 4
+# next 14
+q 1 11 6
+# next 14
+q 1 6 7
+# next 14
+q 1 14 17
+# next 14
+q 1 19 5
+# next 14
+q 1 4 9
+# next 14
+q 1 14 2
+# next 14
+q 1 4 13
+# next 14
+q 1 13 2
+# next 14
+q 1 4 4
+# next 14
+q 1 5 9
+# next 14
+q 1 9 14
+# next 14
+q 1 14 1
+# next 14
+q 1 17 4
+# next 14
+q 1 16 1
+# next 14
+q 1 7 11
+# next 14
+q 1 11 11
+# next 14
+q 1 15 10
+# next 14
+q 1 0 15
+# next 14
+q 1 16 8
+# next 14
+q 1 5 17
+# next 14
+q 1 12 0
+# next 14
+q 1 6 10
+# next 14
+q 1 1 14
+# next 14
+q 1 0 14
+# next 14
+q 1 2 18
+#c 2 17 blue
+# next 14
+q 1 14 15
+#c 14 16 blue
+# next 14
+q 1 3 9
+# next 14
+q 1 1 6
+#c 1 7 blue
+# next 14
+q 1 18 13
+# next 14
+q 1 16 15
+#c 15 15 blue
+#c 15 17 blue
+#c 16 16 blue
+#c 16 17 blue
+#c 17 16 blue
+# next 14
+q 1 7 2
+#c 7 3 blue
+# next 14
+q 1 14 5
+# next 14
+q 1 3 0
+# next 14
+q 1 7 16
+# next 14
+q 1 5 13
+# next 14
 q 1 1 10
-a 84 0 15 0 16 0 17 1 14 1 15 1 16 3 10 3 11 3 12 4 11 4 12 4 13 7 15 7 16 7 17 8 16 8 17 9 16 1 10 1 11 2 11 2 12 2 8 3 8 3 9 4 9 5 9 4 10 5 10 5 11 6 11 7 11 12 1 13 1 13 2 14 0 14 1 15 1 9 15 10 15 10 16 11 15 12 15 13 15 17 5 18 3 18 4 18 5 18 6 19 4 10 14 12 14 3 0 3 1 3 2 4 0 4 1 12 2 14 2 14 3 11 7 11 8 12 5 12 6 12 7 2 15 3 15 3 16 4 16 4 17 13 10 13 11 14 10 14 11 15 10 13 5 14 5 15 5 15 6 2 9 17 18 18 18 18 19 19 18
+# next 14
+q 1 10 16
+# next 14
+q 1 11 4
+#c 10 3 blue
+#c 10 4 blue
+# next 14
+q 1 8 9
+# next 14
+q 1 4 0
+# next 14
+q 1 8 5
+#c 7 7 blue
+# next 14
+q 1 14 11
+q 1 19 3
+# next 14
+q 1 5 1
+q 1 5 8
+#c 6 2 blue
+#c 6 6 blue
+#c 6 8 blue
+#c 7 8 blue
+#c 7 9 blue
+# next 14
+q 1 13 7
+q 1 1 1
+# next 14
+q 1 3 8
+q 1 14 0
+# next 14
+q 1 0 9
+q 1 7 15
+# next 14
+q 1 2 11
+q 1 18 18
+# next 14
+q 1 19 18
+q 1 15 0
+# next 14
+q 1 12 13
+q 1 0 4
+# next 14
+q 1 15 11
+q 1 11 18
+# next 14
+q 1 12 2
+q 1 14 4
+# next 14
+q 1 18 6
+q 1 8 18
+#c 9 18 blue
+#c 9 19 blue
+#c 10 19 blue
+#c 11 19 blue
+# next 14
+q 1 3 7
+q 1 19 8
+#c 2 6 blue
+#c 3 6 blue
+#c 4 7 blue
+# next 14
+q 1 13 9
+q 1 19 16
+#c 12 12 blue
+#c 13 8 blue
+#c 17 15 blue
+# next 14
+q 1 9 11
+q 1 0 16
+#c 8 10 blue
+#c 8 14 blue
+#c 9 10 blue
+#c 10 11 blue
+# next 14
+q 1 16 13
+q 1 15 6
+#c 16 12 blue
+#c 16 14 blue
+#c 17 12 blue
+#c 17 13 blue
+# next 14
+q 1 13 0
+q 1 16 5
+# next 14
+q 1 6 12
+q 1 3 1
+#c 6 13 blue
+# next 14
+q 1 9 0
+q 1 3 13
+#c 8 2 blue
+#c 8 3 blue
+#c 9 1 blue
+#c 9 2 blue
+#c 10 0 blue
+#c 10 1 blue
+#c 11 0 blue
+# next 14
+q 1 8 17
+q 1 0 10
+# next 14
+q 1 10 13
+q 1 18 19
+#c 8 13 blue
+#c 9 12 blue
+#c 9 13 blue
+#c 11 12 blue
+#c 11 13 blue
+# next 14
+q 1 4 16
+q 1 5 4
+#c 4 3 blue
+#c 5 2 blue
+#c 5 3 blue
+#c 5 7 blue
+#c 6 4 blue
+#c 7 4 blue
+#c 7 5 blue
+# next 14
+q 1 18 7
+q 1 14 3
+#c 17 8 blue
+#c 18 8 blue
+# next 14
+q 1 17 18
+q 1 10 17
+# next 14
+q 1 19 11
+q 1 9 6
+#c 8 6 blue
+#c 8 7 blue
+#c 9 4 blue
+#c 9 5 blue
+#c 9 7 blue
+#c 10 6 blue
+#c 17 11 blue
+#c 18 10 blue
+#c 18 11 blue
+#c 19 9 blue
+#c 19 10 blue
+# next 14
+q 1 15 19
+q 1 7 17
+#c 12 19 blue
+#c 13 19 blue
+#c 14 18 blue
+#c 14 19 blue
+#c 15 18 blue
+#c 16 19 blue
+# next 14
+q 1 4 1
+q 1 9 15
+# next 14
+q 1 5 0
+q 1 0 17
+# next 14
+q 1 16 3
+q 1 16 10
+#c 15 3 blue
+#c 15 9 blue
+#c 16 2 blue
+#c 16 9 blue
+#c 17 3 blue
+#c 17 9 blue
+# next 14
+q 1 3 16
+q 1 5 15
+#c 5 14 blue
+# next 14
+q 1 12 3
+q 1 13 5
+#c 11 2 blue
+#c 11 3 blue
+# next 14
+q 1 10 9
+q 1 11 9
+#c 9 9 blue
+#c 10 8 blue
+#c 11 10 blue
+#c 12 9 blue
+# next 14
+q 1 6 19
+q 1 13 11
+#c 5 18 blue
+#c 5 19 blue
+#c 7 19 blue
+#c 8 19 blue
+# next 14
+q 1 1 19
+q 1 12 15
+a 84 1 10 1 11 2 11 2 12 3 10 3 11 9 15 10 15 10 16 11 15 12 15 13 15 0 15 0 16 0 17 1 14 1 15 1 16 17 5 18 3 18 4 18 5 18 6 19 4 12 1 13 1 13 2 14 0 14 1 15 1 3 12 4 11 4 12 4 13 10 14 12 14 7 15 7 16 7 17 8 16 8 17 9 16 2 8 3 8 3 9 4 9 5 9 4 10 5 10 5 11 6 11 7 11 2 15 3 15 3 16 4 16 4 17 13 10 13 11 14 10 14 11 15 10 12 2 14 2 14 3 11 7 11 8 12 5 12 6 12 7 3 0 3 1 3 2 4 0 4 1 13 5 14 5 15 5 15 6 2 9 17 18 18 18 18 19 19 18

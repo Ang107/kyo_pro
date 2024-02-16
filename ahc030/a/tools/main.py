@@ -245,7 +245,7 @@ def calc_next():
                     for p, q in tmp:
                         next[p * N + q] += 1
                 else:
-                    visited[i + N + j] = False
+                    visited[i * N + j] = False
 
     tmp = []
     # max_next = max([max(i) for i in next])
@@ -342,9 +342,9 @@ def get_Ans(B):
 
                         if len(deq) >= limit:
                             return False, []
-        if big_flag == False and D[0][2][x * i + y]:
+        if big_flag == False and D[0][2][x * N + y]:
             x, y = prv[0]
-            D[0][2][x * i + y] = False
+            D[0][2][x * N + y] = False
             # print(f"#c {x} {y} red")
 
     return True, ans

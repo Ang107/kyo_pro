@@ -1,6 +1,6 @@
 import sys
 from collections import deque
-
+from itertools import accumulate
 
 input = lambda: sys.stdin.readline().rstrip()
 P = lambda *x: print(*x)
@@ -9,6 +9,7 @@ PN = lambda: print("No")
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))
 # memo
 # N*Nの盤面があり、その下には、いくつかのポリオミノ 型の形のお宝があることが分かっています。その形状と向きもは分かっていますが、存在する場所は不明です。そのお宝は全てN*Nの盤面に収まっている。また、複数のお宝が一マスに重複して存在することもある。
 
@@ -33,7 +34,7 @@ def FirstInput():
     N, M = int(N), int(M)
     E = float(E)
     D = []
-    D_size = []
+
     limit = 2500000 / N**2.5
     for i in range(M):
         tmp = LMII()
@@ -43,6 +44,9 @@ def FirstInput():
         D.append([zahyou, len(zahyou), [[True] * N for _ in range(N)]])
 
     D.sort(key=lambda x: x[1], reverse=True)
+    D_size = [i for _, i, _ in D]
+    D_size = list(accumulate(D_size[::-1]))[::-1]
+    # print("#", D_size)
 
 
 def Output_Input(l: list):
@@ -113,7 +117,7 @@ def get_Weight():
     avg = sum(Weight) / 9
     Weight = [i**1.5 + avg // 2 for i in Weight]
 
-    print("#", Weight)
+    # print("#", Weight)
 
 
 # todo 現状、クエリは独立している。->この組のクエリでパターンを絞れる、みたいな連携したクエリを送れるとよいかも
@@ -126,34 +130,9 @@ def solve():
     next = calc_next()
 
     while True:
-        print("# D", *[j for i, j, k in D])
-        D.sort(key=lambda x: x[1])
-        print("# D", *[j for i, j, k in D])
-        if len(next) == 0:
-            Exit()
-        # クエリを送信、Bの更新
-        if Tarn <= 150:
-            num = 1
-        elif Tarn <= 225:
-            num = 2
-        else:
-            num = 3
-
-        for i in range(num):
-            while True:
-                if next:
-                    x, y = next.pop()
-                else:
-                    break
-
-                if B[x][y] == -100:
-                    Tarn += 1
-                    B[x][y] = Output_Input([(x, y)])
-                    break
 
         # 答えの候補の取得
         flag, ans_list = get_Ans(B)
-        # print("# ans", len(ans_list))
 
         # 絞り込めたなら
         # ans_listの数の上限の決め方を吟味する->現在期待値5だが、一回のクエリで絞り込めるならそっちがお得
@@ -171,11 +150,34 @@ def solve():
         # 絞り込めなかった場合
         else:
             # 次に送るクエリの候補を計算
-            if ans_list:
+            if flag:
                 count += 1
                 next = calc_next_from_ans(ans_list)
             else:
                 next = calc_next()
+
+        print("# next", len(next))
+
+        if len(next) == 0:
+            Exit()
+
+        # クエリを送信、Bの更新
+        if Tarn <= 150:
+            num = 1
+        else:
+            num = 2
+
+        for i in range(num):
+            while True:
+                if next:
+                    x, y = next.pop()
+                else:
+                    break
+
+                if B[x][y] == -100:
+                    Tarn += 1
+                    B[x][y] = Output_Input([(x, y)])
+                    break
 
 
 def calc_next_from_ans(ans_list):
@@ -198,17 +200,25 @@ def calc_next_from_ans(ans_list):
                 # print(f"#c {i} {j} green")
 
     tmp.sort(key=lambda x: abs(x[0] - len(ans_list) / 2), reverse=True)
+
     return [(j, k) for i, j, k in tmp]
 
 
 # 確定で0になるやつだけでなく、確定で１以上になるものなども記録できるとよい
 # 送るクエリ計算
+# 既に1以上確定している場所はそれを消化しなければいけないという視点
 def calc_next():
 
     next = [[0] * N for _ in range(N)]
 
-    for idx, (d, _, visited) in enumerate(D):
+    for idx, (d, size, visited) in enumerate(D):
         count = 0
+        Plus_sum = 0
+        for i in range(N):
+            for j in range(N):
+                if B[i][j] >= 1:
+                    Plus_sum += B[i][j]
+
         for i in range(N):
             for j in range(N):
                 if not visited[i][j]:
@@ -228,20 +238,29 @@ def calc_next():
                         flag = -1
                         break
 
-                if flag >= 0:
+                if flag >= 0 and D_size[0] - size >= Plus_sum - flag:
                     count += 1
                     for p, q in tmp:
                         next[p][q] += 1
+                        # if Tarn > N**2 / 4:
+                        #     for x, y in around4:
+                        #         if (
+                        #             p + x in range(N)
+                        #             and q + y in range(N)
+                        #             and B[p + x][q + y] >= 1
+                        #         ):
+                        #             next[p][q] += 0.5
                 else:
                     visited[i][j] = False
-        D[idx][1] = count
-        print("# count", count)
+
+        # print("# count", count)
 
     tmp = []
     # max_next = max([max(i) for i in next])
+
     for i in range(N):
         for j in range(N):
-            # a = hex(int(255 * next[i][j] / max_next))[2:]
+            # a = hex(int(128 * next[i][j] / max_next))[2:]
             # print(
             #     f"#c {i} {j} #{a}0000",
             # )
@@ -249,9 +268,9 @@ def calc_next():
                 tmp.append((next[i][j], i, j))
             elif next[i][j] == 0 and B[i][j] == -100:
                 B[i][j] = 0
-                # print(f"#c {i} {j} blue")
+                print(f"#c {i} {j} blue")
 
-    print("# count", count)
+    # print("# count", count)
     if Tarn > N**2 / 3:
         tmp.sort(key=lambda x: abs(x[0] - count / 2), reverse=True)
     else:
@@ -260,6 +279,7 @@ def calc_next():
     if len(tmp) > 15:
         tmp = tmp[-14:]
     random.shuffle(tmp)
+    # print("#", tmp)
     return [(j, k) for i, j, k in tmp]
 
 
@@ -282,6 +302,11 @@ def get_Ans(B):
             big_flag = False
         else:
             big_flag = True
+        Sum = 0
+        for i in range(N):
+            for j in range(N):
+                if B[i][j] >= 1:
+                    Sum += 1
 
         for i in range(N):
             for j in range(N):
@@ -310,11 +335,19 @@ def get_Ans(B):
                             big_flag = True
                             ans.append(prv_n)
                     else:
+                        tmp = 0
                         for x, y in shape:
                             B_n[i + x][j + y] -= 1
-                        if max([max(k) for k in B_n]) <= M - idx - 1:
+                            if B_n[i + x][j + y] >= 0:
+                                tmp += 1
+
+                        if (
+                            max([max(k) for k in B_n]) <= M - idx - 1
+                            and D_size[idx + 1] >= Sum - tmp
+                        ):
                             big_flag = True
                             deq.append((idx + 1, B_n, prv_n))
+
                         if len(deq) >= limit:
                             return False, []
         if big_flag == False and D[0][2][x][y]:

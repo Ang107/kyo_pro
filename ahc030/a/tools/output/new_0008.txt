@@ -1,73 +1,15 @@
-#c 9 0 blue
-#c 10 0 blue
-#c 10 1 blue
-# count 54
-# next_full [(28, 5, 6), (26, 6, 5), (30, 4, 5), (30, 3, 5), (29, 5, 5), (27, 4, 6), (26, 3, 6), (25, 6, 6), (29, 3, 4), (29, 4, 4), (28, 5, 4), (25, 6, 4)]
-# known 3
-# next 12
-q 1 6 4
-# ans 210
-#c 4 0 green
-#c 5 0 green
-#c 8 0 green
-#c 8 10 green
-#c 9 1 green
-#c 9 10 green
-#c 10 2 green
-#c 10 3 green
-#c 10 4 green
-# known 13
-# next 108
+# count 24
+# count 30
+# count 30
+q 1 8 6
+q 1 7 3
+q 1 3 8
 q 1 4 2
-# ans 110
-#c 0 0 green
-#c 0 1 green
-#c 1 0 green
-#c 1 1 green
-#c 4 1 green
-#c 5 1 green
-#c 5 2 green
-#c 6 0 green
-#c 6 1 green
-#c 6 2 green
-#c 6 3 green
-#c 7 0 green
-#c 7 1 green
-#c 7 2 green
-#c 8 1 green
-#c 8 2 green
-#c 9 2 green
-#c 9 3 green
-# known 32
-# next 89
-q 1 2 9
-# ans 55
-#c 0 10 green
-#c 1 10 green
-#c 2 10 green
-# known 36
-# next 85
-q 1 9 7
-# ans 27
-#c 3 10 green
-#c 4 10 green
-#c 7 3 green
-#c 8 3 green
-#c 8 4 green
-#c 8 7 green
-#c 8 8 green
-#c 8 9 green
-#c 9 8 green
-#c 9 9 green
-#c 10 6 green
-#c 10 7 green
-#c 10 8 green
-#c 10 9 green
-#c 10 10 green
-# known 52
-# next 69
-q 1 1 3
-# ans 2
-# count 4
+q 1 3 2
+q 1 8 5
+#c 0 2 red
+#c 0 3 red
+#c 3 0 red
+q 1 7 8
 a 38 1 3 1 4 1 6 1 7 1 8 2 3 2 4 2 6 2 7 2 8 3 4 3 5 3 6 3 7 4 5 4 6 4 7 5 4 5 5 6 5 6 6 7 4 7 5 7 6 8 5 0 2 0 3 1 2 2 0 2 1 2 2 3 0 3 1 3 2 3 3 4 3 4 4 5 6
 a 36 1 3 1 4 1 6 1 7 1 8 2 3 2 4 2 6 2 7 2 8 3 4 3 5 3 6 3 7 4 5 4 6 4 7 5 4 5 5 6 5 6 6 7 4 7 5 7 6 8 5 0 3 0 4 1 5 2 1 2 2 3 1 3 2 3 3 4 4 5 6 5 7

@@ -1,33 +1,7 @@
 import sys
-from collections import deque, defaultdict
-from itertools import (
-    accumulate,
-    product,
-    permutations,
-    combinations,
-    combinations_with_replacement,
-)
-import math
-from bisect import bisect_left, insort_left, bisect_right, insort_right
-from pprint import pprint
-from heapq import heapify, heappop, heappush
-import string
+from collections import deque
 
-# 小文字アルファベットのリスト
-alph_s = list(string.ascii_lowercase)
-# 大文字アルファベットのリスト
-alph_l = list(string.ascii_uppercase)
 
-# product : bit全探索 product(range(2),repeat=n)
-# permutations : 順列全探索
-# combinations : 組み合わせ（重複無し）
-# combinations_with_replacement : 組み合わせ（重複可）
-# from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
-around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
-around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-inf = float("inf")
-mod = 998244353
 input = lambda: sys.stdin.readline().rstrip()
 P = lambda *x: print(*x)
 PY = lambda: print("Yes")
@@ -35,8 +9,16 @@ PN = lambda: print("No")
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+# memo
+# N*Nの盤面があり、その下には、いくつかのポリオミノ 型の形のお宝があることが分かっています。その形状と向きもは分かっていますが、存在する場所は不明です。そのお宝は全てN*Nの盤面に収まっている。また、複数のお宝が一マスに重複して存在することもある。
+
+# コストを１払うことで、指定したマスの下にあるお宝の数を知ることができる。
+
+# 盤面の中で下にお宝があるマスを全て特定させることが目的であり、それまでにかかったコストを最小化したい。
+# そのためにはどのようにマスを指定すればよいか？
 
 
+# 以上の問題の厳密解を求める方法を教えて。
 def dlist(*l, fill=0):
     if len(l) == 1:
         return [fill] * l[0]
@@ -44,32 +26,23 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
+# 毎回Dをnextの数でソートする
 def FirstInput():
-    global N, M, E, D, sum_D, wariai, D_size
+    global N, M, E, D, D_size, limit
     N, M, E = input().split()
     N, M = int(N), int(M)
     E = float(E)
     D = []
     D_size = []
-    sum_D = 0
+    limit = 2500000 / N**2.5
     for i in range(M):
         tmp = LMII()
-        sum_D += tmp[0]
         zahyou = []
         for i in range(2, len(tmp), 2):
             zahyou.append((tmp[i - 1], tmp[i]))
-        D.append(zahyou)
+        D.append([zahyou, len(zahyou), [[True] * N for _ in range(N)]])
 
-    D.sort(key=lambda x: len(x), reverse=True)
-
-    for d in D:
-        x, y = 0, 0
-        for i, j in d:
-            x = max(x, i)
-            y = max(y, j)
-        D_size.append((x, y))
-
-    wariai = sum_D / N**2
+    D.sort(key=lambda x: x[1], reverse=True)
 
 
 def Output_Input(l: list):
@@ -145,55 +118,25 @@ def get_Weight():
 
 # todo 現状、クエリは独立している。->この組のクエリでパターンを絞れる、みたいな連携したクエリを送れるとよいかも
 def solve():
-    global B, known
+    global B, Tarn
     B = [[-100] * N for _ in range(N)]
 
     Tarn = 0
     count = 0
-    known = 0
     next = calc_next()
-    kakute_x, kakutei_y, kakutei_num = None, None, None
+
     while True:
-        print("# known", known)
-        print("# next", len(next))
-        if len(next) == 0:
-            Exit()
-        # クエリを送信、Bの更新
-        if Tarn <= 50:
-            num = 1
-        elif Tarn <= 100:
-            num = 2
-        elif Tarn <= 150:
-            num = 4
-        elif Tarn < 200:
-            num = 8
-        else:
-            num = 15
-
-        for i in range(num):
-            while True:
-                if next:
-                    x, y = next.pop()
-                else:
-                    break
-
-                if B[x][y] == -100:
-                    Tarn += 1
-                    known += 1
-                    B[x][y] = Output_Input([(x, y)])
-                    break
 
         # 答えの候補の取得
         flag, ans_list = get_Ans(B)
-        print("# ans", len(ans_list))
 
         # 絞り込めたなら
         # ans_listの数の上限の決め方を吟味する->現在期待値5だが、一回のクエリで絞り込めるならそっちがお得
         if flag and 1 <= len(ans_list) <= 5:
-            print("# count", count)
+            # print("# count", count)
             for i in ans_list:
                 tmp = set()
-                for idx, j in enumerate(D):
+                for idx, (j, _, _) in enumerate(D):
                     sx, sy = i[idx]
                     for x, y in j:
                         tmp.add((x + sx, y + sy))
@@ -209,14 +152,38 @@ def solve():
             else:
                 next = calc_next()
 
+        D.sort(key=lambda x: x[1])
+
+        if len(next) == 0:
+            Exit()
+
+        # クエリを送信、Bの更新
+        if Tarn <= 150:
+            num = 1
+        elif Tarn <= 225:
+            num = 2
+        else:
+            num = 3
+
+        for i in range(num):
+            while True:
+                if next:
+                    x, y = next.pop()
+                else:
+                    break
+
+                if B[x][y] == -100:
+                    Tarn += 1
+                    B[x][y] = Output_Input([(x, y)])
+                    break
+
 
 def calc_next_from_ans(ans_list):
-    global known
     next = [[0] * N for _ in range(N)]
     for ans in ans_list:
         tmp = set()
         for idx, (x, y) in enumerate(ans):
-            for i, j in D[idx]:
+            for i, j in D[idx][0]:
                 tmp.add((x + i, y + j))
 
         for i, j in tmp:
@@ -228,22 +195,25 @@ def calc_next_from_ans(ans_list):
                 tmp.append((next[i][j], i, j))
             elif next[i][j] == 0 and B[i][j] == -100:
                 B[i][j] = 0
-                known += 1
-                print(f"#c {i} {j} green")
+                # print(f"#c {i} {j} green")
 
     tmp.sort(key=lambda x: abs(x[0] - len(ans_list) / 2), reverse=True)
-    print("#", tmp)
     return [(j, k) for i, j, k in tmp]
 
 
+# 確定で0になるやつだけでなく、確定で１以上になるものなども記録できるとよい
 # 送るクエリ計算
+# 既に1以上確定している場所はそれを消化しなければいけないという視点
 def calc_next():
-    global known
 
     next = [[0] * N for _ in range(N)]
-    for idx, d in enumerate(D):
-        for i in range(N - D_size[idx][0]):
-            for j in range(N - D_size[idx][1]):
+
+    for idx, (d, _, visited) in enumerate(D):
+        count = 0
+        for i in range(N):
+            for j in range(N):
+                if not visited[i][j]:
+                    continue
                 tmp = []
                 flag = 0
                 for x, y in d:
@@ -260,27 +230,37 @@ def calc_next():
                         break
 
                 if flag >= 0:
+                    count += 1
                     for p, q in tmp:
                         next[p][q] += 1
-    tmp = []
+                else:
+                    visited[i][j] = False
+        D[idx][1] = count
+        print("# count", count)
 
+    tmp = []
+    # max_next = max([max(i) for i in next])
     for i in range(N):
         for j in range(N):
+            # a = hex(int(255 * next[i][j] / max_next))[2:]
+            # print(
+            #     f"#c {i} {j} #{a}0000",
+            # )
             if next[i][j] and B[i][j] == -100:
                 tmp.append((next[i][j], i, j))
             elif next[i][j] == 0 and B[i][j] == -100:
                 B[i][j] = 0
-                known += 1
-                print(f"#c {i} {j} blue")
+                # print(f"#c {i} {j} blue")
 
-    tmp.sort(key=lambda x: x[0])
+    print("# count", count)
+    if Tarn > N**2 / 3:
+        tmp.sort(key=lambda x: abs(x[0] - count / 2), reverse=True)
+    else:
+        tmp.sort(key=lambda x: x[0])
 
-    # 石油が存在する可能性が高い地点を優先して選択(?)
-    # もっと優先して送るべきクエリを選択するアルゴリズムがあるかも
-    if len(tmp) > 50:
-        tmp = tmp[int(len(tmp) * 0.8) :]
+    if len(tmp) > 15:
+        tmp = tmp[-14:]
     random.shuffle(tmp)
-    # print("# next_full", tmp)
     return [(j, k) for i, j, k in tmp]
 
 
@@ -296,11 +276,18 @@ def get_Ans(B):
     deq.append((0, B_n, []))
     ans = []
     while deq:
-
         idx, B, prv = deq.popleft()
-        shape = D[idx]
-        for i in range(N - D_size[idx][0]):
-            for j in range(N - D_size[idx][1]):
+        shape = D[idx][0]
+        visited = D[idx][2]
+        if idx == 1:
+            big_flag = False
+        else:
+            big_flag = True
+
+        for i in range(N):
+            for j in range(N):
+                if not visited[i][j]:
+                    continue
                 flag = True
                 for x, y in shape:
                     if (
@@ -321,14 +308,20 @@ def get_Ans(B):
                         for x, y in shape:
                             B_n[i + x][j + y] -= 1
                         if max([max(k) for k in B_n]) <= 0:
+                            big_flag = True
                             ans.append(prv_n)
                     else:
                         for x, y in shape:
                             B_n[i + x][j + y] -= 1
                         if max([max(k) for k in B_n]) <= M - idx - 1:
+                            big_flag = True
                             deq.append((idx + 1, B_n, prv_n))
-                        if len(deq) >= 3000:
+                        if len(deq) >= limit:
                             return False, []
+        if big_flag == False and D[0][2][x][y]:
+            x, y = prv[0]
+            D[0][2][x][y] = False
+            # print(f"#c {x} {y} red")
 
     return True, ans
 
@@ -338,7 +331,6 @@ import random
 
 def main():
     FirstInput()
-    # get_Weight()
     solve()
 
 

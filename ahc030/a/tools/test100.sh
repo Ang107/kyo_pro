@@ -16,18 +16,19 @@ for d in `seq ${start} ${last}`;
 do
     j=$(printf "%04d\n" "${d}")
     ##ここに実行コマンドを置く(以下はc++)　ファイルの場所は注意
-    # cargo run 2> score/score_old.txt -r --bin tester  pypy3 main1.py < in_default/${j}.txt > output/${j}.txt
+    cargo run 2> score/score_old.txt -r --bin tester  pypy3 main1.py < in_default/${j}.txt > output/${j}.txt
+    # cargo run 2> score/score_old.txt -r --bin tester  go run main.go < in_default/${j}.txt > output/${j}.txt
     cargo run 2> score/score_new.txt -r --bin tester  pypy3 main.py < in_default/${j}.txt > output/new_${j}.txt    
     #"Score = " より後の文字列を抽出する（この部分は変わる可能性あり）
-    # var=$(grep "Score = " ./score/score_old.txt | sed -e 's/[^0-9]//g')
-    # ans_old=$(($ans_old+$var))
+    var=$(grep "Score = " ./score/score_old.txt | sed -e 's/[^0-9]//g')
+    ans_old=$(($ans_old+$var))
     var1=$(grep "Score = " ./score/score_new.txt | sed -e 's/[^0-9]//g')
     ans_new=$(($ans_new+$var1))
     echo "${j} old :${var} new :${var1}";
 done
 
 
-# ans_old=$(($ans_old/($last-$start+1)))
+ans_old=$(($ans_old/($last-$start+1)))
 # 0~30 43ぐらい
 ans_new=$(($ans_new/($last-$start+1)))
 

@@ -1,33 +1,7 @@
 import sys
-from collections import deque, defaultdict
-from itertools import (
-    accumulate,
-    product,
-    permutations,
-    combinations,
-    combinations_with_replacement,
-)
-import math
-from bisect import bisect_left, insort_left, bisect_right, insort_right
-from pprint import pprint
-from heapq import heapify, heappop, heappush
-import string
+from collections import deque
+from itertools import accumulate
 
-# 小文字アルファベットのリスト
-alph_s = list(string.ascii_lowercase)
-# 大文字アルファベットのリスト
-alph_l = list(string.ascii_uppercase)
-
-# product : bit全探索 product(range(2),repeat=n)
-# permutations : 順列全探索
-# combinations : 組み合わせ（重複無し）
-# combinations_with_replacement : 組み合わせ（重複可）
-# from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
-around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
-around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-inf = float("inf")
-mod = 998244353
 input = lambda: sys.stdin.readline().rstrip()
 P = lambda *x: print(*x)
 PY = lambda: print("Yes")
@@ -35,8 +9,17 @@ PN = lambda: print("No")
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))
+# memo
+# N*Nの盤面があり、その下には、いくつかのポリオミノ 型の形のお宝があることが分かっています。その形状と向きもは分かっていますが、存在する場所は不明です。そのお宝は全てN*Nの盤面に収まっている。また、複数のお宝が一マスに重複して存在することもある。
+
+# コストを１払うことで、指定したマスの下にあるお宝の数を知ることができる。
+
+# 盤面の中で下にお宝があるマスを全て特定させることが目的であり、それまでにかかったコストを最小化したい。
+# そのためにはどのようにマスを指定すればよいか？
 
 
+# 以上の問題の厳密解を求める方法を教えて。
 def dlist(*l, fill=0):
     if len(l) == 1:
         return [fill] * l[0]
@@ -44,32 +27,35 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
+# 毎回Dをnextの数でソートする
 def FirstInput():
-    global N, M, E, D, sum_D, wariai, D_size
+    global N, M, E, D, D_size, limit, hensa
     N, M, E = input().split()
     N, M = int(N), int(M)
     E = float(E)
     D = []
-    D_size = []
-    sum_D = 0
+
+    limit = 1500000 / N**2
     for i in range(M):
         tmp = LMII()
-        sum_D += tmp[0]
         zahyou = []
         for i in range(2, len(tmp), 2):
             zahyou.append((tmp[i - 1], tmp[i]))
-        D.append(zahyou)
+        D.append([zahyou, len(zahyou), [True] * (N**2)])
 
-    # D.sort(key=lambda x: len(x), reverse=True)
+    D.sort(key=lambda x: x[1], reverse=True)
+    D_size = [i for _, i, _ in D]
+    D_size = list(accumulate(D_size[::-1]))[::-1]
 
-    for d in D:
-        x, y = 0, 0
-        for i, j in d:
-            x = max(x, i)
-            y = max(y, j)
-        D_size.append((x, y))
+    hensa = get_hensa()
 
-    wariai = sum_D / N**2
+
+def get_hensa():
+    hensa = {}
+    for k in range(2, (N**2 + 1) // 2):
+        tmp = (k * E * (1 - E)) ** 0.5
+        hensa[(k, E)] = tmp
+    return hensa
 
 
 def Output_Input(l: list):
@@ -82,6 +68,18 @@ def Output_Input(l: list):
     return n
 
 
+def Output_Input_add(l: list, i, j, num):
+    tmp = []
+    tmp.append(i)
+    tmp.append(j)
+    for i, j in l:
+        tmp.append(i)
+        tmp.append(j)
+    print("q", len(l) + 1, *tmp, flush=True)
+    n = II() - num
+    return n
+
+
 def clamp(n, smallest, largest):
     return max(smallest, min(n, largest))
 
@@ -90,9 +88,9 @@ def Exit():
     ans = []
     for i in range(N):
         for j in range(N):
-            if B[i][j] >= 1:
+            if B[i * N + j] >= 1:
                 ans.append((i, j))
-    print("#", Last_Output(ans))
+    Last_Output(ans)
     exit()
 
 
@@ -128,222 +126,211 @@ def get_Weight():
     avg = sum(Weight) / 9
     Weight = [i**1.5 + avg // 2 for i in Weight]
 
-    print("#", Weight)
 
-
+# todo 現状、クエリは独立している。->この組のクエリでパターンを絞れる、みたいな連携したクエリを送れるとよいかも
 def solve():
-    global B, possib_xy
-    B = [[-100] * N for _ in range(N)]
-    possib_xy = set()
+    global B, Tarn
+    visited_hukusuu = [False] * (N**2)
+    B = [-100] * (N**2)
 
-    for i in range(N):
-        for j in range(N):
-            possib_xy.add((i, j))
-    plus = []
-    next = []
-    Tarn = 2
-    visited = 0
+    Tarn = 0
+    count = 0
+    next = calc_next()
+
     while True:
-        for i in B:
-            print("#", *i)
-        print("# next", len(next))
-        if visited == N**2 or (Tarn != 2 and len(next) == 0):
-            Exit()
-        # クエリを送信、Bの更新
-        if Tarn <= 50:
-            num = 2
-        elif Tarn <= 100:
-            num = 3
-        elif Tarn <= 150:
-            num = 5
-        elif Tarn < 200:
-            num = 10
-        else:
-            num = 15
-
-        for i in range(num):
-            while True:
-                tmp = random.choice(range(int(Tarn**1.25)))
-                if tmp < 7:
-                    # p, q = random.choices(Idx, weights=Weight)[0]
-                    # x, y = random.choice(Bunkatu[p][q])
-
-                    x, y = random.choice(range(N)), random.choice(range(N))
-                    # print(f"#c {x} {y} blue")
-                else:
-                    if next:
-                        x, y = next.pop()
-                    else:
-                        break
-                    # print(f"#c {x} {y} green")
-
-                if B[x][y] == -100:
-                    possib_xy.discard((x, y))
-                    Tarn += 1
-                    visited += 1
-                    B[x][y] = Output_Input([(x, y)])
-                    for j in range(B[x][y]):
-                        plus.append((x, y))
-
-                    break
+        if Tarn % 5 == 0:
+            visited = [False] * (N**2)
+            for i in range(N):
+                for j in range(N):
+                    if not visited[i * N + j] and B[i * N + j] == -100:
+                        flag, ans = bfs(i, j, visited)
+                        num = len(ans)
+                        if (
+                            flag
+                            and not visited_hukusuu[ans[0][0] * N + ans[0][1]]
+                            and 4 <= num < N**2 // 2
+                            and get_min_num_in_closed(ans) >= hensa[(num, E)] * 4
+                        ):
+                            for x, y in ans:
+                                visited_hukusuu[x * N + y] = True
+                            n = Output_Input(ans)
+                            if n < num - (hensa[(num, E)] * 3 + 1) // 2:
+                                for x, y in ans:
+                                    B[x * N + y] = 0
+                                    print(f"#c {x} {y} gray")
 
         # 答えの候補の取得
-        ans_list, next = calc_next_and_ans()
-        print("# ans", len(ans_list), len(next))
+        flag, ans_list = get_Ans(B)
 
         # 絞り込めたなら
-        if 1 <= len(ans_list) <= 10:
+        # ans_listの数の上限の決め方を吟味する->現在期待値5だが、一回のクエリで絞り込めるならそっちがお得
+        if flag and 1 <= len(ans_list) <= 5:
             for i in ans_list:
                 tmp = set()
-                for idx, j in enumerate(D):
+                for idx, (j, _, _) in enumerate(D):
                     sx, sy = i[idx]
                     for x, y in j:
                         tmp.add((x + sx, y + sy))
                 Tarn += 1
                 if Last_Output(tmp):
                     exit()
-        # # 絞り込めなかった場合
-        # else:
-        #     # 次に送るクエリの候補を計算
-        #     if ans_list:
-        #         next = calc_next_from_ans(ans_list)
-        #     else:
-        #         next = calc_next_and_ans()
+        # 絞り込めなかった場合
+        else:
+            # 次に送るクエリの候補を計算
+            if flag:
+                count += 1
+                next = calc_next_from_ans(ans_list)
+            else:
+                next = calc_next()
+
+        if len(next) == 0:
+            Exit()
+
+        # クエリを送信、Bの更新
+        if Tarn <= 150:
+            num = 1
+        elif Tarn <= 250:
+            num = 2
+        else:
+            num = 3
+
+        for i in range(num):
+            while True:
+                if next:
+                    x, y = next.pop()
+                else:
+                    break
+
+                if B[x * N + y] == -100:
+                    Tarn += 1
+                    B[x * N + y] = Output_Input([(x, y)])
+                    break
 
 
 def calc_next_from_ans(ans_list):
-    next = [[0] * N for _ in range(N)]
+    next = [0] * (N**2)
     for ans in ans_list:
+        tmp = set()
         for idx, (x, y) in enumerate(ans):
-            for i, j in D[idx]:
-                next[x + i][y + j] += 1
+            for i, j in D[idx][0]:
+                tmp.add((x + i, y + j))
+
+        for i, j in tmp:
+            next[i * N + j] += 1
+
     tmp = []
     for i in range(N):
         for j in range(N):
-            if next[i][j] and B[i][j] == -100:
-                tmp.append((next[i][j], i, j))
+            if next[i * N + j] and B[i * N + j] == -100:
+                tmp.append((next[i * N + j], i, j))
+            elif next[i * N + j] == 0 and B[i * N + j] == -100:
+                B[i * N + j] = 0
+                print(f"#c {i} {j} green")
 
     tmp.sort(key=lambda x: abs(x[0] - len(ans_list) / 2), reverse=True)
-    # print("# next_full_from_ans", tmp)
 
     return [(j, k) for i, j, k in tmp]
 
 
+# 確定で0になるやつだけでなく、確定で１以上になるものなども記録できるとよい
 # 送るクエリ計算
-# def calc_next():
-#     # Dをグループに分けて、各グループで計算する
+# 既に1以上確定している場所はそれを消化しなければいけないという視点
+def calc_next():
 
-#     next = [[0] * N for _ in range(N)]
-#     for idx, d in enumerate(D):
-#         for i in range(N - D_size[idx][0]):
-#             for j in range(N - D_size[idx][1]):
-#                 tmp = []
-#                 flag = 0
-#                 for x, y in d:
-#                     if i + x in range(N) and j + y in range(N):
-#                         if B[i + x][j + y] == -100:
-#                             tmp.append((i + x, j + y))
-#                         elif B[i + x][j + y] >= 1:
-#                             flag += 1
-#                         else:
-#                             flag = -1
-#                             break
-#                     else:
-#                         flag = -1
-#                         break
-#                 # print("#", flag, i, j)
-#                 if flag >= 0:
-#                     for p, q in tmp:
-#                         next[p][q] += 1
-#     tmp = []
-#     for i in next:
-#         print("#", *i)
-#     for i in range(N):
-#         for j in range(N):
-#             if next[i][j]:
-#                 tmp.append((next[i][j], i, j))
-#             elif next[i][j] == 0 and B[i][j] == -100:
-#                 possib_xy.discard((i, j))
-#                 B[i][j] = 0
-
-#     tmp.sort(key=lambda x: x[0])
-
-#     # 石油が存在する可能性が高い地点を優先して選択(?)
-#     # もっと優先して送るべきクエリを選択するアルゴリズムがあるかも
-#     if len(tmp) > 50:
-#         tmp = tmp[int(len(tmp) * 0.7) :]
-#     random.shuffle(tmp)
-#     # print("# next_full", tmp)
-#     return [(j, k) for i, j, k in tmp]
-
-
-def calc_next_and_ans():
-    ans_2 = []
-    ans_list = []
-    for i in range(0, M, 2):
-        l, r = i, i + 1
-        if r < M:
-            ans_2.append(get_Ans_part(B, l, r))
-        else:
-            ans_2.append(get_Ans_part(B, l, l))
-
-    for i in ans_2:
-        print("#", len(i), i[:10])
-    tmp = 1
-
-    ans_list = get_Ans_part(B, 0, M - 1)
-
-    next = [[0] * N for _ in range(N)]
-    for i, j in enumerate(ans_2):
-        for k in j:
-            for l in range(len(k)):
-                p, q = k[l]
-                for x, y in D[i * 2 + l]:
-                    next[p + x][q + y] += 1
-    tmp = []
-    # for i in next:
-    #     print("#", *i)
+    next = [0] * (N**2)
+    Plus_sum = 0
     for i in range(N):
         for j in range(N):
-            if next[i][j]:
-                tmp.append((next[i][j], i, j))
-            elif next[i][j] == 0 and B[i][j] == -100:
-                print(f"#c {i} {j} red")
-                possib_xy.discard((i, j))
-                B[i][j] = 0
+            if B[i * N + j] >= 1:
+                Plus_sum += B[i * N + j]
 
+    for d, size, visited in D:
+        count = 0
+        for i in range(N):
+            for j in range(N):
+                if not visited[i * N + j]:
+                    continue
+                tmp = []
+                flag = 0
+                for x, y in d:
+                    if i + x in range(N) and j + y in range(N):
+                        if B[(i + x) * N + (j + y)] == -100:
+                            tmp.append((i + x, j + y))
+                        elif B[(i + x) * N + (j + y)] >= 1:
+                            flag += 1
+                        else:
+                            flag = -1
+                            break
+                    else:
+                        flag = -1
+                        break
+
+                if flag >= 0 and D_size[0] - size >= Plus_sum - flag:
+                    count += 1
+                    for p, q in tmp:
+                        next[p * N + q] += 1
+                else:
+                    visited[i * N + j] = False
+
+    tmp = []
+
+    for i in range(N):
+        for j in range(N):
+            if next[i * N + j] and B[i * N + j] == -100:
+                tmp.append((next[i * N + j], i, j))
+            elif next[i * N + j] == 0 and B[i * N + j] == -100:
+                B[i * N + j] = 0
+                print(f"#c {i} {j} blue")
+
+    if Tarn > N**2 / 3:
+        tmp.sort(key=lambda x: abs(x[0] - count / 2), reverse=True)
+    else:
         tmp.sort(key=lambda x: x[0])
 
-        # 石油が存在する可能性が高い地点を優先して選択(?)
-        # もっと優先して送るべきクエリを選択するアルゴリズムがあるかも
-        if len(tmp) > 50:
-            tmp = tmp[int(len(tmp) * 0.7) :]
-        random.shuffle(tmp)
-        # print("# next_full", tmp)
-
-    return ans_list, [(j, k) for i, j, k in tmp]
+    if len(tmp) > 15:
+        tmp = tmp[-14:]
+    random.shuffle(tmp)
+    return [(j, k) for i, j, k in tmp]
 
 
 # 答えの案の出力
 # 候補数が多すぎる場合打ち切っているが、上手いこと計算すれば、打ち切らずに済場合がある？
+# 計算結果を保存しておくことで、同じ計算を防いで高速化＆効率化できるかも
+# 既に確定した部分を利用して、多めにクエリを送って引き算すればコストを抑えられる（誤差が生まれるので、その誤算に注意する必要あり）
 
 
-def get_Ans_part(B, l, r):
+def get_Ans(B):
     deq = deque()
-    B_n = [k[:] for k in B]
-    deq.append((l, B_n, []))
+    B_n = B[:]
+    deq.append((0, B_n, []))
     ans = []
     while deq:
         idx, B, prv = deq.popleft()
-        shape = D[idx]
-        for i in range(N - D_size[idx][0]):
-            for j in range(N - D_size[idx][1]):
+        shape = D[idx][0]
+        visited = D[idx][2]
+        if idx == 1:
+            big_flag = False
+        else:
+            big_flag = True
+        Sum = 0
+        for i in range(N):
+            for j in range(N):
+                if B[i * N + j] >= 1:
+                    Sum += 1
+
+        for i in range(N):
+            for j in range(N):
+                if not visited[i * N + j]:
+                    continue
                 flag = True
                 for x, y in shape:
                     if (
                         i + x in range(N)
                         and j + y in range(N)
-                        and (B[i + x][j + y] <= -100 or B[i + x][j + y] >= 1)
+                        and (
+                            B[(i + x) * N + (j + y)] <= -100
+                            or B[(i + x) * N + (j + y)] >= 1
+                        )
                     ):
                         pass
                     else:
@@ -353,20 +340,83 @@ def get_Ans_part(B, l, r):
                 if flag:
                     prv_n = prv[:]
                     prv_n.append((i, j))
-                    B_n = [k[:] for k in B]
-                    if idx == r:
+                    B_n = B[:]
+                    if idx == M - 1:
                         for x, y in shape:
-                            B_n[i + x][j + y] -= 1
-                        if max([max(k) for k in B_n]) <= M - idx - 1 + M - (r - l) - 1:
+                            B_n[(i + x) * N + (j + y)] -= 1
+                        if max(B_n) <= 0:
+                            big_flag = True
                             ans.append(prv_n)
                     else:
+                        tmp = 0
                         for x, y in shape:
-                            B_n[i + x][j + y] -= 1
-                        if max([max(k) for k in B_n]) <= M - idx - 1 + M - (r - l) - 1:
+                            B_n[(i + x) * N + (j + y)] -= 1
+                            if B_n[(i + x) * N + (j + y)] >= 0:
+                                tmp += 1
+
+                        if max(B_n) <= M - idx - 1 and D_size[idx + 1] >= Sum - tmp:
+                            big_flag = True
                             deq.append((idx + 1, B_n, prv_n))
-                        if len(deq) >= 1000:
-                            return []
-    return ans
+
+                        if len(deq) >= limit:
+                            return False, []
+        if big_flag == False and D[0][2][x * N + y]:
+            x, y = prv[0]
+            D[0][2][x * N + y] = False
+            # print(f"#c {x} {y} red")
+
+    return True, ans
+
+
+def bfs(i, j, visited):
+    deq = deque([(i, j)])
+    visited[i * N + j] = True
+    ans = [(i, j)]
+    flag = True
+    while deq:
+        x, y = deq.popleft()
+        for i, j in around4:
+            if (
+                x + i in range(N)
+                and y + j in range(N)
+                and not visited[(x + i) * N + (y + j)]
+            ):
+                if B[(x + i) * N + (y + j)] == -100:
+                    visited[(x + i) * N + (y + j)] = True
+                    deq.append((x + i, y + j))
+                    ans.append((x + i, y + j))
+                elif B[(x + i) * N + (y + j)] >= 1:
+                    flag = False
+    return flag, ans
+
+
+def get_min_num_in_closed(ans):
+    min_x, min_y = 100, 100
+    max_x, max_y = -1, -1
+    for i, j in ans:
+        min_x, max_x = min(min_x, i), max(max_x, i)
+        min_y, max_y = min(min_y, j), max(max_y, j)
+    num = 0
+    for d, size, visited in D:
+        for i in range(min_x, max_x + 1):
+            for j in range(min_y, max_y + 1):
+                if not visited[i * N + j]:
+                    continue
+                flag = True
+                for x, y in d:
+                    if i + x in range(N) and j + y in range(N):
+                        if B[(i + x) * N + (j + y)] == -100:
+                            pass
+                        else:
+                            flag = False
+                            break
+                    else:
+                        flag = False
+                        break
+                if flag:
+                    num = max(num, size)
+                    i = max_x
+    return num
 
 
 import random
@@ -374,7 +424,6 @@ import random
 
 def main():
     FirstInput()
-    # get_Weight()
     solve()
 
 

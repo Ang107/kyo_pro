@@ -58,3 +58,12 @@ n = II()
 a = LMII()
 
 dp = [False] * (n + 1)
+
+tmp = 0
+for i in a:
+    tmp ^= i
+
+if tmp == 0:
+    print("Second")
+else:
+    print("First")

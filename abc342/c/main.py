@@ -44,28 +44,27 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, m, k, s, t, x = MII()
-x -= 1
-s -= 1
-t -= 1
-ed = [[] for _ in range(n)]
-for i in range(m):
-    u, v = MII()
-    ed[u - 1].append(v - 1)
-    ed[v - 1].append(u - 1)
+n = II()
+s = input()
+q = II()
 
-dp = [[[0] * 2 for _ in range(n)] for _ in range(k + 1)]
-dp[0][s][0] = 1
+dic = {}
+for i in alph_s:
+    dic[i] = i
+dic_rv = defaultdict(deque)
 
-for i in range(1, k + 1):
-    for j in range(n):
-        for l in ed[j]:
-            if j == x:
-                dp[i][j][0] += dp[i - 1][l][1]
-                dp[i][j][1] += dp[i - 1][l][0]
-            else:
-                dp[i][j][0] += dp[i - 1][l][0]
-                dp[i][j][1] += dp[i - 1][l][1]
-            dp[i][j][0] %= mod
-            dp[i][j][1] %= mod
-print(dp[k][t][0])
+for i in range(q):
+    c, d = input().split()
+    for j in alph_s:
+        if dic[j] == c:
+            dic[j] = d
+
+ans = []
+
+for i in s:
+    if dic[i]:
+        ans.append(dic[i])
+    else:
+        ans.append(i)
+
+print("".join(ans))

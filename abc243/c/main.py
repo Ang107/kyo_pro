@@ -44,28 +44,32 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, m, k, s, t, x = MII()
-x -= 1
-s -= 1
-t -= 1
-ed = [[] for _ in range(n)]
-for i in range(m):
-    u, v = MII()
-    ed[u - 1].append(v - 1)
-    ed[v - 1].append(u - 1)
+n = II()
 
-dp = [[[0] * 2 for _ in range(n)] for _ in range(k + 1)]
-dp[0][s][0] = 1
+XY = [LMII() for _ in range(n)]
 
-for i in range(1, k + 1):
-    for j in range(n):
-        for l in ed[j]:
-            if j == x:
-                dp[i][j][0] += dp[i - 1][l][1]
-                dp[i][j][1] += dp[i - 1][l][0]
-            else:
-                dp[i][j][0] += dp[i - 1][l][0]
-                dp[i][j][1] += dp[i - 1][l][1]
-            dp[i][j][0] %= mod
-            dp[i][j][1] %= mod
-print(dp[k][t][0])
+dd = defaultdict(lambda: [None, None])
+s = input()
+for i, j in enumerate(s):
+    x, y = XY[i]
+    if j == "R":
+        if dd[y][0]:
+            dd[y][0] = min(dd[y][0], x)
+        else:
+            dd[y][0] = x
+    elif j == "L":
+        if dd[y][1]:
+            dd[y][1] = max(dd[y][1], x)
+        else:
+            dd[y][1] = x
+
+for i, j in dd.values():
+    if i != None and j != None:
+        if j <= i:
+            pass
+        else:
+            PY()
+            exit()
+
+# print(dd)
+PN()

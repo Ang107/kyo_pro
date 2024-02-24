@@ -44,28 +44,31 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, m, k, s, t, x = MII()
-x -= 1
-s -= 1
-t -= 1
-ed = [[] for _ in range(n)]
+n, m = MII()
+dd = defaultdict(list)
 for i in range(m):
-    u, v = MII()
-    ed[u - 1].append(v - 1)
-    ed[v - 1].append(u - 1)
+    l, d, k, c, a, b = MII()
+    dd[b].append((a, l, d, k, c))
 
-dp = [[[0] * 2 for _ in range(n)] for _ in range(k + 1)]
-dp[0][s][0] = 1
+ans = [0] * n
+ans[-1] = inf
+heap = [(-inf, n)]
+heapify(heap)
 
-for i in range(1, k + 1):
-    for j in range(n):
-        for l in ed[j]:
-            if j == x:
-                dp[i][j][0] += dp[i - 1][l][1]
-                dp[i][j][1] += dp[i - 1][l][0]
-            else:
-                dp[i][j][0] += dp[i - 1][l][0]
-                dp[i][j][1] += dp[i - 1][l][1]
-            dp[i][j][0] %= mod
-            dp[i][j][1] %= mod
-print(dp[k][t][0])
+while heap:
+    time, tmp = heappop(heap)
+    if -time < ans[tmp - 1]:
+        continue
+
+    for b, l, d, k, c in dd[tmp]:
+        idx = bisect_right(range(l + c, l + c + d * k, d), ans[tmp - 1])
+
+        if idx != 0 and ans[b - 1] < l + d * (idx - 1):
+            ans[b - 1] = l + d * (idx - 1)
+            heappush(heap, (-(l + d * (idx - 1)), b))
+
+for i in ans[:-1]:
+    if i == 0:
+        print("Unreachable")
+    else:
+        print(i)

@@ -44,28 +44,32 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, m, k, s, t, x = MII()
-x -= 1
-s -= 1
-t -= 1
-ed = [[] for _ in range(n)]
-for i in range(m):
-    u, v = MII()
-    ed[u - 1].append(v - 1)
-    ed[v - 1].append(u - 1)
+n, x = MII()
+s = input()
+deq = deque()
+for i in s:
+    if i == "U":
+        if deq:
+            deq.pop()
+        else:
+            x //= 2
+    else:
+        deq.append(i)
 
-dp = [[[0] * 2 for _ in range(n)] for _ in range(k + 1)]
-dp[0][s][0] = 1
+for i in deq:
+    if i == "L":
+        x = x << 1
+    elif i == "R":
+        x = x << 1
+        x |= 1
 
-for i in range(1, k + 1):
-    for j in range(n):
-        for l in ed[j]:
-            if j == x:
-                dp[i][j][0] += dp[i - 1][l][1]
-                dp[i][j][1] += dp[i - 1][l][0]
-            else:
-                dp[i][j][0] += dp[i - 1][l][0]
-                dp[i][j][1] += dp[i - 1][l][1]
-            dp[i][j][0] %= mod
-            dp[i][j][1] %= mod
-print(dp[k][t][0])
+print(x)
+
+# if i == "U":
+#     x = x >> 1
+# elif i == "L":
+#     x = x << 1
+# elif i == "R":
+#     x = x << 1
+#     x |= 1
+# print(x)

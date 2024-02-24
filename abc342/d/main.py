@@ -44,28 +44,60 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, m, k, s, t, x = MII()
-x -= 1
-s -= 1
-t -= 1
-ed = [[] for _ in range(n)]
-for i in range(m):
-    u, v = MII()
-    ed[u - 1].append(v - 1)
-    ed[v - 1].append(u - 1)
+n = II()
+a = LMII()
+a.sort()
+a_dic = defaultdict(int)
+for i in a:
+    a_dic[i] += 1
 
-dp = [[[0] * 2 for _ in range(n)] for _ in range(k + 1)]
-dp[0][s][0] = 1
 
-for i in range(1, k + 1):
-    for j in range(n):
-        for l in ed[j]:
-            if j == x:
-                dp[i][j][0] += dp[i - 1][l][1]
-                dp[i][j][1] += dp[i - 1][l][0]
-            else:
-                dp[i][j][0] += dp[i - 1][l][0]
-                dp[i][j][1] += dp[i - 1][l][1]
-            dp[i][j][0] %= mod
-            dp[i][j][1] %= mod
-print(dp[k][t][0])
+# 素因数分解
+# 戻り値は(素因数、指数)のタプル)
+def factorization(n):
+    arr = []
+    temp = n
+    for i in range(2, int(-(-(n**0.5) // 1)) + 1):
+        if temp % i == 0:
+            cnt = 0
+            while temp % i == 0:
+                cnt += 1
+                temp //= i
+            arr.append([i, cnt])
+
+    if temp != 1:
+        arr.append([temp, 1])
+
+    if arr == []:
+        arr.append([n, 1])
+
+    return arr
+
+
+heihousuu = []
+for i in range(2 * 10**5 + 10):
+    heihousuu.append(i**2)
+
+ans = 0
+
+for k, v in list(a_dic.items()):
+    l = factorization(k)
+    tmp = 1
+    for i, j in l:
+        if j % 2:
+            tmp *= i
+    if k == 0:
+        ans += a_dic[0] * (a_dic[0] - 1) // 2
+        ans += a_dic[0] * (len(a) - a_dic[0])
+    else:
+        for j in heihousuu:
+            if k * tmp * j > 4 * 10**10:
+                break
+
+            if k == tmp * j:
+                ans += v * (v - 1) // 2
+            elif k < tmp * j:
+                ans += a_dic[k] * a_dic[tmp * j]
+
+
+print(ans)

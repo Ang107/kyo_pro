@@ -1,0 +1,185 @@
+{
+  "contest": {
+    "id": "tupc2023",
+    "title": "Tohoku University Programming Contest 2023",
+    "url": "https://atcoder.jp/contests/tupc2023"
+  },
+  "tasks": [
+    {
+      "id": "tupc2023_a",
+      "label": "A",
+      "title": "Namboku / Tozai Line",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_b",
+      "label": "B",
+      "title": "012 Grid",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_b",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_c",
+      "label": "C",
+      "title": "Topological Sort",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_c",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_d",
+      "label": "D",
+      "title": "Shift Puzzle",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_d",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_e",
+      "label": "E",
+      "title": "And DNA",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_e",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_f",
+      "label": "F",
+      "title": "Hotel",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_f",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_g",
+      "label": "G",
+      "title": "Min Nim",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_g",
+      "directory": {
+        "path": "g",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_h",
+      "label": "H",
+      "title": "Count Pseudo-Palindromes",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_h",
+      "directory": {
+        "path": "h",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_i",
+      "label": "I",
+      "title": "Maximize Array",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_i",
+      "directory": {
+        "path": "i",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_j",
+      "label": "J",
+      "title": "Colored Complete Graph",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_j",
+      "directory": {
+        "path": "j",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_k",
+      "label": "K",
+      "title": "(mod HW+1)",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_k",
+      "directory": {
+        "path": "k",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_l",
+      "label": "L",
+      "title": "Random Mex",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_l",
+      "directory": {
+        "path": "l",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_m",
+      "label": "M",
+      "title": "Vivid Colors",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_m",
+      "directory": {
+        "path": "m",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_n",
+      "label": "N",
+      "title": "Do Not Turn Back",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_n",
+      "directory": {
+        "path": "n",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_o",
+      "label": "O",
+      "title": "0100 Insertion",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_o",
+      "directory": {
+        "path": "o",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "tupc2023_p",
+      "label": "P",
+      "title": "Sub Brackets",
+      "url": "https://atcoder.jp/contests/tupc2023/tasks/tupc2023_p",
+      "directory": {
+        "path": "p",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

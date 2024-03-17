@@ -54,16 +54,16 @@ def base_10(num_n, n):
 
 
 # 10進数->n進数
-def base_n(num_10, n):
+def base_n(num_10, n, **kwargs):
+    trans = kwargs.get("trans", list(map(str, range(n))))
+    # print(trans)
     if num_10 == 0:
         return 0
     str_n = ""
     while num_10:
-        if num_10 % n >= 10:
-            return -1
-        str_n += str(num_10 % n)
+        str_n += trans[num_10 % n]
         num_10 //= n
-    return int(str_n[::-1])
+    return str_n[::-1]
 
 
 import math

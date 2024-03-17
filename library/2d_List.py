@@ -1,6 +1,11 @@
 # 90度右回転させたリストを返す
 def list_rotate_R90(l):
-    return list(zip(*reversed(l)))
+    return list(zip(*l[::-1]))
+
+
+# 90度左回転させたリストを返す
+def list_rotate_L90(l):
+    return (list(zip(*l)))[::-1]
 
 
 # 転置

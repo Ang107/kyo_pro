@@ -1,0 +1,20 @@
+{
+  "contest": {
+    "id": "masters-qual",
+    "title": "The 1st Masters Championship-qual-",
+    "url": "https://atcoder.jp/contests/masters-qual"
+  },
+  "tasks": [
+    {
+      "id": "masters_qual_a",
+      "label": "A",
+      "title": "Smoothing by Swaps",
+      "url": "https://atcoder.jp/contests/masters-qual/tasks/masters_qual_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

@@ -69,6 +69,7 @@ if c >= 1:
             dp[i] = max(dp[i], num)
         else:
             dp[i] = max(dp[i], num, dp[i - 1] + num)
+    print(dp)
     print(max(sum(a), sum(a) + max(dp) * (c - 1)))
 else:
     # iを終点とする任意区間の総和の最小値

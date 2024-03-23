@@ -7,7 +7,7 @@ cd /mnt/c/Users/kosuk/Desktop/atcoder/ahc030/a/tools
 mkdir -p output score
 
 #何番から何番まで？
-start=0;last=30;
+start=50;last=100;
 
 ans_old=0;
 ans_new=0;

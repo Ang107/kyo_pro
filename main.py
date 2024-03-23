@@ -44,31 +44,93 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n = II()
-a = LMII()
-l = 0
-r = 0
-ans = 1
-mod = 10**9 + 7
-for i in range(1, n + 1):
-    ans *= i
-    ans %= mod
-
-a_acc = list(accumulate(a))
-a_acc = [0] + a_acc
-a_sum = sum(a)
-for i in range(1, n + 1):
-    ans *= a_sum / i
-    ans %= mod
+# h = II()
+# max_num = 6 * h
+# n以下の素数のリストを取得
 
 
-# print(len(a_acc))
-# while l < n:
-#     print(l, r + 1)
-#     ans += (a_acc[r + 1] - a_acc[l]) / (r - l + 1)
-#     ans %= mod
-#     if l == r:
-#         r += 1
-#     else:
-#         l += 1
-print(ans)
+# def get_Sosuu_3(n):
+#     A = list(range(3, n, 6))
+#     p = list()
+#     print(len(A))
+#     while A and A[0] ** 2 <= n:
+#         tmp = A[0]
+#         p.append(tmp)
+#         A = [e for e in A if e % tmp != 0]
+#     return p + A
+
+
+# def get_Sosuu_5(n):
+#     A = list(range(5, n, 6))
+#     # print(A)
+#     p = list()
+#     print(len(A))
+
+#     while A and A[0] ** 2 <= n:
+#         tmp = A[0]
+#         p.append(tmp)
+#         A = [e for e in A if e % tmp != 0]
+#     return p + A
+
+
+# n以下の素数のリストを取得
+# def get_Sosuu(n):
+#     A = list(range(2, n + 1))
+#     p = list()
+#     while A[0] ** 2 <= n:
+#         tmp = A[0]
+#         p.append(tmp)
+#         A = [e for e in A if e % tmp != 0]
+#     return p + A
+
+
+# def get_primes(n):
+#     # n以下のすべての数について素数かどうかを記録する配列
+#     is_prime = [True] * (n + 1)
+#     is_prime[0] = False  # 0は素数ではない
+#     is_prime[1] = False  # 1は素数ではない
+#     primes = []
+
+#     for i in range(2, n + 1):
+#         if is_prime[i]:
+#             primes.append(i)
+#             # iの倍数を素数ではないとマーク
+#             for j in range(i * 2, n + 1, i):
+#                 is_prime[j] = False
+
+#     return primes
+
+
+# sosuu = get_primes(6 * 10**8)
+# print(len(sosuu))
+# umekomi = []
+# for i in sosuu:
+#     if i in range(3, 6 * (h - 1), 6) or i in range(5, 6 * (h - 1), 6):
+#         umekomi.append(i)
+# print(umekomi)
+# if h < 3:
+#     print(-1)
+# else:
+#     ans = 0
+#     # for i in range(3, 6 * (h - 1), 6):
+#     #     if i in sosuu:
+
+#     #         ans = max(ans, i)
+#     # for i in range(5, 6 * (h - 1), 6):
+#     #     if i in sosuu:
+#     #         ans = max(ans, i)
+
+#     print(ans)
+h = II()
+if h < 3:
+    print(-1)
+    exit()
+for i in range(6 * (h - 1) - 1, 4, -6):
+    isSosuu = True
+    for j in range(2, int(i**0.5) + 1):
+        if i % j == 0:
+            isSosuu = False
+            break
+    if isSosuu:
+        print(i)
+        break

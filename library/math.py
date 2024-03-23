@@ -9,6 +9,23 @@ def get_Sosuu(n):
     return p + A
 
 
+def get_primes(n):
+    # n以下のすべての数について素数かどうかを記録する配列
+    is_prime = [True] * (n + 1)
+    is_prime[0] = False  # 0は素数ではない
+    is_prime[1] = False  # 1は素数ではない
+    primes = []
+
+    for i in range(2, n + 1):
+        if is_prime[i]:
+            primes.append(i)
+            # iの倍数を素数ではないとマーク
+            for j in range(i * 2, n + 1, i):
+                is_prime[j] = False
+
+    return primes
+
+
 # 約数列挙
 def make_divisors(n):
     lower_divisors, upper_divisors = [], []

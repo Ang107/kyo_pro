@@ -16,9 +16,10 @@ for d in `seq ${start} ${last}`;
 do
     j=$(printf "%04d\n" "${d}")
     echo $j;
-    ##ここに実行コマンドを置く(以下はc++)　ファイルの場所は注意
-    # cargo run -r --bin vis in.txt out.txt
-    pypy3 main.py < in/${j}.txt > out/new${j}.txt
+
+    pypy3 main.py < in/${j}.txt > out/${j}.txt
+
+    # pypy3 main_old.py < in/${j}.txt > out_old/${j}.txt
 
     # echo "${j} old :${var} new :${var1}";
 done

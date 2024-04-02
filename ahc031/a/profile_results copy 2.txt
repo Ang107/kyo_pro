@@ -1,0 +1,105 @@
+total executions of each stack trace:
+Entry: 1/32 Calls: 122/330 = 36.97% [sum: 122; 122/330 = 36.97%]
+  system.nim: toFloat 122/330 = 36.97%
+  system.nim: / 185/330 = 56.06%
+  test.nim: put 314/330 = 95.15%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 2/32 Calls: 98/330 = 29.70% [sum: 220; 220/330 = 66.67%]
+  test.nim: put 314/330 = 95.15%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 3/32 Calls: 63/330 = 19.09% [sum: 283; 283/330 = 85.76%]
+  system.nim: / 185/330 = 56.06%
+  test.nim: put 314/330 = 95.15%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 4/32 Calls: 6/330 = 1.82% [sum: 289; 289/330 = 87.58%]
+  algorithm.nim: reversed 9/330 = 2.73%
+  test.nim: put 314/330 = 95.15%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 5/32 Calls: 6/330 = 1.82% [sum: 295; 295/330 = 89.39%]
+  algorithm.nim: reverse 6/330 = 1.82%
+  algorithm.nim: reverse 6/330 = 1.82%
+  test.nim: put 314/330 = 95.15%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 6/32 Calls: 3/330 = 0.91% [sum: 298; 298/330 = 90.30%]
+  system.nim: align 3/330 = 0.91%
+  assign.nim: genericAssignAux 22/330 = 6.67%
+  assign.nim: genericAssign 22/330 = 6.67%
+  assign.nim: genericSeqAssign 23/330 = 6.97%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 7/32 Calls: 2/330 = 0.61% [sum: 300; 300/330 = 90.91%]
+  comparisons.nim: <=% 8/330 = 2.42%
+  gc.nim: newObjNoInit 11/330 = 3.33%
+  mmdisp.nim: nimNewSeqOfCap 11/330 = 3.33%
+  assign.nim: genericAssignAux 22/330 = 6.67%
+  assign.nim: genericAssign 22/330 = 6.67%
+  assign.nim: genericSeqAssign 23/330 = 6.97%
+  test.nim: put 314/330 = 95.15%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 8/32 Calls: 2/330 = 0.61% [sum: 302; 302/330 = 91.52%]
+  macros.nim: // 4/330 = 1.21%
+  test.nim: put 314/330 = 95.15%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 9/32 Calls: 2/330 = 0.61% [sum: 304; 304/330 = 92.12%]
+  assign.nim: genericAssignAux 22/330 = 6.67%
+  assign.nim: genericAssign 22/330 = 6.67%
+  assign.nim: genericSeqAssign 23/330 = 6.97%
+  test.nim: put 314/330 = 95.15%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 10/32 Calls: 2/330 = 0.61% [sum: 306; 306/330 = 92.73%]
+  comparisons.nim: <=% 8/330 = 2.42%
+  gc.nim: newObjNoInit 11/330 = 3.33%
+  mmdisp.nim: nimNewSeqOfCap 11/330 = 3.33%
+  assign.nim: genericAssignAux 22/330 = 6.67%
+  assign.nim: genericAssign 22/330 = 6.67%
+  assign.nim: genericSeqAssign 23/330 = 6.97%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 11/32 Calls: 2/330 = 0.61% [sum: 308; 308/330 = 93.33%]
+  macros.nim: % 2/330 = 0.61%
+  macros.nim: // 4/330 = 1.21%
+  test.nim: put 314/330 = 95.15%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%
+Entry: 12/32 Calls: 2/330 = 0.61% [sum: 310; 310/330 = 93.94%]
+  comparisons.nim: <% 4/330 = 1.21%
+  gc.nim: newObjNoInit 11/330 = 3.33%
+  mmdisp.nim: nimNewSeqOfCap 11/330 = 3.33%
+  assign.nim: genericAssignAux 22/330 = 6.67%
+  assign.nim: genericAssign 22/330 = 6.67%
+  assign.nim: genericSeqAssign 23/330 = 6.97%
+  test.nim: put 314/330 = 95.15%
+  test.nim: get_ans 328/330 = 99.39%
+  test.nim: yamanobori 329/330 = 99.70%
+  test.nim: get_h 329/330 = 99.70%
+  test.nim: test 329/330 = 99.70%

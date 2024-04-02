@@ -1,0 +1,557 @@
+total executions of each stack trace:
+Entry: 1/93 Calls: 49/440 = 11.14% [sum: 49; 49/440 = 11.14%]
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 2/93 Calls: 38/440 = 8.64% [sum: 87; 87/440 = 19.77%]
+  system.nim: [] 38/440 = 8.64%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 3/93 Calls: 23/440 = 5.23% [sum: 110; 110/440 = 25.00%]
+  macros.nim: // 43/440 = 9.77%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 4/93 Calls: 20/440 = 4.55% [sum: 130; 130/440 = 29.55%]
+  macros.nim: % 20/440 = 4.55%
+  macros.nim: // 43/440 = 9.77%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 5/93 Calls: 19/440 = 4.32% [sum: 149; 149/440 = 33.86%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  gc.nim: cellToUsr 25/440 = 5.68%
+  gc.nim: newObj 103/440 = 23.41%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 6/93 Calls: 18/440 = 4.09% [sum: 167; 167/440 = 37.95%]
+  system.nim: toFloat 18/440 = 4.09%
+  system.nim: / 27/440 = 6.14%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 7/93 Calls: 15/440 = 3.41% [sum: 182; 182/440 = 41.36%]
+  comparisons.nim: <% 40/440 = 9.09%
+  gc.nim: newObj 103/440 = 23.41%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 8/93 Calls: 13/440 = 2.95% [sum: 195; 195/440 = 44.32%]
+  arithmetics.nim: -% 50/440 = 11.36%
+  gc.nim: usrToCell 36/440 = 8.18%
+  gc.nim: newObj 103/440 = 23.41%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 9/93 Calls: 12/440 = 2.73% [sum: 207; 207/440 = 47.05%]
+  arithmetics.nim: -% 50/440 = 11.36%
+  gc.nim: usrToCell 36/440 = 8.18%
+  gc.nim: asgnRef 20/440 = 4.55%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 10/93 Calls: 11/440 = 2.50% [sum: 218; 218/440 = 49.55%]
+  arithmetics.nim: -% 50/440 = 11.36%
+  gc.nim: decRef 31/440 = 7.05%
+  gc.nim: newObj 103/440 = 23.41%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 11/93 Calls: 10/440 = 2.27% [sum: 228; 228/440 = 51.82%]
+  system.nim: align 45/440 = 10.23%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 12/93 Calls: 10/440 = 2.27% [sum: 238; 238/440 = 54.09%]
+  comparisons.nim: <=% 26/440 = 5.91%
+  gc.nim: newObj 103/440 = 23.41%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 13/93 Calls: 10/440 = 2.27% [sum: 248; 248/440 = 56.36%]
+  comparisons.nim: <% 40/440 = 9.09%
+  gc.nim: decRef 31/440 = 7.05%
+  gc.nim: newObj 103/440 = 23.41%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 14/93 Calls: 9/440 = 2.05% [sum: 257; 257/440 = 58.41%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 15/93 Calls: 9/440 = 2.05% [sum: 266; 266/440 = 60.45%]
+  system.nim: / 27/440 = 6.14%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 16/93 Calls: 7/440 = 1.59% [sum: 273; 273/440 = 62.05%]
+  gc.nim: newObj 103/440 = 23.41%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 17/93 Calls: 7/440 = 1.59% [sum: 280; 280/440 = 63.64%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 18/93 Calls: 6/440 = 1.36% [sum: 286; 286/440 = 65.00%]
+  arithmetics.nim: *% 18/440 = 4.09%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 19/93 Calls: 6/440 = 1.36% [sum: 292; 292/440 = 66.36%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 20/93 Calls: 6/440 = 1.36% [sum: 298; 298/440 = 67.73%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 21/93 Calls: 5/440 = 1.14% [sum: 303; 303/440 = 68.86%]
+  arithmetics.nim: *% 18/440 = 4.09%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 22/93 Calls: 5/440 = 1.14% [sum: 308; 308/440 = 70.00%]
+  system.nim: align 45/440 = 10.23%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 23/93 Calls: 5/440 = 1.14% [sum: 313; 313/440 = 71.14%]
+  system.nim: align 45/440 = 10.23%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 24/93 Calls: 4/440 = 0.91% [sum: 317; 317/440 = 72.05%]
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 25/93 Calls: 4/440 = 0.91% [sum: 321; 321/440 = 72.95%]
+  system.nim: align 45/440 = 10.23%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 26/93 Calls: 4/440 = 0.91% [sum: 325; 325/440 = 73.86%]
+  arithmetics.nim: -% 50/440 = 11.36%
+  gc.nim: usrToCell 36/440 = 8.18%
+  gc.nim: unsureAsgnRef 18/440 = 4.09%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 27/93 Calls: 4/440 = 0.91% [sum: 329; 329/440 = 74.77%]
+  system.nim: align 45/440 = 10.23%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 28/93 Calls: 4/440 = 0.91% [sum: 333; 333/440 = 75.68%]
+  system.nim: align 45/440 = 10.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 29/93 Calls: 4/440 = 0.91% [sum: 337; 337/440 = 76.59%]
+  comparisons.nim: <% 40/440 = 9.09%
+  alloc.nim: interiorAllocatedPtr 8/440 = 1.82%
+  gc.nim: newObj 103/440 = 23.41%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 30/93 Calls: 3/440 = 0.68% [sum: 340; 340/440 = 77.27%]
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 31/93 Calls: 3/440 = 0.68% [sum: 343; 343/440 = 77.95%]
+  system.nim: align 45/440 = 10.23%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 32/93 Calls: 3/440 = 0.68% [sum: 346; 346/440 = 78.64%]
+  comparisons.nim: <% 40/440 = 9.09%
+  gc.nim: decRef 31/440 = 7.05%
+  gc.nim: asgnRef 20/440 = 4.55%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 33/93 Calls: 3/440 = 0.68% [sum: 349; 349/440 = 79.32%]
+  arithmetics.nim: *% 18/440 = 4.09%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 34/93 Calls: 3/440 = 0.68% [sum: 352; 352/440 = 80.00%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 35/93 Calls: 3/440 = 0.68% [sum: 355; 355/440 = 80.68%]
+  system.nim: align 45/440 = 10.23%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 36/93 Calls: 3/440 = 0.68% [sum: 358; 358/440 = 81.36%]
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 37/93 Calls: 3/440 = 0.68% [sum: 361; 361/440 = 82.05%]
+  arithmetics.nim: -% 50/440 = 11.36%
+  gc.nim: decRef 31/440 = 7.05%
+  gc.nim: asgnRef 20/440 = 4.55%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 38/93 Calls: 3/440 = 0.68% [sum: 364; 364/440 = 82.73%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  gc.nim: cellToUsr 25/440 = 5.68%
+  gc.nim: newObjNoInit 23/440 = 5.23%
+  mmdisp.nim: nimNewSeqOfCap 28/440 = 6.36%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 39/93 Calls: 3/440 = 0.68% [sum: 367; 367/440 = 83.41%]
+  comparisons.nim: <% 40/440 = 9.09%
+  gc.nim: newObjNoInit 23/440 = 5.23%
+  mmdisp.nim: nimNewSeqOfCap 28/440 = 6.36%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 40/93 Calls: 3/440 = 0.68% [sum: 370; 370/440 = 84.09%]
+  arithmetics.nim: -% 50/440 = 11.36%
+  gc.nim: usrToCell 36/440 = 8.18%
+  gc.nim: newObjNoInit 23/440 = 5.23%
+  mmdisp.nim: nimNewSeqOfCap 28/440 = 6.36%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 41/93 Calls: 3/440 = 0.68% [sum: 373; 373/440 = 84.77%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 42/93 Calls: 2/440 = 0.45% [sum: 375; 375/440 = 85.23%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 43/93 Calls: 2/440 = 0.45% [sum: 377; 377/440 = 85.68%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  alloc.nim: interiorAllocatedPtr 8/440 = 1.82%
+  gc.nim: newObj 103/440 = 23.41%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 44/93 Calls: 2/440 = 0.45% [sum: 379; 379/440 = 86.14%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  gc.nim: incRef 7/440 = 1.59%
+  gc.nim: unsureAsgnRef 18/440 = 4.09%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 45/93 Calls: 2/440 = 0.45% [sum: 381; 381/440 = 86.59%]
+  comparisons.nim: <=% 26/440 = 5.91%
+  alloc.nim: interiorAllocatedPtr 8/440 = 1.82%
+  gc.nim: newObj 103/440 = 23.41%
+  gc.nim: newSeq 106/440 = 24.09%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 46/93 Calls: 2/440 = 0.45% [sum: 383; 383/440 = 87.05%]
+  system.nim: align 45/440 = 10.23%
+  mmdisp.nim: nimNewSeqOfCap 28/440 = 6.36%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 47/93 Calls: 2/440 = 0.45% [sum: 385; 385/440 = 87.50%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  gc.nim: incRef 7/440 = 1.59%
+  gc.nim: asgnRef 20/440 = 4.55%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 48/93 Calls: 2/440 = 0.45% [sum: 387; 387/440 = 87.95%]
+  arithmetics.nim: -% 50/440 = 11.36%
+  gc.nim: usrToCell 36/440 = 8.18%
+  gc.nim: unsureAsgnRef 18/440 = 4.09%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 49/93 Calls: 2/440 = 0.45% [sum: 389; 389/440 = 88.41%]
+  comparisons.nim: <% 40/440 = 9.09%
+  gc.nim: decRef 31/440 = 7.05%
+  gc.nim: newObjNoInit 23/440 = 5.23%
+  mmdisp.nim: nimNewSeqOfCap 28/440 = 6.36%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 50/93 Calls: 2/440 = 0.45% [sum: 391; 391/440 = 88.86%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 51/93 Calls: 2/440 = 0.45% [sum: 393; 393/440 = 89.32%]
+  arithmetics.nim: +% 76/440 = 17.27%
+  gc.nim: incRef 7/440 = 1.59%
+  gc.nim: unsureAsgnRef 18/440 = 4.09%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 52/93 Calls: 2/440 = 0.45% [sum: 395; 395/440 = 89.77%]
+  system.nim: align 45/440 = 10.23%
+  mmdisp.nim: nimNewSeqOfCap 28/440 = 6.36%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 53/93 Calls: 2/440 = 0.45% [sum: 397; 397/440 = 90.23%]
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 54/93 Calls: 2/440 = 0.45% [sum: 399; 399/440 = 90.68%]
+  arithmetics.nim: *% 18/440 = 4.09%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 55/93 Calls: 2/440 = 0.45% [sum: 401; 401/440 = 91.14%]
+  comparisons.nim: <=% 26/440 = 5.91%
+  gc.nim: newObjNoInit 23/440 = 5.23%
+  mmdisp.nim: nimNewSeqOfCap 28/440 = 6.36%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%
+Entry: 56/93 Calls: 2/440 = 0.45% [sum: 403; 403/440 = 91.59%]
+  comparisons.nim: <=% 26/440 = 5.91%
+  gc.nim: newObjNoInit 23/440 = 5.23%
+  mmdisp.nim: nimNewSeqOfCap 28/440 = 6.36%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssignAux 154/440 = 35.00%
+  assign.nim: genericAssign 155/440 = 35.23%
+  assign.nim: genericSeqAssign 155/440 = 35.23%
+  main.nim: put 331/440 = 75.23%
+  main.nim: get_line 417/440 = 94.77%
+  main.nim: yamanobori 439/440 = 99.77%
+  main.nim: get_h 439/440 = 99.77%
+  main.nim: main 439/440 = 99.77%

@@ -1,0 +1,9 @@
+#!/usr/bin/zsh
+
+output=$(nim cpp -o:/tmp/nim_main_test -d:DO_TEST main.nim)
+if [ $? -ne 0 ]; then
+  echo "compile error"
+  exit 1
+fi
+echo "compile succeeded"
+/tmp/nim_main_test

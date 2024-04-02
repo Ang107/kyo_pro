@@ -1,0 +1,865 @@
+total executions of each stack trace:
+Entry: 1/227 Calls: 59/624 = 9.46% [sum: 59; 59/624 = 9.46%]
+  main.nim: put_light_ver 64/624 = 10.26%
+  main.nim: get_cost 65/624 = 10.42%
+  main.nim: yamanobori 66/624 = 10.58%
+  main.nim: get_h 66/624 = 10.58%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 2/227 Calls: 32/624 = 5.13% [sum: 91; 91/624 = 14.58%]
+  system.nim: .. 44/624 = 7.05%
+  random.nim: sample 83/624 = 13.30%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 3/227 Calls: 19/624 = 3.04% [sum: 110; 110/624 = 17.63%]
+  random.nim: rotl 34/624 = 5.45%
+  random.nim: next 49/624 = 7.85%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 4/227 Calls: 12/624 = 1.92% [sum: 122; 122/624 = 19.55%]
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 5/227 Calls: 11/624 = 1.76% [sum: 133; 133/624 = 21.31%]
+  random.nim: sample 83/624 = 13.30%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 6/227 Calls: 11/624 = 1.76% [sum: 144; 144/624 = 23.08%]
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 7/227 Calls: 11/624 = 1.76% [sum: 155; 155/624 = 24.84%]
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: sample 83/624 = 13.30%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 8/227 Calls: 10/624 = 1.60% [sum: 165; 165/624 = 26.44%]
+  random.nim: next 49/624 = 7.85%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: sample 83/624 = 13.30%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 9/227 Calls: 10/624 = 1.60% [sum: 175; 175/624 = 28.04%]
+  system.nim: contains 80/624 = 12.82%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 10/227 Calls: 8/624 = 1.28% [sum: 183; 183/624 = 29.33%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 11/227 Calls: 8/624 = 1.28% [sum: 191; 191/624 = 30.61%]
+  random.nim: rand 108/624 = 17.31%
+  random.nim: sample 83/624 = 13.30%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 12/227 Calls: 7/624 = 1.12% [sum: 198; 198/624 = 31.73%]
+  comparisons.nim: <=% 55/624 = 8.81%
+  gc.nim: newObj 86/624 = 13.78%
+  digitsutils.nim: addChars 12/624 = 1.92%
+  digitsutils.nim: addIntImpl 13/624 = 2.08%
+  digitsutils.nim: addInt 13/624 = 2.08%
+  digitsutils.nim: addInt 13/624 = 2.08%
+  digitsutils.nim: addInt 13/624 = 2.08%
+  dollars.nim: $ 13/624 = 2.08%
+  strutils.nim: join 20/624 = 3.21%
+  main.nim: output 20/624 = 3.21%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 13/227 Calls: 7/624 = 1.12% [sum: 205; 205/624 = 32.85%]
+  comparisons.nim: <=% 55/624 = 8.81%
+  gc.nim: newObjNoInit 32/624 = 5.13%
+  mmdisp.nim: nimNewSeqOfCap 30/624 = 4.81%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 14/227 Calls: 7/624 = 1.12% [sum: 212; 212/624 = 33.97%]
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 15/227 Calls: 6/624 = 0.96% [sum: 218; 218/624 = 34.94%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 16/227 Calls: 6/624 = 0.96% [sum: 224; 224/624 = 35.90%]
+  random.nim: rotl 34/624 = 5.45%
+  random.nim: next 49/624 = 7.85%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: sample 83/624 = 13.30%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 17/227 Calls: 6/624 = 0.96% [sum: 230; 230/624 = 36.86%]
+  system.nim: find 6/624 = 0.96%
+  system.nim: contains 80/624 = 12.82%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 18/227 Calls: 6/624 = 0.96% [sum: 236; 236/624 = 37.82%]
+  main.nim: is_OK_gr2 10/624 = 1.60%
+  main.nim: greedy2 10/624 = 1.60%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 19/227 Calls: 6/624 = 0.96% [sum: 242; 242/624 = 38.78%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 20/227 Calls: 6/624 = 0.96% [sum: 248; 248/624 = 39.74%]
+  algorithm.nim: upperBound 31/624 = 4.97%
+  algorithm.nim: upperBound 31/624 = 4.97%
+  main.nim: gt 29/624 = 4.65%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 21/227 Calls: 6/624 = 0.96% [sum: 254; 254/624 = 40.71%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 22/227 Calls: 6/624 = 0.96% [sum: 260; 260/624 = 41.67%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 23/227 Calls: 6/624 = 0.96% [sum: 266; 266/624 = 42.63%]
+  arithmetics.nim: +% 27/624 = 4.33%
+  gc.nim: cellToUsr 13/624 = 2.08%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 24/227 Calls: 5/624 = 0.80% [sum: 271; 271/624 = 43.43%]
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: sample 83/624 = 13.30%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 25/227 Calls: 5/624 = 0.80% [sum: 276; 276/624 = 44.23%]
+  macros.nim: % 7/624 = 1.12%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 26/227 Calls: 5/624 = 0.80% [sum: 281; 281/624 = 45.03%]
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 27/227 Calls: 5/624 = 0.80% [sum: 286; 286/624 = 45.83%]
+  system.nim: cmp 24/624 = 3.85%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 28/227 Calls: 5/624 = 0.80% [sum: 291; 291/624 = 46.63%]
+  system.nim: [] 12/624 = 1.92%
+  main.nim: gt 29/624 = 4.65%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 29/227 Calls: 5/624 = 0.80% [sum: 296; 296/624 = 47.44%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: ge 13/624 = 2.08%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 30/227 Calls: 5/624 = 0.80% [sum: 301; 301/624 = 48.24%]
+  comparisons.nim: <% 30/624 = 4.81%
+  gc.nim: decRef 21/624 = 3.37%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 31/227 Calls: 5/624 = 0.80% [sum: 306; 306/624 = 49.04%]
+  comparisons.nim: <=% 55/624 = 8.81%
+  gc.nim: newObjNoInit 32/624 = 5.13%
+  strutils.nim: join 20/624 = 3.21%
+  main.nim: output 20/624 = 3.21%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 32/227 Calls: 5/624 = 0.80% [sum: 311; 311/624 = 49.84%]
+  comparisons.nim: <=% 55/624 = 8.81%
+  gc.nim: newObjNoInit 32/624 = 5.13%
+  mmdisp.nim: nimNewSeqOfCap 30/624 = 4.81%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 33/227 Calls: 5/624 = 0.80% [sum: 316; 316/624 = 50.64%]
+  system.nim: .. 44/624 = 7.05%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 34/227 Calls: 5/624 = 0.80% [sum: 321; 321/624 = 51.44%]
+  comparisons.nim: <=% 55/624 = 8.81%
+  gc.nim: newObjNoInit 32/624 = 5.13%
+  mmdisp.nim: nimNewSeqOfCap 30/624 = 4.81%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 35/227 Calls: 4/624 = 0.64% [sum: 325; 325/624 = 52.08%]
+  arithmetics.nim: -% 25/624 = 4.01%
+  gc.nim: usrToCell 14/624 = 2.24%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 36/227 Calls: 4/624 = 0.64% [sum: 329; 329/624 = 52.72%]
+  system.nim: cmp 24/624 = 3.85%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_3 41/624 = 6.57%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 37/227 Calls: 4/624 = 0.64% [sum: 333; 333/624 = 53.37%]
+  random.nim: next 49/624 = 7.85%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 38/227 Calls: 4/624 = 0.64% [sum: 337; 337/624 = 54.01%]
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 39/227 Calls: 4/624 = 0.64% [sum: 341; 341/624 = 54.65%]
+  algorithm.nim: upperBound 31/624 = 4.97%
+  algorithm.nim: upperBound 31/624 = 4.97%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 40/227 Calls: 4/624 = 0.64% [sum: 345; 345/624 = 55.29%]
+  algorithm.nim: upperBound 31/624 = 4.97%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 41/227 Calls: 4/624 = 0.64% [sum: 349; 349/624 = 55.93%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_3 41/624 = 6.57%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 42/227 Calls: 4/624 = 0.64% [sum: 353; 353/624 = 56.57%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 43/227 Calls: 4/624 = 0.64% [sum: 357; 357/624 = 57.21%]
+  system.nim: cmp 24/624 = 3.85%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 44/227 Calls: 4/624 = 0.64% [sum: 361; 361/624 = 57.85%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: ge 13/624 = 2.08%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 45/227 Calls: 4/624 = 0.64% [sum: 365; 365/624 = 58.49%]
+  random.nim: rand 108/624 = 17.31%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 46/227 Calls: 4/624 = 0.64% [sum: 369; 369/624 = 59.13%]
+  comparisons.nim: <% 30/624 = 4.81%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 47/227 Calls: 3/624 = 0.48% [sum: 372; 372/624 = 59.62%]
+  comparisons.nim: <=% 55/624 = 8.81%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 48/227 Calls: 3/624 = 0.48% [sum: 375; 375/624 = 60.10%]
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 49/227 Calls: 3/624 = 0.48% [sum: 378; 378/624 = 60.58%]
+  algorithm.nim: upperBound 31/624 = 4.97%
+  main.nim: gt 29/624 = 4.65%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 50/227 Calls: 3/624 = 0.48% [sum: 381; 381/624 = 61.06%]
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_3 41/624 = 6.57%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 51/227 Calls: 3/624 = 0.48% [sum: 384; 384/624 = 61.54%]
+  comparisons.nim: <% 30/624 = 4.81%
+  alloc.nim: interiorAllocatedPtr 13/624 = 2.08%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 52/227 Calls: 3/624 = 0.48% [sum: 387; 387/624 = 62.02%]
+  algorithm.nim: upperBound 31/624 = 4.97%
+  main.nim: gt 29/624 = 4.65%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 53/227 Calls: 3/624 = 0.48% [sum: 390; 390/624 = 62.50%]
+  comparisons.nim: <% 30/624 = 4.81%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_3 41/624 = 6.57%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 54/227 Calls: 3/624 = 0.48% [sum: 393; 393/624 = 62.98%]
+  arithmetics.nim: -% 25/624 = 4.01%
+  gc.nim: decRef 21/624 = 3.37%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 55/227 Calls: 3/624 = 0.48% [sum: 396; 396/624 = 63.46%]
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 56/227 Calls: 3/624 = 0.48% [sum: 399; 399/624 = 63.94%]
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 57/227 Calls: 3/624 = 0.48% [sum: 402; 402/624 = 64.42%]
+  random.nim: rotl 34/624 = 5.45%
+  random.nim: next 49/624 = 7.85%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: mode_7 9/624 = 1.44%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 58/227 Calls: 3/624 = 0.48% [sum: 405; 405/624 = 64.90%]
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 59/227 Calls: 3/624 = 0.48% [sum: 408; 408/624 = 65.38%]
+  system.nim: align 22/624 = 3.53%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 60/227 Calls: 3/624 = 0.48% [sum: 411; 411/624 = 65.87%]
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 61/227 Calls: 3/624 = 0.48% [sum: 414; 414/624 = 66.35%]
+  system.nim: .. 44/624 = 7.05%
+  main.nim: mode_3 41/624 = 6.57%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 62/227 Calls: 3/624 = 0.48% [sum: 417; 417/624 = 66.83%]
+  comparisons.nim: <=% 55/624 = 8.81%
+  gc.nim: newObjNoInit 32/624 = 5.13%
+  mmdisp.nim: nimNewSeqOfCap 30/624 = 4.81%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 63/227 Calls: 2/624 = 0.32% [sum: 419; 419/624 = 67.15%]
+  system.nim: .. 44/624 = 7.05%
+  main.nim: mode_7 9/624 = 1.44%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 64/227 Calls: 2/624 = 0.32% [sum: 421; 421/624 = 67.47%]
+  algorithm.nim: upperBound 31/624 = 4.97%
+  main.nim: gt 29/624 = 4.65%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 65/227 Calls: 2/624 = 0.32% [sum: 423; 423/624 = 67.79%]
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 66/227 Calls: 2/624 = 0.32% [sum: 425; 425/624 = 68.11%]
+  system.nim: cmp 24/624 = 3.85%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: ge 13/624 = 2.08%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 67/227 Calls: 2/624 = 0.32% [sum: 427; 427/624 = 68.43%]
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_3 41/624 = 6.57%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 68/227 Calls: 2/624 = 0.32% [sum: 429; 429/624 = 68.75%]
+  system.nim: cmp 24/624 = 3.85%
+  algorithm.nim: upperBound 31/624 = 4.97%
+  algorithm.nim: upperBound 31/624 = 4.97%
+  main.nim: gt 29/624 = 4.65%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 69/227 Calls: 2/624 = 0.32% [sum: 431; 431/624 = 69.07%]
+  strutils.nim: join 20/624 = 3.21%
+  main.nim: output 20/624 = 3.21%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 70/227 Calls: 2/624 = 0.32% [sum: 433; 433/624 = 69.39%]
+  comparisons.nim: <% 30/624 = 4.81%
+  gc.nim: decRef 21/624 = 3.37%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 71/227 Calls: 2/624 = 0.32% [sum: 435; 435/624 = 69.71%]
+  arithmetics.nim: +% 27/624 = 4.33%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 72/227 Calls: 2/624 = 0.32% [sum: 437; 437/624 = 70.03%]
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 73/227 Calls: 2/624 = 0.32% [sum: 439; 439/624 = 70.35%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 74/227 Calls: 2/624 = 0.32% [sum: 441; 441/624 = 70.67%]
+  macros.nim: // 4/624 = 0.64%
+  main.nim: is_OK_gr2 10/624 = 1.60%
+  main.nim: greedy2 10/624 = 1.60%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 75/227 Calls: 2/624 = 0.32% [sum: 443; 443/624 = 70.99%]
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 76/227 Calls: 2/624 = 0.32% [sum: 445; 445/624 = 71.31%]
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 77/227 Calls: 2/624 = 0.32% [sum: 447; 447/624 = 71.63%]
+  system.nim: cmp 24/624 = 3.85%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 78/227 Calls: 2/624 = 0.32% [sum: 449; 449/624 = 71.96%]
+  system.nim: align 22/624 = 3.53%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 79/227 Calls: 2/624 = 0.32% [sum: 451; 451/624 = 72.28%]
+  arithmetics.nim: +% 27/624 = 4.33%
+  gc.nim: cellToUsr 13/624 = 2.08%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 80/227 Calls: 2/624 = 0.32% [sum: 453; 453/624 = 72.60%]
+  random.nim: rotl 34/624 = 5.45%
+  random.nim: next 49/624 = 7.85%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 81/227 Calls: 2/624 = 0.32% [sum: 455; 455/624 = 72.92%]
+  comparisons.nim: <=% 55/624 = 8.81%
+  gc.nim: newObjNoInit 32/624 = 5.13%
+  mmdisp.nim: nimNewSeqOfCap 30/624 = 4.81%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 82/227 Calls: 2/624 = 0.32% [sum: 457; 457/624 = 73.24%]
+  macros.nim: % 7/624 = 1.12%
+  macros.nim: // 4/624 = 0.64%
+  main.nim: is_OK_gr2 10/624 = 1.60%
+  main.nim: greedy2 10/624 = 1.60%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 83/227 Calls: 2/624 = 0.32% [sum: 459; 459/624 = 73.56%]
+  comparisons.nim: <% 30/624 = 4.81%
+  gc.nim: decRef 21/624 = 3.37%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 84/227 Calls: 2/624 = 0.32% [sum: 461; 461/624 = 73.88%]
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 85/227 Calls: 2/624 = 0.32% [sum: 463; 463/624 = 74.20%]
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  algorithm.nim: lowerBound 77/624 = 12.34%
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_7 9/624 = 1.44%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 86/227 Calls: 2/624 = 0.32% [sum: 465; 465/624 = 74.52%]
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 87/227 Calls: 2/624 = 0.32% [sum: 467; 467/624 = 74.84%]
+  algorithm.nim: upperBound 31/624 = 4.97%
+  main.nim: gt 29/624 = 4.65%
+  main.nim: mode_3 41/624 = 6.57%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 88/227 Calls: 2/624 = 0.32% [sum: 469; 469/624 = 75.16%]
+  arithmetics.nim: -% 25/624 = 4.01%
+  gc.nim: usrToCell 14/624 = 2.24%
+  gc.nim: unsureAsgnRef 16/624 = 2.56%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 89/227 Calls: 2/624 = 0.32% [sum: 471; 471/624 = 75.48%]
+  comparisons.nim: <% 30/624 = 4.81%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  main.nim: all_ok 6/624 = 0.96%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 90/227 Calls: 2/624 = 0.32% [sum: 473; 473/624 = 75.80%]
+  comparisons.nim: <=% 55/624 = 8.81%
+  gc_common.nim: isOnStack 5/624 = 0.80%
+  gc.nim: unsureAsgnRef 16/624 = 2.56%
+  digitsutils.nim: addChars 12/624 = 1.92%
+  digitsutils.nim: addIntImpl 13/624 = 2.08%
+  digitsutils.nim: addInt 13/624 = 2.08%
+  digitsutils.nim: addInt 13/624 = 2.08%
+  digitsutils.nim: addInt 13/624 = 2.08%
+  dollars.nim: $ 13/624 = 2.08%
+  strutils.nim: join 20/624 = 3.21%
+  main.nim: output 20/624 = 3.21%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 91/227 Calls: 2/624 = 0.32% [sum: 475; 475/624 = 76.12%]
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 92/227 Calls: 2/624 = 0.32% [sum: 477; 477/624 = 76.44%]
+  comparisons.nim: <=% 55/624 = 8.81%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  system.nim: newSeq 83/624 = 13.30%
+  main.nim: put_light_ver 64/624 = 10.26%
+  main.nim: get_cost 65/624 = 10.42%
+  main.nim: yamanobori 66/624 = 10.58%
+  main.nim: get_h 66/624 = 10.58%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 93/227 Calls: 2/624 = 0.32% [sum: 479; 479/624 = 76.76%]
+  system.nim: [] 12/624 = 1.92%
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 94/227 Calls: 2/624 = 0.32% [sum: 481; 481/624 = 77.08%]
+  system.nim: align 22/624 = 3.53%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 95/227 Calls: 2/624 = 0.32% [sum: 483; 483/624 = 77.40%]
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_3 41/624 = 6.57%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 96/227 Calls: 2/624 = 0.32% [sum: 485; 485/624 = 77.72%]
+  arithmetics.nim: -% 25/624 = 4.01%
+  gc.nim: usrToCell 14/624 = 2.24%
+  gc.nim: unsureAsgnRef 16/624 = 2.56%
+  assign.nim: genericAssignAux 79/624 = 12.66%
+  assign.nim: genericAssign 82/624 = 13.14%
+  assign.nim: genericSeqAssign 85/624 = 13.62%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: le 49/624 = 7.85%
+  main.nim: mode_0 156/624 = 25.00%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 97/227 Calls: 2/624 = 0.32% [sum: 487; 487/624 = 78.04%]
+  arithmetics.nim: -% 25/624 = 4.01%
+  gc.nim: decRef 21/624 = 3.37%
+  gc.nim: newObj 86/624 = 13.78%
+  gc.nim: newSeq 83/624 = 13.30%
+  algorithm.nim: reversed 147/624 = 23.56%
+  main.nim: lt 133/624 = 21.31%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 98/227 Calls: 2/624 = 0.32% [sum: 489; 489/624 = 78.37%]
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: mode_2 57/624 = 9.13%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 99/227 Calls: 2/624 = 0.32% [sum: 491; 491/624 = 78.69%]
+  main.nim: position 64/624 = 10.26%
+  main.nim: remove 8/624 = 1.28%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 100/227 Calls: 2/624 = 0.32% [sum: 493; 493/624 = 79.01%]
+  main.nim: position 64/624 = 10.26%
+  main.nim: contains 80/624 = 12.82%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%
+Entry: 101/227 Calls: 2/624 = 0.32% [sum: 495; 495/624 = 79.33%]
+  random.nim: rotl 34/624 = 5.45%
+  random.nim: next 49/624 = 7.85%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  random.nim: rand 108/624 = 17.31%
+  main.nim: mode_4 102/624 = 16.35%
+  main.nim: yamanobori2 524/624 = 83.97%
+  main.nim: main 623/624 = 99.84%
+  main.nim: main 623/624 = 99.84%

@@ -1,4 +1,3 @@
-# 入力
 import time
 
 start = time.perf_counter()
@@ -6,6 +5,7 @@ import random
 from collections import defaultdict
 
 
+# hの長さの分散小さくしたやつ
 def Input():
     W, D, N = map(int, input().split())
     A = []
@@ -143,8 +143,13 @@ def yamanobori(A, h, time_limit):
     ans, cost, over = get_ans(A, h, hight)
     if len(h) == 1:
         return ans, cost, over, h, hight
-    over = []
+
+    cost = 10**18
+    bunsan = 10**18
+    avr = 1000 / len(h)
     tmp_time = time.perf_counter()
+
+    not_over_got = False
     while True:
         give_idx, take_idx = random.choice(range(lh)), random.choice(range(lh))
         if give_idx == take_idx:
@@ -160,20 +165,35 @@ def yamanobori(A, h, time_limit):
             hight_n[i + 1] = hight_n[i] + j
 
         ans_n, cost_n, over_n = get_ans(A, h_n, hight_n)
-        # if len(over_n) == 0:
-        #     return ans_n, cost_n, over_n, h_n, hight_n
+
+        # print(over_n, len(h))
+        if len(over_n) == 0:
+            not_over_got = True
+
         if cost_n < cost:
-            # print(len(over_n), cost_n, cnt, time.perf_counter() - tmp_time)
-            h = h_n
-            hight = hight_n
-            cost = cost_n
-            ans = ans_n
-            over = over_n
+            if not_over_got:
+                bunsan_n = sum([(i - avr) ** 2 for i in h_n])
+                if bunsan_n < bunsan:
+                    # print(cost_n)
+                    bunsan = bunsan_n
+                    h = h_n
+                    hight = hight_n
+                    cost = cost_n
+                    ans = ans_n
+                    over = over_n
+            else:
+                # print(cost_n)
+                h = h_n
+                hight = hight_n
+                cost = cost_n
+                ans = ans_n
+                over = over_n
 
         cnt += 1
 
         if cnt % 100 == 0:
             if time.perf_counter() - tmp_time > time_limit:
+                print(cnt)
                 return ans, cost, over, h, hight
 
 
@@ -189,51 +209,14 @@ def solve(W, D, N, A):
     h = [1000]
     ans_hoken, _, over_hoken, _, _ = yamanobori(A, h, 0)
 
-    if True:
-        l = int(N**0.5) - 1
-        r = -(-N // 2) + 1
-        while r - l > 1:
-            # 初期解生成
-            h_num_n = (l + r) // 2
-            w_num = -(-N / h_num_n)
-            avr = [0] * h_num_n
-            for tmp in A:
-                for j in range(N):
-                    avr[int(j // w_num)] += tmp[j]
-
-            h = []
-            avr = [int(i**0.3) for i in avr]
-            avr_sum = sum(avr)
-            for j in avr[:-1]:
-                h.append(1000 * j // avr_sum)
-            h.append(1000 - sum(h))
-
-            # print(h)
-            ans_n, cost_n, over_n, h_n, hight_n = yamanobori(A, h, 0.4)
-            # print(l, r, len(h), over_n, cost_n, over_n, h_n, hight_n)
-            if len(over_n) > 0:
-                r = h_num_n
-            else:
-                l = h_num_n
-            if cost > cost_n:
-                ans = ans_n
-                cost = cost_n
-                over = over_n
-                rs_h = h_n
-                rs_hight = hight_n
-
-        over_hoken = set(over_hoken)
-        over = set(over)
-        for i in over:
-            if i not in over_hoken:
-                ans[i] = ans_hoken[i]
+    l = int(N**0.5) - 1
+    if max_amari < 20:
+        r = N
     else:
-        h_num = int((N**0.5) * 1.75)
-        h_num = int(-(-(N**0.5) // 1))
-        cost = 10**18
-
+        r = -(-N // 2) + 1
+    while r - l > 1:
         # 初期解生成
-        h_num_n = max(2, h_num)
+        h_num_n = (l + r) // 2
         w_num = -(-N / h_num_n)
         avr = [0] * h_num_n
         for tmp in A:
@@ -241,33 +224,36 @@ def solve(W, D, N, A):
                 avr[int(j // w_num)] += tmp[j]
 
         h = []
-        avr = [int(i**0.3) for i in avr]
+        avr = [int(i**0.25) for i in avr]
         avr_sum = sum(avr)
         for j in avr[:-1]:
             h.append(1000 * j // avr_sum)
         h.append(1000 - sum(h))
 
-        ans_n, cost_n, over_n, h_n, hight_n = yamanobori(A, h, 0.7)
+        # print(h)
+        ans_n, cost_n, over_n, h_n, hight_n = yamanobori(A, h, 0.4)
+        # print(l, r, len(h), over_n, cost_n, over_n, h_n, hight_n)
+        if len(over_n) > 0:
+            r = h_num_n
+        else:
+            l = h_num_n
+        if cost > cost_n:
+            ans = ans_n
+            cost = cost_n
+            over = over_n
+            rs_h = h_n
+            rs_hight = hight_n
 
-        # if cost > cost_n:
-        ans = ans_n
-        cost = cost_n
-        over = over_n
-        rs_h = h_n
-        rs_hight = hight_n
+    over_hoken = set(over_hoken)
+    over = set(over)
+    for i in over:
+        if i not in over_hoken:
+            ans[i] = ans_hoken[i]
 
-        over_hoken = set(over_hoken)
-        over = set(over)
-        for i in over:
-            if i not in over_hoken:
-                ans[i] = ans_hoken[i]
-
-    # print(len(h), over)
-    # exit()
     return ans, ans_hoken, rs_h, rs_hight, over, over_hoken
 
 
-def change_ans_v2(A, h, hight, ans, over, Mode, test):
+def change_ans_v2(A, h, hight, ans, over, Mode, test, A_tenti):
     # Output(ans)
     # print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
     if len(over) > 0:
@@ -277,9 +263,9 @@ def change_ans_v2(A, h, hight, ans, over, Mode, test):
     e = -1
 
     # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    A_tenti = list(zip(*A))
     ST = [SegTree(op, e, A_tenti[i]) for i in range(len(A_tenti))]
     more_good = [0, 0]
+    Mode = [-1, -1]
     for mode in Mode:
 
         if mode == 1:
@@ -333,10 +319,13 @@ def change_ans_v2(A, h, hight, ans, over, Mode, test):
                         if mode == 1:
                             for i in range(Idx_l, Idx_r - 1):
                                 OK, rslt = is_OK_v2(prv_same, A[i], h, hight)
+                                print(OK)
                                 ans[i] = rslt
                         else:
                             for i in range(Idx_l + 1, Idx_r):
                                 OK, rslt = is_OK_v2(prv_same, A[i], h, hight)
+                                print(OK)
+
                                 ans[i] = rslt
 
                     break
@@ -354,10 +343,14 @@ def change_ans_v2(A, h, hight, ans, over, Mode, test):
                     if mode == 1:
                         for i in range(Idx_l, Idx_r - 1):
                             OK, rslt = is_OK_v2(prv_same, A[i], h, hight)
+                            print(OK)
+
                             ans[i] = rslt
                     else:
                         for i in range(Idx_l + 1, Idx_r):
                             OK, rslt = is_OK_v2(prv_same, A[i], h, hight)
+                            print(OK)
+
                             ans[i] = rslt
 
                 prv_same = []
@@ -415,19 +408,18 @@ def change_ans(A, ans, ans_hoken, h, hight, over, over_hoken, Mode, test):
     # 二つを合わせて一個とマッチングとかも可能ではある
     # とりあえず一個拡張を試みる
     # prv = None
-    cnt = 0
-    diff_num = 1
+
     more_good = [0, 0]
     for mode in Mode:
         for i in range(mode, len(ans) - 1, 2):
-            if i in over or i + diff_num in over:
+            if i in over or i + 1 in over:
                 continue
 
             rslt_a = None
             rslt_b = None
             a = A[i]
+            b = A[i + 1]
 
-            b = A[i + diff_num]
             a_idx = SortedMultiset(range(len(a)))
             b_idx = SortedMultiset(range(len(b)))
             a_SMS = SortedMultiset(a)
@@ -435,12 +427,10 @@ def change_ans(A, ans, ans_hoken, h, hight, over, over_hoken, Mode, test):
 
             same_a = []
             same_b = []
+
             while True:
-                # print(a_SMS.a)
-                # print(b_SMS.a)
                 diff = []
                 for i_idx, j in zip(a_idx, a_SMS):
-
                     l = b_SMS.le(j)
                     r = b_SMS.ge(j)
                     if l == None:
@@ -479,14 +469,14 @@ def change_ans(A, ans, ans_hoken, h, hight, over, over_hoken, Mode, test):
                     more_good[mode] += len(same_a) - 1
                     if rslt_a and rslt_b and not test:
                         ans[i] = rslt_a
-                        ans[i + diff_num] = rslt_b
+                        ans[i + 1] = rslt_b
                     break
 
                 if len(a_SMS) == 0:
                     more_good[mode] += len(same_a) - 1
                     if rslt_a and rslt_b and not test:
                         ans[i] = rslt_a
-                        ans[i + diff_num] = rslt_b
+                        ans[i + 1] = rslt_b
                     break
 
     return more_good
@@ -543,358 +533,710 @@ def is_OK(same, other, Idx, h, hight):
     return not isover, rslt
 
 
+from collections import deque
+
+
 # 答えから縦の分かれ目と答えの並びを取得
 def get_info_from_ans(ans, hight):
-    rslt = [[[0] for _ in range(len(hight) - 1)] for _ in range(len(ans))]
+    # 空の行にも面積があるとして追加
+    # そのうちの上位N個を使用するようにする
+    # 偶数行目は左右反転する
+    rslt = [[SortedSet([0]) for _ in range(len(hight) - 1)] for _ in range(len(ans))]
     S = [SortedMultiset() for _ in range(len(ans))]
-    ans_haiti = [[[] for _ in range(len(hight) - 1)] for _ in range(len(ans))]
-    hight_l = [-1] * 1001
+    hight_to_idx = [-1] * 1001
     for i, j in enumerate(hight):
-        hight_l[j] = i
+        hight_to_idx[j] = i
 
     for idx, i in enumerate(ans):
-        ans_n = [(j, k) for j, k in enumerate(i)]
-        ans_n.sort(key=lambda x: x[1][3])
-        ans_n.sort(key=lambda x: x[1][0])
-
-        for j, k in ans_n:
+        for k in i:
             s = (k[2] - k[0]) * (k[3] - k[1])
-            S[idx].add(s)
+            # マイナスで保管
+            S[idx].add(-s)
+            rslt[idx][hight_to_idx[k[0]]].add(k[3])
 
-            rslt[idx][hight_l[k[0]]].append(k[3])
-            ans_haiti[idx][hight_l[k[0]]].append(j)
+    for i in range(len(ans)):
+        for j in range(len(hight) - 1):
+            if len(rslt[i][j]) == 1:
+                rslt[i][j].add(1000)
+                s = 1000 * (hight[j + 1] - hight[j])
+                S[i].add(-s)
 
-    return rslt, ans_haiti, S
+    return rslt, S
 
 
-def yamanobori2(ans, tate_haiti, ans_haiti, over, h, S, A):
+def yamanobori2(ans, line, over, h, S, A):
     cnt = 0
     len_ans = len(ans)
     len_h = len(h)
     more_good_0 = 0
     more_good_1 = 0
+
+    A_minus = [sorted(map(lambda x: -x, i)) for i in A]
+
     # print(have_time)
     # print(over)
     # 現在は片方を片方に合わせる形だがそれでは変化が急なので、中間位置に移動させるという手もある
     # tmp_time = time.perf_counter()
-    while False:
-        # #中間に寄せるモード
-        cnt += 1
-        if cnt % 100 == 0:
-            # print(time.perf_counter() - tmp_time > have_time)
-            if time.perf_counter() - tmp_time > 0.5:
-                break
-        # ランダムに一つの縦線を選択
-        idx1 = random.choice(range(1, len_ans - 1))
-        idx2 = random.choice(range(len_h))
-        rev = random.choice([1, -1])
 
-    # return tate_haiti
-
-    # have_time = (2.75 - (time.perf_counter() - start)) / len(ans) / 2
-    # for rev in [1, -1]:
-    #     if rev == 1:
-    #         rng = range(1, len(ans))
-    #     elif rev == -1:
-    #         rng = range(len(ans) - 2, -1, -1)
-
-    #     for i in rng:
-    #         tmp_time = time.perf_counter(
     tmp_time = time.perf_counter() - start
+    Timeover = 2.87
+    start_temp = 200
+    end_temp = 0
+    temp = start_temp + (end_temp - start_temp) * tmp_time / Timeover
+    e = 2.71828
+
+    # デバッグ用
+    # score = None
+    # mode_score = [0, 0, 0, 0, 0, 0]
+
+    mode = 0
     while True:
+        # デバッグ用^^^^^^^^^^^^^^^^^^^^^^^^^
+        # score_n = get_score(tate_haiti, h)
+        # if score == None:
+        #     score = score_n
+        # elif score > score_n:
+        #     mode_score[mode] += score_n - score
+        #     print("+++", mode, score_n - score)
+        #     score = score_n
+        #     print(score)
+        # elif score < score_n:
+        #     mode_score[mode] += score_n - score
+        #     print("---", mode, score_n - score)
+        #     score = score_n
+        #     print(score)
+        # デバッグ用^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
         cnt += 1
         if cnt % 100 == 0:
             tmp_time = time.perf_counter() - start
-            if tmp_time > 2.87:
+            temp = start_temp + (end_temp - start_temp) * tmp_time / Timeover
+            if tmp_time > Timeover:
                 break
+
         # ランダムに一つの縦線を選択
 
-        # idx1 = i
         idx1 = random.choice(range(len_ans))
         idx2 = random.choice(range(len_h))
         rev = random.choice([1, -1])
-        if idx1 - rev not in range(len_ans):
-            continue
-        mode = random.choice([0, 0, 0, 1])
-        skip = random.choice(range(10, 25)) < tmp_time * 10
-        if mode == 0:
-            tmp = tate_haiti[idx1][idx2]
 
-            if len(tmp) >= 3:
-                idx3 = random.choice(range(1, len(tmp) - 1))
-                num = tmp[idx3]
-                if num in tate_haiti[idx1 - rev][idx2]:
+        if not 0 <= idx1 - rev < len_ans:
+            continue
+        if idx1 in over or idx1 - rev in over:
+            continue
+
+        # mode = random.choice([0, 0, 0, 1, 3, 3, 4, 4, 4])
+        mode = random.choice([0, 0, 0, 1, 2, 3, 4, 4, 6])
+
+        if mode == 6:
+            # 左右反転
+            tmp = line[idx1][idx2]
+            if len(tmp) == 2:
+                continue
+
+            score_diff = 0
+            for i in tmp:
+                if 0 < i < 1000:
+                    if 0 <= idx1 - 1 < len_ans:
+                        if i in line[idx1 - 1][idx2]:
+                            score_diff -= 1
+                        if 1000 - i in line[idx1 - 1][idx2]:
+                            score_diff += 1
+                    if 0 <= idx1 + 1 < len_ans:
+                        if i in line[idx1 + 1][idx2]:
+                            score_diff -= 1
+                        if 1000 - i in line[idx1 + 1][idx2]:
+                            score_diff += 1
+            if score_diff < 0:
+                continue
+            line[idx1][idx2] = SortedSet([1000 - i for i in tmp])
+
+        if mode == 5:
+            while True:
+                idx3 = random.choice(range(len_h))
+                if idx2 != idx3:
+                    break
+
+            tmp1 = set(line[idx1][idx2])
+            tmp2 = set(line[idx1][idx3])
+
+            if len(tmp1) == 2 and len(tmp2) == 2:
+                continue
+
+            # スコアの変化量 + -> スコア改善、- ->スコア改悪
+            score_diff = (h[idx2] * (len(tmp1) - 2) + h[idx3] * (len(tmp2) - 2)) - (
+                h[idx2] * (len(tmp2) - 2) + h[idx3] * (len(tmp1) - 2)
+            )
+            score_diff *= 2
+
+            if score_diff >= 0:
+                seni = True
+            else:
+                seni = e ** (score_diff / temp) > random.random()
+
+            if not seni:
+                continue
+
+            if 0 <= idx1 - 1 < len_ans:
+                if (
+                    len(tmp1 & set(line[idx1 - 1][idx2])) != 2
+                    or len(tmp2 & set(line[idx1 - 1][idx3])) != 2
+                ):
                     continue
 
-            else:
-                continue
-
-            # 一個前の答えの左右の縦線と一致させたとき、面積が許容できるか
-            if idx1 in over or idx1 - rev in over:
-                continue
-
-            idx_r = bisect_left(tate_haiti[idx1 - rev][idx2], num)
+            if 0 <= idx1 + 1 < len_ans:
+                if (
+                    len(tmp1 & set(line[idx1 + 1][idx2])) != 2
+                    or len(tmp2 & set(line[idx1 + 1][idx3])) != 2
+                ):
+                    continue
 
             s = S[idx1]
-            # 左にずらす場合
-            # 面積の変化を追う
+            # 面積を一旦書き換え
+            for i in tmp1:
+                if i != 0:
+                    s.discard(-(i - prv) * h[idx2])
+                    s.add(-(i - prv) * h[idx3])
+                prv = i
 
-            if idx_r != 0:
-                # print(tate_haiti[idx1 - 1][idx2][idx_r - 1])
-                prv_l = h[idx2] * (tmp[idx3] - tmp[idx3 - 1])
-                nxt_l = h[idx2] * (
-                    tate_haiti[idx1 - rev][idx2][idx_r - 1] - tmp[idx3 - 1]
+            for i in tmp2:
+                if i != 0:
+                    s.discard(-(i - prv) * h[idx3])
+                    s.add(-(i - prv) * h[idx2])
+                prv = i
+
+            if all([i >= j for i, j in zip(A_minus[idx1], s)]):
+                line[idx1][idx2], line[idx1][idx3] = (
+                    line[idx1][idx3],
+                    line[idx1][idx2],
                 )
 
-                prv_r = h[idx2] * (tmp[idx3 + 1] - tmp[idx3])
-                nxt_r = h[idx2] * (
-                    tmp[idx3 + 1] - tate_haiti[idx1 - rev][idx2][idx_r - 1]
-                )
+            else:
+                for i in tmp1:
+                    if i != 0:
+                        s.add(-(i - prv) * h[idx2])
+                        s.discard(-(i - prv) * h[idx3])
+                    prv = i
 
-                # print(prv_l, nxt_l, prv_r, nxt_r)
-                # 一旦面積情報の書き換え
-                s.discard(prv_l)
-                s.discard(prv_r)
-                s.add(nxt_l)
-                s.add(nxt_r)
-                # 変更しても面積に問題が無いなら
-                # print([i <= j for i, j in zip(A[idx1][::-1], s)])
-                # print(s, A[idx1][::-1])
-                if all([i <= j for i, j in zip(A[idx1], s)]):
-                    more_good_0 += 1
-                    tmp[idx3] = tate_haiti[idx1 - rev][idx2][idx_r - 1]
-                    # print("mode_0", get_tyouhuku_num(tate_haiti))
-                    # print(get_tyouhuku_num(tate_haiti), time.perf_counter() - start)
-                    continue
-                else:
-                    # 面積情報の訂正
-                    s.add(prv_l)
-                    s.add(prv_r)
-                    s.discard(nxt_l)
-                    s.discard(nxt_r)
+                for i in tmp2:
+                    if i != 0:
+                        s.add(-(i - prv) * h[idx3])
+                        s.discard(-(i - prv) * h[idx2])
+                    prv = i
 
-            # 右にずらす場合
-            if idx_r != len(tate_haiti[idx1 - rev][idx2]):
+        # 行の異なる一致点への移動
+        if mode == 4:
+            if len(line[idx1][idx2]) == 2:
+                continue
+            idx3 = random.choice(range(1, len(line[idx1][idx2]) - 1))
+            tmp = line[idx1][idx2]
+            l, m, r = tmp[idx3 - 1], tmp[idx3], tmp[idx3 + 1]
+            while True:
+                idx4 = random.choice(range(len_h))
+                if idx2 != idx4:
+                    break
+            flag1, flag2 = False, False
+            if idx1 - 1 in range(len(ans)):
+                if m in line[idx1 - 1][idx2]:
+                    flag1 = True
+            if idx1 + 1 in range(len(ans)):
+                if m in line[idx1 + 1][idx2]:
+                    flag2 = True
 
-                # print(tate_haiti[idx1 - 1][idx2][idx_r])
-                prv_l = h[idx2] * (tmp[idx3] - tmp[idx3 - 1])
-                nxt_l = h[idx2] * (tate_haiti[idx1 - rev][idx2][idx_r] - tmp[idx3 - 1])
+            if flag1 and flag2:
+                continue
 
-                prv_r = h[idx2] * (tmp[idx3 + 1] - tmp[idx3])
-                nxt_r = h[idx2] * (tmp[idx3 + 1] - tate_haiti[idx1 - rev][idx2][idx_r])
-                # print(prv_l, nxt_l, prv_r, nxt_r)
+            other = line[idx1 - rev][idx4]
 
-                # 一旦面積情報の書き換え
-                s.discard(prv_l)
-                s.discard(prv_r)
-                s.add(nxt_l)
-                s.add(nxt_r)
-                # 変更しても面積に問題が無いなら
-                if all([i <= j for i, j in zip(A[idx1], s)]):
-                    more_good_0 += 1
-                    tmp[idx3] = tate_haiti[idx1 - rev][idx2][idx_r]
-                    # print("mode_0", get_tyouhuku_num(tate_haiti))
-                    # print(get_tyouhuku_num(tate_haiti), time.perf_counter() - start)
+            s = S[idx1]
 
-                    continue
-                else:
-                    # 面積情報の訂正
-                    s.add(prv_l)
-                    s.add(prv_r)
-                    s.discard(nxt_l)
-                    s.discard(nxt_r)
+            for i in other:
+                if 1 <= i < 1000 and i not in line[idx1][idx4]:
+                    prv_l_1 = h[idx2] * (m - l)
+                    prv_r_1 = h[idx2] * (r - m)
+                    nxt_lr_1 = h[idx2] * (r - l)
 
-        elif mode == 1:
-            tmp = tate_haiti[idx1][idx2]
-            other = tate_haiti[idx1 - rev][idx2]
+                    l_2 = line[idx1][idx4].le(i)
+                    r_2 = line[idx1][idx4].ge(i)
+
+                    prv_lr_2 = h[idx4] * (r_2 - l_2)
+                    nxt_l_2 = h[idx4] * (i - l_2)
+                    nxt_r_2 = h[idx4] * (r_2 - i)
+
+                    # 一旦面積情報の書き換え
+                    s.discard(-prv_l_1)
+                    s.discard(-prv_r_1)
+                    s.discard(-prv_lr_2)
+                    s.add(-nxt_lr_1)
+                    s.add(-nxt_l_2)
+                    s.add(-nxt_r_2)
+
+                    if all([i >= j for i, j in zip(A_minus[idx1], s)]):
+                        tmp.discard(m)
+                        line[idx1][idx4].add(i)
+                        break
+                    else:
+                        # 面積情報の訂正
+                        s.add(-prv_l_1)
+                        s.add(-prv_r_1)
+                        s.add(-prv_lr_2)
+                        s.discard(-nxt_lr_1)
+                        s.discard(-nxt_l_2)
+                        s.discard(-nxt_r_2)
+
+        elif mode == 3:
+            # ランダムな数字だけ横にずらす
+            if len(line[idx1][idx2]) == 2:
+                continue
+            idx3 = random.choice(range(1, len(line[idx1][idx2]) - 1))
+            tmp = line[idx1][idx2]
+            l, m, r = tmp[idx3 - 1], tmp[idx3], tmp[idx3 + 1]
+
+            s = S[idx1]
+
+            w = 30
+            # print(max(l, w - 10), min(r, w + 10))
+            num = random.choice(range(max(l, m - w), min(r, m + w)))
+            score_diff = 0
+            if 0 <= idx1 - rev < len_ans:
+                if m in line[idx1 - rev][idx2]:
+                    score_diff -= 1
+                if num in line[idx1 - rev][idx2]:
+                    score_diff += 1
+            if 0 <= idx1 + rev < len_ans:
+                if m in line[idx1 + rev][idx2]:
+                    score_diff -= 1
+                if num in line[idx1 + rev][idx2]:
+                    score_diff += 1
+
+            if score_diff < 0:
+                continue
+            prv_l = h[idx2] * (m - l)
+            nxt_l = h[idx2] * (num - l)
+            prv_r = h[idx2] * (r - m)
+            nxt_r = h[idx2] * (r - num)
+
+            # 一旦面積情報の書き換え
+            s.discard(-prv_l)
+            s.discard(-prv_r)
+            s.add(-nxt_l)
+            s.add(-nxt_r)
+
+            if all([i >= j for i, j in zip(A_minus[idx1], s)]):
+                tmp.discard(m)
+                tmp.add(num)
+
+            else:
+                # 面積情報の訂正
+                s.add(-prv_l)
+                s.add(-prv_r)
+                s.discard(-nxt_l)
+                s.discard(-nxt_r)
+
+        elif mode == 2:
+            # 横並びの二つの長方形のスワップ
+            # スワップする部分を乱択で選ぶ
+            if len(line[idx1][idx2]) == 2:
+                continue
+
+            idx3 = random.choice(range(1, len(line[idx1][idx2]) - 1))
+            tmp = line[idx1][idx2]
+            l, m, r = tmp[idx3 - 1], tmp[idx3], tmp[idx3 + 1]
+
+            score_diff = 0
+            if 0 <= idx1 - rev < len_ans:
+                if m in line[idx1 - rev][idx2]:
+                    score_diff -= 1
+                if l + r - m in line[idx1 - rev][idx2]:
+                    score_diff += 1
+            if 0 <= idx1 + rev < len_ans:
+                if m in line[idx1 + rev][idx2]:
+                    score_diff -= 1
+                if l + r - m in line[idx1 + rev][idx2]:
+                    score_diff += 1
+
+            if score_diff < 0:
+                continue
+
+            tmp.discard(m)
+            tmp.add(l + r - m)
+            # print(2)
+
+        elif mode == 0:
+
+            tmp = line[idx1][idx2]
+            flag_l = True
+            flag_r = True
 
             if len(tmp) >= 3:
                 idx3 = random.choice(range(1, len(tmp) - 1))
                 num = tmp[idx3]
-
-                if idx1 + rev in range(len_ans):
-                    if num in tate_haiti[idx1 + rev][idx2]:
-                        continue
-                if num in tate_haiti[idx1 - rev][idx2]:
-                    continue
-
             else:
                 continue
 
             # 一個前の答えの左右の縦線と一致させたとき、面積が許容できるか
-            if idx1 in over or idx1 - 1 in over:
+
+            tmp_l = tmp.lt(num)
+            tmp_r = tmp.gt(num)
+            other_l = line[idx1 - rev][idx2].le(num)
+            other_r = line[idx1 - rev][idx2].ge(num)
+
+            s = S[idx1]
+
+            # print(sum(s), s)
+            # print(tate_haiti[idx1])
+
+            # 左にずらす場合
+            # 面積の変化を追う
+            if num == other_l:
+                flag_l = False
+
+            score_diff_l = 0
+            if 0 <= idx1 - rev < len_ans:
+                if num in line[idx1 - rev][idx2]:
+                    score_diff_l -= 1
+                score_diff_l += 1
+
+            if 0 <= idx1 + rev < len_ans:
+                if num in line[idx1 + rev][idx2]:
+                    score_diff_l -= 1
+                if other_l in line[idx1 + rev][idx2]:
+                    score_diff_l += 1
+
+            if score_diff_l < 0:
+                flag_l = False
+
+            if flag_l:
+                prv_l = h[idx2] * (num - tmp_l)
+                nxt_l = h[idx2] * (other_l - tmp_l)
+
+                prv_r = h[idx2] * (tmp_r - num)
+                nxt_r = h[idx2] * (tmp_r - other_l)
+
+                if prv_l < 0 or nxt_l < 0 or prv_r < 0 or nxt_r < 0:
+                    flag_l = False
+
+            if flag_l:
+                # 一旦面積情報の書き換え
+                s.discard(-prv_l)
+                s.discard(-prv_r)
+                s.add(-nxt_l)
+                s.add(-nxt_r)
+
+                # 変更しても面積に問題が無いなら
+                if all([i >= j for i, j in zip(A_minus[idx1], s)]):
+                    more_good_0 += 1
+                    tmp.discard(num)
+                    tmp.add(other_l)
+
+                    continue
+                else:
+                    # 面積情報の訂正
+                    s.add(-prv_l)
+                    s.add(-prv_r)
+                    s.discard(-nxt_l)
+                    s.discard(-nxt_r)
+
+            # 右にずらす場合
+
+            if num == other_r:
+                flag_r = False
+
+            score_diff_r = 0
+            if 0 <= idx1 - rev < len_ans:
+                if num in line[idx1 - rev][idx2]:
+                    score_diff_r -= 1
+                score_diff_r += 1
+
+            if 0 <= idx1 + rev < len_ans:
+                if num in line[idx1 + rev][idx2]:
+                    score_diff_r -= 1
+                if other_r in line[idx1 + rev][idx2]:
+                    score_diff_r += 1
+
+            if score_diff_r < 0:
+                flag_r = False
+
+            if flag_r:
+                prv_l = h[idx2] * (num - tmp_l)
+                nxt_l = h[idx2] * (other_r - tmp_l)
+
+                prv_r = h[idx2] * (tmp_r - num)
+                nxt_r = h[idx2] * (tmp_r - other_r)
+
+                if prv_l < 0 or nxt_l < 0 or prv_r < 0 or nxt_r < 0:
+                    flag_r = False
+
+            if flag_r:
+                # 一旦面積情報の書き換え
+                s.discard(-prv_l)
+                s.discard(-prv_r)
+                s.add(-nxt_l)
+                s.add(-nxt_r)
+
+                # 変更しても面積に問題が無いなら
+                if all([i >= j for i, j in zip(A_minus[idx1], s)]):
+                    more_good_0 += 1
+                    tmp.discard(num)
+                    tmp.add(other_r)
+                    continue
+                else:
+                    # 面積情報の訂正
+                    s.add(-prv_l)
+                    s.add(-prv_r)
+                    s.discard(-nxt_l)
+                    s.discard(-nxt_r)
+
+        elif mode == 1:
+            tmp = line[idx1][idx2]
+            other = line[idx1 - rev][idx2]
+            flag_l = True
+            flag_r = True
+            if len(tmp) >= 3:
+                idx3 = random.choice(range(1, len(tmp) - 1))
+                num = tmp[idx3]
+            else:
                 continue
-            idx_r = bisect_left(other, num)
+
+            # 一個前の答えの左右の縦線と一致させたとき、面積が許容できるか
+
+            tmp_l = tmp.lt(num)
+            tmp_r = tmp.gt(num)
+            other_l = other.le(num)
+            other_r = other.ge(num)
+
+            # 既にペア
+            if num == other_l:
+                continue
+
+            # 相手が0,1000
+            if other_l == 0:
+                flag_l = False
+            if other_r == 1000:
+                flag_r = False
+
+            # 反対側とペアなら
+            if idx1 + rev in range(len_ans):
+                if num in line[idx1 + rev][idx2]:
+                    continue
+
+            if idx1 - 2 * rev in range(len_ans):
+                if other_l in line[idx1 - 2 * rev][idx2]:
+                    flag_l = False
+                    continue
+
+            if idx1 - 2 * rev in range(len_ans):
+                if other_r in line[idx1 - 2 * rev][idx2]:
+                    flag_r = False
+                    continue
 
             s = S[idx1]
             s_other = S[idx1 - rev]
 
             # 左との中間をとる場合
-            # 面積の変化を追う
+            if flag_l:
+                mid = (num + other_l) // 2
+                if mid in tmp or mid in other:
+                    flag_l = False
 
-            left_flag = True
-            right_flag = True
-
-            if (
-                idx1 - 2 * rev in range(len_ans)
-                and idx_r != 0
-                and other[idx_r - 1] in tate_haiti[idx1 - 2 * rev][idx2]
-            ):
-                left_flag = False
-
-            if (
-                idx1 - 2 * rev in range(len_ans)
-                and idx_r != len(other)
-                and other[idx_r] in tate_haiti[idx1 - 2 * rev][idx2]
-            ):
-                right_flag = False
-
-            if idx_r != 0 and other[idx_r - 1] != 0 and left_flag:
-                mid = (num + other[idx_r - 1]) // 2
                 # 注目してる方の面積状態の確認
-                prv_l = h[idx2] * (tmp[idx3] - tmp[idx3 - 1])
-                nxt_l = h[idx2] * (mid - tmp[idx3 - 1])
+                prv_l = h[idx2] * (num - tmp_l)
+                nxt_l = h[idx2] * (mid - tmp_l)
 
-                prv_r = h[idx2] * (tmp[idx3 + 1] - tmp[idx3])
-                nxt_r = h[idx2] * (tmp[idx3 + 1] - mid)
+                prv_r = h[idx2] * (tmp_r - num)
+                nxt_r = h[idx2] * (tmp_r - mid)
 
-                # 一旦面積情報の書き換え
-                s.discard(prv_l)
-                s.discard(prv_r)
-                s.add(nxt_l)
-                s.add(nxt_r)
+                if prv_l < 0 or nxt_l < 0 or prv_r < 0 or nxt_r < 0:
+                    flag_l = False
 
                 # 他方の面積状態の確認
-                prv_l_other = h[idx2] * (other[idx_r - 1] - other[idx_r - 2])
-                nxt_l_other = h[idx2] * (mid - other[idx_r - 2])
+                other_l_l = other.lt(other_l)
+                prv_l_other = h[idx2] * (other_l - other_l_l)
+                nxt_l_other = h[idx2] * (mid - other_l_l)
+                other_l_r = other.gt(other_l)
+                prv_r_other = h[idx2] * (other_l_r - other_l)
+                nxt_r_other = h[idx2] * (other_l_r - mid)
 
-                prv_r_other = h[idx2] * (other[idx_r] - other[idx_r - 1])
-                nxt_r_other = h[idx2] * (other[idx_r] - mid)
+                if (
+                    prv_l_other < 0
+                    or nxt_l_other < 0
+                    or prv_r_other < 0
+                    or nxt_r_other < 0
+                ):
+                    flag_l = False
+
+            if flag_l:
+                # 一旦面積情報の書き換え
+                s.discard(-prv_l)
+                s.discard(-prv_r)
+                s.add(-nxt_l)
+                s.add(-nxt_r)
 
                 # 一旦面積情報の書き換え
-                s_other.discard(prv_l_other)
-                s_other.discard(prv_r_other)
-                s_other.add(nxt_l_other)
-                s_other.add(nxt_r_other)
+                s_other.discard(-prv_l_other)
+                s_other.discard(-prv_r_other)
+                s_other.add(-nxt_l_other)
+                s_other.add(-nxt_r_other)
 
                 # 変更しても面積に問題が無いなら
-                if all([i <= j for i, j in zip(A[idx1], s)]) and all(
-                    [i <= j for i, j in zip(A[idx1 - rev], s_other)]
+                if all([i >= j for i, j in zip(A_minus[idx1], s)]) and all(
+                    [i >= j for i, j in zip(A_minus[idx1 - rev], s_other)]
                 ):
                     more_good_1 += 1
-                    tmp[idx3] = mid
-                    other[idx_r - 1] = mid
-                    # print("mode_1", get_tyouhuku_num(tate_haiti))
-                    # print(get_tyouhuku_num(tate_haiti), time.perf_counter() - start)
-
+                    tmp.discard(num)
+                    tmp.add(mid)
+                    other.discard(other_l)
+                    other.add(mid)
+                    # print(1, get_tyouhuku_num(tate_haiti))
                     continue
                 else:
-                    # 面積情報の訂正
-                    s.add(prv_l)
-                    s.add(prv_r)
-                    s.discard(nxt_l)
-                    s.discard(nxt_r)
 
-                    s_other.add(prv_l_other)
-                    s_other.add(prv_r_other)
-                    s_other.discard(nxt_l_other)
-                    s_other.discard(nxt_r_other)
+                    # 面積情報の訂正
+                    s.add(-prv_l)
+                    s.add(-prv_r)
+                    s.discard(-nxt_l)
+                    s.discard(-nxt_r)
+
+                    s_other.add(-prv_l_other)
+                    s_other.add(-prv_r_other)
+                    s_other.discard(-nxt_l_other)
+                    s_other.discard(-nxt_r_other)
 
             # 右との中間をとる場合
-            if idx_r != len(other) and right_flag:
-                if other[idx_r] == 1000:
-                    continue
-                mid = (num + other[idx_r]) // 2
+            if flag_r:
+                mid = (num + other_r) // 2
 
-                prv_l = h[idx2] * (tmp[idx3] - tmp[idx3 - 1])
-                nxt_l = h[idx2] * (mid - tmp[idx3 - 1])
+                if mid in tmp or mid in other:
+                    flag_r = False
 
-                prv_r = h[idx2] * (tmp[idx3 + 1] - tmp[idx3])
-                nxt_r = h[idx2] * (tmp[idx3 + 1] - mid)
+                prv_l = h[idx2] * (num - tmp_l)
+                nxt_l = h[idx2] * (mid - tmp_l)
 
-                # 一旦面積情報の書き換え
-                s.discard(prv_l)
-                s.discard(prv_r)
-                s.add(nxt_l)
-                s.add(nxt_r)
+                prv_r = h[idx2] * (tmp_r - num)
+                nxt_r = h[idx2] * (tmp_r - mid)
+
+                if prv_l < 0 or nxt_l < 0 or prv_r < 0 or nxt_r < 0:
+                    flag_r = False
 
                 # 他方の面積状態の確認
-                prv_l_other = h[idx2] * (other[idx_r] - other[idx_r - 1])
-                nxt_l_other = h[idx2] * (mid - other[idx_r - 1])
+                other_r_l = other.lt(other_r)
+                prv_l_other = h[idx2] * (other_r - other_r_l)
+                nxt_l_other = h[idx2] * (mid - other_r_l)
 
-                prv_r_other = h[idx2] * (other[idx_r + 1] - other[idx_r])
-                nxt_r_other = h[idx2] * (other[idx_r + 1] - mid)
+                other_r_r = other.gt(other_r)
+                prv_r_other = h[idx2] * (other_r_r - other_r)
+                nxt_r_other = h[idx2] * (other_r_r - mid)
 
+                if (
+                    prv_l_other < 0
+                    or nxt_l_other < 0
+                    or prv_r_other < 0
+                    or nxt_r_other < 0
+                ):
+                    flag_r = False
+
+            if flag_r:
                 # 一旦面積情報の書き換え
-                s_other.discard(prv_l_other)
-                s_other.discard(prv_r_other)
-                s_other.add(nxt_l_other)
-                s_other.add(nxt_r_other)
+                s.discard(-prv_l)
+                s.discard(-prv_r)
+                s.add(-nxt_l)
+                s.add(-nxt_r)
+                # 一旦面積情報の書き換え
+                s_other.discard(-prv_l_other)
+                s_other.discard(-prv_r_other)
+                s_other.add(-nxt_l_other)
+                s_other.add(-nxt_r_other)
 
                 # 変更しても面積に問題が無いなら
-                if all([i <= j for i, j in zip(A[idx1], s)]) and all(
-                    [i <= j for i, j in zip(A[idx1 - rev], s_other)]
+                if all([i >= j for i, j in zip(A_minus[idx1], s)]) and all(
+                    [i >= j for i, j in zip(A_minus[idx1 - rev], s_other)]
                 ):
                     more_good_1 += 1
-                    tmp[idx3] = mid
-                    other[idx_r] = mid
-                    # print("mode_1", get_tyouhuku_num(tate_haiti))
-                    # print(get_tyouhuku_num(tate_haiti), time.perf_counter() - start)
+                    tmp.discard(num)
+                    tmp.add(mid)
+                    other.discard(other_r)
+                    other.add(mid)
+                    # print(1, get_tyouhuku_num(tate_haiti))
 
                     continue
                 else:
                     # 面積情報の訂正
-                    s.add(prv_l)
-                    s.add(prv_r)
-                    s.discard(nxt_l)
-                    s.discard(nxt_r)
+                    s.add(-prv_l)
+                    s.add(-prv_r)
+                    s.discard(-nxt_l)
+                    s.discard(-nxt_r)
 
-                    s_other.add(prv_l_other)
-                    s_other.add(prv_r_other)
-                    s_other.discard(nxt_l_other)
-                    s_other.discard(nxt_r_other)
-        # break
-        # Output(ans)
-        # print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-        # exit()
+                    s_other.add(-prv_l_other)
+                    s_other.add(-prv_r_other)
+                    s_other.discard(-nxt_l_other)
+                    s_other.discard(-nxt_r_other)
 
-    # print(more_good_before, more_good, cnt)
-    # exit()
-    # print(more_good_0, more_good_1)
-    # exit()
-    return tate_haiti
+        # デバッグ用
+        # if sum([len(i) - 1 for i in tate_haiti[idx1]]) < len(ans[0]):
+        #     print(mode)
+        #     exit()
+
+    # print(get_tyouhuku_num(tate_haiti))
+    # exit()]
+    # print(get_add_score(tate_haiti, h))
+    # print(h)
+    # print(score, get_tyouhuku_num(tate_haiti))
+    # print(mode_score)
+    return line
 
 
-def get_tyouhuku_num(tate_haiti):
+def get_score(tate_haiti, h):
     rslt = 0
     tmp = tate_haiti[0]
     for i in range(1, len(tate_haiti)):
         for j in range(len(tate_haiti[0])):
-            rslt += (
-                len(tmp[j])
-                + len(tate_haiti[i][j])
-                - len(set(tmp[j]) | set(tate_haiti[i][j]))
-                - 2
-            )
-        tmp = tate_haiti[i]
+            rslt += h[j] * (len(set(tate_haiti[i - 1][j]) ^ set(tate_haiti[i][j])))
+
     return rslt
 
 
-def get_ans_from_tatehaiti(tate_haiti, hight, over, ans_hoken, over_hoken):
+def get_add_score(tate_haiti, h):
+    rslt = 0
+    tmp = tate_haiti[0]
+    for i in range(1, len(tate_haiti)):
+        for j in range(len(tate_haiti[0])):
+            rslt += h[j] * (len(set(tate_haiti[i - 1][j]) & set(tate_haiti[i][j])) - 2)
+
+    return rslt
+
+
+def get_ans_from_tatehaiti(N, tate_haiti, hight, over, ans_hoken, over_hoken):
     ans = [[] for _ in range(len(tate_haiti))]
+
     for i, j in enumerate(tate_haiti):
         if i in over and i not in over_hoken:
             ans[i] = ans_hoken[i]
         else:
             for k, l in enumerate(j):
-                for m in range(1, len(l)):
-                    tmp = [hight[k], l[m - 1], hight[k + 1], l[m]]
+                # print(l)
+                l_n = list(l)
+                for m in range(1, len(l_n)):
+                    tmp = [hight[k], l_n[m - 1], hight[k + 1], l_n[m]]
                     ans[i].append(tmp)
 
     for i in ans:
+
+        i.sort(key=lambda x: (x[3] - x[1]) * (x[2] - x[0]), reverse=True)
+        # print([(x[3] - x[1]) * (x[2] - x[0]) for x in i])
+
+        # 多すぎる分の削除
+        while len(i) > N:
+            i.pop()
         i.sort(key=lambda x: (x[3] - x[1]) * (x[2] - x[0]))
+        # print([(x[3] - x[1]) * (x[2] - x[0]) for x in i])
 
     return ans
+
+
+def kotei(A_tenti, h):
+    idx = 0
+    while True:
+        tmp = min(A_tenti[idx])
 
 
 def main():
@@ -922,21 +1264,34 @@ def main():
     # 改善案
     # チェンジAnsの改良
     # 山登りの改良、近傍追加など
+    # 左右反転、上下移動など
     # 縦分割、即ち面積配置方法の改良
+    # 山登り部分のバグ解消
+    # 一段空きスペースみたいな場合もあるので、面積管理が色々考えられる
+    # SMSにはマイナスで入れといて扱うとか
     # 一部完全固定する
+    # 乱択で詰め込める順番を求める
+    # 初期解の貪欲部分の改善
+    # 幅決定の最適化
+    # 焼きなまし高速化
+    # 焼きなましの温度調整
+    # スコア遷移のグラフ化
+    # 縦分割は分散が小さいほど、行跨ぎの遷移がしやすいかも
     W, D, N, A, avr_amari, max_amari = Input()
     ans, ans_hoken, h, hight, over, over_hoken = solve(W, D, N, A)
 
+    A_tenti = list(zip(*A))
+
     more_good1 = change_ans(A, ans, ans_hoken, h, hight, over, over_hoken, [0, 1], True)
-    more_good2 = change_ans_v2(A, h, hight, ans, over, [1, -1], True)
-    # print(more_good1, more_good2)
+    more_good2 = change_ans_v2(A, h, hight, ans, over, [1, -1], True, A_tenti)
+    print(more_good1, more_good2)
     # Output(ans)
     # print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
     if max(more_good1) <= max(more_good2):
         if more_good2[0] <= more_good2[1]:
-            change_ans_v2(A, h, hight, ans, over, [-1], False)
+            change_ans_v2(A, h, hight, ans, over, [-1], False, A_tenti)
         else:
-            change_ans_v2(A, h, hight, ans, over, [1], False)
+            change_ans_v2(A, h, hight, ans, over, [1], False, A_tenti)
     else:
         if more_good1[0] <= more_good1[1]:
             change_ans(A, ans, ans_hoken, h, hight, over, over_hoken, [1], False)
@@ -944,12 +1299,18 @@ def main():
             change_ans(A, ans, ans_hoken, h, hight, over, over_hoken, [0], False)
 
     most_rihgt_line_change(ans)
-    # Output(ans)
-    # print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 
-    tate_haiti, ans_haiti, S = get_info_from_ans(ans, hight)
-    tate_haiti = yamanobori2(ans, tate_haiti, ans_haiti, over, h, S, A)
-    ans = get_ans_from_tatehaiti(tate_haiti, hight, over, ans_hoken, over_hoken)
+    Output(ans)
+    exit()
+    # print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+    # exit()
+
+    tate_haiti, S = get_info_from_ans(ans, hight)
+    # for i in tate_haiti:
+    #     print(i)
+    # print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+    tate_haiti = yamanobori2(ans, tate_haiti, over, h, S, A)
+    ans = get_ans_from_tatehaiti(N, tate_haiti, hight, over, ans_hoken, over_hoken)
     Output(ans)
 
     pass
@@ -1165,6 +1526,168 @@ class SortedMultiset(Generic[T]):
         if len(a) > len(self.a) * self.SPLIT_RATIO:
             mid = len(a) >> 1
             self.a[b : b + 1] = [a[:mid], a[mid:]]
+
+    def _pop(self, a: List[T], b: int, i: int) -> T:
+        ans = a.pop(i)
+        self.size -= 1
+        if not a:
+            del self.a[b]
+        return ans
+
+    def discard(self, x: T) -> bool:
+        "Remove an element and return True if removed. / O(√N)"
+        if self.size == 0:
+            return False
+        a, b, i = self._position(x)
+        if i == len(a) or a[i] != x:
+            return False
+        self._pop(a, b, i)
+        return True
+
+    def lt(self, x: T) -> Optional[T]:
+        "Find the largest element < x, or None if it doesn't exist."
+        for a in reversed(self.a):
+            if a[0] < x:
+                return a[bisect_left(a, x) - 1]
+
+    def le(self, x: T) -> Optional[T]:
+        "Find the largest element <= x, or None if it doesn't exist."
+        for a in reversed(self.a):
+            if a[0] <= x:
+                return a[bisect_right(a, x) - 1]
+
+    def gt(self, x: T) -> Optional[T]:
+        "Find the smallest element > x, or None if it doesn't exist."
+        for a in self.a:
+            if a[-1] > x:
+                return a[bisect_right(a, x)]
+
+    def ge(self, x: T) -> Optional[T]:
+        "Find the smallest element >= x, or None if it doesn't exist."
+        for a in self.a:
+            if a[-1] >= x:
+                return a[bisect_left(a, x)]
+
+    def __getitem__(self, i: int) -> T:
+        "Return the i-th element."
+        if i < 0:
+            for a in reversed(self.a):
+                i += len(a)
+                if i >= 0:
+                    return a[i]
+        else:
+            for a in self.a:
+                if i < len(a):
+                    return a[i]
+                i -= len(a)
+        raise IndexError
+
+    def pop(self, i: int = -1) -> T:
+        "Pop and return the i-th element."
+        if i < 0:
+            for b, a in enumerate(reversed(self.a)):
+                i += len(a)
+                if i >= 0:
+                    return self._pop(a, ~b, i)
+        else:
+            for b, a in enumerate(self.a):
+                if i < len(a):
+                    return self._pop(a, b, i)
+                i -= len(a)
+        raise IndexError
+
+    def index(self, x: T) -> int:
+        "Count the number of elements < x."
+        ans = 0
+        for a in self.a:
+            if a[-1] >= x:
+                return ans + bisect_left(a, x)
+            ans += len(a)
+        return ans
+
+    def index_right(self, x: T) -> int:
+        "Count the number of elements <= x."
+        ans = 0
+        for a in self.a:
+            if a[-1] > x:
+                return ans + bisect_right(a, x)
+            ans += len(a)
+        return ans
+
+
+class SortedSet(Generic[T]):
+    BUCKET_RATIO = 16
+    SPLIT_RATIO = 24
+
+    def __init__(self, a: Iterable[T] = []) -> None:
+        "Make a new SortedSet from iterable. / O(N) if sorted and unique / O(N log N)"
+        a = list(a)
+        n = len(a)
+        if any(a[i] > a[i + 1] for i in range(n - 1)):
+            a.sort()
+        if any(a[i] >= a[i + 1] for i in range(n - 1)):
+            a, b = [], a
+            for x in b:
+                if not a or a[-1] != x:
+                    a.append(x)
+        n = self.size = len(a)
+        num_bucket = int(math.ceil(math.sqrt(n / self.BUCKET_RATIO)))
+        self.a = [
+            a[n * i // num_bucket : n * (i + 1) // num_bucket]
+            for i in range(num_bucket)
+        ]
+
+    def __iter__(self) -> Iterator[T]:
+        for i in self.a:
+            for j in i:
+                yield j
+
+    def __reversed__(self) -> Iterator[T]:
+        for i in reversed(self.a):
+            for j in reversed(i):
+                yield j
+
+    def __eq__(self, other) -> bool:
+        return list(self) == list(other)
+
+    def __len__(self) -> int:
+        return self.size
+
+    def __repr__(self) -> str:
+        return "SortedSet" + str(self.a)
+
+    def __str__(self) -> str:
+        s = str(list(self))
+        return "{" + s[1 : len(s) - 1] + "}"
+
+    def _position(self, x: T) -> Tuple[List[T], int, int]:
+        "return the bucket, index of the bucket and position in which x should be. self must not be empty."
+        for i, a in enumerate(self.a):
+            if x <= a[-1]:
+                break
+        return (a, i, bisect_left(a, x))
+
+    def __contains__(self, x: T) -> bool:
+        if self.size == 0:
+            return False
+        a, _, i = self._position(x)
+        return i != len(a) and a[i] == x
+
+    def add(self, x: T) -> bool:
+        "Add an element and return True if added. / O(√N)"
+        if self.size == 0:
+            self.a = [[x]]
+            self.size = 1
+            return True
+        a, b, i = self._position(x)
+        if i != len(a) and a[i] == x:
+            return False
+        a.insert(i, x)
+        self.size += 1
+        if len(a) > len(self.a) * self.SPLIT_RATIO:
+            mid = len(a) >> 1
+            self.a[b : b + 1] = [a[:mid], a[mid:]]
+        return True
 
     def _pop(self, a: List[T], b: int, i: int) -> T:
         ans = a.pop(i)

@@ -7,7 +7,7 @@ cd /mnt/c/Users/kosuk/Desktop/atcoder/ahc031/a/
 # mkdir -p output score
 
 #何番から何番まで？
-start=0;last=100;
+start=5;last=100;
 
 # ans_old=0;
 ans_new=0;
@@ -17,7 +17,15 @@ do
     j=$(printf "%04d\n" "${d}")
     echo $j;
 
-    pypy3 main.py < in/${j}.txt > out/${j}.txt
+    # pypy3 main.py < in/${j}.txt > out/${j}.txt
+
+    # nim cpp -r -d:release --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/atcoder/ahc031/a/main.nim" < in/${j}.txt > out_nim/nim${j}.txt
+    nim cpp -r -d:release --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/atcoder/ahc031/a/main.nim" < in/${j}.txt > out_new_nim/new_nim${j}.txt
+
+    # nim cpp -r -d:release --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/atcoder/ahc031/a/main.nim" < in/${j}.txt 
+
+    # nim cpp -r -d:release --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/atcoder/ahc031/a/best.nim" < in/${j}.txt > out_nim_old/nim_old${j}.txt
+
 
     # pypy3 main_old.py < in/${j}.txt > out_old/${j}.txt
 

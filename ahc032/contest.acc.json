@@ -1,0 +1,20 @@
+{
+  "contest": {
+    "id": "ahc032",
+    "title": "AtCoder Heuristic Contest 032",
+    "url": "https://atcoder.jp/contests/ahc032"
+  },
+  "tasks": [
+    {
+      "id": "ahc032_a",
+      "label": "A",
+      "title": "Mod Stamp",
+      "url": "https://atcoder.jp/contests/ahc032/tasks/ahc032_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.nim"
+      }
+    }
+  ]
+}

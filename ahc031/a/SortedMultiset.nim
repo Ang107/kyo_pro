@@ -18,7 +18,7 @@ proc newSortedMultiset(ini: seq[int]): SortedMultiset =
         SPLIT_RATIO: int = 24
         n = ini.len()
         num_bucekt = int(ceil(sqrt(n/BUCKET_RATIO)))
-        a = newSeqOfCap[newSeqOfCap[int](n)](n)
+        a = newSeqOfCap[newSeqOfCap[int](2*n//num_bucekt)](num_bucekt)
     for i in 0..<num_bucekt:
         a.add(ini_sorted[n*i//num_bucekt..<n*(i+1)//num_bucekt])
     var sms = SortedMultiset(a: a, size: n, BUCKET_RATIO: BUCKET_RATIO, SPLIT_RATIO: SPLIT_RATIO)

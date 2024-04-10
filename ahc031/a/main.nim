@@ -310,7 +310,8 @@ proc greedy1(D, N: int, A: seq[seq[int]], h, height, : seq[int], ans: seq[seq[ar
 proc output(ans: seq[seq[array[4, int]]])
 proc get_ans_from_line(D, N: int, line: seq[seq[ref Sortedset]], height, over: seq[int], ans_ins: seq[seq[array[4, int]]], over_ins: seq[int]): seq[seq[array[4, int]]]
 proc get_line_ans_S_from_ans(D, N: int, ans: seq[seq[array[4, int]]], h, height: seq[int]): (seq[seq[ref Sortedset]], seq[ref SortedMultiset])
-proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sortedset]], over, h, : seq[int], surf: seq[ref SortedMultiset], A: seq[seq[int]])
+proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sortedset]], over, in_h, : seq[int], surf: seq[ref SortedMultiset], A: seq[seq[
+        int]]): seq[int]
 proc main()
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #ここまでライブラリ
@@ -355,7 +356,9 @@ proc main() =
     most_rihgt_line_change(ans)
     var (line, surf) = get_line_ans_S_from_ans(D, N, ans, h, height)
 
-    yamanobori2(D, N, ans, line, over, h, surf, A)
+    h = yamanobori2(D, N, ans, line, over, h, surf, A)
+    for i in 0..<h.len():
+        height[i+1] = height[i] + h[i]
     ans = get_ans_from_line(D, N, line, height, over, ans_ins, over_ins)
     output(ans)
 
@@ -604,13 +607,12 @@ proc yamanobori(N: int, D: int, A: seq[seq[int]], h: var seq[int], time_limit: f
                 return (cost, over, h, height)
             if passed_time > time_limit / 2 and over_n.len() > N div 2:
                 return (cost, over, h, height)
-
 proc get_h(D: int, N: int, A: seq[seq[int]], ): (seq[seq[array[4, int]]], seq[seq[array[4, int]]], seq[int], seq[int], seq[int], seq[int]) =
     var
         h = @[1000]
         height = @[0, 1000]
         (ans_ins, over_ins, ) = get_ans(D, N, A, h, height)
-        h_num = max(2, int(sqrt(float(N)))-1)
+        l = int(sqrt(float(N)))-1
         r = int(0.659*N - 0.133) + 1
 
 
@@ -621,10 +623,9 @@ proc get_h(D: int, N: int, A: seq[seq[int]], ): (seq[seq[array[4, int]]], seq[se
         rs_h: seq[int]
         rs_height: seq[int]
 
-    while true:
-        # echo h_num
+    while r - l > 1:
         var
-            # h_num = (l+r)//2
+            h_num = (l+r)//2
             w_num = -(-N / h_num)
             avr = newSeq[float](h_num)
         for i in A:
@@ -650,19 +651,16 @@ proc get_h(D: int, N: int, A: seq[seq[int]], ): (seq[seq[array[4, int]]], seq[se
         h.add(1000-sum(h))
 
         (cost_n, over_n, h_n, height_n) = yamanobori(N, D, A, h, 0.3, true)
-
+        if len(over_n) > 0:
+            r = h_num
+        else:
+            l = h_num
 
         if rs_cost > cost_n:
             rs_cost = cost_n
             rs_over = over_n
             rs_h = h_n
             rs_height = height_n
-
-        if len(over_n) > 0 or h_num == N:
-            h_num -= 1
-            break
-        else:
-            h_num += 1
 
     (rs_cost, rs_over, rs_h, rs_height) = yamanobori(N, D, A, rs_h, 0.3, false)
 
@@ -676,6 +674,78 @@ proc get_h(D: int, N: int, A: seq[seq[int]], ): (seq[seq[array[4, int]]], seq[se
         rs_ans[i].reverse()
 
     return (rs_ans, ans_ins, rs_h, rs_height, rs_over, over_ins)
+
+# proc get_h(D: int, N: int, A: seq[seq[int]], ): (seq[seq[array[4, int]]], seq[seq[array[4, int]]], seq[int], seq[int], seq[int], seq[int]) =
+#     var
+#         h = @[1000]
+#         height = @[0, 1000]
+#         (ans_ins, over_ins, ) = get_ans(D, N, A, h, height)
+#         h_num = max(2, int(sqrt(float(N)))-1)
+#         r = int(0.659*N - 0.133) + 1
+
+
+#     var
+#         rs_ans: seq[seq[array[4, int]]]
+#         rs_cost = 10**18
+#         rs_over: seq[int]
+#         rs_h: seq[int]
+#         rs_height: seq[int]
+
+#     while true:
+#         # echo h_num
+#         var
+#             # h_num = (l+r)//2
+#             w_num = -(-N / h_num)
+#             avr = newSeq[float](h_num)
+#         for i in A:
+#             for j in 0..<N:
+#                 avr[int(j / w_num)] += float(i[j])
+
+#         var
+#             ans_n: seq[seq[array[4, int]]]
+#             cost_n = 10**18
+#             over_n: seq[int]
+#             h_n: seq[int]
+#             height_n: seq[int]
+
+
+#         h = newSeqOfCap[int](h_num)
+#         for idx, num in avr:
+#             avr[idx] = pow(float(num), 0.25)
+
+#         var
+#             avr_sum = sum(avr)
+#         for i in avr[0 ..< ^1]:
+#             h.add(int(1000*i/avr_sum))
+#         h.add(1000-sum(h))
+
+#         (cost_n, over_n, h_n, height_n) = yamanobori(N, D, A, h, 0.3, true)
+
+
+#         if rs_cost > cost_n:
+#             rs_cost = cost_n
+#             rs_over = over_n
+#             rs_h = h_n
+#             rs_height = height_n
+
+#         if len(over_n) > 0 or h_num == N:
+#             h_num -= 1
+#             break
+#         else:
+#             h_num += 1
+
+#     (rs_cost, rs_over, rs_h, rs_height) = yamanobori(N, D, A, rs_h, 0.3, false)
+
+
+#     (rs_ans, rs_over) = get_ans(D, N, A, rs_h, rs_height)
+#     for i in rs_over:
+#         if i notin over_ins:
+#             rs_ans[i] = ans_ins[i]
+
+#     for i in 0..<D:
+#         rs_ans[i].reverse()
+
+#     return (rs_ans, ans_ins, rs_h, rs_height, rs_over, over_ins)
 
 
 
@@ -1089,8 +1159,10 @@ proc get_line_ans_S_from_ans(D, N: int, ans: seq[seq[array[4, int]]], h, height:
     return (line, surf)
 
 
+
 # import nimprof
-proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sortedset]], over, h, : seq[int], surf: seq[ref SortedMultiset], A: seq[seq[int]]) =
+proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sortedset]], over, in_h, : seq[int], surf: seq[ref SortedMultiset], A: seq[seq[
+        int]]): seq[int] =
 
     proc mode_0(): bool
     proc mode_1(): bool
@@ -1100,15 +1172,23 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
     proc mode_5(): bool
     proc mode_6(): bool
     proc mode_7(): bool
-    proc get_now_cost(): int
+    proc mode_8(h: var seq[int]): bool
+    proc get_line_cost(line: seq[seq[ref Sortedset]], h: seq[int]): int
+    proc is_surf_ok(line: seq[seq[ref Sortedset]], h: seq[int]): bool
 
     var
+        h = in_h
         cnt = 0
         len_h = h.len()
         A_minus = newSeqwith(D, newSeq[int](N))
         Timeover = 2.99
         # mode_array = [0, 0, 0, 2, 3, 4, 4, 7]
-        mode_array = [0, 0, 0, 2, 3, 4, 4, 7]
+        mode_array = [0, 0, 0, 2, 3, 4, 4, 7, ]
+        cost = get_line_cost(line, h)
+
+    for i in 0..<D:
+        for j in 0..<N:
+            A_minus[i][j] = -A[i][j]
 
 
 
@@ -1119,10 +1199,6 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
     #     cost = get_now_cost()
 
 
-
-    for i in 0..<D:
-        for j in 0..<N:
-            A_minus[i][j] = -A[i][j]
 
     for i in 0..<D:
         A_minus[i].sort()
@@ -1141,7 +1217,7 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
                 # echo cnt
 
                 #デバッグ用
-                break
+                return h
 
         idx1 = rand(D-1)
         idx2 = rand(len_h-1)
@@ -1162,6 +1238,8 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
             discard mode_3()
         elif mode == 7:
             discard mode_7()
+        elif mode == 8:
+            discard mode_8(h)
 
         #デバッグ用
         # mode_cnt[mode] += 1
@@ -1214,7 +1292,7 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
 
 
     #デバッグ用##############################################
-    proc get_now_cost(): int =
+    proc get_line_cost(line: seq[seq[ref Sortedset]], h: seq[int]): int =
         var cost = 0
         for i in 0..<h.len():
             for j in 1..<D:
@@ -1234,6 +1312,29 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
         return cost
     #デバッグ用##############################################
 
+    proc is_surf_ok(line: seq[seq[ref Sortedset]], h: seq[int]): bool =
+        for i in 0..<D:
+            var s = newSeqOfCap[int](N+1)
+            for j in 0..<h.len():
+                var prv = 0
+                for _, k in itr(line[i][j][]):
+                    if k != 0:
+                        s.add(-(k-prv)*h[j])
+                    prv = k
+
+            s.sort()
+            # echo s
+            # echo A_minus[i]
+            for (j, k) in zip(A_minus[i], s):
+                if j >= k:
+                    discard
+                else:
+                    return false
+        return true
+
+
+
+
 
 
 
@@ -1248,6 +1349,32 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
             if i == N-1:
                 break
         return true
+
+    proc mode_8(h: var seq[int]): bool =
+        var
+            h_n = h
+            i, j: int
+        while true:
+            var i, j = rand(h.len()-1)
+            if i != j and h[i] > 1:
+                break
+        h_n[i] -= 1
+        h_n[j] += 1
+        var
+            surf_ok = is_surf_ok(line, h_n)
+            cost_n: int
+        if surf_ok:
+            cost_n = get_line_cost(line, h_n)
+        else:
+            return false
+
+        if cost >= cost_n:
+            h = h_n
+            cost = cost_n
+            return true
+        else:
+            return false
+
 
 
 

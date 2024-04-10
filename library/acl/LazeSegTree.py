@@ -242,24 +242,19 @@ id_ = 0
 
 
 # 区間加算・区間和取得^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-class S:
-    def __init__(self, value, size) -> None:
-        self.value = value
-        self.size = size
-
-
-op = lambda a, b: S(a.value + b.value, a.size + b.size)
-e = S(0, 0)
-mapping = lambda f, x: S(x.value + f * x.size, x.size)
+op = lambda a, b: a + b
+e = 0
+mapping = lambda f, x: f + x
 composition = lambda f, g: f + g
 id_ = 0
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 # 区間更新・区間最大値取得^^^^^^^^^^^^^^^^^^^^^^^^^
-ID = 1e18
+INF = 1 << 63
+ID = INF
 op = lambda x, y: max(x, y)
-e = -float("inf")
+e = -INF
 mapping = lambda f, x: x if f == ID else f
 composition = lambda f, g: g if f == ID else f
 id_ = ID
@@ -267,9 +262,10 @@ id_ = ID
 
 
 # 区間更新・区間最小値取得^^^^^^^^^^^^^^^^^^^^^^^^^
-ID = 1e18
+INF = 1 << 63
+ID = INF
 op = lambda x, y: min(x, y)
-e = float("inf")
+e = INF
 mapping = lambda f, x: x if f == ID else f
 composition = lambda f, g: g if f == ID else f
 id_ = ID
@@ -277,23 +273,13 @@ id_ = ID
 
 
 # 区間更新・区間和取得^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-class S:
-    def __init__(self, value, size) -> None:
-        self.value = value
-        self.size = size
-
-
-ID = 1e18
-op = lambda a, b: S(a.value + b.value, a.size + b.size)
-e = S(0, 0)
-
-
-def mapping(f, x):
-    if f != ID:
-        x.value = f * x.value
-    return x
-
-
+INF = 1 << 63
+ID = INF
+op = lambda a, b: a + b
+e = 0
 composition = lambda f, g: g if f == ID else f
 id_ = ID
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lst = []
+seg = LazySegTree(op, e, mapping, composition, id_, lst)

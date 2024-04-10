@@ -315,15 +315,14 @@ proc main()
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #ここまでライブラリ
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-import nimprof
-#TODO
-#二分探索の上限いじってもいいかも
+# import nimprof
+
 
 let start = cpuTime()
 proc main() =
 
     #乱数リセット
-    # randomize()
+    randomize()
     var
         (W, D, N, A, avr_amari) = input()
         A_reverse = newSeq[newSeq[int](N)](D)
@@ -389,7 +388,7 @@ proc put(a: seq[int], h: seq[int], hight: seq[int]): (seq[array[4, int]], bool) 
     for i in a:
         var
             puted = false
-            aspect_min = 1000000000
+            aspect_min = 100000
         for j in 0..<h.len:
             var
                 width = i div h[j]
@@ -435,8 +434,6 @@ proc put(a: seq[int], h: seq[int], hight: seq[int]): (seq[array[4, int]], bool) 
                 var (idx, width, rs) = tmp
                 w[idx] = 1000
                 rslt.add(rs)
-
-    # rslt.reverse()
     return (rslt, is_over)
 
 proc get_ans(N: int, D: int, A: seq[seq[int]], h: seq[int], height: seq[int]): (seq[seq[array[4, int]]], seq[int]) =
@@ -475,7 +472,7 @@ proc put_light_ver(a: seq[int], h: seq[int], hight: seq[int]): (int, bool) =
     for i in a:
         var
             puted = false
-            aspect_min = 10**18
+            aspect_min = 100000
         for j in 0..<h.len:
             var
                 width = i div h[j]
@@ -516,8 +513,6 @@ proc put_light_ver(a: seq[int], h: seq[int], hight: seq[int]): (int, bool) =
                 cost += 1000 * (i-width*h[idx])
                 cost += h[idx]
                 w[idx] = 1000
-    # rslt.reverse()
-    cost -= 1000
     for i in 0..<w.len()-1:
         if w[i] == 0 and w[i+1] == 0:
             cost += 1000
@@ -563,8 +558,6 @@ proc yamanobori(N: int, D: int, A: seq[seq[int]], h: var seq[int], time_limit: f
 
 
     while true:
-
-
         var give_idx, take_idx = rand(0..<h.len())
         if give_idx == take_idx:
             continue
@@ -603,22 +596,22 @@ proc yamanobori(N: int, D: int, A: seq[seq[int]], h: var seq[int], time_limit: f
                 cost = cost_n
                 over = over_n
 
+
         cnt += 1
         if cnt % 100 == 0:
-
-            if cpuTime() - tmp_time > time_limit:
-                # echo cnt
+            var passed_time = cpuTime() - tmp_time
+            if passed_time > time_limit:
                 return (cost, over, h, height)
-
-
+            if passed_time > time_limit / 2 and over_n.len() > N div 2:
+                return (cost, over, h, height)
 
 proc get_h(D: int, N: int, A: seq[seq[int]], ): (seq[seq[array[4, int]]], seq[seq[array[4, int]]], seq[int], seq[int], seq[int], seq[int]) =
     var
         h = @[1000]
         height = @[0, 1000]
         (ans_ins, over_ins, ) = get_ans(D, N, A, h, height)
-        l = int(sqrt(float(N)))-1
-        r = -(-N//2)+1
+        h_num = max(2, int(sqrt(float(N)))-1)
+        r = int(0.659*N - 0.133) + 1
 
 
     var
@@ -628,36 +621,48 @@ proc get_h(D: int, N: int, A: seq[seq[int]], ): (seq[seq[array[4, int]]], seq[se
         rs_h: seq[int]
         rs_height: seq[int]
 
-    while r - l > 1:
+    while true:
+        # echo h_num
         var
-            h_num = (l+r)//2
+            # h_num = (l+r)//2
             w_num = -(-N / h_num)
             avr = newSeq[float](h_num)
         for i in A:
             for j in 0..<N:
                 avr[int(j / w_num)] += float(i[j])
 
-        h = newSeqOfCap[int](h_num)
-        for idx, i in avr:
-            avr[idx] = pow(float(i), 0.25)
+        var
+            ans_n: seq[seq[array[4, int]]]
+            cost_n = 10**18
+            over_n: seq[int]
+            h_n: seq[int]
+            height_n: seq[int]
 
-        var avr_sum = sum(avr)
+
+        h = newSeqOfCap[int](h_num)
+        for idx, num in avr:
+            avr[idx] = pow(float(num), 0.25)
+
+        var
+            avr_sum = sum(avr)
         for i in avr[0 ..< ^1]:
             h.add(int(1000*i/avr_sum))
         h.add(1000-sum(h))
 
-        var (cost_n, over_n, h_n, height_n) = yamanobori(N, D, A, h, 0.3, true)
+        (cost_n, over_n, h_n, height_n) = yamanobori(N, D, A, h, 0.3, true)
 
-        if len(over_n) > 0:
-            r = h_num
-        else:
-            l = h_num
 
         if rs_cost > cost_n:
             rs_cost = cost_n
             rs_over = over_n
             rs_h = h_n
             rs_height = height_n
+
+        if len(over_n) > 0 or h_num == N:
+            h_num -= 1
+            break
+        else:
+            h_num += 1
 
     (rs_cost, rs_over, rs_h, rs_height) = yamanobori(N, D, A, rs_h, 0.3, false)
 
@@ -671,6 +676,77 @@ proc get_h(D: int, N: int, A: seq[seq[int]], ): (seq[seq[array[4, int]]], seq[se
         rs_ans[i].reverse()
 
     return (rs_ans, ans_ins, rs_h, rs_height, rs_over, over_ins)
+
+
+
+
+# proc get_h(D: int, N: int, A: seq[seq[int]], ): (seq[seq[array[4, int]]], seq[seq[array[4, int]]], seq[int], seq[int], seq[int], seq[int]) =
+#     var
+#         h = @[1000]
+#         height = @[0, 1000]
+#         (ans_ins, over_ins, ) = get_ans(D, N, A, h, height)
+#         l = int(sqrt(float(N)))-1
+#         r = int(0.659*N - 0.133) + 1
+
+
+#     var
+#         rs_ans: seq[seq[array[4, int]]]
+#         rs_cost = 10**18
+#         rs_over: seq[int]
+#         rs_h: seq[int]
+#         rs_height: seq[int]
+
+#     while r - l > 1:
+#         var
+#             h_num = (l+r)//2
+#             w_num = -(-N / h_num)
+#             avr = newSeq[float](h_num)
+#         for i in A:
+#             for j in 0..<N:
+#                 avr[int(j / w_num)] += float(i[j])
+
+#         var
+#             ans_n: seq[seq[array[4, int]]]
+#             cost_n = 10**18
+#             over_n: seq[int]
+#             h_n: seq[int]
+#             height_n: seq[int]
+
+
+#         h = newSeqOfCap[int](h_num)
+#         for idx, num in avr:
+#             avr[idx] = pow(float(num), 0.25)
+
+#         var
+#             avr_sum = sum(avr)
+#         for i in avr[0 ..< ^1]:
+#             h.add(int(1000*i/avr_sum))
+#         h.add(1000-sum(h))
+
+#         (cost_n, over_n, h_n, height_n) = yamanobori(N, D, A, h, 0.3, true)
+#         if len(over_n) > 0:
+#             r = h_num
+#         else:
+#             l = h_num
+
+#         if rs_cost > cost_n:
+#             rs_cost = cost_n
+#             rs_over = over_n
+#             rs_h = h_n
+#             rs_height = height_n
+
+#     (rs_cost, rs_over, rs_h, rs_height) = yamanobori(N, D, A, rs_h, 0.3, false)
+
+
+#     (rs_ans, rs_over) = get_ans(D, N, A, rs_h, rs_height)
+#     for i in rs_over:
+#         if i notin over_ins:
+#             rs_ans[i] = ans_ins[i]
+
+#     for i in 0..<D:
+#         rs_ans[i].reverse()
+
+#     return (rs_ans, ans_ins, rs_h, rs_height, rs_over, over_ins)
 
 
 proc is_OK_gr2(same, a, h, height: seq[int]): (bool, seq[array[4, int]]) =
@@ -1017,19 +1093,31 @@ proc get_line_ans_S_from_ans(D, N: int, ans: seq[seq[array[4, int]]], h, height:
 proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sortedset]], over, h, : seq[int], surf: seq[ref SortedMultiset], A: seq[seq[int]]) =
 
     proc mode_0(): bool
+    proc mode_1(): bool
     proc mode_2(): bool
     proc mode_3(): bool
     proc mode_4(): bool
     proc mode_5(): bool
     proc mode_6(): bool
     proc mode_7(): bool
+    proc get_now_cost(): int
 
     var
         cnt = 0
         len_h = h.len()
         A_minus = newSeqwith(D, newSeq[int](N))
         Timeover = 2.99
+        # mode_array = [0, 0, 0, 2, 3, 4, 4, 7]
         mode_array = [0, 0, 0, 2, 3, 4, 4, 7]
+
+
+
+    # var
+    #     #デバッグ用
+    #     mode_cnt = [0, 0, 0, 0, 0, 0, 0, 0]
+    #     mode_adopt_cnt = [0, 0, 0, 0, 0, 0, 0, 0]
+    #     cost = get_now_cost()
+
 
 
     for i in 0..<D:
@@ -1044,7 +1132,15 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
         cnt += 1
         if cnt % 100 == 0:
             if cpuTime() - start > Timeover:
+                #デバッグ用
+                # var tmp = [0, 0, 0, 0, 0, 0, 0, 0]
+                # for i in 0..<tmp.len():
+                #     tmp[i] = 10000000 * mode_adopt_cnt[i] // (mode_cnt[i]+1)
+                # echo tmp
+
                 # echo cnt
+
+                #デバッグ用
                 break
 
         idx1 = rand(D-1)
@@ -1055,20 +1151,55 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
             continue
         var mode = sample(mode_array)
 
+        #提出用
         if mode == 0:
             discard mode_0()
+        elif mode == 4:
+            discard mode_4()
         elif mode == 2:
             discard mode_2()
         elif mode == 3:
             discard mode_3()
-        elif mode == 4:
-            discard mode_4()
-        elif mode == 5:
-            discard mode_5()
-        elif mode == 6:
-            discard mode_6()
         elif mode == 7:
             discard mode_7()
+
+        #デバッグ用
+        # mode_cnt[mode] += 1
+        # if mode == 0:
+        #     if mode_0():
+        #         mode_adopt_cnt[mode] += 1
+        # elif mode == 1:
+        #     if mode_1():
+        #         mode_adopt_cnt[mode] += 1
+        # elif mode == 2:
+        #     if mode_2():
+        #         mode_adopt_cnt[mode] += 1
+        # elif mode == 3:
+        #     if mode_3():
+        #         mode_adopt_cnt[mode] += 1
+        # elif mode == 4:
+        #     if mode_4():
+        #         mode_adopt_cnt[mode] += 1
+        # elif mode == 5:
+        #     if mode_5():
+        #         mode_adopt_cnt[mode] += 1
+        # elif mode == 6:
+        #     if mode_6():
+        #         mode_adopt_cnt[mode] += 1
+        # elif mode == 7:
+        #     if mode_7():
+        #         mode_adopt_cnt[mode] += 1
+
+        # var cost_n = get_now_cost()
+        # if cost_n < cost:
+        #     echo (mode, cost - cost_n)
+        #     echo (cost, cost_n)
+        #     cost = cost_n
+
+        # cost = cost_n
+
+
+
 
 
         #デバッグ用#################################
@@ -1082,6 +1213,28 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
         #デバッグ用#################################
 
 
+    #デバッグ用##############################################
+    proc get_now_cost(): int =
+        var cost = 0
+        for i in 0..<h.len():
+            for j in 1..<D:
+                for _, k in itr(line[j][i][]):
+                    #立てる費用
+                    if 0 <= j - 1 and j - 1 < D:
+                        if k in line[j-1][i][]:
+                            discard
+                        else:
+                            cost += h[i]
+                    #撤去する費用
+                    if 0 <= j + 1 and j + 1 < D:
+                        if k in line[j+1][i][]:
+                            discard
+                        else:
+                            cost += h[i]
+        return cost
+    #デバッグ用##############################################
+
+
 
 
     proc all_ok(idx: int): bool =
@@ -1091,10 +1244,161 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
                 discard
             else:
                 return false
-            # echo (j, A_minus[idx][i])
+
             if i == N-1:
                 break
         return true
+
+
+
+    proc mode_1_l(m, l, r, l_other: int): bool =
+        if l_other == 0:
+            return false
+
+        if 0 <= idx1+rev and idx1+rev < D:
+            if m in line[idx1+rev][idx2][]:
+                return false
+        if 0 <= idx1 - 2*rev and idx1 - 2*rev < D:
+            if l_other in line[idx1-2*rev][idx2][]:
+                return false
+
+
+        var
+            mid = (m+l_other) div 2
+            l_other_l = line[idx1-rev][idx2][].lt(l_other)
+            l_other_r = line[idx1-rev][idx2][].gt(l_other)
+
+        if mid <= l or l_other_r <= mid:
+            return false
+        var
+            prv_l_1 = h[idx2] * (m - l)
+            nxt_l_1 = h[idx2] * (mid - l)
+
+            prv_r_1 = h[idx2] * (r - m)
+            nxt_r_1 = h[idx2] * (r - mid)
+
+
+            prv_l_2 = h[idx2] * (l_other - l_other_l)
+            nxt_l_2 = h[idx2] * (mid - l_other_l)
+
+            prv_r_2 = h[idx2] * (l_other_r - l_other)
+            nxt_r_2 = h[idx2] * (l_other_r - mid)
+
+        discard surf[idx1][].remove(-prv_l_1)
+        discard surf[idx1][].remove(-prv_r_1)
+        surf[idx1][].add(-nxt_l_1)
+        surf[idx1][].add(-nxt_r_1)
+        discard surf[idx1-rev][].remove(-prv_l_2)
+        discard surf[idx1-rev][].remove(-prv_r_2)
+        surf[idx1-rev][].add(-nxt_l_2)
+        surf[idx1-rev][].add(-nxt_r_2)
+
+        if all_ok(idx1) and all_ok(idx1-rev):
+            discard line[idx1][idx2][].remove(m)
+            line[idx1][idx2][].add(mid)
+            discard line[idx1-rev][idx2][].remove(l_other)
+            line[idx1-rev][idx2][].add(mid)
+            return true
+        else:
+            surf[idx1][].add(-prv_l_1)
+            surf[idx1][].add(-prv_r_1)
+            discard surf[idx1][].remove(-nxt_l_1)
+            discard surf[idx1][].remove(-nxt_r_1)
+            surf[idx1-rev][].add(-prv_l_2)
+            surf[idx1-rev][].add(-prv_r_2)
+            discard surf[idx1-rev][].remove(-nxt_l_2)
+            discard surf[idx1-rev][].remove(-nxt_r_2)
+            return false
+
+
+
+    proc mode_1_r(m, l, r, r_other: int): bool =
+        if r_other == 1000:
+            return false
+
+        if 0 <= idx1+rev and idx1+rev < D:
+            if m in line[idx1+rev][idx2][]:
+                return false
+
+        if 0 <= idx1 - 2*rev and idx1 - 2*rev < D:
+            if r_other in line[idx1-2*rev][idx2][]:
+                return false
+
+
+        var
+            mid = (m+r_other) div 2
+            r_other_l = line[idx1-rev][idx2][].lt(r_other)
+            r_other_r = line[idx1-rev][idx2][].gt(r_other)
+
+        if mid >= r or r_other_l >= mid:
+            return false
+        var
+            prv_l_1 = h[idx2] * (m - l)
+            nxt_l_1 = h[idx2] * (mid - l)
+
+            prv_r_1 = h[idx2] * (r - m)
+            nxt_r_1 = h[idx2] * (r - mid)
+
+
+            prv_l_2 = h[idx2] * (r_other - r_other_l)
+            nxt_l_2 = h[idx2] * (mid - r_other_l)
+
+            prv_r_2 = h[idx2] * (r_other_r - r_other)
+            nxt_r_2 = h[idx2] * (r_other_r - mid)
+
+
+        discard surf[idx1][].remove(-prv_l_1)
+        discard surf[idx1][].remove(-prv_r_1)
+        surf[idx1][].add(-nxt_l_1)
+        surf[idx1][].add(-nxt_r_1)
+        discard surf[idx1-rev][].remove(-prv_l_2)
+        discard surf[idx1-rev][].remove(-prv_r_2)
+        surf[idx1-rev][].add(-nxt_l_2)
+        surf[idx1-rev][].add(-nxt_r_2)
+
+
+
+        if all_ok(idx1) and all_ok(idx1-rev):
+
+            discard line[idx1][idx2][].remove(m)
+            line[idx1][idx2][].add(mid)
+            discard line[idx1-rev][idx2][].remove(r_other)
+            line[idx1-rev][idx2][].add(mid)
+            return true
+        else:
+            surf[idx1][].add(-prv_l_1)
+            surf[idx1][].add(-prv_r_1)
+            discard surf[idx1][].remove(-nxt_l_1)
+            discard surf[idx1][].remove(-nxt_r_1)
+            surf[idx1-rev][].add(-prv_l_2)
+            surf[idx1-rev][].add(-prv_r_2)
+            discard surf[idx1-rev][].remove(-nxt_l_2)
+            discard surf[idx1-rev][].remove(-nxt_r_2)
+
+            return false
+
+
+
+    #平均への移動
+    proc mode_1(): bool =
+        if line[idx1][idx2].size < 3:
+            return false
+        var
+            idx3 = rand(1..<line[idx1][idx2].size-1)
+            m = line[idx1][idx2][].get(idx3)
+            l = line[idx1][idx2][].lt(m)
+            r = line[idx1][idx2][].gt(m)
+            l_other = line[idx1-rev][idx2][].le(m)
+            r_other = line[idx1-rev][idx2][].ge(m)
+
+        if m == l_other:
+            return false
+
+        if mode_1_r(m, l, r, r_other):
+            return true
+        return false
+
+
 
     #異なる行へのランダム移動
     proc mode_7(): bool =
@@ -1198,39 +1502,34 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
         if line[idx1][idx2].size < 3 and line[idx1][idx3].size < 3:
             return false
 
-        var score_diff = 0
-        if 0 <= idx1 - 1 and idx1-1 < D:
-            for _, i in itr(line[idx1][idx2][]):
-                if i != 0 and i != 1000:
-                    if i in line[idx1-1][idx2][]:
-                        score_diff -= h[idx3]
-                    if i in line[idx1-1][idx3][]:
-                        score_diff += h[idx2]
+        var prv_cost, new_cost = 0
 
-            for _, i in itr(line[idx1][idx3][]):
-                if i != 0 and i != 1000:
-                    if i in line[idx1-1][idx2][]:
-                        score_diff -= h[idx3]
-                    if i in line[idx1-1][idx3][]:
-                        score_diff += h[idx2]
+        var tmp = [idx2, idx3]
+        for i in 0..<2:
+            for _, k in itr(line[idx1][tmp[i]][]):
+                #立てる費用
+                if 0 <= idx1 - 1 and idx1 - 1 < D:
+                    if k in line[idx1-1][tmp[i]][]:
+                        discard
+                    else:
+                        prv_cost += h[tmp[i]]
 
+                    if k in line[idx1-1][tmp[(i+1) mod 2]][]:
+                        discard
+                    else:
+                        new_cost += h[tmp[(i+1) mod 2]]
+                #撤去する費用
+                if 0 <= idx1 + 1 and idx1 + 1 < D:
+                    if k in line[idx1+1][tmp[i]][]:
+                        discard
+                    else:
+                        prv_cost += h[tmp[i]]
+                    if k in line[idx1+1][tmp[(i+1) mod 2]][]:
+                        discard
+                    else:
+                        new_cost += h[tmp[(i+1) mod 2]]
 
-        if 0 <= idx1 + 1 and idx1 + 1 < D:
-            for _, i in itr(line[idx1][idx2][]):
-                if i != 0 and i != 1000:
-                    if i in line[idx1+1][idx2][]:
-                        score_diff -= h[idx3]
-                    if i in line[idx1+1][idx3][]:
-                        score_diff += h[idx2]
-
-            for _, i in itr(line[idx1][idx2][]):
-                if i != 0 and i != 1000:
-                    if i in line[idx1+1][idx2][]:
-                        score_diff -= h[idx3]
-                    if i in line[idx1+1][idx3][]:
-                        score_diff += h[idx2]
-
-        if score_diff < 0:
+        if prv_cost < new_cost:
             return false
 
 
@@ -1420,7 +1719,7 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
 
     proc mode_0_l(l, m, r, l_other: int): bool =
         var score_diff = 0
-        if l_other <= l:
+        if l_other <= l or l_other == 0:
             return false
 
         if 0 <= idx1 - rev and idx1-rev < D:
@@ -1444,8 +1743,6 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
             prv_r = h[idx2] * (r - m)
             nxt_r = h[idx2] * (r - l_other)
 
-        if prv_l < 0 or nxt_l < 0 or prv_r < 0 or nxt_r < 0:
-            return false
 
         # 一旦面積情報の書き換え
         discard surf[idx1][].remove(-prv_l)
@@ -1470,7 +1767,7 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
     proc mode_0_r(l, m, r, r_other: int): bool =
         var score_diff = 0
 
-        if r <= r_other:
+        if r <= r_other or r_other == 1000:
             return false
 
         if 0 <= idx1 - rev and idx1-rev < D:
@@ -1494,8 +1791,6 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
             prv_r = h[idx2] * (r - m)
             nxt_r = h[idx2] * (r - r_other)
 
-        if prv_l <= 0 or nxt_l <= 0 or prv_r <= 0 or nxt_r <= 0:
-            return false
 
         # 一旦面積情報の書き換え
         discard surf[idx1][].remove(-prv_l)
@@ -1540,19 +1835,6 @@ proc yamanobori2(D, N: int, ans: seq[seq[array[4, int]]], line: seq[seq[ref Sort
         if mode_0_r(l, m, r, r_other):
             return true
         return false
-
-    # proc mode_1(): bool =
-    #     if line[idx1][idx2].size < 3:
-    #         return false
-    #     var
-    #         idx3 = rand(1..<line[idx1][idx2].size-1)
-    #         m = line[idx1][idx2].get(idx3)
-    #         l = line[idx1][idx2].lt(m)
-    #         r = line[idx1][idx2].gt(m)
-    #         l_other = line[idx1-rev][idx1].le(m)
-    #         r_other = line[idx1-rev][idx1].ge(m)
-    #     if m == l_other:
-    #         return false
 
 
 main()

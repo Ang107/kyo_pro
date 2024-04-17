@@ -1,83 +1,67 @@
-import sys
-from collections import deque, defaultdict
-from itertools import (
-    accumulate,
-    product,
-    permutations,
-    combinations,
-    combinations_with_replacement,
-)
-import math
-from bisect import bisect_left, insort_left, bisect_right, insort_right
-from pprint import pprint
-from heapq import heapify, heappop, heappush
-import string
-
-# 小文字アルファベットのリスト
-alph_s = list(string.ascii_lowercase)
-# 大文字アルファベットのリスト
-alph_l = list(string.ascii_uppercase)
-
-# product : bit全探索 product(range(2),repeat=n)
-# permutations : 順列全探索
-# combinations : 組み合わせ（重複無し）
-# combinations_with_replacement : 組み合わせ（重複可）
-# from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
-around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
-around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-inf = float("inf")
-mod = 998244353
-input = lambda: sys.stdin.readline().rstrip()
-P = lambda *x: print(*x)
-PY = lambda: print("Yes")
-PN = lambda: print("No")
-II = lambda: int(input())
-MII = lambda: map(int, input().split())
-LMII = lambda: list(map(int, input().split()))
+import tkinter as tk
+from tkinter import messagebox, font
 
 
-def dlist(*l, fill=0):
-    if len(l) == 1:
-        return [fill] * l[0]
-    ll = l[1:]
-    return [dlist(*ll, fill=fill) for _ in range(l[0])]
+class NumberGuesser(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("数字当てゲーム")
+        self.geometry("1600x300")  # ウィンドウのサイズをここで調整します
+        self.l = 0
+        self.r = 10001
+        self.q_num = 0
+        self.custom_font = font.Font(family="Arial", size=28)  # フォントサイズを調整
+        self.create_widgets()
+        self.ask_question()
+
+    def create_widgets(self):
+        self.question_label = tk.Label(self, text="", font=self.custom_font)
+        self.question_label.pack(pady=40)  # テキストの周りの余白も調整
+
+        yes_button = tk.Button(
+            self,
+            text="Yes",
+            font=self.custom_font,
+            command=lambda: self.process_answer(True),
+        )
+        yes_button.pack(side=tk.LEFT, expand=True, fill=tk.BOTH, padx=50, pady=20)
+
+        no_button = tk.Button(
+            self,
+            text="No",
+            font=self.custom_font,
+            command=lambda: self.process_answer(False),
+        )
+        no_button.pack(side=tk.RIGHT, expand=True, fill=tk.BOTH, padx=50, pady=20)
+
+    def ask_question(self):
+        if self.r - self.l > 1:
+            self.q_num += 1
+            self.mid = (self.l + self.r) // 2
+            self.question_label.config(
+                text=f"{self.q_num}回目の質問です。貴方の思い浮かべている数字は{self.mid}以上ですか？"
+            )
+        else:
+            self.ask_final_question()
+
+    def ask_final_question(self):
+        answer = messagebox.askyesno(
+            "確認", f"貴方の思い浮かべている数字は、ズバリ{self.l}ですね？"
+        )
+        if answer:
+            messagebox.showinfo("結果", "正解できました。")
+        else:
+            messagebox.showerror("エラー", "プログラムにバグがあるようです...")
+        self.destroy()
+
+    def process_answer(self, is_yes):
+        if is_yes:
+            self.l = self.mid
+        else:
+            self.r = self.mid
+        self.ask_question()
 
 
-h, w = MII()
-sx, sy = MII()
-gx, gy = MII()
-m = II()
-ed = defaultdict(list)
-for i in range(m):
-    a, b, c, d = MII()
-    ed[(a, b)].append((c, d))
-    ed[(c, d)].append((a, b))
-
-
-def bfs():
-    deq = deque()
-    deq.append((sx, sy))
-    visited = defaultdict(lambda: -1)
-    visited[(sx, sy)] = 0
-    while deq:
-        print(deq)
-        x, y = deq.popleft()
-        if x == gx and y == gy:
-            print(visited[(x, y)])
-            exit()
-        for i, j in ed[(x, y)]:
-            if visited[(i, j)] == -1:
-                visited[(i, j)] = visited[(x, y)] + 5
-                deq.append((i, j))
-        for i, j in around4:
-            if (
-                x + i in range(1, w + 1)
-                and y + j in range(1, h + 1)
-                and visited[(x + i, y + j)] == -1
-            ):
-                visited[(x + i, y + j)] = visited[(x, y)] + 5
-                deq.append((x + i, y + j))
-
-
-bfs()
+if __name__ == "__main__":
+    app = NumberGuesser()
+    app.mainloop()

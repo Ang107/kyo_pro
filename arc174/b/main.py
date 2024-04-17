@@ -145,39 +145,45 @@ for _ in range(t):
     for i in range(5):
         score += a[i] * (-2 + i)
     score = -score
-    if p[3] < p[4] / 2:
-        ans.append(score * p[3])
-    else:
-        if score % 2 == 0:
-            ans.append(score // 2 * p[4])
-        else:
-            ans.append(score // 2 * p[4] + min(p[4], p[3]))
+    # if p[3] < p[4] / 2:
+    #     ans.append(score * p[3])
+    # else:
+    #     if score % 2 == 0:
+    #         ans.append(score // 2 * p[4])
+    #     else:
+    #         ans.append(score // 2 * p[4] + min(p[4], p[3]))
     # ans.append(int( zfindMinimumCost(p[3], p[4], score)))
     # scoreを稼ぐための4,5の使う回数を微分を用いて見つける
     # print(score)
-    # l = -1
-    # r = -(-score // 1) + 1
-    # while r - l > 1:
-    #     # 4の数
-    #     add1 = (l + r) // 2
-    #     add1_l = max(0, add1 - 1)
-    #     add1_r = add1 + 1
-    #     # 5の数
-    #     add2 = -(-max(0, score - add1) // 2)
-    #     add2_l = -(-max(0, score - add1_l) // 2)
-    #     add2_r = -(-max(0, score - add1_r) // 2)
-    #     cost = add1 * p[3] + add2 * p[4]
-    #     cost_l = add1_l * p[3] + add2_l * p[4]
-    #     cost_r = add1_r * p[3] + add2_r * p[4]
+    l = -1
+    r = -(-score // 1) + 30
+    rslt = inf
+    while r - l > 1:
+        num_4 = []
 
-    #     if cost_l <= cost <= cost_r:
-    #         r = add1
-    #     elif cost_l >= cost >= cost_r:
-    #         l = add1
-    #     else:
-    #         break
-    #     # print(l, r, add1, add2, cost_l, cost, cost_r)
-    # ans.append(min(cost, cost_l, cost_r))
+        # 4の数
+        add1 = (l + r) // 2
+        for i in range(-10, 11):
+            num_4.append(max(0, add1 + i))
+
+        # 5の数
+        num_5 = []
+        for i in range(21):
+            num_5.append(-(-max(0, score - num_4[i]) // 2))
+
+        cost = []
+        for i in range(21):
+            cost.append(num_4[i] * p[3] + num_5[i] * p[4])
+
+        rslt = min(rslt, min(cost))
+        if cost == sorted(cost):
+            r = add1
+        elif cost == sorted(cost, reverse=True):
+            l = add1
+        else:
+            break
+        # print(l, r, add1, add2, cost_l, cost, cost_r)
+    ans.append(rslt)
 
 for i in ans:
     print(i)

@@ -1,67 +1,59 @@
-import tkinter as tk
-from tkinter import messagebox, font
+from bisect import *
 
 
-class NumberGuesser(tk.Tk):
-    def __init__(self):
-        super().__init__()
-        self.title("数字当てゲーム")
-        self.geometry("1600x300")  # ウィンドウのサイズをここで調整します
-        self.l = 0
-        self.r = 10001
-        self.q_num = 0
-        self.custom_font = font.Font(family="Arial", size=28)  # フォントサイズを調整
-        self.create_widgets()
-        self.ask_question()
-
-    def create_widgets(self):
-        self.question_label = tk.Label(self, text="", font=self.custom_font)
-        self.question_label.pack(pady=40)  # テキストの周りの余白も調整
-
-        yes_button = tk.Button(
-            self,
-            text="Yes",
-            font=self.custom_font,
-            command=lambda: self.process_answer(True),
-        )
-        yes_button.pack(side=tk.LEFT, expand=True, fill=tk.BOTH, padx=50, pady=20)
-
-        no_button = tk.Button(
-            self,
-            text="No",
-            font=self.custom_font,
-            command=lambda: self.process_answer(False),
-        )
-        no_button.pack(side=tk.RIGHT, expand=True, fill=tk.BOTH, padx=50, pady=20)
-
-    def ask_question(self):
-        if self.r - self.l > 1:
-            self.q_num += 1
-            self.mid = (self.l + self.r) // 2
-            self.question_label.config(
-                text=f"{self.q_num}回目の質問です。貴方の思い浮かべている数字は{self.mid}以上ですか？"
-            )
-        else:
-            self.ask_final_question()
-
-    def ask_final_question(self):
-        answer = messagebox.askyesno(
-            "確認", f"貴方の思い浮かべている数字は、ズバリ{self.l}ですね？"
-        )
-        if answer:
-            messagebox.showinfo("結果", "正解できました。")
-        else:
-            messagebox.showerror("エラー", "プログラムにバグがあるようです...")
-        self.destroy()
-
-    def process_answer(self, is_yes):
-        if is_yes:
-            self.l = self.mid
-        else:
-            self.r = self.mid
-        self.ask_question()
+# 以下
+def le(l, x):
+    idx = bisect_left(l, x)
+    if 0 <= idx < len(l) and l[idx] == x:
+        return x
+    elif 0 <= idx - 1 < len(l):
+        return l[idx - 1]
+    else:
+        return None
 
 
-if __name__ == "__main__":
-    app = NumberGuesser()
-    app.mainloop()
+# 以上
+def ge(l, x):
+    idx = bisect_right(l, x)
+    if 0 <= idx - 1 < len(l) and l[idx - 1] == x:
+        return x
+    elif 0 <= idx < len(l):
+        return l[idx]
+    else:
+        return None
+
+
+# より小さい
+def lt(l, x):
+    idx = bisect_left(l, x)
+    if 0 <= idx - 1 < len(l):
+        return l[idx - 1]
+    else:
+        return None
+
+
+# より大きい
+def gt(l, x):
+    idx = bisect_right(l, x)
+    if 0 <= idx < len(l):
+        return l[idx]
+    else:
+        return None
+
+
+import random
+
+tmp = []
+for i in range(20):
+    tmp.append(random.choice(range(50)))
+tmp.sort()
+print(tmp)
+for i in range(20):
+    x = random.choice(range(50))
+    print(x)
+    print(
+        le(tmp, x),
+        ge(tmp, x),
+        lt(tmp, x),
+        gt(tmp, x),
+    )

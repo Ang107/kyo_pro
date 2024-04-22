@@ -1,0 +1,1 @@
+/mnt/c/Users/kosuk/Desktop/atcoder/masters2024-final-open/a/tools/vis2/wasm/target/wasm32-unknown-unknown/release/wasm.wasm: /mnt/c/Users/kosuk/Desktop/atcoder/masters2024-final-open/a/tools/vis2/wasm/src/lib.rs

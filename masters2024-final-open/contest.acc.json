@@ -1,0 +1,42 @@
+{
+  "contest": {
+    "id": "masters2024-final-open",
+    "title": "第一回マスターズ選手権-決勝-(オープンコンテスト)",
+    "url": "https://atcoder.jp/contests/masters2024-final-open"
+  },
+  "tasks": [
+    {
+      "id": "masters2024_final_a",
+      "label": "A",
+      "title": "Windy Drone Control (A)",
+      "url": "https://atcoder.jp/contests/masters2024-final-open/tasks/masters2024_final_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.nim"
+      }
+    },
+    {
+      "id": "masters2024_final_b",
+      "label": "B",
+      "title": "Windy Drone Control (B)",
+      "url": "https://atcoder.jp/contests/masters2024-final-open/tasks/masters2024_final_b",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "main.nim"
+      }
+    },
+    {
+      "id": "masters2024_final_c",
+      "label": "C",
+      "title": "Windy Drone Control (C)",
+      "url": "https://atcoder.jp/contests/masters2024-final-open/tasks/masters2024_final_c",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.nim"
+      }
+    }
+  ]
+}

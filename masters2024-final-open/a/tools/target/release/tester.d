@@ -1,0 +1,1 @@
+/mnt/c/Users/kosuk/Desktop/atcoder/masters2024-final-open/a/tools/target/release/tester: /mnt/c/Users/kosuk/Desktop/atcoder/masters2024-final-open/a/tools/src/bin/tester.rs /mnt/c/Users/kosuk/Desktop/atcoder/masters2024-final-open/a/tools/src/lib.rs

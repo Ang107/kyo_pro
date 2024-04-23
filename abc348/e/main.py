@@ -45,59 +45,63 @@ def dlist(*l, fill=0):
 
 
 n = II()
-X = [[] for _ in range(n)]
+ed = [[] for _ in range(n)]
 for i in range(n - 1):
     u, v = MII()
     u -= 1
     v -= 1
-    X[u].append(v)
-    X[v].append(u)
-
+    ed[u].append(v)
+    ed[v].append(u)
 c = LMII()
-P = [-1] * n
-Q = deque([0])
-R = []
-while Q:
-    i = deque.popleft(Q)
-    R.append(i)
-    for a in X[i]:
-        if a != P[i]:
-            P[a] = i
-            X[a].remove(i)
-            deque.append(Q, a)
+part_of_tree_sum = [0] * n
+from functools import cache
 
-##### Settings
-unit = 1
-merge = lambda a, b: a + b
-adj_bu = lambda a, i: a + 1
-adj_td = lambda a, i, p: a + 1
-adj_fin = lambda a, i: a
-#####
 
-ME = [unit] * n
-XX = [0] * n
-TD = [unit] * n
-for i in R[1:][::-1]:
-    XX[i] = adj_bu(ME[i], i)
-    p = P[i]
-    ME[p] = merge(ME[p], XX[i])
-XX[R[0]] = adj_fin(ME[R[0]], R[0])
+def f(pearent, x):
+    result = c[x]
+    for i in ed[x]:
+        if i != pearent:
+            result += f(x, i)
+    part_of_tree_sum[x] = result
+    return result
 
-# print("ME =", ME) # Merge before adj
-# print("XX =", XX) # Bottom-up after adj
 
-for i in R:
-    ac = TD[i]
-    for j in X[i]:
-        TD[j] = ac
-        ac = merge(ac, XX[j])
-    ac = unit
-    for j in X[i][::-1]:
-        TD[j] = adj_td(merge(TD[j], ac), j, i)
-        ac = merge(ac, XX[j])
-        XX[j] = adj_fin(merge(ME[j], TD[j]), j)
+def dfs(x):
+    deq = deque()
+    visited = [-1] * n
+    deq.append(x)
+    visited[x] = 0
+    result = 0
+    while deq:
+        x = deq.popleft()
+        for i in ed[x]:
+            if visited[i] == -1:
+                deq.append(i)
+                visited[i] = visited[x] + 1
+                result += visited[i] * c[i]
+    return result
 
-# print("TD =", TD) # Top-down after adj
-# print("XX =", XX) # Final Result
 
-print(*XX, sep="\n")
+def dfs2(x, s):
+    deq = deque()
+    visited = [inf] * n
+    deq.append(x)
+    visited[x] = s
+    while deq:
+        x = deq.popleft()
+        for i in ed[x]:
+            if visited[i] == inf:
+                deq.append(i)
+                tmp = 0
+                tmp -= part_of_tree_sum[i]
+                tmp += part_of_tree_sum[0] - part_of_tree_sum[i]
+                visited[i] = visited[x] + tmp
+    return visited
+
+
+f(-1, 0)
+s = dfs(0)
+visited = dfs2(0, s)
+print(min(visited))
+# print(part_of_tree_sum)
+# print(visited)

@@ -53,19 +53,34 @@
       "id": "abc327_e",
       "label": "E",
       "title": "Maximize Rating",
-      "url": "https://atcoder.jp/contests/abc327/tasks/abc327_e"
+      "url": "https://atcoder.jp/contests/abc327/tasks/abc327_e",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "abc327_f",
       "label": "F",
       "title": "Apples",
-      "url": "https://atcoder.jp/contests/abc327/tasks/abc327_f"
+      "url": "https://atcoder.jp/contests/abc327/tasks/abc327_f",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "abc327_g",
       "label": "G",
       "title": "Many Good Tuple Problems",
-      "url": "https://atcoder.jp/contests/abc327/tasks/abc327_g"
+      "url": "https://atcoder.jp/contests/abc327/tasks/abc327_g",
+      "directory": {
+        "path": "g",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     }
   ]
 }

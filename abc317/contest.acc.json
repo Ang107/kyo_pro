@@ -53,25 +53,45 @@
       "id": "abc317_e",
       "label": "E",
       "title": "Avoid Eye Contact",
-      "url": "https://atcoder.jp/contests/abc317/tasks/abc317_e"
+      "url": "https://atcoder.jp/contests/abc317/tasks/abc317_e",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "abc317_f",
       "label": "F",
       "title": "Nim",
-      "url": "https://atcoder.jp/contests/abc317/tasks/abc317_f"
+      "url": "https://atcoder.jp/contests/abc317/tasks/abc317_f",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "abc317_g",
       "label": "G",
       "title": "Rearranging",
-      "url": "https://atcoder.jp/contests/abc317/tasks/abc317_g"
+      "url": "https://atcoder.jp/contests/abc317/tasks/abc317_g",
+      "directory": {
+        "path": "g",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "abc317_h",
       "label": "Ex",
       "title": "Walk",
-      "url": "https://atcoder.jp/contests/abc317/tasks/abc317_h"
+      "url": "https://atcoder.jp/contests/abc317/tasks/abc317_h",
+      "directory": {
+        "path": "ex",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     }
   ]
 }

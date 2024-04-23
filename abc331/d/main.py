@@ -46,94 +46,100 @@ for j in range(n):
     for i in range(1, n):
         acc[i][j] += acc[i - 1][j]
 
-# for i in acc:
-#     print(*i)
 
-
-def f(a, b, c, d):
-    if a < 0 or b < 0 or c < 0 or d < 0 or a > c or b > d:
+def f(a, b):
+    if a < 0 or b < 0:
         return 0
-    if c < n and d < n:
-        if a == b == 0:
-            # print(a, b, c, d, acc[c][d])
-            return acc[c][d]
-        else:
-            result = (
-                acc[c][d]
-                - f(0, 0, c, b - 1)
-                - f(0, 0, a - 1, d)
-                + f(0, 0, a - 1, b - 1)
-            )
-            # print(a, b, c, d, result)
-            return result
 
-    else:
-        h, w = ((c + 1) // n + (-a // n), (d + 1) // n + (-b // n))
-        print(c // n, (-a // n), d // n, (-b // n))
-        print(h, w)
-        result = 0
-        if h > 0 and w > 0:
-            result = h * w * acc[n - 1][n - 1]
-        print(result)
-        if b % n != 0 and h > 0:
-            result += f(0, b % n, n - 1, n - 1) * h
-        print(result)
+    h, h_amari = (a + 1) // n, a % n
+    w, w_amari = (b + 1) // n, b % n
+    if a < n and b < n:
+        return acc[a][b]
+    result = 0
+    if h > 0 and w > 0:
+        result += h * w * acc[n - 1][n - 1]
+    if w_amari != n - 1 and h > 0:
+        result += f(n - 1, w_amari) * h
+    if h_amari != n - 1 and w > 0:
+        result += f(h_amari, n - 1) * w
 
-        if d % n != n - 1 and h > 0:
-            result += f(0, 0, n - 1, d % n) * h
-        print(result)
-
-        if a % n != 0 and w > 0:
-            result += f(a % n, 0, n - 1, n - 1) * w
-        print(result)
-
-        if c % n != n - 1 and w > 0:
-            result += f(0, 0, c % n, n - 1) * w
-        print(result)
-
-        if a // n < c // n:
-            if b // n < d // n:
-                if a % n != 0 and b % n != 0:
-                    result += f(a % n, b % n, n - 1, n - 1)
-                print(result)
-
-                if c % n != n - 1 and d % n != n - 1:
-                    result += f(0, 0, c % n, d % n)
-                print(result)
-
-                if a % n != 0 and d % n != n - 1:
-                    result += f(a % n, 0, n - 1, d % n)
-                print(result)
-
-                if b % n != 0 and c % n != n - 1:
-                    result += f(0, b % n, c % n, n - 1)
-                print(result)
-            else:
-                if a % n != 0 and b % n != 0:
-                    result += f(a % n, b % n, n - 1, n - 1)
-                print(result)
-
-                if c % n != n - 1 and d % n != n - 1:
-                    result += f(0, 0, c % n, d % n)
-                print(result)
-
-                if a % n != 0 and d % n != n - 1:
-                    result += f(a % n, 0, n - 1, d % n)
-                print(result)
-
-                if b % n != 0 and c % n != n - 1:
-                    result += f(0, b % n, c % n, n - 1)
-                print(result)
-                
-        else:
-            if b // n < d // n:
-                
-            else:
-                result += f(a%n,b% n,c%n,d%n)
-
-        # print(a, b, c, d, result)
-        return result
+    if h_amari != n - 1 and w_amari != n - 1:
+        result += f(h_amari, w_amari)
+    # print(a, b, result)
+    return result
 
 
 for a, b, c, d in Q:
-    print(f(a, b, c, d))
+    print(f(c, d) + f(a - 1, b - 1) - f(c, b - 1) - f(a - 1, d))
+
+
+# def f(a, b, c, d):
+#     if a < 0 or b < 0 or c < 0 or d < 0 or a > c or b > d:
+#         return 0
+#     if c < n and d < n:
+#         if a == b == 0:
+#             return acc[c][d]
+#         else:
+#             result = (
+#                 acc[c][d]
+#                 - f(0, 0, c, b - 1)
+#                 - f(0, 0, a - 1, d)
+#                 + f(0, 0, a - 1, b - 1)
+#             )
+#             return result
+
+#     else:
+#         h, w = ((c + 1) // n + (-a // n), (d + 1) // n + (-b // n))
+#         result = 0
+#         if h > 0 and w > 0:
+#             result = h * w * acc[n - 1][n - 1]
+
+#         if b % n != 0 and h > 0 and b % n < d % n:
+#             result += f(0, b % n, n - 1, n - 1) * h
+
+#         if d % n != n - 1 and h > 0 and b % n < d % n:
+#             result += f(0, 0, n - 1, d % n) * h
+
+#         if a % n != 0 and w > 0 and a % n < c % n:
+#             result += f(a % n, 0, n - 1, n - 1) * w
+
+#         if c % n != n - 1 and w > 0 and a % n < c % n:
+#             result += f(0, 0, c % n, n - 1) * w
+
+#         if a // n < c // n:
+#             if b // n < d // n:
+#                 if a % n != 0 and b % n != 0:
+#                     result += f(a % n, b % n, n - 1, n - 1)
+
+#                 if c % n != n - 1 and d % n != n - 1:
+#                     result += f(0, 0, c % n, d % n)
+
+#                 if a % n != 0 and d % n != n - 1:
+#                     result += f(a % n, 0, n - 1, d % n)
+
+#                 if b % n != 0 and c % n != n - 1:
+#                     result += f(0, b % n, c % n, n - 1)
+
+#             else:
+#                 if a % n != 0 and b % n != 0 and a % n != 0 and d % n != n - 1:
+#                     result += f(a % n, b % n, n - 1, d % n)
+
+#                 if c % n != n - 1 and d % n != n - 1 and b % n != 0 and c % n != n - 1:
+#                     result += f(0, b % n, c % n, d % n)
+
+#         else:
+#             if b // n < d // n:
+#                 if a % n != 0 and b % n != 0 and b % n != 0 and c % n != n - 1:
+#                     result += f(a % n, b % n, c % n, n - 1)
+
+#                 if c % n != n - 1 and d % n != n - 1 and a % n != 0 and d % n != n - 1:
+#                     result += f(a % n, 0, c % n, d % n)
+
+#             else:
+#                 result += f(a % n, b % n, c % n, d % n)
+
+#         return result
+
+
+# for a, b, c, d in Q:
+#     print(f(a, b, c, d))

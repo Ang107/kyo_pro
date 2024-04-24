@@ -38,20 +38,21 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n = II()
-n_base_2 = bin(n)[2:]
-ans = []
-# print(n_base_2)
-for idx, i in enumerate(n_base_2):
-    if i == "1":
-        ans.append("A")
-        if idx != len(n_base_2) - 1:
-            ans.append("B")
-        else:
-            pass
-
+n, q = MII()
+c = LMII()
+ball = [{c[i]} for i in range(n)]
+for i in range(q):
+    a, b = MII()
+    a -= 1
+    b -= 1
+    if len(ball[a]) > len(ball[b]):
+        for j in ball[b]:
+            ball[a].add(j)
+        ball[b] = set()
+        ball[a], ball[b] = ball[b], ball[a]
     else:
-        if idx != len(n_base_2) - 1:
-            ans.append("B")
+        for j in ball[a]:
+            ball[b].add(j)
+        ball[a] = set()
 
-print("".join(ans))
+    print(len(ball[b]))

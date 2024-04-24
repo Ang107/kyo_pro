@@ -1,12 +1,12 @@
 import sys
 from collections import deque, defaultdict
 from itertools import (
-    accumulate,
-    product,
-    permutations,
-    combinations,
-    combinations_with_replacement,
-)
+     accumulate,
+     product,
+     permutations,
+     combinations,
+     combinations_with_replacement
+     )
 import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
@@ -37,21 +37,3 @@ def dlist(*l, fill=0):
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
-
-n = II()
-n_base_2 = bin(n)[2:]
-ans = []
-# print(n_base_2)
-for idx, i in enumerate(n_base_2):
-    if i == "1":
-        ans.append("A")
-        if idx != len(n_base_2) - 1:
-            ans.append("B")
-        else:
-            pass
-
-    else:
-        if idx != len(n_base_2) - 1:
-            ans.append("B")
-
-print("".join(ans))

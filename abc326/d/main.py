@@ -39,19 +39,25 @@ def dlist(*l, fill=0):
 
 
 n = II()
-n_base_2 = bin(n)[2:]
-ans = []
-# print(n_base_2)
-for idx, i in enumerate(n_base_2):
-    if i == "1":
-        ans.append("A")
-        if idx != len(n_base_2) - 1:
-            ans.append("B")
-        else:
-            pass
+r = input()
+c = input()
+can = []
 
-    else:
-        if idx != len(n_base_2) - 1:
-            ans.append("B")
 
-print("".join(ans))
+def isOK(l):
+    dd = defaultdict(int)
+    for i in l:
+        if i == ".":
+            continue
+        dd[i] += 1
+        if dd[i] > 1:
+            return False
+    if len(dd) == 3:
+        return True
+
+
+for i in product([".", "A", "B", "C"], repeat=n):
+    if isOK(i):
+        can.append(i)
+
+print(len(can))

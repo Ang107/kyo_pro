@@ -41,6 +41,7 @@ LMII = lambda: list(map(int, input().split()))
 n = II()
 a = LMII()
 tmp = []
+
 for i in a:
     tmp.append(i)
     if len(tmp) == 1:

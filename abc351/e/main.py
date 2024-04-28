@@ -39,5 +39,42 @@ MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
 n = II()
-x, y = [LMII() for _ in range(n)]
+XY = []
+for i in range(n):
+    a, b = MII()
+    XY.append((a + b, a - b))
+XY_G = [(i, j) for i, j in XY if i % 2 == 0]
+XY_K = [(i, j) for i, j in XY if i % 2 == 1]
 
+XY_G_X = [i for i, j in XY_G]
+XY_G_Y = [j for i, j in XY_G]
+
+XY_K_X = [i for i, j in XY_K]
+XY_K_Y = [j for i, j in XY_K]
+
+XY_G_X.sort()
+XY_G_Y.sort()
+XY_K_X.sort()
+XY_K_Y.sort()
+
+acc_XY_G_X = list(accumulate(XY_G_X))
+acc_XY_G_Y = list(accumulate(XY_G_Y))
+acc_XY_K_X = list(accumulate(XY_K_X))
+acc_XY_K_Y = list(accumulate(XY_K_Y))
+
+
+def solve(l, acc_l):
+    result = 0
+    n = len(l)
+    for i in range(len(l)):
+        result += acc_l[-1] - acc_l[i] - l[i] * (n - i - 1)
+    return result // 2
+
+
+ans = (
+    solve(XY_G_X, acc_XY_G_X)
+    + solve(XY_G_Y, acc_XY_G_Y)
+    + solve(XY_K_X, acc_XY_K_X)
+    + solve(XY_K_Y, acc_XY_K_Y)
+)
+print(ans)

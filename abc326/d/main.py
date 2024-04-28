@@ -60,4 +60,44 @@ for i in product([".", "A", "B", "C"], repeat=n):
     if isOK(i):
         can.append(i)
 
-print(len(can))
+can_use = defaultdict(list)
+
+
+def get_first(l):
+    for i in l:
+        if i != ".":
+            return i
+
+
+for i in can:
+    can_use[get_first(i)].append(i)
+
+tmp = []
+
+for i in r:
+    tmp.append(can_use[i])
+
+
+def isOK2(l):
+    tmp = ""
+    for j in range(n):
+        for i in range(n):
+            if l[i][j] != ".":
+                tmp += l[i][j]
+                break
+    l_tenti = list(zip(*l))
+    for i in l_tenti:
+        if isOK(i):
+            pass
+        else:
+            return False
+    return tmp == c
+
+
+for i in product(*tmp):
+    if isOK2(i):
+        PY()
+        for j in i:
+            print("".join(j))
+        exit()
+PN()

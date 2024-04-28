@@ -11,6 +11,12 @@ import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
 from heapq import heapify, heappop, heappush
+import string
+
+# 小文字アルファベットのリスト
+alph_s = list(string.ascii_lowercase)
+# 大文字アルファベットのリスト
+alph_l = list(string.ascii_uppercase)
 
 # product : bit全探索 product(range(2),repeat=n)
 # permutations : 順列全探索
@@ -26,32 +32,12 @@ input = lambda: sys.stdin.readline().rstrip()
 P = lambda *x: print(*x)
 PY = lambda: print("Yes")
 PN = lambda: print("No")
+SI = lambda: input()
+IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-
-def dlist(*l, fill=0):
-    if len(l) == 1:
-        return [fill] * l[0]
-    ll = l[1:]
-    return [dlist(*ll, fill=fill) for _ in range(l[0])]
-
-
 n = II()
-a = LMII()
-from functools import cache
+x, y = [LMII() for _ in range(n)]
 
-
-@cache
-def f(x):
-    result = 0
-    for i in range(x + 1, n):
-        result += f(i) + a[i]
-        result %= mod
-    return result
-
-
-bunsi = f(-1)
-bunbo = pow(n, n, mod)
-print(ans)

@@ -38,31 +38,3 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n,t,m = MII()
-ab = defaultdict(set)
-for i in range(m):
-    a,b = MII()
-    ab[a].add(b)
-    ab[b].add(a)
-    
-def dfs(num,team):
-    if num == n+1:
-        if len(team) == t:
-            return 1
-        else:
-            return 0
-    result = 0
-    for i,j in enumerate(team):
-        if len(j & ab[num]) == 0:
-            team_n = [k.copy() for k in team]
-            team_n[i].add(num)
-            result += dfs(num+1,team_n)
-    if len(team) < t:
-        team_n = [k.copy() for k in team]
-        team_n.append({num})
-        result += dfs(num+1,team_n)
-    
-    return result
-print(dfs(1,[]))
- 
-    

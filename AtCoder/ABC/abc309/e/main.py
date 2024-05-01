@@ -1,19 +1,63 @@
 import sys
-from  collections import deque,defaultdict
-from itertools import product
-from sortedcontainers import SortedSet, SortedList, SortedDict
+from collections import deque, defaultdict
+from itertools import (
+    accumulate,
+    product,
+    permutations,
+    combinations,
+    combinations_with_replacement,
+)
+import math
+from bisect import bisect_left, insort_left, bisect_right, insort_right
+from pprint import pprint
+from heapq import heapify, heappop, heappush
+import string
 
+# 小文字アルファベットのリスト
+alph_s = list(string.ascii_lowercase)
+# 大文字アルファベットのリスト
+alph_l = list(string.ascii_uppercase)
+
+# product : bit全探索 product(range(2),repeat=n)
+# permutations : 順列全探索
+# combinations : 組み合わせ（重複無し）
+# combinations_with_replacement : 組み合わせ（重複可）
+# from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
-deq = deque()
-dic = {}
-dd = defaultdict()
+around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
+around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
+inf = float("inf")
+mod = 998244353
+input = lambda: sys.stdin.readline().rstrip()
+P = lambda *x: print(*x)
+PY = lambda: print("Yes")
+PN = lambda: print("No")
+SI = lambda: input()
+IS = lambda: input().split()
+II = lambda: int(input())
+MII = lambda: map(int, input().split())
+LMII = lambda: list(map(int, input().split()))
 
-II = lambda : int(input())
-MII = lambda : map(int,input().split())
-LMII = lambda : list(map(int,input().split()))
-Ary2 = lambda w,h,element : [[element] * w for _ in range(h)]
-
+n,m = MII()
+p = LMII()
+childlen = [[] for _ in range(n+1)]
+for i,j in enumerate(p):
+    childlen[j].append(i+2)
     
+hoken = [-1] * (n+1)
+for i in range(m):
+    x,y = MII()
+    hoken[x] = max(hoken[x],y)
+
+def dfs():
+    deq = deque()
+    deq.append(1)
+    while deq:
+        x = deq.pop()
+        for i in childlen[x]:
+            hoken[i] = max(hoken[i],hoken[x]-1)
+            deq.append(i)
+dfs()
+print(len([i for i in hoken if i >= 0]))
+        
     
-
-

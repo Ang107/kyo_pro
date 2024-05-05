@@ -38,3 +38,28 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+n,m = MII()
+p = LMII()
+p.sort()
+l = LMII()
+d = LMII()
+ld = [(i,j) for i,j in zip(l,d)]
+heapify(ld)
+k = []
+ans = 0
+# print(ld)
+
+for i in p:
+    while ld and ld[0][0] <= i:
+        tmp = heappop(ld)
+        heappush(k,-tmp[1])
+    if k:
+        tmp = heappop(k)
+        ans += i + tmp
+    else:
+        ans += i
+
+    # print(ans)
+print(ans)
+        
+        

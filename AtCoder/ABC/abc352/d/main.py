@@ -1,22 +1,5 @@
 import sys
-from collections import deque, defaultdict
-from itertools import (
-    accumulate,
-    product,
-    permutations,
-    combinations,
-    combinations_with_replacement,
-)
-import math
-from bisect import bisect_left, insort_left, bisect_right, insort_right
-from pprint import pprint
-from heapq import heapify, heappop, heappush
-import string
 
-# 小文字アルファベットのリスト
-alph_s = list(string.ascii_lowercase)
-# 大文字アルファベットのリスト
-alph_l = list(string.ascii_uppercase)
 
 # product : bit全探索 product(range(2),repeat=n)
 # permutations : 順列全探索
@@ -37,193 +20,207 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-# https://github.com/tatyam-prime/SortedSet/blob/main/SortedMultiset.py
-import math
-from bisect import bisect_left, bisect_right
-from typing import Generic, Iterable, Iterator, List, Tuple, TypeVar, Optional
-
-T = TypeVar("T")
+import typing
 
 
-class SortedMultiset(Generic[T]):
-    BUCKET_RATIO = 16
-    SPLIT_RATIO = 24
+def _ceil_pow2(n: int) -> int:
+    x = 0
+    while (1 << x) < n:
+        x += 1
 
-    def __init__(self, a: Iterable[T] = []) -> None:
-        "Make a new SortedMultiset from iterable. / O(N) if sorted / O(N log N)"
-        a = list(a)
-        n = self.size = len(a)
-        if any(a[i] > a[i + 1] for i in range(n - 1)):
-            a.sort()
-        num_bucket = int(math.ceil(math.sqrt(n / self.BUCKET_RATIO)))
-        self.a = [
-            a[n * i // num_bucket : n * (i + 1) // num_bucket]
-            for i in range(num_bucket)
-        ]
+    return x
 
-    def __iter__(self) -> Iterator[T]:
-        for i in self.a:
-            for j in i:
-                yield j
 
-    def __reversed__(self) -> Iterator[T]:
-        for i in reversed(self.a):
-            for j in reversed(i):
-                yield j
+def _bsf(n: int) -> int:
+    x = 0
+    while n % 2 == 0:
+        x += 1
+        n //= 2
 
-    def __eq__(self, other) -> bool:
-        return list(self) == list(other)
+    return x
 
-    def __len__(self) -> int:
-        return self.size
 
-    def __repr__(self) -> str:
-        return "SortedMultiset" + str(self.a)
+class SegTree:
+    def __init__(
+        self,
+        op: typing.Callable[[typing.Any, typing.Any], typing.Any],
+        e: typing.Any,
+        v: typing.Union[int, typing.List[typing.Any]],
+    ) -> None:
+        self._op = op
+        self._e = e
 
-    def __str__(self) -> str:
-        s = str(list(self))
-        return "{" + s[1 : len(s) - 1] + "}"
+        if isinstance(v, int):
+            v = [e] * v
 
-    def _position(self, x: T) -> Tuple[List[T], int, int]:
-        "return the bucket, index of the bucket and position in which x should be. self must not be empty."
-        for i, a in enumerate(self.a):
-            if x <= a[-1]:
-                break
-        return (a, i, bisect_left(a, x))
+        self._n = len(v)
+        self._log = _ceil_pow2(self._n)
+        self._size = 1 << self._log
+        self._d = [e] * (2 * self._size)
 
-    def __contains__(self, x: T) -> bool:
-        if self.size == 0:
-            return False
-        a, _, i = self._position(x)
-        return i != len(a) and a[i] == x
+        for i in range(self._n):
+            self._d[self._size + i] = v[i]
+        for i in range(self._size - 1, 0, -1):
+            self._update(i)
 
-    def count(self, x: T) -> int:
-        "Count the number of x."
-        return self.index_right(x) - self.index(x)
+    def set(self, p: int, x: typing.Any) -> None:
+        assert 0 <= p < self._n
 
-    def add(self, x: T) -> None:
-        "Add an element. / O(√N)"
-        if self.size == 0:
-            self.a = [[x]]
-            self.size = 1
-            return
-        a, b, i = self._position(x)
-        a.insert(i, x)
-        self.size += 1
-        if len(a) > len(self.a) * self.SPLIT_RATIO:
-            mid = len(a) >> 1
-            self.a[b : b + 1] = [a[:mid], a[mid:]]
+        p += self._size
+        self._d[p] = x
+        for i in range(1, self._log + 1):
+            self._update(p >> i)
 
-    def _pop(self, a: List[T], b: int, i: int) -> T:
-        ans = a.pop(i)
-        self.size -= 1
-        if not a:
-            del self.a[b]
-        return ans
+    def get(self, p: int) -> typing.Any:
+        assert 0 <= p < self._n
 
-    def discard(self, x: T) -> bool:
-        "Remove an element and return True if removed. / O(√N)"
-        if self.size == 0:
-            return False
-        a, b, i = self._position(x)
-        if i == len(a) or a[i] != x:
-            return False
-        self._pop(a, b, i)
-        return True
+        return self._d[p + self._size]
 
-    def lt(self, x: T) -> Optional[T]:
-        "Find the largest element < x, or None if it doesn't exist."
-        for a in reversed(self.a):
-            if a[0] < x:
-                return a[bisect_left(a, x) - 1]
+    def prod(self, left: int, right: int) -> typing.Any:
+        assert 0 <= left <= right <= self._n
+        sml = self._e
+        smr = self._e
+        left += self._size
+        right += self._size
 
-    def le(self, x: T) -> Optional[T]:
-        "Find the largest element <= x, or None if it doesn't exist."
-        for a in reversed(self.a):
-            if a[0] <= x:
-                return a[bisect_right(a, x) - 1]
+        while left < right:
+            if left & 1:
+                sml = self._op(sml, self._d[left])
+                left += 1
+            if right & 1:
+                right -= 1
+                smr = self._op(self._d[right], smr)
+            left >>= 1
+            right >>= 1
 
-    def gt(self, x: T) -> Optional[T]:
-        "Find the smallest element > x, or None if it doesn't exist."
-        for a in self.a:
-            if a[-1] > x:
-                return a[bisect_right(a, x)]
+        return self._op(sml, smr)
 
-    def ge(self, x: T) -> Optional[T]:
-        "Find the smallest element >= x, or None if it doesn't exist."
-        for a in self.a:
-            if a[-1] >= x:
-                return a[bisect_left(a, x)]
+    def all_prod(self) -> typing.Any:
+        return self._d[1]
 
-    def __getitem__(self, i: int) -> T:
-        "Return the i-th element."
-        if i < 0:
-            for a in reversed(self.a):
-                i += len(a)
-                if i >= 0:
-                    return a[i]
-        else:
-            for a in self.a:
-                if i < len(a):
-                    return a[i]
-                i -= len(a)
-        raise IndexError
+    def max_right(self, left: int, f: typing.Callable[[typing.Any], bool]) -> int:
+        assert 0 <= left <= self._n
+        assert f(self._e)
 
-    def pop(self, i: int = -1) -> T:
-        "Pop and return the i-th element."
-        if i < 0:
-            for b, a in enumerate(reversed(self.a)):
-                i += len(a)
-                if i >= 0:
-                    return self._pop(a, ~b, i)
-        else:
-            for b, a in enumerate(self.a):
-                if i < len(a):
-                    return self._pop(a, b, i)
-                i -= len(a)
-        raise IndexError
+        if left == self._n:
+            return self._n
 
-    def index(self, x: T) -> int:
-        "Count the number of elements < x."
-        ans = 0
-        for a in self.a:
-            if a[-1] >= x:
-                return ans + bisect_left(a, x)
-            ans += len(a)
-        return ans
+        left += self._size
+        sm = self._e
 
-    def index_right(self, x: T) -> int:
-        "Count the number of elements <= x."
-        ans = 0
-        for a in self.a:
-            if a[-1] > x:
-                return ans + bisect_right(a, x)
-            ans += len(a)
-        return ans
+        first = True
+        while first or (left & -left) != left:
+            first = False
+            while left % 2 == 0:
+                left >>= 1
+            if not f(self._op(sm, self._d[left])):
+                while left < self._size:
+                    left *= 2
+                    if f(self._op(sm, self._d[left])):
+                        sm = self._op(sm, self._d[left])
+                        left += 1
+                return left - self._size
+            sm = self._op(sm, self._d[left])
+            left += 1
+
+        return self._n
+
+    def min_left(self, right: int, f: typing.Callable[[typing.Any], bool]) -> int:
+        assert 0 <= right <= self._n
+        assert f(self._e)
+
+        if right == 0:
+            return 0
+
+        right += self._size
+        sm = self._e
+
+        first = True
+        while first or (right & -right) != right:
+            first = False
+            right -= 1
+            while right > 1 and right % 2:
+                right >>= 1
+            if not f(self._op(self._d[right], sm)):
+                while right < self._size:
+                    right = 2 * right + 1
+                    if f(self._op(self._d[right], sm)):
+                        sm = self._op(self._d[right], sm)
+                        right -= 1
+                return right + 1 - self._size
+            sm = self._op(self._d[right], sm)
+
+        return 0
+
+    def _update(self, k: int) -> None:
+        self._d[k] = self._op(self._d[2 * k], self._d[2 * k + 1])
 
 
 n, k = MII()
 p = LMII()
-d = {j: i for i, j in enumerate(p)}
+v = [-1] * n
+for i, j in enumerate(p):
+    v[j - 1] = i
+
+from collections import deque
+
+# print(v)
+
+
+def swag(l, k, mode="min"):
+    """
+    lの中から連続してk個選ぶ時、左端が 0 ~ i-k の時それぞれの最大値、最小値を取得。
+    n - k + 1個のリストを返す。
+    """
+    deq = deque()
+    result = []
+    if mode == "min":
+        for i, a in enumerate(l):
+            while deq and l[deq[-1]] >= a:
+                deq.pop()
+            deq.append(i)
+            if deq[0] == i - k:
+                deq.popleft()
+            if i >= k - 1:
+                result.append(l[deq[0]])
+    elif mode == "max":
+        for i, a in enumerate(l):
+            while deq and l[deq[-1]] <= a:
+                deq.pop()
+            deq.append(i)
+            if deq[0] == i - k:
+                deq.popleft()
+            if i >= k - 1:
+                result.append(l[deq[0]])
+    return result
+
+
 ans = inf
-# if k == 1:
-#     print(0)
-#     exit()
-deq = deque(maxlen=k)
-sms = SortedMultiset()
-for i in range(1, k + 1):
-    deq.append(d[i])
-    sms.add(d[i])
-ans = sms[-1] - sms[0]
 
-for i in range(k + 1, n + 1):
-    # print(deq)
-    sms.discard(deq[0])
-    deq.append(d[i])
-    sms.add(d[i])
-    ans = min(ans, sms[-1] - sms[0])
+max_ = swag(v, k, "max")
+min_ = swag(v, k, "min")
+
+for mn, mx in zip(min_, max_):
+    ans = min(ans, mx - mn)
 print(ans)
+# # 区間加算・区間最大値取得^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# op = lambda a, b: max(a, b)
+# e = -float("inf")
+# mapping = lambda f, x: f + x
+# composition = lambda f, g: f + g
+# id_ = 0
+# # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-# for i in range(1,n+1):
-#     if i - k + 1 >= 0:
-#         ans = min(ans,abs(d[i]-)
+# st_max = SegTree(op, e, v)
+# # 区間加算・区間最小値取得^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# op = lambda a, b: min(a, b)
+# e = float("inf")
+# mapping = lambda f, x: f + x
+# composition = lambda f, g: f + g
+# id_ = 0
+# # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# st_min = SegTree(op, e, v)
+# ans = inf
+# for i in range(n - k + 1):
+#     ans = min(ans, st_max.prod(i, i + k) - st_min.prod(i, i + k))
+# print(ans)

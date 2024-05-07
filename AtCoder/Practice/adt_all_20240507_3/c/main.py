@@ -38,20 +38,13 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n, m = MII()
+n = II()
 a = LMII()
-pos = []
-p = 1
-for i in range(m):
-    pos.append(p)
-    if p == a[i]:
-        p += 1
-    elif p - 1 == a[i]:
-        p -= 1
-ans = []
-b = list(range(n + 1))
-for i, j in zip(a[::-1], pos[::-1]):
-    ans.append(b[j])
-    b[i], b[i + 1] = b[i + 1], b[i]
-for i in ans[::-1]:
-    print(i)
+q = II()
+for _ in range(q):
+    tmp = LMII()
+    if tmp[0] == 1:
+        i, x = tmp[1:]
+        a[i - 1] = x
+    else:
+        print(a[tmp[1] - 1])

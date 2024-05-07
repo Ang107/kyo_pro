@@ -14,9 +14,9 @@ from heapq import heapify, heappop, heappush
 import string
 
 # 小文字アルファベットのリスト
-alph_s = list(string.ascii_lowercase)
+alph_s = set(list(string.ascii_lowercase))
 # 大文字アルファベットのリスト
-alph_l = list(string.ascii_uppercase)
+alph_l = set(list(string.ascii_uppercase))
 
 # product : bit全探索 product(range(2),repeat=n)
 # permutations : 順列全探索
@@ -38,20 +38,33 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n, m = MII()
-a = LMII()
-pos = []
-p = 1
-for i in range(m):
-    pos.append(p)
-    if p == a[i]:
-        p += 1
-    elif p - 1 == a[i]:
-        p -= 1
-ans = []
-b = list(range(n + 1))
-for i, j in zip(a[::-1], pos[::-1]):
-    ans.append(b[j])
-    b[i], b[i + 1] = b[i + 1], b[i]
-for i in ans[::-1]:
-    print(i)
+x, y, z = MII()
+s = input()
+
+from functools import cache
+
+
+@cache
+def f(i, caps):
+    if i == len(s):
+        return 0
+    result = inf
+    if caps == 0:
+        if s[i] == "a":
+            result = min(result, x + f(i + 1, caps))
+            result = min(result, z + y + f(i + 1, caps ^ 1))
+
+        else:
+            result = min(result, y + f(i + 1, caps))
+            result = min(result, z + x + f(i + 1, caps ^ 1))
+    else:
+        if s[i] == "A":
+            result = min(result, x + f(i + 1, caps))
+            result = min(result, z + y + f(i + 1, caps ^ 1))
+        else:
+            result = min(result, y + f(i + 1, caps))
+            result = min(result, z + x + f(i + 1, caps ^ 1))
+    return result
+
+
+print(f(0, 0))

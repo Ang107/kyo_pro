@@ -39,19 +39,60 @@ MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
 n, m = MII()
-a = LMII()
-pos = []
-p = 1
+ed = [set() for _ in range(n)]
+ed_qry = []
+for _ in range(m):
+    u, v = MII()
+    u -= 1
+    v -= 1
+    ed[u].add(v)
+    ed_qry.append((u, v))
+
+
+def bfs_all():
+    deq = deque()
+    visited = [-1] * n
+    deq.append(0)
+    visited[0] = 0
+    prv = [-1] * n
+
+    while deq:
+        v = deq.popleft()
+        for i in ed[v]:
+            if visited[i] == -1:
+                prv[i] = v
+                deq.append(i)
+                visited[i] = visited[v] + 1
+    root = set()
+    v = n - 1
+    while prv[v] != -1:
+        root.add((prv[v], v))
+        v = prv[v]
+    return visited, root
+
+
+def bfs():
+    deq = deque()
+    visited = [-1] * n
+    deq.append(0)
+    visited[0] = 0
+
+    while deq:
+        v = deq.popleft()
+        for i in ed[v]:
+            if visited[i] == -1:
+                deq.append(i)
+                visited[i] = visited[v] + 1
+    return visited
+
+
+visited, root = bfs_all()
+
 for i in range(m):
-    pos.append(p)
-    if p == a[i]:
-        p += 1
-    elif p - 1 == a[i]:
-        p -= 1
-ans = []
-b = list(range(n + 1))
-for i, j in zip(a[::-1], pos[::-1]):
-    ans.append(b[j])
-    b[i], b[i + 1] = b[i + 1], b[i]
-for i in ans[::-1]:
-    print(i)
+    u, v = ed_qry[i]
+    if (u, v) in root:
+        ed[u].discard(v)
+        print(bfs()[n - 1])
+        ed[u].add(v)
+    else:
+        print(visited[n - 1])

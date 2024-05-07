@@ -38,20 +38,17 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n, m = MII()
-a = LMII()
-pos = []
-p = 1
-for i in range(m):
-    pos.append(p)
-    if p == a[i]:
-        p += 1
-    elif p - 1 == a[i]:
-        p -= 1
-ans = []
-b = list(range(n + 1))
-for i, j in zip(a[::-1], pos[::-1]):
-    ans.append(b[j])
-    b[i], b[i + 1] = b[i + 1], b[i]
-for i in ans[::-1]:
+n = II()
+s = LMII()
+t = LMII()
+s = s + s
+s_acc = list(accumulate(s))
+# すぬけiが宝石を受け取る時間の最小値
+ans = [inf] * n
+for i in range(2 * n):
+    if i == 0:
+        ans[i] = min(ans[i], t[i])
+    else:
+        ans[i % n] = min(ans[i % n], t[i % n], ans[(i - 1) % n] + s[(i - 1) % n])
+for i in ans:
     print(i)

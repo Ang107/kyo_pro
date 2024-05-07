@@ -38,20 +38,18 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n, m = MII()
-a = LMII()
-pos = []
-p = 1
-for i in range(m):
-    pos.append(p)
-    if p == a[i]:
-        p += 1
-    elif p - 1 == a[i]:
-        p -= 1
-ans = []
-b = list(range(n + 1))
-for i, j in zip(a[::-1], pos[::-1]):
-    ans.append(b[j])
-    b[i], b[i + 1] = b[i + 1], b[i]
-for i in ans[::-1]:
-    print(i)
+n, k = MII()
+s = [input() for _ in range(n)]
+ans = 0
+for i in range(2**n):
+    tmp = defaultdict(int)
+    for j in range(n):
+        if i >> j & 1:
+            for l in s[j]:
+                tmp[l] += 1
+    result = 0
+    for j in tmp.values():
+        if j == k:
+            result += 1
+    ans = max(ans, result)
+print(ans)

@@ -30,23 +30,44 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n, m, k = MII()
+
+def dlist(*l, fill=0):
+    if len(l) == 1:
+        return [fill] * l[0]
+    ll = l[1:]
+    return [dlist(*ll, fill=fill) for _ in range(l[0])]
+
+
+n, m = MII()
 ed = [[] for _ in range(n)]
-ed_qry = []
 for _ in range(m):
-    a, b, c = MII()
-    a -= 1
-    b -= 1
-    ed_qry.append((a, b, c))
-e = LMII()
+    u, v = MII()
+    u -= 1
+    v -= 1
+    ed[u].append(v)
+    ed[v].append(u)
 
-distance = [inf] * n
-distance[0] = 0
-for i in range(k):
-    a, b, c = ed_qry[e[i] - 1]
-    distance[b] = min(distance[b], distance[a] + c)
 
-if distance[n - 1] != inf:
-    print(distance[n - 1])
-else:
-    print(-1)
+def bfs(x, k):
+    deq = deque()
+    visited = defaultdict(lambda: -1)
+    deq.append(x)
+    visited[x] = 0
+    while deq:
+        v = deq.popleft()
+        if visited[v] == k:
+            continue
+        for i in ed[v]:
+            if visited[i] == -1:
+                deq.append(i)
+                visited[i] = visited[v] + 1
+    return visited
+
+
+q = II()
+for _ in range(q):
+    x, k = MII()
+    x -= 1
+    # tmp = bfs(x, k)
+    # print(tmp)
+    print(sum([i + 1 for i, j in bfs(x, k).items() if j != -1]))

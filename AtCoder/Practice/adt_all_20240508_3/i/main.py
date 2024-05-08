@@ -1,12 +1,12 @@
 import sys
 from collections import deque, defaultdict
 from itertools import (
-    accumulate,
-    product,
-    permutations,
-    combinations,
-    combinations_with_replacement,
-)
+     accumulate,
+     product,
+     permutations,
+     combinations,
+     combinations_with_replacement
+     )
 import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
@@ -30,23 +30,10 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n, m, k = MII()
-ed = [[] for _ in range(n)]
-ed_qry = []
-for _ in range(m):
-    a, b, c = MII()
-    a -= 1
-    b -= 1
-    ed_qry.append((a, b, c))
-e = LMII()
 
-distance = [inf] * n
-distance[0] = 0
-for i in range(k):
-    a, b, c = ed_qry[e[i] - 1]
-    distance[b] = min(distance[b], distance[a] + c)
+def dlist(*l, fill=0):
+    if len(l) == 1:
+        return [fill] * l[0]
+    ll = l[1:]
+    return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
-if distance[n - 1] != inf:
-    print(distance[n - 1])
-else:
-    print(-1)

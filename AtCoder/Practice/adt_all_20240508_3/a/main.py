@@ -30,23 +30,16 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n, m, k = MII()
-ed = [[] for _ in range(n)]
-ed_qry = []
-for _ in range(m):
-    a, b, c = MII()
-    a -= 1
-    b -= 1
-    ed_qry.append((a, b, c))
-e = LMII()
 
-distance = [inf] * n
-distance[0] = 0
-for i in range(k):
-    a, b, c = ed_qry[e[i] - 1]
-    distance[b] = min(distance[b], distance[a] + c)
+def dlist(*l, fill=0):
+    if len(l) == 1:
+        return [fill] * l[0]
+    ll = l[1:]
+    return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
-if distance[n - 1] != inf:
-    print(distance[n - 1])
+
+s = input()
+if s[0] == "<" and s[-1] == ">" and s[1:-1] == "=" * (len(s) - 2):
+    PY()
 else:
-    print(-1)
+    PN()

@@ -11,6 +11,12 @@ import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
 from heapq import heapify, heappop, heappush
+import string
+
+# 小文字アルファベットのリスト
+alph_s = list(string.ascii_lowercase)
+# 大文字アルファベットのリスト
+alph_l = list(string.ascii_uppercase)
 
 # product : bit全探索 product(range(2),repeat=n)
 # permutations : 順列全探索
@@ -26,14 +32,44 @@ input = lambda: sys.stdin.readline().rstrip()
 P = lambda *x: print(*x)
 PY = lambda: print("Yes")
 PN = lambda: print("No")
+SI = lambda: input()
+IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+n, k = MII()
+a = LMII()
 
-def dlist(*l, fill=0):
-    if len(l) == 1:
-        return [fill] * l[0]
-    ll = l[1:]
-    return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
+def isOK(mid):
+    num = 0
+    for i in a:
+        num += min(i, mid)
+    return num < k
+    pass
+
+
+def meguru(ng, ok):
+    while abs(ok - ng) > 1:
+        mid = (ok + ng) // 2
+        if isOK(mid):
+            ok = mid
+        else:
+            ng = mid
+    return ok
+
+
+tmp = meguru(10**18, 0)
+num = 0
+for i in range(n):
+    num += min(a[i], tmp)
+    a[i] = max(0, a[i] - tmp)
+
+for i in range(n):
+    if k == num:
+        break
+    if a[i] > 0:
+        a[i] -= 1
+        num += 1
+print(*a)

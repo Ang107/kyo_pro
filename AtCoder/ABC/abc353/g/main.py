@@ -15,6 +15,7 @@ import string
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 
+sys.setrecursionlimit(10**7)
 alph_s = tuple(string.ascii_lowercase)
 alph_l = tuple(string.ascii_uppercase)
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
@@ -31,24 +32,3 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-t = II()
-ans = []
-for _ in range(t):
-    n = II()
-    a = LMII()
-    d = defaultdict(list)
-    d_idx = defaultdict(list)
-    for idx, i in enumerate(a):
-        div, mod_ = i // 4, i % 4
-        d[str(div)].append(i)
-        d_idx[str(div)].append(idx)
-    for i in d.values():
-        i.sort()
-    r = [None] * n
-    for key, v in d_idx.items():
-        for j, k in enumerate(v):
-            r[k] = d[key][j]
-    ans.append(r)
-
-for i in ans:
-    pritn(*i)

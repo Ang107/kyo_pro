@@ -1,12 +1,12 @@
 import sys
 from collections import deque, defaultdict
 from itertools import (
-     accumulate,
-     product,
-     permutations,
-     combinations,
-     combinations_with_replacement
-     )
+    accumulate,
+    product,
+    permutations,
+    combinations,
+    combinations_with_replacement,
+)
 import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
@@ -37,3 +37,65 @@ def dlist(*l, fill=0):
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
+
+n, m = MII()
+deq_list = []
+for _ in range(m):
+    k = II()
+    a = LMII()
+    deq_list.append(deque(a))
+s_ball = set()
+s_ball_to_idx = {}
+can_use = []
+for idx, i in enumerate(deq_list):
+    can_use.append((idx, i.popleft()))
+
+while can_use:
+    idx, v = can_use.pop()
+    if v in s_ball:
+        s_ball.discard(v)
+        idx_ = s_ball_to_idx[v]
+        if deq_list[idx_]:
+            can_use.append((idx_, deq_list[idx_].popleft()))
+        if deq_list[idx]:
+            can_use.append((idx, deq_list[idx].popleft()))
+    else:
+        s_ball.add(v)
+        s_ball_to_idx[v] = idx
+
+
+if all(len(i) == 0 for i in deq_list):
+    PY()
+else:
+    PN()
+
+
+# s_ball = set()
+# ball_idx = {}
+# s_idx = set()
+
+# for i in range(m):
+#     idx = i
+#     while True:
+#         print(idx)
+#         print(deq_list)
+#         print(s_ball)
+#         b = deq_list[idx].popleft()
+#         if b in s_ball:
+#             s_ball.discard(b)
+#             s_idx.discard(ball_idx[b])
+#             if deq_list[ball_idx[b]]:
+#                 idx = ball_idx[b]
+#                 continue
+#             else:
+#                 break
+#         else:
+#             s_ball.add(b)
+#             s_idx.add(idx)
+#             ball_idx[b] = idx
+#             break
+
+# if all([len(i) == 0 for i in deq_list]):
+#     PY()
+# else:
+#     PN()

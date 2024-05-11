@@ -15,12 +15,13 @@ import string
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 
+sys.setrecursionlimit(10**7)
 alph_s = tuple(string.ascii_lowercase)
 alph_l = tuple(string.ascii_uppercase)
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float("inf")
-mod = 998244353
+mod = 10**8
 input = lambda: sys.stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
 PY = lambda: print("Yes")
@@ -31,24 +32,17 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-t = II()
-ans = []
-for _ in range(t):
-    n = II()
-    a = LMII()
-    d = defaultdict(list)
-    d_idx = defaultdict(list)
-    for idx, i in enumerate(a):
-        div, mod_ = i // 4, i % 4
-        d[str(div)].append(i)
-        d_idx[str(div)].append(idx)
-    for i in d.values():
-        i.sort()
-    r = [None] * n
-    for key, v in d_idx.items():
-        for j, k in enumerate(v):
-            r[k] = d[key][j]
-    ans.append(r)
+n = II()
+a = LMII()
 
-for i in ans:
-    pritn(*i)
+a.sort()
+a_acc = list(accumulate(a))
+ans = 0
+
+for i, j in enumerate(a):
+    idx = bisect_right(a, mod - j - 1) - 1
+    ans += j * (n - i - 1)
+    ans += a_acc[-1] - a_acc[i]
+    ans -= min(n - i - 1, (n - idx - 1)) * mod
+
+pritn(ans)

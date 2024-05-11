@@ -1,15 +1,7 @@
 import sys
-from collections import deque, defaultdict
-from itertools import (
-    accumulate,  # 累積和
-    product,  # bit全探索 product(range(2),repeat=n)
-    permutations,  # permutations : 順列全探索
-    combinations,  # 組み合わせ（重複無し）
-    combinations_with_replacement,  # 組み合わせ（重複可）
-)
-import math
+
 from bisect import bisect_left, bisect_right
-from heapq import heapify, heappop, heappush
+
 import string
 
 # 外部ライブラリ
@@ -31,3 +23,33 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+
+n = int(input())
+s = list(map(list, input().split()))
+
+s.sort()
+ans = 0
+
+for index, i in enumerate(s):
+    tmp = i[:]
+    ok = index
+    ng = n
+    for j in range(len(i)):
+
+        def isOK(mid):
+            return j < len(s[mid]) and i[j] == s[mid][j]
+
+        def meguru(ng, ok):
+            while abs(ok - ng) > 1:
+                mid = (ok + ng) // 2
+                if isOK(mid):
+                    ok = mid
+                else:
+                    ng = mid
+            return ok
+
+        tmp = meguru(ng, ok)
+        ans += tmp - index
+        ng = tmp + 1
+
+print(ans)

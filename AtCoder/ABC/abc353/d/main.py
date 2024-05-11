@@ -15,6 +15,7 @@ import string
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 
+sys.setrecursionlimit(10**7)
 alph_s = tuple(string.ascii_lowercase)
 alph_l = tuple(string.ascii_uppercase)
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
@@ -31,24 +32,21 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-t = II()
-ans = []
-for _ in range(t):
-    n = II()
-    a = LMII()
-    d = defaultdict(list)
-    d_idx = defaultdict(list)
-    for idx, i in enumerate(a):
-        div, mod_ = i // 4, i % 4
-        d[str(div)].append(i)
-        d_idx[str(div)].append(idx)
-    for i in d.values():
-        i.sort()
-    r = [None] * n
-    for key, v in d_idx.items():
-        for j, k in enumerate(v):
-            r[k] = d[key][j]
-    ans.append(r)
+n = II()
+a = LMII()
+a_rev = a[::-1]
+a_acc = [[0] * 11]
+for i in a_rev:
+    tmp = a_acc[-1][:]
+    tmp[len(str(i))] += 1
+    a_acc.append(tmp)
+a_acc = a_acc[::-1]
+ans = 0
+for i in range(n):
+    ans += a[i] * i
+    for j, k in enumerate(a_acc[i + 1]):
+        if i < n - 1:
+            ans += k * a[i] * 10**j
 
-for i in ans:
-    pritn(*i)
+        ans %= mod
+print(ans)

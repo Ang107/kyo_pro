@@ -45,3 +45,11 @@ rensa_kugire = []
 for i, j in enumerate(rensa):
     if j == False:
         rensa_kugire.append(i)
+ans = []
+not_taore = 1
+for i, j in enumerate(x):
+    #左
+    if 
+    #右
+    not_taore * 
+    

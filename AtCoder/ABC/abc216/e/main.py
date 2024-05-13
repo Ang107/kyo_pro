@@ -1,12 +1,12 @@
 import sys
 from collections import deque, defaultdict
 from itertools import (
-     accumulate,
-     product,
-     permutations,
-     combinations,
-     combinations_with_replacement
-     )
+    accumulate,
+    product,
+    permutations,
+    combinations,
+    combinations_with_replacement,
+)
 import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
@@ -30,10 +30,28 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+n, k = MII()
+a = LMII()
+a.sort()
+d = defaultdict(int)
+d[0] = 0
+for i in a:
+    d[i] += 1
+ans = 0
+h_and_num = list(list(i) for i in d.items())
+while k > 0 and len(h_and_num) > 1:
+    h, num = h_and_num.pop()
 
-def dlist(*l, fill=0):
-    if len(l) == 1:
-        return [fill] * l[0]
-    ll = l[1:]
-    return [dlist(*ll, fill=fill) for _ in range(l[0])]
+    if k >= num * (h - h_and_num[-1][0]):
+        k -= num * (h - h_and_num[-1][0])
+        ans += num * (h - h_and_num[-1][0]) * (h + h_and_num[-1][0] + 1) // 2
+        h_and_num[-1][1] += num
 
+    else:
+        tmp = k // num
+        k -= num * (tmp)
+        ans += num * tmp * (h + h - tmp + 1) // 2
+        ans += k * (h - tmp)
+        k = 0
+
+print(ans)

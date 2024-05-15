@@ -1,12 +1,12 @@
 import sys
 from collections import deque, defaultdict
 from itertools import (
-    accumulate,
-    product,
-    permutations,
-    combinations,
-    combinations_with_replacement,
-)
+     accumulate,
+     product,
+     permutations,
+     combinations,
+     combinations_with_replacement
+     )
 import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
@@ -37,32 +37,3 @@ def dlist(*l, fill=0):
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
-
-n = II()
-a = LMII()
-# lの平均値が整数->sum(l) = k * len(l)
-# 総和がkの倍数-> mod k の総和がkの倍数
-ans = n
-# print(ans)
-
-for i in range(2, n + 1):
-
-    # 部分和DP
-
-    # i番目まででj個選んだ時、k(mod i)を作れる組み合わせの数
-    dp = [[[0] * (i) for _ in range(i + 1)] for _ in range(n + 1)]
-    dp[0][0][0] = 1
-    for j in range(n):
-        for k in range(i + 1):
-            for l in range(i):
-                # not use
-                dp[j + 1][k][l] += dp[j][k][l]
-                dp[j + 1][k][l] %= mod
-                if k < i:
-                    # use
-                    dp[j + 1][k + 1][(l + a[j]) % i] += dp[j][k][l]
-                    dp[j + 1][k + 1][(l + a[j]) % i] %= mod
-    ans += dp[n][i][0]
-    ans %= mod
-
-print(ans)

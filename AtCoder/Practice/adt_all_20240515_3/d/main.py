@@ -39,30 +39,9 @@ def dlist(*l, fill=0):
 
 
 n = II()
-a = LMII()
-# lの平均値が整数->sum(l) = k * len(l)
-# 総和がkの倍数-> mod k の総和がkの倍数
-ans = n
-# print(ans)
+d = defaultdict(int)
+for i in range(n):
+    d[input()] += 1
 
-for i in range(2, n + 1):
-
-    # 部分和DP
-
-    # i番目まででj個選んだ時、k(mod i)を作れる組み合わせの数
-    dp = [[[0] * (i) for _ in range(i + 1)] for _ in range(n + 1)]
-    dp[0][0][0] = 1
-    for j in range(n):
-        for k in range(i + 1):
-            for l in range(i):
-                # not use
-                dp[j + 1][k][l] += dp[j][k][l]
-                dp[j + 1][k][l] %= mod
-                if k < i:
-                    # use
-                    dp[j + 1][k + 1][(l + a[j]) % i] += dp[j][k][l]
-                    dp[j + 1][k + 1][(l + a[j]) % i] %= mod
-    ans += dp[n][i][0]
-    ans %= mod
-
+ans = sorted(d.items(), key=lambda x: x[1])[-1][0]
 print(ans)

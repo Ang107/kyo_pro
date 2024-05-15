@@ -37,3 +37,22 @@ def dlist(*l, fill=0):
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
+
+from functools import cache
+
+n = II()
+
+
+# 最後の目がxで残りn回降ることができる場合の期待値
+@cache
+def f(x, n):
+    if n == 1:
+        return max(x, 3.5)
+    else:
+        result = 0
+        for i in range(1, 7):
+            result += f(i, n - 1) / 6
+        return max(x, result)
+
+
+print(f(0, n))

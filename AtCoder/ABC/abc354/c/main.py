@@ -33,5 +33,15 @@ MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
 n = II()
-p = LMII()
-q = LMII()
+ac = [[i + 1] + LMII() for i in range(n)]
+ac.sort(key=lambda x: (-x[1], x[2]))
+min_ = inf
+ans = []
+# print(ac)
+for idx, a, c in ac:
+    if min_ > c:
+        ans.append(idx)
+    min_ = min(min_, c)
+ans.sort()
+pritn(len(ans))
+pritn(*ans)

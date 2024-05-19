@@ -33,5 +33,12 @@ MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
 n = II()
-p = LMII()
-q = LMII()
+sc = []
+sum_ = 0
+for i in range(n):
+    s, c = input().split()
+    c = int(c)
+    sum_ += c
+    sc.append((s, c))
+sc.sort(key=lambda x: x[0])
+print(sc[sum_ % n][0])

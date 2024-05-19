@@ -81,3 +81,29 @@ def base_n(num_10, n, **kwargs):
         str_n += trans[num_10 % n]
         num_10 //= n
     return str_n[::-1]
+
+
+def extended_gcd(a, b):
+    """拡張ユークリッドの互除法を用いて、ax + by = gcd(a, b) を満たす整数 x, y を求める"""
+    if b == 0:
+        return a, 1, 0
+    gcd, x1, y1 = extended_gcd(b, a % b)
+    x = y1
+    y = x1 - (a // b) * y1
+    return gcd, x, y
+
+
+def find_integer_solution(a, b, c):
+    """ax + by = c を満たす整数 x, y を求める"""
+    gcd, x0, y0 = extended_gcd(a, b)
+
+    # c が gcd(a, b) で割り切れない場合、整数解は存在しない
+    if c % gcd != 0:
+        return False
+
+    # ax0 + by0 = gcd(a, b) の倍数が解の一つなので、両辺を c / gcd(a, b) で割る
+    factor = c // gcd
+    x = x0 * factor
+    y = y0 * factor
+
+    return x, y

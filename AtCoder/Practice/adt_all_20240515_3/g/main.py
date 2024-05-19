@@ -1,12 +1,12 @@
 import sys
 from collections import deque, defaultdict
 from itertools import (
-     accumulate,
-     product,
-     permutations,
-     combinations,
-     combinations_with_replacement
-     )
+    accumulate,
+    product,
+    permutations,
+    combinations,
+    combinations_with_replacement,
+)
 import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
@@ -37,3 +37,13 @@ def dlist(*l, fill=0):
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
+
+s = input()
+tmp = []
+for i in s:
+    tmp.append(i)
+    if len(tmp) >= 3 and tmp[-3:] == ["A", "B", "C"]:
+        for _ in range(3):
+            tmp.pop()
+
+print("".join(tmp))

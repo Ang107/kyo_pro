@@ -15,7 +15,6 @@ import string
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 
-sys.setrecursionlimit(10**7)
 alph_s = tuple(string.ascii_lowercase)
 alph_l = tuple(string.ascii_uppercase)
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
@@ -32,6 +31,11 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n = II()
-p = LMII()
-q = LMII()
+t = II()
+ans = []
+for _ in range(t):
+    n = II()
+    p = LMII()
+    q = []
+    for i in range(n):
+        q.append(n - p[i] + 1)

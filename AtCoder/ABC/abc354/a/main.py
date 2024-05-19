@@ -32,6 +32,10 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n = II()
-p = LMII()
-q = LMII()
+h = II()
+tmp = 0
+for i in range(10000000):
+    tmp += 2**i
+    if tmp > h:
+        pritn(i + 1)
+        break

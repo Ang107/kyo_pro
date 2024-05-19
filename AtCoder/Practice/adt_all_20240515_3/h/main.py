@@ -1,12 +1,12 @@
 import sys
 from collections import deque, defaultdict
 from itertools import (
-     accumulate,
-     product,
-     permutations,
-     combinations,
-     combinations_with_replacement
-     )
+    accumulate,
+    product,
+    permutations,
+    combinations,
+    combinations_with_replacement,
+)
 import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
@@ -37,3 +37,33 @@ def dlist(*l, fill=0):
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
+
+n, m, k, s, t, x = MII()
+s -= 1
+t -= 1
+x -= 1
+# i番目にjに到達し、xの出現回数がkの通り数
+dp = [[[0] * 2 for _ in range(n)] for _ in range(k + 1)]
+dp[0][s][0] = 1
+ed = [[] for _ in range(n)]
+for _ in range(m):
+    u, v = MII()
+    u -= 1
+    v -= 1
+    ed[u].append(v)
+    ed[v].append(u)
+
+for i in range(k):
+    for j in range(n):
+        for l in range(2):
+            for v in ed[j]:
+                if v == x:
+                    dp[i + 1][v][l ^ 1] += dp[i][j][l]
+                    dp[i + 1][v][l ^ 1] %= mod
+                else:
+                    dp[i + 1][v][l] += dp[i][j][l]
+                    dp[i + 1][v][l] %= mod
+    # print(dp[i + 1])
+# print(dp)
+
+print(dp[k][t][0])

@@ -31,11 +31,21 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-
+print(math.log(10**9, 2))
 h = II()
-tmp = 0
-for i in range(10000000):
-    tmp += 2**i
+ans = 1
+tmp = 1
+while True:
+    tmp <<= 1
+    tmp |= 1
+    ans += 1
     if tmp > h:
-        pritn(i + 1)
+        print(ans)
         break
+
+
+# for i in range(10000000):
+#     tmp += 2**i
+#     if tmp > h:
+#         pritn(i + 1)
+#         break

@@ -1,15 +1,5 @@
 import sys
-from collections import deque, defaultdict
-from itertools import (
-    accumulate,  # 累積和
-    product,  # bit全探索 product(range(2),repeat=n)
-    permutations,  # permutations : 順列全探索
-    combinations,  # 組み合わせ（重複無し）
-    combinations_with_replacement,  # 組み合わせ（重複可）
-)
-import math
-from bisect import bisect_left, bisect_right
-from heapq import heapify, heappop, heappush
+
 import string
 
 # 外部ライブラリ
@@ -35,28 +25,39 @@ LMII = lambda: list(map(int, input().split()))
 n = II()
 ab = [tuple(LMII()) for _ in range(n)]
 
+# dp = [False] * (1 << n)
+# for m in range(1 << n):
+#     for i in range(n):
+#         for j in range(i + 1, n):
+#             if (
+#                 (m >> i & 1)
+#                 and (m >> j & 1)
+#                 and (ab[i][0] == ab[j][0] or ab[i][1] == ab[j][1])
+#             ):
+#                 dp[m] |= not dp[m ^ (1 << i) ^ (1 << j)]
+
+# pritn(dp)
+
 from functools import cache
 
 
 @cache
 def f(s, turn):
-    fin = True
-    print(turn, s)
+
     # 選べるカードがない場合
-    for i in range(len(ab)):
-        for j in range(i + 1, len(ab)):
-            if (
-                s >> i & 1 == 0
-                and s >> j & 1 == 0
-                and ab[i][0] == ab[j][0]
-                or ab[i][1] == ab[j][1]
-            ):
-                fin = False
-    if fin or s == 2**n - 1:
-        if turn == 0:
-            return -1
-        else:
-            return 1
+    # for i in range(len(ab)):
+    #     for j in range(i + 1, len(ab)):
+    #         if (
+    #             s >> i & 1 == 0
+    #             and s >> j & 1 == 0
+    #             and (ab[i][0] == ab[j][0] or ab[i][1] == ab[j][1])
+    #         ):
+    #             fin = False
+    # if s == 2**n - 1:
+    #     if turn == 0:
+    #         return -1
+    #     else:
+    #         return 1
 
     if turn == 0:
         result = -1

@@ -16,18 +16,6 @@ proc f(turn: int, b: int): int =
     if (turn, b) in memo:
         return memo[(turn, b)]
 
-    var fin = true
-    for i in range(n):
-        for j in range(i+1, n):
-            if (b >> i) & 1 == 0 and (b >> j) & 1 == 0 and (ab[i][0] == ab[j][0] or ab[i][1] == ab[j][1]):
-                fin = false
-
-    if fin or b == 2**n - 1:
-        if turn == 0:
-            return -1
-        else:
-            return 1
-
     if turn == 0:
         result = -1
         for i in range(n):

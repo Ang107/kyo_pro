@@ -150,7 +150,7 @@ proc calc_dp() =
         cnt += 1
         pick.add(best_move[s][0])
         b.incl(A[best_move[s][0]][idx[best_move[s][0]]])
-        s -= 5**best_move[s][0]
+
         echo cnt
         echo ("add", best_move[s][0], A[best_move[s][0]][idx[best_move[s][0]]])
         echo ("now", b-deled)
@@ -158,6 +158,7 @@ proc calc_dp() =
         echo ("dell", tmp)
         deled = deled + tmp
         echo ("nokori", get_now_b(b))
+        s -= 5**best_move[s][0]
         idx[best_move[s][0]] += 1
 
     echo pick

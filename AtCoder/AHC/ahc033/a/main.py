@@ -1,34 +1,69 @@
-import sys
 from collections import deque, defaultdict
-from itertools import (
-    accumulate,  # 累積和
-    product,  # bit全探索 product(range(2),repeat=n)
-    permutations,  # permutations : 順列全探索
-    combinations,  # 組み合わせ（重複無し）
-    combinations_with_replacement,  # 組み合わせ（重複可）
-)
-import math
-from bisect import bisect_left, bisect_right
-from heapq import heapify, heappop, heappush
-import string
 
-# 外部ライブラリ
-# from sortedcontainers import SortedSet, SortedList, SortedDict
+# 初期カードの配置：5つの山それぞれに5枚のカード
+decks = [list(map(int, input().split())) for i in range(5)]
+# 手札の初期状態
+first_hand = [decks[i][0] for i in range(5)]
 
-sys.setrecursionlimit(10**7)
-alph_s = tuple(string.ascii_lowercase)
-alph_l = tuple(string.ascii_uppercase)
-around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
-around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-inf = float("inf")
-mod = 998244353
-input = lambda: sys.stdin.readline().rstrip()
-pritn = lambda *x: print(*x)
-PY = lambda: print("Yes")
-PN = lambda: print("No")
-SI = lambda: input()
-IS = lambda: input().split()
-II = lambda: int(input())
-MII = lambda: map(int, input().split())
-LMII = lambda: list(map(int, input().split()))
 
+def get_hand_num(hand):
+    hand = set(hand)
+    rslt = 0
+    for i in range(5):
+        cnt_flag = False
+        for j in range(5):
+            if i * 5 + j in hand:
+                if cnt_flag:
+                    rslt += 1
+            else:
+                cnt_flag = True
+    return rslt
+
+
+print(4 * 5**0 + 4 * 5**1 + 4 * 5**2 + 4 * 5**3 + 4 * 5**4)
+# 状態iからスタートした場合の手札の枚数の最大値
+dp = [25] * 3125
+dp[0] = 0
+# 山の残り枚数の状況がiの時に引くべき山の番号
+best_move = [-1] * 3125
+
+for v in range(1, 3125):
+    # 遷移先とのmin
+    best = -1
+
+    v_n = v
+    tmp = []
+    for i in [4, 3, 2, 1, 0]:
+        j = v_n // 5**i
+        v_n = v_n % 5**i
+        tmp.append(j)
+        if j > 0:
+            if dp[v] > dp[v - 5**i]:
+                dp[v] = min(dp[v], dp[v - 5**i])
+                best = i
+
+    tmp = tmp[::-1]
+    print(v, tmp)
+    # 自分とのmax
+    # ハンドを再現
+    hand = first_hand[:]
+    hand.extend(decks[0][1 : 5 - tmp[0]])
+    hand.extend(decks[1][1 : 5 - tmp[1]])
+    hand.extend(decks[2][1 : 5 - tmp[2]])
+    hand.extend(decks[3][1 : 5 - tmp[3]])
+    hand.extend(decks[4][1 : 5 - tmp[4]])
+    dp[v] = max(dp[v], get_hand_num(hand))
+    best_move[v] = best
+
+
+print(dp)
+print(best_move)
+
+
+# n = int(input())
+# decks = [list(map(int, input().split())) for i in range(5)]
+# ans = 4 * 25
+# for i in range(5):
+#     for j in range(5):
+#         ans += abs(decks[i][j] // 5 - i)
+# print("理論値", ans, ans / 5)

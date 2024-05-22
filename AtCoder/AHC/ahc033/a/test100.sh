@@ -17,9 +17,13 @@ do
     j=$(printf "%04d\n" "${d}")
     echo $j;
 
+    # nim cpp -r -d:release --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc033/a/main6.nim" < in/${j}.txt > out/${j}.txt
+    # pypy3  "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc033/a/test.py" < out/${j}.txt >> score/score.txt
+    
+    #--profiler:on --stackTrace:on
 
-
-    nim cpp -r -d:release --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc033/a/main.nim" < in/${j}.txt > out/nim${j}.txt
+    nim cpp -r -d:release  --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc033/a/main7.nim" < in/${j}.txt > new_out/${j}.txt
+    pypy3  "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc033/a/test.py" < new_out/${j}.txt >> score/new_score.txt
 
   
 

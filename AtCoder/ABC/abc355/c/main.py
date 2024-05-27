@@ -1,0 +1,57 @@
+import sys
+from collections import deque, defaultdict
+from itertools import (
+    accumulate,  # 累積和
+    product,  # bit全探索 product(range(2),repeat=n)
+    permutations,  # permutations : 順列全探索
+    combinations,  # 組み合わせ（重複無し）
+    combinations_with_replacement,  # 組み合わせ（重複可）
+)
+import math
+from bisect import bisect_left, bisect_right
+from heapq import heapify, heappop, heappush
+import string
+
+# 外部ライブラリ
+# from sortedcontainers import SortedSet, SortedList, SortedDict
+
+sys.setrecursionlimit(10**7)
+alph_s = tuple(string.ascii_lowercase)
+alph_l = tuple(string.ascii_uppercase)
+around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
+around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
+inf = float("inf")
+mod = 998244353
+input = lambda: sys.stdin.readline().rstrip()
+pritn = lambda *x: print(*x)
+PY = lambda: print("Yes")
+PN = lambda: print("No")
+SI = lambda: input()
+IS = lambda: input().split()
+II = lambda: int(input())
+MII = lambda: map(int, input().split())
+LMII = lambda: list(map(int, input().split()))
+
+n, t = MII()
+a = LMII()
+a = [i - 1 for i in a]
+mod_ = defaultdict(int)
+
+div_ = defaultdict(int)
+naname_1 = set()
+naname_2 = set()
+for i in range(0, n**2, n + 1):
+    naname_1.add(i)
+for i in range(n - 1, n**2 - 1, n - 1):
+    naname_2.add(i)
+# print(naname_1)
+# print(naname_2)
+for idx, i in enumerate(a):
+    div_[i // n] += 1
+    mod_[i % n] += 1
+    naname_1.discard(i)
+    naname_2.discard(i)
+    if div_[i // n] == n or mod_[i % n] == n or not naname_1 or not naname_2:
+        print(idx + 1)
+        exit()
+print(-1)

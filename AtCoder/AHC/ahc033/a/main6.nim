@@ -1,6 +1,7 @@
 import macros
 import std/times
 import std/random
+# import nimprof
 {.checks: off.}
 macro ImportExpand(s: untyped):
     untyped = parseStmt($s[2])
@@ -10,7 +11,7 @@ let
     START_TIME = cpuTime()
     N = ii()
     max_turn = 150
-    UDLR = [(int8(0), int8(1)), (int8(-1), int8(0)), (int8(1), int8(0)), (int8(0), int8(-1)), ]
+    UDLR = [("R", (int8(0), int8(1))), ("U", (int8(-1), int8(0))), ("D", (int8(1), int8(0))), ("L", (int8(0), int8(-1)))]
     UDLRS = [("R", (int8(0), int8(1))), ("U", (int8(-1), int8(0))), ("D", (int8(1), int8(0))), ("L", (int8(0), int8(-1))), (".", (int8(0), int8(0)))]
     UDLRS_table = {".": (int8(0), int8(0)),
                     "P": (int8(0), int8(0)),
@@ -28,18 +29,54 @@ var
     dp = newSeqWith(3125, 25)
     best_move = newSeqWith(3125, newSeqOfCap[int](4))
     first_b: set[int8]
+    first_ans = newseq[newSeqOfCap[string](1000)](N)
+    #i ターン目のコンテナの盤面の情報
+    first_contena_b = newseqwith(max_turn, newSeqWith(5, [int8(-1), int8(-1), int8(-1), int8(-1), int8(-1)]))
+    #i ターン目のクレーンの盤面の情報(クレーン番号、状態（未予約:-1,掴んでない:0, 掴み:1）)
+    first_crane_b = newseqwith(max_turn, newSeqWith(5, [(int8(-1), int8(-1)),
+                        (int8(-1), int8(-1)),
+                        (int8(-1), int8(-1)),
+                        (int8(-1), int8(-1)),
+                        (int8(-1), int8(-1))]))
+    #クレーンiのjターン目の場所(x,y,状態,掴んでいるコンテナ番号、)
+    first_crane = newSeqWith(5, newSeqWith(max_turn, (int8(-1), int8(-1), int8(-1), int8(-1))))
+    first_target: seq[int8]
+    first_bomed = [false, false, false, false, false]
 
+    first_A_n = A
+    first_rock = newSeqWith(5, newseqwith(5, -1))
+    first_rock_idx = newseqwith(25, -1)
+    first_out_time = newseqwith(25, -1)
 
-for i in 0..<N:
-    tmp[i] = lii(N)
-    A[i] = mapIt(tmp[i], int8(it))
+proc first_setup() =
+    for i in 0..<N:
+        tmp[i] = lii(N)
+        A[i] = mapIt(tmp[i], int8(it))
 
-for i in 0..<5:
-    for j in 0..<5:
-        A_idx[A[i][j]] = j
+    for i in 0..<5:
+        for j in 0..<5:
+            A_idx[A[i][j]] = j
 
-for i in 0..<5:
-    first_b.incl(A[i][0])
+    for i in 0..<5:
+        first_b.incl(A[i][0])
+
+    first_A_n = A
+    for i in 0..<5:
+        first_A_n[i].reverse()
+        discard first_A_n[i].pop()
+
+    #初期ターゲット
+    for i in 0..<5:
+        first_target.add(int8(5*i))
+
+    #初期盤面
+    for i in int8(0)..<int8(5):
+        first_contena_b[0][i][0] = A[i][0]
+        first_crane_b[0][i][0] = (i, int8(-1))
+        first_crane[i][0] = (i, int8(0), int8(-1), int8(-1))
+
+    for i in 0..<max_turn:
+        first_contena_b[i] = first_contena_b[0]
 
 
 proc get_b_num(b: set[int8]): int =
@@ -150,14 +187,18 @@ proc get_root_to_the_target(sx, sy, target: int8, turn: int, crane_b: seq[seq[ar
             ty = y
             break
 
+        if add_turn > 10:
+            continue
+
+
+
         for (s, ij) in UDLRS:
             if s == ".":
                 continue
             var
                 (i, j) = ij
 
-            if add_turn <= 10 and
-            0 <= x+i and x+i < 5 and
+            if 0 <= x+i and x+i < 5 and
             0 <= y+j and y+j < 5 and
             (i+j == 0 or len(visited[x+i][y+j]) == 0) and
             crane_b[turn + add_turn][x+i][y+j][0] == -1 and
@@ -185,16 +226,17 @@ proc get_root_to_txy(sx, sy, tx, ty: int8, turn: int, crane_b: seq[seq[array[5, 
         var
             (x, y) = deq.popFirst()
             add_turn = len(visited[x][y])
+
         if x == tx and y == ty:
             break
 
-        for (s, ij) in UDLRS:
-            if s == ".":
-                continue
+        if add_turn > 10:
+            continue
+
+        for (s, ij) in UDLR:
             var
                 (i, j) = ij
-            if add_turn <= 10 and
-            0 <= x+i and x+i < 5 and
+            if 0 <= x+i and x+i < 5 and
             0 <= y+j and y+j < 5 and
             (i+j == 0 or len(visited[x+i][y+j]) == 0) and
             crane_b[turn + add_turn][x+i][y+j][0] == -1 and
@@ -223,12 +265,13 @@ proc get_root_to_gxy(crane_num, tx, ty, gx, gy: int8, turn: int, crane_b: seq[se
             add_turn = len(visited[x][y])
         if x == gx and y == gy:
             break
-        for (s, ij) in UDLRS:
-            if s == ".":
-                continue
+        if add_turn > 10:
+            continue
+
+
+        for (s, ij) in UDLR:
             var (i, j) = ij
-            if add_turn <= 10 and
-            0 <= x+i and x+i < 5 and
+            if 0 <= x+i and x+i < 5 and
             0 <= y+j and y+j < 5 and
             (i+j == 0 or len(visited[x+i][y+j]) == 0) and
             crane_b[turn + add_turn + 1][x+i][y+j][0] == -1 and
@@ -670,7 +713,8 @@ out_time: var seq[int]) =
             (crane_b[now_turn][x+p][y+q][0] == -1 or crane_b[now_turn][x+p][y+q][0] != crane_b[now_turn+1][x][y][0]):
                 bom = false
                 var tmp = 0
-                for (n, m) in UDLR:
+                for (s, nm) in UDLR:
+                    var (n, m) = nm
                     if 0 <= x+p+n and x+p+n < 5 and 0 <= y+q+m and y+q+m < 5 and
                     crane_b[now_turn+2][x+p+n][y+q+m][0] == -1 and
                     (crane_b[now_turn+1][x+p+n][y+q+m][0] == -1 or crane_b[now_turn+1][x+p+n][y+q+m][0] != crane_b[now_turn+2][x+p][y+q][0]):
@@ -701,57 +745,36 @@ proc is_cant_move(now_turn: int, crane: seq[seq[(int8, int8, int8, int8)]]): boo
 
     return true
 
+
 proc solve(space: seq[(int8, int8)]): (bool, seq[seq[string]]) =
     var
         turn = 0
-        ans = newseq[newSeqOfCap[string](1000)](N)
-        #i ターン目のコンテナの盤面の情報
-        contena_b = newseqwith(max_turn, newSeqWith(5, [int8(-1), int8(-1), int8(-1), int8(-1), int8(-1)]))
-        #i ターン目のクレーンの盤面の情報(クレーン番号、状態（未予約:-1,掴んでない:0, 掴み:1）)
-        crane_b = newseqwith(max_turn, newSeqWith(5, [(int8(-1), int8(-1)),
-                            (int8(-1), int8(-1)),
-                            (int8(-1), int8(-1)),
-                            (int8(-1), int8(-1)),
-                            (int8(-1), int8(-1))]))
-        #クレーンiのjターン目の場所(x,y,状態,掴んでいるコンテナ番号、)
-        crane = newSeqWith(5, newSeqWith(max_turn, (int8(-1), int8(-1), int8(-1), int8(-1))))
-        target: seq[int8]
-        bomed = [false, false, false, false, false]
-
-        A_n = A
-        rock = newSeqWith(5, newseqwith(5, -1))
-        rock_idx = newseqwith(25, -1)
-        out_time = newseqwith(25, -1)
+        ans = first_ans
+        contena_b = first_contena_b
+        crane_b = first_crane_b
+        crane = first_crane
+        target = first_target
+        bomed = first_bomed
+        A_n = first_A_n
+        rock = first_rock
+        rock_idx = first_rock_idx
+        out_time = first_out_time
         fin = false
         sp = space
 
-
-    for i in 0..<5:
-        A_n[i].reverse()
-        discard A_n[i].pop()
-
-    #初期ターゲット
-    for i in 0..<5:
-        target.add(int8(5*i))
-
-    #初期盤面
-    for i in int8(0)..<int8(5):
-        contena_b[0][i][0] = A[i][0]
-        crane_b[0][i][0] = (i, int8(-1))
-        crane[i][0] = (i, int8(0), int8(-1), int8(-1))
-
-    for i in 0..<max_turn:
-        contena_b[i] = contena_b[0]
-
-
-
     for now_turn in 0..<120:
+
         #全てのクレーンが使用中なら
         if not is_free(crane, now_turn) and not is_free(crane, now_turn+1):
             continue
-
+        echo now_turn
         #盤面の中のコンテナを出口に運ぶ
         move_to_goal(now_turn, ans, contena_b, crane_b, crane, target, A_n, bomed, A_idx, rock, rock_idx, out_time, sp)
+        for i in 0..<5:
+            echo contena_b[now_turn+i]
+        move_to_goal(now_turn, ans, contena_b, crane_b, crane, target, A_n, bomed, A_idx, rock, rock_idx, out_time, sp)
+        for i in 0..<5:
+            echo contena_b[now_turn+i]
 
         #新規の追加
         move_to_b(now_turn, ans, contena_b, crane_b, crane, target, A_n, bomed, A_idx, rock, rock_idx, out_time, sp)
@@ -763,6 +786,7 @@ proc solve(space: seq[(int8, int8)]): (bool, seq[seq[string]]) =
             return (false, ans)
         #衝突回避
         collision_avoidance(now_turn, ans, contena_b, crane_b, crane, target, A_n, bomed, A_idx, rock, rock_idx, out_time)
+
 
     return (fin, ans)
 
@@ -785,7 +809,10 @@ proc climb_hill(): seq[seq[string]] =
     var
         all: seq[int8] = @[0, 1, 5, 6, 7, 8, 10, 11, 15, 16, 17, 18, 20, 21, 13, 3, 23, 12, 2, 22]
         space_not_use: set[int8] = {0, 1, 5, 6, 7, 8, 10, 11, 15, 16, 17, 18, 20, 21}
-        space: set[int8] = {13, 3, 23, 12, 2, 22}
+        space: set[int8] = {2, 3, 22, 23, 12, 13}
+
+        # space_not_use: set[int8] = {0, 1, 5, 6, 10, 11, 15, 16, 20, 21, 13, 3, 23, 12, 2, 22}
+        # space: set[int8] = {7, 8, 17, 18}
         best_score = 10000
         cnt = 0
         (ok, last_ans) = solve(trans_space(space))
@@ -796,7 +823,7 @@ proc climb_hill(): seq[seq[string]] =
     while true:
         if cputime() - START_TIME > 2.85:
             break
-        var mode = sample([0, 1])
+        var mode = rand(1)
         #削除
         if mode == 0:
             var v = sample(space)
@@ -854,11 +881,11 @@ proc climb_hill(): seq[seq[string]] =
 
 
 proc output(ans: seq[seq[string]]) =
-
     for i in ans:
         echo i.join("")
 
 proc main() =
+    first_set_up()
     calc_dp()
     var ans = climb_hill()
     output(ans)

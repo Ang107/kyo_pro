@@ -102,9 +102,6 @@ proc get_now_b(b: set[int8]): set[int8] =
             else:
                 flag = true
 
-
-
-
 proc calc_dp() =
     dp[0] = 0
     for v in 1..<3125:
@@ -121,9 +118,8 @@ proc calc_dp() =
                 if dp[v] == dp[v - (5**i)]:
                     best.add(i)
                 if dp[v] > dp[v - (5**i)]:
-                    dp[v] = min(dp[v], dp[v - 5**i])
+                    dp[v] = dp[v - (5**i)]
                     best = @[i]
-        echo (v, tmp)
         #自分とのmax
         #盤面を構築
         var b = first_b
@@ -134,39 +130,88 @@ proc calc_dp() =
         dp[v] = max(dp[v], get_b_num(b))
         best_move[v] = best
 
-    echo dp
-    echo best_move
 
-    var
-        pick = newSeqOfCap[int](25)
-        s = 3124
-        b: set[int8]
-        idx = [1, 1, 1, 1, 1]
-        deled: set[int8]
-        cnt = 0
-    for i in 0..<5:
-        b.incl(A[i][0])
-    while s != 0:
-        cnt += 1
-        pick.add(best_move[s][0])
-        b.incl(A[best_move[s][0]][idx[best_move[s][0]]])
-
-        echo cnt
-        echo ("add", best_move[s][0], A[best_move[s][0]][idx[best_move[s][0]]])
-        echo ("now", b-deled)
-        var tmp = b - get_now_b(b) - deled
-        echo ("dell", tmp)
-        deled = deled + tmp
-        echo ("nokori", get_now_b(b))
-        s -= 5**best_move[s][0]
-        idx[best_move[s][0]] += 1
-
-    echo pick
-    quit()
+# proc calc_dp_1() =
+#     dp[0] = 0
+#     for v in 1..<7776:
+#         #遷移先とのmin
+#         var
+#             best = newSeqOfCap[int](4)
+#             v_n = v
+#             tmp = [-1, -1, -1, -1, -1]
+#         for i in [4, 3, 2, 1, 0]:
+#             var j = v_n div (6**i)
+#             v_n = v_n mod (6**i)
+#             tmp[i] = j
+#             if j > 0:
+#                 if dp[v] == dp[v - (6**i)]:
+#                     best.add(i)
+#                 if dp[v] > dp[v - (6**i)]:
+#                     dp[v] = min(dp[v], dp[v - 5**i])
+#                     best = @[i]
+#         #自分とのmax
+#         #盤面を構築
+#         var b: set[int8]
+#         for i in 0..<5:
+#             for j in A[i][0 ..< ^(tmp[i])]:
+#                 b.incl(j)
 
 
+#         dp[v] = max(dp[v], get_b_num(b))
+#         best_move[v] = best
+
+#     # echo dp
+#     # echo best_move
 
 
+
+
+
+
+# proc get_all_target(): seq[(int8, int)] =
+#     var
+#         pick = newSeqOfCap[int](25)
+#         s = 3124
+#         b: set[int8]
+#         idx = [1, 1, 1, 1, 1]
+#         deled: set[int8]
+#     for i in 0..<5:
+#         b.incl(A[i][0])
+#     #目標、中継(0) or ゴール(1)
+#     var
+#         target = newSeqOfCap[(int8, int)](25)
+#         added = newSeqOfCap[int8](25)
+#         t = [0, 5, 10, 15, 20]
+#     while s != 0:
+#         var rd = sample(best_move[s])
+#         # pick.add(rd)
+#         b.incl(A[rd][idx[rd]-1])
+#         var tmp = b - get_now_b(b) - deled
+#         if A[rd][idx[rd]-1] in t:
+#             target.add((A[rd][idx[rd]-1], 1))
+#             t[A[rd][idx[rd]-1] div 5] += 1
+#             for i in 1..4-A[rd][idx[rd]-1] mod 5:
+#                 if int8(i+1) in b:
+#                     target.add((int8(A[rd][idx[rd]-1] + 1), 1))
+#                     t[i div 5] += 1
+#                 else:
+#                     break
+#         else:
+#             target.add((A[rd][idx[rd]-1], 0))
+
+#         echo target
+#         echo t
+
+#         # for i in tmp:
+#         #     if i notin added:
+#         #         target.add((i, 1))
+#         #         added.add(i)
+
+#         idx[rd] += 1
+#         s -= 5**rd
+#     # echo pick
+#     echo target
+#     return target
 
 
 
@@ -184,6 +229,13 @@ proc calc_dp() =
 
 proc get_root_to_the_target(sx, sy, target: int8, turn: int, crane_b: seq[seq[array[5, (int8, int8)]]], contena_b: seq[seq[array[5, int8]]]): (bool, int8, int8,
         seq[string]) =
+    var f = false
+    for i in 0..<5:
+        for j in 0..<5:
+            if contena_b[turn + 10][i][j] == target:
+                f = true
+    if not f:
+        return (false, int8(-1), int8(-1), @[])
     var
         deq = initDeque[(int8, int8)](25)
         visited = newSeqWith(5, newSeqwith(5, newseqofcap[string](15)))
@@ -202,11 +254,7 @@ proc get_root_to_the_target(sx, sy, target: int8, turn: int, crane_b: seq[seq[ar
         if add_turn > 10:
             continue
 
-
-
-        for (s, ij) in UDLRS:
-            if s == ".":
-                continue
+        for (s, ij) in UDLR:
             var
                 (i, j) = ij
 
@@ -433,7 +481,6 @@ space: var seq[(int8, int8)]) =
                 sx = crane[i][now_turn][0]
                 sy = crane[i][now_turn][1]
                 (flag1, tx, ty, to_txy) = get_root_to_the_target(sx, sy, t, now_turn, crane_b, contena_b)
-
             if flag1 and now_turn + len(to_txy) > rock[tx][ty] and
             now_turn + len(to_txy) > rock_idx[t]:
                 var (flag2, to_gxy) = get_root_to_gxy(i, tx, ty, gx, gy, now_turn+len(to_txy), crane_b, contena_b)
@@ -537,14 +584,284 @@ space: var seq[(int8, int8)]) =
             idx += 1
             cant_go.add(t)
 
+# #ゴールに運ぶ
+# proc move_to_goal_1(now_turn: int,
+# ans: var seq[seq[string]],
+# contena_b: var seq[seq[array[5, int8]]],
+# crane_b: var seq[seq[array[5, (int8, int8)]]],
+# crane: var seq[seq[(int8, int8, int8, int8)]],
+# target: var seq[int8],
+#  A_n: var seq[seq[int8]],
+# bomed: var array[5, bool],
+# A_idx: seq[int],
+# rock: var seq[seq[int]],
+# rock_idx: var seq[int],
+# out_time: var seq[int],
+# space: var seq[(int8, int8)],
+# t: int8): bool =
+#     var
+#         min_len = 1000
+#         crane_num = -1
+#         rslt: (seq[string], seq[string])
+#         gx = int8(t // 5)
+#         gy = int8(4)
+
+
+#     for i in int8(0)..<int8(5):
+#         if crane[i][nowturn+1][2] != -1 or bomed[i]:
+#             continue
+#         var
+#             sx = crane[i][now_turn][0]
+#             sy = crane[i][now_turn][1]
+#             (flag1, tx, ty, to_txy) = get_root_to_the_target(sx, sy, t, now_turn, crane_b, contena_b)
+
+#         if flag1 and now_turn + len(to_txy) > rock[tx][ty] and
+#         now_turn + len(to_txy) > rock_idx[t]:
+#             var (flag2, to_gxy) = get_root_to_gxy(i, tx, ty, gx, gy, now_turn+len(to_txy), crane_b, contena_b)
+#             if flag2 and len(to_txy) + len(to_gxy) < min_len and
+#             (t % 5 == 0 or now_turn + len(to_txy) + len(to_gxy) > out_time[t-1]):
+#                 min_len = len(to_txy) + len(to_gxy)
+#                 crane_num = i
+#                 rslt = (to_txy, to_gxy)
+
+
+#     if crane_num >= 0:
+#         var
+#             x = crane[crane_num][now_turn][0]
+#             y = crane[crane_num][now_turn][1]
+#             catch = int8(0)
+#             prv_x, prv_y: int8
+#             p_turn: int
+#             new_contena: int8 = -1
+#             left_turn: int = -1
+
+
+#         for idx, i in rslt[0] & rslt[1]:
+#             ans[crane_num].add(i)
+#             x += UDLRS_table[i][0]
+#             y += UDLRS_table[i][1]
+#             if i == "P":
+#                 catch = 1
+#                 prv_x = x
+#                 prv_y = y
+#                 p_turn = now_turn+idx+1
+
+#             if left_turn == -1 and
+#                 catch == 1 and
+#                 (x != prv_x or y != prv_y):
+#                 left_turn = now_turn + idx + 1
+#                 if prv_y == 0:
+#                     if len(A_n[prv_x]) > 0:
+#                         discard A_n[prv_x].pop()
+#                         new_contena = A[prv_x][A_idx[t]+1]
+#                     if len(A_n[prv_x]) == 1:
+#                         space.add((prv_x, int8(0)))
+#                         if prv_x == 0 or prv_x == 4:
+#                             space.add((prv_x, int8(1)))
+
+#             if i == "Q":
+#                 catch = 0
+#                 crane_b[now_turn+idx+1][x][y] = (int8(crane_num), catch)
+#                 crane[crane_num][now_turn+idx+1] = (x, y, catch, -1)
+
+#                 #ロックして他クレーンとの競合を防ぐ
+#                 rock[prv_x][prv_y] = left_turn
+#                 rock_idx[t] = now_turn+idx+2
+#                 out_time[t] = now_turn+idx+2
+
+#                 #P ~ のcontenaの削除
+#                 for turn in left_turn..<max_turn:
+#                     if contena_b[turn][prv_x][prv_y] == t:
+#                         contena_b[turn][prv_x][prv_y] = -1
+#                     else:
+#                         echo ("永続のコンテナの削除の際にエラーが出ます。", crane_num, turn, contena_b[turn][prv_x][prv_y], t)
+#                         for i in ans:
+#                             echo i.join("")
+#                         quit()
+
+#                 #Q ~ のcontenaの追加
+#                 if y != 4:
+#                     for turn in now_turn+idx+1..<max_turn:
+#                         if contena_b[turn][x][y] == -1:
+#                             contena_b[turn][x][y] = t
+#                         else:
+#                             echo ("永続のコンテナの設置の際にエラーが出ます。", contena_b[turn][x][y], t)
+#                             quit()
+
+#                 #追加されたコンテナの永続設置
+#                 if left_turn != -1:
+#                     for turn in left_turn..<max_turn:
+#                         if contena_b[turn][prv_x][prv_y] == -1:
+#                             contena_b[turn][prv_x][prv_y] = int8(new_contena)
+#                         else:
+#                             echo ("永続のコンテナの設置の際にエラーが出ます。2", contena_b[turn][prv_x][prv_y], new_contena)
+#                             quit()
+
+
+#             else:
+#                 crane_b[now_turn+idx+1][x][y] = (int8(crane_num), catch)
+#                 if catch == 1:
+#                     crane[crane_num][now_turn+idx+1] = (x, y, catch, t)
+#                     if crane_num == 0:
+#                         discard
+#                     else:
+#                         contena_b[now_turn+idx+1][x][y] = t
+#                 else:
+#                     crane[crane_num][now_turn+idx+1] = (x, y, catch, -1)
+#         return true
+#     else:
+#         return false
+
 proc get_best_move(A_n: seq[seq[int8]]): int8 =
     var tmp = 0
     for i in 0..<5:
-        tmp += len(A_n[i]) * (5 ** i)
+        tmp += (len(A_n[i])) * (5 ** i)
     if len(best_move[tmp]) > 0:
         return int8(sample(best_move[tmp]))
     else:
         return -1
+
+# #盤面の仮スペースまで運ぶ
+# proc move_to_b_1(now_turn: int,
+# ans: var seq[seq[string]],
+# contena_b: var seq[seq[array[5, int8]]],
+# crane_b: var seq[seq[array[5, (int8, int8)]]],
+# crane: var seq[seq[(int8, int8, int8, int8)]],
+# target: var seq[int8],
+#  A_n: var seq[seq[int8]],
+# bomed: var array[5, bool],
+# A_idx: seq[int],
+# rock: var seq[seq[int]],
+# rock_idx: var seq[int],
+# out_time: var seq[int],
+# space: var seq[(int8, int8)],
+# t: int8): bool =
+
+#     var
+#         min_len = 1000
+#         crane_num = -1
+#         rslt: (seq[string], seq[string])
+
+#     for (gx, gy) in space:
+#         for i in int8(0)..<int8(5):
+#             if crane[i][nowturn+1][2] != -1 or bomed[i]:
+#                 continue
+#             var
+#                 sx = crane[i][now_turn][0]
+#                 sy = crane[i][now_turn][1]
+#                 (flag1, tx, ty, to_txy) = get_root_to_the_target(sx, sy, t, now_turn, crane_b, contena_b)
+
+#             if flag1 and now_turn + len(to_txy) > rock[tx][ty] and now_turn + len(to_txy) > rock_idx[contena_b[now_turn + len(to_txy)+1][tx][ty]]:
+#                 var (flag2, to_gxy) = get_root_to_gxy(i, tx, ty, gx, gy, now_turn + len(to_txy), crane_b, contena_b)
+#                 if flag2 and
+#                 len(to_txy) + len(to_gxy) + abs(gx - contena_b[now_turn + len(to_txy)+1][tx][ty]) < min_len and
+#                 can_put(now_turn+len(to_txy)+len(to_gxy)-1, gx, gy, contena_b):
+#                     min_len = len(to_txy) + len(to_gxy) + abs(gx - contena_b[now_turn + len(to_txy)+1][tx][ty])
+#                     crane_num = i
+#                     rslt = (to_txy, to_gxy)
+
+#     if crane_num >= 0:
+#         var
+#             x = crane[crane_num][now_turn][0]
+#             y = crane[crane_num][now_turn][1]
+#             catch = int8(0)
+#             prv_x, prv_y: int8
+#             p_turn: int
+#             new_contena: int8 = -1
+#             left_turn: int = -1
+
+#         # echo (crane_num, rslt[0] & rslt[1])
+#         for idx, i in rslt[0] & rslt[1]:
+#             ans[crane_num].add(i)
+#             x += UDLRS_table[i][0]
+#             y += UDLRS_table[i][1]
+
+#             if i == "P":
+#                 catch = 1
+#                 prv_x = x
+#                 prv_y = y
+#                 p_turn = now_turn+idx+1
+
+#             if left_turn == -1 and
+#             catch == 1 and
+#             (x != prv_x or y != prv_y):
+#                 left_turn = now_turn + idx + 1
+#                 if prv_y == 0:
+#                     if len(A_n[prv_x]) > 0:
+#                         discard A_n[prv_x].pop()
+#                         new_contena = A[prv_x][A_idx[t]+1]
+#                     if len(A_n[prv_x]) == 1:
+#                         space.add((prv_x, int8(0)))
+#                         if prv_x == 0 or prv_x == 4:
+#                             space.add((prv_x, int8(1)))
+
+
+
+#             if i == "Q":
+#                 catch = 0
+#                 crane_b[now_turn+idx+1][x][y] = (int8(crane_num), catch)
+#                 crane[crane_num][now_turn+idx+1] = (x, y, catch, -1)
+#                 #ロックして他クレーンとの競合を防ぐ
+#                 rock[prv_x][prv_y] = left_turn
+#                 rock_idx[t] = now_turn+idx+2
+
+
+#                 #P ~ のcontenaの削除
+#                 for turn in left_turn..<max_turn:
+#                     if contena_b[turn][prv_x][prv_y] == t:
+#                         contena_b[turn][prv_x][prv_y] = -1
+#                     else:
+#                         echo ("n永続のコンテナの削除の際にエラーが出ます。", crane_num, turn, contena_b[turn][prv_x][prv_y], t, x, y)
+#                         echo (rslt[0] & rslt[1])
+
+#                         quit()
+
+
+#                 #Q ~ のcontenaの追加
+#                 if y != 4:
+#                     for turn in now_turn+idx+1..<max_turn:
+#                         if contena_b[turn][x][y] == -1:
+#                             contena_b[turn][x][y] = t
+#                         else:
+#                             echo ("n永続のコンテナの設置の際にエラーが出ます。", now_turn, contena_b[turn][x][y], turn, t, x, y, crane_num)
+#                             echo (rslt)
+#                             for i in ans:
+#                                 echo i.join("")
+#                             echo()
+#                             for i in 0..turn+10:
+#                                 echo i
+#                                 for j in contena_b[i]:
+#                                     echo j
+#                                 for j in crane_b[i]:
+#                                     echo j
+#                                 for j in 0..<5:
+#                                     echo crane[j][i]
+#                             quit()
+
+#                 #追加されたコンテナの永続設置
+#                 if left_turn != -1:
+#                     for turn in left_turn..<max_turn:
+#                         if contena_b[turn][prv_x][prv_y] == -1:
+#                             contena_b[turn][prv_x][prv_y] = int8(new_contena)
+
+#                         else:
+#                             echo ("n永続のコンテナの設置の際にエラーが出ます。2", contena_b[turn][prv_x][prv_y], new_contena[1],
+#                                     turn, prv_x, prv_y)
+#                             quit()
+
+#             else:
+#                 crane_b[now_turn+idx+1][x][y] = (int8(crane_num), catch)
+
+#                 if catch == 1:
+#                     crane[crane_num][now_turn+idx+1] = (x, y, catch, t)
+#                     if crane_num == 0:
+#                         discard
+#                     else:
+#                         contena_b[now_turn+idx+1][x][y] = t
+#                 else:
+#                     crane[crane_num][now_turn+idx+1] = (x, y, catch, -1)
+#         return true
+#     return false
 
 #盤面の仮スペースまで運ぶ
 proc move_to_b(now_turn: int,
@@ -756,6 +1073,54 @@ proc is_cant_move(now_turn: int, crane: seq[seq[(int8, int8, int8, int8)]]): boo
             return false
 
     return true
+# proc solve_1(space: seq[(int8, int8)]): (bool, seq[seq[string]]) =
+#     var
+#         turn = 0
+#         ans = first_ans
+#         contena_b = first_contena_b
+#         crane_b = first_crane_b
+#         crane = first_crane
+#         target = first_target
+#         bomed = first_bomed
+#         A_n = first_A_n
+#         rock = first_rock
+#         rock_idx = first_rock_idx
+#         out_time = first_out_time
+#         fin = false
+#         sp = space
+#         idx = 0
+#         all_target = get_all_target()
+#     # echo all_target
+#     for now_turn in 0..<120:
+#         #全てのクレーンが使用中なら
+#         if not is_free(crane, now_turn) and not is_free(crane, now_turn+1):
+#             continue
+#         while idx < len(all_target):
+#             var
+#                 (t, mode) = all_target[idx]
+#                 cntn = false
+
+#             if mode == 0:
+#                 cntn = move_to_b_1(now_turn, ans, contena_b, crane_b, crane, target, A_n, bomed, A_idx, rock, rock_idx, out_time, sp, t)
+#             else:
+#                 cntn = move_to_goal_1(now_turn, ans, contena_b, crane_b, crane, target, A_n, bomed, A_idx, rock, rock_idx, out_time, sp, t)
+#             # echo (now_turn, idx, cntn, t)
+#             if cntn == false:
+#                 break
+#             else:
+#                 idx += 1
+
+#         if is_fin(contena_b[now_turn], ans, now_turn):
+#             fin = true
+#             break
+#         if is_cant_move(now_turn, crane):
+#             # for i in ans:
+#             #     echo i.join("")
+#             return (false, ans)
+#         #衝突回避
+#         collision_avoidance(now_turn, ans, contena_b, crane_b, crane, target, A_n, bomed, A_idx, rock, rock_idx, out_time)
+
+#     return (fin, ans)
 
 
 proc solve(space: seq[(int8, int8)]): (bool, seq[seq[string]]) =
@@ -778,12 +1143,14 @@ proc solve(space: seq[(int8, int8)]): (bool, seq[seq[string]]) =
         #全てのクレーンが使用中なら
         if not is_free(crane, now_turn) and not is_free(crane, now_turn+1):
             continue
-
         #盤面の中のコンテナを出口に運ぶ
         move_to_goal(now_turn, ans, contena_b, crane_b, crane, target, A_n, bomed, A_idx, rock, rock_idx, out_time, sp)
 
         #新規の追加
         move_to_b(now_turn, ans, contena_b, crane_b, crane, target, A_n, bomed, A_idx, rock, rock_idx, out_time, sp)
+
+        #盤面の中のコンテナを出口に運ぶ
+        move_to_goal(now_turn, ans, contena_b, crane_b, crane, target, A_n, bomed, A_idx, rock, rock_idx, out_time, sp)
 
         if is_fin(contena_b[now_turn], ans, now_turn):
             fin = true
@@ -826,7 +1193,7 @@ proc climb_hill(): seq[seq[string]] =
 
 
     while true:
-        if cputime() - START_TIME > 2.85:
+        if cputime() - START_TIME > 6:
             break
         var mode = rand(1)
         #削除

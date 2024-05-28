@@ -24,24 +24,26 @@ is_not_Index_Er = lambda x,y,h,w : 0 <= x < h and 0 <= y < w    #範囲外参照
 
 s = list(map(int,list(input())))
 l =[[0] * 10 ]
+d = defaultdict(int)
+for i in range()
 # print(s)
 # print(l)
-for i,j in enumerate(s):
-    temp = l[i][:]
-    l.append(temp)
-    l[i+1][j] = (l[i+1][j]+1) % 2
-    # print(l)
+# for i,j in enumerate(s):
+#     temp = l[i][:]
+#     l.append(temp)
+#     l[i+1][j] = (l[i+1][j]+1) % 2
+#     # print(l)
 
 
-for i in l:
-    dd[tuple(i)] += 1
-ans = 0
-for i in dd.values():
-    if i >= 2:
-        ans += (i*(i-1))//2
-# print(l)
-# print(dd)
-print(ans)
+# for i in l:
+#     dd[tuple(i)] += 1
+# ans = 0
+# for i in dd.values():
+#     if i >= 2:
+#         ans += (i*(i-1))//2
+# # print(l)
+# # print(dd)
+# print(ans)
 
 
 

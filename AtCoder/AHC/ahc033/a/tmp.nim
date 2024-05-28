@@ -966,7 +966,7 @@ proc solve_1(actions: seq[Action]): (bool, seq[seq[string]]) =
         fin = false
 
     for now_turn in 0..<100:
-        if cpuTime() - START_TIME > 2.97:
+        if cpuTime() - START_TIME > 2.95:
             return (false, last_ans)
         if idx == len(actions):
             fin = true
@@ -1126,7 +1126,7 @@ proc optimize_ans(ans: seq[seq[string]], contena_b: seq[seq[array[5, int8]]]): s
             if len(actions[del].in_ed) == 0:
                 heap.push(actions[del])
 
-    while cpuTime() - START_TIME < 2.97:
+    while cpuTime() - START_TIME < 2.95:
         var m = sample(mode)
         if m == 0:
             var i = rand(len(sorted_actions)-2)

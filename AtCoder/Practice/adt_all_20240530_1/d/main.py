@@ -38,56 +38,6 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, m = MII()
-s = list(input())
-t = list(input())
-tmp = []
-visited = set()
-for i in range(n):
-    if s[i : i + m] == t:
-        tmp.append(i)
-        visited.add(i)
-
-
-def isOK(s):
-    if len(s) != m:
-        return False
-    for i, j in zip(s, t):
-        if i == j or i == "#":
-            pass
-        else:
-            return False
-    return True
-
-
-while tmp:
-    # print(tmp)
-    i = tmp.pop()
-    s[i : i + m] = ["#"] * m
-    l = max(0, i - m + 1)
-    r = i + m
-    for j in range(l, r):
-        if j not in visited and isOK(s[j : j + m]):
-            tmp.append(j)
-            visited.add(j)
-
-if s == ["#"] * n:
-    PY()
-else:
-    PN()
-
-# dp = [[False] * m for _ in range(n + 1)]
-# dp[0][m - 1] = True
-# for i in range(n):
-#     for j in range(m):
-#         if j == 0:
-#             dp[i + 1][j] |= dp[i][(j - 1) % m] and s[i] == t[j]
-#         else:
-#             dp[i + 1][j] |= dp[i][(j - 1) % m]
-
-
-# print(dp)
-# if dp[n][m - 1]:
-#     PY()
-# else:
-#     PN()
+n = II()
+a = LMII()
+print(a.index(sorted(a, reverse=True)[1]) + 1)

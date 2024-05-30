@@ -1,0 +1,108 @@
+{
+  "contest": {
+    "id": "adt_all_20240530_3",
+    "title": "AtCoder Daily Training ALL 2024/05/30 20:30start",
+    "url": "https://atcoder.jp/contests/adt_all_20240530_3"
+  },
+  "tasks": [
+    {
+      "id": "abc333_a",
+      "label": "A",
+      "title": "Three Threes ",
+      "url": "https://atcoder.jp/contests/adt_all_20240530_3/tasks/abc333_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc281_a",
+      "label": "B",
+      "title": "Count Down",
+      "url": "https://atcoder.jp/contests/adt_all_20240530_3/tasks/abc281_a",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc248_b",
+      "label": "C",
+      "title": "Slimes",
+      "url": "https://atcoder.jp/contests/adt_all_20240530_3/tasks/abc248_b",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc259_b",
+      "label": "D",
+      "title": "Counterclockwise Rotation",
+      "url": "https://atcoder.jp/contests/adt_all_20240530_3/tasks/abc259_b",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc264_c",
+      "label": "E",
+      "title": "Matrix Reducing",
+      "url": "https://atcoder.jp/contests/adt_all_20240530_3/tasks/abc264_c",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc224_c",
+      "label": "F",
+      "title": "Triangle?",
+      "url": "https://atcoder.jp/contests/adt_all_20240530_3/tasks/abc224_c",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc218_d",
+      "label": "G",
+      "title": "Rectangles",
+      "url": "https://atcoder.jp/contests/adt_all_20240530_3/tasks/abc218_d",
+      "directory": {
+        "path": "g",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc304_e",
+      "label": "H",
+      "title": "Good Graph",
+      "url": "https://atcoder.jp/contests/adt_all_20240530_3/tasks/abc304_e",
+      "directory": {
+        "path": "h",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc244_f",
+      "label": "I",
+      "title": "Shortest Good Path",
+      "url": "https://atcoder.jp/contests/adt_all_20240530_3/tasks/abc244_f",
+      "directory": {
+        "path": "i",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

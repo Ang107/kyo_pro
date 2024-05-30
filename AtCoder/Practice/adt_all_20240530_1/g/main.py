@@ -38,56 +38,21 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, m = MII()
-s = list(input())
-t = list(input())
-tmp = []
-visited = set()
+n = II()
+xy = [LMII() for _ in range(n)]
+# i番目の料理で、状態がjの時のおいしさの最大値(0:健康、1：腹痛)
+dp = [[-inf] * 2 for _ in range(n + 1)]
+dp[0][0] = 0
 for i in range(n):
-    if s[i : i + m] == t:
-        tmp.append(i)
-        visited.add(i)
+    for j in range(2):
+        # not eat
+        dp[i + 1][0] = max(dp[i + 1][0], dp[i][0])
+        dp[i + 1][1] = max(dp[i + 1][1], dp[i][1])
 
-
-def isOK(s):
-    if len(s) != m:
-        return False
-    for i, j in zip(s, t):
-        if i == j or i == "#":
-            pass
+        # eat
+        if xy[i][0] == 0:
+            dp[i + 1][0] = max(dp[i + 1][0], dp[i][1] + xy[i][1], dp[i][0] + xy[i][1])
         else:
-            return False
-    return True
-
-
-while tmp:
-    # print(tmp)
-    i = tmp.pop()
-    s[i : i + m] = ["#"] * m
-    l = max(0, i - m + 1)
-    r = i + m
-    for j in range(l, r):
-        if j not in visited and isOK(s[j : j + m]):
-            tmp.append(j)
-            visited.add(j)
-
-if s == ["#"] * n:
-    PY()
-else:
-    PN()
-
-# dp = [[False] * m for _ in range(n + 1)]
-# dp[0][m - 1] = True
-# for i in range(n):
-#     for j in range(m):
-#         if j == 0:
-#             dp[i + 1][j] |= dp[i][(j - 1) % m] and s[i] == t[j]
-#         else:
-#             dp[i + 1][j] |= dp[i][(j - 1) % m]
-
-
+            dp[i + 1][1] = max(dp[i + 1][1], dp[i][0] + xy[i][1])
 # print(dp)
-# if dp[n][m - 1]:
-#     PY()
-# else:
-#     PN()
+print(max(0, max(dp[n])))

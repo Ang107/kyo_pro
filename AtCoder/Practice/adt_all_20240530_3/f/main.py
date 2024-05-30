@@ -38,56 +38,41 @@ def dlist(*l, fill=0):
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
 
-n, m = MII()
-s = list(input())
-t = list(input())
-tmp = []
-visited = set()
-for i in range(n):
-    if s[i : i + m] == t:
-        tmp.append(i)
-        visited.add(i)
+n = II()
+xy = [LMII() for _ in range(n)]
+ans = 0
 
 
-def isOK(s):
-    if len(s) != m:
-        return False
-    for i, j in zip(s, t):
-        if i == j or i == "#":
-            pass
-        else:
-            return False
-    return True
+# 三頂点の外積を返す関数
+def get_gaiseki(a, b, c):
+    x1, y1 = a
+    x2, y2 = b
+    x3, y3 = c
+    return (x1 - x2) * (y3 - y2) - (y1 - y2) * (x3 - x2)
 
 
-while tmp:
-    # print(tmp)
-    i = tmp.pop()
-    s[i : i + m] = ["#"] * m
-    l = max(0, i - m + 1)
-    r = i + m
-    for j in range(l, r):
-        if j not in visited and isOK(s[j : j + m]):
-            tmp.append(j)
-            visited.add(j)
-
-if s == ["#"] * n:
-    PY()
-else:
-    PN()
-
-# dp = [[False] * m for _ in range(n + 1)]
-# dp[0][m - 1] = True
-# for i in range(n):
-#     for j in range(m):
-#         if j == 0:
-#             dp[i + 1][j] |= dp[i][(j - 1) % m] and s[i] == t[j]
-#         else:
-#             dp[i + 1][j] |= dp[i][(j - 1) % m]
+# 三頂点A,B,Cの角ABCを左回りに見た時の角の大きさが180度未満、180度、180より大きいかを返す
+def get_angle_180_more_less_equal(a, b, c):
+    gaiseki = get_gaiseki(a, b, c)
+    # 180度
+    if gaiseki == 0:
+        return 0
+    # 180度より小さい
+    elif gaiseki > 0:
+        return 1
+    # 180度より大きい
+    elif gaiseki < 0:
+        return -1
 
 
-# print(dp)
-# if dp[n][m - 1]:
-#     PY()
-# else:
-#     PN()
+# 三頂点の為す三角形の面積を返す
+def get_s(a, b, c):
+    return abs(get_gaiseki(a, b, c)) / 2
+
+
+for i in combinations(xy, 3):
+    if get_s(*i) == 0:
+        pass
+    else:
+        ans += 1
+print(ans)

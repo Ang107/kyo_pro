@@ -1,0 +1,108 @@
+{
+  "contest": {
+    "id": "adt_all_20240529_3",
+    "title": "AtCoder Daily Training ALL 2024/05/29 20:00start",
+    "url": "https://atcoder.jp/contests/adt_all_20240529_3"
+  },
+  "tasks": [
+    {
+      "id": "abc300_a",
+      "label": "A",
+      "title": "N-choice question",
+      "url": "https://atcoder.jp/contests/adt_all_20240529_3/tasks/abc300_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc312_a",
+      "label": "B",
+      "title": "Chord",
+      "url": "https://atcoder.jp/contests/adt_all_20240529_3/tasks/abc312_a",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc292_b",
+      "label": "C",
+      "title": "Yellow and Red Card",
+      "url": "https://atcoder.jp/contests/adt_all_20240529_3/tasks/abc292_b",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc267_b",
+      "label": "D",
+      "title": "Split?",
+      "url": "https://atcoder.jp/contests/adt_all_20240529_3/tasks/abc267_b",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc335_c",
+      "label": "E",
+      "title": "Loong Tracking",
+      "url": "https://atcoder.jp/contests/adt_all_20240529_3/tasks/abc335_c",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc318_c",
+      "label": "F",
+      "title": "Blue Spring",
+      "url": "https://atcoder.jp/contests/adt_all_20240529_3/tasks/abc318_c",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc276_d",
+      "label": "G",
+      "title": "Divide by 2 or 3",
+      "url": "https://atcoder.jp/contests/adt_all_20240529_3/tasks/abc276_d",
+      "directory": {
+        "path": "g",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc228_e",
+      "label": "H",
+      "title": "Integer Sequence Fair",
+      "url": "https://atcoder.jp/contests/adt_all_20240529_3/tasks/abc228_e",
+      "directory": {
+        "path": "h",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "abc332_f",
+      "label": "I",
+      "title": "Random Update Query",
+      "url": "https://atcoder.jp/contests/adt_all_20240529_3/tasks/abc332_f",
+      "directory": {
+        "path": "i",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

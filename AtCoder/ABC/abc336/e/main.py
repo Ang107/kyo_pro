@@ -37,25 +37,24 @@ def dlist(*l, fill=0):
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
-
-def solve(N):
-    L = len(str(N))
-    dp = [[[0] * 2 for _ in range(200)] for _ in range(L + 1)]
-    dp[0][0][0] = 1
-
-    for i in range(L):
-        ni = int(str(N)[i])
-        for j in range(154):
-            for k in range(2):
-                for d in range((9 if k else ni) + 1):
-                    dp[i + 1][j + d][k or d < ni] += dp[i][j][k]
-
-    ans = 0
-    for j in range(1, 155):
-        if N % j == 0:
-            ans += dp[L][j][0] + dp[L][j][1]
-    return ans
-
-
 n = II()
-print(solve(n))  # 例：N=20
+str_n = str(n)
+size = len(str(n))
+ans = 0
+for s in range(1,127):
+    dp = [[[[0] * 2 for _ in range(s)] for _ in range(s+1)] for _ in range(size + 1)]
+    dp[0][0][0][1] = 1
+    for i in range(size):
+        for j in range(s+1):
+            for k in range(s):
+                for l in range(2):
+                    for m in range(10):
+                        if j + m >s:
+                            continue
+                        if l and int(str_n[i]) < m:
+                            continue
+                        dp[i+1][j + m][(10 * k + m) % s][l and int(str_n[i]) == m] += dp[i][j][k][l]
+    ans += dp[size][s][0][0] + dp[size][s][0][1]
+print(ans)
+                
+                

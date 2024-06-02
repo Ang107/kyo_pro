@@ -1,39 +1,28 @@
-n = int(input())
-l = []
-"""
+# l = list(map(int, input().split()))
+# n = int(input())
+# from collections import defaultdict
 
-N回のループの中でN回のループを回せば全体でN^2となるので、
-全体で25 * 10 ^ 10の計算量となるのでTLEしてます。
+# dp = [-1 for _ in range(n + 1)]
+# dp[0] = defaultdict(int)
 
-厳密には内側のループは(N - i - 1)回とはなっていますが、
 
-(N-1) + (N-2) + (N-3) + ... 2 + 1 = N * (N-1) // 2 ~= N ^ 2
+# def get_sum(d):
+#     if d == -1:
+#         return 10**18
+#     rslt = 0
+#     for i in d.values():
+#         rslt += i
+#     return rslt
 
-なのでTLEしているということになります。
- 
-break等も使用して高速化していますが、それらは定数倍高速化（オーダ記法では変化しない）にしかなりません。
-殆どのTLEは定数倍が問題なのではなく、オーダのレベルで誤っているので、その改善を心がけると良いと思います。
 
-また、l[i][0] <= l[j][1]の判定は不要かと思います。
-（あっても問題は無いです。）
-
-"""
-
-for _ in range(n):
-    left, right = map(int, input().split())
-    l.append([left, right])
-
-l.sort(key=lambda x: x[0])
-
-count = 0
-
-# N回のループ
-for i in range(n):
-    # N回のループ
-    for j in range(i + 1, n):
-        if l[i][1] >= l[j][0] and l[i][0] <= l[j][1]:
-            count += 1
-        else:
-            break
-
-print(count)
+# for i in range(n + 1):
+#     for j in l:
+#         if dp[i] != -1 and i + j <= n and get_sum(dp[i]) + 1 < get_sum(dp[i + j]):
+#             dp[i + j] = dp[i].copy()
+#             dp[i + j][j] += 1
+# # print(dp)
+# print(dp[n])
+# # print(2796 * 19 + 30)
+tmp = [5, 3, 5]
+tmp.remove(5)
+print(tmp)

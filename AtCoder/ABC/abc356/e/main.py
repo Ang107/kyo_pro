@@ -37,33 +37,36 @@ LMII = lambda: list(map(int, input().split()))
 n = II()
 a = LMII()
 a.sort()
-ans = 0
-memo = {}
 d = defaultdict(int)
 for i in a:
     d[i] += 1
-# print(d)
-# for i in d.values():
-#     ans += i * (i - 1)
-# print(a)
-for i in a:
-    for j in range(1, 10**6):
-        if i * 10**7 + j not in memo:
-            if j == 1:
-                l = bisect_left(a, i * j + 1)
-            else:
-                l = bisect_left(a, i * j)
-            r = bisect_left(a, i * (j + 1))
-            ans += (r - l) * j
-            # if (r - l) * j != 0:
-            #     print(i, j, l, r, (r - l) * j)
-            memo[i * 10**7 + j] = (r - l) * j
-            if r == n:
-                break
+ans = 0
+# i未満の要素数
+memo = [-1] * (10**6 + 10)
+for i in range(1, 10**6 + 2):
+    memo[i] = bisect_left(a, i)
+ans = 0
+# print(memo)
+for k, v in d.items():
+    # print(k, v)
+    for j in range(1, 10**6 + 1):
+        if k * j > a[-1]:
+            break
+        if j == 1:
+            ans += (
+                j
+                * v
+                * (memo[min(10**6 + 1, k * (j + 1))] - memo[min(10**6 + 1, k * j + 1)])
+            )
         else:
-            ans += memo[i * 10**7 + j]
+            ans += (
+                j
+                * v
+                * (memo[min(10**6 + 1, k * (j + 1))] - memo[min(10**6 + 1, k * j)])
+            )
         # print(ans)
 # print(ans)
+# print(d)
 for i in d.values():
     ans += i * (i - 1) // 2
-pritn(ans)
+print(ans)

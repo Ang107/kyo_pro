@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # l = list(map(int, input().split()))
 # n = int(input())
 # from collections import defaultdict
@@ -26,3 +27,11 @@
 tmp = [5, 3, 5]
 tmp.remove(5)
 print(tmp)
+=======
+n = int(input())
+ans = 0
+while n > 0:
+    ans += 1
+    n //= 2
+print(ans)
+>>>>>>> 0cff7907c6b9054e155980e8b05c6049666e5b42

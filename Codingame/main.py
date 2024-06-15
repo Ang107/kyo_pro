@@ -13,6 +13,73 @@ def deb(x):
     sys.stderr.write(str(x))
 
 
+ULDR = ["UP", "LEFT", "DOWN", "RIGHT"]
+
+
+# スコアの正規化、マックスを1として正規化する
+def evaluation_normarize(score):
+    max_score = max(score)
+    rslt = [0, 0, 0, 0]
+    if max_score > 0:
+        for i in range(4):
+            rslt[i] = score[i] / max_score
+    return rslt
+
+
+# ハードル走
+# 重要度は勝ちへの近さ？
+def evaluation_0(gpu, reg_0, reg_1, reg_2, reg_3, reg_4, reg_5, reg_6):
+    rslt = [0, 0, 0, 0]
+    actions = [[2], [1], [1, 2], [1, 2, 3]]
+
+    if reg_3 > 0:
+        return rslt
+
+    # stan状況でposにいる時に、actionという行動をとった後の実質位置の差分
+    def f(gpu, pos, stan, action):
+        if stan:
+            return 0
+        rslt = 0
+        for i in actions[action]:
+            if gpu[pos + i] == "#":
+                rslt += j
+                rslt -= 4
+                return rslt
+        return actions[action][-1]
+
+    # 実質的なプレイヤーの位置、スタンは後退として扱う
+    state = [reg_0 - 2 * reg_3, reg_1 - 2 * reg_4, reg_2 - 3 * reg_5]
+    # プレイヤー1の手
+    for i in range(4):
+        # プレイヤー2の手
+        for j in range(4):
+            # プレイヤー3の手
+            for k in range(4):
+                new_state = state[:]
+                new_state[0] += f(gpu, reg_0, reg_3, i)
+                new_state[1] += f(gpu, reg_1, reg_4, j)
+                new_state[2] += f(gpu, reg_2, reg_5, k)
+                rslt[i] += new_state[0] * 2 - new_state[1] - new_state[2]
+    return evaluation_normarize(rslt)
+
+
+
+# アーチェリー
+# 重要度はターン数？
+#前半はとりあえず真ん中寄に寄せ解く
+#後半は全探索して良さげな手を見つける
+def evaluation_0(gpu, reg_0, reg_1, reg_2, reg_3, reg_4, reg_5, reg_6):
+    rslt = [0, 0, 0, 0]
+
+
+# それぞれの行動後の盤面の評価を返す
+# 盤面自体の評価と、重要度
+# 僅差、もしくは優勢であるほど価値が高く、既に大負けしている場合は価値は低い
+# 種目ごとに均等に勝つのが良い
+def evaluation(game_number, gpu, reg_0, reg_1, reg_2, reg_3, reg_4, reg_5, reg_6):
+    pass
+
+
 # game loop
 while True:
     for i in range(3):
@@ -37,45 +104,18 @@ while True:
                 co[j] += 1
                 added = True
                 break
-        if not added:
-            co[4] += 1
-    most = co.most_common(1)
-    if most[0] == 1:
+
+    deb(co)
+    if len(co) == 0:
+        most = 4
+    else:
+        most = co.most_common(1)[0][0]
+    deb(most)
+    if most == 1:
         print("UP")
-    elif most[0] == 2:
+    elif most == 2:
         print("LEFT")
-    elif most[0] == 3:
+    elif most == 3:
         print("DOWN")
     else:
         print("RIGHT")
-
-    # deb((reg_0,reg_1,reg_2,reg_3,reg_4,reg_5))
-
-    # if reg_0 == 0:
-    #     idx = 0
-    #     ans = []
-    #     i = 0
-    #     while i < 30:
-    #         if i+1 < len(gpu) and gpu[i+1] == "#":
-    #             ans.append("UP")
-    #             i += 2
-    #         elif i+2 < len(gpu) and gpu[i+2] == "#":
-    #             ans.append("LEFT")
-    #             i += 1
-    #         elif i+3 < len(gpu) and gpu[i+3] == "#":
-    #             ans.append("DOWN")
-    #             i += 2
-    #         else:
-    #             ans.append("RIGHT")
-    #             i += 3
-    #     deb(len(gpu))
-    #     deb(ans)
-    #     deb(gpu)
-    # deb((len(ans),idx))
-    # print(ans[idx])
-    # idx += 1
-
-    # Write an action using print
-    # To debug: print("Debug messages...", file=sys.stderr, flush=True)
-
-    # print("LEFT")

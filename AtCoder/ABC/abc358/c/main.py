@@ -32,10 +32,20 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n, k, m = MII()
-# m ** (k**n) % mod
-# m % mod != 0
-if math.gcd(m, mod) == 1:
-    print(pow(m, pow(k, n, mod - 1), mod))
-else:
-    print(0)
+n, m = MII()
+s = [input() for _ in range(n)]
+ans = inf
+for bit in range(1 << n):
+    ex = set()
+    for i in range(n):
+        # print(bit >> i & 1)
+        if bit >> i & 1:
+            for j in range(m):
+                # print(s[i][j])
+                if s[i][j] == "o":
+
+                    ex.add(j)
+    if len(ex) == m:
+        ans = min(ans, bin(bit)[2:].count("1"))
+
+print(ans)

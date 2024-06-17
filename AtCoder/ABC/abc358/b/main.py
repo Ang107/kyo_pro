@@ -32,10 +32,13 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n, k, m = MII()
-# m ** (k**n) % mod
-# m % mod != 0
-if math.gcd(m, mod) == 1:
-    print(pow(m, pow(k, n, mod - 1), mod))
-else:
-    print(0)
+n, a = MII()
+t = LMII()
+last_used = 0
+for idx, i in enumerate(t):
+    if last_used < i:
+        pritn(i + a)
+        last_used = i + a
+    else:
+        print(last_used + a)
+        last_used = last_used + a

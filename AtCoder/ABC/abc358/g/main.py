@@ -32,10 +32,36 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n, k, m = MII()
-# m ** (k**n) % mod
-# m % mod != 0
-if math.gcd(m, mod) == 1:
-    print(pow(m, pow(k, n, mod - 1), mod))
-else:
-    print(0)
+h, w, k = MII()
+x, y = MII()
+x -= 1
+y -= 1
+a = [LMII() for _ in range(h)]
+dp = [[0] * w for _ in range(h)]
+
+
+def bfs(x, y):
+    deq = deque([(x, y, -1, -1)])
+    visited = [[False] * w for _ in range(h)]
+    visited[x][y] = True
+    while deq:
+        x, y, fx, fy = deq.popleft()
+        for i, j in around4:
+            if (
+                x + i in range(h)
+                and y + j in range(w)
+                and visited[x + i][y + j] == False
+            ):
+                dp[x + i][y + j] = max(dp[x + i][y + j], dp[x][y] + a[x + i][y + j])
+                deq.append((x + i, y + j, x, y))
+                visited[x + i][y + j] = True
+
+
+bfs(x, y)
+# print(dp)
+ans = 0
+for i in range(h):
+    for j in range(w):
+        # print(dp[i][j], (k - (abs(x - i) + abs(y - j))))
+        ans = max(ans, (k - (abs(x - i) + abs(y - j))) * a[i][j] + dp[i][j])
+print(ans)

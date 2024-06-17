@@ -170,6 +170,9 @@ proc greedy_action(self: State): int =
             best_action = action
     return best_action
 
+proc hash(x: uint64): uint64 =
+    return x
+
 #ビームサーチを用いて選択したときの手を返す。
 proc beamsearch_action(self: State, beam_width, beam_depth: int): int =
     var

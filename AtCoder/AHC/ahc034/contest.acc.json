@@ -1,0 +1,20 @@
+{
+  "contest": {
+    "id": "ahc034",
+    "title": "Toyota Programming Contest 2024#6（AtCoder Heuristic Contest 034）",
+    "url": "https://atcoder.jp/contests/ahc034"
+  },
+  "tasks": [
+    {
+      "id": "ahc034_a",
+      "label": "A",
+      "title": "Leveling with a Dump Truck",
+      "url": "https://atcoder.jp/contests/ahc034/tasks/ahc034_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

@@ -44,7 +44,3 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-
-a = 1
-b = 1
-deb(b, a)

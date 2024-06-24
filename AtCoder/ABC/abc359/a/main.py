@@ -45,6 +45,6 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-a = 1
-b = 1
-deb(b, a)
+n = II()
+tmp = [input() for _ in range(n)]
+print(len([i for i in tmp if i == "Takahashi"]))

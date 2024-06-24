@@ -45,6 +45,7 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-a = 1
-b = 1
-deb(b, a)
+n = II()
+h = LMII()
+tmp = list(accumulate(h))
+print(tmp)

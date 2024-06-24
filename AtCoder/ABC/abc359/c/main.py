@@ -45,6 +45,48 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-a = 1
-b = 1
-deb(b, a)
+sx, sy = MII()
+tx, ty = MII()
+if tx < sx:
+    sx, sy, tx, ty = (tx, ty, sx, sy)
+ans = 0
+ans += abs(ty - sy)
+# if sy % 2 == 0:
+#     lsx = sx // 2
+# else:
+#     ltx = sx // 2
+# 近くに寄せる
+
+# print(abs(tx - sx), abs(ty - sy))
+# print(sx, sy, tx, ty)
+if ty % 2 == 0:
+    tx = max(sx, tx // 2 * 2)
+else:
+    if tx % 2 == 0:
+        tx = max(sx, tx - 1)
+# print(sx, sy, tx, ty)
+if sy % 2 == 0:
+    sx = min(tx, sx // 2 * 2 + 1)
+else:
+    if sx % 2 == 1:
+        sx = min(tx, sx + 1)
+
+# print(sx, sy, tx, ty)
+lim = sx + abs(ty - sy)
+if tx <= lim:
+    pass
+else:
+    ans += -(-abs(lim - tx) // 2)
+# ans +=
+# if sx % 2 == tx % 2:
+#     ans += max((abs(tx - sx) // 2) - abs(ty - sy), 0)
+# else:
+#     ans += max(-(-abs(tx - sx) // 2) - abs(ty - sy), 0)
+
+# ans += max(-(-abs(tx - sx) // 2) - abs(ty - sy), 0)
+# if ty % 2 == sy % 2:
+#     ans += max(abs(tx - sx) - abs(ty - sy), 0)
+# else:
+#     ans += max(abs(tx - sx) - abs(ty - sy), 0)
+
+print(ans)

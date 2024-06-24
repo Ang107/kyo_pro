@@ -35,11 +35,12 @@ t = II()
 ans = []
 
 for _ in range(t):
-    n, k = MII()
-    if (2 + k + 1) * k // 2 - 1 <= n:
-        ans.append("Yes")
+    n, m = MII()
+    if n > m:
+        ans.append(-(-m // n) * n - m)
+
     else:
-        ans.append("No")
+        ans.append(min(m - (m // n) * n, -(-m // n) * n - m))
     pass
 for i in ans:
     print(i)

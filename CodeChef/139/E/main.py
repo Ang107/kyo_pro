@@ -31,55 +31,43 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-
 t = II()
 ans = []
 
-
-def get_primes(n):
-    # n以下のすべての数について素数かどうかを記録する配列
-    is_prime = [True] * (n + 1)
-    is_prime[0] = False  # 0は素数ではない
-    is_prime[1] = False  # 1は素数ではない
-    primes = []
-
-    for i in range(2, n + 1):
-        if is_prime[i]:
-            primes.append(i)
-            # iの倍数を素数ではないとマーク
-            for j in range(i * 2, n + 1, i):
-                is_prime[j] = False
-
-    return primes
-
-
-primes = [i**2 for i in get_primes(10**5 + 1)]
-# print(primes)
-primes_set = set(primes)
 for _ in range(t):
     n = II()
-    rslt = False
-    for i in range(len(primes)):
-        a = primes[i]
-        if rslt:
-            break
-        if a > n:
-            break
-        for j in range(i + 1, len(primes)):
-            b = primes[j]
-            c = n - a - b
-            if c < 0:
-                break
-            if c != a and c != b and c in primes_set:
-                # print(a, b, c)
-                rslt = True
-                break
+    p = LMII()
+    max_ = p[0]
+    # 必要な値
+    diff = []
+    # 超えてはいけない値
+    lim = [inf]
+    for i in p[1:][::-1]:
+        # if not lim:
+        #     lim.append(i)
+        # else:
+        lim.append(min(lim[-1], i - 1))
+    lim = lim[::-1]
+    for i in range(n):
+        diff.append(max(0, max_ - p[i]))
+        max_ = max(max_, p[i])
+    # print(diff)
+    # print(lim)
+    tmp = [(i, j) for i, j in zip(diff, lim) if i != 0]
 
-    if rslt:
-        ans.append("Yes")
+    l = [i for i, j in tmp]
+    r = [j for i, j in tmp]
+
+    rslt = 0
+    if tmp:
+        # print((max(l), min(n, min(r))))
+        for i in range(max(l), min(n, min(r)) + 1):
+            rslt += i
     else:
-        ans.append("No")
+        for i in range(n + 1):
+            rslt += i
+    ans.append(rslt)
 
-
+    pass
 for i in ans:
     print(i)

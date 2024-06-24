@@ -31,44 +31,50 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-
 t = II()
 ans = []
 
-
-# 素因数分解
-# 戻り値は(素因数、指数)のタプル)
-# def factorization(n):
-#     arr = []
-#     temp = n
-#     for i in range(2, int(-(-(n**0.5) // 1)) + 1):
-#         if temp % i == 0:
-#             cnt = 0
-#             while temp % i == 0:
-#                 cnt += 1
-#                 temp //= i
-#             arr.append([i, cnt])
-
-#     if temp != 1:
-#         arr.append([temp, 1])
-
-#     if arr == []:
-#         arr.append([n, 1])
-
-#     return arr
-
-
 for _ in range(t):
-    a = II()
-    # a_f = factorization(a)
-    # tmp = a_f[0][0]
-    b = a * 2
-    if a == 2:
-        c = a**3
+    n, c = MII()
+    a = LMII()
+    tmp = [[0, i] for i in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            tmp[i][0] += a[i] * a[j]
+    if tmp[0][0] <= c:
+        ans.append(1)
     else:
-        c = a**2
-    ans.append((b, c))
+        result = 0
+        tmp.sort()
+        tmp = [i for _, i in tmp]
+        for i in range(1, n + 1):
+            rem = set(tmp[:i])
+            cost = 0
+            for j in rem:
+                for k in range(n):
+                    if k not in rem:
+                        cost += a[j] * a[k]
+            if cost <= c:
+                result = i
+            else:
+                break
+        ans.append(n - result)
+
+        # ok = set(range(n))
+        # print(tmp)
+        # while tmp and tmp[-1][0] <= c:
+        #     cost, idx = tmp.pop()
+        #     ok.remove(idx)
+        #     c -= cost
+        #     for i in range(len(tmp)):
+        #         tmp[i][0] -= a[tmp[i][1]] * a[idx]
+        #     tmp.sort(reverse=True)
+        #     print(ok)
+        #     print(tmp)
+        # ans.append(len(ok))
 
     pass
 for i in ans:
-    print(*i)
+    print(i)

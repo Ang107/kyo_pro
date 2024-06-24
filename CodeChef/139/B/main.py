@@ -34,16 +34,29 @@ LMII = lambda: list(map(int, input().split()))
 t = II()
 ans = []
 
-for _ in range(t):
-    x, y = MII()
-    i = 0
-    tmp = x
-    while tmp < y:
-        i += 1
-        tmp = (10 * x + 100 * i) / (10 + i)
-        # print(tmp)
 
-    ans.append(i)
+def dis(a, b):
+    return min(abs(i - j) for i, j in zip(a, b))
+
+
+for _ in range(t):
+    n = II()
+    tmp = [i + 1 for i in range(n)]
+    ans.append(tmp)
+    rslt = []
+    rslt.extend(tmp[n // 2 :])
+    rslt.extend(tmp[: n // 2])
+    ans.append(rslt)
+
+    # a = list(range(n))
+    # max_dis = 0
+    # for b in permutations(a):
+    #     dis_ = dis(a, b)
+    #     if max_dis < dis_:
+    #         max_dis = dis_
+
+    #         print(max_dis, list(b))
+
     pass
 for i in ans:
-    print(i)
+    print(*i)

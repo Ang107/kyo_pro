@@ -29,39 +29,80 @@ a = LMII()
 b = LMII()
 c = LMII()
 ans = 0
-# 作れるやつの中でコスパが最も良いものを選びたい。
 
-ab = [(i, j, i - j) for i, j in zip(a, b)]
+# 残りのブロックがiの時に、経験値を2得ることのできる最小の支払い数
+prf = [inf] * (10**6 + 10)
+for i, j in zip(a, b):
+    prf[i] = min(prf[i], i - j)
+# 累積minを取る
+for i in range(1, 10**6 + 1):
+    prf[i] = min(prf[i - 1], prf[i])
 
-ab.sort(key=lambda x: x[0])
-ab_new = []
-tmp = inf
-for i, j, k in ab:
-    if tmp > k:
-        tmp = k
-        ab_new.append((i, j, k))
+# 残りブロック数がiの時に、そこから得られる経験値の最大値
+dp = [0] * (10**6 + 10)
+for i in range(10**6 + 1):
+    if i - prf[i] >= 0:
+        dp[i] = dp[i - prf[i]] + 2
 
-ab = ab_new
-
-score = [(i[2], idx) for idx, i in enumerate(ab)]
-a = [i[0] for i in ab]
-min_ = []
-
-for i in score:
-    if not min_:
-        min_.append(i)
-    else:
-        min_.append(min(min_[-1], i))
 
 for i in c:
-    amari = i
-    while amari > 0:
-        idx = bisect_right(a, amari)
-        if idx == 0:
-            break
-        rslt = min_[idx - 1]
-        tmp = (amari - a[rslt[1]]) // rslt[0] + 1
-        ans += tmp * 2
-        amari -= tmp * rslt[0]
-
+    if i <= 10**6:
+        ans += dp[i]
+    else:
+        tmp = (i - 10**6) // prf[10**6] + 1
+        ans += 2 * tmp
+        i -= prf[10**6] * tmp
+        ans += dp[i]
 print(ans)
+
+# 作れるやつの中でコスパが最も良いものを選びたい。
+
+# ab = [(i, i - j) for i, j in zip(a, b)]
+
+# ab.sort(key=lambda x: x[0])
+# ab_new = []
+# tmp = inf
+# for i, k in ab:
+#     if tmp > k:
+#         tmp = k
+#         ab_new.append((i, k))
+
+# ab = ab_new
+
+
+# score = [(i[1], idx) for idx, i in enumerate(ab)]
+# a = [i[0] for i in ab]
+# min_ = []
+
+# for i in score:
+#     if not min_:
+#         min_.append(i)
+#     else:
+#         min_.append(min(min_[-1], i))
+
+
+# dp = [0] * (10**6 + 1)
+# idx = -1
+# for i in range(10**6 + 1):
+#     while True:
+#         if idx + 1 < len(a) and a[idx + 1] <= i:
+#             idx += 1
+#         else:
+#             break
+#     if idx == -1:
+#         continue
+#     rslt = min_[idx]
+#     dp[i] = dp[i - rslt[0]] + 2
+
+# for i in c:
+#     amari = i
+#     if amari <= 10**6:
+#         ans += dp[amari]
+#     else:
+#         rslt = min_[-1]
+#         tmp = (amari - a[rslt[1]]) // rslt[0] + 1
+#         ans += tmp * 2
+#         amari -= tmp * rslt[0]
+#         ans += dp[amari]
+
+# print(ans)

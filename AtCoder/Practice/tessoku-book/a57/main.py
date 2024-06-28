@@ -131,18 +131,37 @@ class UnionFind:
 n, q = MII()
 a = LMII()
 a = [i - 1 for i in a]
-a_rev = {j:i for i,j in enumerate(a)}
-uf = UnionFind(n)
-for i, j in enumerate(a):
-    uf.merge(i, j)
-#連結成分で分ける
-gr = uf.groups()
-#トポロジカルソート
-for i in gr:
-    for j in i:
-        
+# jにいたアリが(2 ** i)日後にいる場所
+dp = [[-1] * n for _ in range(31)]
+dp[0] = a[:]
+for i in range(30):
+    for j in range(n):
+        dp[i + 1][dp[i][dp[i][j]]] = j
+pprint(dp)
+ans = []
+for _ in range(q):
+    x, y = MII()
+    x -= 1
+    p = x
+    for i in range(31):
+        if y >> i & 1:
+            p = dp[i][p]
+    ans.append(p + 1)
 
-root = []
+for i in ans:
+    print(i)
+# a_rev = {j:i for i,j in enumerate(a)}
+# uf = UnionFind(n)
+# for i, j in enumerate(a):
+#     uf.merge(i, j)
+# #連結成分で分ける
+# gr = uf.groups()
+# #トポロジカルソート
+# for i in gr:
+#     for j in i:
+
+
+# root = []
 # def f(x):
 #     visited = set()
 #     root = []

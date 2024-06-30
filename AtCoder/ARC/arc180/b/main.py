@@ -20,7 +20,7 @@ alph_l = tuple(string.ascii_uppercase)
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float("inf")
-mod = 998244353
+mod = 10**9+7
 input = lambda: sys.stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
 PY = lambda: print("Yes")
@@ -30,3 +30,6 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+
+#交換する項
+for i in range(n)

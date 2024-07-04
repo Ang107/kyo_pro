@@ -1,12 +1,12 @@
 import sys
 from collections import deque, defaultdict
 from itertools import (
-     accumulate,
-     product,
-     permutations,
-     combinations,
-     combinations_with_replacement
-     )
+    accumulate,
+    product,
+    permutations,
+    combinations,
+    combinations_with_replacement,
+)
 import math
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 from pprint import pprint
@@ -37,3 +37,45 @@ def dlist(*l, fill=0):
     ll = l[1:]
     return [dlist(*ll, fill=fill) for _ in range(l[0])]
 
+
+h, w = MII()
+s = [input() for _ in range(h)]
+
+
+def dik():
+    distance = [[inf] * w for _ in range(h)]
+    distance[0][0] = 0
+    # 距離、x座標、y座標
+    deq = deque([(0, 0)])
+    punch = []
+    for i in range(-2, 3):
+        for j in range(-2, 3):
+            if abs(i) + abs(j) != 4:
+                punch.append((i, j))
+
+    while deq:
+        x, y = deq.popleft()
+
+        for i, j in around4:
+            if (
+                x + i in range(h)
+                and y + j in range(w)
+                and s[x + i][y + j] == "."
+                and distance[x + i][y + j] > distance[x][y]
+            ):
+                distance[x + i][y + j] = distance[x][y]
+                deq.appendleft((x + i, y + j))
+
+        for i, j in punch:
+            if (
+                x + i in range(h)
+                and y + j in range(w)
+                and distance[x + i][y + j] > distance[x][y] + 1
+            ):
+                distance[x + i][y + j] = distance[x][y] + 1
+                deq.append((x + i, y + j))
+
+    return distance[-1][-1]
+
+
+print(dik())

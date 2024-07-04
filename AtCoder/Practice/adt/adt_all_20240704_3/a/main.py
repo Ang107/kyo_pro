@@ -31,12 +31,12 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-M,D = MII()
-y,m,d = MII()
+M, D = MII()
+y, m, d = MII()
 
 if M == m and D == d:
-    print(y+1,1,1)
+    print(y + 1, 1, 1)
 elif d == D:
-    print(y,m+1,1)
+    print(y, m + 1, 1)
 else:
-    print(y,m,d+1)
+    print(y, m, d + 1)

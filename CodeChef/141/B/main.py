@@ -12,12 +12,9 @@ from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
 
-import pypyjit
-
-pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
+
 alph_s = tuple(string.ascii_lowercase)
 alph_l = tuple(string.ascii_uppercase)
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
@@ -33,3 +30,53 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+
+t = II()
+ans = []
+
+
+def dis(a, b):
+    return min(abs(i - j) for i, j in zip(a, b))
+
+
+for _ in range(t):
+    n, k, h = MII()
+    # 一発で超える場合 A >= H
+    rslt = n * max(0, (n - h + 1))
+    # print(rslt)
+    # 一回では超えられない場合
+    # 1秒間に上がる必要のある最低距離
+    tmp = -(-h // (k + 1))
+    # print(tmp)
+    # 初項
+    # a = 1
+    # 末項
+    # b = max(1, min(h - 2))
+
+    # rslt += (1 + ( h - tmp - 1)) * (h - tmp - 1) // 2
+    # ans.append(rslt)
+    # cnt = 0
+
+    for a in range(1, min(h, n + 1)):
+
+        def isOK(mid):
+            return (a - mid) * (k - 1) + a >= h
+            pass
+
+        def meguru(ng, ok):
+            while abs(ok - ng) > 1:
+                mid = (ok + ng) // 2
+                if isOK(mid):
+                    ok = mid
+                else:
+                    ng = mid
+            return ok
+
+        if (a - 1) * (k - 1) + a >= h:
+            rslt += meguru(n + 1, 1)
+
+    ans.append(rslt)
+
+    pass
+for i in ans:
+    print(i)

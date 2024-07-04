@@ -12,9 +12,6 @@ from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
 
-import pypyjit
-
-pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
@@ -33,3 +30,19 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+
+s, t = input().split()
+for w in range(1, len(s)):
+    tmp = []
+    for i in range(0, len(s), w):
+        tmp.append(s[i : i + w])
+
+    for c in range(w + 1):
+        rslt = []
+        for i in tmp:
+            if c < len(i):
+                rslt.append(i[c])
+        if "".join(rslt) == t:
+            PY()
+            exit()
+PN()

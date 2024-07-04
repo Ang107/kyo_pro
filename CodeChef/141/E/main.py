@@ -12,12 +12,9 @@ from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
 
-import pypyjit
-
-pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
+
 alph_s = tuple(string.ascii_lowercase)
 alph_l = tuple(string.ascii_uppercase)
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
@@ -33,3 +30,44 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+
+t = II()
+ans = []
+
+for _ in range(t):
+    n = II()
+    p = LMII()
+    max_ = p[0]
+    # 必要な値
+    diff = []
+    # 超えてはいけない値
+    lim = [inf]
+    for i in p[1:][::-1]:
+        # if not lim:
+        #     lim.append(i)
+        # else:
+        lim.append(min(lim[-1], i - 1))
+    lim = lim[::-1]
+    for i in range(n):
+        diff.append(max(0, max_ - p[i]))
+        max_ = max(max_, p[i])
+    # print(diff)
+    # print(lim)
+    tmp = [(i, j) for i, j in zip(diff, lim) if i != 0]
+
+    l = [i for i, j in tmp]
+    r = [j for i, j in tmp]
+
+    rslt = 0
+    if tmp:
+        # print((max(l), min(n, min(r))))
+        for i in range(max(l), min(n, min(r)) + 1):
+            rslt += i
+    else:
+        for i in range(n + 1):
+            rslt += i
+    ans.append(rslt)
+
+    pass
+for i in ans:
+    print(i)

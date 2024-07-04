@@ -12,12 +12,9 @@ from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
 
-import pypyjit
-
-pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
+
 alph_s = tuple(string.ascii_lowercase)
 alph_l = tuple(string.ascii_uppercase)
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
@@ -33,3 +30,23 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+
+t = II()
+ans = []
+
+for _ in range(t):
+    n = II()
+    a = LMII()
+    count = defaultdict(int)
+    for i in a:
+        count[i] += 1
+    tmp = inf
+
+    for i in range(1, max(a) + 1):
+        # 個数* 書き換える値
+        rslt = (n - count[i]) * i
+        tmp = min(tmp, rslt)
+
+    ans.append(tmp)
+for i in ans:
+    print(i)

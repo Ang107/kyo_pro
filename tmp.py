@@ -1,5 +1,11 @@
-def f(r):
-    return r * r * 314 / 100
+def f(a, l=[]):
+    l.append(a)
+    print(id(l))
+    print(l)
 
 
-print(f(314))
+l = [-1]
+f(0)
+f(1, l=l)
+f(2)
+f(3, l=l)

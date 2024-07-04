@@ -12,9 +12,6 @@ from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
 
-import pypyjit
-
-pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
@@ -24,12 +21,17 @@ around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float("inf")
 mod = 998244353
-input = lambda: sys.stdin.readline().rstrip()
-pritn = lambda *x: print(*x)
-PY = lambda: print("Yes")
-PN = lambda: print("No")
-SI = lambda: input()
-IS = lambda: input().split()
-II = lambda: int(input())
-MII = lambda: map(int, input().split())
-LMII = lambda: list(map(int, input().split()))
+tmp = []
+for i in range(998244354):
+    # print(i)
+    if (497172481 + 501071873 * i) % mod == 592707587:
+        print(i)
+        for j in range(1, mod + 1):
+            if i * j % mod < 1000:
+                print(j, i * j % mod)
+
+# tmp = pow(3 - 1, -1, mod)
+# for i in range(1, mod + 1):
+#     if tmp * i % mod == 399297744:
+#         print(i)
+# print((554580198 - 911976323) % mod)

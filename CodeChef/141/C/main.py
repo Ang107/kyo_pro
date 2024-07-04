@@ -12,12 +12,9 @@ from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
 
-import pypyjit
-
-pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
+
 alph_s = tuple(string.ascii_lowercase)
 alph_l = tuple(string.ascii_uppercase)
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
@@ -33,3 +30,53 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+
+t = II()
+ans = []
+
+for _ in range(t):
+    n = II()
+    p = LMII()
+    g = []
+    max_ = 0
+    for i in range(0, n - 1, 2):
+        if i + 1 == max(max_, p[i + 1]):
+            g.append(1)
+        elif i + 1 == max(max_, p[i]):
+            g.append(-1)
+        else:
+            g.append(0)
+
+        max_ = max(max_, p[i], p[i + 1])
+
+    k = []
+    max_ = p[0]
+    for i in range(1, n - 1, 2):
+        if i + 1 == max(max_, p[i + 1]):
+            k.append(1)
+        elif i + 1 == max(max_, p[i]):
+            k.append(-1)
+        else:
+            k.append(0)
+        max_ = max(max_, p[i], p[i + 1])
+
+    rslt = 0
+    max_ = 0
+    for i in range(n):
+        max_ = max(max_, p[i])
+        if max_ == i + 1:
+            rslt += 1
+
+    g_max = [0] * (len(g) + 1)
+    for i in range(len(g)):
+        g_max[i + 1] = max(g[i], g_max[i] + g[i])
+
+    k_max = [0] * (len(k) + 1)
+    for i in range(len(k)):
+        k_max[i + 1] = max(k[i], k_max[i] + k[i])
+
+    ans.append(rslt + max(max(g_max), max(k_max)))
+
+    pass
+for i in ans:
+    print(i)

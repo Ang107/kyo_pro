@@ -136,8 +136,8 @@ dp = [[-1] * n for _ in range(31)]
 dp[0] = a[:]
 for i in range(30):
     for j in range(n):
-        dp[i + 1][dp[i][dp[i][j]]] = j
-pprint(dp)
+        dp[i + 1][j] = dp[i][dp[i][j]]
+# pprint(dp)
 ans = []
 for _ in range(q):
     x, y = MII()
@@ -150,19 +150,3 @@ for _ in range(q):
 
 for i in ans:
     print(i)
-# a_rev = {j:i for i,j in enumerate(a)}
-# uf = UnionFind(n)
-# for i, j in enumerate(a):
-#     uf.merge(i, j)
-# #連結成分で分ける
-# gr = uf.groups()
-# #トポロジカルソート
-# for i in gr:
-#     for j in i:
-
-
-# root = []
-# def f(x):
-#     visited = set()
-#     root = []
-#     while True:

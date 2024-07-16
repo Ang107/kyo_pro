@@ -56,7 +56,7 @@ if min_ <= 0 <= max_:
             now = ok_l
     ans.append(-now)
     PY()
-    # print(sum(ans))
     print(*ans)
+
 else:
     PN()

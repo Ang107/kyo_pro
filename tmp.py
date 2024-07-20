@@ -1,96 +1,58 @@
-import sys
-from collections import deque, defaultdict
-from itertools import (
-    accumulate,
-    product,
-    permutations,
-    combinations,
-    combinations_with_replacement,
-)
-import math
-from bisect import bisect_left, insort_left, bisect_right, insort_right
-from pprint import pprint
-from heapq import heapify, heappop, heappush
+n, q = map(int, input().split())
+import string
+import functools
+from functools import cache
+from itertools import permutations
 
-# product : bit全探索 product(range(2),repeat=n)
-# permutations : 順列全探索
-# combinations : 組み合わせ（重複無し）
-# combinations_with_replacement : 組み合わせ（重複可）
-# from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
-around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
-around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-inf = float("inf")
-mod = 998244353
-input = lambda: sys.stdin.readline().rstrip()
-P = lambda *x: print(*x)
-PY = lambda: print("Yes")
-PN = lambda: print("No")
-II = lambda: int(input())
-MII = lambda: map(int, input().split())
-LMII = lambda: list(map(int, input().split()))
+alp = string.ascii_uppercase
+ans = list(alp[:n])
 
 
-def dlist(*l, fill=0):
-    if len(l) == 1:
-        return [fill] * l[0]
-    ll = l[1:]
-    return [dlist(*ll, fill=fill) for _ in range(l[0])]
+@cache
+def compare(x, y):
+    print(f"? {x} {y}")
+    rslt = input()
+    if rslt == "<":
+        return -1
+    else:
+        return 1
 
 
-n = II()
-a = LMII()
-
-h = []
-max_ = 2 * 10**5
-for i in range(2, 1000000):
-    h.append(i**2)
-    if i**2 > max_:
-        break
-
-
-def solve(n, a):
-    a_n = []
-    for i in a:
-        tmp = i
-        for j in h:
-            if j > tmp:
-                break
-            while tmp % j == 0:
-                tmp //= j
-
-        a_n.append(tmp)
-
-    cnt = defaultdict(int)
-    for i in a_n:
-        cnt[i] += 1
-    ans = 0
-    # print(cnt)
-    for i in cnt:
-        if i == 0:
-            ans += cnt[i] * (n - cnt[i])
+if n == 26:
+    ans.sort(key=functools.cmp_to_key(compare))
+    print("!", "".join(ans))
+else:
+    all_ = []
+    for i in permutations(ans):
+        all_.append(i)
+    tmp = "ABCDE"
+    while len(all_) > 1:
+        new_all = []
+        min_ = 1 << 32
+        rslt = None
+        # print(len(all_))
+        # print(all_)
+        for i in range(5):
+            for j in range(i + 1, 5):
+                cnt = 0
+                for k in all_:
+                    if k.index(tmp[i]) < k.index(tmp[j]):
+                        cnt += 1
+                if min_ > abs(cnt - len(all_) / 2):
+                    min_ = abs(cnt - len(all_) / 2)
+                    rslt = i, j
+        i, j = rslt
+        print(f"? {tmp[i]} {tmp[j]}")
+        a = input()
+        if a == "<":
+            for k in all_:
+                if k.index(tmp[i]) < k.index(tmp[j]):
+                    new_all.append(k)
         else:
-            ans += cnt[i] * (cnt[i] - 1) // 2
-        # print(ans)
-    ans += cnt[0] * (cnt[0] - 1) // 2
-    return ans
+            for k in all_:
+                if k.index(tmp[i]) > k.index(tmp[j]):
+                    new_all.append(k)
 
+        all_ = new_all
 
-print(solve(n, a))
-# import random
-
-# while True:
-#     n = 10
-#     a = [random.randrange(100) for _ in range(10)]
-#     a.sort()
-#     ans = 0
-#     for i in range(n):
-#         for j in range(i + 1, n):
-#             if math.isqrt(a[i] * a[j]) ** 2 == a[i] * a[j]:
-#                 ans += 1
-#     tmp = solve(n, a)
-#     print(ans, tmp)
-#     if ans != tmp:
-#         print(a)
-#         print(ans, tmp)
-#         exit()
+    print(f"! {''.join(all_[0])}")

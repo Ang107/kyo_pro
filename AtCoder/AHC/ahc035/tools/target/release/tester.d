@@ -1,0 +1,1 @@
+/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc035/tools/target/release/tester: /mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc035/tools/src/bin/tester.rs /mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc035/tools/src/lib.rs

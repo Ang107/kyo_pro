@@ -63,7 +63,6 @@ proc evaluation(t: int): int =
     else:
         return sum_score + max_solo_score * 240
 
-
 # proc evaluation(t, mode, a, b, c, d: int): int =
 #     if mode == 0:
 #         var

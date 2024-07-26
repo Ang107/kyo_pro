@@ -11,9 +11,7 @@ import math
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
-import pypyjit
 
-pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 
@@ -33,10 +31,40 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-t = II()
+T = II()
 ans = []
 
-for _ in range(t):
+
+def solve(n: int, a: list[int]):
+    def isOK(mid):
+        a_n = a[:mid]
+        s = set(a[:mid])
+        
+        for i in range(mid,n):
+            
+            
+        pass
+
+
+    def meguru(ng, ok):
+        while abs(ok - ng) > 1:
+            mid = (ok + ng) // 2
+            if isOK(mid):
+                ok = mid
+            else:
+                ng = mid
+        return ok
+
+    return meguru(n+1,1)
     pass
+
+
+for _ in range(T):
+    n = II()
+    a = LMII()
+    ans.append(solve(n, a))
+    pass
+
+
 for i in ans:
     print(i)

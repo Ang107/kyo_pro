@@ -37,6 +37,19 @@ t = II()
 ans = []
 
 for _ in range(t):
+    n, k = MII()
+    tmp = []
+    for i in range(1, n + 1):
+        tmp.append(i)
+        tmp.append(i)
+    tmp.pop()
+
+    rslt = 0
+    while k > 0:
+        k -= tmp.pop()
+        rslt += 1
+    ans.append(rslt)
+
     pass
 for i in ans:
     print(i)

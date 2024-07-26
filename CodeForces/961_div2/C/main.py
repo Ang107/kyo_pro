@@ -37,6 +37,39 @@ t = II()
 ans = []
 
 for _ in range(t):
+    n = II()
+    a = LMII()
+    exp = [1]
+    prv = -1
+    rslt = 0
+    for idx, i in enumerate(a):
+        if idx == 0:
+            continue
+        if i == 1:
+            if a[idx - 1] > i:
+                rslt = -1
+                break
+            else:
+                exp.append(1)
+        else:
+            # print(a[idx - 1], i, exp[idx - 1])
+            # print(a[idx - 1], math.log(a[idx - 1], i), exp[idx - 1])
+            tmp = math.ceil(math.log(a[idx - 1], i) * exp[idx - 1])
+            if tmp <= 1:
+                exp.append(1)
+                continue
+            exp.append(2 ** math.ceil(math.log(tmp, 2)))
+
+            # pritn(i, tmp)
+            rslt += int(math.log(tmp - 1, 2)) + 1
+            # print(exp)
+            # print(i, tmp, int(math.log(tmp - 1, 2)) + 1)
+            # while prv > i:
+            #     i *= i
+            #     rslt += 1
+
+    ans.append(rslt)
+
     pass
 for i in ans:
     print(i)

@@ -44,22 +44,20 @@ a = [LMII() for _ in range(h)]
 
 def f(a):
     dp = [[inf] * w for _ in range(h)]
-    for i in reversed(range(h)):
-        for j in reversed(range(w)):
-            if i == j == 0:
-                continue
-            dp[i][j] = c * (i + j) + a[i][j]
-            if i + 1 in range(h):
-                dp[i][j] = min(dp[i][j], dp[i - 1][j] + c)
-            if j - 1 in range(w):
-                dp[i][j] = min(dp[i][j], dp[i][j - 1] + c)
-    rslt = inf
-    print(dp)
     for i in range(h):
         for j in range(w):
-            if i == j == 0:
-                continue
-            rslt = min(rslt, a[i][j] + dp[h - 1][w - 1] - c * (i + j))
+            dp[i][j] = a[i][j] - c * (i + j)
+            if i > 0:
+                dp[i][j] = min(dp[i][j], dp[i - 1][j])
+            if j > 0:
+                dp[i][j] = min(dp[i][j], dp[i][j - 1])
+    rslt = inf
+    for i in range(h):
+        for j in range(w):
+            if i > 0:
+                rslt = min(rslt, a[i][j] + c * (i + j) + dp[i - 1][j])
+            if j > 0:
+                rslt = min(rslt, a[i][j] + c * (i + j) + dp[i][j - 1])
     return rslt
 
 

@@ -10,7 +10,7 @@ class IntHash:
             self.bit_len[idx] = l
             self.mask[idx] = (1 << l) - 1
         assert sum(self.bit_len) <= 63, "数字が大きすぎてhash化できません。"
-
+        self.sum_bit_len = [0]
         for i in self.bit_len[1:][::-1]:
             self.sum_bit_len.append(self.sum_bit_len[-1] + i)
         self.sum_bit_len = self.sum_bit_len[::-1]

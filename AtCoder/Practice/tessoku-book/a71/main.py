@@ -1,276 +1,67 @@
-# import sys
-# from collections import deque, defaultdict
-# from itertools import (
-#     accumulate,
-#     product,
-#     permutations,
-#     combinations,
-#     combinations_with_replacement,
-# )
-# import math
-# from bisect import bisect_left, insort_left, bisect_right, insort_right
-# from pprint import pprint
-# from heapq import heapify, heappop, heappush
-
-# # product : bit全探索 product(range(2),repeat=n)
-# # permutations : 順列全探索
-# # combinations : 組み合わせ（重複無し）
-# # combinations_with_replacement : 組み合わせ（重複可）
-# # from sortedcontainers import SortedSet, SortedList, SortedDict
-# sys.setrecursionlimit(10**7)
-# around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
-# around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-# inf = float("inf")
-# deq = deque()
-# dd = defaultdict()
-# mod = 998244353
-
-
-# def Pr(x):
-#     return print(x)
-
-
-# def PY():
-#     return print("Yes")
-
-
-# def PN():
-#     return print("No")
-
-
-# def I():
-#     return input()
-
-
-# def II():
-#     return int(input())
-
-
-# def MII():
-#     return map(int, input().split())
-
-
-# def LMII():
-#     return list(map(int, input().split()))
-
-
-# def is_not_Index_Er(x, y, h, w):
-#     return 0 <= x < h and 0 <= y < w  # 範囲外参照
-
-
-# n = II()
-# a = LMII()
-# b = LMII()
-
-
-# https://github.com/tatyam-prime/SortedSet/blob/main/SortedSet.py
+import sys
+from collections import deque, defaultdict
+from itertools import (
+    accumulate,
+    product,
+    permutations,
+    combinations,
+    combinations_with_replacement,
+)
 import math
-from bisect import bisect_left, bisect_right
-from typing import Generic, Iterable, Iterator, List, Tuple, TypeVar, Optional
+from bisect import bisect_left, insort_left, bisect_right, insort_right
+from pprint import pprint
+from heapq import heapify, heappop, heappush
 
-T = TypeVar("T")
-
-
-class SortedSet(Generic[T]):
-    BUCKET_RATIO = 16
-    SPLIT_RATIO = 24
-
-    def __init__(self, a: Iterable[T] = []) -> None:
-        "Make a new SortedSet from iterable. / O(N) if sorted and unique / O(N log N)"
-        a = list(a)
-        n = len(a)
-        if any(a[i] > a[i + 1] for i in range(n - 1)):
-            a.sort()
-        if any(a[i] >= a[i + 1] for i in range(n - 1)):
-            a, b = [], a
-            for x in b:
-                if not a or a[-1] != x:
-                    a.append(x)
-        n = self.size = len(a)
-        num_bucket = int(math.ceil(math.sqrt(n / self.BUCKET_RATIO)))
-        self.a = [
-            a[n * i // num_bucket : n * (i + 1) // num_bucket]
-            for i in range(num_bucket)
-        ]
-
-    def __iter__(self) -> Iterator[T]:
-        for i in self.a:
-            for j in i:
-                yield j
-
-    def __reversed__(self) -> Iterator[T]:
-        for i in reversed(self.a):
-            for j in reversed(i):
-                yield j
-
-    def __eq__(self, other) -> bool:
-        return list(self) == list(other)
-
-    def __len__(self) -> int:
-        return self.size
-
-    def __repr__(self) -> str:
-        return "SortedSet" + str(self.a)
-
-    def __str__(self) -> str:
-        s = str(list(self))
-        return "{" + s[1 : len(s) - 1] + "}"
-
-    def _position(self, x: T) -> Tuple[List[T], int, int]:
-        "return the bucket, index of the bucket and position in which x should be. self must not be empty."
-        for i, a in enumerate(self.a):
-            if x <= a[-1]:
-                break
-        return (a, i, bisect_left(a, x))
-
-    def __contains__(self, x: T) -> bool:
-        if self.size == 0:
-            return False
-        a, _, i = self._position(x)
-        return i != len(a) and a[i] == x
-
-    def add(self, x: T) -> bool:
-        "Add an element and return True if added. / O(√N)"
-        if self.size == 0:
-            self.a = [[x]]
-            self.size = 1
-            return True
-        a, b, i = self._position(x)
-        if i != len(a) and a[i] == x:
-            return False
-        a.insert(i, x)
-        self.size += 1
-        if len(a) > len(self.a) * self.SPLIT_RATIO:
-            mid = len(a) >> 1
-            self.a[b : b + 1] = [a[:mid], a[mid:]]
-        return True
-
-    def _pop(self, a: List[T], b: int, i: int) -> T:
-        ans = a.pop(i)
-        self.size -= 1
-        if not a:
-            del self.a[b]
-        return ans
-
-    def discard(self, x: T) -> bool:
-        "Remove an element and return True if removed. / O(√N)"
-        if self.size == 0:
-            return False
-        a, b, i = self._position(x)
-        if i == len(a) or a[i] != x:
-            return False
-        self._pop(a, b, i)
-        return True
-
-    def lt(self, x: T) -> Optional[T]:
-        "Find the largest element < x, or None if it doesn't exist."
-        for a in reversed(self.a):
-            if a[0] < x:
-                return a[bisect_left(a, x) - 1]
-
-    def le(self, x: T) -> Optional[T]:
-        "Find the largest element <= x, or None if it doesn't exist."
-        for a in reversed(self.a):
-            if a[0] <= x:
-                return a[bisect_right(a, x) - 1]
-
-    def gt(self, x: T) -> Optional[T]:
-        "Find the smallest element > x, or None if it doesn't exist."
-        for a in self.a:
-            if a[-1] > x:
-                return a[bisect_right(a, x)]
-
-    def ge(self, x: T) -> Optional[T]:
-        "Find the smallest element >= x, or None if it doesn't exist."
-        for a in self.a:
-            if a[-1] >= x:
-                return a[bisect_left(a, x)]
-
-    def __getitem__(self, i: int) -> T:
-        "Return the i-th element."
-        if i < 0:
-            for a in reversed(self.a):
-                i += len(a)
-                if i >= 0:
-                    return a[i]
-        else:
-            for a in self.a:
-                if i < len(a):
-                    return a[i]
-                i -= len(a)
-        raise IndexError
-
-    def pop(self, i: int = -1) -> T:
-        "Pop and return the i-th element."
-        if i < 0:
-            for b, a in enumerate(reversed(self.a)):
-                i += len(a)
-                if i >= 0:
-                    return self._pop(a, ~b, i)
-        else:
-            for b, a in enumerate(self.a):
-                if i < len(a):
-                    return self._pop(a, b, i)
-                i -= len(a)
-        raise IndexError
-
-    def index(self, x: T) -> int:
-        "Count the number of elements < x."
-        ans = 0
-        for a in self.a:
-            if a[-1] >= x:
-                return ans + bisect_left(a, x)
-            ans += len(a)
-        return ans
-
-    def index_right(self, x: T) -> int:
-        "Count the number of elements <= x."
-        ans = 0
-        for a in self.a:
-            if a[-1] > x:
-                return ans + bisect_right(a, x)
-            ans += len(a)
-        return ans
+# product : bit全探索 product(range(2),repeat=n)
+# permutations : 順列全探索
+# combinations : 組み合わせ（重複無し）
+# combinations_with_replacement : 組み合わせ（重複可）
+# from sortedcontainers import SortedSet, SortedList, SortedDict
+sys.setrecursionlimit(10**7)
+around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
+around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
+inf = float("inf")
+deq = deque()
+dd = defaultdict()
+mod = 998244353
 
 
-n = int(input())
-p = list(map(int, input().split()))
-lr = []
-for i in range(n):
-    l, r = map(int, input().split())
-    # (仕事が始まる日、削除される日、-報酬)
-    lr.append((l, r, -p[i]))
-
-lr.sort(key=lambda x: x[0], reverse=True)
-
-s = SortedSet()
-ans = 0
-
-day = lr[0][0]
-
-while True:
-    print(s)
-    # dayまでに出来る仕事を追加
-    while lr and lr[-1][0] <= day:
-        s.add(lr.pop()[1:])
-
-    #  出来る仕事が無い場合、次の仕事が追加される日まで飛ばす
-    if len(s) == 0:
-        if lr:
-            day = lr[-1][0]
-
-    # 出来る仕事がある場合は、その中で終了する日が近く、(同一の締め切りの仕事がある場合は最も報酬の良い仕事)をする。
-    else:
-        ans += s.pop(0)[1]
-        day += 1
-
-    # 締め切りの過ぎた仕事を消す。
-    while len(s) > 0 and s[0][0] < day:
-        s.pop(0)
-
-    # 出来る仕事も、残りの仕事もないなら
-    if not s and not lr:
-        break
+def Pr(x):
+    return print(x)
 
 
-print(-ans)
+def PY():
+    return print("Yes")
+
+
+def PN():
+    return print("No")
+
+
+def I():
+    return input()
+
+
+def II():
+    return int(input())
+
+
+def MII():
+    return map(int, input().split())
+
+
+def LMII():
+    return list(map(int, input().split()))
+
+
+def is_not_Index_Er(x, y, h, w):
+    return 0 <= x < h and 0 <= y < w  # 範囲外参照
+
+
+n = II()
+a = LMII()
+b = LMII()
+a.sort()
+b.sort(reverse=True)
+ans = sum(i * j for i, j in zip(a, b))
+print(ans)

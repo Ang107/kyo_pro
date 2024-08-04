@@ -1,0 +1,75 @@
+{
+  "contest": {
+    "id": "arc181",
+    "title": "AtCoder Regular Contest 181",
+    "url": "https://atcoder.jp/contests/arc181"
+  },
+  "tasks": [
+    {
+      "id": "arc181_a",
+      "label": "A",
+      "title": "Sort Left and Right",
+      "url": "https://atcoder.jp/contests/arc181/tasks/arc181_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc181_b",
+      "label": "B",
+      "title": "Annoying String Problem",
+      "url": "https://atcoder.jp/contests/arc181/tasks/arc181_b",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc181_c",
+      "label": "C",
+      "title": "Row and Column Order",
+      "url": "https://atcoder.jp/contests/arc181/tasks/arc181_c",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc181_d",
+      "label": "D",
+      "title": "Prefix Bubble Sort",
+      "url": "https://atcoder.jp/contests/arc181/tasks/arc181_d",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc181_e",
+      "label": "E",
+      "title": "Min and Max at the edge",
+      "url": "https://atcoder.jp/contests/arc181/tasks/arc181_e",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc181_f",
+      "label": "F",
+      "title": "Colorful Reversi",
+      "url": "https://atcoder.jp/contests/arc181/tasks/arc181_f",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

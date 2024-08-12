@@ -11,10 +11,9 @@ import math
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
+import pypyjit
 
-# import pypyjit
-
-# pypyjit.set_param("max_unroll_recursion=-1")
+pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 
@@ -38,6 +37,21 @@ t = II()
 ans = []
 
 for _ in range(t):
+    x, y, k = MII()
+    import random
+
+    while True:
+        memo = set()
+        while len(memo) < k - 1:
+            memo.add((random.randrange(-1000, 1000), random.randrange(-1000, 1000)))
+        x_sum = sum(i for i, j in memo)
+        y_sum = sum(j for i, j in memo)
+        if (k * x - x_sum, k * y - y_sum) not in memo:
+            for i, j in memo:
+                print(i, j)
+            print(k * x - x_sum, k * y - y_sum)
+            break
+
     pass
 for i in ans:
     print(i)

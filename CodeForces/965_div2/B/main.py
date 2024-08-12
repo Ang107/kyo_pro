@@ -11,10 +11,9 @@ import math
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
+import pypyjit
 
-# import pypyjit
-
-# pypyjit.set_param("max_unroll_recursion=-1")
+pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 
@@ -38,6 +37,21 @@ t = II()
 ans = []
 
 for _ in range(t):
+    n = II()
+    p = LMII()
+    ans.append(p[1:] + p[:1])
+    # # print(*p[::-1])
+    # l = []
+    # r = []
+    # cnt = 0
+    # for i in range(n):
+    #     if i % 2 == 1:
+    #         l.append(p[i])
+    #     else:
+    #         r.append(p[i])
+    # r = r[::-1]
+    # ans.append(l + r)
+
     pass
 for i in ans:
-    print(i)
+    print(*i)

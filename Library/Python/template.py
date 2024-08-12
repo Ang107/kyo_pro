@@ -1,31 +1,31 @@
-import sys
+from sys import stdin, setrecursionlimit
 from collections import deque, defaultdict
-from itertools import (
-    accumulate,  # 累積和
-    product,  # bit全探索 product(range(2),repeat=n)
-    permutations,  # permutations : 順列全探索
-    combinations,  # 組み合わせ（重複無し）
-    combinations_with_replacement,  # 組み合わせ（重複可）
-)
-import math
+from itertools import accumulate
+from itertools import permutations
+from itertools import product
+from itertools import combinations
+from itertools import combinations_with_replacement
+from math import ceil, floor, log, log2, sqrt, gcd, lcm
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
-import string
+from functools import cache
+from string import ascii_lowercase, ascii_uppercase
 
+DEBUG = False
 # import pypyjit
-
 # pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
-
-alph_s = tuple(string.ascii_lowercase)
-alph_l = tuple(string.ascii_uppercase)
+setrecursionlimit(10**7)
+alph_s = ascii_lowercase
+alph_l = ascii_uppercase
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float("inf")
 mod = 998244353
-input = lambda: sys.stdin.readline().rstrip()
+input = lambda: stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
+deb = lambda *x: print(*x) if DEBUG else None
 PY = lambda: print("Yes")
 PN = lambda: print("No")
 SI = lambda: input()
@@ -33,11 +33,3 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-
-t = II()
-ans = []
-
-for _ in range(t):
-    pass
-for i in ans:
-    print(i)

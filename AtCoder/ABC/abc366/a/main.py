@@ -32,3 +32,11 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+
+n, t, a = MII()
+t, a = min(t, a), max(t, a)
+amari = n - t - a
+if t + amari < a:
+    PY()
+else:
+    PN()

@@ -11,10 +11,9 @@ import math
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
+import pypyjit
 
-# import pypyjit
-
-# pypyjit.set_param("max_unroll_recursion=-1")
+pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 

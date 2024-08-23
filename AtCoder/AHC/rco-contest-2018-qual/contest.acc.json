@@ -1,0 +1,31 @@
+{
+  "contest": {
+    "id": "rco-contest-2018-qual",
+    "title": "第2回 RCO日本橋ハーフマラソン 予選",
+    "url": "https://atcoder.jp/contests/rco-contest-2018-qual"
+  },
+  "tasks": [
+    {
+      "id": "rco_contest_2018_qual_a",
+      "label": "A",
+      "title": "ゲーム実況者Xの挑戦",
+      "url": "https://atcoder.jp/contests/rco-contest-2018-qual/tasks/rco_contest_2018_qual_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "rco_contest_2018_qual_b",
+      "label": "B",
+      "title": "ゲーム実況者Xのデフラグ",
+      "url": "https://atcoder.jp/contests/rco-contest-2018-qual/tasks/rco_contest_2018_qual_b",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

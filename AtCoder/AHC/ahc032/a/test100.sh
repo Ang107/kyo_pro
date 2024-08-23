@@ -19,9 +19,8 @@ do
 
     # pypy3 main.py < in/${j}.txt > out/${j}.txt
 
-    nim cpp -r -d:release --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/atcoder/ahc032/a/main.nim" < in/${j}.txt > out/nim${j}.txt
+    nim cpp -r -d:release --hints:off --verbosity:0 --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc032/a/main.nim"  < in/${j}.txt > out/nim${j}.txt
 
-  
 
 
     # pypy3 main_old.py < in/${j}.txt > out_old/${j}.txt

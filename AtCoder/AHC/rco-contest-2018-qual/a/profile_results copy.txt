@@ -1,0 +1,282 @@
+total executions of each stack trace:
+Entry: 1/57 Calls: 5550/12666 = 43.82% [sum: 5550; 5550/12666 = 43.82%]
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 2/57 Calls: 1760/12666 = 13.90% [sum: 7310; 7310/12666 = 57.71%]
+  arithmetics.nim: -% 3419/12666 = 26.99%
+  gc.nim: usrToCell 2301/12666 = 18.17%
+  gc.nim: asgnRef 4386/12666 = 34.63%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 3/57 Calls: 920/12666 = 7.26% [sum: 8230; 8230/12666 = 64.98%]
+  arithmetics.nim: +% 1516/12666 = 11.97%
+  gc.nim: incRef 922/12666 = 7.28%
+  gc.nim: asgnRef 4386/12666 = 34.63%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 4/57 Calls: 869/12666 = 6.86% [sum: 9099; 9099/12666 = 71.84%]
+  comparisons.nim: <% 1154/12666 = 9.11%
+  gc.nim: decRef 2265/12666 = 17.88%
+  gc.nim: asgnRef 4386/12666 = 34.63%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 5/57 Calls: 833/12666 = 6.58% [sum: 9932; 9932/12666 = 78.41%]
+  arithmetics.nim: -% 3419/12666 = 26.99%
+  gc.nim: decRef 2265/12666 = 17.88%
+  gc.nim: asgnRef 4386/12666 = 34.63%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 6/57 Calls: 570/12666 = 4.50% [sum: 10502; 10502/12666 = 82.91%]
+  arithmetics.nim: +% 1516/12666 = 11.97%
+  main.nim: clear 2198/12666 = 17.35%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 7/57 Calls: 391/12666 = 3.09% [sum: 10893; 10893/12666 = 86.00%]
+  system.nim: [] 391/12666 = 3.09%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 8/57 Calls: 286/12666 = 2.26% [sum: 11179; 11179/12666 = 88.26%]
+  arithmetics.nim: *% 297/12666 = 2.34%
+  main.nim: clear 2198/12666 = 17.35%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 9/57 Calls: 282/12666 = 2.23% [sum: 11461; 11461/12666 = 90.49%]
+  arithmetics.nim: -% 3419/12666 = 26.99%
+  gc.nim: decRef 2265/12666 = 17.88%
+  main.nim: clear 2198/12666 = 17.35%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 10/57 Calls: 276/12666 = 2.18% [sum: 11737; 11737/12666 = 92.67%]
+  arithmetics.nim: -% 3419/12666 = 26.99%
+  gc.nim: usrToCell 2301/12666 = 18.17%
+  gc.nim: extGetCellType 280/12666 = 2.21%
+  main.nim: clear 2198/12666 = 17.35%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 11/57 Calls: 275/12666 = 2.17% [sum: 12012; 12012/12666 = 94.84%]
+  comparisons.nim: <% 1154/12666 = 9.11%
+  gc.nim: decRef 2265/12666 = 17.88%
+  main.nim: clear 2198/12666 = 17.35%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 12/57 Calls: 260/12666 = 2.05% [sum: 12272; 12272/12666 = 96.89%]
+  system.nim: align 268/12666 = 2.12%
+  main.nim: clear 2198/12666 = 17.35%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 13/57 Calls: 248/12666 = 1.96% [sum: 12520; 12520/12666 = 98.85%]
+  arithmetics.nim: -% 3419/12666 = 26.99%
+  gc.nim: usrToCell 2301/12666 = 18.17%
+  main.nim: clear 2198/12666 = 17.35%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 14/57 Calls: 21/12666 = 0.17% [sum: 12541; 12541/12666 = 99.01%]
+  arithmetics.nim: +% 1516/12666 = 11.97%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 15/57 Calls: 21/12666 = 0.17% [sum: 12562; 12562/12666 = 99.18%]
+  main.nim: move_backward 21/12666 = 0.17%
+  main.nim: dfs 65/12666 = 0.51%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 16/57 Calls: 14/12666 = 0.11% [sum: 12576; 12576/12666 = 99.29%]
+  main.nim: move_forward 14/12666 = 0.11%
+  main.nim: dfs 65/12666 = 0.51%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 17/57 Calls: 8/12666 = 0.06% [sum: 12584; 12584/12666 = 99.35%]
+  arithmetics.nim: *% 297/12666 = 2.34%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 18/57 Calls: 8/12666 = 0.06% [sum: 12592; 12592/12666 = 99.42%]
+  system.nim: align 268/12666 = 2.12%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 19/57 Calls: 6/12666 = 0.05% [sum: 12598; 12598/12666 = 99.46%]
+  system.nim: pop 21/12666 = 0.17%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 20/57 Calls: 5/12666 = 0.04% [sum: 12603; 12603/12666 = 99.50%]
+  main.nim: expand 28/12666 = 0.22%
+  main.nim: dfs 65/12666 = 0.51%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 21/57 Calls: 5/12666 = 0.04% [sum: 12608; 12608/12666 = 99.54%]
+  arithmetics.nim: -% 3419/12666 = 26.99%
+  gc.nim: usrToCell 2301/12666 = 18.17%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 22/57 Calls: 4/12666 = 0.03% [sum: 12612; 12612/12666 = 99.57%]
+  arithmetics.nim: -% 3419/12666 = 26.99%
+  gc.nim: usrToCell 2301/12666 = 18.17%
+  gc.nim: unsureAsgnRef 9/12666 = 0.07%
+  system.nim: pop 21/12666 = 0.17%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 23/57 Calls: 4/12666 = 0.03% [sum: 12616; 12616/12666 = 99.61%]
+  arithmetics.nim: -% 3419/12666 = 26.99%
+  gc.nim: usrToCell 2301/12666 = 18.17%
+  gc.nim: extGetCellType 280/12666 = 2.21%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 24/57 Calls: 4/12666 = 0.03% [sum: 12620; 12620/12666 = 99.64%]
+  main.nim: calculate_path 5/12666 = 0.04%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 25/57 Calls: 3/12666 = 0.02% [sum: 12623; 12623/12666 = 99.66%]
+  arithmetics.nim: *% 297/12666 = 2.34%
+  system.nim: pop 21/12666 = 0.17%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 26/57 Calls: 3/12666 = 0.02% [sum: 12626; 12626/12666 = 99.68%]
+  arithmetics.nim: -% 3419/12666 = 26.99%
+  gc.nim: usrToCell 2301/12666 = 18.17%
+  gc.nim: asgnRef 4386/12666 = 34.63%
+  main.nim: push 5/12666 = 0.04%
+  main.nim: expand 28/12666 = 0.22%
+  main.nim: dfs 65/12666 = 0.51%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 27/57 Calls: 3/12666 = 0.02% [sum: 12629; 12629/12666 = 99.71%]
+  comparisons.nim: <% 1154/12666 = 9.11%
+  gc.nim: decRef 2265/12666 = 17.88%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 28/57 Calls: 2/12666 = 0.02% [sum: 12631; 12631/12666 = 99.72%]
+  arithmetics.nim: +% 1516/12666 = 11.97%
+  gc.nim: incRef 922/12666 = 7.28%
+  gc.nim: unsureAsgnRef 9/12666 = 0.07%
+  system.nim: pop 21/12666 = 0.17%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 29/57 Calls: 2/12666 = 0.02% [sum: 12633; 12633/12666 = 99.74%]
+  comparisons.nim: <=% 9/12666 = 0.07%
+  gc.nim: newObj 16/12666 = 0.13%
+  main.nim: new_candidate 9/12666 = 0.07%
+  main.nim: expand 28/12666 = 0.22%
+  main.nim: dfs 65/12666 = 0.51%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 30/57 Calls: 2/12666 = 0.02% [sum: 12635; 12635/12666 = 99.76%]
+  comparisons.nim: <% 1154/12666 = 9.11%
+  avltree.nim: add 4/12666 = 0.03%
+  avltree.nim: add 4/12666 = 0.03%
+  avltree.nim: add 4/12666 = 0.03%
+  avltree.nim: add 4/12666 = 0.03%
+  alloc.nim: rawAlloc 6/12666 = 0.05%
+  gc.nim: newObj 16/12666 = 0.13%
+  main.nim: new_candidate 9/12666 = 0.07%
+  main.nim: expand 28/12666 = 0.22%
+  main.nim: dfs 65/12666 = 0.51%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 31/57 Calls: 2/12666 = 0.02% [sum: 12637; 12637/12666 = 99.77%]
+  comparisons.nim: <=% 9/12666 = 0.07%
+  gc.nim: newObjNoInit 2/12666 = 0.02%
+  macros.nim: si 2/12666 = 0.02%
+  main.nim: input 2/12666 = 0.02%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 32/57 Calls: 2/12666 = 0.02% [sum: 12639; 12639/12666 = 99.79%]
+  comparisons.nim: <% 1154/12666 = 9.11%
+  gc.nim: decRef 2265/12666 = 17.88%
+  gc.nim: newObj 16/12666 = 0.13%
+  main.nim: new_evaluator 8/12666 = 0.06%
+  main.nim: expand 28/12666 = 0.22%
+  main.nim: dfs 65/12666 = 0.51%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 33/57 Calls: 2/12666 = 0.02% [sum: 12641; 12641/12666 = 99.80%]
+  comparisons.nim: <=% 9/12666 = 0.07%
+  gc_common.nim: isOnStack 2/12666 = 0.02%
+  gc.nim: unsureAsgnRef 9/12666 = 0.07%
+  system.nim: pop 21/12666 = 0.17%
+  main.nim: update 10394/12666 = 82.06%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%
+Entry: 34/57 Calls: 2/12666 = 0.02% [sum: 12643; 12643/12666 = 99.82%]
+  main.nim: dfs 65/12666 = 0.51%
+  main.nim: beam_search 12662/12666 = 99.97%
+  main.nim: solve 12663/12666 = 99.98%
+  main.nim: main 12665/12666 = 99.99%
+  main.nim: main 12665/12666 = 99.99%

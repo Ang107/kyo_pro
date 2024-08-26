@@ -1,0 +1,7 @@
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "Launch Program",
+            "target": "./test",
+            "cwd": "${workspaceRoot}"
+        }

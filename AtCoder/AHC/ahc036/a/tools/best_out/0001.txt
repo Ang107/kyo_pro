@@ -1,0 +1,12859 @@
+# sum_dis6000
+# avr_dis10.0
+# score1692
+#cnt483
+# root@[39]
+# index0
+# all_edge@[406, 588, 307, 88]
+# edge@[307, 88]
+# index1
+# all_edge@[200, 335, 151, 91]
+# edge@[200]
+# index2
+# all_edge@[180, 77, 41, 561]
+# edge@[]
+# index3
+# all_edge@[85, 140, 341, 103, 211]
+# edge@[211, 103]
+# index4
+# all_edge@[85, 323, 161]
+# edge@[]
+# index5
+# all_edge@[469, 511, 218]
+# edge@[]
+# index6
+# all_edge@[238, 380, 429]
+# edge@[429]
+# index7
+# all_edge@[371, 69, 539, 577]
+# edge@[]
+# index8
+# all_edge@[520, 224, 44]
+# edge@[44]
+# index9
+# all_edge@[383]
+# edge@[]
+# index10
+# all_edge@[385, 194]
+# edge@[]
+# index11
+# all_edge@[380, 56, 382, 124, 165, 284]
+# edge@[380, 124]
+# index12
+# all_edge@[275, 256, 315]
+# edge@[]
+# index13
+# all_edge@[598, 409]
+# edge@[]
+# index14
+# all_edge@[369, 290, 189, 293, 495]
+# edge@[495, 189, 290]
+# index15
+# all_edge@[333, 29, 259]
+# edge@[]
+# index16
+# all_edge@[198, 291]
+# edge@[]
+# index17
+# all_edge@[249, 232, 188, 235, 25]
+# edge@[188]
+# index18
+# all_edge@[315, 592, 265, 275]
+# edge@[265]
+# index19
+# all_edge@[253, 96, 298]
+# edge@[253]
+# index20
+# all_edge@[71, 389, 447, 77]
+# edge@[389]
+# index21
+# all_edge@[439, 66, 255, 353]
+# edge@[]
+# index22
+# all_edge@[192, 428, 398]
+# edge@[398]
+# index23
+# all_edge@[38, 448, 311, 207]
+# edge@[311, 38]
+# index24
+# all_edge@[374, 477, 158, 536]
+# edge@[374]
+# index25
+# all_edge@[598, 365, 17]
+# edge@[]
+# index26
+# all_edge@[482, 581, 240, 86]
+# edge@[]
+# index27
+# all_edge@[236]
+# edge@[]
+# index28
+# all_edge@[202, 58, 213, 366]
+# edge@[366, 213]
+# index29
+# all_edge@[15, 218, 415]
+# edge@[]
+# index30
+# all_edge@[50, 397, 217]
+# edge@[]
+# index31
+# all_edge@[237, 346, 402, 173, 99]
+# edge@[99]
+# index32
+# all_edge@[121, 317, 109]
+# edge@[109]
+# index33
+# all_edge@[250, 296, 219, 596, 491]
+# edge@[491, 596]
+# index34
+# all_edge@[218, 415, 364]
+# edge@[]
+# index35
+# all_edge@[532, 267, 548, 430, 338]
+# edge@[548]
+# index36
+# all_edge@[187, 339, 145]
+# edge@[]
+# index37
+# all_edge@[386, 245, 216, 195]
+# edge@[]
+# index38
+# all_edge@[288, 23, 128, 516, 295, 527, 530]
+# edge@[128, 288, 295, 527]
+# index39
+# all_edge@[456, 556, 453, 205]
+# edge@[556, 453, 456, 205]
+# index40
+# all_edge@[294, 506, 458, 98]
+# edge@[]
+# index41
+# all_edge@[180, 157, 78, 2, 55, 483]
+# edge@[2]
+# index42
+# all_edge@[410, 62, 223, 57, 75]
+# edge@[57, 410]
+# index43
+# all_edge@[255, 472, 156, 360, 587, 116, 233]
+# edge@[233, 116]
+# index44
+# all_edge@[118, 8, 193, 224]
+# edge@[193]
+# index45
+# all_edge@[368, 97, 216]
+# edge@[97]
+# index46
+# all_edge@[145]
+# edge@[]
+# index47
+# all_edge@[345, 330, 113]
+# edge@[330]
+# index48
+# all_edge@[508, 483, 203]
+# edge@[]
+# index49
+# all_edge@[446, 244, 314]
+# edge@[446]
+# index50
+# all_edge@[30, 217, 485, 328, 382]
+# edge@[]
+# index51
+# all_edge@[558, 339, 281]
+# edge@[558]
+# index52
+# all_edge@[264, 318]
+# edge@[]
+# index53
+# all_edge@[97]
+# edge@[]
+# index54
+# all_edge@[266, 251, 120]
+# edge@[]
+# index55
+# all_edge@[41, 404, 273]
+# edge@[]
+# index56
+# all_edge@[11, 177, 382, 272]
+# edge@[11]
+# index57
+# all_edge@[42]
+# edge@[]
+# index58
+# all_edge@[531, 28, 215, 354]
+# edge@[28]
+# index59
+# all_edge@[398, 423, 172]
+# edge@[]
+# index60
+# all_edge@[163, 362, 418, 528]
+# edge@[]
+# index61
+# all_edge@[99, 407, 428]
+# edge@[407]
+# index62
+# all_edge@[42, 297, 432, 410]
+# edge@[]
+# index63
+# all_edge@[78, 279, 586, 133, 544, 559]
+# edge@[78, 279, 133]
+# index64
+# all_edge@[363, 373, 220, 535, 555, 412]
+# edge@[412, 363]
+# index65
+# all_edge@[494, 80, 576]
+# edge@[576]
+# index66
+# all_edge@[587, 21]
+# edge@[]
+# index67
+# all_edge@[115, 193, 279, 547]
+# edge@[547]
+# index68
+# all_edge@[289, 245]
+# edge@[]
+# index69
+# all_edge@[447, 539, 583, 7, 389]
+# edge@[]
+# index70
+# all_edge@[451, 253, 296]
+# edge@[]
+# index71
+# all_edge@[20, 426, 77]
+# edge@[426]
+# index72
+# all_edge@[350, 143]
+# edge@[]
+# index73
+# all_edge@[353, 370, 320]
+# edge@[353]
+# index74
+# all_edge@[280]
+# edge@[]
+# index75
+# all_edge@[223, 148, 292, 490, 42, 170]
+# edge@[42, 170, 223]
+# index76
+# all_edge@[580, 336, 396, 529]
+# edge@[336]
+# index77
+# all_edge@[483, 416, 2, 71, 20]
+# edge@[71, 20]
+# index78
+# all_edge@[63, 41, 483]
+# edge@[483]
+# index79
+# all_edge@[499, 206, 190]
+# edge@[]
+# index80
+# all_edge@[185, 351, 484, 65, 528]
+# edge@[185, 484]
+# index81
+# all_edge@[377, 234]
+# edge@[234]
+# index82
+# all_edge@[449, 243, 531, 94]
+# edge@[243, 449, 531]
+# index83
+# all_edge@[379, 107, 161, 245]
+# edge@[107, 161]
+# index84
+# all_edge@[97, 433, 364, 250, 308]
+# edge@[364]
+# index85
+# all_edge@[3, 4, 323]
+# edge@[]
+# index86
+# all_edge@[26, 482]
+# edge@[]
+# index87
+# all_edge@[293]
+# edge@[]
+# index88
+# all_edge@[489, 480, 466, 0]
+# edge@[]
+# index89
+# all_edge@[153, 250, 340, 368, 308, 219]
+# edge@[219, 250, 308]
+# index90
+# all_edge@[522, 183, 538, 326, 95, 566, 443, 579]
+# edge@[326, 538, 443, 95]
+# index91
+# all_edge@[151, 1, 207]
+# edge@[]
+# index92
+# all_edge@[244, 104]
+# edge@[104]
+# index93
+# all_edge@[417, 94, 451, 354, 596]
+# edge@[94, 354]
+# index94
+# all_edge@[215, 497, 93, 82]
+# edge@[82, 497]
+# index95
+# all_edge@[90, 538, 191, 443]
+# edge@[]
+# index96
+# all_edge@[253, 19, 298]
+# edge@[]
+# index97
+# all_edge@[84, 53, 433, 45]
+# edge@[84, 53]
+# index98
+# all_edge@[217, 573, 376, 40, 506]
+# edge@[40, 506]
+# index99
+# all_edge@[61, 246, 428, 31]
+# edge@[428, 61]
+# index100
+# all_edge@[420, 430]
+# edge@[]
+# index101
+# all_edge@[542]
+# edge@[]
+# index102
+# all_edge@[494, 424, 147, 351]
+# edge@[494, 351]
+# index103
+# all_edge@[369, 211, 3]
+# edge@[]
+# index104
+# all_edge@[158, 92]
+# edge@[158]
+# index105
+# all_edge@[291, 508]
+# edge@[]
+# index106
+# all_edge@[443, 425]
+# edge@[425]
+# index107
+# all_edge@[147, 161, 299, 83, 245]
+# edge@[147]
+# index108
+# all_edge@[582, 169, 205, 242, 524]
+# edge@[524]
+# index109
+# all_edge@[247, 175, 32, 319, 305]
+# edge@[319]
+# index110
+# all_edge@[476]
+# edge@[]
+# index111
+# all_edge@[581, 434, 387, 251]
+# edge@[581, 387]
+# index112
+# all_edge@[363, 179, 391]
+# edge@[]
+# index113
+# all_edge@[556, 325, 47, 489]
+# edge@[47, 489]
+# index114
+# all_edge@[146, 454, 542]
+# edge@[]
+# index115
+# all_edge@[547, 67, 565, 208, 193]
+# edge@[565]
+# index116
+# all_edge@[472, 332, 519, 43]
+# edge@[]
+# index117
+# all_edge@[481]
+# edge@[]
+# index118
+# all_edge@[352, 44, 306, 224]
+# edge@[352, 306]
+# index119
+# all_edge@[574, 228, 155]
+# edge@[]
+# index120
+# all_edge@[54]
+# edge@[]
+# index121
+# all_edge@[32, 317]
+# edge@[]
+# index122
+# all_edge@[369, 163]
+# edge@[]
+# index123
+# all_edge@[196, 183, 252]
+# edge@[183]
+# index124
+# all_edge@[11, 380, 444]
+# edge@[]
+# index125
+# all_edge@[182, 263]
+# edge@[]
+# index126
+# all_edge@[537, 492]
+# edge@[]
+# index127
+# all_edge@[517, 386, 349, 298]
+# edge@[]
+# index128
+# all_edge@[38, 527, 343, 150, 464]
+# edge@[343]
+# index129
+# all_edge@[277, 549, 137, 557, 236]
+# edge@[137, 236]
+# index130
+# all_edge@[218, 135, 176]
+# edge@[135, 176]
+# index131
+# all_edge@[258, 142, 166, 355, 177, 585, 578]
+# edge@[177, 355, 578]
+# index132
+# all_edge@[408, 509]
+# edge@[]
+# index133
+# all_edge@[193, 279, 63]
+# edge@[]
+# index134
+# all_edge@[160, 240, 436, 303]
+# edge@[240]
+# index135
+# all_edge@[408, 176, 130]
+# edge@[]
+# index136
+# all_edge@[163, 528]
+# edge@[]
+# index137
+# all_edge@[549, 300, 129, 302]
+# edge@[302]
+# index138
+# all_edge@[403]
+# edge@[]
+# index139
+# all_edge@[198, 471]
+# edge@[]
+# index140
+# all_edge@[141, 3]
+# edge@[3]
+# index141
+# all_edge@[140, 323, 379]
+# edge@[140, 323]
+# index142
+# all_edge@[258, 131, 585]
+# edge@[]
+# index143
+# all_edge@[72, 321, 174, 230, 479, 374]
+# edge@[479]
+# index144
+# all_edge@[534, 318, 563, 257, 384, 444, 317, 264]
+# edge@[317, 264, 384]
+# index145
+# all_edge@[46, 319, 558, 36]
+# edge@[]
+# index146
+# all_edge@[114, 358, 309, 542, 454]
+# edge@[]
+# index147
+# all_edge@[337, 107, 299, 161, 102]
+# edge@[102]
+# index148
+# all_edge@[75, 286]
+# edge@[]
+# index149
+# all_edge@[462, 422, 204, 249, 232, 342]
+# edge@[]
+# index150
+# all_edge@[343, 266, 164, 311, 128, 377, 459]
+# edge@[266, 459]
+# index151
+# all_edge@[1, 533, 91, 242]
+# edge@[1, 91]
+# index152
+# all_edge@[508]
+# edge@[]
+# index153
+# all_edge@[89, 517]
+# edge@[]
+# index154
+# all_edge@[461, 384]
+# edge@[]
+# index155
+# all_edge@[519, 334, 331, 119]
+# edge@[334]
+# index156
+# all_edge@[539, 440, 472, 43, 360]
+# edge@[472]
+# index157
+# all_edge@[404, 586, 544, 41]
+# edge@[41, 404]
+# index158
+# all_edge@[536, 24, 104]
+# edge@[24]
+# index159
+# all_edge@[559, 520]
+# edge@[]
+# index160
+# all_edge@[134, 240, 581]
+# edge@[]
+# index161
+# all_edge@[107, 424, 362, 83, 147, 4]
+# edge@[362, 424]
+# index162
+# all_edge@[466]
+# edge@[]
+# index163
+# all_edge@[122, 136, 60, 528, 399, 369]
+# edge@[399, 122]
+# index164
+# all_edge@[150, 266, 274]
+# edge@[]
+# index165
+# all_edge@[284, 576, 11, 380]
+# edge@[]
+# index166
+# all_edge@[131, 258]
+# edge@[]
+# index167
+# all_edge@[252, 530]
+# edge@[]
+# index168
+# all_edge@[179, 178, 241]
+# edge@[178]
+# index169
+# all_edge@[205, 582, 108, 182, 453]
+# edge@[582]
+# index170
+# all_edge@[269, 292, 75]
+# edge@[269]
+# index171
+# all_edge@[538, 427, 579]
+# edge@[]
+# index172
+# all_edge@[423, 192, 59]
+# edge@[423]
+# index173
+# all_edge@[346, 200, 544, 31, 237]
+# edge@[346]
+# index174
+# all_edge@[143, 479, 560]
+# edge@[]
+# index175
+# all_edge@[247, 478, 109, 319, 316]
+# edge@[316, 478]
+# index176
+# all_edge@[573, 135, 562, 130]
+# edge@[]
+# index177
+# all_edge@[585, 511, 578, 382, 56, 131, 401]
+# edge@[382, 511]
+# index178
+# all_edge@[168, 536]
+# edge@[536]
+# index179
+# all_edge@[168, 112, 412, 322, 391, 499]
+# edge@[499, 322]
+# index180
+# all_edge@[41, 2, 273, 561]
+# edge@[561]
+# index181
+# all_edge@[373, 189]
+# edge@[]
+# index182
+# all_edge@[263, 453, 125, 572, 169]
+# edge@[263]
+# index183
+# all_edge@[123, 90, 227, 579, 344]
+# edge@[90, 227, 344, 579]
+# index184
+# all_edge@[199, 508, 394, 279]
+# edge@[508]
+# index185
+# all_edge@[484, 80, 490]
+# edge@[490]
+# index186
+# all_edge@[495, 452, 189, 287]
+# edge@[]
+# index187
+# all_edge@[319, 36, 553]
+# edge@[36]
+# index188
+# all_edge@[214, 235, 17]
+# edge@[]
+# index189
+# all_edge@[14, 186, 452, 181]
+# edge@[452, 181, 186]
+# index190
+# all_edge@[542, 499, 79]
+# edge@[]
+# index191
+# all_edge@[95, 538, 220]
+# edge@[]
+# index192
+# all_edge@[370, 22, 172]
+# edge@[172]
+# index193
+# all_edge@[133, 67, 44, 115]
+# edge@[115, 67]
+# index194
+# all_edge@[521, 411, 10]
+# edge@[10]
+# index195
+# all_edge@[330, 441, 37]
+# edge@[]
+# index196
+# all_edge@[123, 283, 263, 252]
+# edge@[123, 252]
+# index197
+# all_edge@[593, 377, 595]
+# edge@[]
+# index198
+# all_edge@[139, 16, 550]
+# edge@[]
+# index199
+# all_edge@[394, 184, 367, 508, 546]
+# edge@[546]
+# index200
+# all_edge@[1, 237, 173, 304, 207]
+# edge@[237, 173]
+# index201
+# all_edge@[460, 283, 263, 541]
+# edge@[541, 460]
+# index202
+# all_edge@[312, 28]
+# edge@[]
+# index203
+# all_edge@[552, 48, 231, 291]
+# edge@[291, 231]
+# index204
+# all_edge@[342, 149, 232]
+# edge@[]
+# index205
+# all_edge@[169, 108, 39, 431, 456]
+# edge@[108]
+# index206
+# all_edge@[475, 79, 445, 499]
+# edge@[445]
+# index207
+# all_edge@[91, 23, 200, 448]
+# edge@[]
+# index208
+# all_edge@[565, 306, 115]
+# edge@[]
+# index209
+# all_edge@[514, 475, 210]
+# edge@[]
+# index210
+# all_edge@[209, 555, 452, 474]
+# edge@[209]
+# index211
+# all_edge@[512, 103, 3]
+# edge@[512]
+# index212
+# all_edge@[270]
+# edge@[]
+# index213
+# all_edge@[28, 366]
+# edge@[]
+# index214
+# all_edge@[188, 249, 575, 229]
+# edge@[229, 575]
+# index215
+# all_edge@[94, 354, 58]
+# edge@[]
+# index216
+# all_edge@[386, 37, 405, 289, 258, 45]
+# edge@[258, 405]
+# index217
+# all_edge@[376, 98, 511, 50, 30]
+# edge@[98, 376]
+# index218
+# all_edge@[34, 130, 29, 355, 597, 5]
+# edge@[130, 597, 5, 29]
+# index219
+# all_edge@[33, 89, 340]
+# edge@[]
+# index220
+# all_edge@[538, 64, 241, 191]
+# edge@[64, 241]
+# index221
+# all_edge@[560]
+# edge@[]
+# index222
+# all_edge@[233]
+# edge@[]
+# index223
+# all_edge@[75, 568, 42, 486, 504]
+# edge@[504, 568]
+# index224
+# all_edge@[457, 307, 8, 466, 44, 118]
+# edge@[118, 457]
+# index225
+# all_edge@[272, 513]
+# edge@[]
+# index226
+# all_edge@[314, 326]
+# edge@[]
+# index227
+# all_edge@[377, 183, 594, 344, 295, 595]
+# edge@[377]
+# index228
+# all_edge@[426, 119]
+# edge@[]
+# index229
+# all_edge@[336, 214]
+# edge@[]
+# index230
+# all_edge@[446, 507, 143, 567]
+# edge@[143, 507, 567]
+# index231
+# all_edge@[291, 416, 203, 471]
+# edge@[]
+# index232
+# all_edge@[302, 249, 17, 204, 149]
+# edge@[249, 17]
+# index233
+# all_edge@[222, 390, 43]
+# edge@[222]
+# index234
+# all_edge@[593, 81, 419, 468, 303, 450]
+# edge@[]
+# index235
+# all_edge@[188, 598, 17]
+# edge@[]
+# index236
+# all_edge@[27, 302, 129]
+# edge@[27]
+# index237
+# all_edge@[311, 200, 31, 173]
+# edge@[31]
+# index238
+# all_edge@[6, 576, 432]
+# edge@[6]
+# index239
+# all_edge@[298, 340, 296]
+# edge@[296]
+# index240
+# all_edge@[134, 160, 26, 493]
+# edge@[]
+# index241
+# all_edge@[220, 425, 168, 412]
+# edge@[168]
+# index242
+# all_edge@[588, 431, 406, 151, 456, 108]
+# edge@[151]
+# index243
+# all_edge@[347, 409, 531, 82, 470]
+# edge@[409, 347]
+# index244
+# all_edge@[326, 92, 49, 314]
+# edge@[49, 92]
+# index245
+# all_edge@[37, 441, 83, 299, 68, 107]
+# edge@[299, 37]
+# index246
+# all_edge@[99, 274]
+# edge@[]
+# index247
+# all_edge@[175, 109, 264]
+# edge@[175]
+# index248
+# all_edge@[338, 599]
+# edge@[338]
+# index249
+# all_edge@[17, 214, 149, 232]
+# edge@[214]
+# index250
+# all_edge@[33, 84, 308, 89]
+# edge@[]
+# index251
+# all_edge@[434, 54, 473, 111]
+# edge@[]
+# index252
+# all_edge@[540, 167, 123, 571, 196]
+# edge@[571, 540]
+# index253
+# all_edge@[19, 96, 451, 70]
+# edge@[451]
+# index254
+# all_edge@[361]
+# edge@[]
+# index255
+# all_edge@[43, 587, 390, 21]
+# edge@[]
+# index256
+# all_edge@[12, 475]
+# edge@[]
+# index257
+# all_edge@[144, 458, 510, 563]
+# edge@[]
+# index258
+# all_edge@[131, 276, 142, 585, 216, 166]
+# edge@[131, 142, 585]
+# index259
+# all_edge@[385, 15, 333, 310]
+# edge@[310]
+# index260
+# all_edge@[518]
+# edge@[]
+# index261
+# all_edge@[568, 592, 265, 275]
+# edge@[]
+# index262
+# all_edge@[370, 320, 428, 285]
+# edge@[]
+# index263
+# all_edge@[182, 201, 283, 196, 125]
+# edge@[196, 201, 283]
+# index264
+# all_edge@[52, 318, 247, 144]
+# edge@[247]
+# index265
+# all_edge@[18, 261]
+# edge@[]
+# index266
+# all_edge@[150, 54, 164, 434, 274]
+# edge@[434, 274, 54]
+# index267
+# all_edge@[35, 413, 338, 532]
+# edge@[]
+# index268
+# all_edge@[549, 278, 497, 523]
+# edge@[]
+# index269
+# all_edge@[170]
+# edge@[]
+# index270
+# all_edge@[384, 380, 212, 324, 461]
+# edge@[324, 212, 461]
+# index271
+# all_edge@[455, 441, 345]
+# edge@[]
+# index272
+# all_edge@[225, 276, 513, 361, 56]
+# edge@[56, 361, 513]
+# index273
+# all_edge@[180, 346, 526, 404, 55]
+# edge@[526, 180]
+# index274
+# all_edge@[414, 266, 164, 246]
+# edge@[414]
+# index275
+# all_edge@[12, 315, 18, 569, 261]
+# edge@[569]
+# index276
+# all_edge@[272, 258, 405]
+# edge@[272]
+# index277
+# all_edge@[557, 129, 357, 584, 532]
+# edge@[129, 532, 557]
+# index278
+# all_edge@[549, 268, 375, 282, 329]
+# edge@[375]
+# index279
+# all_edge@[394, 133, 599, 63, 184, 554, 67]
+# edge@[394, 184, 599, 554]
+# index280
+# all_edge@[74, 590, 289, 337]
+# edge@[]
+# index281
+# all_edge@[429, 381, 410, 51, 339]
+# edge@[51]
+# index282
+# all_edge@[278, 451]
+# edge@[]
+# index283
+# all_edge@[541, 196, 201, 263, 460]
+# edge@[]
+# index284
+# all_edge@[165, 513, 11]
+# edge@[]
+# index285
+# all_edge@[526, 262, 440, 400]
+# edge@[440]
+# index286
+# all_edge@[148, 537, 525]
+# edge@[537]
+# index287
+# all_edge@[514, 495, 315, 186]
+# edge@[514, 315]
+# index288
+# all_edge@[38]
+# edge@[]
+# index289
+# all_edge@[405, 299, 216, 280, 590, 68]
+# edge@[280, 590]
+# index290
+# all_edge@[14]
+# edge@[]
+# index291
+# all_edge@[231, 550, 105, 203, 16]
+# edge@[16]
+# index292
+# all_edge@[504, 75, 486, 170]
+# edge@[]
+# index293
+# all_edge@[87, 495, 399, 14]
+# edge@[]
+# index294
+# all_edge@[397, 40, 563, 510]
+# edge@[]
+# index295
+# all_edge@[594, 38, 464, 227, 343]
+# edge@[]
+# index296
+# all_edge@[340, 33, 70, 239]
+# edge@[33]
+# index297
+# all_edge@[62, 432, 490]
+# edge@[62]
+# index298
+# all_edge@[591, 239, 19, 96, 127]
+# edge@[19, 239, 96]
+# index299
+# all_edge@[107, 147, 245, 289, 337]
+# edge@[289, 337]
+# index300
+# all_edge@[137, 523, 302]
+# edge@[]
+# index301
+# all_edge@[533, 406, 463, 465]
+# edge@[465]
+# index302
+# all_edge@[232, 236, 449, 137, 300]
+# edge@[232]
+# index303
+# all_edge@[498, 134, 234]
+# edge@[134]
+# index304
+# all_edge@[200, 545]
+# edge@[]
+# index305
+# all_edge@[317, 109]
+# edge@[]
+# index306
+# all_edge@[208, 118, 352]
+# edge@[208]
+# index307
+# all_edge@[224, 0]
+# edge@[224]
+# index308
+# all_edge@[250, 89, 84]
+# edge@[]
+# index309
+# all_edge@[146, 518, 551]
+# edge@[]
+# index310
+# all_edge@[333, 496, 408, 259]
+# edge@[496]
+# index311
+# all_edge@[237, 150, 23, 516, 500]
+# edge@[150]
+# index312
+# all_edge@[202, 409, 580, 435]
+# edge@[]
+# index313
+# all_edge@[411, 596, 417]
+# edge@[]
+# index314
+# all_edge@[226, 450, 502, 244, 326, 49]
+# edge@[450]
+# index315
+# all_edge@[18, 275, 287, 514, 12, 592]
+# edge@[18, 275, 12, 592]
+# index316
+# all_edge@[478, 175, 515]
+# edge@[]
+# index317
+# all_edge@[32, 461, 553, 305, 121, 144]
+# edge@[32, 553, 121]
+# index318
+# all_edge@[144, 52, 264]
+# edge@[]
+# index319
+# all_edge@[187, 145, 327, 515, 109, 175]
+# edge@[145, 327]
+# index320
+# all_edge@[262, 360, 587, 73, 370]
+# edge@[360, 587]
+# index321
+# all_edge@[143, 507]
+# edge@[]
+# index322
+# all_edge@[179]
+# edge@[]
+# index323
+# all_edge@[141, 85, 4]
+# edge@[]
+# index324
+# all_edge@[429, 461, 270, 381]
+# edge@[381]
+# index325
+# all_edge@[480, 113, 588, 456, 556]
+# edge@[480]
+# index326
+# all_edge@[244, 90, 314, 226, 522]
+# edge@[244, 314, 226]
+# index327
+# all_edge@[319, 478]
+# edge@[]
+# index328
+# all_edge@[485, 50, 382]
+# edge@[]
+# index329
+# all_edge@[278, 357, 557, 501]
+# edge@[278, 501]
+# index330
+# all_edge@[386, 195, 47, 455]
+# edge@[386]
+# index331
+# all_edge@[389, 519, 155, 539, 426]
+# edge@[155, 519]
+# index332
+# all_edge@[519, 116, 472]
+# edge@[]
+# index333
+# all_edge@[15, 310, 259, 408]
+# edge@[]
+# index334
+# all_edge@[155, 372]
+# edge@[]
+# index335
+# all_edge@[533, 1, 545]
+# edge@[545]
+# index336
+# all_edge@[229, 396, 356, 76]
+# edge@[]
+# index337
+# all_edge@[147, 590, 299, 280]
+# edge@[]
+# index338
+# all_edge@[248, 267, 35]
+# edge@[]
+# index339
+# all_edge@[51, 36, 381, 281]
+# edge@[]
+# index340
+# all_edge@[296, 517, 89, 239, 219]
+# edge@[]
+# index341
+# all_edge@[369, 418, 362, 3]
+# edge@[369, 418]
+# index342
+# all_edge@[422, 204, 383, 149]
+# edge@[]
+# index343
+# all_edge@[150, 377, 128, 464, 295]
+# edge@[]
+# index344
+# all_edge@[595, 183, 227]
+# edge@[]
+# index345
+# all_edge@[455, 441, 47, 556, 271]
+# edge@[441, 271, 455]
+# index346
+# all_edge@[173, 273, 31, 378, 437, 388]
+# edge@[273]
+# index347
+# all_edge@[243, 598]
+# edge@[]
+# index348
+# all_edge@[530, 448]
+# edge@[530]
+# index349
+# all_edge@[386, 127]
+# edge@[]
+# index350
+# all_edge@[72, 454, 477, 479, 392]
+# edge@[454]
+# index351
+# all_edge@[494, 80, 102]
+# edge@[]
+# index352
+# all_edge@[118, 306, 357]
+# edge@[357]
+# index353
+# all_edge@[73, 467, 439, 423, 21]
+# edge@[439, 467]
+# index354
+# all_edge@[215, 385, 58, 93]
+# edge@[58, 385]
+# index355
+# all_edge@[433, 131, 218]
+# edge@[218]
+# index356
+# all_edge@[336, 529]
+# edge@[]
+# index357
+# all_edge@[277, 329, 584, 352]
+# edge@[277, 329, 584]
+# index358
+# all_edge@[518, 146, 542]
+# edge@[]
+# index359
+# all_edge@[433, 364]
+# edge@[]
+# index360
+# all_edge@[320, 587, 440, 43, 156]
+# edge@[43]
+# index361
+# all_edge@[254, 272]
+# edge@[254]
+# index362
+# all_edge@[424, 528, 161, 341, 60]
+# edge@[341, 60]
+# index363
+# all_edge@[64, 112]
+# edge@[]
+# index364
+# all_edge@[84, 359, 34]
+# edge@[34]
+# index365
+# all_edge@[598, 449, 25]
+# edge@[598]
+# index366
+# all_edge@[213, 435, 28]
+# edge@[435]
+# index367
+# all_edge@[403, 199, 420]
+# edge@[]
+# index368
+# all_edge@[386, 45, 89, 517]
+# edge@[45, 89]
+# index369
+# all_edge@[512, 122, 341, 14, 103, 438, 163]
+# edge@[14]
+# index370
+# all_edge@[262, 428, 192, 73, 320]
+# edge@[320, 73, 192]
+# index371
+# all_edge@[7, 440, 577]
+# edge@[577]
+# index372
+# all_edge@[334, 519]
+# edge@[]
+# index373
+# all_edge@[535, 64, 181, 474, 487]
+# edge@[474]
+# index374
+# all_edge@[24, 143]
+# edge@[]
+# index375
+# all_edge@[278]
+# edge@[]
+# index376
+# all_edge@[217, 98]
+# edge@[]
+# index377
+# all_edge@[595, 81, 459, 197, 343, 227, 503, 150, 419, 593]
+# edge@[81, 503, 593]
+# index378
+# all_edge@[402, 388, 346, 526]
+# edge@[]
+# index379
+# all_edge@[488, 395, 83, 141, 441]
+# edge@[83, 141, 488]
+# index380
+# all_edge@[11, 270, 6, 165, 124]
+# edge@[270]
+# index381
+# all_edge@[281, 339, 324]
+# edge@[]
+# index382
+# all_edge@[177, 11, 534, 56, 50, 328]
+# edge@[534, 328]
+# index383
+# all_edge@[342, 9]
+# edge@[]
+# index384
+# all_edge@[270, 154, 144]
+# edge@[154]
+# index385
+# all_edge@[10, 259, 354]
+# edge@[259]
+# index386
+# all_edge@[368, 517, 349, 37, 216, 330, 127]
+# edge@[216, 368, 517, 127]
+# index387
+# all_edge@[111]
+# edge@[]
+# index388
+# all_edge@[378, 346]
+# edge@[]
+# index389
+# all_edge@[331, 20, 426, 539, 69]
+# edge@[539]
+# index390
+# all_edge@[255, 439, 233]
+# edge@[]
+# index391
+# all_edge@[179, 112]
+# edge@[]
+# index392
+# all_edge@[499, 350, 542]
+# edge@[542, 350]
+# index393
+# all_edge@[570, 567, 446]
+# edge@[]
+# index394
+# all_edge@[199, 279, 599, 184]
+# edge@[199]
+# index395
+# all_edge@[379, 556]
+# edge@[379]
+# index396
+# all_edge@[336, 575, 76]
+# edge@[]
+# index397
+# all_edge@[294, 563, 30]
+# edge@[]
+# index398
+# all_edge@[473, 482, 59, 589, 22]
+# edge@[482, 589]
+# index399
+# all_edge@[525, 293, 163]
+# edge@[525]
+# index400
+# all_edge@[526, 407, 285]
+# edge@[]
+# index401
+# all_edge@[585, 177]
+# edge@[]
+# index402
+# all_edge@[378, 31]
+# edge@[]
+# index403
+# all_edge@[367, 548, 138]
+# edge@[]
+# index404
+# all_edge@[157, 273, 55]
+# edge@[]
+# index405
+# all_edge@[289, 216, 276]
+# edge@[276]
+# index406
+# all_edge@[588, 533, 301, 242, 520, 0]
+# edge@[301, 520, 533]
+# index407
+# all_edge@[61, 400, 526]
+# edge@[]
+# index408
+# all_edge@[135, 333, 310, 132, 509]
+# edge@[]
+# index409
+# all_edge@[243, 312, 580, 13]
+# edge@[580, 13]
+# index410
+# all_edge@[42, 281, 62]
+# edge@[]
+# index411
+# all_edge@[521, 313, 194, 491]
+# edge@[]
+# index412
+# all_edge@[179, 241, 64]
+# edge@[179]
+# index413
+# all_edge@[267, 565, 532]
+# edge@[267]
+# index414
+# all_edge@[274]
+# edge@[]
+# index415
+# all_edge@[34, 29]
+# edge@[]
+# index416
+# all_edge@[77, 231, 471, 552]
+# edge@[]
+# index417
+# all_edge@[596, 93, 313]
+# edge@[]
+# index418
+# all_edge@[341, 60]
+# edge@[]
+# index419
+# all_edge@[498, 234, 377]
+# edge@[]
+# index420
+# all_edge@[548, 100, 430, 367]
+# edge@[]
+# index421
+# all_edge@[474]
+# edge@[]
+# index422
+# all_edge@[342, 149]
+# edge@[]
+# index423
+# all_edge@[172, 353, 59]
+# edge@[]
+# index424
+# all_edge@[528, 161, 362, 102]
+# edge@[528]
+# index425
+# all_edge@[106, 241, 543]
+# edge@[]
+# index426
+# all_edge@[71, 389, 574, 228, 331]
+# edge@[331, 574, 228]
+# index427
+# all_edge@[566, 171]
+# edge@[]
+# index428
+# all_edge@[370, 262, 22, 99, 61]
+# edge@[370, 22]
+# index429
+# all_edge@[281, 324, 6, 432]
+# edge@[281]
+# index430
+# all_edge@[35, 548, 420, 100]
+# edge@[]
+# index431
+# all_edge@[242, 456, 205]
+# edge@[]
+# index432
+# all_edge@[297, 238, 62, 429]
+# edge@[]
+# index433
+# all_edge@[355, 84, 359, 97]
+# edge@[]
+# index434
+# all_edge@[459, 251, 111, 266]
+# edge@[111]
+# index435
+# all_edge@[529, 366, 312]
+# edge@[529]
+# index436
+# all_edge@[134, 498, 581]
+# edge@[]
+# index437
+# all_edge@[544, 346]
+# edge@[]
+# index438
+# all_edge@[369]
+# edge@[]
+# index439
+# all_edge@[21, 353, 390]
+# edge@[390]
+# index440
+# all_edge@[156, 360, 371, 285]
+# edge@[156, 371]
+# index441
+# all_edge@[345, 245, 271, 195, 455, 379]
+# edge@[245, 195]
+# index442
+# all_edge@[489]
+# edge@[]
+# index443
+# all_edge@[522, 106, 95, 90]
+# edge@[106]
+# index444
+# all_edge@[534, 144, 124]
+# edge@[]
+# index445
+# all_edge@[206]
+# edge@[]
+# index446
+# all_edge@[230, 49, 570, 393]
+# edge@[230, 393]
+# index447
+# all_edge@[69, 561, 20, 583]
+# edge@[69]
+# index448
+# all_edge@[23, 348, 524, 207]
+# edge@[23, 348]
+# index449
+# all_edge@[82, 302, 365]
+# edge@[365]
+# index450
+# all_edge@[502, 593, 314, 570, 468, 234]
+# edge@[570]
+# index451
+# all_edge@[70, 253, 596, 93, 282]
+# edge@[93, 282]
+# index452
+# all_edge@[481, 186, 210, 189]
+# edge@[481, 210]
+# index453
+# all_edge@[182, 572, 39, 169]
+# edge@[182, 169, 572]
+# index454
+# all_edge@[350, 114, 146]
+# edge@[]
+# index455
+# all_edge@[345, 271, 441, 330]
+# edge@[]
+# index456
+# all_edge@[39, 431, 588, 325, 242, 205]
+# edge@[588, 242, 325, 431]
+# index457
+# all_edge@[224, 466]
+# edge@[]
+# index458
+# all_edge@[506, 40, 573, 257]
+# edge@[]
+# index459
+# all_edge@[503, 434, 377, 498, 150]
+# edge@[498]
+# index460
+# all_edge@[201, 283, 541]
+# edge@[]
+# index461
+# all_edge@[317, 324, 154, 553, 270]
+# edge@[]
+# index462
+# all_edge@[149, 548]
+# edge@[]
+# index463
+# all_edge@[533, 301]
+# edge@[]
+# index464
+# all_edge@[295, 128, 343]
+# edge@[]
+# index465
+# all_edge@[301, 559]
+# edge@[559]
+# index466
+# all_edge@[457, 88, 162, 224]
+# edge@[]
+# index467
+# all_edge@[353, 587]
+# edge@[]
+# index468
+# all_edge@[234, 570, 493, 450]
+# edge@[]
+# index469
+# all_edge@[5, 597, 562]
+# edge@[]
+# index470
+# all_edge@[243]
+# edge@[]
+# index471
+# all_edge@[416, 231, 139]
+# edge@[]
+# index472
+# all_edge@[116, 539, 519, 43, 156, 332]
+# edge@[332]
+# index473
+# all_edge@[398, 581, 251]
+# edge@[]
+# index474
+# all_edge@[421, 555, 373, 210]
+# edge@[421]
+# index475
+# all_edge@[514, 209, 206, 256]
+# edge@[206, 256]
+# index476
+# all_edge@[493, 567, 570, 110]
+# edge@[110]
+# index477
+# all_edge@[24, 536, 350]
+# edge@[]
+# index478
+# all_edge@[316, 515, 175, 327]
+# edge@[]
+# index479
+# all_edge@[174, 143, 350, 551]
+# edge@[551]
+# index480
+# all_edge@[88, 489, 325]
+# edge@[]
+# index481
+# all_edge@[117, 452]
+# edge@[117]
+# index482
+# all_edge@[581, 26, 398, 86]
+# edge@[86]
+# index483
+# all_edge@[552, 77, 48, 78, 41]
+# edge@[77, 552]
+# index484
+# all_edge@[490, 185, 80]
+# edge@[]
+# index485
+# all_edge@[328, 563, 50, 534]
+# edge@[]
+# index486
+# all_edge@[292, 223]
+# edge@[]
+# index487
+# all_edge@[512, 535, 373]
+# edge@[373]
+# index488
+# all_edge@[379]
+# edge@[]
+# index489
+# all_edge@[88, 480, 113, 591, 442]
+# edge@[591, 442]
+# index490
+# all_edge@[484, 525, 185, 75, 576, 297]
+# edge@[75, 297]
+# index491
+# all_edge@[596, 521, 33, 411]
+# edge@[521]
+# index492
+# all_edge@[126]
+# edge@[]
+# index493
+# all_edge@[476, 468, 570, 240]
+# edge@[]
+# index494
+# all_edge@[351, 102, 65]
+# edge@[65]
+# index495
+# all_edge@[186, 293, 287, 14]
+# edge@[287]
+# index496
+# all_edge@[310]
+# edge@[]
+# index497
+# all_edge@[94, 268]
+# edge@[]
+# index498
+# all_edge@[503, 303, 419, 459, 436]
+# edge@[303]
+# index499
+# all_edge@[79, 392, 206, 190, 179]
+# edge@[392, 190]
+# index500
+# all_edge@[516, 527, 311]
+# edge@[]
+# index501
+# all_edge@[329]
+# edge@[]
+# index502
+# all_edge@[450, 570, 314]
+# edge@[]
+# index503
+# all_edge@[459, 498, 377]
+# edge@[]
+# index504
+# all_edge@[292, 223]
+# edge@[]
+# index505
+# all_edge@[541]
+# edge@[]
+# index506
+# all_edge@[40, 458, 98]
+# edge@[]
+# index507
+# all_edge@[230, 560, 567, 321]
+# edge@[321, 560]
+# index508
+# all_edge@[48, 199, 184, 152, 105]
+# edge@[105, 152]
+# index509
+# all_edge@[408, 132]
+# edge@[]
+# index510
+# all_edge@[294, 563, 257]
+# edge@[]
+# index511
+# all_edge@[177, 217, 5, 573]
+# edge@[217, 573]
+# index512
+# all_edge@[369, 487, 211]
+# edge@[487]
+# index513
+# all_edge@[284, 272, 225]
+# edge@[284]
+# index514
+# all_edge@[287, 209, 475, 315]
+# edge@[475]
+# index515
+# all_edge@[478, 319, 316]
+# edge@[]
+# index516
+# all_edge@[527, 500, 38, 311]
+# edge@[]
+# index517
+# all_edge@[127, 386, 340, 153, 368]
+# edge@[153]
+# index518
+# all_edge@[358, 260, 309, 551]
+# edge@[260]
+# index519
+# all_edge@[155, 332, 564, 472, 331, 372, 116]
+# edge@[372, 564]
+# index520
+# all_edge@[8, 159, 406]
+# edge@[8, 159]
+# index521
+# all_edge@[411, 491, 194]
+# edge@[194]
+# index522
+# all_edge@[90, 443, 326]
+# edge@[]
+# index523
+# all_edge@[300, 268]
+# edge@[]
+# index524
+# all_edge@[448, 108]
+# edge@[448]
+# index525
+# all_edge@[399, 490, 286]
+# edge@[286]
+# index526
+# all_edge@[400, 273, 285, 407, 378]
+# edge@[285]
+# index527
+# all_edge@[516, 128, 38, 500]
+# edge@[]
+# index528
+# all_edge@[424, 362, 163, 136, 80, 60]
+# edge@[80, 163]
+# index529
+# all_edge@[435, 356, 76]
+# edge@[356]
+# index530
+# all_edge@[540, 167, 571, 348, 38]
+# edge@[]
+# index531
+# all_edge@[58, 243, 82]
+# edge@[]
+# index532
+# all_edge@[35, 267, 413, 277]
+# edge@[35]
+# index533
+# all_edge@[463, 335, 151, 406, 301]
+# edge@[335]
+# index534
+# all_edge@[444, 563, 144, 382, 485]
+# edge@[144, 563, 485]
+# index535
+# all_edge@[373, 64, 538, 487]
+# edge@[]
+# index536
+# all_edge@[158, 477, 24, 178]
+# edge@[]
+# index537
+# all_edge@[126, 286]
+# edge@[]
+# index538
+# all_edge@[171, 90, 95, 220, 191, 535]
+# edge@[220, 191]
+# index539
+# all_edge@[156, 577, 69, 472, 389, 331, 7]
+# edge@[]
+# index540
+# all_edge@[530, 571, 252]
+# edge@[]
+# index541
+# all_edge@[283, 505, 460, 201]
+# edge@[505]
+# index542
+# all_edge@[190, 146, 101, 114, 358, 392]
+# edge@[101, 114, 146, 358]
+# index543
+# all_edge@[425]
+# edge@[]
+# index544
+# all_edge@[157, 559, 173, 437, 63, 586]
+# edge@[157, 586]
+# index545
+# all_edge@[335, 304]
+# edge@[]
+# index546
+# all_edge@[550, 199]
+# edge@[550]
+# index547
+# all_edge@[115, 67]
+# edge@[]
+# index548
+# all_edge@[35, 462, 420, 403, 430]
+# edge@[462]
+# index549
+# all_edge@[137, 268, 278, 129, 557]
+# edge@[]
+# index550
+# all_edge@[546, 291, 198]
+# edge@[]
+# index551
+# all_edge@[479, 518, 309]
+# edge@[518]
+# index552
+# all_edge@[483, 203, 416]
+# edge@[203, 416]
+# index553
+# all_edge@[317, 461, 187]
+# edge@[187]
+# index554
+# all_edge@[279]
+# edge@[]
+# index555
+# all_edge@[474, 210, 64]
+# edge@[]
+# index556
+# all_edge@[113, 39, 395, 345, 325]
+# edge@[113, 395, 345]
+# index557
+# all_edge@[277, 129, 549, 329]
+# edge@[549]
+# index558
+# all_edge@[51, 145]
+# edge@[]
+# index559
+# all_edge@[159, 544, 465, 63]
+# edge@[63, 544]
+# index560
+# all_edge@[221, 174, 507]
+# edge@[]
+# index561
+# all_edge@[447, 583, 180, 2]
+# edge@[447, 583]
+# index562
+# all_edge@[469, 573, 176]
+# edge@[]
+# index563
+# all_edge@[397, 534, 294, 485, 144, 510, 257]
+# edge@[510]
+# index564
+# all_edge@[519]
+# edge@[]
+# index565
+# all_edge@[208, 413, 115]
+# edge@[413]
+# index566
+# all_edge@[427, 90]
+# edge@[]
+# index567
+# all_edge@[476, 230, 393, 507]
+# edge@[]
+# index568
+# all_edge@[223, 261]
+# edge@[]
+# index569
+# all_edge@[275]
+# edge@[]
+# index570
+# all_edge@[502, 468, 476, 446, 450, 393, 493]
+# edge@[476, 493]
+# index571
+# all_edge@[540, 252, 530, 594]
+# edge@[594]
+# index572
+# all_edge@[453, 182]
+# edge@[]
+# index573
+# all_edge@[176, 98, 562, 458, 511]
+# edge@[458, 562]
+# index574
+# all_edge@[119, 426]
+# edge@[119]
+# index575
+# all_edge@[214, 396]
+# edge@[]
+# index576
+# all_edge@[238, 165, 490, 65]
+# edge@[238, 165]
+# index577
+# all_edge@[539, 371, 7]
+# edge@[]
+# index578
+# all_edge@[177, 585, 131]
+# edge@[]
+# index579
+# all_edge@[183, 171, 90]
+# edge@[]
+# index580
+# all_edge@[76, 409, 312]
+# edge@[76]
+# index581
+# all_edge@[482, 473, 160, 111, 26, 436]
+# edge@[26, 160]
+# index582
+# all_edge@[108, 169]
+# edge@[]
+# index583
+# all_edge@[561, 69, 447]
+# edge@[]
+# index584
+# all_edge@[357, 277]
+# edge@[]
+# index585
+# all_edge@[401, 177, 578, 258, 131, 142]
+# edge@[]
+# index586
+# all_edge@[157, 63, 544]
+# edge@[]
+# index587
+# all_edge@[66, 360, 255, 467, 320, 43]
+# edge@[255]
+# index588
+# all_edge@[242, 406, 456, 325, 0]
+# edge@[0, 406]
+# index589
+# all_edge@[398]
+# edge@[]
+# index590
+# all_edge@[280, 289, 337]
+# edge@[]
+# index591
+# all_edge@[298, 489]
+# edge@[298]
+# index592
+# all_edge@[18, 261, 315]
+# edge@[]
+# index593
+# all_edge@[197, 234, 450, 377]
+# edge@[]
+# index594
+# all_edge@[295, 227, 571]
+# edge@[]
+# index595
+# all_edge@[377, 344, 197, 227]
+# edge@[]
+# index596
+# all_edge@[417, 491, 451, 33, 313, 93]
+# edge@[417]
+# index597
+# all_edge@[469, 218]
+# edge@[469]
+# index598
+# all_edge@[25, 365, 235, 13, 347]
+# edge@[]
+# index599
+# all_edge@[394, 279, 248]
+# edge@[248]
+#true
+47 330 32 109 145 319 327 317 553 187 36 121 144 264 247 316 175 478 384 154 534 563 510 485 382 328 177 40 98 506 217 376 511 458 573 562 131 355 135 130 176 597 469 218 5 29 578 258 142 585 216 405 276 56 380 324 381 270 212 461 11 124 272 361 254 513 284 45 84 364 34 97 53 368 219 89 250 308 386 517 153 127 113 591 19 253 580 76 336 409 13 243 347 82 449 365 598 531 94 497 93 58 366 435 529 356 28 213 354 385 259 310 496 451 282 298 239 296 491 521 194 10 33 596 417 96 489 442 556 395 107 147 494 65 238 6 429 281 51 558 576 165 102 351 83 369 495 514 206 445 475 256 287 18 265 275 569 315 12 592 14 481 117 452 210 209 189 181 186 290 341 418 362 60 161 424 185 57 42 410 75 170 269 504 223 568 490 297 62 80 484 528 399 525 286 537 163 122 379 140 211 512 487 373 474 421 3 103 141 323 488 280 289 590 299 337 245 37 441 195 345 271 455 182 123 49 143 479 551 518 260 230 321 507 560 567 446 393 244 92 104 158 24 374 326 314 450 476 110 570 493 226 412 101 114 542 146 358 392 350 454 499 190 179 322 64 363 220 241 168 178 536 538 191 90 443 106 425 95 227 81 234 377 503 593 183 344 579 196 571 594 252 540 263 541 505 201 460 283 453 169 582 572 39 307 352 137 302 249 229 214 575 232 17 188 129 236 27 277 532 35 548 462 557 549 357 278 375 329 501 584 118 306 208 224 457 0 88 588 301 465 78 71 155 334 331 372 519 564 426 574 119 228 77 20 389 539 483 291 16 203 231 552 416 63 394 199 546 550 184 105 508 152 279 599 248 338 554 133 559 41 2 157 404 544 586 406 8 44 115 565 413 267 193 67 547 520 159 533 335 545 242 1 237 31 360 233 222 43 116 320 587 255 370 73 439 390 353 467 192 172 423 428 22 482 86 398 589 99 61 407 200 173 346 526 285 156 472 332 440 371 577 273 180 447 69 561 583 151 91 456 325 480 431 205 108 524 311 434 26 581 160 111 387 266 274 414 54 150 459 498 303 134 240 23 128 343 288 38 295 527 448 348 530 588 242 108 524 448 23 38 295 343 377 593 450 570 446 230 143 479 350 392 499 206 475 514 315 592 261 568 223 504 223 75 490 185 80 528 424 161 83 379 395 556 325 588 406 520 159 559 63 78 483 77 483 78 63 559 465 301 406 588 325 113 47 330 386 216 258 585 258 216 386 330 47 113 325 588 242 151 1 200 237 31 99 428 262 320 587 255 21 353 423 59 398 473 251 434 459 377 227 183 90 538 535 487 512 369 512 487 535 538 90 183 227 377 150 266 274 246 99 61 407 61 428 22 398 589 398 59 423 353 21 255 43 472 519 155 331 426 71 77 483 78 63 133 193 44 118 352 357 329 278 282 451 93 354 385 259 333 408 135 176 573 511 177 56 11 165 576 165 11 382 177 131 355 433 84 250 33 491 33 296 239 298 591 489 113 556 39 453 182 263 196 123 183 90 326 244 92 104 158 24 374 143 230 446 570 450 593 377 150 311 237 173 544 63 279 599 248 338 35 548 462 149 249 214 249 149 462 548 403 367 199 394 279 63 544 173 237 311 150 377 593 450 570 446 230 143 230 446 570 450 593 377 150 311 237 173 544 63 279 599 248 338 35 548 462 149 249 214 249 232 302 449 82 94 93 596 33 250 84 433 355 131 177 382 534 144 317 144 257 458 573 511 177 56 11 165 576 490 525 286 525 490 576 165 11 382 177 131 355 218 29 15 259 385 354 58 28 366 435 529 356 336 229 214 249 149 462 548 403 367 199 394 279 63 544 173 237 311 150 377 593 450 314 244 92 104 92 244 326 90 538 535 487 512 369 163 399 525 490 297 432 429 281 51 558 145 319 109 32 317 144 534 382 177 131 355 433 84 250 33 219 33 250 84 433 355 131 177 56 11 380 6 429 281 429 324 270 384 144 257 458 573 176 135 408 310 259 385 354 93 451 282 278 329 357 352 118 44 193 133 279 554 279 599 248 338 35 548 462 149 249 214 575 214 249 149 462 548 403 367 199 394 279 63 544 173 237 311 150 377 593 450 314 244 92 104 158 104 92 244 314 450 593 377 343 128 527 38 295 227 183 90 538 220 64 555 210 209 210 555 64 220 538 90 183 123 196 263 182 169 205 431 456 325 113 47 330 386 216 258 276 272 276 405 289 299 245 441 345 556 325 588 0 307 224 118 306 118 224 8 520 406 533 335 533 406 0 88 489 591 298 239 296 33 491 521 194 521 491 596 451 282 278 329 357 352 118 44 193 133 63 78 483 77 71 426 574 119 574 426 71 77 2 180 273 346 31 237 311 150 377 227 183 90 538 220 241 168 179 322 179 412 64 535 487 512 211 3 140 141 379 441 195 330 47 113 325 588 242 151 1 151 242 456 39 556 395 379 83 161 424 528 80 484 490
+s 11 484 0
+m 588
+m 242
+m 108
+m 524
+m 448
+m 23
+m 38
+m 295
+m 343
+m 377
+m 593
+s 11 495 0
+m 450
+m 570
+m 446
+m 230
+m 143
+m 479
+m 350
+m 392
+m 499
+m 206
+m 475
+s 11 506 0
+m 514
+m 315
+m 592
+m 261
+m 568
+m 223
+m 504
+m 223
+m 75
+m 490
+m 185
+s 11 1086 0
+m 80
+m 528
+m 424
+m 161
+m 83
+m 379
+m 395
+m 556
+m 39
+m 456
+m 242
+s 11 527 0
+m 406
+m 520
+m 159
+m 559
+m 63
+m 78
+m 483
+m 77
+m 483
+m 78
+m 63
+m 559
+m 159
+m 520
+m 406
+s 11 548 0
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+m 585
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+s 11 559 0
+m 242
+m 151
+m 1
+m 200
+m 237
+m 31
+m 99
+m 428
+m 262
+m 320
+m 587
+s 11 614 0
+m 255
+m 43
+m 472
+m 519
+m 331
+m 426
+s 11 1042 0
+m 574
+m 426
+m 71
+m 77
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+s 11 587 0
+m 150
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 183
+m 227
+m 377
+m 150
+s 11 598 0
+m 266
+m 274
+m 246
+m 99
+m 61
+m 407
+m 61
+m 428
+m 22
+m 398
+m 589
+m 398
+s 11 610 0
+m 59
+m 423
+m 353
+m 21
+m 255
+m 43
+m 472
+m 519
+m 155
+m 331
+m 426
+s 11 1028 0
+m 71
+m 77
+m 483
+m 78
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+s 11 632 0
+m 329
+m 278
+m 282
+m 451
+m 93
+m 354
+m 385
+m 259
+m 333
+m 408
+m 135
+s 11 643 0
+m 176
+m 573
+m 511
+m 177
+m 382
+m 11
+m 165
+m 576
+m 165
+m 11
+m 56
+m 177
+s 11 655 0
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+m 491
+m 33
+m 296
+m 239
+m 298
+s 11 666 0
+m 591
+m 489
+m 113
+m 556
+m 39
+m 453
+m 182
+m 263
+m 196
+m 123
+m 183
+s 11 677 0
+m 90
+m 326
+m 244
+m 92
+m 104
+m 158
+m 24
+m 374
+m 24
+m 158
+m 104
+m 92
+m 244
+s 11 816 0
+m 314
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+s 11 699 0
+m 599
+m 248
+m 338
+m 35
+m 548
+m 462
+m 149
+m 249
+m 214
+m 249
+m 149
+m 462
+m 548
+m 35
+m 338
+m 248
+m 599
+s 11 926 0
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+s 11 489 0
+m 23
+m 38
+m 295
+m 343
+m 377
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+m 377
+m 343
+m 295
+m 38
+m 23
+s 11 921 0
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 394
+m 199
+m 367
+m 403
+m 548
+s 11 800 0
+m 462
+m 149
+m 249
+m 214
+m 229
+m 336
+m 356
+m 529
+m 435
+m 366
+m 28
+s 11 789 0
+m 58
+m 354
+m 385
+m 259
+m 15
+m 29
+m 218
+m 355
+m 131
+m 177
+m 382
+s 11 845 0
+m 534
+m 144
+m 317
+m 144
+m 534
+s 11 24 0
+m 382
+m 177
+m 511
+m 573
+m 511
+m 177
+s 11 781 0
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+m 490
+m 525
+m 286
+m 525
+m 490
+m 576
+m 165
+m 11
+m 382
+s 11 758 0
+m 534
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+m 596
+m 93
+s 11 798 0
+m 354
+m 58
+m 28
+m 366
+m 435
+m 529
+m 356
+m 336
+m 229
+m 214
+m 249
+s 11 809 0
+m 149
+m 462
+m 548
+m 403
+m 367
+m 199
+m 394
+m 279
+m 63
+m 544
+m 173
+s 11 820 0
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 314
+m 244
+m 92
+m 104
+m 92
+m 244
+s 11 832 0
+m 326
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+s 11 843 0
+m 297
+m 432
+m 429
+m 281
+m 51
+m 558
+m 145
+m 319
+m 109
+m 32
+m 317
+s 11 854 0
+m 144
+m 534
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+m 219
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+m 534
+m 144
+s 11 843 0
+m 317
+m 32
+m 109
+m 319
+m 145
+m 558
+m 51
+m 281
+m 51
+m 558
+m 145
+m 319
+m 109
+m 32
+m 317
+s 11 882 0
+m 144
+m 257
+m 458
+m 573
+m 176
+m 135
+m 408
+m 310
+m 259
+m 385
+m 354
+s 11 748 0
+m 93
+m 94
+m 82
+m 449
+m 302
+m 232
+m 149
+m 462
+s 11 901 0
+m 548
+m 35
+m 338
+m 248
+m 599
+m 279
+m 554
+m 279
+s 11 915 0
+m 394
+m 199
+m 367
+m 403
+m 548
+m 462
+m 149
+m 249
+m 214
+m 575
+m 214
+m 249
+m 149
+m 462
+m 548
+m 403
+m 367
+m 199
+m 394
+s 11 926 0
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 314
+s 11 234 0
+m 326
+m 244
+m 92
+m 104
+m 158
+m 104
+m 92
+m 244
+m 326
+s 11 945 0
+m 90
+m 183
+m 227
+m 295
+m 38
+m 527
+m 38
+m 295
+m 227
+m 183
+s 11 959 0
+m 123
+m 183
+m 90
+m 538
+m 220
+m 64
+m 555
+m 210
+m 209
+m 210
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 123
+s 11 970 0
+m 196
+m 263
+m 182
+m 169
+m 205
+m 431
+m 456
+m 325
+m 113
+m 47
+m 330
+s 11 981 0
+m 386
+m 216
+m 258
+m 276
+m 272
+m 276
+m 405
+m 289
+m 299
+m 245
+m 441
+s 11 992 0
+m 345
+m 556
+m 325
+m 588
+m 0
+m 307
+m 224
+m 118
+m 306
+m 118
+m 224
+m 307
+m 0
+s 11 1005 0
+m 406
+m 533
+m 335
+m 533
+m 406
+m 0
+m 88
+m 489
+m 591
+m 298
+s 11 115 0
+m 96
+m 298
+m 239
+m 296
+m 33
+m 491
+m 521
+m 194
+m 521
+m 491
+m 596
+s 11 894 0
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 1034 0
+m 63
+m 78
+m 483
+m 77
+m 71
+m 426
+m 574
+m 119
+m 574
+m 426
+m 71
+m 77
+s 11 1046 0
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+m 227
+m 183
+s 11 1057 0
+m 90
+m 538
+m 220
+m 241
+m 412
+m 179
+m 322
+m 179
+m 412
+m 64
+m 535
+s 11 1068 0
+m 487
+m 512
+m 211
+m 3
+m 140
+m 141
+m 379
+m 441
+m 195
+m 330
+m 195
+m 441
+m 379
+s 11 1080 0
+m 395
+m 556
+m 39
+m 456
+m 242
+m 151
+m 1
+m 151
+m 242
+m 588
+m 325
+m 556
+m 395
+s 8 1091 0
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 484
+m 490
+s 11 170 0
+m 75
+m 42
+m 410
+m 42
+m 75
+s 11 832 0
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+s 11 572 0
+m 183
+m 227
+m 377
+m 459
+m 434
+s 11 588 0
+m 266
+m 150
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+s 11 203 0
+m 373
+s 11 1068 0
+m 487
+m 512
+m 211
+m 3
+m 140
+m 141
+m 379
+m 441
+s 11 990 0
+m 245
+m 441
+m 345
+m 556
+m 325
+m 588
+m 0
+m 307
+m 0
+m 588
+m 325
+m 556
+m 345
+m 441
+s 11 512 0
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 185
+m 490
+s 11 772 0
+m 525
+m 490
+m 576
+m 165
+m 11
+m 56
+m 177
+m 511
+m 573
+m 458
+m 257
+s 11 12 0
+m 144
+m 264
+m 247
+m 175
+m 316
+m 175
+m 247
+m 264
+m 144
+s 11 760 0
+m 317
+m 144
+m 534
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+s 11 663 0
+m 296
+m 239
+m 298
+m 591
+m 489
+m 113
+m 556
+m 39
+m 453
+m 182
+m 263
+s 11 288 0
+m 196
+m 252
+m 571
+m 594
+s 11 943 0
+m 227
+m 377
+m 593
+m 450
+m 314
+s 11 832 0
+m 326
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+s 11 504 0
+m 75
+m 223
+m 504
+m 223
+m 75
+s 11 1088 0
+m 490
+m 484
+m 80
+m 528
+m 424
+m 161
+m 83
+m 379
+m 395
+m 556
+s 11 534 0
+m 113
+m 325
+m 588
+m 406
+m 301
+m 465
+m 559
+m 63
+m 78
+m 483
+s 11 352 0
+m 552
+m 203
+m 552
+m 483
+m 77
+s 11 1044 0
+m 71
+m 77
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+s 11 581 0
+m 227
+m 183
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+s 11 839 0
+m 163
+m 399
+m 525
+m 490
+m 297
+m 432
+m 429
+s 11 865 0
+m 6
+m 380
+m 11
+m 56
+m 177
+m 131
+m 355
+s 11 793 0
+m 218
+m 29
+m 15
+m 259
+m 385
+m 354
+m 58
+m 28
+m 366
+m 435
+m 366
+m 28
+m 58
+m 354
+m 385
+m 259
+m 15
+m 29
+m 218
+s 11 782 0
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+m 490
+s 11 833 0
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+s 11 160 0
+m 14
+m 189
+m 181
+m 189
+m 452
+m 210
+s 11 949 0
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 227
+m 295
+m 38
+m 295
+m 227
+m 183
+m 90
+s 11 244 0
+m 326
+m 314
+m 450
+m 570
+m 476
+m 110
+m 476
+m 570
+m 450
+m 314
+m 326
+s 11 833 0
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+s 11 786 0
+m 576
+m 165
+m 11
+m 382
+m 177
+m 131
+m 355
+m 218
+m 29
+m 15
+m 259
+s 11 891 0
+m 385
+m 354
+m 93
+m 451
+m 282
+m 278
+m 329
+s 11 319 0
+m 501
+m 329
+m 278
+s 11 1015 0
+m 282
+m 451
+m 596
+m 33
+s 11 649 0
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+s 11 176 0
+m 490
+m 75
+m 223
+m 568
+m 223
+m 75
+m 490
+s 11 831 0
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+s 11 1059 0
+m 220
+m 241
+m 168
+m 179
+m 322
+m 179
+m 412
+m 64
+m 535
+m 487
+m 512
+s 11 1070 0
+m 211
+m 3
+m 140
+m 141
+m 379
+m 441
+m 195
+m 330
+s 11 68 0
+m 386
+m 368
+m 89
+m 250
+m 84
+m 364
+m 34
+m 364
+m 84
+m 250
+m 89
+m 368
+m 386
+s 11 536 0
+m 330
+m 47
+m 113
+m 325
+m 588
+m 406
+m 301
+m 465
+m 559
+m 63
+m 78
+s 11 347 0
+m 483
+m 77
+m 20
+m 389
+s 11 445 0
+m 69
+s 11 444 0
+m 447
+m 561
+s 11 1047 0
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+m 227
+m 183
+m 90
+s 11 832 0
+m 326
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+s 11 843 0
+m 297
+m 432
+m 429
+m 281
+m 51
+m 558
+m 145
+m 319
+m 145
+m 558
+m 51
+m 281
+m 429
+m 432
+m 297
+s 11 832 0
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 326
+s 11 926 0
+m 314
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+s 11 369 0
+m 184
+m 508
+m 105
+m 508
+m 184
+m 279
+s 11 527 0
+m 63
+m 559
+m 159
+m 520
+m 406
+s 11 986 0
+m 0
+m 588
+m 325
+m 556
+m 345
+m 441
+m 245
+m 299
+m 289
+m 405
+m 276
+s 11 52 0
+m 272
+m 56
+m 11
+m 380
+m 270
+m 461
+s 11 9 0
+m 154
+m 384
+m 144
+m 264
+m 247
+m 175
+m 478
+m 175
+m 247
+m 264
+m 144
+s 11 758 0
+m 534
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+s 11 74 0
+m 219
+m 89
+m 153
+m 89
+m 219
+s 11 650 0
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+s 11 781 0
+m 490
+m 576
+m 165
+m 11
+m 382
+m 177
+m 131
+s 11 973 0
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 456
+m 205
+m 169
+s 11 299 0
+m 453
+m 572
+m 453
+m 39
+s 11 964 0
+m 205
+m 169
+m 182
+m 263
+m 196
+m 123
+m 183
+s 11 1045 0
+m 227
+m 377
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+s 11 436 0
+m 561
+m 180
+m 273
+s 11 1049 0
+m 346
+m 31
+m 237
+m 311
+s 11 479 0
+m 23
+m 448
+m 524
+m 108
+s 11 301 0
+m 582
+s 11 963 0
+m 169
+m 182
+m 263
+m 196
+m 123
+m 183
+m 90
+m 538
+m 220
+m 64
+m 555
+s 11 204 0
+m 474
+s 11 962 0
+m 210
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 123
+m 196
+m 263
+m 182
+s 11 973 0
+m 169
+m 205
+m 456
+m 325
+s 11 983 0
+m 556
+m 345
+m 441
+m 245
+m 299
+m 289
+m 299
+m 245
+m 441
+m 345
+m 556
+s 11 523 0
+m 395
+m 556
+m 325
+m 588
+m 406
+m 520
+s 11 387 0
+m 8
+m 44
+m 193
+m 115
+m 565
+m 115
+m 193
+m 44
+s 11 619 0
+m 118
+m 44
+m 193
+m 133
+m 63
+m 78
+m 483
+m 77
+m 71
+m 426
+m 331
+s 11 607 0
+m 519
+m 472
+m 43
+m 255
+m 21
+m 353
+m 423
+m 59
+m 398
+s 11 424 0
+m 482
+m 398
+s 11 610 0
+m 59
+m 423
+m 353
+m 21
+m 255
+m 43
+m 472
+m 519
+m 155
+s 11 334 0
+m 334
+m 155
+s 11 619 0
+m 331
+m 426
+m 71
+m 77
+m 483
+m 78
+m 63
+s 11 520 0
+m 559
+m 159
+m 520
+m 406
+m 588
+m 325
+m 556
+m 395
+m 379
+m 83
+m 161
+m 83
+m 379
+m 395
+m 556
+m 325
+m 588
+m 406
+s 11 1006 0
+m 533
+m 406
+m 0
+m 88
+m 489
+m 591
+m 298
+m 239
+m 296
+s 11 865 0
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 56
+m 11
+m 380
+m 6
+m 380
+m 11
+m 56
+m 177
+m 131
+s 11 539 0
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+m 406
+m 301
+m 465
+s 11 379 0
+m 559
+m 544
+m 157
+m 41
+m 2
+m 41
+m 157
+m 544
+s 11 729 0
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+s 11 500 0
+m 479
+m 350
+m 392
+m 499
+s 11 262 0
+m 190
+s 11 493 0
+m 499
+m 392
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+m 377
+s 11 1045 0
+m 227
+m 377
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+s 11 342 0
+m 71
+m 426
+m 331
+m 519
+s 11 616 0
+m 472
+m 519
+m 331
+m 426
+m 71
+m 77
+m 483
+m 78
+m 63
+m 133
+s 11 383 0
+m 193
+m 115
+m 565
+m 413
+m 267
+s 11 310 0
+m 35
+m 532
+m 277
+s 11 323 0
+m 557
+m 549
+m 278
+s 11 1015 0
+m 282
+m 451
+m 596
+m 33
+s 11 74 0
+m 219
+m 89
+m 153
+m 517
+m 386
+s 11 217 0
+m 37
+m 195
+m 441
+s 11 1064 0
+m 379
+m 141
+m 140
+m 3
+m 211
+m 512
+m 487
+m 535
+m 64
+m 412
+m 179
+s 11 251 0
+m 499
+s 11 504 0
+m 206
+m 475
+m 514
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+s 11 781 0
+m 490
+m 576
+m 165
+m 11
+m 382
+m 177
+m 131
+m 177
+m 382
+s 11 758 0
+m 534
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+s 11 65 0
+m 89
+m 368
+m 45
+s 11 538 0
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+m 406
+m 301
+m 465
+m 559
+s 11 615 0
+m 63
+m 78
+m 483
+m 77
+m 71
+m 77
+m 483
+m 78
+m 63
+s 11 520 0
+m 559
+m 159
+m 520
+m 406
+m 588
+m 325
+m 556
+m 395
+m 379
+m 83
+m 161
+s 11 165 0
+m 424
+m 362
+m 341
+s 11 196 0
+m 3
+m 211
+m 512
+m 487
+m 373
+m 474
+s 11 960 0
+m 210
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 123
+m 196
+s 11 293 0
+m 263
+m 283
+m 541
+m 505
+m 541
+m 283
+m 263
+s 11 662 0
+m 182
+m 453
+m 39
+m 556
+s 11 557 0
+m 325
+m 588
+m 242
+m 151
+m 242
+m 588
+m 325
+s 11 968 0
+m 113
+m 325
+m 456
+m 205
+m 169
+m 205
+m 456
+s 11 532 0
+m 588
+m 406
+m 301
+m 465
+m 559
+m 63
+s 11 706 0
+m 279
+m 394
+m 199
+m 367
+m 403
+m 548
+m 462
+m 149
+m 249
+s 11 303 0
+m 17
+m 232
+m 302
+m 137
+m 302
+s 11 755 0
+m 449
+m 82
+m 94
+m 93
+m 596
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+s 11 780 0
+m 177
+m 382
+m 11
+m 165
+m 576
+m 490
+s 11 504 0
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+s 11 148 0
+m 12
+m 256
+m 475
+s 11 496 0
+m 514
+m 475
+m 206
+m 499
+m 392
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+s 11 485 0
+m 450
+m 593
+m 377
+m 343
+m 295
+m 38
+m 23
+m 448
+m 524
+m 108
+m 242
+s 11 999 0
+m 406
+m 533
+m 335
+s 11 390 0
+m 545
+m 335
+m 533
+s 11 1073 0
+m 151
+m 242
+m 588
+m 325
+m 113
+m 47
+m 330
+m 195
+m 441
+m 379
+m 141
+s 11 1062 0
+m 140
+m 3
+m 211
+m 512
+m 487
+m 535
+m 64
+s 11 267 0
+m 220
+m 241
+m 425
+m 106
+m 443
+m 90
+m 538
+s 11 835 0
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+m 297
+m 432
+m 429
+s 11 879 0
+m 324
+m 270
+m 384
+m 144
+m 257
+m 458
+m 573
+s 11 645 0
+m 511
+m 177
+m 131
+s 11 656 0
+m 355
+m 433
+m 84
+m 250
+m 33
+m 296
+m 239
+m 298
+s 11 115 0
+m 96
+m 298
+s 11 666 0
+m 591
+m 489
+m 113
+m 556
+m 39
+m 453
+m 182
+m 263
+m 196
+m 123
+m 183
+s 11 279 0
+m 227
+m 377
+m 81
+m 377
+m 227
+m 183
+s 11 833 0
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+s 11 783 0
+m 286
+m 525
+m 490
+m 576
+m 165
+m 11
+m 382
+m 177
+m 131
+m 355
+m 218
+s 11 794 0
+m 29
+m 15
+m 259
+m 385
+m 354
+m 58
+m 354
+m 385
+m 259
+s 11 640 0
+m 333
+m 408
+m 135
+m 176
+m 573
+m 511
+m 177
+m 56
+m 11
+m 165
+m 576
+s 11 505 0
+m 490
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+m 514
+m 475
+s 11 494 0
+m 206
+m 499
+m 392
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+m 479
+m 350
+m 392
+m 499
+s 11 263 0
+m 179
+m 168
+m 241
+m 220
+m 538
+s 11 835 0
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+m 297
+m 432
+m 429
+s 11 846 0
+m 281
+m 51
+m 558
+m 145
+m 319
+m 109
+m 32
+m 317
+m 144
+m 534
+m 382
+s 11 756 0
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+m 596
+m 93
+m 94
+m 82
+s 11 94 0
+m 449
+m 365
+m 598
+m 365
+m 449
+s 11 756 0
+m 82
+m 94
+m 93
+m 596
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+s 11 983 0
+m 258
+m 276
+m 405
+m 289
+m 299
+m 245
+m 441
+s 11 522 0
+m 379
+s 11 198 0
+m 141
+m 379
+s 11 523 0
+m 395
+m 556
+m 325
+m 588
+m 406
+m 520
+m 159
+m 559
+m 63
+s 11 894 0
+m 279
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+s 11 883 0
+m 93
+m 354
+m 385
+m 259
+m 310
+m 408
+m 135
+m 176
+m 573
+s 11 22 0
+m 511
+m 177
+m 382
+m 328
+m 485
+m 328
+m 382
+m 177
+m 511
+s 11 774 0
+m 573
+m 511
+m 177
+m 56
+m 11
+m 165
+m 576
+m 490
+s 11 504 0
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+m 514
+m 475
+m 514
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+s 11 771 0
+m 490
+m 576
+m 165
+m 11
+m 56
+m 177
+s 11 755 0
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+m 596
+s 11 894 0
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 717 0
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+m 446
+s 11 498 0
+m 230
+m 143
+m 479
+m 350
+m 392
+m 499
+m 206
+m 475
+m 514
+m 475
+m 206
+m 499
+s 11 1064 0
+m 179
+m 412
+m 64
+m 535
+m 487
+m 512
+m 211
+m 3
+m 140
+m 141
+m 379
+s 11 991 0
+m 441
+m 345
+m 556
+m 325
+m 588
+m 0
+m 307
+m 224
+m 118
+s 11 1019 0
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+m 596
+m 491
+m 521
+m 491
+m 596
+s 11 883 0
+m 93
+m 354
+m 385
+m 259
+m 310
+s 11 102 0
+m 496
+m 310
+m 259
+s 11 785 0
+m 15
+m 29
+m 218
+s 11 34 0
+m 5
+m 469
+m 5
+m 218
+m 355
+m 131
+s 11 16 0
+m 177
+m 382
+m 328
+m 485
+m 563
+m 534
+m 382
+m 177
+s 11 550 0
+m 585
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+m 242
+m 151
+s 11 561 0
+m 1
+m 200
+m 237
+m 31
+m 99
+m 428
+m 262
+m 320
+m 587
+m 255
+m 21
+s 11 415 0
+m 439
+m 353
+m 423
+m 172
+m 192
+m 22
+m 428
+s 11 592 0
+m 61
+m 99
+m 246
+m 274
+m 266
+m 150
+s 11 948 0
+m 343
+m 295
+m 227
+m 183
+m 90
+m 538
+s 11 575 0
+m 535
+m 538
+m 90
+m 183
+m 227
+m 377
+m 459
+m 434
+m 251
+m 473
+m 398
+m 473
+m 251
+m 434
+m 459
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+s 11 1058 0
+m 487
+m 535
+m 538
+m 220
+m 241
+m 168
+m 179
+s 11 251 0
+m 499
+m 392
+m 542
+m 146
+m 454
+m 350
+m 392
+m 499
+s 11 1052 0
+m 179
+m 168
+m 241
+m 220
+m 538
+m 90
+m 183
+s 11 969 0
+m 123
+m 196
+m 263
+m 182
+m 169
+m 205
+m 456
+m 325
+m 113
+s 11 657 0
+m 489
+m 591
+m 298
+m 239
+m 296
+m 33
+m 250
+m 84
+m 433
+s 11 754 0
+m 355
+m 433
+m 84
+m 250
+m 33
+m 596
+m 93
+m 94
+m 82
+m 449
+m 82
+m 94
+m 93
+m 596
+m 33
+m 250
+m 84
+m 433
+m 355
+s 11 783 0
+m 218
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+m 490
+s 11 516 0
+m 185
+m 80
+m 528
+m 424
+m 161
+m 424
+m 528
+m 80
+m 185
+s 11 505 0
+m 490
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+m 514
+s 11 155 0
+m 209
+m 210
+m 452
+m 210
+s 11 949 0
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 227
+m 295
+m 38
+m 128
+s 11 1043 0
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+m 71
+m 426
+m 71
+m 77
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+s 11 552 0
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+m 113
+m 47
+m 330
+s 11 222 0
+m 455
+s 11 536 0
+m 330
+m 47
+m 113
+m 325
+m 588
+m 406
+m 301
+m 465
+m 559
+m 63
+s 11 903 0
+m 133
+m 279
+m 599
+m 248
+m 338
+m 35
+m 548
+m 462
+m 149
+s 11 312 0
+m 232
+m 17
+m 188
+m 17
+m 232
+s 11 909 0
+m 149
+m 462
+m 548
+m 35
+m 338
+s 11 690 0
+m 248
+m 599
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+s 11 454 0
+m 266
+m 434
+m 111
+m 581
+m 111
+m 434
+s 11 459 0
+m 459
+s 11 493 0
+m 377
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+m 479
+m 350
+m 392
+m 499
+s 11 504 0
+m 206
+m 475
+m 514
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+s 11 781 0
+m 490
+m 576
+m 165
+m 11
+m 382
+s 11 25 0
+m 328
+s 11 846 0
+m 382
+m 534
+m 144
+s 11 3 0
+m 264
+m 144
+m 317
+m 553
+m 187
+m 319
+m 327
+m 319
+m 187
+m 553
+m 317
+m 144
+s 11 855 0
+m 534
+m 382
+m 177
+m 131
+s 11 549 0
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+m 242
+s 11 448 0
+m 151
+m 91
+m 151
+s 11 485 0
+m 242
+m 108
+m 524
+m 448
+m 23
+m 38
+m 295
+s 11 953 0
+m 227
+s 11 725 0
+m 377
+s 11 469 0
+m 459
+m 498
+m 303
+m 134
+m 303
+m 498
+m 459
+s 11 483 0
+m 377
+m 343
+m 295
+m 38
+m 23
+m 448
+m 524
+m 108
+m 242
+s 11 550 0
+m 151
+m 242
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+m 585
+s 11 790 0
+m 177
+m 131
+m 355
+m 218
+m 29
+m 15
+m 259
+m 385
+m 354
+s 11 893 0
+m 93
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 615 0
+m 63
+m 78
+m 483
+m 77
+m 71
+m 426
+m 331
+m 519
+s 11 428 0
+m 332
+m 472
+s 11 346 0
+m 539
+m 389
+m 20
+m 77
+s 11 535 0
+m 483
+m 78
+m 63
+m 559
+m 465
+m 301
+m 406
+s 11 518 0
+m 520
+m 406
+m 588
+m 325
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+s 11 507 0
+m 80
+m 185
+m 490
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+s 11 496 0
+m 514
+m 475
+m 206
+m 499
+m 392
+m 499
+m 206
+m 475
+m 514
+s 11 507 0
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+m 490
+m 185
+m 80
+s 11 133 0
+m 65
+m 576
+m 165
+m 576
+m 238
+m 6
+m 429
+m 281
+m 51
+m 558
+m 51
+m 281
+m 429
+m 6
+m 238
+m 576
+m 65
+s 11 189 0
+m 80
+m 528
+m 163
+s 11 588 0
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 183
+m 227
+m 377
+m 150
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+s 11 839 0
+m 163
+m 399
+m 525
+m 490
+m 297
+m 432
+m 429
+m 281
+m 51
+m 558
+m 145
+s 11 10 0
+m 36
+s 11 839 0
+m 145
+m 558
+m 51
+m 281
+m 429
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+s 11 578 0
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 183
+m 227
+m 377
+m 459
+m 434
+s 11 462 0
+m 111
+m 387
+m 111
+s 11 578 0
+m 434
+m 459
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+s 11 160 0
+m 14
+m 189
+m 181
+m 189
+m 452
+m 210
+m 209
+s 11 147 0
+m 514
+m 315
+m 275
+m 569
+m 275
+m 315
+m 514
+s 11 951 0
+m 209
+m 210
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 227
+s 11 691 0
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 599
+m 248
+m 338
+s 11 310 0
+m 35
+m 532
+m 277
+m 129
+m 236
+s 11 754 0
+m 302
+m 449
+m 82
+m 94
+m 93
+m 596
+m 33
+m 250
+s 11 67 0
+m 308
+m 84
+m 97
+m 53
+m 97
+m 84
+m 364
+m 34
+s 11 783 0
+m 218
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+m 490
+s 11 177 0
+m 297
+m 490
+m 75
+m 42
+m 57
+m 42
+m 75
+m 490
+s 11 831 0
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+s 11 277 0
+m 579
+m 183
+m 227
+m 377
+m 81
+m 234
+s 11 723 0
+m 450
+m 570
+m 446
+m 230
+s 11 225 0
+m 567
+m 507
+m 321
+m 143
+m 479
+m 551
+m 518
+m 260
+m 518
+m 551
+m 479
+m 143
+m 230
+s 11 717 0
+m 446
+m 570
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+s 11 433 0
+m 346
+m 273
+m 526
+m 285
+m 440
+m 371
+m 440
+m 285
+m 526
+m 273
+m 346
+s 11 929 0
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 314
+s 11 251 0
+m 226
+s 11 832 0
+m 326
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+s 11 180 0
+m 484
+m 490
+s 11 650 0
+m 576
+m 165
+m 11
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+s 11 1012 0
+m 491
+m 33
+m 296
+m 239
+m 298
+m 591
+m 489
+s 11 117 0
+m 442
+m 489
+s 11 978 0
+m 113
+m 47
+m 330
+m 386
+m 216
+m 405
+m 276
+m 272
+s 11 53 0
+m 56
+m 11
+m 380
+m 270
+m 212
+m 270
+m 380
+m 11
+m 56
+m 272
+s 11 974 0
+m 276
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 456
+m 205
+s 11 486 0
+m 108
+m 524
+m 448
+m 23
+m 38
+m 295
+m 343
+m 377
+m 593
+m 450
+m 570
+s 11 237 0
+m 393
+s 11 731 0
+m 446
+m 570
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+s 11 536 0
+m 78
+m 63
+m 559
+m 465
+m 301
+m 406
+m 588
+m 325
+m 113
+m 47
+m 330
+s 11 68 0
+m 386
+m 368
+m 89
+m 250
+m 84
+s 11 850 0
+m 433
+m 355
+m 131
+m 177
+m 382
+m 534
+m 144
+m 317
+m 32
+m 109
+s 11 14 0
+m 247
+m 175
+s 11 850 0
+m 319
+m 109
+m 32
+m 317
+m 144
+m 534
+m 382
+m 177
+m 131
+s 11 551 0
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+m 242
+m 151
+s 11 1008 0
+m 533
+m 406
+m 0
+m 88
+m 489
+s 11 1069 0
+m 113
+m 47
+m 330
+m 195
+m 441
+m 379
+m 141
+m 140
+m 3
+m 211
+m 512
+s 11 202 0
+m 487
+m 373
+m 487
+s 11 1069 0
+m 512
+m 211
+m 3
+m 140
+m 141
+m 379
+m 441
+m 195
+m 330
+m 47
+m 113
+s 11 659 0
+m 556
+m 113
+m 489
+m 591
+m 298
+s 11 84 0
+m 19
+m 253
+s 11 1024 0
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+m 63
+s 11 1035 0
+m 78
+m 483
+m 77
+m 71
+m 426
+s 11 355 0
+m 389
+s 11 1043 0
+m 426
+m 71
+m 77
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+s 11 579 0
+m 459
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+s 11 839 0
+m 163
+m 399
+m 525
+m 490
+m 297
+m 432
+m 429
+m 281
+m 51
+m 558
+m 51
+m 281
+m 429
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+s 11 828 0
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+s 11 594 0
+m 183
+m 227
+m 377
+m 150
+m 266
+m 274
+m 246
+m 99
+m 61
+m 407
+m 61
+m 99
+m 246
+m 274
+m 266
+m 150
+s 11 1042 0
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+m 71
+m 426
+m 574
+s 11 341 0
+m 119
+m 155
+m 334
+m 372
+m 519
+m 331
+m 426
+m 71
+s 11 1045 0
+m 77
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+s 11 454 0
+m 266
+m 434
+m 111
+m 581
+m 160
+m 581
+m 111
+m 434
+m 266
+s 11 1043 0
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+s 11 623 0
+m 483
+m 78
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+s 11 323 0
+m 557
+m 329
+m 357
+s 11 899 0
+m 352
+m 118
+m 44
+m 193
+m 133
+m 279
+s 11 369 0
+m 184
+m 279
+s 11 687 0
+m 63
+m 544
+m 63
+s 11 1023 0
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+m 596
+s 11 1008 0
+m 491
+s 11 759 0
+m 596
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+m 534
+s 11 23 0
+m 485
+m 328
+m 382
+m 177
+m 511
+m 217
+m 98
+m 40
+m 458
+s 11 774 0
+m 573
+s 11 633 0
+m 176
+m 135
+m 408
+m 333
+m 259
+m 385
+m 354
+m 93
+m 451
+m 282
+m 451
+s 11 1023 0
+m 596
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+s 11 387 0
+m 8
+m 520
+m 159
+s 11 379 0
+m 559
+m 544
+m 157
+m 41
+s 11 443 0
+m 180
+m 561
+m 583
+m 69
+m 447
+m 561
+m 180
+s 11 370 0
+m 41
+s 11 535 0
+m 483
+m 78
+m 63
+m 559
+m 465
+m 301
+m 406
+m 588
+m 325
+m 113
+m 47
+s 11 992 0
+m 345
+m 556
+m 325
+m 588
+m 0
+m 307
+m 224
+m 118
+s 11 889 0
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+m 93
+m 354
+s 11 799 0
+m 58
+s 11 637 0
+m 354
+m 385
+m 259
+m 333
+m 408
+m 135
+m 176
+m 573
+m 511
+m 177
+m 56
+s 11 642 0
+m 11
+m 165
+m 576
+s 11 505 0
+m 490
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+m 490
+s 11 770 0
+m 576
+m 165
+m 11
+m 56
+m 177
+s 11 791 0
+m 131
+m 355
+m 218
+m 29
+m 15
+m 259
+m 385
+m 354
+s 11 893 0
+m 93
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+s 11 389 0
+m 115
+m 565
+m 413
+m 267
+m 413
+m 565
+m 115
+m 193
+s 11 1021 0
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+s 11 883 0
+m 93
+m 354
+m 385
+m 259
+m 310
+m 408
+m 135
+m 176
+m 573
+s 11 775 0
+m 511
+m 177
+m 56
+m 11
+m 165
+m 576
+m 490
+s 11 833 0
+m 297
+m 490
+m 525
+m 399
+m 163
+m 399
+m 525
+m 490
+s 11 650 0
+m 576
+m 165
+m 11
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+s 11 118 0
+m 491
+m 596
+m 417
+m 596
+m 491
+m 521
+m 194
+m 10
+s 11 787 0
+m 385
+m 259
+m 15
+m 29
+m 218
+m 355
+m 131
+m 177
+m 382
+m 11
+s 11 66 0
+m 284
+s 11 651 0
+m 165
+m 11
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+s 11 663 0
+m 296
+m 239
+m 298
+m 591
+m 489
+m 113
+m 556
+m 39
+m 453
+m 182
+m 263
+s 11 296 0
+m 201
+m 460
+m 283
+s 11 960 0
+m 196
+m 123
+m 183
+m 90
+m 538
+m 220
+m 64
+m 555
+m 210
+s 11 153 0
+m 452
+m 481
+m 452
+s 11 962 0
+m 210
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 123
+m 196
+m 263
+m 182
+s 11 973 0
+m 169
+m 205
+m 456
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+s 11 36 0
+m 131
+m 355
+m 218
+m 5
+m 218
+m 355
+m 131
+s 11 550 0
+m 585
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+m 242
+s 11 486 0
+m 108
+m 524
+m 448
+m 23
+m 38
+m 295
+m 343
+m 377
+m 593
+m 450
+m 570
+m 450
+m 593
+m 377
+m 343
+m 295
+m 38
+m 23
+m 448
+m 524
+m 108
+s 11 549 0
+m 242
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+m 585
+s 11 16 0
+m 177
+m 382
+m 328
+m 485
+m 563
+m 510
+m 563
+m 534
+m 382
+m 177
+s 11 540 0
+m 585
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+s 11 485 0
+m 242
+m 108
+m 524
+m 448
+m 23
+m 38
+s 11 470 0
+m 527
+m 128
+s 11 1043 0
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+s 11 623 0
+m 483
+m 78
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+s 11 327 0
+m 375
+s 11 1016 0
+m 278
+m 282
+m 451
+m 596
+m 33
+s 11 649 0
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+s 11 505 0
+m 490
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+s 11 142 0
+m 287
+m 495
+m 287
+s 11 507 0
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+m 490
+s 11 843 0
+m 297
+m 432
+m 429
+m 281
+m 51
+m 558
+m 145
+m 319
+m 109
+m 32
+m 317
+s 11 2 0
+m 144
+m 317
+m 553
+m 187
+m 319
+m 327
+m 319
+m 145
+s 11 838 0
+m 558
+m 51
+m 281
+m 429
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+s 11 587 0
+m 512
+m 487
+m 535
+m 538
+m 90
+m 183
+m 227
+m 377
+m 150
+s 11 465 0
+m 128
+m 150
+s 11 1054 0
+m 377
+m 227
+m 183
+m 90
+m 538
+m 220
+m 241
+m 168
+m 179
+m 322
+m 179
+m 168
+m 241
+m 220
+m 538
+m 90
+m 183
+m 227
+m 377
+s 11 692 0
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 599
+m 248
+m 338
+m 35
+s 11 309 0
+m 532
+m 277
+m 129
+m 236
+m 27
+m 236
+m 129
+m 277
+s 11 631 0
+m 357
+m 329
+m 278
+m 282
+m 451
+m 93
+m 354
+m 385
+m 259
+s 11 795 0
+m 15
+m 259
+m 385
+m 354
+m 58
+m 28
+m 366
+m 435
+m 529
+m 356
+m 336
+s 11 806 0
+m 229
+m 214
+m 249
+m 149
+m 462
+m 548
+m 403
+m 367
+m 199
+m 394
+m 279
+s 11 367 0
+m 554
+m 279
+m 184
+m 508
+m 105
+m 508
+m 184
+m 279
+s 11 521 0
+m 63
+m 559
+m 159
+m 520
+m 406
+m 588
+m 325
+s 11 968 0
+m 113
+m 325
+m 456
+m 205
+m 169
+m 182
+m 263
+s 11 288 0
+m 283
+m 460
+m 283
+m 196
+s 11 675 0
+m 123
+m 183
+m 90
+m 326
+m 244
+m 92
+m 104
+m 158
+m 24
+m 374
+m 143
+s 11 500 0
+m 479
+m 350
+m 392
+m 499
+m 206
+m 475
+m 514
+m 315
+m 592
+m 261
+m 568
+m 261
+m 592
+m 315
+m 514
+m 475
+m 206
+m 499
+s 11 1054 0
+m 179
+m 322
+m 179
+m 168
+m 241
+m 220
+m 538
+m 90
+m 183
+s 11 665 0
+m 123
+m 196
+m 263
+m 182
+m 453
+m 39
+m 556
+m 113
+m 489
+s 11 1011 0
+m 88
+m 489
+m 591
+m 298
+m 239
+m 296
+m 33
+m 491
+m 33
+m 296
+m 239
+m 298
+m 591
+m 489
+m 88
+s 11 986 0
+m 0
+m 588
+m 325
+m 556
+m 345
+m 441
+m 245
+m 299
+s 11 121 0
+m 147
+m 107
+s 11 521 0
+m 83
+m 379
+m 395
+m 556
+m 325
+m 588
+m 406
+m 520
+m 159
+m 559
+m 63
+s 11 614 0
+m 78
+m 483
+m 77
+m 71
+m 426
+m 331
+m 519
+m 331
+m 426
+m 71
+m 77
+m 483
+m 78
+s 11 1024 0
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+s 11 748 0
+m 93
+m 94
+m 82
+m 94
+m 93
+s 11 882 0
+m 354
+m 385
+m 259
+m 310
+m 408
+m 135
+m 176
+m 573
+m 458
+m 257
+m 144
+s 11 18 0
+m 384
+m 154
+m 384
+s 11 759 0
+m 144
+m 534
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+s 11 1018 0
+m 491
+m 596
+m 451
+m 282
+m 278
+m 329
+m 357
+s 11 1029 0
+m 352
+m 118
+m 44
+m 193
+m 133
+m 63
+m 78
+m 483
+m 77
+m 483
+m 78
+m 63
+s 11 806 0
+m 279
+m 394
+m 199
+m 367
+m 403
+m 548
+m 462
+m 149
+m 249
+m 214
+m 229
+s 11 88 0
+m 336
+s 11 806 0
+m 229
+m 214
+m 249
+m 149
+m 462
+m 548
+m 403
+m 367
+m 199
+m 394
+s 11 689 0
+m 599
+m 279
+m 63
+s 11 375 0
+m 586
+m 544
+m 559
+s 11 539 0
+m 465
+m 301
+m 406
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+s 11 870 0
+m 131
+m 177
+m 56
+m 11
+m 380
+m 6
+m 429
+m 281
+m 429
+m 6
+m 380
+m 11
+m 56
+m 177
+m 131
+s 11 792 0
+m 355
+m 218
+m 29
+m 15
+m 259
+m 385
+m 354
+m 58
+m 28
+m 366
+m 435
+s 11 793 0
+m 529
+m 435
+m 366
+m 28
+m 58
+m 354
+m 385
+m 259
+m 15
+m 29
+m 218
+s 11 782 0
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+m 490
+s 11 833 0
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+s 11 770 0
+m 576
+m 165
+m 11
+m 56
+m 177
+m 511
+m 573
+m 458
+m 257
+m 144
+s 11 13 0
+m 264
+m 247
+m 175
+m 478
+m 175
+m 247
+m 264
+s 11 761 0
+m 144
+m 534
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+s 11 662 0
+m 33
+m 296
+m 239
+m 298
+m 591
+m 489
+m 113
+m 556
+m 39
+m 453
+m 182
+s 11 293 0
+m 263
+m 201
+m 541
+m 505
+m 541
+m 283
+m 263
+s 11 662 0
+m 182
+m 453
+m 39
+m 556
+m 113
+m 489
+m 591
+m 298
+m 239
+m 296
+m 33
+s 11 1023 0
+m 596
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 364 0
+m 63
+m 279
+m 184
+m 508
+m 184
+m 279
+m 63
+s 11 520 0
+m 559
+m 159
+m 520
+m 406
+m 588
+m 325
+m 556
+m 395
+m 379
+m 83
+m 161
+s 11 172 0
+m 362
+m 60
+m 362
+m 424
+s 11 132 0
+m 102
+m 494
+m 65
+m 576
+m 65
+s 11 507 0
+m 80
+m 185
+m 490
+m 75
+m 223
+m 568
+m 261
+m 592
+s 11 153 0
+m 18
+m 265
+s 11 499 0
+m 261
+m 592
+m 315
+m 514
+m 475
+m 206
+m 499
+s 11 262 0
+m 190
+s 11 261 0
+m 499
+m 179
+m 168
+m 241
+m 220
+s 11 966 0
+m 538
+m 90
+m 183
+m 123
+m 196
+m 263
+m 182
+m 169
+m 205
+m 456
+s 11 967 0
+m 325
+m 456
+m 205
+m 169
+m 182
+m 263
+m 196
+m 123
+m 183
+s 11 276 0
+m 344
+m 227
+m 377
+m 503
+m 377
+s 11 712 0
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 394
+m 199
+m 367
+m 403
+s 11 747 0
+m 548
+m 462
+m 149
+m 232
+m 302
+m 449
+m 82
+s 11 81 0
+m 243
+m 409
+m 13
+m 409
+m 243
+s 11 756 0
+m 82
+m 94
+m 93
+m 596
+m 33
+s 11 663 0
+m 296
+m 239
+m 298
+m 591
+m 489
+m 113
+m 556
+m 39
+m 453
+m 182
+m 263
+s 11 960 0
+m 196
+m 123
+m 183
+m 90
+m 538
+m 220
+m 64
+m 555
+m 210
+m 209
+s 11 506 0
+m 514
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+m 490
+m 185
+s 11 1086 0
+m 80
+m 528
+m 424
+m 161
+m 83
+m 379
+m 395
+m 556
+m 39
+m 456
+m 242
+s 11 560 0
+m 151
+m 1
+m 200
+m 237
+s 11 1052 0
+m 311
+m 150
+m 377
+m 227
+m 183
+m 90
+m 538
+m 220
+m 241
+s 11 1055 0
+m 412
+m 179
+m 322
+m 179
+m 168
+m 241
+m 220
+m 538
+m 90
+m 183
+m 227
+s 11 1044 0
+m 377
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+s 11 1036 0
+m 483
+m 77
+m 71
+m 426
+m 574
+m 119
+m 574
+m 426
+m 71
+m 77
+m 483
+s 11 1025 0
+m 78
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+s 11 635 0
+m 451
+m 93
+m 354
+m 385
+m 259
+m 333
+m 408
+m 135
+m 176
+m 573
+m 511
+m 573
+m 176
+m 135
+m 408
+m 333
+m 259
+m 385
+m 354
+m 93
+s 11 88 0
+m 94
+m 82
+m 531
+m 82
+m 94
+s 11 893 0
+m 93
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 615 0
+m 63
+m 78
+m 483
+m 77
+m 71
+m 426
+m 331
+s 11 356 0
+m 539
+s 11 445 0
+m 69
+m 583
+m 561
+s 11 1047 0
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+s 11 690 0
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 599
+m 248
+s 11 745 0
+m 338
+m 35
+m 548
+m 462
+m 149
+m 232
+m 302
+m 449
+s 11 83 0
+m 82
+m 243
+m 347
+m 243
+m 82
+s 11 757 0
+m 94
+m 93
+m 596
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+s 11 845 0
+m 534
+m 144
+m 317
+m 32
+m 109
+m 319
+m 145
+m 558
+m 51
+m 281
+m 429
+s 11 834 0
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+s 11 1049 0
+m 220
+m 538
+m 90
+m 183
+m 227
+m 377
+s 11 283 0
+m 503
+s 11 493 0
+m 377
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+m 479
+m 350
+m 392
+m 499
+s 11 252 0
+m 190
+m 542
+m 358
+m 542
+m 392
+m 350
+s 11 490 0
+m 479
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+m 377
+m 343
+m 295
+s 11 280 0
+m 594
+s 11 1055 0
+m 227
+m 183
+m 90
+m 538
+s 11 1067 0
+m 535
+m 487
+m 512
+m 211
+m 3
+s 11 170 0
+m 341
+m 418
+m 60
+s 11 839 0
+m 163
+m 399
+m 525
+m 490
+s 11 506 0
+m 185
+m 490
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+m 514
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+m 490
+s 11 786 0
+m 576
+m 165
+m 11
+m 382
+m 177
+m 131
+m 355
+m 218
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+s 11 832 0
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+s 11 594 0
+m 183
+m 227
+m 377
+m 150
+m 266
+m 150
+m 377
+s 11 690 0
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 599
+m 248
+s 11 745 0
+m 338
+m 35
+m 548
+m 462
+m 149
+m 232
+m 302
+m 232
+m 149
+m 462
+m 548
+s 11 922 0
+m 403
+m 367
+m 199
+m 394
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+s 11 947 0
+m 377
+m 343
+m 295
+m 38
+m 527
+m 128
+m 343
+m 377
+s 11 494 0
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+m 479
+m 350
+m 392
+m 499
+s 11 262 0
+m 190
+s 11 493 0
+m 499
+m 392
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+m 377
+s 11 1043 0
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+s 11 357 0
+m 483
+m 552
+m 203
+m 291
+s 11 358 0
+m 550
+m 291
+m 203
+m 552
+s 11 535 0
+m 483
+m 78
+m 63
+m 559
+m 465
+m 301
+s 11 1008 0
+m 533
+m 406
+m 0
+m 88
+m 489
+m 591
+m 298
+m 239
+m 296
+m 33
+s 11 66 0
+m 250
+m 84
+m 97
+m 53
+m 97
+m 45
+s 11 972 0
+m 216
+s 11 207 0
+m 37
+m 245
+m 299
+m 337
+m 590
+m 289
+m 299
+m 245
+m 37
+s 11 1066 0
+m 195
+m 441
+m 379
+m 141
+m 140
+m 3
+m 211
+m 512
+m 487
+m 535
+s 11 592 0
+m 538
+m 90
+m 183
+m 227
+m 377
+m 150
+m 266
+m 150
+s 11 921 0
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 394
+m 199
+m 367
+m 403
+m 548
+s 11 312 0
+m 462
+m 548
+m 35
+m 532
+m 277
+s 11 330 0
+m 584
+s 11 888 0
+m 357
+m 329
+m 278
+m 282
+m 451
+m 93
+m 354
+m 385
+m 259
+m 310
+m 408
+s 11 877 0
+m 135
+m 176
+m 573
+m 458
+m 257
+m 144
+m 384
+m 270
+m 324
+m 429
+m 281
+m 429
+s 11 834 0
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+s 11 193 0
+m 373
+m 487
+m 512
+m 211
+s 11 1071 0
+m 3
+m 140
+m 141
+m 379
+m 441
+m 195
+m 330
+m 47
+m 113
+m 325
+m 588
+s 11 996 0
+m 0
+m 307
+m 224
+m 118
+s 11 889 0
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+m 93
+m 354
+m 385
+m 259
+s 11 785 0
+m 15
+m 29
+m 218
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+m 490
+s 11 180 0
+m 75
+m 490
+s 11 774 0
+m 525
+m 490
+m 576
+m 165
+m 11
+m 56
+m 177
+m 511
+m 573
+s 11 886 0
+m 176
+m 135
+m 408
+m 310
+m 259
+m 385
+m 354
+m 93
+m 451
+m 282
+m 278
+s 11 324 0
+m 549
+m 278
+m 329
+m 357
+m 584
+m 357
+m 329
+m 278
+s 11 895 0
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 615 0
+m 63
+m 78
+m 483
+m 77
+m 71
+m 426
+m 331
+m 519
+s 11 409 0
+m 116
+s 11 408 0
+m 43
+m 587
+m 320
+m 73
+m 353
+s 11 573 0
+m 423
+m 59
+m 398
+m 473
+m 251
+m 434
+m 459
+m 377
+m 227
+m 183
+m 90
+s 11 834 0
+m 538
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+m 297
+s 11 188 0
+m 62
+s 11 844 0
+m 432
+m 429
+m 281
+m 51
+m 558
+m 145
+m 319
+m 109
+m 32
+m 317
+m 144
+s 11 883 0
+m 257
+m 458
+m 573
+s 11 35 0
+m 562
+m 469
+m 5
+m 218
+m 29
+s 11 785 0
+m 15
+m 29
+m 218
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+m 490
+s 11 831 0
+m 525
+m 399
+m 163
+m 369
+s 11 150 0
+m 14
+s 11 145 0
+m 369
+s 11 1069 0
+m 512
+m 211
+m 3
+m 140
+m 141
+m 379
+m 441
+m 195
+m 330
+s 11 78 0
+m 386
+m 517
+m 153
+m 517
+m 386
+s 11 542 0
+m 216
+m 258
+m 585
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+s 11 514 0
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 185
+m 490
+m 75
+m 490
+m 185
+m 80
+m 528
+m 424
+m 161
+m 83
+m 379
+m 395
+m 556
+s 11 534 0
+m 113
+m 325
+m 588
+m 406
+m 301
+m 465
+m 559
+m 63
+m 78
+m 483
+m 77
+s 11 611 0
+m 71
+m 426
+m 331
+m 519
+m 331
+m 426
+m 71
+s 11 524 0
+m 77
+m 483
+m 78
+m 63
+m 559
+m 159
+m 520
+m 406
+m 588
+m 325
+m 556
+s 11 1088 0
+m 39
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 484
+m 490
+s 11 193 0
+m 525
+m 286
+m 537
+m 286
+m 525
+s 11 785 0
+m 490
+m 576
+m 165
+m 11
+m 382
+m 177
+m 131
+m 355
+m 218
+m 29
+m 15
+s 11 796 0
+m 259
+m 385
+m 354
+m 58
+m 28
+m 366
+m 435
+m 529
+m 356
+m 336
+m 229
+s 11 707 0
+m 214
+m 249
+m 149
+m 462
+m 548
+m 403
+m 367
+m 199
+m 394
+m 279
+m 63
+s 11 730 0
+m 544
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+m 446
+m 230
+s 11 499 0
+m 143
+m 479
+m 350
+m 392
+m 499
+m 206
+m 475
+m 514
+m 315
+s 11 153 0
+m 18
+m 315
+s 11 137 0
+m 514
+s 11 951 0
+m 209
+m 210
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 227
+s 11 596 0
+m 377
+m 150
+m 266
+m 274
+m 246
+m 99
+m 428
+m 22
+s 11 609 0
+m 398
+m 59
+m 423
+m 353
+m 21
+m 255
+m 43
+m 472
+m 519
+m 331
+s 11 349 0
+m 426
+m 389
+m 20
+s 11 621 0
+m 71
+m 77
+m 483
+m 78
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+s 11 1017 0
+m 329
+m 278
+m 282
+m 451
+m 596
+m 33
+s 11 852 0
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+m 534
+s 11 11 0
+m 563
+m 534
+s 11 779 0
+m 382
+m 11
+m 165
+m 576
+m 490
+m 525
+s 11 830 0
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 326
+m 244
+m 92
+s 11 681 0
+m 104
+m 158
+m 24
+m 374
+m 143
+m 230
+m 446
+m 230
+m 143
+m 374
+m 24
+m 158
+m 104
+s 11 830 0
+m 92
+m 244
+m 326
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+s 11 772 0
+m 525
+m 490
+m 576
+m 165
+m 11
+m 56
+s 11 62 0
+m 272
+m 361
+m 272
+s 11 53 0
+m 56
+m 11
+m 380
+m 270
+m 324
+m 381
+s 11 836 0
+m 281
+m 429
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+s 11 160 0
+m 14
+m 290
+m 14
+m 189
+m 186
+s 11 152 0
+m 287
+m 315
+m 275
+m 315
+s 11 496 0
+m 514
+m 475
+m 206
+m 499
+m 392
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+s 11 733 0
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 599
+s 11 744 0
+m 248
+m 338
+m 35
+m 548
+m 462
+m 149
+m 232
+m 149
+m 462
+m 548
+s 11 712 0
+m 403
+m 367
+m 199
+m 394
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+s 11 598 0
+m 266
+m 274
+m 246
+m 99
+m 428
+m 22
+s 11 409 0
+m 192
+m 370
+s 11 556 0
+m 428
+m 99
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+s 10 1089 0
+m 556
+m 395
+m 379
+m 83
+m 379
+m 395
+m 556
+s 11 557 0
+m 325
+m 588
+m 242
+m 151
+m 1
+m 200
+m 237
+m 31
+m 99
+m 428
+m 262
+s 11 410 0
+m 320
+m 587
+m 467
+m 353
+m 73
+m 370
+s 11 556 0
+m 428
+m 99
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+s 11 386 0
+m 406
+m 520
+m 8
+m 44
+m 193
+m 115
+m 193
+m 44
+m 8
+m 520
+m 406
+s 11 1072 0
+m 242
+m 588
+m 325
+m 113
+m 47
+m 330
+m 195
+m 441
+m 379
+m 141
+m 140
+s 11 196 0
+m 3
+m 211
+m 512
+m 487
+m 373
+m 487
+m 512
+m 211
+m 3
+m 140
+s 11 1073 0
+m 141
+m 379
+m 441
+m 195
+m 330
+m 47
+m 113
+m 325
+m 588
+s 11 996 0
+m 0
+m 307
+m 224
+s 11 325 0
+m 457
+m 224
+s 11 1021 0
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+s 11 883 0
+m 93
+m 354
+m 385
+m 259
+m 310
+m 408
+m 135
+m 176
+m 573
+m 458
+s 11 29 0
+m 506
+m 458
+m 573
+m 511
+s 11 756 0
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+m 596
+m 93
+m 94
+m 82
+s 11 745 0
+m 449
+m 302
+m 232
+m 149
+m 462
+m 548
+m 35
+m 338
+s 11 898 0
+m 248
+m 599
+m 279
+m 133
+m 193
+m 44
+s 11 988 0
+m 224
+m 307
+m 0
+m 588
+m 325
+s 11 452 0
+m 480
+s 11 557 0
+m 325
+m 588
+m 242
+m 151
+m 1
+m 200
+m 237
+m 31
+m 99
+s 11 594 0
+m 61
+m 407
+m 61
+m 99
+m 246
+m 274
+m 266
+m 150
+m 377
+m 227
+m 183
+s 11 665 0
+m 123
+m 196
+m 263
+m 182
+m 453
+m 39
+m 556
+m 113
+m 489
+m 591
+m 298
+s 11 115 0
+m 96
+m 298
+m 239
+m 296
+m 33
+m 596
+s 11 90 0
+m 93
+m 94
+m 497
+m 94
+m 93
+s 11 1023 0
+m 596
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 527 0
+m 63
+m 559
+m 159
+m 520
+m 406
+s 11 516 0
+m 588
+m 325
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 185
+s 11 781 0
+m 490
+m 525
+m 286
+m 525
+s 11 830 0
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+s 11 572 0
+m 183
+m 227
+m 377
+m 459
+m 434
+m 251
+s 11 457 0
+m 54
+s 11 577 0
+m 251
+m 434
+m 459
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+m 487
+m 512
+s 11 838 0
+m 369
+m 163
+m 399
+m 525
+m 490
+m 297
+m 432
+m 429
+m 281
+m 51
+m 558
+m 51
+m 281
+m 429
+m 432
+m 297
+m 490
+s 11 506 0
+m 185
+m 490
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+s 11 148 0
+m 12
+m 256
+m 475
+s 11 951 0
+m 209
+m 210
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 227
+s 11 1044 0
+m 377
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+s 11 434 0
+m 526
+m 285
+m 440
+m 371
+m 577
+m 371
+m 440
+m 285
+s 11 557 0
+m 262
+m 428
+m 99
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+s 11 514 0
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 185
+m 490
+m 75
+s 11 174 0
+m 223
+m 75
+m 170
+m 269
+m 170
+m 75
+m 42
+m 410
+s 11 877 0
+m 281
+m 429
+m 324
+m 270
+m 384
+m 144
+m 257
+m 458
+m 573
+m 176
+m 135
+s 11 631 0
+m 408
+m 333
+m 259
+m 385
+m 354
+m 93
+m 451
+m 282
+m 278
+m 329
+m 357
+s 11 1029 0
+m 352
+m 118
+m 44
+m 193
+m 133
+m 63
+m 78
+m 483
+m 77
+s 11 353 0
+m 416
+m 231
+m 291
+m 16
+m 291
+m 231
+m 416
+m 77
+s 11 1046 0
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+s 11 284 0
+m 593
+s 11 485 0
+m 450
+m 593
+m 377
+m 343
+m 295
+m 38
+m 23
+m 448
+m 524
+m 108
+m 242
+s 11 965 0
+m 431
+m 205
+m 169
+m 182
+s 11 292 0
+m 572
+m 453
+s 11 660 0
+m 39
+m 556
+s 11 523 0
+m 395
+m 556
+m 325
+m 588
+m 406
+m 520
+m 159
+m 559
+m 63
+s 11 688 0
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+m 377
+s 11 1055 0
+m 227
+m 183
+m 90
+m 538
+m 220
+m 241
+m 412
+m 241
+m 220
+m 538
+m 90
+m 183
+m 227
+s 11 942 0
+m 295
+m 343
+m 377
+m 593
+m 450
+m 314
+s 11 668 0
+m 326
+m 90
+m 183
+m 123
+m 196
+m 263
+m 182
+m 453
+m 39
+m 556
+s 11 513 0
+m 395
+m 379
+s 11 1063 0
+m 141
+m 140
+m 3
+m 211
+m 512
+m 487
+m 535
+m 64
+m 412
+m 64
+m 535
+m 487
+m 512
+m 211
+m 3
+m 140
+m 141
+s 11 522 0
+m 379
+m 395
+m 556
+m 325
+m 588
+m 406
+m 520
+m 159
+m 559
+m 63
+m 78
+s 11 347 0
+m 483
+m 77
+m 20
+m 389
+m 539
+m 389
+m 426
+m 574
+m 426
+m 389
+m 20
+m 77
+m 483
+s 11 1025 0
+m 78
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+s 11 625 0
+m 451
+s 11 90 0
+m 93
+m 94
+m 82
+m 449
+m 365
+m 449
+m 82
+m 94
+m 93
+s 11 788 0
+m 354
+m 385
+m 259
+m 15
+m 29
+m 218
+m 355
+m 131
+m 177
+m 382
+m 11
+s 11 874 0
+m 380
+m 6
+m 429
+s 11 834 0
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+s 11 573 0
+m 90
+m 183
+m 227
+m 377
+m 459
+m 434
+m 251
+m 473
+m 398
+m 59
+m 423
+s 11 417 0
+m 353
+m 423
+m 172
+m 192
+m 22
+m 398
+m 482
+m 86
+m 482
+m 398
+m 22
+m 428
+s 11 591 0
+m 99
+m 246
+m 274
+m 266
+m 150
+m 377
+s 11 494 0
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+m 479
+m 143
+m 230
+m 446
+m 570
+m 450
+s 11 926 0
+m 314
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+s 11 1023 0
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+m 596
+s 11 118 0
+m 491
+m 521
+m 194
+m 10
+m 194
+m 521
+m 491
+m 596
+s 11 625 0
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+m 63
+s 11 708 0
+m 544
+s 11 520 0
+m 559
+m 159
+m 520
+m 406
+m 588
+m 325
+m 556
+m 395
+m 379
+m 83
+s 11 206 0
+m 245
+m 299
+m 337
+m 299
+m 245
+s 11 521 0
+m 83
+m 379
+m 395
+m 556
+m 325
+m 588
+m 406
+m 520
+m 159
+m 559
+m 63
+s 11 624 0
+m 78
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+s 11 324 0
+m 549
+m 278
+s 11 624 0
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+m 63
+s 11 374 0
+m 544
+m 157
+m 404
+m 157
+m 544
+s 11 697 0
+m 63
+m 279
+m 599
+m 248
+m 338
+m 35
+s 11 309 0
+m 532
+s 11 381 0
+m 413
+m 565
+s 11 333 0
+m 208
+s 11 389 0
+m 115
+m 193
+s 11 903 0
+m 133
+m 279
+m 599
+m 248
+m 338
+m 35
+m 548
+m 462
+m 149
+s 11 308 0
+m 249
+m 17
+m 249
+s 11 919 0
+m 149
+m 462
+m 548
+m 403
+m 367
+m 199
+m 394
+m 279
+m 63
+m 544
+m 173
+s 11 562 0
+m 200
+m 237
+m 31
+m 99
+m 428
+m 262
+m 320
+m 587
+s 11 605 0
+m 43
+m 255
+m 21
+m 353
+m 423
+m 59
+m 398
+m 589
+m 398
+m 59
+m 423
+m 353
+m 21
+m 255
+s 11 559 0
+m 587
+m 320
+m 262
+m 428
+m 99
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+s 11 526 0
+m 588
+m 406
+m 588
+s 11 1087 0
+m 456
+m 39
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 484
+m 80
+m 528
+m 424
+m 161
+m 83
+m 379
+s 11 1065 0
+m 441
+m 379
+m 141
+m 140
+m 3
+m 211
+m 512
+m 487
+m 535
+m 64
+m 412
+s 11 253 0
+m 179
+m 499
+m 190
+m 542
+m 358
+s 11 229 0
+m 518
+s 11 218 0
+m 551
+m 479
+m 143
+s 11 718 0
+m 230
+m 446
+m 570
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+s 11 433 0
+m 346
+m 273
+m 526
+m 285
+m 440
+m 156
+m 440
+m 285
+m 526
+m 273
+m 346
+s 11 554 0
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+m 113
+m 47
+m 330
+s 11 1066 0
+m 195
+m 441
+m 379
+m 141
+m 140
+m 3
+m 211
+m 512
+m 487
+m 535
+s 11 582 0
+m 538
+m 535
+m 487
+m 512
+m 369
+s 11 160 0
+m 14
+m 290
+m 14
+m 189
+m 452
+m 210
+s 11 204 0
+m 474
+m 421
+m 474
+s 11 164 0
+m 210
+m 209
+s 11 505 0
+m 475
+m 514
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+m 490
+s 11 516 0
+m 185
+m 80
+m 528
+m 424
+m 161
+m 83
+m 379
+s 11 200 0
+m 488
+s 11 522 0
+m 379
+m 395
+m 556
+m 325
+m 588
+m 406
+m 520
+m 159
+m 559
+m 63
+s 11 742 0
+m 279
+m 599
+m 248
+m 338
+m 35
+m 548
+m 35
+m 338
+m 248
+m 599
+m 279
+s 11 817 0
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+s 11 482 0
+m 343
+m 295
+m 38
+m 530
+s 11 289 0
+m 571
+m 252
+s 11 960 0
+m 196
+m 123
+m 183
+m 90
+m 538
+m 220
+m 64
+m 555
+m 210
+m 209
+s 11 150 0
+m 475
+m 256
+m 12
+m 256
+m 475
+s 11 951 0
+m 209
+m 210
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 227
+m 295
+m 38
+s 11 465 0
+m 128
+m 150
+m 459
+m 498
+m 303
+m 134
+m 240
+m 134
+m 303
+m 498
+m 459
+s 11 725 0
+m 377
+m 593
+m 450
+m 570
+m 446
+m 570
+m 450
+m 593
+m 377
+s 11 597 0
+m 150
+m 266
+m 274
+m 246
+m 99
+m 428
+s 11 413 0
+m 370
+m 192
+m 172
+m 192
+m 370
+m 428
+s 11 594 0
+m 61
+m 99
+m 246
+m 274
+m 266
+m 150
+m 377
+m 227
+m 183
+s 11 833 0
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+s 11 640 0
+m 576
+m 165
+m 11
+m 56
+m 11
+m 165
+m 576
+s 11 832 0
+m 490
+m 525
+m 399
+m 163
+m 369
+s 11 160 0
+m 14
+m 189
+m 186
+m 189
+m 14
+s 11 828 0
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 326
+s 11 926 0
+m 314
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+s 11 375 0
+m 586
+m 157
+m 41
+s 11 536 0
+m 78
+m 63
+m 559
+m 465
+m 301
+m 406
+m 588
+m 325
+m 113
+m 47
+m 330
+s 11 971 0
+m 386
+m 330
+m 47
+m 113
+m 325
+m 456
+m 205
+m 456
+s 11 532 0
+m 588
+m 406
+m 301
+m 465
+m 559
+m 63
+m 78
+m 483
+m 77
+s 11 353 0
+m 416
+m 231
+m 291
+s 11 370 0
+m 105
+m 508
+m 152
+m 508
+s 11 366 0
+m 199
+m 184
+m 279
+s 11 1024 0
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+s 11 883 0
+m 93
+m 354
+m 385
+m 259
+m 310
+m 408
+m 135
+m 408
+s 11 630 0
+m 333
+m 259
+m 385
+m 354
+m 93
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+s 11 1030 0
+m 118
+m 44
+m 193
+m 133
+m 63
+m 78
+m 483
+m 77
+m 71
+m 426
+m 71
+m 77
+m 483
+s 11 362 0
+m 552
+m 416
+s 11 534 0
+m 77
+m 483
+m 78
+m 63
+m 559
+m 465
+m 301
+m 406
+m 588
+m 325
+s 10 1089 0
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+s 11 123 0
+m 65
+s 11 650 0
+m 576
+m 165
+m 11
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 33
+s 11 117 0
+m 296
+m 33
+m 491
+m 521
+m 194
+m 10
+m 194
+m 521
+m 491
+m 33
+s 11 866 0
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 56
+m 11
+m 380
+m 6
+m 429
+s 11 869 0
+m 324
+m 429
+m 6
+m 380
+m 11
+m 56
+m 177
+m 131
+m 355
+s 11 753 0
+m 433
+m 84
+m 250
+m 33
+m 596
+m 93
+m 94
+m 93
+s 11 625 0
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+m 63
+s 11 730 0
+m 544
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+m 446
+m 230
+s 11 233 0
+m 507
+m 560
+m 507
+m 567
+m 393
+s 11 716 0
+m 570
+m 450
+m 593
+m 377
+m 150
+s 11 598 0
+m 266
+m 274
+m 246
+m 99
+m 428
+m 22
+m 398
+m 22
+m 428
+m 99
+m 246
+m 274
+m 266
+s 11 812 0
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 394
+m 199
+m 367
+m 403
+s 11 801 0
+m 548
+m 462
+m 149
+m 249
+m 214
+m 229
+m 336
+m 356
+m 529
+m 435
+m 366
+s 11 107 0
+m 213
+s 11 800 0
+m 28
+m 366
+m 435
+m 529
+m 356
+m 336
+m 229
+m 214
+m 249
+m 149
+m 462
+s 11 711 0
+m 548
+m 403
+m 367
+m 199
+m 394
+m 279
+m 63
+m 544
+m 173
+s 11 1040 0
+m 31
+m 346
+m 273
+m 180
+s 11 436 0
+m 561
+m 180
+m 273
+s 11 1049 0
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+s 11 680 0
+m 593
+m 450
+m 570
+m 446
+m 230
+s 11 233 0
+m 507
+m 567
+m 393
+s 11 688 0
+m 570
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+s 11 433 0
+m 346
+m 273
+m 526
+m 285
+m 440
+m 285
+m 526
+m 273
+m 180
+s 11 1046 0
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+m 227
+s 11 469 0
+m 295
+m 38
+m 288
+m 38
+m 23
+s 11 811 0
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 394
+m 199
+m 367
+m 403
+m 548
+s 11 312 0
+m 462
+m 548
+m 35
+m 532
+m 277
+m 532
+m 35
+s 11 691 0
+m 338
+m 248
+m 599
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+m 377
+s 11 494 0
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+m 479
+m 350
+m 392
+s 11 255 0
+m 542
+m 190
+m 499
+m 179
+s 11 1065 0
+m 412
+m 64
+m 535
+m 487
+m 512
+m 211
+m 3
+m 140
+m 141
+m 379
+m 441
+s 11 982 0
+m 345
+m 441
+m 245
+m 299
+m 289
+m 216
+m 258
+m 276
+m 272
+s 11 63 0
+m 361
+m 254
+m 361
+s 11 52 0
+m 272
+m 56
+s 11 856 0
+m 382
+m 177
+m 131
+s 11 983 0
+m 258
+m 276
+m 405
+m 289
+m 299
+m 245
+m 441
+m 345
+m 556
+s 11 968 0
+m 113
+m 325
+m 456
+m 431
+m 456
+s 11 542 0
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+s 11 36 0
+m 131
+m 355
+m 218
+m 597
+m 218
+m 355
+m 131
+s 11 973 0
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 456
+m 205
+s 11 486 0
+m 108
+m 524
+m 448
+m 23
+m 38
+m 295
+m 343
+s 11 458 0
+m 150
+m 266
+m 434
+m 111
+m 581
+m 160
+m 581
+m 111
+m 434
+m 266
+m 150
+s 11 693 0
+m 311
+m 237
+m 173
+m 544
+m 63
+s 11 893 0
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+m 93
+s 11 788 0
+m 354
+m 385
+m 259
+m 15
+m 29
+m 15
+m 259
+m 385
+m 354
+s 11 893 0
+m 93
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 1034 0
+m 63
+m 78
+m 483
+m 77
+m 71
+m 426
+m 71
+m 77
+m 483
+m 78
+m 63
+s 11 520 0
+m 559
+m 159
+m 520
+m 406
+m 588
+m 325
+m 556
+m 395
+m 379
+s 11 1065 0
+m 441
+m 379
+m 141
+m 140
+m 3
+m 211
+m 512
+m 487
+m 535
+m 64
+s 11 947 0
+m 220
+m 538
+m 90
+m 183
+s 11 276 0
+m 344
+m 227
+m 377
+s 11 736 0
+m 150
+m 311
+m 237
+m 173
+m 544
+s 11 372 0
+m 157
+m 41
+s 11 536 0
+m 78
+m 63
+m 559
+m 465
+m 301
+m 406
+s 11 485 0
+m 242
+m 108
+m 524
+m 448
+m 23
+m 38
+m 295
+m 343
+m 377
+m 593
+m 450
+s 11 239 0
+m 570
+m 450
+m 314
+s 11 927 0
+m 244
+m 314
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+s 11 916 0
+m 279
+m 394
+m 199
+m 367
+m 403
+m 548
+m 462
+m 149
+m 249
+m 149
+m 462
+m 548
+m 403
+m 367
+m 199
+m 394
+m 279
+s 11 615 0
+m 63
+m 78
+m 483
+m 77
+m 71
+m 426
+m 331
+m 519
+m 472
+m 43
+s 11 411 0
+m 587
+m 467
+m 353
+m 73
+m 370
+s 11 595 0
+m 428
+m 99
+m 246
+m 274
+m 266
+m 150
+m 377
+s 11 714 0
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+s 11 367 0
+m 554
+m 279
+s 11 687 0
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+m 446
+s 11 498 0
+m 230
+m 143
+m 479
+m 350
+m 392
+m 499
+m 206
+m 475
+m 514
+m 315
+s 11 153 0
+m 18
+m 265
+s 11 509 0
+m 261
+m 568
+m 223
+m 75
+m 490
+s 11 770 0
+m 576
+m 165
+m 11
+m 56
+m 177
+m 511
+m 573
+m 458
+m 257
+m 144
+s 11 18 0
+m 384
+m 154
+m 384
+s 11 759 0
+m 144
+m 534
+m 382
+m 177
+m 131
+s 11 983 0
+m 258
+m 276
+m 405
+m 289
+m 299
+s 11 215 0
+m 337
+s 11 214 0
+m 299
+m 245
+m 441
+m 345
+s 11 669 0
+m 556
+m 39
+m 453
+m 182
+m 263
+m 196
+m 123
+m 183
+m 90
+m 326
+m 244
+s 11 680 0
+m 92
+m 104
+m 158
+m 24
+m 374
+m 143
+s 11 227 0
+m 479
+m 551
+m 518
+m 260
+m 518
+m 551
+m 479
+s 11 489 0
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+m 377
+s 11 459 0
+m 459
+m 150
+m 266
+m 274
+m 414
+m 274
+s 11 600 0
+m 246
+m 99
+m 428
+s 11 403 0
+m 370
+m 320
+m 587
+m 43
+m 233
+m 43
+m 360
+m 320
+s 11 557 0
+m 262
+m 428
+m 99
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+s 11 544 0
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+m 585
+s 11 26 0
+m 177
+m 511
+m 217
+m 98
+m 217
+m 511
+m 177
+s 11 846 0
+m 382
+m 534
+m 144
+m 317
+m 32
+m 109
+m 319
+m 145
+s 11 10 0
+m 36
+s 11 839 0
+m 145
+m 558
+m 51
+m 281
+m 429
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+s 11 828 0
+m 369
+m 512
+m 487
+m 535
+s 11 265 0
+m 64
+m 363
+m 64
+m 220
+m 538
+m 90
+s 11 1046 0
+m 183
+m 227
+m 377
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+s 11 1027 0
+m 77
+m 483
+m 78
+m 63
+m 133
+m 63
+s 11 686 0
+m 544
+m 173
+s 11 1049 0
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+m 227
+m 183
+m 90
+m 538
+m 220
+m 538
+m 90
+m 183
+m 227
+m 377
+m 150
+m 311
+m 237
+s 11 719 0
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+m 446
+m 230
+s 11 235 0
+m 567
+s 11 720 0
+m 230
+m 446
+m 570
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+s 11 695 0
+m 173
+m 544
+m 63
+m 279
+m 599
+m 248
+m 338
+m 35
+m 548
+m 462
+m 149
+s 11 750 0
+m 249
+m 232
+m 302
+m 449
+m 302
+m 232
+s 11 919 0
+m 149
+m 462
+m 548
+m 403
+m 367
+m 199
+m 394
+m 279
+m 63
+m 544
+m 173
+s 11 1040 0
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+m 71
+m 426
+s 11 342 0
+m 228
+m 426
+m 71
+s 11 524 0
+m 77
+m 483
+m 78
+m 63
+m 559
+m 159
+m 520
+m 406
+m 588
+m 325
+m 556
+s 11 982 0
+m 345
+m 441
+m 245
+m 299
+m 289
+m 216
+m 258
+m 276
+m 272
+s 11 53 0
+m 56
+m 11
+m 380
+m 270
+m 324
+m 381
+m 324
+m 270
+m 380
+m 11
+m 56
+m 272
+s 11 984 0
+m 276
+m 405
+m 289
+m 299
+m 245
+m 441
+m 345
+m 556
+m 325
+s 11 450 0
+m 456
+m 205
+m 108
+m 524
+m 108
+m 205
+m 456
+m 325
+s 11 1069 0
+m 113
+m 47
+m 330
+m 195
+m 441
+m 379
+m 141
+s 11 199 0
+m 323
+m 141
+s 11 1064 0
+m 379
+m 141
+m 140
+m 3
+m 211
+m 512
+m 487
+m 535
+m 64
+m 412
+m 179
+s 11 254 0
+m 322
+m 179
+m 499
+m 190
+m 542
+m 114
+m 542
+m 190
+m 499
+m 179
+s 11 1065 0
+m 412
+m 64
+m 535
+m 487
+m 512
+m 211
+m 3
+s 11 170 0
+m 341
+m 418
+m 341
+s 11 588 0
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 183
+m 227
+m 377
+m 150
+m 266
+s 11 568 0
+m 434
+m 251
+m 473
+m 398
+m 59
+m 423
+m 353
+m 21
+m 255
+s 11 615 0
+m 43
+m 472
+m 519
+m 331
+m 426
+m 71
+m 77
+m 483
+m 78
+m 63
+s 11 616 0
+m 133
+m 63
+m 78
+m 483
+m 77
+s 11 1046 0
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+m 227
+m 183
+s 11 287 0
+m 579
+s 11 667 0
+m 90
+m 183
+m 123
+m 196
+m 263
+m 182
+m 453
+m 39
+m 556
+m 113
+m 489
+s 11 1013 0
+m 591
+m 298
+m 239
+m 296
+m 33
+m 491
+m 521
+m 194
+m 521
+m 491
+m 33
+m 296
+m 239
+m 298
+m 591
+s 11 1002 0
+m 489
+m 88
+m 0
+m 406
+m 520
+s 11 519 0
+m 159
+m 520
+m 406
+m 588
+m 325
+m 556
+m 395
+m 379
+m 83
+m 161
+s 11 162 0
+m 362
+m 341
+m 418
+m 341
+m 362
+s 11 520 0
+m 161
+m 83
+m 379
+m 395
+m 556
+m 325
+m 588
+m 406
+m 520
+s 11 1003 0
+m 8
+m 520
+m 406
+m 0
+m 88
+m 489
+s 11 968 0
+m 113
+m 325
+m 456
+m 205
+m 169
+m 182
+m 263
+m 196
+m 123
+m 183
+s 11 264 0
+m 90
+m 538
+m 220
+m 241
+m 168
+m 178
+m 536
+m 178
+m 168
+m 241
+m 220
+m 538
+m 90
+s 11 666 0
+m 183
+m 123
+m 196
+m 263
+m 182
+m 453
+m 39
+m 556
+m 113
+m 489
+m 113
+m 556
+s 11 992 0
+m 345
+m 556
+m 325
+m 588
+m 0
+m 307
+m 224
+s 11 1031 0
+m 44
+s 11 1020 0
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+m 596
+s 11 853 0
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+m 534
+m 144
+m 317
+s 11 59 0
+m 461
+s 11 843 0
+m 317
+m 32
+m 109
+m 319
+m 145
+m 558
+m 51
+m 281
+m 429
+m 432
+m 297
+s 11 832 0
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+s 11 275 0
+m 183
+m 227
+m 377
+m 593
+m 234
+m 593
+m 377
+s 11 1043 0
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+s 11 523 0
+m 483
+m 78
+m 63
+m 559
+m 159
+m 559
+m 63
+s 11 626 0
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+m 93
+s 11 88 0
+m 94
+s 11 883 0
+m 93
+m 354
+m 385
+m 259
+m 310
+m 408
+m 135
+m 176
+m 573
+s 11 18 0
+m 98
+s 11 644 0
+m 573
+m 511
+m 177
+m 56
+m 11
+m 165
+m 576
+s 11 832 0
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 326
+s 11 245 0
+m 314
+m 450
+m 570
+m 476
+m 110
+m 476
+m 570
+m 450
+s 11 484 0
+m 593
+m 377
+m 343
+m 295
+m 38
+m 23
+m 448
+m 524
+m 108
+m 242
+m 588
+s 11 977 0
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+s 11 38 0
+m 142
+m 258
+s 11 976 0
+m 276
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+s 11 484 0
+m 588
+m 242
+m 108
+m 524
+m 448
+s 11 472 0
+m 348
+m 448
+m 23
+m 38
+m 288
+m 38
+m 295
+m 343
+s 11 735 0
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+s 11 394 0
+m 67
+m 547
+m 67
+s 11 926 0
+m 279
+m 63
+m 544
+s 11 372 0
+m 157
+m 41
+m 2
+s 11 446 0
+m 561
+m 583
+m 561
+s 11 1047 0
+m 180
+m 273
+m 346
+m 31
+m 237
+s 11 552 0
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+s 11 67 0
+m 45
+m 368
+m 89
+m 250
+s 11 1017 0
+m 33
+m 596
+m 451
+m 282
+m 278
+m 329
+s 11 319 0
+m 501
+m 329
+m 357
+s 11 620 0
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 716 0
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+s 11 487 0
+m 446
+m 570
+m 450
+m 593
+m 377
+m 343
+m 295
+m 38
+m 295
+m 343
+s 11 587 0
+m 150
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+s 11 170 0
+m 341
+m 418
+m 341
+m 362
+m 161
+s 11 1082 0
+m 83
+s 11 980 0
+m 245
+m 299
+m 289
+m 405
+m 216
+m 386
+m 330
+s 11 535 0
+m 47
+m 113
+m 325
+m 588
+m 406
+m 301
+m 465
+m 559
+m 63
+m 78
+m 483
+s 11 353 0
+m 77
+m 20
+m 77
+m 483
+s 11 536 0
+m 78
+m 63
+m 559
+m 465
+m 301
+m 406
+m 588
+m 325
+m 113
+m 47
+m 330
+s 11 547 0
+m 386
+m 216
+m 258
+m 585
+s 11 36 0
+m 578
+s 11 636 0
+m 177
+m 511
+m 573
+m 176
+m 135
+m 408
+m 333
+m 259
+m 385
+m 354
+m 93
+s 11 88 0
+m 94
+m 82
+m 243
+m 409
+m 13
+m 598
+m 365
+m 449
+s 11 744 0
+m 302
+m 232
+m 149
+m 462
+m 548
+s 11 712 0
+m 403
+m 367
+m 199
+m 394
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+s 11 493 0
+m 377
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+m 479
+m 350
+m 392
+m 499
+s 11 262 0
+m 190
+s 11 493 0
+m 499
+m 392
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+m 377
+s 11 1045 0
+m 227
+m 377
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+s 11 342 0
+m 71
+m 426
+m 331
+m 519
+m 155
+m 331
+m 426
+m 71
+s 11 354 0
+m 20
+m 389
+m 539
+s 11 431 0
+m 577
+m 371
+m 440
+m 285
+s 11 557 0
+m 262
+m 428
+m 99
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+s 11 514 0
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 185
+m 490
+m 75
+s 11 184 0
+m 223
+s 11 502 0
+m 504
+m 223
+m 568
+m 261
+m 592
+m 315
+m 514
+m 475
+m 206
+m 499
+m 392
+s 11 491 0
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+m 377
+s 11 812 0
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 394
+m 199
+m 367
+m 403
+s 11 311 0
+m 548
+m 35
+m 532
+m 277
+m 129
+s 11 306 0
+m 137
+m 302
+m 232
+m 17
+m 188
+m 214
+m 249
+s 11 809 0
+m 149
+m 462
+m 548
+m 403
+m 367
+m 199
+m 394
+m 279
+m 63
+m 544
+m 173
+s 11 930 0
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 314
+m 244
+m 92
+m 104
+m 158
+s 11 261 0
+m 536
+m 178
+m 168
+m 241
+m 220
+m 64
+m 363
+m 64
+s 11 835 0
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+m 297
+m 432
+m 429
+s 11 846 0
+m 281
+m 51
+m 558
+m 145
+m 319
+m 109
+m 32
+s 11 11 0
+m 121
+s 11 842 0
+m 32
+m 109
+m 319
+m 145
+m 558
+m 51
+m 281
+m 429
+m 432
+m 297
+m 490
+s 11 504 0
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+m 514
+m 475
+m 206
+s 11 251 0
+m 499
+m 392
+m 350
+m 454
+m 350
+m 392
+m 499
+s 11 494 0
+m 206
+m 499
+m 392
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+s 11 596 0
+m 377
+m 150
+m 266
+m 274
+m 246
+m 99
+m 428
+s 11 403 0
+m 370
+m 320
+m 587
+m 43
+m 233
+m 222
+m 233
+m 43
+m 360
+m 320
+s 11 557 0
+m 262
+m 428
+m 99
+m 31
+s 11 729 0
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+s 11 237 0
+m 476
+s 11 496 0
+m 570
+m 446
+m 230
+m 143
+m 479
+m 350
+m 392
+m 499
+m 206
+m 475
+m 514
+s 11 147 0
+m 315
+m 287
+s 11 158 0
+m 186
+m 189
+m 14
+s 11 828 0
+m 369
+s 11 207 0
+m 103
+s 11 578 0
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 183
+m 227
+m 377
+s 11 597 0
+m 150
+m 266
+m 274
+m 246
+m 99
+m 61
+m 407
+s 11 424 0
+m 526
+m 407
+m 61
+m 99
+s 11 554 0
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+m 588
+m 242
+m 151
+m 1
+m 200
+s 11 809 0
+m 173
+m 544
+m 63
+m 279
+m 394
+m 199
+s 11 357 0
+m 546
+m 199
+m 394
+s 11 363 0
+m 279
+m 63
+s 11 536 0
+m 78
+m 63
+m 559
+m 465
+m 301
+m 406
+m 588
+m 325
+m 113
+m 47
+m 330
+s 11 1066 0
+m 195
+m 441
+m 379
+m 141
+m 140
+m 3
+m 211
+m 512
+m 487
+m 535
+s 11 824 0
+m 538
+m 90
+m 326
+m 314
+m 450
+m 593
+s 11 1044 0
+m 377
+m 150
+m 311
+m 237
+m 31
+m 237
+m 311
+m 150
+s 11 482 0
+m 343
+m 295
+m 38
+m 23
+m 448
+m 524
+m 108
+m 242
+m 588
+s 11 515 0
+m 325
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 185
+m 490
+s 11 770 0
+m 576
+m 165
+m 11
+m 56
+m 177
+m 511
+m 573
+m 458
+m 257
+s 11 22 0
+m 510
+s 11 762 0
+m 257
+m 144
+m 534
+m 382
+m 177
+m 131
+s 11 983 0
+m 258
+m 276
+m 405
+m 289
+s 11 203 0
+m 590
+m 289
+s 11 548 0
+m 216
+m 258
+s 11 848 0
+m 131
+m 177
+m 382
+m 534
+m 144
+m 317
+m 32
+m 109
+m 32
+m 317
+m 144
+m 534
+m 382
+m 177
+m 131
+s 11 973 0
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 456
+m 205
+m 169
+s 11 299 0
+m 453
+m 572
+m 453
+m 39
+s 11 1087 0
+m 456
+m 39
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 484
+s 11 505 0
+m 490
+m 75
+m 223
+m 568
+m 261
+m 592
+m 315
+m 514
+m 475
+m 514
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+m 490
+s 11 516 0
+m 185
+m 80
+m 528
+m 424
+m 161
+m 83
+m 379
+m 395
+m 556
+m 325
+m 588
+s 11 386 0
+m 406
+m 520
+m 8
+m 44
+m 193
+m 115
+m 565
+m 413
+m 267
+m 413
+m 565
+m 115
+m 193
+m 44
+m 8
+m 520
+m 406
+s 11 516 0
+m 588
+m 325
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+s 11 143 0
+m 351
+s 11 1086 0
+m 80
+m 528
+m 424
+m 161
+m 83
+m 379
+m 395
+m 556
+m 39
+m 456
+m 242
+s 11 560 0
+m 151
+m 1
+m 200
+m 237
+m 31
+m 99
+m 428
+m 262
+m 320
+m 587
+m 255
+m 587
+m 320
+m 262
+m 428
+m 99
+m 31
+s 11 729 0
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+s 11 240 0
+m 493
+m 570
+m 450
+m 314
+m 326
+s 11 667 0
+m 90
+m 183
+m 123
+m 196
+m 263
+s 11 286 0
+m 201
+m 541
+m 201
+m 263
+m 196
+m 252
+m 571
+m 594
+s 11 491 0
+m 295
+m 343
+m 377
+m 593
+m 450
+m 570
+s 11 240 0
+m 493
+m 570
+m 450
+m 314
+m 326
+s 11 1057 0
+m 90
+m 538
+m 220
+m 64
+m 412
+m 179
+m 322
+m 179
+m 168
+m 241
+m 220
+m 538
+m 90
+s 11 678 0
+m 326
+m 244
+m 92
+m 104
+m 158
+m 24
+m 374
+m 143
+m 230
+m 446
+s 11 227 0
+m 393
+m 446
+m 230
+m 507
+m 560
+m 507
+m 230
+s 11 499 0
+m 143
+m 479
+m 350
+m 392
+m 499
+m 206
+m 475
+m 514
+m 315
+s 11 148 0
+m 12
+m 315
+m 287
+s 11 158 0
+m 186
+m 189
+m 14
+s 11 838 0
+m 369
+m 163
+m 399
+m 525
+m 490
+m 297
+m 432
+m 429
+s 11 869 0
+m 324
+m 429
+m 6
+m 380
+m 11
+m 56
+s 11 52 0
+m 272
+m 56
+m 11
+m 124
+m 11
+m 56
+m 272
+m 276
+s 11 987 0
+m 405
+m 289
+m 299
+m 245
+m 441
+m 345
+m 556
+m 325
+m 588
+m 0
+m 307
+s 11 334 0
+m 224
+m 457
+m 224
+s 11 1020 0
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+m 596
+s 11 853 0
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+m 534
+m 144
+s 11 871 0
+m 384
+m 270
+m 324
+m 429
+m 281
+s 11 169 0
+m 410
+m 42
+s 11 501 0
+m 223
+m 568
+m 261
+m 592
+m 315
+m 514
+m 475
+m 206
+m 499
+m 392
+m 499
+s 11 1052 0
+m 179
+m 168
+m 241
+m 220
+m 538
+m 90
+m 183
+m 227
+m 377
+m 150
+m 311
+s 11 553 0
+m 237
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+s 10 1089 0
+m 556
+m 395
+m 379
+m 83
+s 11 130 0
+m 107
+m 147
+s 11 132 0
+m 102
+m 494
+m 65
+m 576
+m 238
+m 6
+m 429
+m 281
+m 429
+m 6
+m 238
+m 576
+m 165
+s 11 873 0
+m 11
+m 380
+m 270
+m 384
+m 270
+m 324
+m 429
+s 11 834 0
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+s 11 1047 0
+m 90
+m 183
+m 227
+m 377
+m 150
+m 311
+m 237
+m 31
+m 237
+m 311
+m 150
+m 377
+m 227
+s 11 491 0
+m 295
+m 343
+m 377
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+m 479
+m 350
+s 11 260 0
+m 454
+s 11 491 0
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+m 377
+s 11 587 0
+m 150
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+s 11 150 0
+m 14
+s 11 136 0
+m 495
+s 11 142 0
+m 287
+m 514
+s 11 951 0
+m 209
+m 210
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 227
+s 11 1044 0
+m 377
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+m 2
+m 77
+m 71
+m 77
+s 11 535 0
+m 483
+m 78
+m 63
+m 559
+m 465
+m 301
+m 406
+m 588
+m 325
+s 11 514 0
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+s 11 186 0
+m 163
+m 399
+m 525
+m 490
+m 297
+m 62
+m 297
+m 490
+m 525
+m 399
+m 163
+s 11 588 0
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 183
+m 227
+m 377
+m 150
+s 11 475 0
+m 128
+m 38
+m 530
+m 348
+m 448
+s 11 446 0
+m 524
+m 108
+m 205
+m 456
+m 325
+m 480
+s 11 1002 0
+m 489
+s 11 668 0
+m 113
+m 556
+m 39
+m 453
+s 11 292 0
+m 572
+m 453
+m 169
+s 11 974 0
+m 205
+m 456
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+s 11 26 0
+m 131
+m 177
+m 511
+m 573
+m 562
+m 573
+m 511
+m 177
+s 11 767 0
+m 382
+m 534
+m 144
+s 11 3 0
+m 264
+m 144
+m 317
+m 553
+m 317
+m 144
+s 11 855 0
+m 534
+m 382
+m 177
+m 131
+s 11 539 0
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+m 406
+m 301
+m 465
+m 301
+m 406
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+s 11 791 0
+m 131
+m 355
+m 218
+m 29
+m 15
+m 259
+s 11 889 0
+m 310
+s 11 878 0
+m 408
+m 135
+m 176
+m 573
+s 11 635 0
+m 511
+m 573
+m 176
+m 135
+m 408
+m 333
+m 259
+m 385
+m 354
+s 11 799 0
+m 58
+m 28
+m 366
+m 435
+m 529
+m 356
+m 336
+m 229
+m 336
+m 356
+m 529
+m 435
+m 366
+m 28
+m 58
+s 11 788 0
+m 354
+m 385
+m 259
+m 15
+m 29
+m 218
+m 355
+m 131
+s 11 549 0
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+m 242
+s 11 445 0
+m 108
+m 205
+m 456
+m 325
+s 11 1069 0
+m 113
+m 47
+m 330
+m 195
+s 11 217 0
+m 37
+m 195
+m 441
+m 345
+s 11 659 0
+m 556
+m 113
+m 489
+m 591
+m 298
+m 239
+m 296
+m 33
+m 250
+s 11 752 0
+m 84
+m 250
+m 33
+m 596
+m 93
+m 94
+m 82
+m 449
+s 11 95 0
+m 365
+m 598
+s 11 90 0
+m 13
+m 598
+m 365
+m 449
+m 82
+m 94
+m 93
+s 11 1023 0
+m 596
+m 451
+m 282
+m 278
+m 329
+s 11 319 0
+m 501
+m 329
+m 278
+s 11 885 0
+m 282
+m 451
+m 93
+m 354
+m 385
+m 259
+m 310
+m 408
+m 135
+m 176
+m 573
+s 11 763 0
+m 458
+m 257
+m 144
+s 11 3 0
+m 264
+m 144
+m 317
+m 553
+m 317
+s 11 842 0
+m 32
+m 109
+m 319
+m 145
+m 558
+m 51
+m 281
+m 429
+m 432
+m 297
+m 490
+s 11 831 0
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+m 90
+m 326
+s 11 241 0
+m 226
+m 314
+m 450
+m 570
+m 476
+m 570
+m 450
+m 314
+m 326
+s 11 1047 0
+m 90
+m 183
+m 227
+m 377
+m 150
+m 311
+m 237
+m 31
+m 346
+m 273
+m 180
+s 11 436 0
+m 561
+m 447
+m 561
+m 180
+m 273
+s 11 1049 0
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+m 227
+m 183
+m 90
+s 11 668 0
+m 326
+m 90
+m 183
+m 123
+m 196
+m 263
+m 182
+m 453
+m 182
+m 263
+m 196
+m 123
+m 183
+m 90
+s 11 834 0
+m 538
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+m 297
+m 432
+s 11 136 0
+m 429
+m 281
+m 51
+m 558
+s 11 849 0
+m 145
+m 319
+m 109
+m 32
+m 317
+m 144
+m 534
+m 382
+s 11 25 0
+m 328
+s 11 643 0
+m 382
+m 11
+m 165
+m 576
+m 165
+m 11
+m 56
+m 177
+s 11 540 0
+m 585
+m 258
+m 216
+m 386
+m 330
+m 47
+m 113
+m 325
+m 588
+m 406
+s 11 386 0
+m 520
+m 8
+m 44
+m 193
+m 115
+m 193
+m 44
+m 8
+m 520
+m 406
+s 11 1008 0
+m 533
+m 406
+s 11 516 0
+m 588
+m 325
+m 556
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+s 11 123 0
+m 65
+s 11 1086 0
+m 80
+m 528
+m 424
+m 161
+m 83
+m 379
+m 395
+m 556
+s 11 210 0
+m 345
+m 441
+m 245
+m 299
+m 245
+m 37
+m 195
+s 11 970 0
+m 330
+m 47
+m 113
+m 325
+m 456
+m 205
+m 169
+m 182
+m 263
+m 182
+m 169
+m 205
+m 456
+s 11 526 0
+m 588
+m 406
+m 520
+m 159
+m 559
+m 63
+m 78
+m 483
+m 77
+s 11 342 0
+m 71
+m 426
+m 331
+m 519
+m 564
+m 519
+m 331
+m 426
+m 71
+s 11 534 0
+m 77
+m 483
+m 78
+m 63
+m 559
+m 465
+m 301
+m 406
+m 588
+m 325
+s 11 983 0
+m 556
+m 345
+m 441
+m 245
+m 299
+m 289
+m 405
+m 276
+m 272
+s 11 65 0
+m 513
+m 284
+m 513
+s 11 985 0
+m 272
+m 276
+m 405
+m 289
+m 299
+m 245
+m 441
+m 345
+m 556
+m 325
+s 11 1087 0
+m 456
+m 39
+m 556
+m 395
+m 379
+m 83
+m 161
+s 11 162 0
+m 362
+m 341
+m 418
+m 341
+m 362
+s 11 1084 0
+m 424
+m 161
+m 83
+m 379
+m 395
+m 556
+m 39
+m 456
+m 242
+m 151
+m 1
+s 11 552 0
+m 200
+m 1
+s 11 399 0
+m 335
+m 545
+m 335
+s 11 998 0
+m 533
+m 406
+s 11 526 0
+m 588
+m 406
+m 520
+m 159
+m 559
+m 63
+m 78
+m 483
+m 78
+m 63
+m 559
+m 159
+m 520
+m 406
+m 588
+s 11 543 0
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+m 585
+s 11 26 0
+m 177
+m 511
+m 217
+m 98
+m 506
+m 458
+m 573
+m 511
+m 177
+s 11 777 0
+m 56
+m 11
+m 165
+m 576
+s 11 123 0
+m 65
+s 11 1086 0
+m 80
+m 528
+m 424
+m 161
+m 83
+m 379
+m 395
+m 556
+m 39
+m 456
+s 11 532 0
+m 588
+m 406
+m 301
+m 465
+m 559
+m 63
+s 11 1033 0
+m 133
+m 63
+m 78
+m 483
+m 77
+m 71
+m 426
+m 71
+m 77
+m 483
+m 78
+m 63
+s 11 538 0
+m 559
+m 465
+m 301
+m 406
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+m 216
+s 11 983 0
+m 258
+m 276
+m 405
+m 276
+m 272
+s 11 862 0
+m 56
+m 177
+m 131
+m 355
+m 433
+m 84
+m 250
+m 84
+m 433
+m 355
+m 433
+m 84
+m 250
+m 33
+s 11 1023 0
+m 596
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+s 11 324 0
+m 224
+m 118
+m 306
+m 208
+m 306
+s 11 1029 0
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 732 0
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+s 11 227 0
+m 393
+m 567
+m 507
+m 321
+m 507
+m 230
+m 446
+s 11 732 0
+m 570
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+s 11 433 0
+m 346
+m 273
+m 526
+m 273
+m 346
+s 11 729 0
+m 173
+m 237
+m 311
+m 150
+m 377
+m 593
+m 450
+m 570
+m 446
+m 230
+m 143
+s 11 500 0
+m 479
+m 350
+m 392
+s 11 245 0
+m 542
+m 114
+m 542
+s 11 502 0
+m 392
+m 499
+s 11 263 0
+m 179
+m 168
+m 241
+m 220
+m 538
+s 11 835 0
+m 535
+m 487
+m 512
+m 369
+m 163
+m 399
+m 525
+m 490
+m 297
+m 432
+m 429
+s 11 55 0
+m 324
+m 270
+m 212
+m 270
+m 324
+m 381
+s 11 836 0
+m 281
+m 429
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+s 11 575 0
+m 535
+m 538
+m 90
+m 183
+m 227
+m 377
+m 459
+m 434
+m 251
+m 473
+s 11 450 0
+m 581
+m 26
+m 581
+s 11 576 0
+m 473
+m 251
+m 434
+m 459
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+s 11 1066 0
+m 64
+m 535
+m 487
+m 512
+m 211
+m 3
+m 140
+m 141
+m 379
+m 441
+s 11 206 0
+m 245
+m 299
+m 289
+s 11 552 0
+m 216
+m 386
+m 330
+m 47
+m 113
+s 11 524 0
+m 556
+m 325
+m 588
+m 406
+m 520
+m 159
+m 559
+m 63
+m 78
+m 483
+m 77
+s 11 344 0
+m 20
+s 11 1044 0
+m 71
+m 77
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+s 11 1055 0
+m 227
+m 183
+m 90
+m 538
+m 220
+m 241
+m 168
+m 179
+s 11 251 0
+m 499
+m 392
+m 542
+m 101
+m 542
+m 392
+m 499
+s 11 504 0
+m 206
+m 475
+m 514
+m 315
+m 592
+m 261
+m 568
+m 223
+m 75
+s 11 781 0
+m 490
+m 576
+m 165
+m 11
+m 382
+s 11 25 0
+m 328
+s 11 643 0
+m 382
+m 56
+s 11 985 0
+m 272
+m 276
+m 405
+m 289
+s 11 203 0
+m 590
+m 280
+m 289
+s 11 987 0
+m 405
+m 289
+m 299
+m 245
+m 441
+m 345
+m 556
+s 11 670 0
+m 39
+m 453
+m 182
+m 263
+m 196
+m 123
+m 183
+s 11 276 0
+m 344
+m 227
+m 377
+s 11 569 0
+m 459
+m 434
+m 251
+m 473
+m 398
+m 59
+m 423
+m 353
+m 21
+m 255
+m 587
+s 11 405 0
+m 360
+m 320
+m 370
+s 11 556 0
+m 428
+m 99
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+m 588
+s 11 986 0
+m 0
+m 588
+m 325
+m 556
+m 345
+m 441
+m 245
+m 299
+m 289
+m 405
+m 276
+s 11 52 0
+m 272
+m 56
+m 11
+m 380
+m 270
+m 324
+m 381
+s 11 846 0
+m 281
+m 51
+m 558
+m 145
+m 319
+m 109
+m 32
+m 317
+m 144
+m 534
+s 11 23 0
+m 485
+m 328
+m 382
+m 177
+m 511
+m 217
+m 98
+m 506
+m 98
+m 217
+m 511
+m 177
+m 382
+s 11 845 0
+m 534
+m 144
+m 317
+m 32
+m 109
+m 319
+m 145
+m 558
+m 51
+m 281
+m 429
+s 11 834 0
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+s 11 263 0
+m 191
+m 220
+m 241
+m 168
+m 178
+m 536
+s 11 930 0
+m 158
+m 104
+m 92
+m 244
+m 314
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+s 11 739 0
+m 173
+m 544
+m 63
+m 279
+m 599
+m 248
+m 338
+m 35
+m 548
+m 462
+m 548
+m 35
+m 338
+m 248
+m 599
+m 279
+m 63
+m 544
+m 173
+s 11 552 0
+m 200
+m 1
+m 151
+m 242
+m 151
+m 1
+m 200
+s 11 563 0
+m 237
+m 31
+m 99
+m 428
+m 262
+m 320
+s 11 404 0
+m 73
+m 320
+m 587
+m 43
+m 233
+m 222
+m 233
+m 43
+m 360
+m 320
+s 11 557 0
+m 262
+m 428
+m 99
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+s 11 978 0
+m 113
+m 47
+m 330
+m 386
+m 216
+m 258
+m 276
+m 272
+s 11 63 0
+m 361
+m 254
+m 361
+s 11 985 0
+m 272
+m 276
+m 405
+m 289
+m 299
+m 245
+m 441
+m 345
+m 556
+s 11 513 0
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 185
+m 490
+m 75
+m 223
+s 11 502 0
+m 504
+m 223
+m 568
+m 261
+m 592
+m 315
+s 11 148 0
+m 12
+m 256
+m 475
+m 206
+m 445
+m 206
+m 475
+s 11 496 0
+m 514
+m 475
+m 206
+m 499
+m 392
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+s 11 733 0
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+s 11 384 0
+m 67
+m 115
+m 565
+m 413
+m 565
+m 115
+m 67
+s 11 688 0
+m 279
+m 63
+m 544
+m 173
+m 237
+m 311
+m 150
+s 11 579 0
+m 459
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+s 11 160 0
+m 14
+m 189
+m 452
+m 481
+m 117
+m 481
+m 452
+m 210
+s 11 963 0
+m 555
+m 64
+m 220
+m 538
+m 90
+m 183
+m 123
+m 196
+m 263
+m 182
+s 11 299 0
+m 453
+m 39
+s 11 524 0
+m 556
+m 325
+m 588
+m 406
+m 520
+m 159
+m 559
+m 63
+s 11 368 0
+m 133
+m 279
+m 184
+m 508
+m 105
+s 11 358 0
+m 291
+m 203
+m 552
+s 11 347 0
+m 483
+m 77
+m 20
+m 389
+s 11 445 0
+m 69
+m 583
+m 561
+s 11 1047 0
+m 180
+m 273
+m 346
+m 31
+m 237
+s 11 552 0
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+s 11 69 0
+m 517
+m 386
+s 11 536 0
+m 330
+m 47
+m 113
+m 325
+m 588
+m 406
+m 301
+m 465
+m 559
+m 63
+m 78
+s 11 380 0
+m 41
+m 157
+m 404
+m 157
+m 544
+s 11 538 0
+m 559
+m 465
+m 301
+m 406
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+s 11 69 0
+m 517
+m 368
+m 89
+m 308
+m 250
+s 11 662 0
+m 33
+m 296
+m 239
+m 298
+m 591
+m 489
+m 113
+m 556
+m 39
+m 453
+m 39
+m 556
+s 11 557 0
+m 325
+m 588
+m 242
+m 151
+m 1
+m 200
+m 237
+m 31
+m 99
+m 428
+s 11 413 0
+m 370
+m 73
+m 353
+m 439
+m 390
+m 439
+m 353
+m 73
+s 11 558 0
+m 320
+m 262
+m 428
+m 99
+m 31
+m 237
+m 200
+m 1
+m 151
+m 242
+s 11 1009 0
+m 406
+m 0
+m 88
+m 489
+m 591
+m 298
+s 11 71 0
+m 127
+m 517
+m 153
+m 89
+m 250
+s 11 662 0
+m 33
+m 296
+m 239
+m 298
+m 591
+m 489
+m 113
+m 556
+m 39
+m 453
+m 182
+s 11 283 0
+m 263
+m 196
+m 252
+m 540
+m 252
+m 196
+m 263
+s 11 972 0
+m 182
+m 169
+m 205
+m 456
+m 325
+m 113
+m 47
+m 330
+m 386
+s 11 63 0
+m 368
+m 45
+m 97
+m 84
+m 364
+m 34
+s 11 43 0
+m 218
+m 29
+m 218
+s 11 859 0
+m 355
+m 433
+m 84
+m 250
+m 33
+s 11 1006 0
+m 296
+m 239
+m 298
+m 591
+m 489
+m 88
+m 0
+m 406
+m 533
+s 11 1083 0
+m 151
+m 242
+m 456
+m 39
+m 556
+m 395
+m 379
+m 83
+m 161
+s 11 509 0
+m 424
+m 528
+m 80
+m 185
+m 490
+m 75
+m 223
+m 568
+m 223
+m 75
+m 490
+m 185
+m 80
+m 528
+m 424
+s 11 520 0
+m 161
+m 83
+m 379
+m 395
+m 556
+s 11 556 0
+m 113
+m 325
+m 588
+m 242
+m 151
+m 1
+m 200
+m 237
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+m 113
+s 11 545 0
+m 47
+m 330
+m 386
+m 216
+m 258
+m 585
+s 11 26 0
+m 177
+m 511
+m 573
+m 98
+m 376
+m 217
+m 511
+m 177
+m 131
+m 177
+m 511
+m 573
+s 11 886 0
+m 176
+m 135
+m 408
+m 310
+m 259
+m 385
+m 354
+m 93
+s 11 88 0
+m 94
+m 82
+m 243
+m 409
+m 243
+m 82
+m 94
+s 11 883 0
+m 93
+m 354
+m 385
+m 259
+m 310
+m 408
+m 135
+m 176
+m 573
+m 458
+m 257
+s 11 872 0
+m 144
+m 384
+m 270
+m 324
+m 270
+m 384
+m 144
+s 11 762 0
+m 257
+m 144
+m 534
+m 382
+m 177
+m 131
+m 355
+m 433
+m 84
+s 11 751 0
+m 250
+m 33
+m 596
+m 93
+m 94
+m 82
+m 449
+m 302
+m 232
+m 249
+m 214
+m 249
+m 232
+m 302
+m 449
+m 82
+m 94
+m 93
+s 11 1024 0
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+m 63
+s 11 614 0
+m 78
+m 483
+m 77
+m 71
+m 426
+m 331
+m 426
+m 71
+m 77
+m 483
+m 78
+s 11 1024 0
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+s 11 748 0
+m 93
+m 94
+m 93
+s 11 1013 0
+m 596
+m 33
+m 296
+m 239
+m 298
+m 591
+s 11 667 0
+m 489
+m 113
+m 556
+m 39
+m 453
+m 182
+m 263
+s 11 288 0
+m 283
+m 263
+s 11 662 0
+m 182
+m 453
+m 39
+m 556
+m 113
+m 489
+m 591
+m 298
+m 239
+m 296
+m 33
+s 11 651 0
+m 491
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 11
+s 11 872 0
+m 56
+m 11
+m 380
+m 6
+m 429
+s 11 834 0
+m 432
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+s 11 677 0
+m 90
+m 326
+m 244
+m 92
+m 104
+m 158
+m 24
+m 158
+m 104
+m 92
+m 244
+m 326
+m 90
+s 11 666 0
+m 183
+m 123
+m 196
+m 263
+m 182
+m 453
+m 39
+m 556
+s 11 220 0
+m 345
+m 271
+m 345
+s 11 659 0
+m 556
+m 113
+m 489
+m 591
+m 298
+m 239
+m 296
+m 33
+m 491
+s 11 1019 0
+m 521
+m 491
+m 596
+s 11 100 0
+m 93
+m 354
+m 58
+m 28
+m 366
+m 435
+m 529
+m 435
+m 366
+m 28
+m 58
+m 354
+m 93
+s 11 1023 0
+m 596
+m 451
+m 282
+m 278
+m 329
+m 357
+m 352
+m 118
+m 44
+m 193
+m 133
+s 11 615 0
+m 63
+m 78
+m 483
+s 11 362 0
+m 552
+m 416
+s 11 1045 0
+m 77
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+s 11 579 0
+m 459
+m 377
+m 227
+m 183
+m 90
+m 538
+m 535
+m 487
+m 512
+m 369
+s 11 187 0
+m 122
+m 163
+m 528
+s 11 519 0
+m 424
+m 161
+m 83
+m 379
+m 395
+m 556
+m 325
+m 588
+m 406
+m 520
+m 159
+s 11 379 0
+m 559
+m 544
+m 157
+m 404
+m 157
+m 41
+s 11 357 0
+m 483
+m 552
+m 483
+s 11 1045 0
+m 77
+m 2
+m 180
+m 273
+m 346
+m 31
+m 237
+m 311
+m 150
+m 377
+m 227
+s 11 1056 0
+m 183
+m 90
+m 538
+m 220
+m 241
+s 11 267 0
+m 425
+m 241
+m 220
+s 11 1066 0
+m 64
+m 535
+m 487
+m 512
+m 211
+m 3
+m 140
+m 141
+m 379
+m 441
+m 195
+s 11 217 0
+m 37
+m 195
+m 441
+m 455
+m 345
+s 11 659 0
+m 556
+m 113
+m 489
+m 591
+m 298
+m 239
+m 296
+m 33
+s 11 1013 0
+m 596
+m 33
+m 296
+m 239
+m 298
+m 591
+s 11 1002 0
+m 489
+m 88
+m 0
+m 406
+m 520
+m 8
+s 11 628 0
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+m 93
+m 354
+m 385
+s 11 100 0
+m 259
+m 385
+m 354
+m 58
+m 28
+m 366
+m 435
+m 529
+m 356
+m 529
+m 435
+m 366
+m 28
+m 58
+m 354
+m 385
+m 259
+s 11 785 0
+m 15
+m 29
+m 218
+m 355
+m 131
+m 177
+m 382
+m 11
+m 165
+m 576
+m 490
+s 11 833 0
+m 297
+m 490
+m 525
+m 399
+m 163
+m 369
+m 512
+m 487
+m 535
+m 538
+s 11 268 0
+m 95
+m 443
+m 106
+m 425
+m 241
+m 168
+s 11 253 0
+m 179
+m 499
+m 190
+m 542
+m 146
+m 542
+m 190
+m 499
+s 11 494 0
+m 206
+m 499
+m 392
+m 350
+m 479
+m 143
+m 230
+m 446
+m 570
+m 450
+m 593
+s 11 596 0
+m 377
+m 150
+m 266
+m 274
+m 266
+m 150
+m 377
+s 11 1055 0
+m 227
+m 183
+m 90
+m 538
+m 220
+m 241
+m 168
+m 179
+m 168
+m 241
+m 220
+m 538
+s 11 268 0
+m 95
+m 90
+s 11 277 0
+m 579
+m 183
+m 227
+m 377
+m 593
+s 11 733 0
+m 450
+m 593
+m 377
+m 150
+m 311
+m 237
+m 173
+m 544
+m 63
+m 279
+m 63
+m 544
+m 173
+s 11 552 0
+m 200
+m 1
+m 151
+m 242
+m 588
+m 325
+m 113
+m 47
+m 330
+m 386
+s 11 69 0
+m 517
+m 368
+m 89
+m 308
+m 89
+m 368
+m 386
+s 11 1067 0
+m 330
+m 195
+m 441
+m 379
+s 11 513 0
+m 395
+m 379
+m 83
+m 161
+m 424
+m 528
+m 80
+m 185
+m 490
+s 11 841 0
+m 525
+m 490
+m 297
+m 432
+m 429
+m 432
+m 297
+m 490
+s 11 776 0
+m 576
+m 165
+m 11
+m 56
+m 177
+s 11 36 0
+m 131
+m 355
+m 218
+m 5
+m 469
+m 5
+m 218
+m 355
+s 11 753 0
+m 433
+m 84
+m 250
+m 33
+m 596
+m 93
+m 94
+m 82
+m 449
+m 302
+m 232
+s 11 919 0
+m 149
+m 462
+m 548
+m 403
+m 367
+m 199
+m 394
+m 279
+m 63
+s 11 614 0
+m 78
+m 483
+m 77
+m 71
+m 426
+m 331
+m 426
+m 71
+m 77
+m 483
+m 78
+s 11 1024 0
+m 63
+m 133
+m 193
+m 44
+m 118
+m 352
+m 357
+m 329
+m 278
+m 282
+m 451
+s 11 759 0
+m 596
+m 33
+m 250
+m 84
+m 433
+m 355
+m 131
+m 177
+m 382
+m 534
+s 11 11 0
+m 563
+m 144
+m 384
+m 154

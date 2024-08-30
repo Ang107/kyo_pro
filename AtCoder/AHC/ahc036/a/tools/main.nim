@@ -602,7 +602,9 @@ proc normal_dijkstra(input: Input, output: var Output, index_list: array[N, seq[
             blues = a_index[node2.signal_state]
 
         for next in input.G[node2.v_index]:
-            if next in blues:
+            if (node2.signal_state != -1 and next in a_index[
+                    node2.signal_state]) or
+            (node2.signal_state == -1 and next in last_colorchange_signal):
                 var index = visited[next].index(node2.signal_state)
                 if index == -1 or
                     node2.times < visited[next][index][1].times:
@@ -633,7 +635,7 @@ proc normal_dijkstra(input: Input, output: var Output, index_list: array[N, seq[
         now = new_node1(-1, INF64, -1, (-1, -1))
         actions = newSeqOfCap[(string, int, int, int)](20)
         flag = true
-    if next_g != -1 and time.get_passed_time() < 1.8:
+    if next_g != -1 and time.get_passed_time() < 2.3:
         var
             nodes = newSeqOfCap[Node1](4)
             evaluation = initTable[(int, int, int, int, int), int](0)
@@ -835,10 +837,7 @@ proc fast_make_actions(input: Input, output: var Output, index_list: array[N,
             s = input.TS[i]
             g = input.TS[i+1]
         fast_dijkstra(input, output, index_list, s, g, color_change_signal)
-        for j in 1..output.actions.len():
-            if output.actions[^j][0] == "s":
-                color_change_signal = output.actions[^j][2]
-                break
+
 
 proc deb(input: Input, output: var Output) =
     for i in 0..<input.LA-input.LB+1:
@@ -927,8 +926,8 @@ proc solve(self: Solver, input: var Input, output: var Output, time: Time) =
     make_A(input, output, time)
     var index_list = make_index_list(input, output)
     make_a_index(input, output)
-    time.out_paased_time()
-    if true:
+    # time.out_paased_time()
+    if false:
         make_need_signal_change_times(input, output, index_list)
         fast_make_actions(input, output, index_list)
     else:

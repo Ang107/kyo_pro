@@ -20,10 +20,10 @@ do
     
     #--profiler:on --stackTrace:on
 
-    nim cpp -r -d:release  --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc${contest_num}/a/tools/best.nim" < in/${j}.txt > best_out/${j}.txt
-    pypy3  "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc${contest_num}/a/tools/calc_score.py" < best_out/${j}.txt >> score/score.txt
+    # nim cpp -r -d:release  --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off  "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc${contest_num}/a/tools/best.nim" < in/${j}.txt > best_out/${j}.txt 
+    # pypy3  "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc${contest_num}/a/tools/calc_score.py" < best_out/${j}.txt >> score/score.txt
 
-    # nim cpp -r -d:release  --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc${contest_num}/a/tools/main.nim" < in/${j}.txt > out/${j}.txt
-    # pypy3  "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc${contest_num}/a/tools/calc_score.py" < out/${j}.txt >> score/score.txt
+    nim cpp -r -d:release  --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc${contest_num}/a/tools/main.nim" < in/${j}.txt > out/${j}.txt 
+    pypy3  "/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc${contest_num}/a/tools/calc_score.py" < out/${j}.txt >> score/score.txt
 done
 

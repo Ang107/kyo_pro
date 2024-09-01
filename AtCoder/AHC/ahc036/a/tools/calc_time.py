@@ -5,7 +5,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 # データの準備（入力されたデータを使用）
 times = []
 param = []
-for _ in range(100):
+for _ in range(500):
     tmp = input().split()
     times.append(float(tmp[0]))
     param.append(list(map(int, tmp[1:])))

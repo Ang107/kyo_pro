@@ -3,7 +3,9 @@ import std/times
 import std/random
 import atcoder/segtree
 # import nimprof
-{.checks: off.}
+
+# {.checks: off.}
+
 # when not declared CPLIB_TMPL_QCFIUM:
 #     const CPLIB_TMPL_QCFIUM* = 1
 #     {.emit: """
@@ -251,11 +253,14 @@ proc distance(xy1, xy2: (int, int)): int =
     return ((xy1[0]-xy2[0]) ** 2) + ((xy1[1]-xy2[1]) ** 2)
 
 #tspの経路を求める
-proc tsp(input: Input, output: Output, time: Time, target: seq[int]): seq[int] =
+proc tsp(input: Input, output: Output, time: Time, target: seq[int], start: int): seq[int] =
     #diss[i] = iからの（距離、どこから来たか、座標）
     var
         diss: array[N, seq[(int, int)]]
         A = newSeqOfCap[int](input.LA)
+        in_target: array[N, bool]
+    for i in target:
+        in_target[i] = true
     for i in 0..<N:
         diss[i] = newSeqOfCap[(int, int)](N)
         for j in 0..<N:
@@ -285,7 +290,7 @@ proc tsp(input: Input, output: Output, time: Time, target: seq[int]): seq[int] =
                 result += roots[s][g][0]
 
         # 2opt
-        var all_dis = get_all_dis(order)
+        # var all_dis = get_all_dis(order)
         var updated = true
         while updated:
             updated = false
@@ -308,7 +313,7 @@ proc tsp(input: Input, output: Output, time: Time, target: seq[int]): seq[int] =
                     if prv > nxt:
                         order[i..j] = order[i..j].reversed()
                         updated = true
-                        all_dis += nxt - prv
+                        # all_dis += nxt - prv
     proc make_root(order: seq[int]): seq[int] =
         # 経路の構築
         var A = newSeqOfCap[int](input.LA)
@@ -324,150 +329,118 @@ proc tsp(input: Input, output: Output, time: Time, target: seq[int]): seq[int] =
                     A.add(j)
         var nA = newSeqOfCap[int](A.len())
         for index, i in A:
+            # if i in nA[^min(nA.len(), input.LB//3)..^1]:
+            #     continue
             if nA.len() >= 1 and nA[^1] == i:
                 continue
             if nA.len() >= 2 and nA[^2] == i:
                 continue
             nA.add(i)
         return nA
+    var
+        pos: array[N, seq[int]]
+        root = newSeqOfCap[int](15000)
+        cnt: array[N, int]
+    proc evaluate(order: seq[int]): int =
+        for i in 0..<order.len()-1:
+            var s = order[i]
+            var g = order[i+1]
+            result += roots[s][g][0]
+        #超過している場合
+        if result > input.LA:
+            return (result-input.LA) << 32
+        cnt.fill(0)
+        for i in 0..<N:
+            pos[i].setLen(0)
+        root.setLen(0)
+        #ルートを復元し、positionを記録
+        for i in 0..<order.len()-1:
+            var s = order[i]
+            var g = order[i+1]
+            for j in bfs(s, g)[1..^1]:
+                cnt[j] += 1
+                if in_target[j]:
+                    pos[j].add(root.len())
+                root.add(j)
+        for i in target:
+            if cnt[i] == 0:
+                return INF64
+        for i in 0..<N:
+            var
+                s = input.TS[i]
+                g = input.TS[i+1]
+                r = 0
+                min_dis = INF64
 
-    proc evaluate(root: seq[int]): float =
-        var visited: array[N, bool]
-        for i in root:
-            visited[i] = true
-        return visited.count(true) / root.len()
+            for i in pos[s]:
+                while r < pos[g].len() and i > pos[g][r]:
+                    r += 1
+                if r > 0:
+                    min_dis = min(min_dis, i-pos[g][r-1])
+                if r < pos[g].len():
+                    min_dis = min(min_dis, pos[g][r]-i)
+            assert min_dis != INF64
+            result += min_dis
+        return result
 
-    var o = greedy(target, target[0])
+    proc yamanobori(order: var seq[int]) =
+        #小さいほど良い
+        var best_score = evaluate(order)
+        while time.get_passed_time() < 2:
+            var
+                i = rand(order.len()-2)
+                j = rand(i+1..order.len()-1)
+                k = (j - i + 1) // 2
+            var prv = order
+            for l in 0..<k:
+                # echo "# before", order
+                swap(order[i+l], order[j-l])
+                # echo "# swap(i,j)", (i, j)
+                # echo "# after", order
+            var new_score = evaluate(order)
+            # stdout.writeLine "# new_score", (best_score, new_score)
+            if new_score < best_score:
+                best_score = new_score
+                stdout.writeLine "#", best_score
+                stdout.writeLine "#", root.len()
+            else:
+                for l in 0..<k:
+                    swap(order[i+l], order[j-l])
+                    # echo "# ctrl z", order
+                assert prv == order
+
+    var o = greedy(target, start)
     optimize(o)
     result = make_root(o)
+    echo "# A.len", result.len()
     while result.len() > input.LA:
+        echo "# A.len", result.len()
         o = greedy(target, sample(target))
         optimize(o)
         result = make_root(o)
+
+
+    # var order = input.TS.toSeq()
+    # yamanobori(o)
+    # result = make_root(o)
+    # var tmp = result.toHashSet()
+    # var stack = newSeqOfCap[int](N)
+    # var visited = initHashSet[int](N)
+    # stack.add(0)
+    # while stack.len() > 0:
+    #     var v = stack.pop()
+    #     for next in input.G[v]:
+    #         if next in tmp and next notin visited:
+    #             visited.incl(next)
+    #             stack.add(next)
+    # for i in input.TS:
+    #     assert(i in visited, $i)
+
+    # assert result.len() <= input.LA
+    # echo "#", evaluate(o)
+    # echo "#", result.len()
     return result
 
-
-
-
-proc make_A(input: Input, output: var Output, time: Time) =
-    #最適経路を構築し、圧縮する
-    # var A = newSeqofCap[int](10000)
-    # for i in 0..<N:
-    #     for j in bfs(input.TS[i], input.TS[i+1])[1..^1]:
-    #         if A.len() >= 1 and A[^1] == j:
-    #             continue
-    #         if A.len() >= 2 and A[^2] == j:
-    #             continue
-    #         A.add(j)
-    # echo A.len()
-
-    # # var cnt = initTable[seq[int], seq[int]](A.len())
-    # var nA = newSeqOfCap[int](A.len())
-    # var added = initHashSet[seq[int]](A.len())
-    # var tmp = initDeque[int](input.LB)
-    # for i in A:
-    #     tmp.addLast(i)
-    #     if tmp.len() == input.LB:
-    #         if sorted(tmp.toSeq()) in added:
-    #             tmp.clear()
-    #         else:
-    #             nA.add(tmp.popFirst())
-    #             if nA.len() >= input.LB:
-    #                 added.incl(nA[^input.LB..^1].sorted())
-    # echo nA.len()
-
-    # var nnA = newSeqOfCap[int](nA.len())
-    # for i in nA:
-    #     if nnA.len() >= 1 and nnA[^1] == i:
-    #         continue
-    #     if nnA.len() >= 2 and nnA[^2] == i:
-    #         continue
-    #     nnA.add(i)
-    # echo nnA.len()
-    # quit()
-
-    var
-        target = input.TS.sorted().deduplicate()
-        visited: array[N, bool]
-    var A = tsp(input, output, time, target)
-    var nA = newSeqOfCap[int](A.len())
-    var added = initHashSet[seq[int]](A.len())
-    var tmp = initDeque[int](input.LB)
-    for i in A:
-        tmp.addLast(i)
-        if tmp.len() == input.LB:
-            if sorted(tmp.toSeq()) in added:
-                echo tmp
-                tmp.clear()
-            else:
-                nA.add(tmp.popFirst())
-                if nA.len() >= input.LB:
-                    added.incl(nA[^input.LB..^1].sorted())
-    for i in tmp:
-        nA.add(i)
-    A = nA
-    nA.setLen(0)
-
-    var all_root = newSeqOfCap[int](10000)
-    for i in 0..<T:
-        var
-            s = input.TS[i]
-            g = input.TS[i+1]
-        var root = bfs(s, g)
-        for i in root[1..^1]:
-            #往復は無視
-            if all_root.len() >= 1 and all_root[^1] == i:
-                continue
-            if all_root.len() >= 2 and all_root[^2] == i:
-                continue
-            all_root.add(i)
-
-    var
-        can_use_len = input.LA - A.len() + 50
-        ret: int
-        cnt: array[N, int]
-        max_cnt = 0
-        now_cnt = 0
-    for i in 0..<can_use_len:
-        cnt[all_root[i]] += 1
-        if cnt[all_root[i]] == 1:
-            now_cnt += 1
-
-    # 理想の動きのなかで、最も色んな頂点を通る部分を追加
-    for i in 0..<all_root.len() - can_use_len:
-        cnt[all_root[i]] -= 1
-        if cnt[all_root[i]] == 0:
-            now_cnt -= 1
-        cnt[all_root[i+can_use_len]] += 1
-        if cnt[all_root[i+can_use_len]] == 1:
-            now_cnt += 1
-        if now_cnt > max_cnt:
-            max_cnt = now_cnt
-            ret = i
-
-    # for i in ret..<ret+can_use_len:
-    #     nA.add(all_root[i])
-    nA = all_root[ret..<all_root.len()] & all_root[0..<ret]
-
-    tmp = initDeque[int](input.LB)
-
-    if A.len() < input.LA:
-        for i in nA:
-            tmp.addLast(i)
-            if tmp.len() == input.LB:
-                if sorted(tmp.toSeq()) in added:
-                    tmp.clear()
-                else:
-                    A.add(tmp.popFirst())
-                    if A.len() >= input.LB:
-                        added.incl(A[^input.LB..^1].sorted())
-            if A.len() >= input.LA:
-                break
-
-    while A.len() < input.LA:
-        A.add(0)
-    output.A = A[0..<input.LA]
-    # echo output.A
 
 
 
@@ -789,7 +762,7 @@ proc beamsearch(input: Input, output: var Output, time: Time) =
         cand: Cand
     cands_array[0][0] = first_cand
     if input.LB >= 15:
-        beam_width = 5
+        beam_width = 8
 
     for turn in 0..<N:
         var now_time = time.get_passed_time()
@@ -1148,7 +1121,234 @@ proc make_change_times(input: Input, output: Output,
             change_times[i] = dijkstra(input, output, index_list, i)
 
 
-            # -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+type ANode = object
+    evaluation: int #評価値
+    score: int      #改善した手数の総計（多いほど良い）
+    len: int        #残りの長さ
+    len_last: int   #直近の移動で余った長さ（隣り合う移動の際に有効に活用できる）
+    actions: seq[(int, int)] #行動履歴(from,to)
+proc new_a_node(score, len, len_last: int, actions: seq[(int, int)]): ANode =
+    return ANode(score: score, len: len, len_last: len_last, actions: actions, evaluation: score * 1000 + len)
+proc make_evaluation(self: var ANode) =
+    self.evaluation = self.score * 1000 + self.len
+
+proc `<`(a, b: ANode): bool =
+    return a.evaluation < b.evaluation
+proc optimize_A(input: var Input, output: var Output) =
+    var can_use_len = input.LA - output.A.len()
+    var default_len = output.A.len()
+    while output.A.len() < input.LA:
+        output.A.add(0)
+    var index_list = make_index_list(input, output)
+    make_a_index(input, output)
+    make_change_times(input, output, index_list)
+    # 頂点 i からの行先予定
+    var move: array[N, seq[int]]
+
+    # 頂点iの前後に訪問予定の頂点
+    var lr: array[N, seq[(int, int)]]
+    for i in 0..<N:
+        var s = input.TS[i]
+        var g = input.TS[i+1]
+        move[s].add(g)
+        move[g].add(s)
+        if i > 0:
+            var t = input.TS[i-1]
+            lr[s].add((min(t, g), max(t, g)))
+    echo move
+    var beam_width = 600
+    var cands = initHeapQueue[ANode]()
+    var next_cands = initHeapQueue[ANode]()
+    for i in 0..<N:
+        if move[i].len() > 0:
+            cands.push(new_a_node(0, can_use_len, 0, @[(-1, i)]))
+
+    var ret: ANode
+    var turn = 0
+    while cands.len() > 0:
+        turn += 1
+        # echo turn
+        # for i in 0..<5:
+        #     echo cands[i]
+        for i in 0..<cands.len():
+            var
+                cand = cands[i]
+                a = cand.actions[^1][0]
+                b = cand.actions[^1][1]
+            assert cand.len > 0
+            for c in 0..<N:
+                if b == c:
+                    continue
+                # 利得があるか
+                if c in move[b] and (b, c) notin cand.actions and (c, b) notin cand.actions:
+                    var
+                        prv_times = min(change_times[b][c])[1].times
+                        new_times = (roots[b][c][0] + input.LB-1) // input.LB
+                        add_score = prv_times - new_times
+                        len_last = input.LB * new_times - roots[b][c][0]
+                        need_len = roots[b][c][0]
+                    #連続移動できるか
+                    if (min(a, c), max(a, c)) in lr[b] and cand.len_last > 0:
+                        new_times = (roots[b][c][0] - cand.len_last) // input.LB
+                        add_score = prv_times - new_times
+                        len_last = cand.len_last + input.LB * new_times - roots[b][c][0]
+                        need_len -= cand.len_last
+
+                    #距離が足りない場合
+                    if cand.len <= need_len:
+                        add_score = add_score * cand.len // need_len
+                        if ret.evaluation < cand.evaluation - cand.len + add_score * 1000:
+                            var new_a_node = cand
+                            new_a_node.score += add_score
+                            new_a_node.len = 0
+                            new_a_node.len_last = 0
+                            new_a_node.make_evaluation()
+                            new_a_node.actions.add((b, c))
+                            assert ret.evaluation < new_a_node.evaluation
+                            ret = new_a_node
+                    else:
+                        # ビーム幅未満の場合
+                        if next_cands.len() < beam_width:
+                            var new_a_node = cand
+                            new_a_node.score += add_score
+                            new_a_node.len -= need_len
+                            new_a_node.len_last = len_last
+                            new_a_node.make_evaluation()
+                            new_a_node.actions.add((b, c))
+                            next_cands.push(new_a_node)
+                        else:
+                            if next_cands[0].evaluation < cand.evaluation - cand.len + add_score * 1000:
+                                var new_a_node = cand
+                                new_a_node.score += add_score
+                                new_a_node.len -= need_len
+                                new_a_node.len_last = len_last
+                                new_a_node.make_evaluation()
+                                new_a_node.actions.add((b, c))
+                                discard next_cands.replace(new_a_node)
+                else:
+                    if cand.len <= roots[b][c][0]:
+                        if ret.evaluation < cand.evaluation - cand.len:
+                            var new_a_node = cand
+                            new_a_node.len -= min(new_a_node.len, roots[b][c][0])
+                            new_a_node.len_last = 0
+                            new_a_node.make_evaluation()
+                            new_a_node.actions.add((b, c))
+                            ret = new_a_node
+                    else:
+                        # ビーム幅未満の場合
+                        if next_cands.len() < beam_width:
+                            var new_a_node = cand
+                            new_a_node.len -= roots[b][c][0]
+                            new_a_node.len_last = 0
+                            new_a_node.make_evaluation()
+                            new_a_node.actions.add((b, c))
+                            next_cands.push(new_a_node)
+                        else:
+                            if next_cands[0].evaluation < cand.evaluation - min(cand.len, roots[b][c][0]):
+                                var new_a_node = cand
+                                new_a_node.len -= roots[b][c][0]
+                                new_a_node.len_last = 0
+                                new_a_node.make_evaluation()
+                                new_a_node.actions.add((b, c))
+                                discard next_cands.replace(new_a_node)
+        swap(cands, next_cands)
+        next_cands.clear()
+    echo "#", ret
+
+    # quit()
+    output.A = output.A[0..<default_len]
+    output.A.add(ret.actions[0][1])
+    for (s, g) in ret.actions[1..^1]:
+        for j in bfs(s, g)[1..^1]:
+            #往復は無視
+            if output.A.len() >= 2 and output.A[^2] == j:
+                continue
+            # #往復は無視
+            if output.A.len() >= 1 and output.A[^1] == j:
+                continue
+            output.A.add(j)
+
+
+
+
+
+
+
+
+
+
+
+proc make_A(input: var Input, output: var Output, time: Time) =
+    var checked = newSeqOfCap[int](4)
+    output.A = tsp(input, output, time, input.TS.sorted().deduplicate(), 0)
+
+    # output.A.add(input.TS.sample())
+    # while output.A.len() < input.LA:
+    #     var cand: seq[int]
+    #     for index, i in input.TS:
+    #         if i == output.A[^1]:
+    #             cand.add(input.TS[index+1])
+    #     var s = output.A[^1]
+    #     var g = cand.sample()
+    #     for i in bfs(s, g)[1..^1]:
+    #         output.A.add(i)
+
+    if output.A.len() < input.LA:
+        if input.LB > 8:
+            var all_root = newSeqOfCap[int](10000)
+            for i in 0..<T:
+                var
+                    s = input.TS[i]
+                    g = input.TS[i+1]
+                var root = bfs(s, g)
+                for i in root[1..^1]:
+                    #往復は無視
+                    if all_root.len() >= 2 and all_root[^2] == i:
+                        continue
+                    # #往復は無視
+                    if all_root.len() >= 1 and all_root[^1] == i:
+                        continue
+                    all_root.add(i)
+
+
+            var
+                can_use_len = max(0, input.LA - output.A.len())
+                ret: int
+                cnt: array[N, int]
+                max_cnt = 0
+                now_cnt = 0
+
+            for i in 0..<can_use_len:
+                cnt[all_root[i]] += 1
+                if cnt[all_root[i]] == 1:
+                    now_cnt += 1
+
+            # 理想の動きのなかで、最も色んな頂点を通る部分を追加
+            # 中に含まれる各スパンの数が多いやつとかもありかも
+            for i in 0..<all_root.len() - can_use_len:
+                cnt[all_root[i]] -= 1
+                if cnt[all_root[i]] == 0:
+                    now_cnt -= 1
+                cnt[all_root[i+can_use_len]] += 1
+                if cnt[all_root[i+can_use_len]] == 1:
+                    now_cnt += 1
+                if now_cnt > max_cnt:
+                    max_cnt = now_cnt
+                    ret = i
+
+            for i in ret..<ret+can_use_len:
+                output.A.add(all_root[i])
+        else:
+            optimize_A(input, output)
+
+    while output.A.len() < input.LA:
+        output.A.add(0)
+    output.A = output.A[0..<input.LA]
+
+# -----------------------------------------------------------------------
+
+
 
 
 type Solver = object
@@ -1160,19 +1360,17 @@ proc solve(self: Solver, input: var Input, output: var Output, time: Time) =
     for i in 0..<N:
         roots[i] = bfss(input, i)
     make_A(input, output, time)
-    output.A.reverse()
     var index_list = make_index_list(input, output)
     make_a_index(input, output)
 
     if prediction_time < 2.0:
-        stderr.writeLine("#beam")
-        # stdout.writeLine("#beam")
+        # stderr.writeLine("#beam")
+        stdout.writeLine("#beam")
         make_change_times(input, output, index_list)
         beamsearch(input, output, time)
     else:
-        stderr.writeLine("#greedy")
-        # stdout.writeLine("#greedy")
-
+        # stderr.writeLine("#greedy")
+        stdout.writeLine("#greedy")
         normal_make_actions(input, output, time, index_list)
 
 
@@ -1188,45 +1386,9 @@ proc main() =
         output = new_output(input)
     var solver = new_solver()
     solver.solve(input, output, time)
-    # var cnt = newSeq[int](input.LA)
-    # for i in output.actions:
-    #     if i[0] == "s":
-    #         var
-    #             l = i[1]
-    #             ai = i[2]
-    #         for j in l..l+ai:
-    #             cnt[j] += 1
-    # echo "#", cnt
-
-    # var cost = 0
-    # var avr = 0
-    # var cnt = 0
-    # for i in 0..<output.actions.len():
-    #     if output.actions[i][0] == "m":
-    #         cost += 1
-    #     else:
-    #         cnt += 1
-    #         avr += min(cost, input.LB)
-    #         echo "# ", cost
-    #         cost = 0
-    #     # stdout.writeLine("# ", i, " ", cost)
-    # echo "# avr: ", avr / cnt
-    #
-
-    # var memo = initTable[seq[int], seq[int]]()
-    # for i in 0..<input.LA:
-    #     var tmp = sorted(a_index[i])
-    #     echo "# ", i, " ", a_index[i]
-    #     if tmp in memo:
-    #         memo[tmp].add(i)
-    #     else:
-    #         memo[tmp] = @[i]
-
-    # echo sorted(memo.pairs().toSeq(), proc (a, b: (seq[int], seq[int])): int = cmp(b[1].len(), a[1].len()))
-
-    # time.out_paased_time()
     output.output()
-    stderr.writeLine(time.get_passed_time(), " ", input.M, " ", input.LA, " ", input.LB)
-
-
+    # time.out_paased_time()
+    # stderr.writeLine(time.get_passed_time(), " ", input.M, " ", input.LA, " ", input.LB)
+    if time.get_passed_time() > 2.8:
+        stderr.writeLine("# !!! DANGER !!!", time.get_passed_time())
 main()

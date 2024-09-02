@@ -1,936 +1,1021 @@
 total executions of each stack trace:
-Entry: 1/153 Calls: 2116/7514 = 28.16% [sum: 2116; 2116/7514 = 28.16%]
-  system.nim: find 2359/7514 = 31.39%
-  system.nim: contains 2792/7514 = 37.16%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 2/153 Calls: 642/7514 = 8.54% [sum: 2758; 2758/7514 = 36.70%]
-  main.nim: index 723/7514 = 9.62%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 3/153 Calls: 300/7514 = 3.99% [sum: 3058; 3058/7514 = 40.70%]
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 4/153 Calls: 270/7514 = 3.59% [sum: 3328; 3328/7514 = 44.29%]
-  system.nim: contains 2792/7514 = 37.16%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 5/153 Calls: 239/7514 = 3.18% [sum: 3567; 3567/7514 = 47.47%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 6/153 Calls: 235/7514 = 3.13% [sum: 3802; 3802/7514 = 50.60%]
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 7/153 Calls: 225/7514 = 2.99% [sum: 4027; 4027/7514 = 53.59%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  gc.nim: usrToCell 339/7514 = 4.51%
-  gc.nim: asgnRef 528/7514 = 7.03%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 8/153 Calls: 193/7514 = 2.57% [sum: 4220; 4220/7514 = 56.16%]
-  comparisons.nim: <=% 331/7514 = 4.41%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 9/153 Calls: 171/7514 = 2.28% [sum: 4391; 4391/7514 = 58.44%]
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 10/153 Calls: 168/7514 = 2.24% [sum: 4559; 4559/7514 = 60.67%]
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 11/153 Calls: 152/7514 = 2.02% [sum: 4711; 4711/7514 = 62.70%]
-  system.nim: find 2359/7514 = 31.39%
-  system.nim: contains 2792/7514 = 37.16%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 12/153 Calls: 135/7514 = 1.80% [sum: 4846; 4846/7514 = 64.49%]
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 13/153 Calls: 128/7514 = 1.70% [sum: 4974; 4974/7514 = 66.20%]
-  system.nim: .. 128/7514 = 1.70%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 14/153 Calls: 112/7514 = 1.49% [sum: 5086; 5086/7514 = 67.69%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  gc.nim: decRef 419/7514 = 5.58%
-  gc.nim: asgnRef 528/7514 = 7.03%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 15/153 Calls: 108/7514 = 1.44% [sum: 5194; 5194/7514 = 69.12%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  alloc.nim: interiorAllocatedPtr 339/7514 = 4.51%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 16/153 Calls: 105/7514 = 1.40% [sum: 5299; 5299/7514 = 70.52%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  alloc.nim: interiorAllocatedPtr 339/7514 = 4.51%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 17/153 Calls: 100/7514 = 1.33% [sum: 5399; 5399/7514 = 71.85%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 18/153 Calls: 96/7514 = 1.28% [sum: 5495; 5495/7514 = 73.13%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  gc.nim: usrToCell 339/7514 = 4.51%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 19/153 Calls: 96/7514 = 1.28% [sum: 5591; 5591/7514 = 74.41%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: incRef 208/7514 = 2.77%
-  gc.nim: asgnRef 528/7514 = 7.03%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 20/153 Calls: 90/7514 = 1.20% [sum: 5681; 5681/7514 = 75.61%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  gc.nim: decRef 419/7514 = 5.58%
-  gc.nim: asgnRef 528/7514 = 7.03%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 21/153 Calls: 90/7514 = 1.20% [sum: 5771; 5771/7514 = 76.80%]
-  system.nim: find 2359/7514 = 31.39%
-  system.nim: contains 2792/7514 = 37.16%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 22/153 Calls: 89/7514 = 1.18% [sum: 5860; 5860/7514 = 77.99%]
-  arithmetics.nim: *% 131/7514 = 1.74%
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 23/153 Calls: 82/7514 = 1.09% [sum: 5942; 5942/7514 = 79.08%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: cellToUsr 97/7514 = 1.29%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 24/153 Calls: 81/7514 = 1.08% [sum: 6023; 6023/7514 = 80.16%]
-  main.nim: index 723/7514 = 9.62%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 25/153 Calls: 69/7514 = 0.92% [sum: 6092; 6092/7514 = 81.08%]
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 26/153 Calls: 59/7514 = 0.79% [sum: 6151; 6151/7514 = 81.86%]
-  hashes.nim: hiXorLo 109/7514 = 1.45%
-  hashes.nim: hashWangYi1 172/7514 = 2.29%
-  hashes.nim: hash 223/7514 = 2.97%
-  hashcommon.nim: rawGet 223/7514 = 2.97%
-  tables.nim: hasKey 115/7514 = 1.53%
-  tables.nim: contains 2792/7514 = 37.16%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 27/153 Calls: 55/7514 = 0.73% [sum: 6206; 6206/7514 = 82.59%]
-  main.nim: [] 1374/7514 = 18.29%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 28/153 Calls: 54/7514 = 0.72% [sum: 6260; 6260/7514 = 83.31%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  gc.nim: decRef 419/7514 = 5.58%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 29/153 Calls: 51/7514 = 0.68% [sum: 6311; 6311/7514 = 83.99%]
-  system.nim: align 107/7514 = 1.42%
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 30/153 Calls: 49/7514 = 0.65% [sum: 6360; 6360/7514 = 84.64%]
-  hashes.nim: hiXorLo 109/7514 = 1.45%
-  hashes.nim: hashWangYi1 172/7514 = 2.29%
-  hashes.nim: hash 223/7514 = 2.97%
-  hashcommon.nim: rawGet 223/7514 = 2.97%
-  tables.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 31/153 Calls: 48/7514 = 0.64% [sum: 6408; 6408/7514 = 85.28%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  gc.nim: decRef 419/7514 = 5.58%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 32/153 Calls: 48/7514 = 0.64% [sum: 6456; 6456/7514 = 85.92%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  gc.nim: decRef 419/7514 = 5.58%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 33/153 Calls: 48/7514 = 0.64% [sum: 6504; 6504/7514 = 86.56%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  alloc.nim: interiorAllocatedPtr 339/7514 = 4.51%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 34/153 Calls: 47/7514 = 0.63% [sum: 6551; 6551/7514 = 87.18%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: incRef 208/7514 = 2.77%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 35/153 Calls: 47/7514 = 0.63% [sum: 6598; 6598/7514 = 87.81%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 36/153 Calls: 44/7514 = 0.59% [sum: 6642; 6642/7514 = 88.39%]
-  comparisons.nim: <=% 331/7514 = 4.41%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 37/153 Calls: 44/7514 = 0.59% [sum: 6686; 6686/7514 = 88.98%]
-  comparisons.nim: <=% 331/7514 = 4.41%
-  gc_common.nim: isOnStack 58/7514 = 0.77%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 38/153 Calls: 44/7514 = 0.59% [sum: 6730; 6730/7514 = 89.57%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: incRef 208/7514 = 2.77%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 39/153 Calls: 40/7514 = 0.53% [sum: 6770; 6770/7514 = 90.10%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  gc.nim: decRef 419/7514 = 5.58%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  system.nim: pop 777/7514 = 10.34%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 40/153 Calls: 36/7514 = 0.48% [sum: 6806; 6806/7514 = 90.58%]
-  arithmetics.nim: %% 42/7514 = 0.56%
-  alloc.nim: interiorAllocatedPtr 339/7514 = 4.51%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 41/153 Calls: 35/7514 = 0.47% [sum: 6841; 6841/7514 = 91.04%]
-  hashes.nim: hashWangYi1 172/7514 = 2.29%
-  hashes.nim: hash 223/7514 = 2.97%
-  hashcommon.nim: rawGet 223/7514 = 2.97%
-  tables.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 42/153 Calls: 33/7514 = 0.44% [sum: 6874; 6874/7514 = 91.48%]
-  main.nim: new_node2 33/7514 = 0.44%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 43/153 Calls: 32/7514 = 0.43% [sum: 6906; 6906/7514 = 91.91%]
-  arithmetics.nim: *% 131/7514 = 1.74%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 44/153 Calls: 32/7514 = 0.43% [sum: 6938; 6938/7514 = 92.33%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 45/153 Calls: 30/7514 = 0.40% [sum: 6968; 6968/7514 = 92.73%]
-  system.nim: contains 2792/7514 = 37.16%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 46/153 Calls: 29/7514 = 0.39% [sum: 6997; 6997/7514 = 93.12%]
-  hashes.nim: hash 223/7514 = 2.97%
-  hashcommon.nim: rawGet 223/7514 = 2.97%
-  tables.nim: hasKey 115/7514 = 1.53%
-  tables.nim: contains 2792/7514 = 37.16%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 47/153 Calls: 27/7514 = 0.36% [sum: 7024; 7024/7514 = 93.48%]
-  hashes.nim: hashWangYi1 172/7514 = 2.29%
-  hashes.nim: hash 223/7514 = 2.97%
-  hashcommon.nim: rawGet 223/7514 = 2.97%
-  tables.nim: hasKey 115/7514 = 1.53%
-  tables.nim: contains 2792/7514 = 37.16%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 48/153 Calls: 25/7514 = 0.33% [sum: 7049; 7049/7514 = 93.81%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 49/153 Calls: 24/7514 = 0.32% [sum: 7073; 7073/7514 = 94.13%]
-  system.nim: align 107/7514 = 1.42%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 50/153 Calls: 22/7514 = 0.29% [sum: 7095; 7095/7514 = 94.42%]
-  hashes.nim: hash 223/7514 = 2.97%
-  hashcommon.nim: rawGet 223/7514 = 2.97%
-  tables.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 51/153 Calls: 21/7514 = 0.28% [sum: 7116; 7116/7514 = 94.70%]
-  deques.nim: popFirst 22/7514 = 0.29%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 52/153 Calls: 20/7514 = 0.27% [sum: 7136; 7136/7514 = 94.97%]
-  main.nim: new_node1 20/7514 = 0.27%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 53/153 Calls: 18/7514 = 0.24% [sum: 7154; 7154/7514 = 95.21%]
-  comparisons.nim: <=% 331/7514 = 4.41%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 54/153 Calls: 18/7514 = 0.24% [sum: 7172; 7172/7514 = 95.45%]
-  system.nim: contains 2792/7514 = 37.16%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 55/153 Calls: 18/7514 = 0.24% [sum: 7190; 7190/7514 = 95.69%]
-  system.nim: align 107/7514 = 1.42%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 56/153 Calls: 13/7514 = 0.17% [sum: 7203; 7203/7514 = 95.86%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: cellToUsr 97/7514 = 1.29%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 57/153 Calls: 13/7514 = 0.17% [sum: 7216; 7216/7514 = 96.03%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  alloc.nim: interiorAllocatedPtr 339/7514 = 4.51%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 58/153 Calls: 13/7514 = 0.17% [sum: 7229; 7229/7514 = 96.21%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 59/153 Calls: 10/7514 = 0.13% [sum: 7239; 7239/7514 = 96.34%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  alloc.nim: rawAlloc 15/7514 = 0.20%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 60/153 Calls: 10/7514 = 0.13% [sum: 7249; 7249/7514 = 96.47%]
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 61/153 Calls: 10/7514 = 0.13% [sum: 7259; 7259/7514 = 96.61%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  gc.nim: usrToCell 339/7514 = 4.51%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  main.nim: []= 51/7514 = 0.68%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 62/153 Calls: 9/7514 = 0.12% [sum: 7268; 7268/7514 = 96.73%]
-  comparisons.nim: <=% 331/7514 = 4.41%
-  gc_common.nim: isOnStack 58/7514 = 0.77%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  main.nim: []= 51/7514 = 0.68%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 63/153 Calls: 9/7514 = 0.12% [sum: 7277; 7277/7514 = 96.85%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 64/153 Calls: 9/7514 = 0.12% [sum: 7286; 7286/7514 = 96.97%]
-  system.nim: align 107/7514 = 1.42%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 65/153 Calls: 8/7514 = 0.11% [sum: 7294; 7294/7514 = 97.07%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: incRef 208/7514 = 2.77%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 66/153 Calls: 8/7514 = 0.11% [sum: 7302; 7302/7514 = 97.18%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  alloc.nim: interiorAllocatedPtr 339/7514 = 4.51%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 67/153 Calls: 8/7514 = 0.11% [sum: 7310; 7310/7514 = 97.29%]
-  comparisons.nim: <=% 331/7514 = 4.41%
-  alloc.nim: interiorAllocatedPtr 339/7514 = 4.51%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 68/153 Calls: 8/7514 = 0.11% [sum: 7318; 7318/7514 = 97.39%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  gc.nim: decRef 419/7514 = 5.58%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 69/153 Calls: 7/7514 = 0.09% [sum: 7325; 7325/7514 = 97.48%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: newObj 1054/7514 = 14.03%
-  gc.nim: newSeq 1078/7514 = 14.35%
-  system.nim: [] 1374/7514 = 18.29%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 70/153 Calls: 7/7514 = 0.09% [sum: 7332; 7332/7514 = 97.58%]
-  deques.nim: len 7/7514 = 0.09%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 71/153 Calls: 7/7514 = 0.09% [sum: 7339; 7339/7514 = 97.67%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  gc.nim: decRef 419/7514 = 5.58%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 72/153 Calls: 6/7514 = 0.08% [sum: 7345; 7345/7514 = 97.75%]
-  comparisons.nim: <=% 331/7514 = 4.41%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  main.nim: []= 51/7514 = 0.68%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 73/153 Calls: 6/7514 = 0.08% [sum: 7351; 7351/7514 = 97.83%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: incRef 208/7514 = 2.77%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  main.nim: []= 51/7514 = 0.68%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 74/153 Calls: 6/7514 = 0.08% [sum: 7357; 7357/7514 = 97.91%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  gc.nim: decRef 419/7514 = 5.58%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  main.nim: []= 51/7514 = 0.68%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 75/153 Calls: 5/7514 = 0.07% [sum: 7362; 7362/7514 = 97.98%]
-  algorithm.nim: mergeAlt 18/7514 = 0.24%
-  algorithm.nim: sort 18/7514 = 0.24%
-  main.nim: tsp 24/7514 = 0.32%
-  main.nim: make_A 24/7514 = 0.32%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 76/153 Calls: 5/7514 = 0.07% [sum: 7367; 7367/7514 = 98.04%]
-  deques.nim: expandIfNeeded 5/7514 = 0.07%
-  deques.nim: addFirst 9/7514 = 0.12%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 77/153 Calls: 5/7514 = 0.07% [sum: 7372; 7372/7514 = 98.11%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 78/153 Calls: 5/7514 = 0.07% [sum: 7377; 7377/7514 = 98.18%]
-  arithmetics.nim: %% 42/7514 = 0.56%
-  alloc.nim: interiorAllocatedPtr 339/7514 = 4.51%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 79/153 Calls: 5/7514 = 0.07% [sum: 7382; 7382/7514 = 98.24%]
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 80/153 Calls: 4/7514 = 0.05% [sum: 7386; 7386/7514 = 98.30%]
-  algorithm.nim: * 5/7514 = 0.07%
-  algorithm.nim: mergeAlt 18/7514 = 0.24%
-  algorithm.nim: sort 18/7514 = 0.24%
-  main.nim: tsp 24/7514 = 0.32%
-  main.nim: make_A 24/7514 = 0.32%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 81/153 Calls: 4/7514 = 0.05% [sum: 7390; 7390/7514 = 98.35%]
-  macros.nim: | 4/7514 = 0.05%
-  main.nim: encode 10/7514 = 0.13%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 82/153 Calls: 4/7514 = 0.05% [sum: 7394; 7394/7514 = 98.40%]
-  comparisons.nim: <=% 331/7514 = 4.41%
-  gc_common.nim: isOnStack 58/7514 = 0.77%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 83/153 Calls: 4/7514 = 0.05% [sum: 7398; 7398/7514 = 98.46%]
-  main.nim: []= 51/7514 = 0.68%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 84/153 Calls: 4/7514 = 0.05% [sum: 7402; 7402/7514 = 98.51%]
-  main.nim: encode 10/7514 = 0.13%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 85/153 Calls: 4/7514 = 0.05% [sum: 7406; 7406/7514 = 98.56%]
-  arithmetics.nim: -% 737/7514 = 9.81%
-  gc.nim: usrToCell 339/7514 = 4.51%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 86/153 Calls: 4/7514 = 0.05% [sum: 7410; 7410/7514 = 98.62%]
-  deques.nim: addFirst 9/7514 = 0.12%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 87/153 Calls: 4/7514 = 0.05% [sum: 7414; 7414/7514 = 98.67%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  gc.nim: decRef 419/7514 = 5.58%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  main.nim: []= 51/7514 = 0.68%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 88/153 Calls: 3/7514 = 0.04% [sum: 7417; 7417/7514 = 98.71%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: incRef 208/7514 = 2.77%
-  gc.nim: asgnRef 528/7514 = 7.03%
-  main.nim: tsp 24/7514 = 0.32%
-  main.nim: make_A 24/7514 = 0.32%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 89/153 Calls: 3/7514 = 0.04% [sum: 7420; 7420/7514 = 98.75%]
-  arithmetics.nim: *% 131/7514 = 1.74%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 90/153 Calls: 3/7514 = 0.04% [sum: 7423; 7423/7514 = 98.79%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 91/153 Calls: 3/7514 = 0.04% [sum: 7426; 7426/7514 = 98.83%]
-  comparisons.nim: <=% 331/7514 = 4.41%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 92/153 Calls: 3/7514 = 0.04% [sum: 7429; 7429/7514 = 98.87%]
-  main.nim: :anonymous 6/7514 = 0.08%
-  algorithm.nim: mergeAlt 18/7514 = 0.24%
-  algorithm.nim: sort 18/7514 = 0.24%
-  main.nim: tsp 24/7514 = 0.32%
-  main.nim: make_A 24/7514 = 0.32%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 93/153 Calls: 3/7514 = 0.04% [sum: 7432; 7432/7514 = 98.91%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 94/153 Calls: 3/7514 = 0.04% [sum: 7435; 7435/7514 = 98.95%]
-  system.nim: align 107/7514 = 1.42%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  assign.nim: genericSeqAssign 175/7514 = 2.33%
-  main.nim: get_next_cand 4237/7514 = 56.39%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 95/153 Calls: 3/7514 = 0.04% [sum: 7438; 7438/7514 = 98.99%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  gc.nim: incRef 208/7514 = 2.77%
-  gc.nim: unsureAsgnRef 371/7514 = 4.94%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 96/153 Calls: 3/7514 = 0.04% [sum: 7441; 7441/7514 = 99.03%]
-  arithmetics.nim: *% 131/7514 = 1.74%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 97/153 Calls: 2/7514 = 0.03% [sum: 7443; 7443/7514 = 99.06%]
-  algorithm.nim: mergeAlt 18/7514 = 0.24%
-  algorithm.nim: sort 18/7514 = 0.24%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 98/153 Calls: 2/7514 = 0.03% [sum: 7445; 7445/7514 = 99.08%]
-  macros.nim: << 2/7514 = 0.03%
-  main.nim: encode 10/7514 = 0.13%
-  main.nim: beamsearch 6196/7514 = 82.46%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 99/153 Calls: 2/7514 = 0.03% [sum: 7447; 7447/7514 = 99.11%]
-  comparisons.nim: <% 601/7514 = 8.00%
-  alloc.nim: isCell 2/7514 = 0.03%
-  gc.nim: newObjNoInit 154/7514 = 2.05%
-  mmdisp.nim: nimNewSeqOfCap 157/7514 = 2.09%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 100/153 Calls: 2/7514 = 0.03% [sum: 7449; 7449/7514 = 99.13%]
-  arithmetics.nim: +% 519/7514 = 6.91%
-  assign.nim: genericAssignAux 210/7514 = 2.79%
-  assign.nim: genericAssign 213/7514 = 2.83%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-Entry: 101/153 Calls: 2/7514 = 0.03% [sum: 7451; 7451/7514 = 99.16%]
-  main.nim: clear 7/7514 = 0.09%
-  main.nim: dijkstra 1289/7514 = 17.15%
-  main.nim: make_change_times 1289/7514 = 17.15%
-  main.nim: solve 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
-  main.nim: main 7513/7514 = 99.99%
+Entry: 1/155 Calls: 636/2871 = 22.15% [sum: 636; 636/2871 = 22.15%]
+  main.nim: index 1076/2871 = 37.48%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 2/155 Calls: 506/2871 = 17.62% [sum: 1142; 1142/2871 = 39.78%]
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 3/155 Calls: 163/2871 = 5.68% [sum: 1305; 1305/2871 = 45.45%]
+  main.nim: index 1076/2871 = 37.48%
+  main.nim: [] 372/2871 = 12.96%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 4/155 Calls: 143/2871 = 4.98% [sum: 1448; 1448/2871 = 50.44%]
+  system.nim: find 277/2871 = 9.65%
+  system.nim: contains 313/2871 = 10.90%
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 5/155 Calls: 133/2871 = 4.63% [sum: 1581; 1581/2871 = 55.07%]
+  system.nim: find 277/2871 = 9.65%
+  system.nim: contains 313/2871 = 10.90%
+  main.nim: can_visit 167/2871 = 5.82%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 6/155 Calls: 132/2871 = 4.60% [sum: 1713; 1713/2871 = 59.67%]
+  macros.nim: & 283/2871 = 9.86%
+  main.nim: index 1076/2871 = 37.48%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 7/155 Calls: 116/2871 = 4.04% [sum: 1829; 1829/2871 = 63.71%]
+  main.nim: index 1076/2871 = 37.48%
+  main.nim: [] 372/2871 = 12.96%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 8/155 Calls: 109/2871 = 3.80% [sum: 1938; 1938/2871 = 67.50%]
+  main.nim: get 199/2871 = 6.93%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 9/155 Calls: 90/2871 = 3.13% [sum: 2028; 2028/2871 = 70.64%]
+  macros.nim: & 283/2871 = 9.86%
+  main.nim: get 199/2871 = 6.93%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 10/155 Calls: 74/2871 = 2.58% [sum: 2102; 2102/2871 = 73.21%]
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 11/155 Calls: 63/2871 = 2.19% [sum: 2165; 2165/2871 = 75.41%]
+  main.nim: new_node2 63/2871 = 2.19%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 12/155 Calls: 49/2871 = 1.71% [sum: 2214; 2214/2871 = 77.12%]
+  deques.nim: popFirst 49/2871 = 1.71%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 13/155 Calls: 34/2871 = 1.18% [sum: 2248; 2248/2871 = 78.30%]
+  main.nim: new_node1 34/2871 = 1.18%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 14/155 Calls: 29/2871 = 1.01% [sum: 2277; 2277/2871 = 79.31%]
+  arithmetics.nim: -% 107/2871 = 3.73%
+  gc.nim: usrToCell 82/2871 = 2.86%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: update 80/2871 = 2.79%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 15/155 Calls: 23/2871 = 0.80% [sum: 2300; 2300/2871 = 80.11%]
+  arithmetics.nim: -% 107/2871 = 3.73%
+  gc.nim: usrToCell 82/2871 = 2.86%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 16/155 Calls: 20/2871 = 0.70% [sum: 2320; 2320/2871 = 80.81%]
+  macros.nim: & 283/2871 = 9.86%
+  main.nim: index 1076/2871 = 37.48%
+  main.nim: [] 372/2871 = 12.96%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 17/155 Calls: 17/2871 = 0.59% [sum: 2337; 2337/2871 = 81.40%]
+  main.nim: [] 372/2871 = 12.96%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 18/155 Calls: 17/2871 = 0.59% [sum: 2354; 2354/2871 = 81.99%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  gc.nim: cellToUsr 20/2871 = 0.70%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 19/155 Calls: 17/2871 = 0.59% [sum: 2371; 2371/2871 = 82.58%]
+  macros.nim: & 283/2871 = 9.86%
+  main.nim: [] 372/2871 = 12.96%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 20/155 Calls: 14/2871 = 0.49% [sum: 2385; 2385/2871 = 83.07%]
+  comparisons.nim: <% 54/2871 = 1.88%
+  alloc.nim: isCell 14/2871 = 0.49%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 21/155 Calls: 13/2871 = 0.45% [sum: 2398; 2398/2871 = 83.52%]
+  deques.nim: addFirst 24/2871 = 0.84%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 22/155 Calls: 13/2871 = 0.45% [sum: 2411; 2411/2871 = 83.98%]
+  main.nim: [] 372/2871 = 12.96%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 23/155 Calls: 13/2871 = 0.45% [sum: 2424; 2424/2871 = 84.43%]
+  comparisons.nim: <=% 38/2871 = 1.32%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 24/155 Calls: 12/2871 = 0.42% [sum: 2436; 2436/2871 = 84.85%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 25/155 Calls: 12/2871 = 0.42% [sum: 2448; 2448/2871 = 85.27%]
+  deques.nim: len 12/2871 = 0.42%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 26/155 Calls: 12/2871 = 0.42% [sum: 2460; 2460/2871 = 85.68%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  gc.nim: incRef 23/2871 = 0.80%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: update 80/2871 = 2.79%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 27/155 Calls: 12/2871 = 0.42% [sum: 2472; 2472/2871 = 86.10%]
+  comparisons.nim: <% 54/2871 = 1.88%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 28/155 Calls: 11/2871 = 0.38% [sum: 2483; 2483/2871 = 86.49%]
+  deques.nim: expandIfNeeded 12/2871 = 0.42%
+  deques.nim: addFirst 24/2871 = 0.84%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 29/155 Calls: 10/2871 = 0.35% [sum: 2493; 2493/2871 = 86.83%]
+  comparisons.nim: <% 54/2871 = 1.88%
+  gc.nim: decRef 41/2871 = 1.43%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: update 80/2871 = 2.79%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 30/155 Calls: 10/2871 = 0.35% [sum: 2503; 2503/2871 = 87.18%]
+  main.nim: update 80/2871 = 2.79%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 31/155 Calls: 10/2871 = 0.35% [sum: 2513; 2513/2871 = 87.53%]
+  system.nim: contains 313/2871 = 10.90%
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 32/155 Calls: 9/2871 = 0.31% [sum: 2522; 2522/2871 = 87.84%]
+  macros.nim: & 283/2871 = 9.86%
+  main.nim: index 1076/2871 = 37.48%
+  main.nim: [] 372/2871 = 12.96%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 33/155 Calls: 9/2871 = 0.31% [sum: 2531; 2531/2871 = 88.16%]
+  arithmetics.nim: -% 107/2871 = 3.73%
+  gc.nim: decRef 41/2871 = 1.43%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: update 80/2871 = 2.79%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 34/155 Calls: 9/2871 = 0.31% [sum: 2540; 2540/2871 = 88.47%]
+  comparisons.nim: <=% 38/2871 = 1.32%
+  gc.nim: newObj 17/2871 = 0.59%
+  gc.nim: newSeq 18/2871 = 0.63%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 35/155 Calls: 9/2871 = 0.31% [sum: 2549; 2549/2871 = 88.78%]
+  macros.nim: & 283/2871 = 9.86%
+  main.nim: update 80/2871 = 2.79%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 36/155 Calls: 8/2871 = 0.28% [sum: 2557; 2557/2871 = 89.06%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 37/155 Calls: 8/2871 = 0.28% [sum: 2565; 2565/2871 = 89.34%]
+  system.nim: cmp 11/2871 = 0.38%
+  main.nim: :anonymous 16/2871 = 0.56%
+  algorithm.nim: mergeAlt 29/2871 = 1.01%
+  algorithm.nim: sort 30/2871 = 1.04%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 38/155 Calls: 8/2871 = 0.28% [sum: 2573; 2573/2871 = 89.62%]
+  system.nim: pop 39/2871 = 1.36%
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 39/155 Calls: 8/2871 = 0.28% [sum: 2581; 2581/2871 = 89.90%]
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 40/155 Calls: 8/2871 = 0.28% [sum: 2589; 2589/2871 = 90.18%]
+  system.nim: align 18/2871 = 0.63%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 41/155 Calls: 8/2871 = 0.28% [sum: 2597; 2597/2871 = 90.46%]
+  hashes.nim: hiXorLo 19/2871 = 0.66%
+  hashes.nim: hashWangYi1 27/2871 = 0.94%
+  hashes.nim: hash 39/2871 = 1.36%
+  hashcommon.nim: rawGet 39/2871 = 1.36%
+  tables.nim: hasKey 19/2871 = 0.66%
+  tables.nim: contains 313/2871 = 10.90%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 42/155 Calls: 8/2871 = 0.28% [sum: 2605; 2605/2871 = 90.73%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 43/155 Calls: 7/2871 = 0.24% [sum: 2612; 2612/2871 = 90.98%]
+  arithmetics.nim: -% 107/2871 = 3.73%
+  gc.nim: usrToCell 82/2871 = 2.86%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: clear 26/2871 = 0.91%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 44/155 Calls: 7/2871 = 0.24% [sum: 2619; 2619/2871 = 91.22%]
+  hashes.nim: hash 39/2871 = 1.36%
+  hashcommon.nim: rawGet 39/2871 = 1.36%
+  tables.nim: hasKey 19/2871 = 0.66%
+  tables.nim: contains 313/2871 = 10.90%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 45/155 Calls: 7/2871 = 0.24% [sum: 2626; 2626/2871 = 91.47%]
+  system.nim: contains 313/2871 = 10.90%
+  main.nim: can_visit 167/2871 = 5.82%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 46/155 Calls: 6/2871 = 0.21% [sum: 2632; 2632/2871 = 91.68%]
+  macros.nim: & 283/2871 = 9.86%
+  main.nim: [] 372/2871 = 12.96%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 47/155 Calls: 6/2871 = 0.21% [sum: 2638; 2638/2871 = 91.88%]
+  arithmetics.nim: *% 21/2871 = 0.73%
+  main.nim: clear 26/2871 = 0.91%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 48/155 Calls: 6/2871 = 0.21% [sum: 2644; 2644/2871 = 92.09%]
+  hashes.nim: hiXorLo 19/2871 = 0.66%
+  hashes.nim: hashWangYi1 27/2871 = 0.94%
+  hashes.nim: hash 39/2871 = 1.36%
+  hashcommon.nim: rawGet 39/2871 = 1.36%
+  tables.nim: [] 372/2871 = 12.96%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 49/155 Calls: 5/2871 = 0.17% [sum: 2649; 2649/2871 = 92.27%]
+  arithmetics.nim: *% 21/2871 = 0.73%
+  system.nim: pop 39/2871 = 1.36%
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 50/155 Calls: 5/2871 = 0.17% [sum: 2654; 2654/2871 = 92.44%]
+  algorithm.nim: mergeAlt 29/2871 = 1.01%
+  algorithm.nim: sort 30/2871 = 1.04%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 51/155 Calls: 5/2871 = 0.17% [sum: 2659; 2659/2871 = 92.62%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  alloc.nim: rawAlloc 9/2871 = 0.31%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 52/155 Calls: 5/2871 = 0.17% [sum: 2664; 2664/2871 = 92.79%]
+  arithmetics.nim: -% 107/2871 = 3.73%
+  gc.nim: usrToCell 82/2871 = 2.86%
+  gc.nim: unsureAsgnRef 34/2871 = 1.18%
+  system.nim: pop 39/2871 = 1.36%
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 53/155 Calls: 5/2871 = 0.17% [sum: 2669; 2669/2871 = 92.96%]
+  main.nim: clear 26/2871 = 0.91%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 54/155 Calls: 5/2871 = 0.17% [sum: 2674; 2674/2871 = 93.14%]
+  alloc.nim: alloc0 10/2871 = 0.35%
+  cellsets.nim: cellSetPut 10/2871 = 0.35%
+  cellsets.nim: incl 10/2871 = 0.35%
+  cellsets.nim: containsOrIncl 9/2871 = 0.31%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  ...: ... 12/2871 = 0.42%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 55/155 Calls: 5/2871 = 0.17% [sum: 2679; 2679/2871 = 93.31%]
+  arithmetics.nim: -% 107/2871 = 3.73%
+  gc.nim: usrToCell 82/2871 = 2.86%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 56/155 Calls: 5/2871 = 0.17% [sum: 2684; 2684/2871 = 93.49%]
+  system.nim: align 18/2871 = 0.63%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 57/155 Calls: 4/2871 = 0.14% [sum: 2688; 2688/2871 = 93.63%]
+  comparisons.nim: <% 54/2871 = 1.88%
+  gc.nim: decRef 41/2871 = 1.43%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: can_visit 167/2871 = 5.82%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 58/155 Calls: 4/2871 = 0.14% [sum: 2692; 2692/2871 = 93.77%]
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 59/155 Calls: 4/2871 = 0.14% [sum: 2696; 2696/2871 = 93.90%]
+  arithmetics.nim: -% 107/2871 = 3.73%
+  gc.nim: usrToCell 82/2871 = 2.86%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: can_visit 167/2871 = 5.82%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 60/155 Calls: 4/2871 = 0.14% [sum: 2700; 2700/2871 = 94.04%]
+  hashes.nim: hiXorLo 19/2871 = 0.66%
+  hashes.nim: hashWangYi1 27/2871 = 0.94%
+  hashes.nim: hash 39/2871 = 1.36%
+  hashcommon.nim: rawGet 39/2871 = 1.36%
+  tables.nim: []= 14/2871 = 0.49%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 61/155 Calls: 4/2871 = 0.14% [sum: 2704; 2704/2871 = 94.18%]
+  arithmetics.nim: *% 21/2871 = 0.73%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 62/155 Calls: 4/2871 = 0.14% [sum: 2708; 2708/2871 = 94.32%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  main.nim: clear 26/2871 = 0.91%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 63/155 Calls: 4/2871 = 0.14% [sum: 2712; 2712/2871 = 94.46%]
+  comparisons.nim: <% 54/2871 = 1.88%
+  gc.nim: decRef 41/2871 = 1.43%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 64/155 Calls: 4/2871 = 0.14% [sum: 2716; 2716/2871 = 94.60%]
+  algorithm.nim: mergeAlt 29/2871 = 1.01%
+  algorithm.nim: sort 30/2871 = 1.04%
+  main.nim: tsp 23/2871 = 0.80%
+  main.nim: make_A 24/2871 = 0.84%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 65/155 Calls: 4/2871 = 0.14% [sum: 2720; 2720/2871 = 94.74%]
+  gc.nim: newObj 17/2871 = 0.59%
+  gc.nim: newSeq 18/2871 = 0.63%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 66/155 Calls: 4/2871 = 0.14% [sum: 2724; 2724/2871 = 94.88%]
+  main.nim: :anonymous 16/2871 = 0.56%
+  algorithm.nim: mergeAlt 29/2871 = 1.01%
+  algorithm.nim: sort 30/2871 = 1.04%
+  main.nim: tsp 23/2871 = 0.80%
+  main.nim: make_A 24/2871 = 0.84%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 67/155 Calls: 3/2871 = 0.10% [sum: 2727; 2727/2871 = 94.98%]
+  comparisons.nim: <=% 38/2871 = 1.32%
+  gc_common.nim: isOnStack 7/2871 = 0.24%
+  gc.nim: unsureAsgnRef 34/2871 = 1.18%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 68/155 Calls: 3/2871 = 0.10% [sum: 2730; 2730/2871 = 95.09%]
+  hashes.nim: hashWangYi1 27/2871 = 0.94%
+  hashes.nim: hash 39/2871 = 1.36%
+  hashcommon.nim: rawGet 39/2871 = 1.36%
+  tables.nim: hasKey 19/2871 = 0.66%
+  tables.nim: contains 313/2871 = 10.90%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 69/155 Calls: 3/2871 = 0.10% [sum: 2733; 2733/2871 = 95.19%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 70/155 Calls: 3/2871 = 0.10% [sum: 2736; 2736/2871 = 95.30%]
+  macros.nim: << 3/2871 = 0.10%
+  main.nim: encode 6/2871 = 0.21%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 71/155 Calls: 3/2871 = 0.10% [sum: 2739; 2739/2871 = 95.40%]
+  arithmetics.nim: *% 21/2871 = 0.73%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 72/155 Calls: 3/2871 = 0.10% [sum: 2742; 2742/2871 = 95.51%]
+  main.nim: can_visit 167/2871 = 5.82%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 73/155 Calls: 3/2871 = 0.10% [sum: 2745; 2745/2871 = 95.61%]
+  arithmetics.nim: -% 107/2871 = 3.73%
+  gc.nim: usrToCell 82/2871 = 2.86%
+  gc.nim: unsureAsgnRef 34/2871 = 1.18%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 74/155 Calls: 3/2871 = 0.10% [sum: 2748; 2748/2871 = 95.72%]
+  arithmetics.nim: -% 107/2871 = 3.73%
+  gc.nim: decRef 41/2871 = 1.43%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: can_visit 167/2871 = 5.82%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 75/155 Calls: 3/2871 = 0.10% [sum: 2751; 2751/2871 = 95.82%]
+  hashes.nim: hashWangYi1 27/2871 = 0.94%
+  hashes.nim: hash 39/2871 = 1.36%
+  hashcommon.nim: rawGet 39/2871 = 1.36%
+  tables.nim: [] 372/2871 = 12.96%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 76/155 Calls: 3/2871 = 0.10% [sum: 2754; 2754/2871 = 95.92%]
+  macros.nim: % 3/2871 = 0.10%
+  main.nim: optimize 3/2871 = 0.10%
+  main.nim: tsp 23/2871 = 0.80%
+  main.nim: make_A 24/2871 = 0.84%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 77/155 Calls: 3/2871 = 0.10% [sum: 2757; 2757/2871 = 96.03%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  gc.nim: incRef 23/2871 = 0.80%
+  gc.nim: unsureAsgnRef 34/2871 = 1.18%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 78/155 Calls: 3/2871 = 0.10% [sum: 2760; 2760/2871 = 96.13%]
+  arithmetics.nim: -% 107/2871 = 3.73%
+  gc.nim: usrToCell 82/2871 = 2.86%
+  gc.nim: unsureAsgnRef 34/2871 = 1.18%
+  system.nim: pop 39/2871 = 1.36%
+  main.nim: can_visit 167/2871 = 5.82%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 79/155 Calls: 3/2871 = 0.10% [sum: 2763; 2763/2871 = 96.24%]
+  hashes.nim: hash 39/2871 = 1.36%
+  hashcommon.nim: rawGet 39/2871 = 1.36%
+  tables.nim: []= 14/2871 = 0.49%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 80/155 Calls: 3/2871 = 0.10% [sum: 2766; 2766/2871 = 96.34%]
+  comparisons.nim: <=% 38/2871 = 1.32%
+  gc.nim: unsureAsgnRef 34/2871 = 1.18%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 81/155 Calls: 3/2871 = 0.10% [sum: 2769; 2769/2871 = 96.45%]
+  macros.nim: | 3/2871 = 0.10%
+  main.nim: encode 6/2871 = 0.21%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 82/155 Calls: 3/2871 = 0.10% [sum: 2772; 2772/2871 = 96.55%]
+  system.nim: cmp 11/2871 = 0.38%
+  main.nim: :anonymous 16/2871 = 0.56%
+  algorithm.nim: mergeAlt 29/2871 = 1.01%
+  algorithm.nim: sort 30/2871 = 1.04%
+  main.nim: tsp 23/2871 = 0.80%
+  main.nim: make_A 24/2871 = 0.84%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 83/155 Calls: 2/2871 = 0.07% [sum: 2774; 2774/2871 = 96.62%]
+  main.nim: bfss 4/2871 = 0.14%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 84/155 Calls: 2/2871 = 0.07% [sum: 2776; 2776/2871 = 96.69%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  system.nim: pop 39/2871 = 1.36%
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 85/155 Calls: 2/2871 = 0.07% [sum: 2778; 2778/2871 = 96.76%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  gc.nim: cellToUsr 20/2871 = 0.70%
+  gc.nim: newObj 17/2871 = 0.59%
+  gc.nim: newSeq 18/2871 = 0.63%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 86/155 Calls: 2/2871 = 0.07% [sum: 2780; 2780/2871 = 96.83%]
+  hashes.nim: hashWangYi1 27/2871 = 0.94%
+  hashes.nim: hash 39/2871 = 1.36%
+  hashcommon.nim: rawGet 39/2871 = 1.36%
+  tables.nim: []= 14/2871 = 0.49%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 87/155 Calls: 2/2871 = 0.07% [sum: 2782; 2782/2871 = 96.90%]
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 88/155 Calls: 2/2871 = 0.07% [sum: 2784; 2784/2871 = 96.97%]
+  comparisons.nim: <=% 38/2871 = 1.32%
+  gc_common.nim: isOnStack 7/2871 = 0.24%
+  gc.nim: unsureAsgnRef 34/2871 = 1.18%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 89/155 Calls: 2/2871 = 0.07% [sum: 2786; 2786/2871 = 97.04%]
+  comparisons.nim: <% 54/2871 = 1.88%
+  alloc.nim: interiorAllocatedPtr 6/2871 = 0.21%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  assign.nim: genericSeqAssign 14/2871 = 0.49%
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 90/155 Calls: 2/2871 = 0.07% [sum: 2788; 2788/2871 = 97.11%]
+  algorithm.nim: * 4/2871 = 0.14%
+  algorithm.nim: mergeAlt 29/2871 = 1.01%
+  algorithm.nim: sort 30/2871 = 1.04%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 91/155 Calls: 2/2871 = 0.07% [sum: 2790; 2790/2871 = 97.18%]
+  system.nim: pop 39/2871 = 1.36%
+  main.nim: can_visit 167/2871 = 5.82%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 92/155 Calls: 2/2871 = 0.07% [sum: 2792; 2792/2871 = 97.25%]
+  algorithm.nim: * 4/2871 = 0.14%
+  algorithm.nim: mergeAlt 29/2871 = 1.01%
+  algorithm.nim: sort 30/2871 = 1.04%
+  main.nim: tsp 23/2871 = 0.80%
+  main.nim: make_A 24/2871 = 0.84%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 93/155 Calls: 2/2871 = 0.07% [sum: 2794; 2794/2871 = 97.32%]
+  comparisons.nim: <% 54/2871 = 1.88%
+  gc.nim: decRef 41/2871 = 1.43%
+  gc.nim: asgnRef 99/2871 = 3.45%
+  main.nim: clear 26/2871 = 0.91%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 94/155 Calls: 2/2871 = 0.07% [sum: 2796; 2796/2871 = 97.39%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  gc.nim: incRef 23/2871 = 0.80%
+  gc.nim: unsureAsgnRef 34/2871 = 1.18%
+  system.nim: pop 39/2871 = 1.36%
+  main.nim: get_next_cand 205/2871 = 7.14%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 95/155 Calls: 2/2871 = 0.07% [sum: 2798; 2798/2871 = 97.46%]
+  arithmetics.nim: +% 93/2871 = 3.24%
+  alloc.nim: rawAlloc 9/2871 = 0.31%
+  alloc.nim: alloc 4/2871 = 0.14%
+  alloc.nim: alloc0 10/2871 = 0.35%
+  cellsets.nim: cellSetPut 10/2871 = 0.35%
+  cellsets.nim: incl 10/2871 = 0.35%
+  cellsets.nim: containsOrIncl 9/2871 = 0.31%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  ...: ... 12/2871 = 0.42%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 96/155 Calls: 2/2871 = 0.07% [sum: 2800; 2800/2871 = 97.53%]
+  comparisons.nim: <=% 38/2871 = 1.32%
+  gc.nim: unsureAsgnRef 34/2871 = 1.18%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 97/155 Calls: 2/2871 = 0.07% [sum: 2802; 2802/2871 = 97.60%]
+  comparisons.nim: <% 54/2871 = 1.88%
+  gc.nim: newObjNoInit 121/2871 = 4.21%
+  mmdisp.nim: nimNewSeqOfCap 121/2871 = 4.21%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  assign.nim: genericSeqAssign 14/2871 = 0.49%
+  tableimpl.nim: rawInsert 5/2871 = 0.17%
+  tables.nim: []= 14/2871 = 0.49%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 98/155 Calls: 2/2871 = 0.07% [sum: 2804; 2804/2871 = 97.67%]
+  arithmetics.nim: *% 21/2871 = 0.73%
+  system.nim: pop 39/2871 = 1.36%
+  main.nim: can_visit 167/2871 = 5.82%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 99/155 Calls: 2/2871 = 0.07% [sum: 2806; 2806/2871 = 97.74%]
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssignAux 212/2871 = 7.38%
+  assign.nim: genericAssign 212/2871 = 7.38%
+  main.nim: dijkstra 2102/2871 = 73.21%
+  main.nim: make_change_times 2105/2871 = 73.32%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 100/155 Calls: 2/2871 = 0.07% [sum: 2808; 2808/2871 = 97.81%]
+  hashes.nim: hash 39/2871 = 1.36%
+  hashcommon.nim: rawGet 39/2871 = 1.36%
+  tables.nim: [] 372/2871 = 12.96%
+  main.nim: beamsearch 733/2871 = 25.53%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%
+Entry: 101/155 Calls: 2/2871 = 0.07% [sum: 2810; 2810/2871 = 97.88%]
+  algorithm.nim: fill 3/2871 = 0.10%
+  main.nim: bfss 4/2871 = 0.14%
+  main.nim: solve 2866/2871 = 99.83%
+  main.nim: main 2870/2871 = 99.97%
+  main.nim: main 2870/2871 = 99.97%

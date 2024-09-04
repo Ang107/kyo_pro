@@ -2,7 +2,7 @@
 import std/times
 import std/random
 import atcoder/segtree
-import nimprof
+# import nimprof
 {.checks: off.}
 # when not declared CPLIB_TMPL_QCFIUM:
 #     const CPLIB_TMPL_QCFIUM* = 1

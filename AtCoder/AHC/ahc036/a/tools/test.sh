@@ -2,7 +2,7 @@
 contest_num=$(printf "%03d\n" "36")
 
 #各自パスの変更が必要
-cd ~/projects/kyo_pro/AtCoder/AHC/ahc036/a/tools
+cd /mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc036/a/tools
 
 #フォルダを作る
 mkdir -p out score
@@ -20,10 +20,10 @@ do
     
     #--profiler:on --stackTrace:on
 
-    # nim cpp -r -d:release  --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off  best.nim < in/${j}.txt > best_out/${j}.txt 
-    # pypy3 calc_score.py < best_out/${j}.txt >> score/score.txt
+    nim cpp -r -d:release  --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off  submit.nim < in/${j}.txt > best_out/${j}.txt 
+    pypy3 calc_score.py < best_out/${j}.txt >> score/score.txt
 
-    nim cpp -r -d:release  --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off  main.nim < in/${j}.txt > out/${j}.txt 
-    pypy3 calc_score.py < out/${j}.txt >> score/score.txt
+    # nim cpp -r -d:release  --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off  --hints:off  best.nim < in/${j}.txt > out/${j}.txt 
+    # pypy3 calc_score.py < out/${j}.txt >> score/score.txt
 done
 

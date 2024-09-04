@@ -253,25 +253,219 @@ proc distance(xy1, xy2: (int, int)): int =
     return ((xy1[0]-xy2[0]) ** 2) + ((xy1[1]-xy2[1]) ** 2)
 
 #tspの経路を求める
-proc tsp(input: Input, output: Output, time: Time, target: seq[int], start: int): seq[int] =
-    #diss[i] = iからの（距離、どこから来たか、座標）
-    var
-        diss: array[N, seq[(int, int)]]
-        A = newSeqOfCap[int](input.LA)
-        in_target: array[N, bool]
-    for i in target:
-        in_target[i] = true
+# proc tsp(input: Input, output: Output, time: Time, target: seq[int], start: int): seq[int] =
+#     #diss[i] = iからの（距離、どこから来たか、座標）
+#     var
+#         diss: array[N, seq[(int, int)]]
+#         A = newSeqOfCap[int](input.LA)
+#         in_target: array[N, bool]
+#     for i in target:
+#         in_target[i] = true
+#     for i in 0..<N:
+#         diss[i] = newSeqOfCap[(int, int)](N)
+#         for j in 0..<N:
+#             diss[i].add((roots[i][j][0], j))
+#         diss[i].sort(proc (a, b: (int, int)): int = cmp(a[0], b[0]))
+
+#     proc greedy(target: seq[int], s: int): seq[int] =
+#         # 貪欲
+#         var
+#             visited: array[N, bool]
+#             order = newSeqOfCap[int](target.len()+1)
+#         order.add(s)
+#         visited[s] = true
+#         while order.len() < target.len():
+#             for (d, i) in diss[order[^1]]:
+#                 if i in target and visited[i] == false:
+#                     order.add(i)
+#                     visited[i] = true
+#                     break
+#         return order
+#     proc optimize(order: var seq[int]) =
+#         proc get_all_dis(order: seq[int]): int =
+#             for i in 0..<order.len()-1:
+#                 var
+#                     s = order[i]
+#                     g = order[(i+1)%order.len()]
+#                 result += roots[s][g][0]
+
+#         # 2opt
+#         # var all_dis = get_all_dis(order)
+#         var updated = true
+#         while updated:
+#             updated = false
+#             for i in 0..<order.len()-1:
+#                 for j in i+1..<order.len():
+#                     var prv, nxt: int
+#                     if i == 0 and j == order.len() - 1:
+#                         continue
+#                     elif i == 0:
+#                         prv = roots[order[j]][order[(j+1)%order.len()]][0]
+#                         nxt = roots[order[i]][order[(j+1)%order.len()]][0]
+#                     elif j == order.len() - 1:
+#                         prv = roots[order[i-1]][order[i]][0]
+#                         nxt = roots[order[i-1]][order[j]][0]
+#                     else:
+#                         prv = roots[order[i-1]][order[i]][0] + roots[order[j]][
+#                             order[(j+1)%order.len()]][0]
+#                         nxt = roots[order[i-1]][order[j]][0] + roots[order[i]][
+#                             order[(j+1)%order.len()]][0]
+#                     if prv > nxt:
+#                         order[i..j] = order[i..j].reversed()
+#                         updated = true
+#                         # all_dis += nxt - prv
+#     proc make_root(order: seq[int]): seq[int] =
+#         # 経路の構築
+#         var A = newSeqOfCap[int](input.LA)
+#         for i in 0..<order.len()-1:
+#             var
+#                 s = order[i]
+#                 g = order[(i+1)%order.len()]
+#             if i == order.len() - 2:
+#                 for j in bfs(s, g):
+#                     A.add(j)
+#             else:
+#                 for j in bfs(s, g)[0 ..< ^1]:
+#                     A.add(j)
+#         var nA = newSeqOfCap[int](A.len())
+#         for index, i in A:
+#             # if i in nA[^min(nA.len(), input.LB//3)..^1]:
+#             #     continue
+#             if nA.len() >= 1 and nA[^1] == i:
+#                 continue
+#             if nA.len() >= 2 and nA[^2] == i:
+#                 continue
+#             nA.add(i)
+#         return nA
+#     var
+#         pos: array[N, seq[int]]
+#         root = newSeqOfCap[int](15000)
+#         cnt: array[N, int]
+#     proc evaluate(order: seq[int]): int =
+#         for i in 0..<order.len()-1:
+#             var s = order[i]
+#             var g = order[i+1]
+#             result += roots[s][g][0]
+#         #超過している場合
+#         if result > input.LA:
+#             return (result-input.LA) << 32
+#         cnt.fill(0)
+#         for i in 0..<N:
+#             pos[i].setLen(0)
+#         root.setLen(0)
+#         #ルートを復元し、positionを記録
+#         for i in 0..<order.len()-1:
+#             var s = order[i]
+#             var g = order[i+1]
+#             for j in bfs(s, g)[1..^1]:
+#                 cnt[j] += 1
+#                 if in_target[j]:
+#                     pos[j].add(root.len())
+#                 root.add(j)
+#         for i in target:
+#             if cnt[i] == 0:
+#                 return INF64
+#         for i in 0..<N:
+#             var
+#                 s = input.TS[i]
+#                 g = input.TS[i+1]
+#                 r = 0
+#                 min_dis = INF64
+
+#             for i in pos[s]:
+#                 while r < pos[g].len() and i > pos[g][r]:
+#                     r += 1
+#                 if r > 0:
+#                     min_dis = min(min_dis, i-pos[g][r-1])
+#                 if r < pos[g].len():
+#                     min_dis = min(min_dis, pos[g][r]-i)
+#             assert min_dis != INF64
+#             result += min_dis
+#         return result
+
+#     proc yamanobori(order: var seq[int]) =
+#         #小さいほど良い
+#         var best_score = evaluate(order)
+#         while time.get_passed_time() < 2:
+#             var
+#                 i = rand(order.len()-2)
+#                 j = rand(i+1..order.len()-1)
+#                 k = (j - i + 1) // 2
+#             var prv = order
+#             for l in 0..<k:
+#                 # echo "# before", order
+#                 swap(order[i+l], order[j-l])
+#                 # echo "# swap(i,j)", (i, j)
+#                 # echo "# after", order
+#             var new_score = evaluate(order)
+#             # stdout.writeLine "# new_score", (best_score, new_score)
+#             if new_score < best_score:
+#                 best_score = new_score
+#                 # stdout.writeLine "#", best_score
+#                 # stdout.writeLine "#", root.len()
+#             else:
+#                 for l in 0..<k:
+#                     swap(order[i+l], order[j-l])
+#                     # echo "# ctrl z", order
+#                 assert prv == order
+
+#     var o = greedy(target, start)
+#     optimize(o)
+#     result = make_root(o)
+#     # echo "# A.len", result.len()
+#     while result.len() > input.LA:
+#         echo "# A.len", result.len()
+#         o = greedy(target, sample(target))
+#         optimize(o)
+#         result = make_root(o)
+
+
+#     # var order = input.TS.toSeq()
+#     # yamanobori(o)
+#     # result = make_root(o)
+#     # var tmp = result.toHashSet()
+#     # var stack = newSeqOfCap[int](N)
+#     # var visited = initHashSet[int](N)
+#     # stack.add(0)
+#     # while stack.len() > 0:
+#     #     var v = stack.pop()
+#     #     for next in input.G[v]:
+#     #         if next in tmp and next notin visited:
+#     #             visited.incl(next)
+#     #             stack.add(next)
+#     # for i in input.TS:
+#     #     assert(i in visited, $i)
+
+#     # assert result.len() <= input.LA
+#     # echo "#", evaluate(o)
+#     # echo "#", result.len()
+#     return result
+
+
+
+#tspの経路を求める
+proc tsp(input: Input, output: Output, time: Time, target: seq[int]): seq[int] =
+
+
+    #diss[i] = iからの（距離、座標）
+    var diss: array[N, seq[(int, int)]]
     for i in 0..<N:
         diss[i] = newSeqOfCap[(int, int)](N)
         for j in 0..<N:
             diss[i].add((roots[i][j][0], j))
         diss[i].sort(proc (a, b: (int, int)): int = cmp(a[0], b[0]))
 
-    proc greedy(target: seq[int], s: int): seq[int] =
+
+
+    proc in_tsp(target_seq: seq[int]): seq[int] =
         # 貪欲
         var
+            A = newSeqOfCap[int](input.LA)
+            target = target_seq.deduplicate()
             visited: array[N, bool]
-            order = newSeqOfCap[int](target.len()+1)
+            s = target_seq[0]
+            order = newSeqOfCap[int](target.len())
+            to_index: array[N, int]
         order.add(s)
         visited[s] = true
         while order.len() < target.len():
@@ -280,44 +474,139 @@ proc tsp(input: Input, output: Output, time: Time, target: seq[int], start: int)
                     order.add(i)
                     visited[i] = true
                     break
-        return order
-    proc optimize(order: var seq[int]) =
+        for i, j in order:
+            to_index[j] = i
+
+
         proc get_all_dis(order: seq[int]): int =
-            for i in 0..<order.len()-1:
+            for i in 0..<order.len():
                 var
                     s = order[i]
                     g = order[(i+1)%order.len()]
                 result += roots[s][g][0]
 
-        # 2opt
+
         # var all_dis = get_all_dis(order)
-        var updated = true
-        while updated:
-            updated = false
-            for i in 0..<order.len()-1:
-                for j in i+1..<order.len():
-                    var prv, nxt: int
-                    if i == 0 and j == order.len() - 1:
-                        continue
-                    elif i == 0:
-                        prv = roots[order[j]][order[(j+1)%order.len()]][0]
-                        nxt = roots[order[i]][order[(j+1)%order.len()]][0]
-                    elif j == order.len() - 1:
-                        prv = roots[order[i-1]][order[i]][0]
-                        nxt = roots[order[i-1]][order[j]][0]
+
+        # 2opt
+        proc two_opt(o: seq[int]): seq[int] =
+            var
+                order = o
+                updated = true
+                sum_change = 0
+            while updated:
+                updated = false
+                for index in 1..<order.len()-1:
+                    var i = index
+                    if i - 1 >= 0:
+                        for (d, v) in diss[order[i-1]]:
+                            var j = to_index[v]
+                            if i == j:
+                                break
+                            if j < i:
+                                continue
+
+                            var prv, nxt: int
+                            if i == 0 and j == order.len() - 1:
+                                continue
+                            elif i == 0:
+                                prv = roots[order[j]][order[(j+1)%order.len()]][0]
+                                nxt = roots[order[i]][order[(j+1)%order.len()]][0]
+                            elif j == order.len() - 1:
+                                prv = roots[order[i-1]][order[i]][0]
+                                nxt = roots[order[i-1]][order[j]][0]
+                            else:
+                                prv = roots[order[i-1]][order[i]][0] + roots[
+                                        order[j]][
+                                    order[(j+1)%order.len()]][0]
+                                nxt = roots[order[i-1]][order[j]][0] + roots[
+                                        order[i]][
+                                    order[(j+1)%order.len()]][0]
+                            if prv > nxt:
+                                order[i..j] = order[i..j].reversed()
+                                for k in i..j:
+                                    to_index[order[k]] = k
+                                updated = true
+                                sum_change += nxt - prv
+
+
+                    for (d, v) in diss[order[i]]:
+                        var j = to_index[v]
+                        if i-1 == j:
+                            break
+                        j -= 1
+                        if j < i:
+                            continue
+                        var prv, nxt: int
+                        if i == 0 and j == order.len() - 1:
+                            continue
+                        elif i == 0:
+                            prv = roots[order[j]][order[(j+1)%order.len()]][0]
+                            nxt = roots[order[i]][order[(j+1)%order.len()]][0]
+                        elif j == order.len() - 1:
+                            prv = roots[order[i-1]][order[i]][0]
+                            nxt = roots[order[i-1]][order[j]][0]
+                        else:
+                            prv = roots[order[i-1]][order[i]][0] + roots[order[
+                                    j]][
+                                order[(j+1)%order.len()]][0]
+                            nxt = roots[order[i-1]][order[j]][0] + roots[order[
+                                    i]][
+                                order[(j+1)%order.len()]][0]
+                        if prv > nxt:
+                            order[i..j] = order[i..j].reversed()
+                            for k in i..j:
+                                to_index[order[k]] = k
+                            updated = true
+                            sum_change += nxt - prv
+            return order
+        proc kick(o: seq[int]): seq[int] =
+            var
+                stop = false
+                order = newSeqOfCap[int](o.len())
+                edges: array[4, int]
+            while not stop:
+                stop = true
+                edges = [rand(1..o.len()-2),
+                            rand(o.len()-2),
+                            rand(o.len()-2),
+                            rand(o.len()-2)]
+                edges.sort()
+                for i in 0..<3:
+                    if edges[i] + 1 < edges[i+1]:
+                        discard
                     else:
-                        prv = roots[order[i-1]][order[i]][0] + roots[order[j]][
-                            order[(j+1)%order.len()]][0]
-                        nxt = roots[order[i-1]][order[j]][0] + roots[order[i]][
-                            order[(j+1)%order.len()]][0]
-                    if prv > nxt:
-                        order[i..j] = order[i..j].reversed()
-                        updated = true
-                        # all_dis += nxt - prv
-    proc make_root(order: seq[int]): seq[int] =
+                        stop = false
+            for i in 0..edges[0]:
+                order.add(o[i])
+            for i in edges[2]+1..edges[3]:
+                order.add(o[i])
+            for i in edges[1]+1..edges[2]:
+                order.add(o[i])
+            for i in edges[0]+1..edges[1]:
+                order.add(o[i])
+            for i in edges[3]+1..<o.len():
+                order.add(o[i])
+            return order
+
+
+        order = two_opt(order)
+        # while time.get_passed_time() < 1.0:
+        for _ in 0..<10:
+            var o = order
+            o = kick(o)
+            for i, j in order:
+                to_index[j] = i
+            o = two_opt(o)
+            var best_score = get_all_dis(order)
+            var new_score = get_all_dis(o)
+            # echo "# score", (best_score, new_score)
+            if new_score < best_score:
+                best_score = new_score
+                order = o
         # 経路の構築
-        var A = newSeqOfCap[int](input.LA)
-        for i in 0..<order.len()-1:
+        A.setLen(0)
+        for i in 0..<order.len():
             var
                 s = order[i]
                 g = order[(i+1)%order.len()]
@@ -329,121 +618,15 @@ proc tsp(input: Input, output: Output, time: Time, target: seq[int], start: int)
                     A.add(j)
         var nA = newSeqOfCap[int](A.len())
         for index, i in A:
-            # if i in nA[^min(nA.len(), input.LB//3)..^1]:
-            #     continue
-            if nA.len() >= 1 and nA[^1] == i:
-                continue
             if nA.len() >= 2 and nA[^2] == i:
                 continue
             nA.add(i)
         return nA
-    var
-        pos: array[N, seq[int]]
-        root = newSeqOfCap[int](15000)
-        cnt: array[N, int]
-    proc evaluate(order: seq[int]): int =
-        for i in 0..<order.len()-1:
-            var s = order[i]
-            var g = order[i+1]
-            result += roots[s][g][0]
-        #超過している場合
-        if result > input.LA:
-            return (result-input.LA) << 32
-        cnt.fill(0)
-        for i in 0..<N:
-            pos[i].setLen(0)
-        root.setLen(0)
-        #ルートを復元し、positionを記録
-        for i in 0..<order.len()-1:
-            var s = order[i]
-            var g = order[i+1]
-            for j in bfs(s, g)[1..^1]:
-                cnt[j] += 1
-                if in_target[j]:
-                    pos[j].add(root.len())
-                root.add(j)
-        for i in target:
-            if cnt[i] == 0:
-                return INF64
-        for i in 0..<N:
-            var
-                s = input.TS[i]
-                g = input.TS[i+1]
-                r = 0
-                min_dis = INF64
-
-            for i in pos[s]:
-                while r < pos[g].len() and i > pos[g][r]:
-                    r += 1
-                if r > 0:
-                    min_dis = min(min_dis, i-pos[g][r-1])
-                if r < pos[g].len():
-                    min_dis = min(min_dis, pos[g][r]-i)
-            assert min_dis != INF64
-            result += min_dis
-        return result
-
-    proc yamanobori(order: var seq[int]) =
-        #小さいほど良い
-        var best_score = evaluate(order)
-        while time.get_passed_time() < 2:
-            var
-                i = rand(order.len()-2)
-                j = rand(i+1..order.len()-1)
-                k = (j - i + 1) // 2
-            var prv = order
-            for l in 0..<k:
-                # echo "# before", order
-                swap(order[i+l], order[j-l])
-                # echo "# swap(i,j)", (i, j)
-                # echo "# after", order
-            var new_score = evaluate(order)
-            # stdout.writeLine "# new_score", (best_score, new_score)
-            if new_score < best_score:
-                best_score = new_score
-                stdout.writeLine "#", best_score
-                stdout.writeLine "#", root.len()
-            else:
-                for l in 0..<k:
-                    swap(order[i+l], order[j-l])
-                    # echo "# ctrl z", order
-                assert prv == order
-
-    var o = greedy(target, start)
-    optimize(o)
-    result = make_root(o)
-    echo "# A.len", result.len()
-    while result.len() > input.LA:
-        echo "# A.len", result.len()
-        o = greedy(target, sample(target))
-        optimize(o)
-        result = make_root(o)
 
 
-    # var order = input.TS.toSeq()
-    # yamanobori(o)
-    # result = make_root(o)
-    # var tmp = result.toHashSet()
-    # var stack = newSeqOfCap[int](N)
-    # var visited = initHashSet[int](N)
-    # stack.add(0)
-    # while stack.len() > 0:
-    #     var v = stack.pop()
-    #     for next in input.G[v]:
-    #         if next in tmp and next notin visited:
-    #             visited.incl(next)
-    #             stack.add(next)
-    # for i in input.TS:
-    #     assert(i in visited, $i)
-
-    # assert result.len() <= input.LA
-    # echo "#", evaluate(o)
-    # echo "#", result.len()
+    result = in_tsp(target)
+    stderr.writeLine(result.len())
     return result
-
-
-
-
 
 proc make_index_list(input: var Input, output: Output): array[N, seq[int]] =
     can_go[0] = true
@@ -1254,7 +1437,7 @@ proc optimize_A(input: var Input, output: var Output) =
                                 discard next_cands.replace(new_a_node)
         swap(cands, next_cands)
         next_cands.clear()
-    echo "#", ret
+    # echo "#", ret
 
     # quit()
     output.A = output.A[0..<default_len]
@@ -1280,22 +1463,78 @@ proc optimize_A(input: var Input, output: var Output) =
 
 
 proc make_A(input: var Input, output: var Output, time: Time) =
-    var checked = newSeqOfCap[int](4)
-    output.A = tsp(input, output, time, input.TS.sorted().deduplicate(), 0)
+    # var checked = newSeqOfCap[int](4)
+    var target = input.TS.sorted().deduplicate(isSorted = true)
+    output.A = tsp(input, output, time, target)
+    #diss[i] = iからの（距離、座標）
+    var diss: array[N, seq[(int, int)]]
+    for i in 0..<N:
+        diss[i] = newSeqOfCap[(int, int)](N)
+        for j in 0..<N:
+            diss[i].add((roots[i][j][0], j))
+        diss[i].sort(proc (a, b: (int, int)): int = cmp(b[0], a[0]))
+    var
+        A = newSeqOfCap[int](input.LA)
+        visited: array[N, bool]
+        s = target[0]
+        order = newSeqOfCap[int](target.len())
+    order.add(s)
+    visited[s] = true
+    while order.len() < target.len():
+        for (d, i) in diss[order[^1]]:
+            if i in target and visited[i] == false:
+                order.add(i)
+                visited[i] = true
+                break
+    for i in 0..<order.len()-1:
+        for j in bfs(order[i], order[i+1])[1..^1]:
+            output.A.add(j)
+    # var
+    #     r = [288**2, 408**2, INF64]
+    #     grp: array[3, seq[int]]
+    # grp.fill(newSeqOfCap[int](N))
+    # for i in target:
+    #     for index, j in r:
+    #         if distance((500, 500), input.xy[i]) < j:
+    #             # echo (i, index)
+    #             grp[index].add(i)
+    #             break
+    # var circle: array[3, seq[int]]
+    # for i in 0..<3:
+    #     circle[i] = tsp(input, output, time, grp[i])
+    # for i in circle[0]:
+    #     if output.A.len() >= 2 and output.A[^2] == i:
+    #         continue
+    #     output.A.add(i)
+    #     # echo "# ", input.xy[i][0], " ", input.xy[i][1]
 
-    # output.A.add(input.TS.sample())
-    # while output.A.len() < input.LA:
-    #     var cand: seq[int]
-    #     for index, i in input.TS:
-    #         if i == output.A[^1]:
-    #             cand.add(input.TS[index+1])
-    #     var s = output.A[^1]
-    #     var g = cand.sample()
-    #     for i in bfs(s, g)[1..^1]:
+
+    # for i in 1..<3:
+    #     var s = 0
+    #     for j, k in circle[i]:
+    #         if roots[output.A[^1]][k][0] < roots[output.A[^1]][circle[i][s]][0]:
+    #             s = j
+    #     circle[i] = circle[i][s..^1] & circle[i][0..<s]
+    #     for j in circle[i]:
+    #         if output.A.len() >= 2 and output.A[^2] == i:
+    #             continue
     #         output.A.add(i)
+        # echo "# ", input.xy[i][0], " ", input.xy[i][1]
+
+    # for i in input.TS:
+    #     echo "# ", input.xy[i][0], " ", input.xy[i][1]
+
+
+
+
+
+    for i in output.A:
+        echo "# ", input.xy[i][0], " ", input.xy[i][1]
+
+
 
     if output.A.len() < input.LA:
-        if input.LB > 8:
+        if true or input.LB > 8:
             var all_root = newSeqOfCap[int](10000)
             for i in 0..<T:
                 var
@@ -1338,6 +1577,7 @@ proc make_A(input: var Input, output: var Output, time: Time) =
                     ret = i
 
             for i in ret..<ret+can_use_len:
+
                 output.A.add(all_root[i])
         else:
             optimize_A(input, output)
@@ -1363,18 +1603,18 @@ proc solve(self: Solver, input: var Input, output: var Output, time: Time) =
     var index_list = make_index_list(input, output)
     make_a_index(input, output)
 
-    if prediction_time < 2.0:
-        # stderr.writeLine("#beam")
-        stdout.writeLine("#beam")
-        make_change_times(input, output, index_list)
-        beamsearch(input, output, time)
-    else:
-        # stderr.writeLine("#greedy")
-        stdout.writeLine("#greedy")
-        normal_make_actions(input, output, time, index_list)
+    # if prediction_time < 2.0:
+    #     stderr.writeLine("#beam")
+    #     # stdout.writeLine("#beam")
+    #     make_change_times(input, output, index_list)
+    #     beamsearch(input, output, time)
+    # else:
+    #     stderr.writeLine("#greedy")
+    #     # stdout.writeLine("#greedy")
+    #     normal_make_actions(input, output, time, index_list)
 
 
-    # deb(input, output)
+    deb(input, output)
     discard
 
 # -----------------------------------------------------------------------

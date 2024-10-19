@@ -11,9 +11,10 @@ import math
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
-import pypyjit
 
-pypyjit.set_param("max_unroll_recursion=-1")
+# import pypyjit
+
+# pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
@@ -33,3 +34,38 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+n, l = MII()
+k = II()
+a = [0] + LMII() + [l]
+na = []
+for i in range(n + 1):
+    na.append(a[i + 1] - a[i])
+# print(na)
+
+
+def isOK(mid):
+    cnt = 0
+    now = 0
+    for i in na:
+        now += i
+        if now >= mid:
+            cnt += 1
+            now = 0
+    return cnt >= k + 1
+
+    pass
+
+
+def meguru(ng, ok):
+    while abs(ok - ng) > 1:
+        mid = (ok + ng) // 2
+        if isOK(mid):
+            ok = mid
+        else:
+            ng = mid
+    return ok
+
+
+# ようかんの最小長の最大値
+ans = meguru(10**9 + 1, 1)
+print(ans)

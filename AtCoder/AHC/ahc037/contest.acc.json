@@ -1,0 +1,20 @@
+{
+  "contest": {
+    "id": "ahc037",
+    "title": "11th Asprova Programming Contest（AtCoder Heuristic Contest 037）",
+    "url": "https://atcoder.jp/contests/ahc037"
+  },
+  "tasks": [
+    {
+      "id": "ahc037_a",
+      "label": "A",
+      "title": "Soda",
+      "url": "https://atcoder.jp/contests/ahc037/tasks/ahc037_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

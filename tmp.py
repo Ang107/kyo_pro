@@ -1,29 +1,31 @@
-import sys
+from sys import stdin, setrecursionlimit
 from collections import deque, defaultdict
-from itertools import (
-    accumulate,  # 累積和
-    product,  # bit全探索 product(range(2),repeat=n)
-    permutations,  # permutations : 順列全探索
-    combinations,  # 組み合わせ（重複無し）
-    combinations_with_replacement,  # 組み合わせ（重複可）
-)
-import math
+from itertools import accumulate
+from itertools import permutations
+from itertools import product
+from itertools import combinations
+from itertools import combinations_with_replacement
+from math import ceil, floor, log, log2, sqrt, gcd, lcm
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
-import string
-import inspect
+from functools import cache
+from string import ascii_lowercase, ascii_uppercase
 
+DEBUG = False
+# import pypyjit
+# pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
-alph_s = tuple(string.ascii_lowercase)
-alph_l = tuple(string.ascii_uppercase)
+setrecursionlimit(10**7)
+alph_s = ascii_lowercase
+alph_l = ascii_uppercase
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float("inf")
 mod = 998244353
-input = lambda: sys.stdin.readline().rstrip()
+input = lambda: stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
+deb = lambda *x: print(*x) if DEBUG else None
 PY = lambda: print("Yes")
 PN = lambda: print("No")
 SI = lambda: input()
@@ -32,43 +34,10 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-
-def solve():
-    # 処理を記入
-    pass
-
-
-ans = []
-
-while 1:
-    n, d = MII()
-    if n == d == 0:
-        break
-    ab = [LMII() for _ in range(n)]
-    ab.sort(reverse=True, key=lambda x: (x[0], -x[1]))
-    ab = ab[:2]
-    if len(ab) == 1:
-        start = ab[0][0]
-        last = ab[0][0] - ab[0][1] * (d - 1)
-        res = (start + last) * d // 2
-    else:
-        res = -inf
-        for i in range(d + 1):
-            top = i
-            second = d - i
-            min_ = min(top, second)
-            cand = min_ * (ab[0][0] + ab[1][0])
-            if top - min_ > 0:
-                start = ab[0][0]
-                last = ab[0][0] - ab[0][1] * (top - min_ - 1)
-                cand += (start + last) * (top - min_) // 2
-            if second - min_ > 0:
-                start = ab[1][0]
-                last = ab[1][0] - ab[1][1] * (second - min_ - 1)
-                cand += (start + last) * (second - min_) // 2
-            res = max(res, cand)
-    ans.append(res)
-
-
-for i in ans:
-    print(i)
+n = II()
+s = input()
+ans = 0
+for i in range(n - 2):
+    if s[i] == s[i + 2] == "#" and s[i + 1] == ".":
+        ans += 1
+print(ans)

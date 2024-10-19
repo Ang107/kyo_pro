@@ -33,146 +33,63 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-import typing
-
-
-class UnionFind:
-    """
-    Implement (union by size) + (path halving)
-
-    Reference:
-    Zvi Galil and Giuseppe F. Italiano,
-    Data structures and algorithms for disjoint set union problems
-    """
-
-    def __init__(self, n: int = 0) -> None:
-        self._n = n
-        self.parent_or_size = [-1] * n
-
-    def merge(self, a: int, b: int) -> int:
-        assert 0 <= a < self._n
-        assert 0 <= b < self._n
-
-        x = self.leader(a)
-        y = self.leader(b)
-
-        if x == y:
-            return x
-
-        if -self.parent_or_size[x] < -self.parent_or_size[y]:
-            x, y = y, x
-
-        self.parent_or_size[x] += self.parent_or_size[y]
-        self.parent_or_size[y] = x
-
-        return x
-
-    def same(self, a: int, b: int) -> bool:
-        assert 0 <= a < self._n
-        assert 0 <= b < self._n
-
-        return self.leader(a) == self.leader(b)
-
-    def leader(self, a: int) -> int:
-        assert 0 <= a < self._n
-
-        parent = self.parent_or_size[a]
-        while parent >= 0:
-            if self.parent_or_size[parent] < 0:
-                return parent
-            self.parent_or_size[a], a, parent = (
-                self.parent_or_size[parent],
-                self.parent_or_size[parent],
-                self.parent_or_size[self.parent_or_size[parent]],
-            )
-
-        return a
-
-    def size(self, a: int) -> int:
-        assert 0 <= a < self._n
-
-        return -self.parent_or_size[self.leader(a)]
-
-    def groups(self) -> typing.List[typing.List[int]]:
-        leader_buf = [self.leader(i) for i in range(self._n)]
-
-        result: typing.List[typing.List[int]] = [[] for _ in range(self._n)]
-        for i in range(self._n):
-            result[leader_buf[i]].append(i)
-
-        return list(filter(lambda r: r, result))
 
 
 n, m = MII()
-ed = []
-g = [[] for _ in range(n)]
+dis = [[inf] * n for _ in range(n)]
+g = []
 for i in range(m):
-    tmp = LMII()
-    tmp[0] -= 1
-    tmp[1] -= 1
-    ed.append(tmp)
-    g[tmp[0]].append((tmp[2], tmp[1], i))
-    g[tmp[1]].append((tmp[2], tmp[0], i))
+    u, v, t = MII()
+    u -= 1
+    v -= 1
+    dis[u][v] = min(dis[u][v], t)
+    dis[v][u] = min(dis[v][u], t)
+    g.append((u, v, t))
+for i in range(n):
+    dis[i][i] = 0
 
-
-class IntHash:
-    def __init__(self, *args):
-        """
-        *args: 各要素の取りうる値の最大値
-        """
-        self.bit_len = [-1] * len(args)
-        self.mask = [-1] * len(args)
-        for idx, i in enumerate(args):
-            l = len(bin(i)) - 2
-            self.bit_len[idx] = l
-            self.mask[idx] = (1 << l) - 1
-        assert sum(self.bit_len) <= 63, "数字が大きすぎてhash化できません。"
-        self.sum_bit_len = [0]
-        for i in self.bit_len[1:][::-1]:
-            self.sum_bit_len.append(self.sum_bit_len[-1] + i)
-        self.sum_bit_len = self.sum_bit_len[::-1]
-
-    def hash(self, *args):
-        assert len(self.bit_len) == len(args), "引数の数が一致しません。"
-        hash = 0
-        for a, l in zip(args, self.sum_bit_len):
-            hash |= a << l
-        return hash
-
-    def restore(self, hash, idx=-1):
-        assert idx == -1 or 0 <= idx < len(self.bit_len), "idxの値が不正です。"
-        if idx == -1:
-            return [hash >> l & m for l, m in zip(self.sum_bit_len, self.mask)]
-        else:
-            return hash >> self.sum_bit_len[idx] & self.mask[idx]
-
-
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j])
+# for i in dis:
+#     print(i)
 q = II()
+
+
 for _ in range(q):
+    min_cost = inf
     k = II()
     b = LMII()
     b = [i - 1 for i in b]
-    ans = 0
-    # 頂点iにいて、到達済みの座標の集合がjのときの移動距離の最小値
-    visited = [[inf] * (1 << k) for _ in range(n)]
-    ih = IntHash(400, (1 << k))
-    # 距離、インデックス、集合
-    heap = [(0, ih.hash(0, 0))]
-    while heap:
-        dis, vs = heappop(heap)
-        v, s = ih.restore(vs)
-        if visited[v][s] < dis:
-            continue
-        for d, next, i in g[v]:
-            if i in b:
-                index = b.index(i)
-                new_dis = dis + d
-                if new_dis < visited[next][s | (1 << index)]:
-                    visited[next][s | (1 << index)] = new_dis
-                    heappush(heap, (new_dis, ih.hash(next, s | (1 << index))))
-            else:
-                new_dis = dis + d
-                if new_dis < visited[next][s]:
-                    visited[next][s] = new_dis
-                    heappush(heap, (new_dis, ih.hash(next, s)))
-    print(visited[n - 1][(1 << k) - 1])
+    # 順列全探索
+    for i in permutations(b):
+        # 向きを全探索
+        for j in range(1 << k):
+            cost = 0
+            for l in range(k):
+                if l == 0:
+                    if j >> l & 1:
+                        cost += dis[0][g[b[l]][0]]
+                    else:
+                        cost += dis[0][g[b[l]][1]]
+
+                if l == k - 1:
+                    if j >> l & 1:
+                        cost += dis[g[b[l]][1]][n - 1]
+                    else:
+                        cost += dis[g[b[l]][0]][n - 1]
+                if l < k - 1:
+                    if j >> l & 1:
+                        if j >> (l + 1) & 1:
+                            cost += dis[g[b[l]][1]][g[b[l + 1]][0]]
+                        else:
+                            cost += dis[g[b[l]][1]][g[b[l + 1]][1]]
+                    else:
+                        if j >> (l + 1) & 1:
+                            cost += dis[g[b[l]][0]][g[b[l + 1]][0]]
+                        else:
+                            cost += dis[g[b[l]][0]][g[b[l + 1]][1]]
+                cost += g[b[l]][2]
+            min_cost = min(cost, min_cost)
+    print(min_cost)

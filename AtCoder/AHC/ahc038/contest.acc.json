@@ -1,0 +1,20 @@
+{
+  "contest": {
+    "id": "ahc038",
+    "title": "Toyota Programming Contest 2024#10（AtCoder Heuristic Contest 038）",
+    "url": "https://atcoder.jp/contests/ahc038"
+  },
+  "tasks": [
+    {
+      "id": "ahc038_a",
+      "label": "A",
+      "title": "Tree Robot Arm",
+      "url": "https://atcoder.jp/contests/ahc038/tasks/ahc038_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

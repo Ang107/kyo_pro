@@ -1,0 +1,85 @@
+17
+41
+90
+82
+20
+29
+113
+97
+161
+58
+31
+38
+110
+70
+74
+57
+117
+22
+46
+!!! TLE DANGER !!! 2.764067
+63
+34
+159
+26
+99
+45
+52
+28
+40
+36
+30
+102
+127
+58
+30
+66
+96
+37
+40
+33
+29
+102
+122
+72
+113
+61
+!!! TLE DANGER !!! 2.7990351
+34
+60
+74
+51
+38
+159
+37
+!!! TLE DANGER !!! 2.5462222
+80
+87
+SIGINT: Interrupted by Ctrl-C.
+Traceback (most recent call last)
+/__w/choosenim/choosenim/src/choosenimpkg/proxyexe.nim(62) proxyexe
+/__w/choosenim/choosenim/src/choosenimpkg/proxyexe.nim(49) main
+/__w/choosenim/choosenim/nimDir/lib/pure/osproc.nim(1397) waitForExit
+SIGINT: Interrupted by Ctrl-C.
+Error: execution of an external program failed: '/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc038/a/main '
+Traceback (most recent call last)
+/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc038/a/main.nim(1112) main
+/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc038/a/main.nim(1107) main
+/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc038/a/main.nim(1045) solve
+/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc038/a/main.nim(993) beam_search
+/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc038/a/main.nim(911) dfs
+/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc038/a/main.nim(553) expand
+SIGINT: Interrupted by Ctrl-C.
+Traceback (most recent call last)
+/__w/choosenim/choosenim/src/choosenimpkg/proxyexe.nim(62) proxyexe
+/__w/choosenim/choosenim/src/choosenimpkg/proxyexe.nim(49) main
+/__w/choosenim/choosenim/nimDir/lib/pure/osproc.nim(1397) waitForExit
+SIGINT: Interrupted by Ctrl-C.
+Error: execution of an external program failed: '/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc038/a/main '
+SIGINT: Interrupted by Ctrl-C.
+Traceback (most recent call last)
+/__w/choosenim/choosenim/src/choosenimpkg/proxyexe.nim(62) proxyexe
+/__w/choosenim/choosenim/src/choosenimpkg/proxyexe.nim(49) main
+/__w/choosenim/choosenim/nimDir/lib/pure/osproc.nim(1397) waitForExit
+SIGINT: Interrupted by Ctrl-C.
+Error: execution of an external program failed: '/mnt/c/Users/kosuk/Desktop/kyo_pro/AtCoder/AHC/ahc038/a/best '

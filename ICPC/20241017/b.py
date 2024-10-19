@@ -33,42 +33,49 @@ MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
 
-def solve():
-    # 処理を記入
-    pass
+def solve(s: string, p: list[int]):
+    def hash(p):
+        l = []
+        for i in s:
+            if i == "[":
+                pass
+            elif i == "]":
+                a, b = l.pop(), l.pop()
+
+                op = l.pop()
+                if op == "+":
+                    l.append(a | b)
+                elif op == "*":
+                    l.append(a & b)
+                else:
+                    l.append(a ^ b)
+            elif i in "abcd":
+                l.append(p[ord(i) - ord("a")])
+            else:
+                l.append(i)
+        return l[0]
+
+    hashed_p = hash(p)
+    cnt = 0
+    for i in range(10000):
+        j = f"{i:04}"
+        # print(j)
+        if hashed_p == hash(list(map(int, j))):
+            cnt += 1
+    ans.append((hashed_p, cnt))
+    # ans.append(cnt)
 
 
 ans = []
 
 while 1:
-    n, d = MII()
-    if n == d == 0:
+    s = input()
+    if s == ".":
         break
-    ab = [LMII() for _ in range(n)]
-    ab.sort(reverse=True, key=lambda x: (x[0], -x[1]))
-    ab = ab[:2]
-    if len(ab) == 1:
-        start = ab[0][0]
-        last = ab[0][0] - ab[0][1] * (d - 1)
-        res = (start + last) * d // 2
-    else:
-        res = -inf
-        for i in range(d + 1):
-            top = i
-            second = d - i
-            min_ = min(top, second)
-            cand = min_ * (ab[0][0] + ab[1][0])
-            if top - min_ > 0:
-                start = ab[0][0]
-                last = ab[0][0] - ab[0][1] * (top - min_ - 1)
-                cand += (start + last) * (top - min_) // 2
-            if second - min_ > 0:
-                start = ab[1][0]
-                last = ab[1][0] - ab[1][1] * (second - min_ - 1)
-                cand += (start + last) * (second - min_) // 2
-            res = max(res, cand)
-    ans.append(res)
+    p = list(map(int, input()))
+    solve(s, p)
+    pass
 
 
 for i in ans:
-    print(i)
+    print(*i)

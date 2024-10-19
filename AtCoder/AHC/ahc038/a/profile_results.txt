@@ -1,0 +1,568 @@
+total executions of each stack trace:
+Entry: 1/65 Calls: 1258/2894 = 43.47% [sum: 1258; 1258/2894 = 43.47%]
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 2/65 Calls: 256/2894 = 8.85% [sum: 1514; 1514/2894 = 52.32%]
+  main.nim: new_action 256/2894 = 8.85%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 3/65 Calls: 187/2894 = 6.46% [sum: 1701; 1701/2894 = 58.78%]
+  main.nim: new_candidate 187/2894 = 6.46%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 4/65 Calls: 102/2894 = 3.52% [sum: 1803; 1803/2894 = 62.30%]
+  segtree.nim: all_prod 102/2894 = 3.52%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 5/65 Calls: 83/2894 = 2.87% [sum: 1886; 1886/2894 = 65.17%]
+  hashes.nim: hiXorLo 161/2894 = 5.56%
+  hashes.nim: hashWangYi1 222/2894 = 7.67%
+  hashes.nim: hash 306/2894 = 10.57%
+  hashcommon.nim: rawGet 306/2894 = 10.57%
+  tables.nim: [] 328/2894 = 11.33%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 6/65 Calls: 74/2894 = 2.56% [sum: 1960; 1960/2894 = 67.73%]
+  hashes.nim: hiXorLo 161/2894 = 5.56%
+  hashes.nim: hashWangYi1 222/2894 = 7.67%
+  hashes.nim: hash 306/2894 = 10.57%
+  hashcommon.nim: rawGet 306/2894 = 10.57%
+  tables.nim: hasKey 146/2894 = 5.04%
+  tables.nim: contains 146/2894 = 5.04%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 7/65 Calls: 59/2894 = 2.04% [sum: 2019; 2019/2894 = 69.77%]
+  main.nim: evaluate 59/2894 = 2.04%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 8/65 Calls: 59/2894 = 2.04% [sum: 2078; 2078/2894 = 71.80%]
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 9/65 Calls: 55/2894 = 1.90% [sum: 2133; 2133/2894 = 73.70%]
+  main.nim: op 61/2894 = 2.11%
+  segtree.nim: op1`gensym17 106/2894 = 3.66%
+  segtree.nim: update 250/2894 = 8.64%
+  segtree.nim: set 131/2894 = 4.53%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 10/65 Calls: 48/2894 = 1.66% [sum: 2181; 2181/2894 = 75.36%]
+  main.nim: & 94/2894 = 3.25%
+  main.nim: [] 328/2894 = 11.33%
+  main.nim: move_forward 120/2894 = 4.15%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 11/65 Calls: 45/2894 = 1.55% [sum: 2226; 2226/2894 = 76.92%]
+  main.nim: move_backward 109/2894 = 3.77%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 12/65 Calls: 45/2894 = 1.55% [sum: 2271; 2271/2894 = 78.47%]
+  hashes.nim: hash 306/2894 = 10.57%
+  hashcommon.nim: rawGet 306/2894 = 10.57%
+  tables.nim: hasKey 146/2894 = 5.04%
+  tables.nim: contains 146/2894 = 5.04%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 13/65 Calls: 42/2894 = 1.45% [sum: 2313; 2313/2894 = 79.92%]
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 14/65 Calls: 40/2894 = 1.38% [sum: 2353; 2353/2894 = 81.31%]
+  main.nim: move_forward 120/2894 = 4.15%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 15/65 Calls: 39/2894 = 1.35% [sum: 2392; 2392/2894 = 82.65%]
+  hashes.nim: hash 306/2894 = 10.57%
+  hashcommon.nim: rawGet 306/2894 = 10.57%
+  tables.nim: [] 328/2894 = 11.33%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 16/65 Calls: 38/2894 = 1.31% [sum: 2430; 2430/2894 = 83.97%]
+  segtree.nim: op1`gensym17 106/2894 = 3.66%
+  segtree.nim: update 250/2894 = 8.64%
+  segtree.nim: set 131/2894 = 4.53%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 17/65 Calls: 33/2894 = 1.14% [sum: 2463; 2463/2894 = 85.11%]
+  main.nim: & 94/2894 = 3.25%
+  main.nim: [] 328/2894 = 11.33%
+  main.nim: move_backward 109/2894 = 3.77%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 18/65 Calls: 32/2894 = 1.11% [sum: 2495; 2495/2894 = 86.21%]
+  hashes.nim: hashWangYi1 222/2894 = 7.67%
+  hashes.nim: hash 306/2894 = 10.57%
+  hashcommon.nim: rawGet 306/2894 = 10.57%
+  tables.nim: [] 328/2894 = 11.33%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 19/65 Calls: 31/2894 = 1.07% [sum: 2526; 2526/2894 = 87.28%]
+  main.nim: [] 328/2894 = 11.33%
+  main.nim: move_backward 109/2894 = 3.77%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 20/65 Calls: 28/2894 = 0.97% [sum: 2554; 2554/2894 = 88.25%]
+  main.nim: [] 328/2894 = 11.33%
+  main.nim: move_forward 120/2894 = 4.15%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 21/65 Calls: 27/2894 = 0.93% [sum: 2581; 2581/2894 = 89.18%]
+  hashes.nim: hashWangYi1 222/2894 = 7.67%
+  hashes.nim: hash 306/2894 = 10.57%
+  hashcommon.nim: rawGet 306/2894 = 10.57%
+  tables.nim: hasKey 146/2894 = 5.04%
+  tables.nim: contains 146/2894 = 5.04%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 22/65 Calls: 23/2894 = 0.79% [sum: 2604; 2604/2894 = 89.98%]
+  comparisons.nim: <=% 48/2894 = 1.66%
+  gc_common.nim: isOnStack 28/2894 = 0.97%
+  gc.nim: unsureAsgnRef 28/2894 = 0.97%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 23/65 Calls: 22/2894 = 0.76% [sum: 2626; 2626/2894 = 90.74%]
+  segtree.nim: set 131/2894 = 4.53%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 24/65 Calls: 17/2894 = 0.59% [sum: 2643; 2643/2894 = 91.33%]
+  segtree.nim: get 17/2894 = 0.59%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 25/65 Calls: 17/2894 = 0.59% [sum: 2660; 2660/2894 = 91.91%]
+  main.nim: [] 328/2894 = 11.33%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 26/65 Calls: 16/2894 = 0.55% [sum: 2676; 2676/2894 = 92.47%]
+  comparisons.nim: <=% 48/2894 = 1.66%
+  gc.nim: newObj 36/2894 = 1.24%
+  gc.nim: newSeq 37/2894 = 1.28%
+  system.nim: newSeq 37/2894 = 1.28%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 27/65 Calls: 16/2894 = 0.55% [sum: 2692; 2692/2894 = 93.02%]
+  segtree.nim: update 250/2894 = 8.64%
+  segtree.nim: set 131/2894 = 4.53%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 28/65 Calls: 15/2894 = 0.52% [sum: 2707; 2707/2894 = 93.54%]
+  main.nim: ^= 19/2894 = 0.66%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 29/65 Calls: 15/2894 = 0.52% [sum: 2722; 2722/2894 = 94.06%]
+  main.nim: |= 15/2894 = 0.52%
+  main.nim: add 35/2894 = 1.21%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 30/65 Calls: 13/2894 = 0.45% [sum: 2735; 2735/2894 = 94.51%]
+  main.nim: & 94/2894 = 3.25%
+  main.nim: [] 328/2894 = 11.33%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 31/65 Calls: 12/2894 = 0.41% [sum: 2747; 2747/2894 = 94.92%]
+  main.nim: add 35/2894 = 1.21%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 32/65 Calls: 12/2894 = 0.41% [sum: 2759; 2759/2894 = 95.34%]
+  main.nim: :anonymous 12/2894 = 0.41%
+  segtree.nim: e1`gensym17 18/2894 = 0.62%
+  segtree.nim: init 39/2894 = 1.35%
+  segtree.nim: init 39/2894 = 1.35%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 33/65 Calls: 12/2894 = 0.41% [sum: 2771; 2771/2894 = 95.75%]
+  arithmetics.nim: -% 22/2894 = 0.76%
+  gc.nim: usrToCell 12/2894 = 0.41%
+  gc.nim: asgnRef 38/2894 = 1.31%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 34/65 Calls: 10/2894 = 0.35% [sum: 2781; 2781/2894 = 96.10%]
+  comparisons.nim: <% 16/2894 = 0.55%
+  gc.nim: decRef 18/2894 = 0.62%
+  gc.nim: asgnRef 38/2894 = 1.31%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 35/65 Calls: 8/2894 = 0.28% [sum: 2789; 2789/2894 = 96.37%]
+  arithmetics.nim: +% 21/2894 = 0.73%
+  gc.nim: incRef 10/2894 = 0.35%
+  gc.nim: asgnRef 38/2894 = 1.31%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 36/65 Calls: 8/2894 = 0.28% [sum: 2797; 2797/2894 = 96.65%]
+  arithmetics.nim: -% 22/2894 = 0.76%
+  gc.nim: decRef 18/2894 = 0.62%
+  gc.nim: asgnRef 38/2894 = 1.31%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 37/65 Calls: 8/2894 = 0.28% [sum: 2805; 2805/2894 = 96.92%]
+  macros.nim: << 8/2894 = 0.28%
+  main.nim: add 35/2894 = 1.21%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 38/65 Calls: 7/2894 = 0.24% [sum: 2812; 2812/2894 = 97.17%]
+  segtree.nim: op1`gensym17 106/2894 = 3.66%
+  segtree.nim: update 250/2894 = 8.64%
+  segtree.nim: init 39/2894 = 1.35%
+  segtree.nim: init 39/2894 = 1.35%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 39/65 Calls: 6/2894 = 0.21% [sum: 2818; 2818/2894 = 97.37%]
+  comparisons.nim: <% 16/2894 = 0.55%
+  gc.nim: newObj 36/2894 = 1.24%
+  gc.nim: newSeq 37/2894 = 1.28%
+  system.nim: newSeq 37/2894 = 1.28%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 40/65 Calls: 6/2894 = 0.21% [sum: 2824; 2824/2894 = 97.58%]
+  segtree.nim: e1`gensym17 18/2894 = 0.62%
+  segtree.nim: init 39/2894 = 1.35%
+  segtree.nim: init 39/2894 = 1.35%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 41/65 Calls: 6/2894 = 0.21% [sum: 2830; 2830/2894 = 97.79%]
+  segtree.nim: init 39/2894 = 1.35%
+  segtree.nim: init 39/2894 = 1.35%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 42/65 Calls: 6/2894 = 0.21% [sum: 2836; 2836/2894 = 98.00%]
+  main.nim: op 61/2894 = 2.11%
+  segtree.nim: op1`gensym17 106/2894 = 3.66%
+  segtree.nim: update 250/2894 = 8.64%
+  segtree.nim: init 39/2894 = 1.35%
+  segtree.nim: init 39/2894 = 1.35%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 43/65 Calls: 5/2894 = 0.17% [sum: 2841; 2841/2894 = 98.17%]
+  arithmetics.nim: +% 21/2894 = 0.73%
+  gc.nim: cellToUsr 5/2894 = 0.17%
+  gc.nim: newObj 36/2894 = 1.24%
+  gc.nim: newSeq 37/2894 = 1.28%
+  system.nim: newSeq 37/2894 = 1.28%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 44/65 Calls: 4/2894 = 0.14% [sum: 2845; 2845/2894 = 98.31%]
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 45/65 Calls: 4/2894 = 0.14% [sum: 2849; 2849/2894 = 98.45%]
+  main.nim: ^= 19/2894 = 0.66%
+  main.nim: move_forward 120/2894 = 4.15%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 46/65 Calls: 4/2894 = 0.14% [sum: 2853; 2853/2894 = 98.58%]
+  comparisons.nim: <=% 48/2894 = 1.66%
+  alloc.nim: interiorAllocatedPtr 4/2894 = 0.14%
+  gc.nim: newObj 36/2894 = 1.24%
+  gc.nim: newSeq 37/2894 = 1.28%
+  system.nim: newSeq 37/2894 = 1.28%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 47/65 Calls: 4/2894 = 0.14% [sum: 2857; 2857/2894 = 98.72%]
+  hashes.nim: hiXorLo 161/2894 = 5.56%
+  hashes.nim: hashWangYi1 222/2894 = 7.67%
+  hashes.nim: hash 306/2894 = 10.57%
+  hashcommon.nim: rawGet 306/2894 = 10.57%
+  tables.nim: []= 6/2894 = 0.21%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 48/65 Calls: 4/2894 = 0.14% [sum: 2861; 2861/2894 = 98.86%]
+  system.nim: [] 328/2894 = 11.33%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 49/65 Calls: 4/2894 = 0.14% [sum: 2865; 2865/2894 = 99.00%]
+  system.nim: pop 12/2894 = 0.41%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 50/65 Calls: 3/2894 = 0.10% [sum: 2868; 2868/2894 = 99.10%]
+  comparisons.nim: <=% 48/2894 = 1.66%
+  gc_common.nim: isOnStack 28/2894 = 0.97%
+  gc.nim: unsureAsgnRef 28/2894 = 0.97%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 51/65 Calls: 3/2894 = 0.10% [sum: 2871; 2871/2894 = 99.21%]
+  arithmetics.nim: +% 21/2894 = 0.73%
+  system.nim: pop 12/2894 = 0.41%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 52/65 Calls: 3/2894 = 0.10% [sum: 2874; 2874/2894 = 99.31%]
+  arithmetics.nim: *% 5/2894 = 0.17%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 53/65 Calls: 2/2894 = 0.07% [sum: 2876; 2876/2894 = 99.38%]
+  arithmetics.nim: *% 5/2894 = 0.17%
+  system.nim: pop 12/2894 = 0.41%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 54/65 Calls: 2/2894 = 0.07% [sum: 2878; 2878/2894 = 99.45%]
+  comparisons.nim: <=% 48/2894 = 1.66%
+  gc_common.nim: isOnStack 28/2894 = 0.97%
+  gc.nim: unsureAsgnRef 28/2894 = 0.97%
+  system.nim: pop 12/2894 = 0.41%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 55/65 Calls: 2/2894 = 0.07% [sum: 2880; 2880/2894 = 99.52%]
+  hashes.nim: hashWangYi1 222/2894 = 7.67%
+  hashes.nim: hash 306/2894 = 10.57%
+  hashcommon.nim: rawGet 306/2894 = 10.57%
+  tables.nim: []= 6/2894 = 0.21%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 56/65 Calls: 2/2894 = 0.07% [sum: 2882; 2882/2894 = 99.59%]
+  arithmetics.nim: -% 22/2894 = 0.76%
+  main.nim: update 250/2894 = 8.64%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 57/65 Calls: 2/2894 = 0.07% [sum: 2884; 2884/2894 = 99.65%]
+  segtree.nim: update 250/2894 = 8.64%
+  segtree.nim: init 39/2894 = 1.35%
+  segtree.nim: init 39/2894 = 1.35%
+  main.nim: push 716/2894 = 24.74%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 58/65 Calls: 2/2894 = 0.07% [sum: 2886; 2886/2894 = 99.72%]
+  arithmetics.nim: +% 21/2894 = 0.73%
+  gc.nim: newObj 36/2894 = 1.24%
+  gc.nim: newSeq 37/2894 = 1.28%
+  system.nim: newSeq 37/2894 = 1.28%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+Entry: 59/65 Calls: 2/2894 = 0.07% [sum: 2888; 2888/2894 = 99.79%]
+  arithmetics.nim: +% 21/2894 = 0.73%
+  gc.nim: incRef 10/2894 = 0.35%
+  gc.nim: newObj 36/2894 = 1.24%
+  gc.nim: newSeq 37/2894 = 1.28%
+  system.nim: newSeq 37/2894 = 1.28%
+  main.nim: expand 2534/2894 = 87.56%
+  main.nim: dfs 2767/2894 = 95.61%
+  main.nim: beam_search 2893/2894 = 99.97%
+  main.nim: solve 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%
+  main.nim: main 2893/2894 = 99.97%

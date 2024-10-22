@@ -37,8 +37,31 @@ LMII = lambda: list(map(int, input().split()))
 
 t = II()
 ans = []
+import random
 
+xor = random.randrange(1 << 63)
 for _ in range(t):
+    n = II()
+    a = [LMII() for _ in range(n)]
+    tmp = set()
+    for i in range(n):
+        for j in range(2):
+            tmp.add(a[i][j])
+    tmp = sorted(tmp)
+    d = {}
+    for i in range(len(tmp)):
+        d[tmp[i] ^ xor] = i
+
+    a.sort(key=lambda x: d[x[0] ^ xor] + d[x[1] ^ xor])
+    # for x in a:
+    #     print(d[x[0]] + d[x[1]])
+    # print(a)
+    # print(d)
+    res = []
+    for i in a:
+        for j in i:
+            res.append(j)
+    ans.append(res)
     pass
 for i in ans:
-    print(i)
+    print(*i)

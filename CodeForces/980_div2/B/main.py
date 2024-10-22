@@ -39,6 +39,22 @@ t = II()
 ans = []
 
 for _ in range(t):
+    n, k = MII()
+    a = LMII()
+    a.sort(reverse=True)
+    now = 0
+    res = 0
+    while k > 0:
+        # print(a, res)
+        while a and a[-1] <= now:
+            res += 1
+            a.pop()
+        tmp = min(k, (a[-1] - now) * len(a))
+        k -= tmp
+        res += tmp
+        now = a[-1]
+    ans.append(res)
+
     pass
 for i in ans:
     print(i)

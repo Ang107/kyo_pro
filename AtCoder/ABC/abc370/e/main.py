@@ -34,3 +34,10 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+n,k = MII()
+a = LMII()
+pref = [0] + list(accumulate(a))
+tmp = []
+for i in range(n):
+    index = bisect_left()
+    if 

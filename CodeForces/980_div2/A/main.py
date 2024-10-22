@@ -39,6 +39,11 @@ t = II()
 ans = []
 
 for _ in range(t):
+    a, b = MII()
+    if a >= b:
+        ans.append(a)
+    else:
+        ans.append(max(0, a - (b - a)))
     pass
 for i in ans:
     print(i)

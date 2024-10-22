@@ -1,0 +1,74 @@
+for lr, c in cand.items():
+            l, r = lr // n, lr % n
+            print(l, r)
+            # 時計回り
+            if r <= l:
+                # ぶつかる場合
+                if r <= l <= t:
+                    ncost = c
+                    nl = (t + 1) % n
+                    nr = t
+                    ncost += dis_r(l, nl) + dis_r(r, nr)
+                    assert dis_r(l, nl) + dis_r(r, nr) >= 0
+                    ncand[nl * n + nr] = min(ncand[nl * n + nr], ncost)
+                else:
+                    ncost = c
+                    nl = l
+                    nr = t
+                    ncost += dis_r(l, nl) + dis_r(r, nr)
+                    assert dis_r(l, nl) + dis_r(r, nr) >= 0
+                    ncand[nl * n + nr] = min(ncand[nl * n + nr], ncost)
+
+            elif r >= l:
+                # ぶつかる場合
+                if l <= t <= r:
+                    ncost = c
+                    # ncost += (t - l + 1) + t + (n - r)
+                    nl = (t + 1) % n
+                    nr = t
+                    ncost += dis_r(l, nl) + dis_r(r, nr)
+                    assert dis_r(l, nl) + dis_r(r, nr) >= 0
+                    ncand[nl * n + nr] = min(ncand[nl * n + nr], ncost)
+                else:
+                    ncost = c
+                    nl = l
+                    nr = t
+                    ncost += dis_r(l, nl) + dis_r(r, nr)
+                    # print(l, r, nl, nr, dis_r(l, nl) + dis_r(r, t))
+                    assert dis_r(l, nl) + dis_r(r, nr) >= 0
+                    ncand[nl * n + nr] = min(ncand[nl * n + nr], ncost)
+
+            # 反時計回り
+            if r >= l:
+                # ぶつかる場合
+                if r >= l >= t:
+                    ncost = c
+                    nl = (t - 1) % n
+                    nr = t
+                    ncost += dis_l(l, nl) + dis_l(r, nr)
+                    assert dis_l(l, nl) + dis_l(r, nr) >= 0
+                    ncand[nl * n + nr] = min(ncand[nl * n + nr], ncost)
+                else:
+                    ncost = c
+                    nl = l
+                    nr = t
+                    ncost += dis_l(l, nl) + dis_l(r, nr)
+                    assert dis_l(l, nl) + dis_l(r, nr) >= 0
+                    ncand[nl * n + nr] = min(ncand[nl * n + nr], ncost)
+
+            elif r <= l:
+                # ぶつかる場合
+                if l >= t >= r:
+                    ncost = c
+                    nl = (t - 1) % n
+                    nr = t
+                    ncost += dis_l(l, nl) + dis_l(r, nr)
+                    assert dis_l(l, nl) + dis_l(r, nr) >= 0
+                    ncand[nl * n + nr] = min(ncand[nl * n + nr], ncost)
+                else:
+                    ncost = c
+                    nl = l
+                    nr = t
+                    ncost += dis_l(l, nl) + dis_l(r, nr)
+                    assert dis_l(l, nl) + dis_l(r, nr) >= 0
+                    ncand[nl * n + nr] = min(ncand[nl * n + nr], ncost)

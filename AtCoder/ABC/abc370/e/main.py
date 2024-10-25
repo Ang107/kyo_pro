@@ -37,21 +37,14 @@ LMII = lambda: list(map(int, input().split()))
 n, k = MII()
 a = LMII()
 d = defaultdict(int)
-pref = [0] + list(accumulate(a))
+pref = list(accumulate(a))
+d[0] = 1
 sum_ = 1
 for i in range(n):
-    tmp = sum_ - d[pref[i + 1] - a[i]]
+    tmp = sum_ - d[pref[i] - k]
     tmp %= mod
-    d[pref[i + 1]] += tmp
-    sum_ = tmp
-    print(tmp, sum_, d[k - a[i]], pref[i + 1])
+    d[pref[i]] += tmp
+    sum_ += tmp
+    sum_ %= mod
+    # print(tmp, sum_, d[k - a[i]], pref[i + 1])
 print(tmp)
-# pref = [0] + list(accumulate(a))
-# dp = [0] * (n + 1)
-# dp[0] = 1
-# for i in range(n):
-#     for j in range(i, n):
-#         if pref[j + 1] - pref[i] != k:
-#             dp[j + 1] += dp[i]
-# # print(dp)
-# print(dp[n])

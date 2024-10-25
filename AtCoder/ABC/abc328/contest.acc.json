@@ -64,13 +64,23 @@
       "id": "abc328_f",
       "label": "F",
       "title": "Good Set Query",
-      "url": "https://atcoder.jp/contests/abc328/tasks/abc328_f"
+      "url": "https://atcoder.jp/contests/abc328/tasks/abc328_f",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "abc328_g",
       "label": "G",
       "title": "Cut and Reorder",
-      "url": "https://atcoder.jp/contests/abc328/tasks/abc328_g"
+      "url": "https://atcoder.jp/contests/abc328/tasks/abc328_g",
+      "directory": {
+        "path": "g",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     }
   ]
 }

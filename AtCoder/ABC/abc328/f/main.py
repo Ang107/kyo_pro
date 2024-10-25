@@ -33,28 +33,3 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-
-n, q = MII()
-a = LMII()
-b = LMII()
-
-
-import random
-
-zobrist_hash = [random.randrange(1 << 63) for _ in range(n + 1)]
-pref_a = [0]
-pref_b = [0]
-for i in range(n):
-    pref_a.append(pref_a[-1] + zobrist_hash[a[i]])
-    pref_b.append(pref_b[-1] + zobrist_hash[b[i]])
-
-for _ in range(q):
-    l, r, L, R = MII()
-    l -= 1
-    r -= 1
-    L -= 1
-    R -= 1
-    if pref_a[r + 1] - pref_a[l] == pref_b[R + 1] - pref_b[L]:
-        PY()
-    else:
-        PN()

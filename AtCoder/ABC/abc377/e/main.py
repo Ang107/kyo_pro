@@ -34,10 +34,10 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+
 n, k = MII()
-x = LMII()
-a = LMII()
-next = [i - 1 for i in x]
+p = LMII()
+next = [i - 1 for i in p]
 
 
 class FunctionalGraph:
@@ -101,12 +101,14 @@ class FunctionalGraph:
         if k == 0:
             return now
         cycle_len = len(self.cycles[now])
-        now = self.cycles[now][(self.cycles_index[now] + k) % cycle_len]
+        now = self.cycles[now][
+            (self.cycles_index[now] + pow(2, k, cycle_len)) % cycle_len
+        ]
         return now
 
 
 FG = FunctionalGraph(n, next)
 ans = [-1] * n
 for i in range(n):
-    ans[i] = a[FG.get_next(i, k)]
+    ans[i] = FG.get_next(i, k) + 1
 print(*ans)

@@ -33,27 +33,21 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-
-# n, c = MII()
-# t = LMII()
-# prv = -inf
-# ans = 0
-# for i in t:
-#     if i - prv < c:
-#         pass
-#     else:
-#         ans += 1
-#         prv = i
-# print(ans)
-
-n, c = map(int, input().split())
-t = list(map(int, input().split()))
-# 前回飴を貰った時間
-got_time = -(10**18)
+s = [list(input()) for _ in range(8)]
+for i in range(8):
+    for j in range(8):
+        if s[i][j] == "#":
+            for p in range(8):
+                if s[p][j] != "#":
+                    s[p][j] = "x"
+            for q in range(8):
+                if s[i][q] != "#":
+                    s[i][q] = "x"
 ans = 0
-for i in t:
-    # 今回雨が貰えるか
-    if i - got_time >= c:
-        ans += 1
-        got_time = i
+for i in range(8):
+    for j in range(8):
+        if s[i][j] == ".":
+            ans += 1
+# for i in s:
+#     print(i)
 print(ans)

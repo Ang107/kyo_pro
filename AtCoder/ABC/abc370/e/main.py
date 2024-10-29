@@ -40,7 +40,7 @@ d = defaultdict(int)
 pref = [0] + list(accumulate(a))
 sum_ = 1
 for i in range(n):
-    tmp = sum_ - d[pref[i + 1] - a[i]]
+    tmp = sum_ - d[k - a[i]]
     tmp %= mod
     d[pref[i + 1]] += tmp
     sum_ = tmp

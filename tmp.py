@@ -1,43 +1,88 @@
-from sys import stdin, setrecursionlimit
-from collections import deque, defaultdict
-from itertools import accumulate
-from itertools import permutations
-from itertools import product
-from itertools import combinations
-from itertools import combinations_with_replacement
-from math import ceil, floor, log, log2, sqrt, gcd, lcm
-from bisect import bisect_left, bisect_right
-from heapq import heapify, heappop, heappush
-from functools import cache
-from string import ascii_lowercase, ascii_uppercase
+def solve1(n, m, s):
+    ans = 0
+    if m == 1:
+        for i in range(n):
+            ans = max(ans, sum([s[i][0], s[i][1], s[i][2]]))
+    elif m == 2:
+        s_vi = sorted(s, reverse=True, key=lambda x: x[0])
+        s_d = sorted(s, reverse=True, key=lambda x: x[1])
+        s_vo = sorted(s, reverse=True, key=lambda x: x[2])
+        for i in range(n):
+            ans = max(
+                ans,
+                max(s_vi[0][0], s_d[i][0])
+                + max(s_vi[0][1], s_d[i][1])
+                + max(s_vi[0][2], s_d[i][2]),
+            )
+        for i in range(n):
+            ans = max(
+                ans,
+                max(s_d[0][0], s_vi[i][0])
+                + max(s_d[0][1], s_vi[i][1])
+                + max(s_d[0][2], s_vi[i][2]),
+            )
+        for i in range(n):
+            ans = max(
+                ans,
+                max(s_vo[0][0], s_d[i][0])
+                + max(s_vo[0][1], s_d[i][1])
+                + max(s_vo[0][2], s_d[i][2]),
+            )
+    else:
+        ma, mb, mc = 0, 0, 0
+        for i in range(n):
+            ma = max(ma, s[i][0])
+            mb = max(mb, s[i][1])
+            mc = max(mc, s[i][2])
+        ans = ma + mb + mc
+    return ans
 
-DEBUG = False
-# import pypyjit
-# pypyjit.set_param("max_unroll_recursion=-1")
-# 外部ライブラリ
-# from sortedcontainers import SortedSet, SortedList, SortedDict
-setrecursionlimit(10**7)
-alph_s = ascii_lowercase
-alph_l = ascii_uppercase
-around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
-around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-inf = float("inf")
-mod = 998244353
-input = lambda: stdin.readline().rstrip()
-pritn = lambda *x: print(*x)
-deb = lambda *x: print(*x) if DEBUG else None
-PY = lambda: print("Yes")
-PN = lambda: print("No")
-SI = lambda: input()
-IS = lambda: input().split()
-II = lambda: int(input())
-MII = lambda: map(int, input().split())
-LMII = lambda: list(map(int, input().split()))
 
-n = II()
-s = input()
-ans = 0
-for i in range(n - 2):
-    if s[i] == s[i + 2] == "#" and s[i + 1] == ".":
-        ans += 1
-print(ans)
+def solve2(N, M, ABC):
+    # 入力
+
+    if M == 1:
+        # 一人の場合は各アイドルの Vi + Da + Vo の最大値が答えとなる。
+        ans = -1
+        for abc in ABC:
+            ans = max(ans, sum(abc))
+    elif M == 2:
+        max_status = [0] * (1 << 3)
+        for mask in range(1 << 3):
+            for abc in ABC:
+                tmp = 0
+                for i in range(3):
+                    if mask >> i & 1:
+                        tmp += abc[i]
+                max_status[mask] = max(max_status[mask], tmp)
+        ans = -1
+        for mask in range(1 << 3):
+            ans = max(ans, max_status[mask] + max_status[7 - mask])
+    else:
+        # 3人以上選べる場合、Vi、Da、Voそれぞれの最大値を持つ人を全員採用することができる
+        A = []
+        B = []
+        C = []
+        for a, b, c in ABC:
+            A.append(a)
+            B.append(b)
+            C.append(c)
+        ans = max(A) + max(B) + max(C)
+    return ans
+
+
+import random
+
+while True:
+    n = random.randrange(2, 100)
+    m = 2
+    abc = [
+        [random.randrange(1, 100), random.randrange(1, 100), random.randrange(1, 100)]
+        for _ in range(n)
+    ]
+    if solve1(n, m, abc) != solve2(n, m, abc):
+        print(n, m)
+        print(abc)
+        exit()
+    else:
+        print("OK")

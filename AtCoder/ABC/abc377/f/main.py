@@ -34,26 +34,14 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-# n, c = MII()
-# t = LMII()
-# prv = -inf
-# ans = 0
-# for i in t:
-#     if i - prv < c:
-#         pass
-#     else:
-#         ans += 1
-#         prv = i
-# print(ans)
-
-n, c = map(int, input().split())
-t = list(map(int, input().split()))
-# 前回飴を貰った時間
-got_time = -(10**18)
-ans = 0
-for i in t:
-    # 今回雨が貰えるか
-    if i - got_time >= c:
-        ans += 1
-        got_time = i
-print(ans)
+n, m = MII()
+visited_a = set()
+visited_b = set()
+visited_v1 = set()
+visited_v2
+ab = []
+for _ in range(m):
+    a, b = MII()
+    ab.append((a, b))
+    visited_a.add(a)
+    visited_b.add(b)

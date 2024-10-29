@@ -1,26 +1,42 @@
-import sys
-from  collections import deque,defaultdict
-from itertools import accumulate, product,permutations,combinations,combinations_with_replacement
-import math
-from bisect import bisect_left,insort_left,bisect_right,insort_right
-#product : bit全探索 product(range(2),repeat=n)
-#permutations : 順列全探索
-#combinations : 組み合わせ（重複無し）
-#combinations_with_replacement : 組み合わせ（重複可）
+from sys import stdin, setrecursionlimit
+from collections import deque, defaultdict
+from itertools import accumulate
+from itertools import permutations
+from itertools import product
+from itertools import combinations
+from itertools import combinations_with_replacement
+from math import ceil, floor, log, log2, sqrt, gcd, lcm
+from bisect import bisect_left, bisect_right
+from heapq import heapify, heappop, heappush
+from functools import cache
+from string import ascii_lowercase, ascii_uppercase
+
+DEBUG = False
+# import pypyjit
+# pypyjit.set_param("max_unroll_recursion=-1")
+# 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
-around4 = ((0, -1), (0, 1), (-1, 0), (1, 0))
+setrecursionlimit(10**7)
+alph_s = ascii_lowercase
+alph_l = ascii_uppercase
+around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-inf = float('inf')
-deq = deque()
-dd = defaultdict()
+inf = float("inf")
+mod = 998244353
+input = lambda: stdin.readline().rstrip()
+pritn = lambda *x: print(*x)
+deb = lambda *x: print(*x) if DEBUG else None
+PY = lambda: print("Yes")
+PN = lambda: print("No")
+SI = lambda: input()
+IS = lambda: input().split()
+II = lambda: int(input())
+MII = lambda: map(int, input().split())
+LMII = lambda: list(map(int, input().split()))
 
-II = lambda : int(input())
-MII = lambda : map(int,input().split())
-LMII = lambda : list(map(int,input().split()))
-Ary2 = lambda w,h,element : [[element] * w for _ in range(h)]
-is_not_Index_Er = lambda x,y,h,w : 0 <= x < h and 0 <= y < w    #範囲外参照
-    
-
-
-
+a, x, m = map(int, input().split())
+if a == 1:
+    print(x % m)
+else:
+    print((a**x - 1) // (a - 1) % m)
+    print((pow(a, x, (a - 1) * m) - 1) // (a - 1) % m)

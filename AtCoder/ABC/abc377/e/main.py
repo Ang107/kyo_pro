@@ -52,7 +52,6 @@ class FunctionalGraph:
         self.jumps = [-1] * self.n
         self.visited = [False] * self.n
         self.cycles = [-1] * self.n
-        self.cycles_index = [-1] * self.n
         self.dis_to_cycle = [-1] * self.n
 
         self.calc_cycles()
@@ -76,7 +75,6 @@ class FunctionalGraph:
                 path, cycle = self.dfs(s)
                 for i, v in enumerate(cycle):
                     self.cycles[v] = cycle
-                    self.cycles_index[v] = i
                     self.dis_to_cycle[v] = -i
                 if cycle:
                     for i, v in enumerate(path[::-1], start=1):

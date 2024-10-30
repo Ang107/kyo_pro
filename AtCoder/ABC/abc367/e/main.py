@@ -1,15 +1,4 @@
 from sys import stdin, setrecursionlimit
-from collections import deque, defaultdict
-from itertools import accumulate
-from itertools import permutations
-from itertools import product
-from itertools import combinations
-from itertools import combinations_with_replacement
-from math import ceil, floor, log, log2, sqrt, gcd, lcm
-from bisect import bisect_left, bisect_right
-from heapq import heapify, heappop, heappush
-from functools import cache
-from string import ascii_lowercase, ascii_uppercase
 
 DEBUG = False
 # import pypyjit
@@ -17,8 +6,6 @@ DEBUG = False
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 setrecursionlimit(10**7)
-alph_s = ascii_lowercase
-alph_l = ascii_uppercase
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float("inf")
@@ -52,7 +39,6 @@ class FunctionalGraph:
         self.jumps = [-1] * self.n
         self.visited = [False] * self.n
         self.cycles = [-1] * self.n
-        self.cycles_index = [-1] * self.n
         self.dis_to_cycle = [-1] * self.n
 
         self.calc_cycles()
@@ -76,7 +62,6 @@ class FunctionalGraph:
                 path, cycle = self.dfs(s)
                 for i, v in enumerate(cycle):
                     self.cycles[v] = cycle
-                    self.cycles_index[v] = i
                     self.dis_to_cycle[v] = -i
                 if cycle:
                     for i, v in enumerate(path[::-1], start=1):

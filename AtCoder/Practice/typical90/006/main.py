@@ -11,9 +11,10 @@ import math
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
-import pypyjit
 
-pypyjit.set_param("max_unroll_recursion=-1")
+# import pypyjit
+
+# pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
@@ -33,3 +34,21 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+n, k = MII()
+s = input()
+al = [[] for _ in range(26)]
+for index, a in enumerate(s):
+    i = ord(a) - ord("a")
+    al[i].append(index)
+
+ans = []
+l = 0
+# [l,r]の閉区間の中の文字で一番若いものを選ぶ
+for r in range(n - k, n):
+    for a in range(26):
+        tmp = bisect_left(al[a], l)
+        if tmp < len(al[a]) and al[a][tmp] <= r:
+            ans.append(alph_s[a])
+            l = al[a][tmp] + 1
+            break
+print("".join(ans))

@@ -34,7 +34,29 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 n = II()
-ans = [[""]]
-for _ in range(n):
-    if 
-    
+
+s = []
+
+
+def dfs():
+    l = s.count("(")
+    r = s.count(")")
+    if len(s) == n:
+        if l == r:
+            print("".join(s))
+        return
+    else:
+        if l > r:
+            s.append("(")
+            dfs()
+            s.pop()
+            s.append(")")
+            dfs()
+            s.pop()
+        elif l == r:
+            s.append("(")
+            dfs()
+            s.pop()
+
+
+dfs()

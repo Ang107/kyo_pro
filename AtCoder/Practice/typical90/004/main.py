@@ -33,3 +33,17 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+h, w = MII()
+a = [LMII() for _ in range(h)]
+sum_h = [0] * h
+sum_w = [0] * w
+for i in range(h):
+    for j in range(w):
+        sum_h[i] += a[i][j]
+        sum_w[j] += a[i][j]
+ans = [[-1] * w for _ in range(h)]
+for i in range(h):
+    for j in range(w):
+        ans[i][j] = sum_h[i] + sum_w[j] - a[i][j]
+for i in ans:
+    print(*i)

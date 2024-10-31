@@ -17,12 +17,13 @@ DEBUG = False
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 setrecursionlimit(10**7)
-alph_s = ascii_lowercase
-alph_l = ascii_uppercase
-around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
-around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
+abc = ascii_lowercase
+ABC = ascii_uppercase
+dxy4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
+dxy8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float("inf")
 mod = 998244353
+YN = ("Yes", "No")
 input = lambda: stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
 deb = lambda *x: print(*x) if DEBUG else None

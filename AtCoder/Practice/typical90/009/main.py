@@ -11,9 +11,10 @@ import math
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
-import pypyjit
 
-pypyjit.set_param("max_unroll_recursion=-1")
+# import pypyjit
+
+# pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
@@ -32,4 +33,73 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+from bisect import bisect_left, insort_left, bisect_right, insort_right
 
+
+# 以下
+def le(l, x):
+    idx = bisect_left(l, x)
+    if 0 <= idx < len(l) and l[idx] == x:
+        return x
+    elif 0 <= idx - 1 < len(l):
+        return l[idx - 1]
+    else:
+        return None
+
+
+# 以上
+def ge(l, x):
+    idx = bisect_right(l, x)
+    if 0 <= idx - 1 < len(l) and l[idx - 1] == x:
+        return x
+    elif 0 <= idx < len(l):
+        return l[idx]
+    else:
+        return None
+
+
+# より小さい
+def lt(l, x):
+    idx = bisect_left(l, x)
+    if 0 <= idx - 1 < len(l):
+        return l[idx - 1]
+    else:
+        return None
+
+
+# より大きい
+def gt(l, x):
+    idx = bisect_right(l, x)
+    if 0 <= idx < len(l):
+        return l[idx]
+    else:
+        return None
+
+
+n = II()
+xys = []
+for _ in range(n):
+    x, y = MII()
+    xys.append((x, y))
+ans = 0
+for i in range(n):
+    x, y = xys[i]
+    nxys = []
+    for j in range(n):
+        if i == j:
+            continue
+        nxys.append((xys[j][0] - x, xys[j][1] - y))
+    angles = [(math.degrees(math.atan2(xy[1], xy[0])) + 360) % 360 for xy in nxys]
+    angles.sort()
+    for a in angles:
+        tmp = le(angles, a + 180 % 360)
+        if tmp != None:
+            angle = (a - tmp) % 360
+            angle = min(angle, 360 - angle)
+            ans = max(ans, angle)
+        tmp = ge(angles, a + 180 % 360)
+        if tmp != None:
+            angle = (a - tmp) % 360
+            angle = min(angle, 360 - angle)
+            ans = max(ans, angle)
+print(ans)

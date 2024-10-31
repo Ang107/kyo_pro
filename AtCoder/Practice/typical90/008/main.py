@@ -11,9 +11,10 @@ import math
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
-import pypyjit
 
-pypyjit.set_param("max_unroll_recursion=-1")
+# import pypyjit
+
+# pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
@@ -22,7 +23,7 @@ alph_l = tuple(string.ascii_uppercase)
 around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float("inf")
-mod = 998244353
+mod = 10**9 + 7
 input = lambda: sys.stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
 PY = lambda: print("Yes")
@@ -33,3 +34,17 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+n = II()
+s = input()
+dp = [[0] * 8 for _ in range(n + 1)]
+atcoder = "atcoder"
+dp[0][0] = 1
+for i in range(n):
+    for j in range(8):
+        if j < 7 and atcoder[j] == s[i]:
+            dp[i + 1][j + 1] += dp[i][j]
+            dp[i + 1][j + 1] %= mod
+        dp[i + 1][j] += dp[i][j]
+        dp[i + 1][j] %= mod
+# print(dp)
+print(dp[n][7])

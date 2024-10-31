@@ -33,3 +33,31 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+n = II()
+g = [[] for _ in range(n)]
+for _ in range(n - 1):
+    a, b = MII()
+    a -= 1
+    b -= 1
+    g[a].append(b)
+    g[b].append(a)
+
+
+def dfs(s):
+    stack = [s]
+    visited = [-1] * n
+    visited[s] = 0
+    while stack:
+        v = stack.pop()
+        for next in g[v]:
+            if visited[next] == -1:
+                visited[next] = visited[v] + 1
+                stack.append(next)
+    return visited
+
+
+dis1 = dfs(0)
+s = dis1.index(max(dis1))
+dis = dfs(s)
+ans = max(dis) + 1
+print(ans)

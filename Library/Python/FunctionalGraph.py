@@ -86,7 +86,7 @@ class FunctionalGraph:
                 now = self.nexts[now]
         return now
 
-    # 頂点sのk個先の頂点を返す O(N√N)
+    # 全ての頂点からのk個先の頂点のリストを返す O(N√N)
     def get_next_all(self, k: int) -> int:
         if k == 0:
             return list(range(self.n))

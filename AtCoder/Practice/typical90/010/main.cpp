@@ -83,10 +83,36 @@ template <typename T> T ipow(T x, T n) {
 }
 
 int main() {
-    // to do
     int n;
     cin >> n;
-    vi a(n);
-    vin(a);
-    cout << *max_element(all(a)) << el;
+    vi p1(n + 1, 0), p2(n + 1, 0);
+    rep(i, n) {
+        int c;
+        cin >> c;
+        if (c == 1) {
+            cin >> p1[i + 1];
+        } else {
+            cin >> p2[i + 1];
+        }
+    }
+    rep(i, n + 1) {
+        if (i > 0) {
+            p1[i] += p1[i - 1];
+            p2[i] += p2[i - 1];
+        }
+    }
+    int q;
+    cin >> q;
+    rep(i, q) {
+        int l, r;
+        cin >> l >> r;
+        l--;
+        r--;
+        int ans1, ans2;
+        ans1 = p1[r + 1] - p1[l];
+        ans2 = p2[r + 1] - p2[l];
+        cout << ans1 << ' ' << ans2 << el;
+    }
+
+    // to do
 }

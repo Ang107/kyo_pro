@@ -84,9 +84,4 @@ template <typename T> T ipow(T x, T n) {
 
 int main() {
     // to do
-    int n;
-    cin >> n;
-    vi a(n);
-    vin(a);
-    cout << *max_element(all(a)) << el;
 }

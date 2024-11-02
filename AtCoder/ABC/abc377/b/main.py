@@ -33,21 +33,65 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-s = [list(input()) for _ in range(8)]
-for i in range(8):
-    for j in range(8):
-        if s[i][j] == "#":
-            for p in range(8):
-                if s[p][j] != "#":
-                    s[p][j] = "x"
-            for q in range(8):
-                if s[i][q] != "#":
-                    s[i][q] = "x"
-ans = 0
-for i in range(8):
-    for j in range(8):
-        if s[i][j] == ".":
-            ans += 1
-# for i in s:
-#     print(i)
-print(ans)
+# s = [list(input()) for _ in range(8)]
+# for i in range(8):
+#     for j in range(8):
+#         if s[i][j] == "#":
+#             for p in range(8):
+#                 if s[p][j] != "#":
+#                     s[p][j] = "x"
+#             for q in range(8):
+#                 if s[i][q] != "#":
+#                     s[i][q] = "x"
+# ans = 0
+# for i in range(8):
+#     for j in range(8):
+#         if s[i][j] == ".":
+#             ans += 1
+# # for i in s:
+# #     print(i)
+# print(ans)
+
+# ss = []
+# for _ in range(8):
+#     s = input()
+#     ss.append(list(s))
+
+ss = [i * 2 for i in range(8)]
+print(ss)
+# _ = 1
+# print(_)
+# cnt = 0
+# for i in range(8):
+#     for j in range(8):
+#         if ss[i][j] == ".":
+#             ok = True
+#             # 上下に # のマスが存在するか確認
+#             for k in range(8):
+#                 if ss[k][j] == "#":
+#                     ok = False
+#             # 左右に # のマスが存在するか確認
+#             for k in range(8):
+#                 if ss[i][k] == "#":
+#                     ok = False
+#             if ok:
+#                 cnt += 1
+# print(cnt)
+
+# for i in range(8):
+#     for j in range(8):
+#         if ss[i][j] == "#":
+#             for k in range(8):
+#                 if ss[k][j] == ".":
+#                     ss[k][j] = "x"
+#             for k in range(8):
+#                 if ss[i][k] == ".":
+#                     ss[i][k] = "x"
+# for i in range(8):
+#     print(ss[i])
+# cnt = 0
+# for i in range(8):
+#     for j in range(8):
+#         if ss[i][j] == ".":
+#             cnt += 1
+# print(cnt)

@@ -39,3 +39,19 @@ if sorted(s) == list("ABC"):
     PY()
 else:
     PN()
+
+# s = input()
+# a_cnt = s.count("A")
+# b_cnt = s.count("B")
+# c_cnt = s.count("C")
+# if a_cnt == b_cnt == c_cnt == 1:
+#     print("Yes")
+# else:
+#     print("No")
+
+s = input()
+for p in permutations(s):
+    if p == ("A", "B", "C"):
+        print("Yes")
+        exit()
+print("No")

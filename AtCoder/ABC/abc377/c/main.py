@@ -33,23 +33,45 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-n, m = MII()
-cand = set()
+# n, m = MII()
+# cand = set()
+# for _ in range(m):
+#     a, b = MII()
+#     a -= 1
+#     b -= 1
+#     cand.add((a, b))
+#     cand.add((a + 2, b + 1))
+#     cand.add((a + 1, b + 2))
+#     cand.add((a - 1, b + 2))
+#     cand.add((a - 2, b + 1))
+#     cand.add((a - 2, b - 1))
+#     cand.add((a - 1, b - 2))
+#     cand.add((a + 1, b - 2))
+#     cand.add((a + 2, b - 1))
+# ans = n**2
+# for a, b in cand:
+#     if a in range(n) and b in range(n):
+#         ans -= 1
+# print(ans)
+
+n, m = list(map(int, input().split()))
+s = set()
 for _ in range(m):
-    a, b = MII()
+    a, b = map(int, input().split())
     a -= 1
     b -= 1
-    cand.add((a, b))
-    cand.add((a + 2, b + 1))
-    cand.add((a + 1, b + 2))
-    cand.add((a - 1, b + 2))
-    cand.add((a - 2, b + 1))
-    cand.add((a - 2, b - 1))
-    cand.add((a - 1, b - 2))
-    cand.add((a + 1, b - 2))
-    cand.add((a + 2, b - 1))
+    s.add((a, b))
+    s.add((a - 1, b - 2))
+    s.add((a - 1, b + 2))
+    s.add((a + 1, b - 2))
+    s.add((a + 1, b + 2))
+    s.add((a - 2, b - 1))
+    s.add((a - 2, b + 1))
+    s.add((a + 2, b - 1))
+    s.add((a + 2, b + 1))
+
 ans = n**2
-for a, b in cand:
-    if a in range(n) and b in range(n):
+for x, y in s:
+    if 0 <= x < n and 0 <= y < n:
         ans -= 1
 print(ans)

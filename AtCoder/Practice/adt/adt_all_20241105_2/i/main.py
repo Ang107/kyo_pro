@@ -23,12 +23,12 @@ dxy4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 dxy8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float("inf")
 mod = 998244353
+YN = ("Yes", "No")
 input = lambda: stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
 deb = lambda *x: print(*x) if DEBUG else None
 PY = lambda: print("Yes")
 PN = lambda: print("No")
-YN = lambda x: print("Yes") if x else print("No")
 SI = lambda: input()
 IS = lambda: input().split()
 II = lambda: int(input())
@@ -199,34 +199,42 @@ class SortedMultiset(Generic[T]):
         return ans
 
 
-n, m = MII()
-a = LMII()
-ans = 0
-# O(N^3)
-# for l in range(n):
-#     for r in range(l, n):
-#         ans += sum(a[l : r + 1]) % m
+n, k = MII()
+sx, sy = MII()
+# O(NK) の愚直DP
+# i個目の町に、j個配った状態になるときの、総距離の最小値
+# dp = [[inf] * (k + 1) for _ in range(n + 2)]
+# dp[0][0] = 0
+xy = [[sx, sy]] + [LMII() for _ in range(n)] + [[sx, sy]]
 
-# O(N^2)
-# pref = [0]
-# for i in a:
-#     pref.append((pref[-1] + i) % m)
-# for l in range(n):
-#     for r in range(l, n):
-#         ans += (pref[r + 1] - pref[l]) % m
-# print(ans)
 
-# O(NlogN)
-pref = [0]
-for i in a:
-    pref.append((pref[-1] + i) % m)
-ppref = [0]
-for i in pref:
-    ppref.append(ppref[-1] + i)
-ppref = ppref[1:]
-s = SortedMultiset()
+def dis(a, b, c, d):
+    return ((a - c) ** 2 + (b - d) ** 2) ** 0.5
+
+
+diff = []
 ans = 0
-for r in range(n):
-    ans += (r + 1) * pref[r + 1] - ppref[r] + m * (len(s) - s.index_right(pref[r + 1]))
-    s.add(pref[r + 1])
-print(ans)
+for i in range(n + 1):
+    ans += dis(*xy[i], *xy[i + 1])
+    diff.append(dis(*xy[i], sx, sy) + dis(sx, sy, *xy[i + 1]) - dis(*xy[i], *xy[i + 1]))
+
+# for i in range(n + 1):
+#     for j in range(k + 1):
+#         # 家に戻る場合
+#         dp[i + 1][1] = min(dp[i + 1][1], dp[i][j] + ahb[i])
+#         # 家に戻らない場合
+#         if j < k:
+#             dp[i + 1][j + 1] = min(dp[i + 1][j + 1], dp[i][j] + ab[i])
+# print(min(dp[n + 1]))
+
+# i+1個配った状態になるときの追加距離の総和の最小値
+dp = [inf] * k
+dp[0] = 0
+s = SortedMultiset(dp)
+dp = deque(dp, maxlen=k)
+for i in range(1, n + 1):
+    tmp = s[0] + diff[i]
+    s.discard(dp[-1])
+    s.add(tmp)
+    dp.appendleft(tmp)
+print(ans + s[0])

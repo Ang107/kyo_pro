@@ -1,4 +1,4 @@
-from sys import stdin, setrecursionlimit
+from sys import stdin, setrecursionlimit, set_int_max_str_digits
 from collections import deque, defaultdict
 from itertools import accumulate
 from itertools import permutations
@@ -17,6 +17,7 @@ DEBUG = False
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 setrecursionlimit(10**7)
+set_int_max_str_digits(0)
 abc = ascii_lowercase
 ABC = ascii_uppercase
 dxy4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右

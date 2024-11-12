@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+#pragma GCC target("avx2")
+#pragma GCC optimize("O3")
+#pragma GCC optimize("unroll-loops")
 using namespace std;
 #define ll long long
 #define vi vector<int>
@@ -14,79 +17,42 @@ using namespace std;
 #define No cout << "No" << el
 #define YES cout << "YES" << el
 #define NO cout << "NO" << el
-const double pi = 3.141592653589793238;
-const int inf = 1073741823;
-const ll infl = 1LL << 60;
-const string ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const string abc = "abcdefghijklmnopqrstuvwxyz";
-const int MOD = 998244353;
-const array<int, 8> dx = {0, 0, -1, 1, -1, -1, 1, 1};
-const array<int, 8> dy = {-1, 1, 0, 0, -1, 1, -1, 1};
-template <typename T1, typename T2> inline bool chmax(T1 &a, T2 b) {
-    bool compare = a < b;
-    if (compare)
-        a = b;
-    return compare;
-}
-template <typename T1, typename T2> inline bool chmin(T1 &a, T2 b) {
-    bool compare = a > b;
-    if (compare)
-        a = b;
-    return compare;
-}
-template <typename T1, typename T2>
-std::ostream &operator<<(std::ostream &os, std::pair<T1, T2> p) {
-    os << "{" << p.first << "," << p.second << "}";
-    return os;
-}
-template <typename T>
-inline void print_vec(const vector<T> &v, bool split_line = false) {
-    if (v.empty()) {
-        cout << "This vector is empty." << el;
-        return;
-    }
-    constexpr bool isValue = is_integral<T>::value;
-    for (int i = 0; i < (int)v.size(); i++) {
-        if constexpr (isValue) {
-            if ((v[i] == inf) || (v[i] == infl))
-                cout << 'x' << " \n"[split_line || i + 1 == (int)v.size()];
-            else
-                cout << v[i] << " \n"[split_line || i + 1 == (int)v.size()];
-        } else
-            cout << v[i] << " \n"[split_line || i + 1 == (int)v.size()];
-    }
-}
-template <typename T> void vin(vector<T> &v) {
-    for (auto &element : v) {
-        cin >> element;
-    }
-}
-template <typename T> T mod_pow(T x, T n, const T &p) {
-    T ret = 1;
-    while (n > 0) {
-        if (n & 1)
-            (ret *= x) %= p;
-        (x *= x) %= p;
-        n >>= 1;
-    }
-    return ret;
-}
-template <typename T> T ipow(T x, T n) {
-    T ret = 1;
-    while (n > 0) {
-        if (n & 1)
-            ret *= x;
-        x *= x;
-        n >>= 1;
-    }
-    return ret;
-}
 
 int main() {
     // to do
-    int n;
-    cin >> n;
-    vi a(n);
-    vin(a);
-    cout << *max_element(all(a)) << el;
+    std::chrono::system_clock::time_point start, end; // 型は auto で可
+    start = std::chrono::system_clock::now();         // 計測開始時間
+    int q;
+    int delled = -1;
+    cin >> q;
+    vl tree;
+    rep(i, q) {
+        int type;
+        cin >> type;
+        if (type == 1) {
+            tree.push_back(0);
+        } else if (type == 2) {
+            ll t;
+            cin >> t;
+            for (size_t i = delled + 1; i < tree.size(); i++) {
+                tree[i] += t;
+            }
+        } else if (type == 3) {
+            ll h;
+            int ans = 0;
+            cin >> h;
+            for (size_t i = delled + 1; i < tree.size(); i++) {
+                if (tree[i] >= h) {
+                    ans++;
+                    delled++;
+                }
+            }
+            cout << ans << el;
+        }
+    }
+    end = std::chrono::system_clock::now(); // 計測終了時間
+    double elapsed =
+        std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
+            .count(); // 処理に要した時間をミリ秒に変換
+    cout << elapsed << el;
 }

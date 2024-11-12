@@ -1,0 +1,20 @@
+{
+  "contest": {
+    "id": "ahc039",
+    "title": "THIRD PROGRAMMING CONTEST 2024（AtCoder Heuristic Contest 039）",
+    "url": "https://atcoder.jp/contests/ahc039"
+  },
+  "tasks": [
+    {
+      "id": "ahc039_a",
+      "label": "A",
+      "title": "Purse Seine Fishing",
+      "url": "https://atcoder.jp/contests/ahc039/tasks/ahc039_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

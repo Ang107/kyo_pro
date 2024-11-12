@@ -1,28 +1,41 @@
-n, m = map(int, input().split())
-f = [0] * n
-added = []
-for _ in range(m):
-    a, b = map(int, input().split())
-    a -= 1
-    b -= 1
-    # 二回目以降の情報なら
-    if (a, b) in added:
-        # 無視する
-        pass
-    # 新規の情報なら
-    else:
-        f[a] += 1
-        f[b] += 1
-        added.append((a, b))
-        added.append((b, a))
-# print(f)
-# 最も友達が多い人の友達の数
-max_friends_num = max(f)
-# 答えの候補
-cand = []
-# N人全員を確認
-for i in range(n):
-    # 部員 i の友達数が最も多いなら
-    if f[i] == max_friends_num:
-        cand.append(i)
-print(min(cand) + 1)
+"""
+このように生成できる入力ファイルでTLEしそうです。
+例1: 
+q = 2 * 10**5
+print(q)
+for _ in range(10**5):
+    print(1)
+for _ in range(10**5-1):
+    print(2, 10**9)
+print(3, 10**9)
+
+例2:
+q = 2 * 10**5
+print(q)
+for _ in range(10**5):
+    print(1)
+print(2, 1)
+for _ in range(10**5-1):
+    print(3, 10**9)
+"""
+
+###
+q = int(input())
+tree = []
+for _ in range(q):
+    query = list(map(int, input().split()))
+    if query[0] == 1:
+        tree.append(0)
+    elif query[0] == 2:
+        for i in range(len(tree)):
+            tree[i] += query[1]
+    elif query[0] == 3:
+        ans = 0
+        new_tree = []
+        for i in range(len(tree)):
+            if tree[i] >= query[1]:
+                ans += 1
+            else:
+                new_tree.append(tree[i])
+        tree = new_tree
+        print(ans)

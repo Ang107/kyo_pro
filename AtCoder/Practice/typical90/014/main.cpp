@@ -1,48 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#ifdef DEFINED_ONLY_IN_LOCAL
-#include "cpp-dump.hpp"
-#include <atcoder/modint>
-namespace cpp_dump::_detail {
-template <int m>
-inline std::string
-export_var(const atcoder::static_modint<m> &mint, const std::string &indent,
-           std::size_t last_line_length, std::size_t current_depth,
-           bool fail_on_newline, const export_command &command) {
-    return export_var(mint.val(), indent, last_line_length, current_depth,
-                      fail_on_newline, command);
-}
-template <int m>
-inline std::string
-export_var(const atcoder::dynamic_modint<m> &mint, const std::string &indent,
-           std::size_t last_line_length, std::size_t current_depth,
-           bool fail_on_newline, const export_command &command) {
-    return export_var(mint.val(), indent, last_line_length, current_depth,
-                      fail_on_newline, command);
-}
-
-} // namespace cpp_dump::_detail
-#define dump(...) cpp_dump(__VA_ARGS__)
-namespace cp = cpp_dump;
-CPP_DUMP_SET_OPTION_GLOBAL(max_line_width, 80);
-CPP_DUMP_SET_OPTION_GLOBAL(log_label_func, cp::log_label::filename());
-CPP_DUMP_SET_OPTION_GLOBAL(enable_asterisk, true);
-#else
-#define dump(...)
-#define CPP_DUMP_SET_OPTION(...)
-#define CPP_DUMP_SET_OPTION_GLOBAL(...)
-#define CPP_DUMP_DEFINE_EXPORT_OBJECT(...)
-#define CPP_DUMP_DEFINE_EXPORT_ENUM(...)
-#define CPP_DUMP_DEFINE_EXPORT_OBJECT_GENERIC(...)
-#endif
-// #include <atcoder/all>
-// using namespace atcoder;
-struct Init {
-    Init() {
-        ios::sync_with_stdio(0);
-        cin.tie(0);
-    }
-} init;
 #define ll long long
 #define vi vector<int>
 #define vl vector<long long>
@@ -57,7 +14,6 @@ struct Init {
 #define No cout << "No" << el
 #define YES cout << "YES" << el
 #define NO cout << "NO" << el
-
 const double pi = 3.141592653589793238;
 const int inf = 1073741823;
 const ll infl = 1LL << 60;
@@ -77,6 +33,28 @@ template <typename T1, typename T2> inline bool chmin(T1 &a, T2 b) {
     if (compare)
         a = b;
     return compare;
+}
+template <typename T1, typename T2>
+std::ostream &operator<<(std::ostream &os, std::pair<T1, T2> p) {
+    os << "{" << p.first << "," << p.second << "}";
+    return os;
+}
+template <typename T>
+inline void print_vec(const vector<T> &v, bool split_line = false) {
+    if (v.empty()) {
+        cout << "This vector is empty." << el;
+        return;
+    }
+    constexpr bool isValue = is_integral<T>::value;
+    for (int i = 0; i < (int)v.size(); i++) {
+        if constexpr (isValue) {
+            if ((v[i] == inf) || (v[i] == infl))
+                cout << 'x' << " \n"[split_line || i + 1 == (int)v.size()];
+            else
+                cout << v[i] << " \n"[split_line || i + 1 == (int)v.size()];
+        } else
+            cout << v[i] << " \n"[split_line || i + 1 == (int)v.size()];
+    }
 }
 template <typename T> void vin(vector<T> &v) {
     for (auto &element : v) {
@@ -105,6 +83,16 @@ template <typename T> T ipow(T x, T n) {
 }
 
 int main() {
-    cout << "Hello World!" << el;
-    return 0;
+    // to do
+    int n;
+    cin >> n;
+    vi a(n);
+    vi b(n);
+    vin(a);
+    vin(b);
+    sort(all(a));
+    sort(all(b));
+    ll ans = 0ll;
+    rep(i, n) { ans += (ll)abs(a[i] - b[i]); }
+    cout << ans << el;
 }

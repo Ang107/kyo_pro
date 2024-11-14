@@ -41,5 +41,6 @@ q = II()
 for _ in range(q):
     t, d = MII()
     t -= 1
-    tmp = -(-(d - qr[t][1]) // qr[t][0])
-    print(qr[t][0] * tmp + qr[t][1])
+    q, r = qr[t]
+    k = (d - r) // q + ((d - r) % q != 0)
+    print(q * k + r)

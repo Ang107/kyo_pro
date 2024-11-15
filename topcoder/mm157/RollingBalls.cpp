@@ -1,3 +1,8 @@
+/*
+考察メモ
+ペナルティが重くないので、必ずしも揃える必要ないのかも
+解法は、無難に行くなら石の配置を焼きながらビーム打つとかで良さそう。
+*/
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef DEFINED_ONLY_IN_LOCAL
@@ -35,6 +40,19 @@ CPP_DUMP_SET_OPTION_GLOBAL(enable_asterisk, true);
 #define CPP_DUMP_DEFINE_EXPORT_ENUM(...)
 #define CPP_DUMP_DEFINE_EXPORT_OBJECT_GENERIC(...)
 #endif
+namespace xorshift64 {
+
+inline static uint64_t a = 12345;
+
+uint64_t next() {
+    uint64_t x = a;
+    x ^= x << 13;
+    x ^= x >> 7;
+    x ^= x << 17;
+    return a = x;
+}
+
+} // namespace xorshift64
 #ifndef ATCODER_INTERNAL_BITOP_HPP
 #define ATCODER_INTERNAL_BITOP_HPP 1
 
@@ -293,8 +311,11 @@ template <typename T> T ipow(T x, T n) {
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 // ---------------------------------------------------------
+constexpr array<pair<int, int>, 4> UDLR = {{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}};
+int N;
+int C;
+int K;
 struct Input {
-    int N, C, K;
     vector<vector<int>> grid;
     vector<vector<int>> target;
     void input() {
@@ -309,6 +330,22 @@ struct Input {
         for (int r = 0; r < N; r++)
             for (int c = 0; c < N; c++)
                 cin >> target[r][c];
+    }
+};
+struct Output {
+    vector<tuple<int, int, string>> ans;
+    vector<pair<int, int>> blocks;
+    void output() {
+        cout << ans.size() + blocks.size() << el;
+        cout.flush();
+        for (auto [r, c] : blocks) {
+            cout << r << " " << c << " " << "B" << el;
+            cout.flush();
+        }
+        for (auto [r, c, cmd] : ans) {
+            cout << r << " " << c << " " << cmd << el;
+            cout.flush();
+        }
     }
 };
 
@@ -374,19 +411,19 @@ template <class Key, class T> struct HashMap {
     vector<pair<Key, T>> data_;
 };
 
-using Hash = uint32_t; // TODO
+using Hash = uint64_t; // TODO
 
 // 状態遷移を行うために必要な情報
 // メモリ使用量をできるだけ小さくしてください
 struct Action {
-    // TODO
+    int r;
+    int c;
+    int cmd;
 
-    Action() {
-        // TODO
-    }
+    Action(int r, int c, int cmd) : r(r), c(c), cmd(cmd) {}
 
     bool operator==(const Action &other) const {
-        // TODO
+        return r == other.r and c == other.c and cmd == other.cmd;
     }
 };
 
@@ -395,17 +432,31 @@ using Cost = int;
 // 状態のコストを評価するための構造体
 // メモリ使用量をできるだけ小さくしてください
 struct Evaluator {
-    // TODO
+    int mis_match;
+    int mis_placed;
 
-    Evaluator() {
-        // TODO
-    }
+    Evaluator(int mis_match, int mis_placed)
+        : mis_match(mis_match), mis_placed(mis_placed) {}
 
     // 低いほどよい
-    Cost evaluate() const {
-        // TODO
-    }
+    Cost evaluate() const { return mis_match * N / 2 + mis_placed * N; }
 };
+
+namespace zobrist_hash {
+vector<vector<vector<Hash>>> zobrist_hashes;
+void make_hash(Input &input) {
+    int max_c = 0;
+    rep(x, N) {
+        rep(y, N) { chmax(max_c, input.grid[x][y]); }
+    }
+    zobrist_hashes.resize(max_c + 1, vector<vector<Hash>>(N, vector<Hash>(N)));
+    rep(i, max_c + 1) {
+        rep(x, N) {
+            rep(y, N) { zobrist_hashes[i][x][y] = xorshift64::next(); }
+        }
+    }
+}
+} // namespace zobrist_hash
 
 // 展開するノードの候補を表す構造体
 struct Candidate {
@@ -437,8 +488,8 @@ class Selector {
 
     // 候補を追加する
     // ターン数最小化型の問題で、candidateによって実行可能解が得られる場合にのみ
-    // finished = true とする ビーム幅分の候補をCandidateを追加したときにsegment
-    // treeを構築する
+    // finished = true とする
+    // ビーム幅分の候補をCandidateを追加したときにsegment treeを構築する
     void push(const Candidate &candidate, bool finished) {
         if (finished) {
             finished_candidates_.emplace_back(candidate);
@@ -532,13 +583,15 @@ class Selector {
     }
 
   private:
-    pair<Cost, int> op(pair<Cost, int> a, pair<Cost, int> b) {
+    static pair<Cost, int> op(pair<Cost, int> a, pair<Cost, int> b) {
         return (a.first >= b.first) ? a : b;
     }
 
-    pair<Cost, int> e() { return make_pair(numeric_limits<Cost>::min(), -1); }
+    static pair<Cost, int> e() {
+        return make_pair(numeric_limits<Cost>::min(), -1);
+    }
 
-    using MaxSegtree = atcoder::segtree<pair<Cost, int>, op, e>;
+    using MaxSegtree = atcoder::segtree<pair<Cost, int>, &op, &e>;
     size_t beam_width;
     vector<Candidate> candidates_;
     HashMap<Hash, int> hash_to_index_;
@@ -551,13 +604,36 @@ class Selector {
 // 深さ優先探索に沿って更新する情報をまとめたクラス
 class State {
   public:
-    explicit State() {
-        // TODO
+    explicit State(const Input &input) {
+        grid = input.grid;
+        target = input.target;
+        // balls.reserve(N * N / 2);
+        // rep(x, N) {
+        //     rep(y, N) {
+        //         if (grid[x][y] > 0) {
+        //             balls.emplace_back(x, y);
+        //         }
+        //     }
+        // }
     }
 
     // EvaluatorとHashの初期値を返す
     pair<Evaluator, Hash> make_initial_node() {
-        // TODO
+        Evaluator evaluator{0, 0};
+        Hash hash = 0;
+        rep(x, N) {
+            rep(y, N) {
+                if (grid[x][y] > 0) {
+                    hash ^= zobrist_hash::zobrist_hashes[grid[x][y]][x][y];
+                    if (target[x][y] == 0) {
+                        evaluator.mis_placed++;
+                    } else if (target[x][y] != grid[x][y]) {
+                        evaluator.mis_match++;
+                    }
+                }
+            }
+        }
+        return {evaluator, hash};
     }
 
     // 次の状態候補を全てselectorに追加する
@@ -567,22 +643,106 @@ class State {
     //   parent    : 今のノードID（次のノードにとって親となる）
     void expand(const Evaluator &evaluator, Hash hash, int parent,
                 Selector &selector) {
-        // TODO
+        rep(x, N) {
+            rep(y, N) {
+                if (grid[x][y] > 0 and grid[x][y] != target[x][y]) {
+                    rep(cmd, 4) {
+                        int mis_match = evaluator.mis_match;
+                        int mis_placed = evaluator.mis_placed;
+                        Hash new_hash = hash;
+                        new_hash ^=
+                            zobrist_hash::zobrist_hashes[grid[x][y]][x][y];
+                        if (target[x][y] == 0) {
+                            mis_placed--;
+                        } else if (grid[x][y] != target[x][y]) {
+                            mis_match--;
+                        }
+                        int nx = x;
+                        int ny = y;
+                        while (true) {
+                            int tmp_x = nx + UDLR[cmd].first;
+                            int tmp_y = ny + UDLR[cmd].second;
+                            if (tmp_x < 0 || tmp_x >= N || tmp_y < 0 ||
+                                tmp_y >= N || grid[tmp_x][tmp_y] != 0) {
+                                break;
+                            }
+                            nx = tmp_x;
+                            ny = tmp_y;
+                        }
+                        if (nx == x and ny == y) {
+                            continue;
+                        }
+                        new_hash ^=
+                            zobrist_hash::zobrist_hashes[grid[x][y]][nx][ny];
+                        if (target[nx][ny] == 0) {
+                            mis_placed++;
+                        } else if (grid[nx][ny] != target[nx][ny]) {
+                            mis_match++;
+                        }
+                        if (mis_match == 0 and mis_placed == 0) {
+                            dump(mis_match, mis_placed);
+                            selector.push(Candidate({x, y, cmd},
+                                                    {mis_match, mis_placed},
+                                                    new_hash, parent),
+                                          true);
+                        } else {
+                            dump(mis_match, mis_placed);
+                            selector.push(Candidate({x, y, cmd},
+                                                    {mis_match, mis_placed},
+                                                    new_hash, parent),
+                                          false);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // actionを実行して次の状態に遷移する
     void move_forward(Action action) {
-        // TODO
+        auto [x, y, cmd] = action;
+        int c = grid[x][y];
+        grid[x][y] = 0;
+        int nx = x;
+        int ny = y;
+        while (true) {
+            int tmp_x = nx + UDLR[cmd].first;
+            int tmp_y = ny + UDLR[cmd].second;
+            if (tmp_x < 0 || tmp_x >= N || tmp_y < 0 || tmp_y >= N ||
+                grid[tmp_x][tmp_y] != 0) {
+                break;
+            }
+            nx = tmp_x;
+            ny = tmp_y;
+        }
+        grid[nx][ny] = c;
+        // dump(x, y, cmd);
+        // dump(grid);
     }
 
     // actionを実行する前の状態に遷移する
     // 今の状態は、親からactionを実行して遷移した状態である
     void move_backward(Action action) {
-        // TODO
+        auto [x, y, cmd] = action;
+
+        int nx = x;
+        int ny = y;
+        while (grid[nx][ny] == 0) {
+            nx += UDLR[cmd].first;
+            ny += UDLR[cmd].second;
+        }
+        int c = grid[nx][ny];
+        grid[x][y] = c;
+        grid[nx][ny] = 0;
+        // dump(x, y, cmd);
+        // dump(grid);
     }
 
   private:
     // TODO
+    vector<vector<int>> grid;
+    vector<vector<int>> target;
+    // vector<pair<int, int>> balls;
 };
 
 // Euler Tourを管理するためのクラス
@@ -701,6 +861,7 @@ class Tree {
                 ret.pop_back();
             }
         }
+        return {};
     }
 
   private:
@@ -748,11 +909,45 @@ vector<Action> beam_search(const Config &config, const State &state) {
 
         selector.clear();
     }
+    return {};
 }
 
 } // namespace beam_search
 
+constexpr size_t beam_width = 3000;
+constexpr size_t tour_capacity = 16 * beam_width;
+constexpr uint32_t hash_map_capacity = 64 * beam_width;
+
+struct Solver {
+    const Input input;
+    Output output;
+
+    Solver(const Input &input) : input(input) {}
+
+    void solve() {
+        beam_search::Config config = {N * N * N - 1, beam_width, tour_capacity,
+                                      hash_map_capacity};
+        beam_search::State state(input);
+        vector<beam_search::Action> actions =
+            beam_search::beam_search(config, state);
+
+        // make output
+        output.ans.reserve(actions.size());
+        array<string, 4> UDLR_string = {"U", "D", "L", "R"};
+        for (auto [x, y, cmd] : actions) {
+            output.ans.emplace_back(x, y, UDLR_string[cmd]);
+        }
+    }
+
+    void print() { output.output(); }
+};
+
 int main() {
-    // to do
+    Input input;
+    input.input();
+    beam_search::zobrist_hash::make_hash(input);
+    Solver solver(input);
+    solver.solve();
+    solver.print();
     return 0;
 }

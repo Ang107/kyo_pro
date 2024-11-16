@@ -2,6 +2,10 @@
 考察メモ
 ペナルティが重くないので、必ずしも揃える必要ないのかも
 解法は、無難に行くなら石の配置を焼きながらビーム打つとかで良さそう。
+↑これ普通に無理
+ビーム一回が重すぎ
+石の置きはよくわからんから、適当に置くのを試してみてスコア見てみたい。
+とりあえずは移動する順番決め打ってビームを時間の間繰り返す感じかなー
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -478,13 +482,11 @@ struct Evaluator {
     int mis_match;
     int mis_placed;
 
-    Evaluator(int mis_match, int mis_placed, int turn)
+    Evaluator(int turn, int mis_match, int mis_placed)
         : turn(turn), mis_match(mis_match), mis_placed(mis_placed) {}
 
     // 低いほどよい
-    Cost evaluate() const {
-        return turn + (N * mis_match / 2) + (N * mis_placed);
-    }
+    Cost evaluate() const { return turn + N * mis_match / 2 + N * mis_placed; }
 };
 
 namespace zobrist_hash {
@@ -701,9 +703,14 @@ class State {
                 if (nx == x and ny == y) {
                     continue;
                 }
+                if (nx == px and ny == py) {
+                    continue;
+                }
                 if (visited.find({nx, ny}) == visited.end()) {
                     visited[{nx, ny}] = {cmd, x, y};
-                    que.push({cnt + 1, nx, ny});
+                    if (cnt <= 4) {
+                        que.push({cnt + 1, nx, ny});
+                    }
                     auto [turn, mis_match, mis_placed] = evaluator;
                     Hash new_hash = hash;
                     new_hash ^= zobrist_hash::zobrist_hashes[color][px][py];
@@ -732,7 +739,7 @@ class State {
                             tmp_y = y;
                         }
                     }
-                    dump(turn, mis_match, mis_placed);
+                    // dump(turn, mis_match, mis_placed);
                     selector.push(Candidate({px, py, nx, ny, cmd_vec},
                                             {turn, mis_match, mis_placed},
                                             new_hash, parent),
@@ -940,7 +947,7 @@ vector<Action> beam_search(const Config &config, const State &state) {
 
 } // namespace beam_search
 
-constexpr size_t beam_width = 3000;
+constexpr size_t beam_width = 1000;
 constexpr size_t tour_capacity = 16 * beam_width;
 constexpr uint32_t hash_map_capacity = 64 * beam_width;
 
@@ -961,7 +968,12 @@ struct Solver {
                 }
             }
         }
-
+        while
+            auto cmp = [](pair<int, int> x, pair<int, int> y) -> bool {
+                return abs(x.first - N / 2) + abs(x.second - N / 2) >
+                       abs(y.first - N / 2) + abs(y.second - N / 2);
+            };
+        sort(all(balls), cmp);
         beam_search::Config config = {static_cast<int>(balls.size()),
                                       beam_width, tour_capacity,
                                       hash_map_capacity};

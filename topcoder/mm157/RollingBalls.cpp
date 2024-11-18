@@ -244,7 +244,37 @@ template <class S, S (*op)(S, S), S (*e)()> struct segtree {
 } // namespace atcoder
 
 #endif // ATCODER_SEGTREE_HPP
+// 時間をDouble型で管理し、経過時間も取り出せるクラス
+class TimeKeeperDouble {
+  private:
+    std::chrono::high_resolution_clock::time_point start_time_;
+    double time_threshold_;
 
+    double now_time_ = 0;
+
+  public:
+    // 時間制限をミリ秒単位で指定してインスタンスをつくる。
+    TimeKeeperDouble(const double time_threshold)
+        : start_time_(std::chrono::high_resolution_clock::now()),
+          time_threshold_(time_threshold) {}
+
+    // 経過時間をnow_time_に格納する。
+    void setNowTime() {
+        auto diff =
+            std::chrono::high_resolution_clock::now() - this->start_time_;
+        this->now_time_ =
+            std::chrono::duration_cast<std::chrono::microseconds>(diff)
+                .count() *
+            1e-3; // ms
+    }
+
+    // 経過時間をnow_time_に取得する。
+    double getNowTime() const { return this->now_time_; }
+
+    // インスタンス生成した時から指定した時間制限を超過したか判定する。
+    bool isTimeOver() const { return now_time_ >= time_threshold_; }
+};
+TimeKeeperDouble time_keeper(9500);
 struct Init {
     Init() {
         ios::sync_with_stdio(0);
@@ -316,6 +346,7 @@ template <typename T> T ipow(T x, T n) {
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 constexpr array<pair<int, int>, 4> UDLR = {{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}};
+constexpr double TIME_LIMIT = 9500;
 int N;
 int C;
 int K;
@@ -439,9 +470,10 @@ struct Action {
     int nx;
     int ny;
     int cmd;
+    int index;
 
-    Action(int px, int py, int nx, int ny, vector<int> cmd_vec)
-        : px(px), py(py), nx(nx), ny(ny) {
+    Action(int px, int py, int nx, int ny, vector<int> cmd_vec, int index)
+        : px(px), py(py), nx(nx), ny(ny), index(index) {
         cmd = encode(cmd_vec);
     }
     // 0~3からなるvector(要素数は最大4)をintにエンコードする関数
@@ -681,16 +713,17 @@ class State {
     //   hash      : 今のハッシュ値
     //   parent    : 今のノードID（次のノードにとって親となる）
     void expand(const Evaluator &evaluator, Hash hash, int parent,
-                Selector &selector) {
+                Selector &selector, int index) {
         queue<tuple<int, int, int>> que;
         map<pair<int, int>, tuple<int, int, int>> visited;
         // dump(index);
+        index %= balls.size();
         auto [px, py] = balls[index];
         const int color = grid[px][py];
         grid[px][py] = 0;
         visited[{px, py}] = {-1, -1, -1};
         que.push({0, px, py});
-        selector.push(Candidate({px, py, px, py, {}},
+        selector.push(Candidate({px, py, px, py, {}, index},
                                 {evaluator.turn, evaluator.mis_match,
                                  evaluator.mis_placed},
                                 hash, parent),
@@ -740,10 +773,19 @@ class State {
                         }
                     }
                     // dump(turn, mis_match, mis_placed);
-                    selector.push(Candidate({px, py, nx, ny, cmd_vec},
-                                            {turn, mis_match, mis_placed},
-                                            new_hash, parent),
-                                  false);
+                    if (mis_match > 0 or mis_placed > 0) {
+                        selector.push(
+                            Candidate({px, py, nx, ny, cmd_vec, index},
+                                      {turn, mis_match, mis_placed}, new_hash,
+                                      parent),
+                            false);
+                    } else {
+                        selector.push(
+                            Candidate({px, py, nx, ny, cmd_vec, index},
+                                      {turn, mis_match, mis_placed}, new_hash,
+                                      parent),
+                            true);
+                    }
                 }
             }
         }
@@ -752,8 +794,9 @@ class State {
 
     // actionを実行して次の状態に遷移する
     void move_forward(Action action) {
-        auto [px, py, nx, ny, cmd] = action;
-        index++;
+        auto [px, py, nx, ny, cmd, index] = action;
+        // index++;
+        balls[index] = {nx, ny};
         int c = grid[px][py];
         grid[px][py] = 0;
         grid[nx][ny] = c;
@@ -762,8 +805,9 @@ class State {
     // actionを実行する前の状態に遷移する
     // 今の状態は、親からactionを実行して遷移した状態である
     void move_backward(Action action) {
-        auto [px, py, nx, ny, cmd] = action;
-        index--;
+        auto [px, py, nx, ny, cmd, index] = action;
+        // index--;
+        balls[index] = {px, py};
         int c = grid[nx][ny];
         grid[nx][ny] = 0;
         grid[px][py] = c;
@@ -789,10 +833,11 @@ class Tree {
 
     // 状態を更新しながら深さ優先探索を行い、次のノードの候補を全てselectorに追加する
     void dfs(Selector &selector) {
+        int index = xorshift64::next();
         if (curr_tour_.empty()) {
             // 最初のターン
             auto [evaluator, hash] = state_.make_initial_node();
-            state_.expand(evaluator, hash, 0, selector);
+            state_.expand(evaluator, hash, 0, selector, index);
             return;
         }
 
@@ -801,7 +846,7 @@ class Tree {
                 // 葉
                 state_.move_forward(action);
                 auto &[evaluator, hash] = leaves_[leaf_index];
-                state_.expand(evaluator, hash, leaf_index, selector);
+                state_.expand(evaluator, hash, leaf_index, selector, index);
                 state_.move_backward(action);
             } else if (leaf_index == -1) {
                 // 前進辺
@@ -911,8 +956,16 @@ vector<Action> beam_search(const Config &config, const State &state) {
 
     // 新しいノード候補の集合
     Selector selector(config);
-
-    for (int turn = 0; turn < config.max_turn; ++turn) {
+    int turn = 0;
+    while (true) {
+        turn++;
+        if (turn % 10 == 0) {
+            time_keeper.setNowTime();
+            if (time_keeper.isTimeOver()) {
+                break;
+            }
+        }
+        // for (int turn = 0; turn < config.max_turn; ++turn) {
         // dump(turn);
         // Euler Tourでselectorに候補を追加する
         tree.dfs(selector);
@@ -926,22 +979,25 @@ vector<Action> beam_search(const Config &config, const State &state) {
             return ret;
         }
 
-        assert(!selector.select().empty());
+        // assert(!selector.select().empty());
 
-        if (turn == config.max_turn - 1) {
-            // ターン数固定型の問題で全ターンが終了したとき
-            Candidate best_candidate = selector.calculate_best_candidate();
-            vector<Action> ret =
-                tree.calculate_path(best_candidate.parent, turn + 1);
-            ret.push_back(best_candidate.action);
-            return ret;
-        }
+        // if (turn == config.max_turn - 1) {
+        //     // ターン数固定型の問題で全ターンが終了したとき
+        //     Candidate best_candidate = selector.calculate_best_candidate();
+        //     vector<Action> ret =
+        //         tree.calculate_path(best_candidate.parent, turn + 1);
+        //     ret.push_back(best_candidate.action);
+        //     return ret;
+        // }
 
         // 木を更新する
         tree.update(selector.select());
-
         selector.clear();
     }
+    Candidate best_candidate = selector.calculate_best_candidate();
+    vector<Action> ret = tree.calculate_path(best_candidate.parent, turn + 1);
+    ret.push_back(best_candidate.action);
+    return ret;
     return {};
 }
 
@@ -968,12 +1024,60 @@ struct Solver {
                 }
             }
         }
-        while
-            auto cmp = [](pair<int, int> x, pair<int, int> y) -> bool {
-                return abs(x.first - N / 2) + abs(x.second - N / 2) >
-                       abs(y.first - N / 2) + abs(y.second - N / 2);
-            };
-        sort(all(balls), cmp);
+        // vector<vector<int>> block(N, vector<int>(N));
+        // rep(x, N) {
+        //     rep(y, N) {
+        //         if (input.target[x][y] > 0) {
+        //             if (0 <= x - 1 and x + 1 < N and
+        //                 input.target[x - 1][y] == 0 and
+        //                 input.target[x + 1][y] == 0 and 0 <= y - 1 and
+        //                 y + 1 < N and input.target[x][y - 1] == 0 and
+        //                 input.target[x][y + 1] == 0) {
+        //                 if (input.grid[x - 1][y] == 0) {
+        //                     output.ans.emplace_back(x - 1, y, "B");
+        //                     input.grid[x - 1][y] = -1;
+        //                 } else if (input.grid[x - 1][y] == 0) {
+        //                     output.ans.emplace_back(x + 1, y, "B");
+        //                     input.grid[x + 1][y] = -1;
+        //                 }
+        //             } else {
+        //                 if (0 <= x - 1 and x + 1 < N and
+        //                     input.target[x - 1][y] == 0 and
+        //                     input.target[x + 1][y] == 0) {
+        //                     if (input.grid[x - 1][y] == 0) {
+        //                         block[x - 1][y] += 1;
+        //                     } else if (input.grid[x - 1][y] == 0) {
+        //                         output.ans.emplace_back(x + 1, y, "B");
+        //                         block[x + 1][y] += 1;
+        //                     }
+        //                 }
+        //                 if (0 <= y - 1 and y + 1 < N and
+        //                     input.target[x][y - 1] == 0 and
+        //                     input.target[x][y + 1] == 0) {
+        //                     if (input.grid[x][y - 1] == 0) {
+        //                         block[x][y - 1] += 1;
+        //                     } else if (input.grid[x][y + 1] == 0) {
+        //                         block[x][y + 1] += 1;
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        // rep(x, N) {
+        //     rep(y, N) {
+        //         if (block[x][y] >= 2) {
+        //             output.ans.emplace_back(x, y, "B");
+        //             input.grid[x][y] = -1;
+        //         }
+        //     }
+        // }
+
+        auto cmp = [](pair<int, int> x, pair<int, int> y) -> bool {
+            return abs(x.first - N / 2) + abs(x.second - N / 2) >
+                   abs(y.first - N / 2) + abs(y.second - N / 2);
+        };
+        // sort(all(balls), cmp);
         beam_search::Config config = {static_cast<int>(balls.size()),
                                       beam_width, tour_capacity,
                                       hash_map_capacity};
@@ -1003,6 +1107,7 @@ struct Solver {
 };
 
 int main() {
+    time_keeper = TimeKeeperDouble(TIME_LIMIT);
     Input input;
     input.input();
     beam_search::zobrist_hash::make_hash(input);

@@ -17,7 +17,7 @@ class IntHash:
 
     def hash(self, *args):
         assert len(self.bit_len) == len(args), "引数の数が一致しません。"
-        assert all(i < 0 for i in args), f"引数に負の値が含まれています。引数: {args}"
+        assert all(0 <= i for i in args), f"引数に負の値が含まれています。引数: {args}"
         hash = 0
         for a, l in zip(args, self.sum_bit_len):
             hash |= a << l

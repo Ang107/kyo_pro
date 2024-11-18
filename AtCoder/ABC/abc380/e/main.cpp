@@ -103,36 +103,58 @@ template <typename T> T ipow(T x, T n) {
     }
     return ret;
 }
-void f(int depth, ll num, int n, vector<set<ll>> &tmp) {
-    tmp[depth].insert(num);
-    if (depth == n) {
-        return;
-    }
-    if (num % 2 == 1) {
-        f(depth + 1, num * 2, n, tmp);
-    } else {
-        f(depth + 1, num * 2, n, tmp);
-        if (num % 3 == 1) {
-            f(depth + 1, num / 3, n, tmp);
-        }
-    }
-}
+
 int main() {
-    // code
-    ll n, s, y1, y2;
-    cin >> n >> s >> y1 >> y2;
-    vector<set<ll>> a(n + 1);
-    vector<set<ll>> b(n + 1);
-    f(0, y1, n, a);
-    f(0, y2, n, b);
-    rep(i, n + 1) {
-        for (auto m : a[i]) {
-            if (b[n - i].find(s - m) != b[n - i].end()) {
-                Yes;
-                return 0;
+    int n, q;
+    cin >> n >> q;
+    vi ans(n, 1);
+    set<array<int, 3>> s;
+    rep(i, n) { s.insert({i, i, i}); }
+    int inf = 1 << 30;
+    rep(i, q) {
+        int t;
+        cin >> t;
+        if (t == 1) {
+            vector<array<int, 3>> dell;
+            int x, c;
+            cin >> x >> c;
+            x--;
+            c--;
+            auto index = s.upper_bound({x, inf, inf});
+            index--;
+            auto v = *index;
+            auto prev = v;
+            int w = v[1] - v[0] + 1;
+            dell.push_back(prev);
+            ans[v[2]] -= w;
+            ans[c] += w;
+            v[2] = c;
+            if (index != s.begin()) {
+                index--;
+                auto l = *index;
+                if (l[2] == c) {
+                    dell.push_back(l);
+                    v[0] = l[0];
+                }
+                index++;
             }
+            index++;
+            if (index != s.end()) {
+                auto r = *index;
+                if (r[2] == c) {
+                    dell.push_back(r);
+                    v[1] = r[1];
+                }
+            }
+            for (auto d : dell) {
+                s.erase(d);
+            }
+            s.insert(v);
+        } else {
+            int c;
+            cin >> c;
+            cout << ans[c - 1] << el;
         }
     }
-    No;
     return 0;
 }

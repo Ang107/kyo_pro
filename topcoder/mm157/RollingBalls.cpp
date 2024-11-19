@@ -346,10 +346,11 @@ template <typename T> T ipow(T x, T n) {
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 constexpr array<pair<int, int>, 4> UDLR = {{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}};
-constexpr double TIME_LIMIT = 9500;
+constexpr double TIME_LIMIT = 9800;
 int N;
 int C;
 int K;
+int BALLS_NUM;
 struct Input {
     vector<vector<int>> grid;
     vector<vector<int>> target;
@@ -470,9 +471,9 @@ struct Action {
     int nx;
     int ny;
     int cmd;
-    int index;
+    uint64_t index;
 
-    Action(int px, int py, int nx, int ny, vector<int> cmd_vec, int index)
+    Action(int px, int py, int nx, int ny, vector<int> cmd_vec, uint64_t index)
         : px(px), py(py), nx(nx), ny(ny), index(index) {
         cmd = encode(cmd_vec);
     }
@@ -511,14 +512,20 @@ using Cost = int;
 // メモリ使用量をできるだけ小さくしてください
 struct Evaluator {
     int turn;
-    int mis_match;
-    int mis_placed;
+    int ok;
+    int diff;
 
-    Evaluator(int turn, int mis_match, int mis_placed)
-        : turn(turn), mis_match(mis_match), mis_placed(mis_placed) {}
+    Evaluator(int turn, int ok, int diff) : turn(turn), ok(ok), diff(diff) {}
 
     // 低いほどよい
-    Cost evaluate() const { return turn + N * mis_match / 2 + N * mis_placed; }
+    Cost evaluate() const {
+        if (ok >= BALLS_NUM * 5 / 6 or time_keeper.getNowTime() > 8000) {
+            return turn - N * diff * (float(ok) / float(BALLS_NUM)) / 2 -
+                   N * ok;
+        } else {
+            return turn - N * ok;
+        }
+    }
 };
 
 namespace zobrist_hash {
@@ -683,9 +690,9 @@ class Selector {
 // 深さ優先探索に沿って更新する情報をまとめたクラス
 class State {
   public:
-    explicit State(const Input &input, const vector<pair<int, int>> &balls,
-                   int index)
-        : grid(input.grid), target(input.target), balls(balls), index(index) {}
+    explicit State(const Input &input, const vector<pair<int, int>> &balls)
+        : grid(input.grid), target(input.target), balls(balls),
+          balls_size(balls.size()) {}
 
     // EvaluatorとHashの初期値を返す
     pair<Evaluator, Hash> make_initial_node() {
@@ -696,10 +703,10 @@ class State {
                 if (grid[x][y] > 0) {
                     // dump(x, y, grid[x][y], target[x][y]);
                     hash ^= zobrist_hash::zobrist_hashes[grid[x][y]][x][y];
-                    if (target[x][y] == 0) {
-                        evaluator.mis_placed++;
+                    if (target[x][y] == grid[x][y]) {
+                        evaluator.ok++;
                     } else if (target[x][y] != grid[x][y]) {
-                        evaluator.mis_match++;
+                        evaluator.diff++;
                     }
                 }
             }
@@ -713,19 +720,19 @@ class State {
     //   hash      : 今のハッシュ値
     //   parent    : 今のノードID（次のノードにとって親となる）
     void expand(const Evaluator &evaluator, Hash hash, int parent,
-                Selector &selector, int index) {
+                Selector &selector, uint64_t index) {
         queue<tuple<int, int, int>> que;
         map<pair<int, int>, tuple<int, int, int>> visited;
         // dump(index);
         index %= balls.size();
+
         auto [px, py] = balls[index];
         const int color = grid[px][py];
         grid[px][py] = 0;
         visited[{px, py}] = {-1, -1, -1};
         que.push({0, px, py});
         selector.push(Candidate({px, py, px, py, {}, index},
-                                {evaluator.turn, evaluator.mis_match,
-                                 evaluator.mis_placed},
+                                {evaluator.turn, evaluator.ok, evaluator.diff},
                                 hash, parent),
                       false);
         while (!que.empty()) {
@@ -744,20 +751,20 @@ class State {
                     if (cnt <= 4) {
                         que.push({cnt + 1, nx, ny});
                     }
-                    auto [turn, mis_match, mis_placed] = evaluator;
+                    auto [turn, ok, diff] = evaluator;
                     Hash new_hash = hash;
                     new_hash ^= zobrist_hash::zobrist_hashes[color][px][py];
                     new_hash ^= zobrist_hash::zobrist_hashes[color][nx][ny];
                     turn += cnt + 1;
-                    if (target[px][py] == 0) {
-                        mis_placed--;
-                    } else if (color != target[px][py]) {
-                        mis_match--;
+                    if (target[px][py] == color) {
+                        ok--;
+                    } else if (target[px][py] != 0) {
+                        diff--;
                     }
-                    if (target[nx][ny] == 0) {
-                        mis_placed++;
-                    } else if (color != target[nx][ny]) {
-                        mis_match++;
+                    if (target[nx][ny] == color) {
+                        ok++;
+                    } else if (target[nx][ny] != 0) {
+                        diff++;
                     }
                     vector<int> cmd_vec;
                     int tmp_x = nx;
@@ -773,17 +780,15 @@ class State {
                         }
                     }
                     // dump(turn, mis_match, mis_placed);
-                    if (mis_match > 0 or mis_placed > 0) {
+                    if (ok < balls_size) {
                         selector.push(
                             Candidate({px, py, nx, ny, cmd_vec, index},
-                                      {turn, mis_match, mis_placed}, new_hash,
-                                      parent),
+                                      {turn, ok, diff}, new_hash, parent),
                             false);
                     } else {
                         selector.push(
                             Candidate({px, py, nx, ny, cmd_vec, index},
-                                      {turn, mis_match, mis_placed}, new_hash,
-                                      parent),
+                                      {turn, ok, diff}, new_hash, parent),
                             true);
                     }
                 }
@@ -813,12 +818,12 @@ class State {
         grid[px][py] = c;
     }
 
-  private:
+    //   private:
     // TODO
     vector<vector<int>> grid;
     vector<vector<int>> target;
     vector<pair<int, int>> balls;
-    int index;
+    int balls_size;
 };
 
 // Euler Tourを管理するためのクラス
@@ -832,8 +837,19 @@ class Tree {
     }
 
     // 状態を更新しながら深さ優先探索を行い、次のノードの候補を全てselectorに追加する
-    void dfs(Selector &selector) {
-        int index = xorshift64::next();
+    void dfs(Selector &selector, const State &state) {
+        uint64_t index;
+        while (true) {
+            index = xorshift64::next();
+            auto [x, y] = state.balls[index % state.balls_size];
+            if ((0 <= x - 1 and state.grid[x - 1][y] == 0) or
+                (0 <= y - 1 and state.grid[x][y - 1] == 0) or
+                (x + 1 < N and state.grid[x + 1][y] == 0) or
+                (y + 1 < N and state.grid[x][y + 1] == 0)) {
+                break;
+            }
+        }
+
         if (curr_tour_.empty()) {
             // 最初のターン
             auto [evaluator, hash] = state_.make_initial_node();
@@ -951,53 +967,55 @@ class Tree {
 };
 
 // ビームサーチを行う関数
-vector<Action> beam_search(const Config &config, const State &state) {
-    Tree tree(state, config);
+vector<Action> beam_search(const Config &config, State &state) {
 
-    // 新しいノード候補の集合
-    Selector selector(config);
-    int turn = 0;
+    auto init_grid = state.grid;
+    auto init_balls = state.balls;
+    vector<Action> best_ans;
+    int best_cost = 1 << 30;
     while (true) {
-        turn++;
-        if (turn % 10 == 0) {
-            time_keeper.setNowTime();
-            if (time_keeper.isTimeOver()) {
+        Tree tree(state, config);
+        // 新しいノード候補の集合
+        Selector selector(config);
+        int turn = 0;
+        while (true) {
+            turn++;
+            if (turn % 10 == 0) {
+                time_keeper.setNowTime();
+                if (time_keeper.isTimeOver()) {
+                    break;
+                }
+            }
+            // Euler Tourでselectorに候補を追加する
+            tree.dfs(selector, state);
+
+            if (selector.have_finished()) {
                 break;
             }
-        }
-        // for (int turn = 0; turn < config.max_turn; ++turn) {
-        // dump(turn);
-        // Euler Tourでselectorに候補を追加する
-        tree.dfs(selector);
+            assert(!selector.select().empty());
 
-        if (selector.have_finished()) {
-            // ターン数最小化型の問題で実行可能解が見つかったとき
-            Candidate candidate = selector.get_finished_candidates()[0];
+            // 木を更新する
+            tree.update(selector.select());
+            selector.clear();
+        }
+        Candidate best_candidate = selector.calculate_best_candidate();
+        dump(best_candidate.evaluator.evaluate());
+        if (best_candidate.evaluator.evaluate() < best_cost) {
+            best_cost = best_candidate.evaluator.evaluate();
+            // dump(turn, best_candidate.evaluator.evaluate());
             vector<Action> ret =
-                tree.calculate_path(candidate.parent, turn + 1);
-            ret.push_back(candidate.action);
-            return ret;
+                tree.calculate_path(best_candidate.parent, turn + 1);
+            ret.push_back(best_candidate.action);
+            best_ans = ret;
         }
-
-        // assert(!selector.select().empty());
-
-        // if (turn == config.max_turn - 1) {
-        //     // ターン数固定型の問題で全ターンが終了したとき
-        //     Candidate best_candidate = selector.calculate_best_candidate();
-        //     vector<Action> ret =
-        //         tree.calculate_path(best_candidate.parent, turn + 1);
-        //     ret.push_back(best_candidate.action);
-        //     return ret;
-        // }
-
-        // 木を更新する
-        tree.update(selector.select());
-        selector.clear();
+        if (time_keeper.isTimeOver()) {
+            return best_ans;
+        } else {
+            state.grid = init_grid;
+            state.balls = init_balls;
+        }
     }
-    Candidate best_candidate = selector.calculate_best_candidate();
-    vector<Action> ret = tree.calculate_path(best_candidate.parent, turn + 1);
-    ret.push_back(best_candidate.action);
-    return ret;
+
     return {};
 }
 
@@ -1024,6 +1042,7 @@ struct Solver {
                 }
             }
         }
+
         // vector<vector<int>> block(N, vector<int>(N));
         // rep(x, N) {
         //     rep(y, N) {
@@ -1073,15 +1092,16 @@ struct Solver {
         //     }
         // }
 
-        auto cmp = [](pair<int, int> x, pair<int, int> y) -> bool {
-            return abs(x.first - N / 2) + abs(x.second - N / 2) >
-                   abs(y.first - N / 2) + abs(y.second - N / 2);
-        };
+        // auto cmp = [](pair<int, int> x, pair<int, int> y) -> bool {
+        //     return abs(x.first - N / 2) + abs(x.second - N / 2) >
+        //            abs(y.first - N / 2) + abs(y.second - N / 2);
+        // };
         // sort(all(balls), cmp);
+        BALLS_NUM = balls.size();
         beam_search::Config config = {static_cast<int>(balls.size()),
                                       beam_width, tour_capacity,
                                       hash_map_capacity};
-        beam_search::State state(input, balls, 0);
+        beam_search::State state(input, balls);
         vector<beam_search::Action> actions =
             beam_search::beam_search(config, state);
 

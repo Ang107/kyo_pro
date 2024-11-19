@@ -1,41 +1,25 @@
-"""
-このように生成できる入力ファイルでTLEしそうです。
-例1: 
-q = 2 * 10**5
-print(q)
-for _ in range(10**5):
-    print(1)
-for _ in range(10**5-1):
-    print(2, 10**9)
-print(3, 10**9)
+# ans = "No"
+# for mask in range(1 << 4):
+#     p, q = 0, 0
+#     for i in range(4):
+#         if mask >> i & 1:
+#             p += abcd[i]
+#         else:
+#             q += abcd[i]
+#     if p == q:
+#         ans = "Yes"
+# print(ans)
+a, b, c, d = list(map(int, input().split()))
 
-例2:
-q = 2 * 10**5
-print(q)
-for _ in range(10**5):
-    print(1)
-print(2, 1)
-for _ in range(10**5-1):
-    print(3, 10**9)
-"""
-
-###
-q = int(input())
-tree = []
-for _ in range(q):
-    query = list(map(int, input().split()))
-    if query[0] == 1:
-        tree.append(0)
-    elif query[0] == 2:
-        for i in range(len(tree)):
-            tree[i] += query[1]
-    elif query[0] == 3:
-        ans = 0
-        new_tree = []
-        for i in range(len(tree)):
-            if tree[i] >= query[1]:
-                ans += 1
-            else:
-                new_tree.append(tree[i])
-        tree = new_tree
-        print(ans)
+if (
+    a == b + c + d
+    or b == a + c + d
+    or c == a + b + d
+    or d == a + b + c
+    or a + b == c + d
+    or a + c == b + d
+    or a + d == b + c
+):
+    print("Yes")
+else:
+    print("No")

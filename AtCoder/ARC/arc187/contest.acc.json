@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "arc187",
+    "title": "AtCoder Regular Contest 187",
+    "url": "https://atcoder.jp/contests/arc187"
+  },
+  "tasks": [
+    {
+      "id": "arc187_a",
+      "label": "A",
+      "title": "Add and Swap",
+      "url": "https://atcoder.jp/contests/arc187/tasks/arc187_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc187_b",
+      "label": "B",
+      "title": "Sum of CC",
+      "url": "https://atcoder.jp/contests/arc187/tasks/arc187_b",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc187_c",
+      "label": "C",
+      "title": "1 Loop Bubble Sort",
+      "url": "https://atcoder.jp/contests/arc187/tasks/arc187_c",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc187_d",
+      "label": "D",
+      "title": "Many Easy Optimizations ",
+      "url": "https://atcoder.jp/contests/arc187/tasks/arc187_d",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc187_e",
+      "label": "E",
+      "title": "Replace Triplets ",
+      "url": "https://atcoder.jp/contests/arc187/tasks/arc187_e",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

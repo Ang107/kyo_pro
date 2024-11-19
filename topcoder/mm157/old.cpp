@@ -2,6 +2,10 @@
 考察メモ
 ペナルティが重くないので、必ずしも揃える必要ないのかも
 解法は、無難に行くなら石の配置を焼きながらビーム打つとかで良さそう。
+↑これ普通に無理
+ビーム一回が重すぎ
+石の置きはよくわからんから、適当に置くのを試してみてスコア見てみたい。
+とりあえずは移動する順番決め打ってビームを時間の間繰り返す感じかなー
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -240,7 +244,37 @@ template <class S, S (*op)(S, S), S (*e)()> struct segtree {
 } // namespace atcoder
 
 #endif // ATCODER_SEGTREE_HPP
+// 時間をDouble型で管理し、経過時間も取り出せるクラス
+class TimeKeeperDouble {
+  private:
+    std::chrono::high_resolution_clock::time_point start_time_;
+    double time_threshold_;
 
+    double now_time_ = 0;
+
+  public:
+    // 時間制限をミリ秒単位で指定してインスタンスをつくる。
+    TimeKeeperDouble(const double time_threshold)
+        : start_time_(std::chrono::high_resolution_clock::now()),
+          time_threshold_(time_threshold) {}
+
+    // 経過時間をnow_time_に格納する。
+    void setNowTime() {
+        auto diff =
+            std::chrono::high_resolution_clock::now() - this->start_time_;
+        this->now_time_ =
+            std::chrono::duration_cast<std::chrono::microseconds>(diff)
+                .count() *
+            1e-3; // ms
+    }
+
+    // 経過時間をnow_time_に取得する。
+    double getNowTime() const { return this->now_time_; }
+
+    // インスタンス生成した時から指定した時間制限を超過したか判定する。
+    bool isTimeOver() const { return now_time_ >= time_threshold_; }
+};
+TimeKeeperDouble time_keeper(9500);
 struct Init {
     Init() {
         ios::sync_with_stdio(0);
@@ -312,6 +346,7 @@ template <typename T> T ipow(T x, T n) {
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 constexpr array<pair<int, int>, 4> UDLR = {{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}};
+constexpr double TIME_LIMIT = 9800;
 int N;
 int C;
 int K;
@@ -347,6 +382,22 @@ struct Output {
     }
 };
 
+pair<int, int> next_pos(int x, int y, int cmd,
+                        const vector<vector<int>> &grid) {
+    int nx = x;
+    int ny = y;
+    while (true) {
+        int tmp_x = nx + UDLR[cmd].first;
+        int tmp_y = ny + UDLR[cmd].second;
+        if (tmp_x < 0 || tmp_x >= N || tmp_y < 0 || tmp_y >= N ||
+            grid[tmp_x][tmp_y] != 0) {
+            break;
+        }
+        nx = tmp_x;
+        ny = tmp_y;
+    }
+    return {nx, ny};
+}
 namespace beam_search {
 
 // ビームサーチの設定
@@ -414,14 +465,44 @@ using Hash = uint64_t; // TODO
 // 状態遷移を行うために必要な情報
 // メモリ使用量をできるだけ小さくしてください
 struct Action {
-    int r;
-    int c;
+    int16_t px;
+    int16_t py;
+    int16_t nx;
+    int16_t ny;
     int cmd;
+    uint64_t index;
 
-    Action(int r, int c, int cmd) : r(r), c(c), cmd(cmd) {}
-
+    Action(int16_t px, int16_t py, int16_t nx, int16_t ny, vector<int> cmd_vec,
+           uint64_t index)
+        : px(px), py(py), nx(nx), ny(ny), index(index) {
+        cmd = encode(cmd_vec);
+    }
+    // 0~3からなるvector(要素数は最大4)をintにエンコードする関数
+    int encode(const vector<int> &cmd_vec) {
+        int res = 0;
+        for (auto cmd : cmd_vec) {
+            res <<= 3;
+            res |= cmd + 1;
+        }
+        return res;
+    }
+    // intからvectorにデコードする関数
+    vector<int> decode() {
+        int cmd_int = cmd;
+        vector<int> res;
+        while (cmd_int > 0) {
+            int c = cmd_int & 7;
+            if (c == 0) {
+                break;
+            }
+            res.push_back(c - 1);
+            cmd_int >>= 3;
+        }
+        return res;
+    }
     bool operator==(const Action &other) const {
-        return r == other.r and c == other.c and cmd == other.cmd;
+        return px == other.px and py == other.py and nx == other.nx and
+               ny == other.ny and cmd == other.cmd;
     }
 };
 
@@ -430,14 +511,19 @@ using Cost = int;
 // 状態のコストを評価するための構造体
 // メモリ使用量をできるだけ小さくしてください
 struct Evaluator {
+    int turn;
     int mis_match;
     int mis_placed;
+    int bonus;
 
-    Evaluator(int mis_match, int mis_placed)
-        : mis_match(mis_match), mis_placed(mis_placed) {}
+    Evaluator(int turn, int mis_match, int mis_placed, int bonus)
+        : turn(turn), mis_match(mis_match), mis_placed(mis_placed),
+          bonus(bonus) {}
 
     // 低いほどよい
-    Cost evaluate() const { return mis_match / 2 + mis_placed; }
+    Cost evaluate() const {
+        return turn + N * mis_match / 2 + N * mis_placed - bonus;
+    }
 };
 
 namespace zobrist_hash {
@@ -602,26 +688,21 @@ class Selector {
 // 深さ優先探索に沿って更新する情報をまとめたクラス
 class State {
   public:
-    explicit State(const Input &input) {
-        grid = input.grid;
-        target = input.target;
-        // balls.reserve(N * N / 2);
-        // rep(x, N) {
-        //     rep(y, N) {
-        //         if (grid[x][y] > 0) {
-        //             balls.emplace_back(x, y);
-        //         }
-        //     }
-        // }
-    }
+    explicit State(const Input &input, const vector<vector<int>> &bonus,
+                   const vector<pair<int, int>> &balls)
+        : grid(input.grid), target(input.target), bonus(bonus), balls(balls),
+          balls_size(balls.size()) {}
 
     // EvaluatorとHashの初期値を返す
     pair<Evaluator, Hash> make_initial_node() {
-        Evaluator evaluator{0, 0};
+        Evaluator evaluator{0, 0, 0, 0};
         Hash hash = 0;
         rep(x, N) {
             rep(y, N) {
                 if (grid[x][y] > 0) {
+                    if (grid[x][y] == target[x][y]) {
+                        evaluator.bonus += bonus[x][y];
+                    }
                     // dump(x, y, grid[x][y], target[x][y]);
                     hash ^= zobrist_hash::zobrist_hashes[grid[x][y]][x][y];
                     if (target[x][y] == 0) {
@@ -641,107 +722,118 @@ class State {
     //   hash      : 今のハッシュ値
     //   parent    : 今のノードID（次のノードにとって親となる）
     void expand(const Evaluator &evaluator, Hash hash, int parent,
-                Selector &selector) {
-        rep(x, N) {
-            rep(y, N) {
-                if (grid[x][y] > 0) {
-                    rep(cmd, 4) {
-                        int mis_match = evaluator.mis_match;
-                        int mis_placed = evaluator.mis_placed;
-                        Hash new_hash = hash;
-                        new_hash ^=
-                            zobrist_hash::zobrist_hashes[grid[x][y]][x][y];
-                        if (target[x][y] == 0) {
-                            mis_placed--;
-                        } else if (grid[x][y] != target[x][y]) {
-                            mis_match--;
-                        }
-                        int nx = x;
-                        int ny = y;
-                        while (true) {
-                            int tmp_x = nx + UDLR[cmd].first;
-                            int tmp_y = ny + UDLR[cmd].second;
-                            if (tmp_x < 0 || tmp_x >= N || tmp_y < 0 ||
-                                tmp_y >= N || grid[tmp_x][tmp_y] != 0) {
-                                break;
-                            }
-                            nx = tmp_x;
-                            ny = tmp_y;
-                        }
-                        if (nx == x and ny == y) {
-                            continue;
-                        }
-                        new_hash ^=
-                            zobrist_hash::zobrist_hashes[grid[x][y]][nx][ny];
-                        if (target[nx][ny] == 0) {
-                            mis_placed++;
-                        } else if (grid[x][y] != target[nx][ny]) {
-                            mis_match++;
-                        }
-                        if (mis_match == 0 and mis_placed == 0) {
-                            // dump(x, y, cmd, mis_match, mis_placed);
-                            selector.push(Candidate({x, y, cmd},
-                                                    {mis_match, mis_placed},
-                                                    new_hash, parent),
-                                          true);
+                Selector &selector, uint64_t index) {
+        queue<tuple<int, int, int>> que;
+        map<pair<int, int>, tuple<int, int, int>> visited;
+        // dump(index);
+        index %= balls.size();
+
+        auto [px, py] = balls[index];
+        const int color = grid[px][py];
+        grid[px][py] = 0;
+        visited[{px, py}] = {-1, -1, -1};
+        que.push({0, px, py});
+        selector.push(Candidate({px, py, px, py, {}, index},
+                                {evaluator.turn, evaluator.mis_match,
+                                 evaluator.mis_placed, evaluator.bonus},
+                                hash, parent),
+                      false);
+        while (!que.empty()) {
+            auto [cnt, x, y] = que.front();
+            que.pop();
+            rep(cmd, 4) {
+                auto [nx, ny] = next_pos(x, y, cmd, grid);
+                if (nx == x and ny == y) {
+                    continue;
+                }
+                if (nx == px and ny == py) {
+                    continue;
+                }
+                if (visited.find({nx, ny}) == visited.end()) {
+                    visited[{nx, ny}] = {cmd, x, y};
+                    if (cnt <= 4) {
+                        que.push({cnt + 1, nx, ny});
+                    }
+                    auto [turn, mis_match, mis_placed, _bonus] = evaluator;
+                    Hash new_hash = hash;
+                    new_hash ^= zobrist_hash::zobrist_hashes[color][px][py];
+                    new_hash ^= zobrist_hash::zobrist_hashes[color][nx][ny];
+                    turn += cnt + 1;
+                    if (target[px][py] == 0) {
+                        mis_placed--;
+                    } else if (color != target[px][py]) {
+                        mis_match--;
+                    } else {
+                        _bonus -= bonus[px][py];
+                    }
+                    if (target[nx][ny] == 0) {
+                        mis_placed++;
+                    } else if (color != target[nx][ny]) {
+                        mis_match++;
+                    } else {
+                        _bonus += bonus[nx][ny];
+                    }
+                    vector<int> cmd_vec;
+                    int tmp_x = nx;
+                    int tmp_y = ny;
+                    while (true) {
+                        auto [cmd, x, y] = visited[{tmp_x, tmp_y}];
+                        if (cmd == -1) {
+                            break;
                         } else {
-                            // dump(x, y, cmd, mis_match, mis_placed);
-                            selector.push(Candidate({x, y, cmd},
-                                                    {mis_match, mis_placed},
-                                                    new_hash, parent),
-                                          false);
+                            cmd_vec.push_back(cmd);
+                            tmp_x = x;
+                            tmp_y = y;
                         }
+                    }
+                    // dump(turn, mis_match, mis_placed);
+                    if (mis_match > 0 or mis_placed > 0) {
+                        selector.push(
+                            Candidate({px, py, nx, ny, cmd_vec, index},
+                                      {turn, mis_match, mis_placed, _bonus},
+                                      new_hash, parent),
+                            false);
+                    } else {
+                        selector.push(
+                            Candidate({px, py, nx, ny, cmd_vec, index},
+                                      {turn, mis_match, mis_placed, _bonus},
+                                      new_hash, parent),
+                            true);
                     }
                 }
             }
         }
+        grid[px][py] = color;
     }
 
     // actionを実行して次の状態に遷移する
     void move_forward(Action action) {
-        auto [x, y, cmd] = action;
-        int c = grid[x][y];
-        grid[x][y] = 0;
-        int nx = x;
-        int ny = y;
-        while (true) {
-            int tmp_x = nx + UDLR[cmd].first;
-            int tmp_y = ny + UDLR[cmd].second;
-            if (tmp_x < 0 || tmp_x >= N || tmp_y < 0 || tmp_y >= N ||
-                grid[tmp_x][tmp_y] != 0) {
-                break;
-            }
-            nx = tmp_x;
-            ny = tmp_y;
-        }
+        auto [px, py, nx, ny, cmd, index] = action;
+        // index++;
+        balls[index] = {nx, ny};
+        int c = grid[px][py];
+        grid[px][py] = 0;
         grid[nx][ny] = c;
-        // dump(x, y, cmd);
-        // dump(grid);
     }
 
     // actionを実行する前の状態に遷移する
     // 今の状態は、親からactionを実行して遷移した状態である
     void move_backward(Action action) {
-        auto [x, y, cmd] = action;
-
-        int nx = x;
-        int ny = y;
-        while (grid[nx][ny] == 0) {
-            nx += UDLR[cmd].first;
-            ny += UDLR[cmd].second;
-        }
+        auto [px, py, nx, ny, cmd, index] = action;
+        // index--;
+        balls[index] = {px, py};
         int c = grid[nx][ny];
-        grid[x][y] = c;
         grid[nx][ny] = 0;
-        // dump(x, y, cmd);
-        // dump(grid);
+        grid[px][py] = c;
     }
 
-  private:
+    //   private:
     // TODO
     vector<vector<int>> grid;
     vector<vector<int>> target;
-    // vector<pair<int, int>> balls;
+    vector<vector<int>> bonus;
+    vector<pair<int, int>> balls;
+    int balls_size;
 };
 
 // Euler Tourを管理するためのクラス
@@ -755,11 +847,23 @@ class Tree {
     }
 
     // 状態を更新しながら深さ優先探索を行い、次のノードの候補を全てselectorに追加する
-    void dfs(Selector &selector) {
+    void dfs(Selector &selector, const State &state) {
+        uint64_t index;
+        while (true) {
+            index = xorshift64::next();
+            auto [x, y] = state.balls[index % state.balls_size];
+            if ((0 <= x - 1 and state.grid[x - 1][y] == 0) or
+                (0 <= y - 1 and state.grid[x][y - 1] == 0) or
+                (x + 1 < N and state.grid[x + 1][y] == 0) or
+                (y + 1 < N and state.grid[x][y + 1] == 0)) {
+                break;
+            }
+        }
+
         if (curr_tour_.empty()) {
             // 最初のターン
             auto [evaluator, hash] = state_.make_initial_node();
-            state_.expand(evaluator, hash, 0, selector);
+            state_.expand(evaluator, hash, 0, selector, index);
             return;
         }
 
@@ -768,7 +872,7 @@ class Tree {
                 // 葉
                 state_.move_forward(action);
                 auto &[evaluator, hash] = leaves_[leaf_index];
-                state_.expand(evaluator, hash, leaf_index, selector);
+                state_.expand(evaluator, hash, leaf_index, selector, index);
                 state_.move_backward(action);
             } else if (leaf_index == -1) {
                 // 前進辺
@@ -873,48 +977,61 @@ class Tree {
 };
 
 // ビームサーチを行う関数
-vector<Action> beam_search(const Config &config, const State &state) {
-    Tree tree(state, config);
+vector<Action> beam_search(const Config &config, State &state) {
 
-    // 新しいノード候補の集合
-    Selector selector(config);
+    auto init_grid = state.grid;
+    auto init_balls = state.balls;
+    vector<Action> best_ans;
+    int best_cost = 1 << 30;
+    while (true) {
+        Tree tree(state, config);
+        // 新しいノード候補の集合
+        Selector selector(config);
+        int turn = 0;
+        while (true) {
+            turn++;
+            if (turn % 10 == 0) {
+                time_keeper.setNowTime();
+                if (time_keeper.isTimeOver()) {
+                    break;
+                }
+            }
+            // Euler Tourでselectorに候補を追加する
+            tree.dfs(selector, state);
 
-    for (int turn = 0; turn < config.max_turn; ++turn) {
-        // dump(turn);
-        // Euler Tourでselectorに候補を追加する
-        tree.dfs(selector);
+            if (selector.have_finished()) {
+                break;
+            }
+            assert(!selector.select().empty());
 
-        if (selector.have_finished()) {
-            // ターン数最小化型の問題で実行可能解が見つかったとき
-            Candidate candidate = selector.get_finished_candidates()[0];
-            vector<Action> ret =
-                tree.calculate_path(candidate.parent, turn + 1);
-            ret.push_back(candidate.action);
-            return ret;
+            // 木を更新する
+            tree.update(selector.select());
+            selector.clear();
         }
-
-        assert(!selector.select().empty());
-
-        if (turn == config.max_turn - 1) {
-            // ターン数固定型の問題で全ターンが終了したとき
-            Candidate best_candidate = selector.calculate_best_candidate();
+        Candidate best_candidate = selector.calculate_best_candidate();
+        dump(best_candidate.evaluator.evaluate());
+        if (best_candidate.evaluator.evaluate() < best_cost) {
+            best_cost = best_candidate.evaluator.evaluate();
+            // dump(turn, best_candidate.evaluator.evaluate());
             vector<Action> ret =
                 tree.calculate_path(best_candidate.parent, turn + 1);
             ret.push_back(best_candidate.action);
-            return ret;
+            best_ans = ret;
         }
-
-        // 木を更新する
-        tree.update(selector.select());
-
-        selector.clear();
+        if (time_keeper.isTimeOver()) {
+            return best_ans;
+        } else {
+            state.grid = init_grid;
+            state.balls = init_balls;
+        }
     }
+
     return {};
 }
 
 } // namespace beam_search
 
-constexpr size_t beam_width = 3000;
+constexpr size_t beam_width = 1000;
 constexpr size_t tour_capacity = 16 * beam_width;
 constexpr uint32_t hash_map_capacity = 64 * beam_width;
 
@@ -926,58 +1043,55 @@ struct Solver {
     Solver(const Input &input) : input(input) {}
 
     void solve() {
-        // dump(input.grid);
-        // rep(i, 30) {
-        //     int change = 0;
-        //     rep(x, N) {
-        //         rep(y, N) {
-        //             if (input.grid[x][y] > 0 and
-        //                 input.grid[x][y] != input.target[x][y]) {
-        //                 rep(cmd, 4) {
-        //                     int nx = x;
-        //                     int ny = y;
-        //                     while (true) {
-        //                         int tmp_x = nx + UDLR[cmd].first;
-        //                         int tmp_y = ny + UDLR[cmd].second;
-        //                         if (tmp_x < 0 || tmp_x >= N || tmp_y < 0 ||
-        //                             tmp_y >= N ||
-        //                             input.grid[tmp_x][tmp_y] != 0) {
-        //                             break;
-        //                         }
-        //                         nx = tmp_x;
-        //                         ny = tmp_y;
-        //                     }
-        //                     if (x == nx and y == ny) {
-        //                         continue;
-        //                     }
-        //                     if (input.grid[x][y] == input.target[nx][ny]) {
-        //                         output.ans.emplace_back(x, y,
-        //                         UDLR_string[cmd]); input.grid[nx][ny] =
-        //                         input.grid[x][y]; input.grid[x][y] = 0;
-        //                         // dump(x, y, cmd);
-        //                         // dump(input.grid);
-        //                         change++;
-        //                         break;
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     if (change == 0) {
-        //         break;
-        //     }
-        // }
-        // dump(input.grid);
-        beam_search::Config config = {min(1000, N * N * N - 1), beam_width,
-                                      tour_capacity, hash_map_capacity};
-        beam_search::State state(input);
+        vector<pair<int, int>> balls;
+        balls.reserve(N * N / 2);
+        rep(x, N) {
+            rep(y, N) {
+                if (input.grid[x][y] > 0) {
+                    balls.emplace_back(x, y);
+                }
+            }
+        }
+        vector<vector<int>> bonus(N, vector<int>(N));
+        rep(x, N) {
+            rep(y, N) {
+                if (input.target[x][y] > 0) {
+                    int cnt = 0;
+                    rep(cmd, 4) {
+                        int nx = x + UDLR[cmd].first;
+                        int ny = y + UDLR[cmd].second;
+                        if (0 <= nx and nx < N and 0 <= ny and ny < N and
+                            input.target[nx][ny] == 0) {
+                            bonus[x][y] = N * cnt / 8;
+                        }
+                    }
+                }
+            }
+        }
+        dump(bonus);
+
+        beam_search::Config config = {static_cast<int>(balls.size()),
+                                      beam_width, tour_capacity,
+                                      hash_map_capacity};
+        beam_search::State state(input, bonus, balls);
         vector<beam_search::Action> actions =
             beam_search::beam_search(config, state);
 
         // make output
-        output.ans.reserve(actions.size());
-        for (auto [x, y, cmd] : actions) {
-            output.ans.emplace_back(x, y, UDLR_string[cmd]);
+        // dump(actions.size());
+        output.ans.reserve(balls.size() * 4);
+        for (auto action : actions) {
+            int x = action.px;
+            int y = action.py;
+            for (auto cmd : action.decode()) {
+                auto [nx, ny] = next_pos(x, y, cmd, input.grid);
+                output.ans.emplace_back(x, y, UDLR_string[cmd]);
+                int c = input.grid[x][y];
+                input.grid[x][y] = 0;
+                input.grid[nx][ny] = c;
+                x = nx;
+                y = ny;
+            }
         }
     }
 
@@ -985,6 +1099,7 @@ struct Solver {
 };
 
 int main() {
+    time_keeper = TimeKeeperDouble(TIME_LIMIT);
     Input input;
     input.input();
     beam_search::zobrist_hash::make_hash(input);

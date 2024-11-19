@@ -103,8 +103,36 @@ template <typename T> T ipow(T x, T n) {
     }
     return ret;
 }
-
+void f(int depth, ll num, int n, vector<set<ll>> &tmp) {
+    tmp[depth].insert(num);
+    if (depth == n) {
+        return;
+    }
+    if (num % 2 == 1) {
+        f(depth + 1, num * 2, n, tmp);
+    } else {
+        f(depth + 1, num * 2, n, tmp);
+        if (num % 3 == 1) {
+            f(depth + 1, num / 3, n, tmp);
+        }
+    }
+}
 int main() {
-    cout << "Hello World!" << el;
+    // code
+    ll n, s, y1, y2;
+    cin >> n >> s >> y1 >> y2;
+    vector<set<ll>> a(n + 1);
+    vector<set<ll>> b(n + 1);
+    f(0, y1, n, a);
+    f(0, y2, n, b);
+    rep(i, n + 1) {
+        for (auto m : a[i]) {
+            if (b[n - i].find(s - m) != b[n - i].end()) {
+                Yes;
+                return 0;
+            }
+        }
+    }
+    No;
     return 0;
 }

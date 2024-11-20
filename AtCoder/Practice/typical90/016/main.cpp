@@ -105,5 +105,17 @@ template <typename T> T ipow(T x, T n) {
 }
 int main() {
     // code
+    ll n, a, b, c;
+    cin >> n >> a >> b >> c;
+    int ans = inf;
+    rep(i, 10000) {
+        rep(j, 10000 - i) {
+            ll tmp = n - a * i - b * j;
+            if (tmp >= 0 and tmp % c == 0) {
+                chmin(ans, i + j + tmp / c);
+            }
+        }
+    }
+    cout << ans << el;
     return 0;
 }

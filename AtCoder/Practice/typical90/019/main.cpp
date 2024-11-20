@@ -103,7 +103,40 @@ template <typename T> T ipow(T x, T n) {
     }
     return ret;
 }
+int n;
+struct pair_hash {
+    template <typename T1, typename T2>
+    std::size_t operator()(const std::pair<T1, T2> &p) const {
+        return (p.first << 16 | p.second);
+    }
+};
+unordered_map<pair<int, int>, ll, pair_hash> memo;
+ll f(int l, int r, vi &a) {
+    if (r - l == 0) {
+        return 0;
+    } else if ((r - l) % 2 == 1) {
+        return inf;
+    } else if (r - l == 2) {
+        return abs(a[l] - a[l + 1]);
+    }
+
+    if (memo.find({l, r}) != memo.end()) {
+        return memo[{l, r}];
+    }
+    ll res = inf;
+    chmin(res, f(l + 1, r - 1, a) + abs(a[l] - a[r - 1]));
+    for (int i = l + 1; i < r; i++) {
+        chmin(res, f(l, i, a) + f(i, r, a));
+    }
+    memo[{l, r}] = res;
+    return res;
+}
 int main() {
     // code
+    cin >> n;
+    vi a(n * 2);
+    memo.reserve(n * n);
+    vin(a);
+    cout << f(0, 2 * n, a) << el;
     return 0;
 }

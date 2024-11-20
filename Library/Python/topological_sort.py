@@ -1,19 +1,19 @@
 from collections import deque, defaultdict
 
 
-def topological_sort(n: int, output_edge, input_edge):
+def topological_sort(n: int, output_edge, input_edge_num):
     ans = []
-    for i in range(1, n + 1):
-        if not input_edge[i]:
+    for i in range(n):
+        if input_edge_num[i] == 0:
             ans.append(i)
     deq = deque(ans)
     while deq:
         x = deq.popleft()
-        for e in output_edge[x]:
-            input_edge[e].discard(x)
-            if input_edge[e] == 0:
-                deq.append(e)
-                ans.append(e)
+        for next in output_edge[x]:
+            input_edge_num[next] -= 1
+            if input_edge_num[next] == 0:
+                deq.append(next)
+                ans.append(next)
     if len(ans) == n:
         return ans
     return False

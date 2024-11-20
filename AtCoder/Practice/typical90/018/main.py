@@ -32,4 +32,23 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+import math
 
+t = II()
+l, X, Y = MII()
+l
+Z = 0
+q = II()
+for _ in range(q):
+    e = II()
+    x, y, z = (
+        0,
+        l * math.sin(-2 * math.pi * e / t) / 2,
+        l / 2 * math.sin(2 * math.pi * e / t - math.pi / 2) + l / 2,
+    )
+    # print(x, y, z)
+    x -= X
+    y -= Y
+    z -= Z
+    # print(x, y, z)
+    print(math.degrees(math.atan2(z, (x**2 + y**2) ** 0.5)))

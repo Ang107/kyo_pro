@@ -58,21 +58,71 @@ def is_not_Index_Er(x, y, h, w):
     return 0 <= x < h and 0 <= y < w  # 範囲外参照
 
 
-n = II()
-PA = [LMII() for _ in range(n)]
-# i = 左端j = 右端
-dp = [[0] * n for _ in range(n)]
-for i in range(n):
-    for j in range(n - 1, i - 1, -1):
-        if i >= 1:
-            if i <= PA[i - 1][0] - 1 <= j:
-                dp[i][j] = max(dp[i][j], dp[i - 1][j] + PA[i - 1][1])
-            else:
-                dp[i][j] = max(dp[i][j], dp[i - 1][j])
+# n = II()
+# PA = [LMII() for _ in range(n)]
+# # i = 左端j = 右端
+# dp = [[0] * n for _ in range(n)]
+# for i in range(n):
+#     for j in range(n - 1, i - 1, -1):
+#         if i >= 1:
+#             if i <= PA[i - 1][0] - 1 <= j:
+#                 dp[i][j] = max(dp[i][j], dp[i - 1][j] + PA[i - 1][1])
+#             else:
+#                 dp[i][j] = max(dp[i][j], dp[i - 1][j])
 
-        if j < n - 1:
-            if i <= PA[j + 1][0] - 1 <= j:
-                dp[i][j] = max(dp[i][j], dp[i][j + 1] + PA[j + 1][1])
-            else:
-                dp[i][j] = max(dp[i][j], dp[i][j + 1])
-print(max([max(i) for i in dp]))
+#         if j < n - 1:
+#             if i <= PA[j + 1][0] - 1 <= j:
+#                 dp[i][j] = max(dp[i][j], dp[i][j + 1] + PA[j + 1][1])
+#             else:
+#                 dp[i][j] = max(dp[i][j], dp[i][j + 1])
+# print(max([max(i) for i in dp]))
+
+n = II()
+pa = []
+for _ in range(n):
+    tmp = LMII()
+    tmp[0] -= 1
+    pa.append(tmp)
+# # dp[l][r] : l~r番目まで残っているときのスコアの最大値
+# dp = [[-inf] * n for _ in range(n)]
+# dp[0][n - 1] = 0
+# for l in range(n):
+#     for r in reversed(range(l + 1, n)):
+#         s = dp[l][r]
+#         if l <= pa[l][0] <= r:
+#             s += pa[l][1]
+#         dp[l + 1][r] = max(dp[l + 1][r], s)
+#         s = dp[l][r]
+#         if l <= pa[r][0] <= r:
+#             s += pa[r][1]
+#         dp[l][r - 1] = max(dp[l][r - 1], s)
+# ans = -inf
+# for i in range(n):
+#     ans = max(ans, dp[i][i])
+# print(ans)
+
+# from functools import cache
+memo = [[-1] * n for _ in range(n)]
+
+
+# @cache
+def f(l, r):
+    if memo[l][r] != -1:
+        return memo[l][r]
+    if l == r:
+        return 0
+    res = 0
+    if l <= pa[l][0] <= r:
+        res = max(res, pa[l][1] + f(l + 1, r))
+    else:
+        res = max(res, f(l + 1, r))
+
+    if l <= pa[r][0] <= r:
+        res = max(res, pa[r][1] + f(l, r - 1))
+    else:
+        res = max(res, f(l, r - 1))
+    memo[l][r] = res
+    return res
+
+
+print(f(0, n - 1))

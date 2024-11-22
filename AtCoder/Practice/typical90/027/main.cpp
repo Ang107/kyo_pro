@@ -107,5 +107,16 @@ template <typename T> T ipow(T x, T n) {
 }
 int main() {
     // code
+    int n;
+    cin >> n;
+    set<string> name;
+    rep(i, n) {
+        string s;
+        cin >> s;
+        if (name.find(s) == name.end()) {
+            cout << i + 1 << el;
+            name.insert(s);
+        }
+    }
     return 0;
 }

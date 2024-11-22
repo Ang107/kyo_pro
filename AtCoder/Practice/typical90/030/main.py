@@ -11,9 +11,10 @@ import math
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
-import pypyjit
 
-pypyjit.set_param("max_unroll_recursion=-1")
+# import pypyjit
+
+# pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
@@ -33,3 +34,31 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+
+def get_primes(n):
+    if n <= 1:
+        return 0
+    # n以下のすべての数について素数かどうかを記録する配列
+    is_prime = [0] * (n + 1)
+    is_prime[0] = 0  # 0は素数ではない
+    is_prime[1] = 0  # 1は素数ではない
+    primes = []
+
+    for i in range(2, n + 1):
+        if is_prime[i] == 0:
+            is_prime[i] += 1
+            primes.append(i)
+            # iの倍数を素数ではないとマーク
+            for j in range(i * 2, n + 1, i):
+                is_prime[j] += 1
+
+    return is_prime
+
+
+n, k = MII()
+tmp = get_primes(n)
+ans = 0
+for i in tmp:
+    if i >= k:
+        ans += 1
+print(ans)

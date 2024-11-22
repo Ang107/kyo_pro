@@ -9,7 +9,11 @@ class TupleHash:
             l = len(bin(i)) - 2
             self.bit_len[index] = l
             self.mask[index] = (1 << l) - 1
-        assert sum(self.bit_len) <= 63, "数字が大きすぎてエンコードできません。"
+        if sum(self.bit_len) > 63:
+            from sys import stderr
+
+            print("数字が大きすぎるため、低速になる可能性があります。", file=stderr)
+
         self.sum_bit_len = [0]
         for i in self.bit_len[1:][::-1]:
             self.sum_bit_len.append(self.sum_bit_len[-1] + i)
@@ -32,7 +36,7 @@ class TupleHash:
         index: 特定の要素だけ取得する場合（省略時は全要素を取得）
         """
         assert index == None or 0 <= index < len(self.bit_len), "idxの値が不正です。"
-        if index == -1:
+        if index == None:
             return (res >> l & m for l, m in zip(self.sum_bit_len, self.mask))
         else:
             return res >> self.sum_bit_len[index] & self.mask[index]

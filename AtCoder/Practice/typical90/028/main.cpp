@@ -107,5 +107,38 @@ template <typename T> T ipow(T x, T n) {
 }
 int main() {
     // code
+    int n;
+    cin >> n;
+    int max = 1002;
+    vvi b(max, vi(max));
+    rep(i, n) {
+        int lx, ly, rx, ry;
+        cin >> lx >> ly >> rx >> ry;
+        b[lx][ly]++;
+        b[rx][ry]++;
+        b[rx][ly]--;
+        b[lx][ry]--;
+    }
+    dump(b);
+    for (int i = 1; i < max; i++) {
+        rep(j, max) { b[i][j] += b[i - 1][j]; }
+    }
+    dump(b);
+    rep(i, max) {
+        for (int j = 1; j < max; j++) {
+            b[i][j] += b[i][j - 1];
+        }
+    }
+    dump(b);
+    vi ans(n, 0);
+    dump(ans);
+    rep(i, max) {
+        rep(j, max) {
+            if (b[i][j] > 0)
+                ans[b[i][j] - 1]++;
+        }
+    }
+    dump(ans);
+    rep(i, n) { cout << ans[i] << el; }
     return 0;
 }

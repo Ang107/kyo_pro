@@ -1,4 +1,4 @@
-from sys import stdin, setrecursionlimit, set_int_max_str_digits
+from sys import stdin, stderr, setrecursionlimit, set_int_max_str_digits
 from collections import deque, defaultdict
 from itertools import accumulate
 from itertools import permutations
@@ -26,7 +26,7 @@ inf = float("inf")
 mod = 998244353
 input = lambda: stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
-deb = lambda *x: print(*x) if DEBUG else None
+deb = lambda *x: print(*x, file=stderr) if DEBUG else None
 PY = lambda: print("Yes")
 PN = lambda: print("No")
 YN = lambda x: print("Yes") if x else print("No")

@@ -36,7 +36,17 @@ MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
 s = input()
+# ans = []
+# for i in s[1:-1].split("|"):
+#     ans.append(len(i))
+# print(*ans)
+
 ans = []
-for i in s[1:-1].split("|"):
-    ans.append(len(i))
+cnt = 0
+for i in range(1, len(s)):
+    if s[i] == "-":
+        cnt += 1
+    else:
+        ans.append(cnt)
+        cnt = 0
 print(*ans)

@@ -51,9 +51,10 @@ index_l = []
 for i in range(len(tmp)):
     if tmp[i][0] == "1":
         index_l.append(i)
+
 t = tmp.pop(index_l[k - 1])
 tmp.insert(index_l[k - 2] + 1, t)
-# print(tmp)
+
 ans = []
 for i, j in tmp:
     ans.append(i * j)

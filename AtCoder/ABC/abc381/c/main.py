@@ -38,29 +38,45 @@ LMII = lambda: list(map(int, input().split()))
 
 n = II()
 s = input()
-tmp = s.split("/")
-l = []
-r = []
-
-for i in tmp:
-    cnt = 0
-    for j in i:
-        if j == "2":
-            cnt += 1
-        else:
-            break
-    l.append(cnt)
-    cnt = 0
-    for j in i[::-1]:
-        if j == "1":
-            cnt += 1
-        else:
-            break
-    r.append(cnt)
 ans = 0
-deb(tmp)
-deb(l)
-deb(r)
-for i in range(1, len(tmp)):
-    ans = max(ans, min(r[i - 1], l[i]))
-print(ans * 2 + 1)
+for i in range(n):
+    if s[i] == "/":
+        l = 0
+        j = i - 1
+        while j >= 0 and s[j] == "1":
+            j -= 1
+            l += 1
+        r = 0
+        j = i + 1
+        while j < len(s) and s[j] == "2":
+            j += 1
+            r += 1
+        ans = max(ans, min(l, r) * 2 + 1)
+print(ans)
+
+# tmp = s.split("/")
+# l = []
+# r = []
+
+# for i in tmp:
+#     cnt = 0
+#     for j in i:
+#         if j == "2":
+#             cnt += 1
+#         else:
+#             break
+#     l.append(cnt)
+#     cnt = 0
+#     for j in i[::-1]:
+#         if j == "1":
+#             cnt += 1
+#         else:
+#             break
+#     r.append(cnt)
+# ans = 0
+# deb(tmp)
+# deb(l)
+# deb(r)
+# for i in range(1, len(tmp)):
+#     ans = max(ans, min(r[i - 1], l[i]))
+# print(ans * 2 + 1)

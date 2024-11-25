@@ -1,29 +1,8 @@
-import sys
-from collections import deque, defaultdict
 from itertools import (
-    accumulate,  # 累積和
-    product,  # bit全探索 product(range(2),repeat=n)
     permutations,  # permutations : 順列全探索
-    combinations,  # 組み合わせ（重複無し）
-    combinations_with_replacement,  # 組み合わせ（重複可）
 )
-import math
-from bisect import bisect_left, bisect_right
-from heapq import heapify, heappop, heappush
-import string
-import pypyjit
 
-pypyjit.set_param("max_unroll_recursion=-1")
-# 外部ライブラリ
-# from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
-alph_s = tuple(string.ascii_lowercase)
-alph_l = tuple(string.ascii_uppercase)
-around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
-around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-inf = float("inf")
-mod = 998244353
-input = lambda: sys.stdin.readline().rstrip()
+
 pritn = lambda *x: print(*x)
 PY = lambda: print("Yes")
 PN = lambda: print("No")
@@ -33,3 +12,31 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+
+n = II()
+a = [LMII() for _ in range(n)]
+m = II()
+xy = [LMII() for _ in range(m)]
+xy = [(i - 1, j - 1) for i, j in xy]
+ok = [[True] * n for _ in range(n)]
+for x, y in xy:
+    ok[x][y] = False
+    ok[y][x] = False
+p = list(range(n))
+ans = 1 << 60
+for p in permutations(p):
+    f = True
+    for i in range(n - 1):
+        if not ok[p[i]][p[i + 1]]:
+            f = False
+            break
+    if f:
+        res = 0
+        for i, j in enumerate(p):
+            res += a[j][i]
+        if ans > res:
+            ans = res
+
+if ans == 1 << 60:
+    ans = -1
+print(ans)

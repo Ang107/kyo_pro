@@ -32,4 +32,30 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+# 白石がi青石がjになるときのgrudy数
+dp = [[-1] * 1326 for _ in range(51)]
 
+dp[0][0] = 0
+for w in range(51):
+    for b in range(1326):
+        cand = set()
+        if w >= 1 and b + w < 1326:
+            cand.add(dp[w - 1][b + w])
+        if b >= 2:
+            for k in range(1, b // 2 + 1):
+                cand.add(dp[w][b - k])
+        for i in range(60):
+            if i not in cand:
+                res = i
+                break
+        dp[w][b] = res
+n = II()
+w = LMII()
+b = LMII()
+xor = 0
+for i, j in zip(w, b):
+    xor ^= dp[i][j]
+if xor == 0:
+    print("Second")
+else:
+    print("First")

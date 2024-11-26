@@ -47,6 +47,12 @@ class LazySegTree:
         for i in range(self._size - 1, 0, -1):
             self._update(i)
 
+    def __str__(self) -> str:
+        return f"LazySegTree: {[self.get(i) for i in range(self._size)]}"
+
+    def __iter__(self) -> typing.Iterator[typing.Any]:
+        return iter(self.get(i) for i in range(self._size))
+
     def set(self, p: int, x: typing.Any) -> None:
         assert 0 <= p < self._n
 

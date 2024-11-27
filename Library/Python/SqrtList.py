@@ -99,7 +99,7 @@ class SqrtList(Generic[T]):
         Time complexity: O(√N).
         """
         if i < 0:
-            i = -i - 1
+            i = ~i
             for b, a in enumerate(reversed(self.a)):
                 if i >= len(a):
                     i -= len(a)

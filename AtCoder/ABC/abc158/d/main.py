@@ -1,11 +1,50 @@
+from sys import stdin, stderr, setrecursionlimit, set_int_max_str_digits
+from collections import deque, defaultdict
+from itertools import accumulate
+from itertools import permutations
+from itertools import product
+from itertools import combinations
+from itertools import combinations_with_replacement
+from math import ceil, floor, log, log2, sqrt, gcd, lcm
+from bisect import bisect_left, bisect_right
+from heapq import heapify, heappop, heappush
+from functools import cache
+from string import ascii_lowercase, ascii_uppercase
+
+DEBUG = False
+# import pypyjit
+# pypyjit.set_param("max_unroll_recursion=-1")
+# 外部ライブラリ
+# from sortedcontainers import SortedSet, SortedList, SortedDict
+setrecursionlimit(10**7)
+set_int_max_str_digits(0)
+abc = ascii_lowercase
+ABC = ascii_uppercase
+dxy4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
+dxy8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
+inf = float("inf")
+mod = 998244353
+input = lambda: stdin.readline().rstrip()
+pritn = lambda *x: print(*x)
+deb = lambda *x: print(*x, file=stderr) if DEBUG else None
+PY = lambda: print("Yes")
+PN = lambda: print("No")
+YN = lambda x: print("Yes") if x else print("No")
+SI = lambda: input()
+IS = lambda: input().split()
+II = lambda: int(input())
+MII = lambda: map(int, input().split())
+LMII = lambda: list(map(int, input().split()))
+
 from typing import Generic, Iterable, Iterator, List, TypeVar, Callable
 
 T = TypeVar("T")
 
 
-class MyDeque(Generic[T]):
+class SmartDeque(Generic[T]):
     """
-    Double-ended queue with O(1) index access.
+    A double-ended queue supporting O(1) index access, insertion/removal at both ends, and reversal.
+    Manages unused space (garbage) with a manual `clean` method for memory optimization.
     """
 
     def __init__(self, v: Iterable[T] = (), maxlen: int = 1 << 60):
@@ -13,17 +52,12 @@ class MyDeque(Generic[T]):
         Initialize the deque with an optional iterable and maximum length.
         Time complexity: O(n), where n is the size of the input iterable.
         """
+        v = list(v)
         assert len(v) <= maxlen
-        self.maxlen = maxlen
+        self._maxlen = maxlen
         self._size = len(v)
-        self._l: List[T] = []
-        self._r: List[T] = []
-        for i, x in enumerate(v):
-            if i < self._size >> 1:
-                self._l.append(x)
-            else:
-                self._r.append(x)
-        self._l.reverse()
+        self._l: List[T] = v[: self._size >> 1][::-1]
+        self._r: List[T] = v[self._size >> 1 :]
         self._l_delled = 0
         self._r_delled = 0
 
@@ -119,7 +153,7 @@ class MyDeque(Generic[T]):
         Time complexity: O(n + k), where n is the size of this deque,
         and k is the size of the other iterable.
         """
-        new_deque = MyDeque(list(self), maxlen=self.maxlen)
+        new_deque = SmartDeque(list(self), maxlen=self._maxlen)
         new_deque.extend(other)
         return new_deque
 
@@ -137,7 +171,7 @@ class MyDeque(Generic[T]):
         Time complexity: O(n * m),
         where n is the size of this deque,and m is the repetition factor.
         """
-        return MyDeque(list(self) * n, maxlen=self.maxlen)
+        return SmartDeque(list(self) * n, maxlen=self._maxlen)
 
     def __imul__(self, n: int):
         """
@@ -169,7 +203,7 @@ class MyDeque(Generic[T]):
         Create a shallow copy of the deque.
         Time complexity: O(n).
         """
-        return MyDeque(list(self), maxlen=self.maxlen)
+        return SmartDeque(list(self), maxlen=self._maxlen)
 
     def sort(self, *, key: Callable[[T], object] = None, reverse: bool = False) -> None:
         """
@@ -177,14 +211,9 @@ class MyDeque(Generic[T]):
         Time complexity: O(n log n).
         """
         sorted_list = sorted(self, key=key, reverse=reverse)
-        self._l = []
-        self._r = []
-        for i, x in enumerate(sorted_list):
-            if i < self._size >> 1:
-                self._l.append(x)
-            else:
-                self._r.append(x)
-        self._l.reverse()
+        mid = self._size >> 1
+        self._l = sorted_list[:mid][::-1]
+        self._r = sorted_list[mid:]
         self._l_delled = 0
         self._r_delled = 0
 
@@ -207,16 +236,6 @@ class MyDeque(Generic[T]):
                 return i
         raise ValueError(f"{x} is not in MyDeque")
 
-    def append(self, x: T) -> None:
-        """
-        Add an element to the right end of the deque.
-        Time complexity: O(1).
-        """
-        self._size += 1
-        self._r.append(x)
-        if self._size > self.maxlen:
-            self.popleft()
-
     def clear(self) -> None:
         """
         Remove all elements from the deque.
@@ -227,6 +246,26 @@ class MyDeque(Generic[T]):
         self._l_delled = 0
         self._r_delled = 0
         self._size = 0
+
+    def append(self, x: T) -> None:
+        """
+        Add an element to the right end of the deque.
+        Time complexity: O(1).
+        """
+        self._size += 1
+        self._r.append(x)
+        if self._size > self._maxlen:
+            self.popleft()
+
+    def appendleft(self, x: T) -> None:
+        """
+        Add an element to the left end of the deque.
+        Time complexity: O(1).
+        """
+        self._size += 1
+        self._l.append(x)
+        if self._size > self._maxlen:
+            self.pop()
 
     def pop(self, i=-1) -> T:
         """
@@ -247,19 +286,9 @@ class MyDeque(Generic[T]):
                 return self._l[self._l_delled - 1]
         else:
             if i < len(self._l) - self._l_delled:
-                return self._l.pop(self._size - i - 1)
+                return self._l.pop(-i - 1)
             else:
                 return self._r.pop(self._r_delled + i - (len(self._l) - self._l_delled))
-
-    def appendleft(self, x: T) -> None:
-        """
-        Add an element to the left end of the deque.
-        Time complexity: O(1).
-        """
-        self._size += 1
-        self._l.append(x)
-        if self._size > self.maxlen:
-            self.pop()
 
     def popleft(self) -> T:
         """
@@ -295,15 +324,15 @@ class MyDeque(Generic[T]):
         Insert an element at the specified position.
         Time complexity: O(n).
         """
-        assert self._size == self.maxlen
+        assert self._size < self._maxlen
         assert 0 <= i <= self._size or -self._size <= i <= -1
         if i < 0:
             i += self._size
+        self._size += 1
         if i < len(self._l) - self._l_delled:
             self._l.insert(len(self._l) - i, x)
         else:
             self._r.insert(self._r_delled + i - (len(self._l) - self._l_delled), x)
-        self._size += 1
 
     def remove(self, x: T) -> None:
         """
@@ -327,3 +356,57 @@ class MyDeque(Generic[T]):
         else:
             for _ in range(-k):
                 self.append(self.popleft())
+
+    @property
+    def garbage_size(self) -> int:
+        """
+        Return the number of unused elements (garbage) in the deque.
+        Time complexity: O(1).
+        """
+        return len(self._l) + len(self._r) - self._size
+
+    @property
+    def maxlen(self) -> int:
+        """
+        Return the maximum allowable size of the deque.
+        Time complexity: O(1).
+        """
+        return self._maxlen
+
+    @maxlen.setter
+    def maxlen(self, x: int) -> None:
+        """
+        Update the maximum size of the deque.
+        Raises an error if the current size exceeds the new maxlen.
+        Time complexity: O(1).
+        """
+        assert self._size <= x
+        self._maxlen = x
+
+    def clean(self) -> None:
+        """
+        Remove unused elements (garbage) and reorganize the deque.
+        Time complexity: O(n), where n is the number of elements in the deque.
+        """
+        if self.garbage_size == 0:
+            return
+        tmp = list(self)
+        mid = self._size >> 1
+        self._l = tmp[:mid][::-1]
+        self._r = tmp[mid:]
+        self._l_delled = 0
+        self._r_delled = 0
+
+
+s = SmartDeque(input())
+q = int(input())
+for _ in range(q):
+    q = input().split()
+    if q[0] == "1":
+        s.reverse()
+    else:
+        if q[1] == "1":
+            s.appendleft(q[2])
+        else:
+            s.append(q[2])
+print("".join(map(str, s)))

@@ -1,38 +1,42 @@
-import sys
+from sys import stdin, stderr, setrecursionlimit, set_int_max_str_digits
 from collections import deque, defaultdict
-from itertools import (
-    accumulate,  # 累積和
-    product,  # bit全探索 product(range(2),repeat=n)
-    permutations,  # permutations : 順列全探索
-    combinations,  # 組み合わせ（重複無し）
-    combinations_with_replacement,  # 組み合わせ（重複可）
-)
-import math
+from itertools import accumulate
+from itertools import permutations
+from itertools import product
+from itertools import combinations
+from itertools import combinations_with_replacement
+from math import ceil, floor, log, log2, sqrt, gcd, lcm
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
-import string
+from functools import cache
+from string import ascii_lowercase, ascii_uppercase
 
+DEBUG = False
 # import pypyjit
-
 # pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
-sys.setrecursionlimit(10**7)
-alph_s = tuple(string.ascii_lowercase)
-alph_l = tuple(string.ascii_uppercase)
-around4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
-around8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
+setrecursionlimit(10**7)
+set_int_max_str_digits(0)
+abc = ascii_lowercase
+ABC = ascii_uppercase
+dxy4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
+dxy8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
 inf = float("inf")
 mod = 998244353
-input = lambda: sys.stdin.readline().rstrip()
+input = lambda: stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
+deb = lambda *x: print(*x, file=stderr) if DEBUG else None
 PY = lambda: print("Yes")
 PN = lambda: print("No")
+YN = lambda x: print("Yes") if x else print("No")
 SI = lambda: input()
 IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+
+
 from typing import Generic, Iterable, Iterator, List, TypeVar, Callable
 
 T = TypeVar("T")
@@ -398,35 +402,34 @@ class SmartDeque(Generic[T]):
 n = II()
 g = [[] for _ in range(n)]
 for _ in range(n - 1):
-    u, v = MII()
+    u, v, w = MII()
     u -= 1
     v -= 1
-    g[u].append(v)
-    g[v].append(u)
-size = [-1] * n
+    g[u].append((v, w))
+    g[v].append((u, w))
 
 
-def f(v):
-    cnt = 1
-    for next in g[v]:
-        if size[next] == -1:
-            size[v] = -2
-            cnt += f(next)
-    size[v] = cnt
-    return cnt
+def dfs():
+    visited = [-1] * n
+    deq = SmartDeque[int]()
+    visited[0] = 0
+    deq.append(0)
+    while deq:
+        v = deq.pop()
+        for next, w in g[v]:
+            if visited[next] == -1:
+                visited[next] = visited[v] ^ w
+                deq.append(next)
+    return visited
 
 
-f(0)
-visited = [False] * n
-deq = SmartDeque[int]()
-visited[0] = True
-deq.append(0)
+visited = dfs()
 ans = 0
-while deq:
-    v = deq.pop()
-    for next in g[v]:
-        if visited[next] == False:
-            visited[next] = True
-            ans += size[next] * (n - size[next])
-            deq.append(next)
+mod = 10**9 + 7
+for i in range(64):
+    cnt = [0, 0]
+    for j in visited:
+        cnt[j >> i & 1] += 1
+    ans += (1 << i) * cnt[0] * cnt[1] % mod
+    ans %= mod
 print(ans)

@@ -53,6 +53,24 @@ class LazySegTree:
     def __iter__(self) -> typing.Iterator[typing.Any]:
         return iter(self.get(i) for i in range(self._size))
 
+    def __setitem__(self, p: int, x: typing.Any) -> typing.Any:
+        assert 0 <= p < self._n
+
+        p += self._size
+        for i in range(self._log, 0, -1):
+            self._push(p >> i)
+        self._d[p] = x
+        for i in range(1, self._log + 1):
+            self._update(p >> i)
+
+    def __getitem__(self, p: int) -> typing.Any:
+        assert 0 <= p < self._n
+
+        p += self._size
+        for i in range(self._log, 0, -1):
+            self._push(p >> i)
+        return self._d[p]
+
     def set(self, p: int, x: typing.Any) -> None:
         assert 0 <= p < self._n
 

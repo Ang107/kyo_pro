@@ -41,6 +41,25 @@ class SegTree:
         for i in range(self._size - 1, 0, -1):
             self._update(i)
 
+    def __str__(self) -> str:
+        return f"SegTree: {self._d[self._size:]}"
+
+    def __iter__(self) -> typing.Iterator[typing.Any]:
+        return iter(self._d[self._size :])
+
+    def __setitem__(self, p: int, x: typing.Any) -> typing.Any:
+        assert 0 <= p < self._n
+
+        p += self._size
+        self._d[p] = x
+        for i in range(1, self._log + 1):
+            self._update(p >> i)
+
+    def __getitem__(self, p: int) -> typing.Any:
+        assert 0 <= p < self._n
+
+        return self._d[p + self._size]
+
     def set(self, p: int, x: typing.Any) -> None:
         assert 0 <= p < self._n
 

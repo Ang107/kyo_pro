@@ -33,3 +33,17 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+n, q = MII()
+xy = [LMII() for _ in range(n)]
+rxy = [(i - j, i + j) for i, j in xy]
+rx = [i for i, j in rxy]
+ry = [j for i, j in rxy]
+x_min = min(rx)
+x_max = max(rx)
+y_min = min(ry)
+y_max = max(ry)
+for _ in range(q):
+    i = II()
+    i -= 1
+    x, y = rxy[i]
+    print(max(abs(x_min - x), abs(x_max - x), abs(y_min - y), abs(y_max - y)))

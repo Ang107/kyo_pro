@@ -1,0 +1,1 @@
+/home/kosuke/projects/kyo_pro/AtCoder/AHC/ahc040/a/tools/target/release/tester: /home/kosuke/projects/kyo_pro/AtCoder/AHC/ahc040/a/tools/src/bin/tester.rs /home/kosuke/projects/kyo_pro/AtCoder/AHC/ahc040/a/tools/src/lib.rs

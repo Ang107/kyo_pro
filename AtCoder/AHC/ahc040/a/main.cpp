@@ -267,18 +267,27 @@ using Cost = int;
 
 // 状態のコストを評価するための構造体
 // メモリ使用量をできるだけ小さくしてください
+// struct Evaluator {
+//     int w;
+//     int h;
+//     int cant_use;
+
+//     Evaluator(int w, int h, int cant_use) : w(w), h(h), cant_use(cant_use) {}
+
+//     // 低いほどよい
+//     Cost evaluate() const {
+//         return max(0, h - best_len) + max(0, w - best_len) +
+//                (int)sqrt(cant_use);
+//     }
+// };
 struct Evaluator {
     int w;
     int h;
-    int cant_use;
 
-    Evaluator(int w, int h, int cant_use) : w(w), h(h), cant_use(cant_use) {}
+    Evaluator(int w, int h) : w(w), h(h) {}
 
     // 低いほどよい
-    Cost evaluate() const {
-        return max(0, h - best_len) + max(0, w - best_len) +
-               (int)sqrt(cant_use);
-    }
+    Cost evaluate() const { return w + h; }
 };
 
 // 展開するノードの候補を表す構造体
@@ -436,7 +445,7 @@ class State {
     }
 
     // EvaluatorとHashの初期値を返す
-    pair<Evaluator, Hash> make_initial_node() { return {{0, 0, 0}, 0}; }
+    pair<Evaluator, Hash> make_initial_node() { return {{0, 0}, 0}; }
 
     void add(vector<pair<pair<int, int>, pair<int, int>>> &vh,
              const pair<pair<int, int>, pair<int, int>> &x) {
@@ -955,14 +964,15 @@ struct Solver {
     }
     int evaluate(int lim, const vector<pair<int, int>> &wh) {
         static map<pair<int, int>, int> horizon;
+        static vector<int> r_vec;
         // static map<pair<int, int>, int> vertical;
         int max_ = 1000000000;
         horizon.clear();
+        r_vec.clear();
         // vertical.clear();
         horizon[{0, max_}] = 0;
         // vertical[{0, max_}] = 0;
 
-        int prev_r = 0;
         // int prev_d = 0;
         int W = 0;
         int H = 0;
@@ -978,7 +988,7 @@ struct Solver {
                     l = 0;
                     r = l + w;
                 } else {
-                    l = prev_r;
+                    l = r_vec[actions[i].b];
                     r = l + w;
                 }
                 pair<pair<int, int>, int> l_l = {{0, 0}, 0};
@@ -1002,71 +1012,8 @@ struct Solver {
                 if (r < r_r.first.second) {
                     horizon[{r, r_r.first.second}] = r_r.second;
                 }
-                prev_r = r;
-
-                // pair<pair<int, int>, int> u_u = {{0, 0}, 0};
-                // pair<pair<int, int>, int> d_d = {{max_, max_}, 0};
+                r_vec.emplace_back(r);
             }
-            // auto u_ = vertical.lower_bound({u, u});
-            // u_u = *u_;
-            // auto d_ = vertical.lower_bound({d, d});
-            // d_d = *prev(d_);
-            // vertical.erase(u_, d_);
-            // if (u_u.first.first < u) {
-            //     vertical[{u_u.first.first, u}] = u_u.second;
-            // }
-            // vertical[{u, d}] = r;
-            // if (d < d_d.first.second) {
-            //     vertical[{d, d_d.first.second}] = d_d.second;
-            // }
-            // } else {
-            //     l = 0;
-            //     if (actions[i].b == -1) {
-            //         u = 0;
-            //         d = u + h;
-            //     } else {
-            //         u = prev_d;
-            //         d = u + h;
-            //     }
-            //     pair<pair<int, int>, int> u_u = {{0, 0}, 0};
-            //     pair<pair<int, int>, int> d_d = {{max_, max_}, 0};
-
-            //     auto u_ = vertical.lower_bound({u, u});
-            //     u_u = *u_;
-            //     auto d_ = vertical.lower_bound({d, d});
-            //     d_d = *prev(d_);
-
-            //     for (auto it = u_; it != d_; it++) {
-            //         chmax(l, (*it).second);
-            //     }
-
-            //     r = l + w;
-            //     vertical.erase(u_, d_);
-            //     if (u_u.first.first < l) {
-            //         vertical[{u_u.first.first, l}] = u_u.second;
-            //     }
-            //     vertical[{u, d}] = r;
-            //     if (d < d_d.first.second) {
-            //         vertical[{d, d_d.first.second}] = d_d.second;
-            //     }
-            //     prev_d = d;
-
-            //     pair<pair<int, int>, int> l_l = {{0, 0}, 0};
-            //     pair<pair<int, int>, int> r_r = {{max_, max_}, 0};
-
-            //     auto l_ = horizon.lower_bound({l, l});
-            //     l_l = *l_;
-            //     auto r_ = horizon.lower_bound({r, r});
-            //     r_r = *prev(r_);
-            //     horizon.erase(l_, r_);
-            //     if (l_l.first.first < l) {
-            //         horizon[{l_l.first.first, l}] = l_l.second;
-            //     }
-            //     horizon[{l, r}] = d;
-            //     if (r < r_r.first.second) {
-            //         horizon[{r, r_r.first.second}] = r_r.second;
-            //     }
-            // }
 
             chmax(W, r);
             chmax(H, d);
@@ -1078,27 +1025,21 @@ struct Solver {
     }
     int sa(int time_lim) {
         int cnt = 0;
-        // double start_temp = 300;
-        // double end_temp = 0.0;
-        // double now_temp = -1.0;
         int now_score = inf;
         int diff_lim = 0;
+        // static vector<pair<int, int>> cand;
+        // cand.reserve(N);
         while (true) {
             if ((cnt & 63) == 0) {
                 time_keeper.setNowTime();
-                // now_temp = start_temp + (end_temp - start_temp) *
-                //                             time_keeper.getNowTime() /
-                //                             TIME_LIMIT;
-                // diff_lim = ceil(now_temp * log(xorshift() / double(1ll <<
-                // 32)));
                 if (time_keeper.getNowTime() > time_lim) {
                     break;
                 }
             }
             int mode = xorshift() % 10;
-            if (mode <= 1) {
+            if (mode == 0) {
                 int index = xorshift() % (N - 1) + 1;
-                if (actions[index].b == -1 and mode == 0) {
+                if (actions[index].b == -1) {
                     int pm = xorshift() & 1;
                     if (pm == 0) {
                         pm = -1;
@@ -1120,41 +1061,66 @@ struct Solver {
                     int lim = now_score + diff_lim;
                     int new_score = evaluate(lim, wh);
                     if (new_score <= lim) {
-                        // if (new_score < now_score) {
-                        //     cerr << time_keeper.getNowTime() << " " <<
-                        //     new_score
-                        //          << el;
-                        // }
+                        if (new_score < now_score) {
+                            cerr << "1 " << time_keeper.getNowTime() << " "
+                                 << new_score << el;
+                        }
                         now_score = new_score;
                     } else {
                         actions[index].b = -1;
                         actions[index + pm].b = memo;
                     }
-
                 } else {
-                    if (actions[index].b == -1 and
-                        actions[index - 1].d != actions[index].d) {
+                    if (Sig > 2000) {
                         continue;
                     }
-                    int memo;
-                    memo = actions[index].b;
-                    if (actions[index].b == -1) {
-                        actions[index].b = index - 1;
-                    } else {
-                        actions[index].b = -1;
+                    int cnt = 0;
+                    int i = index;
+                    int memo1 = actions[index].b;
+                    actions[index].b = actions[index - 1].b;
+                    int memo2 = -1;
+                    if (index + 1 < N) {
+                        memo2 = actions[index + 1].b;
                     }
+                    if (memo2 == index) {
+                        actions[index + 1].b = index - xorshift() % 2;
+                    }
+
                     int lim = now_score + diff_lim;
                     int new_score = evaluate(lim, wh);
                     if (new_score <= lim) {
-                        // if (new_score < now_score) {
-                        //     cerr << time_keeper.getNowTime() << " " <<
-                        //     new_score
-                        //          << el;
-                        // }
+                        if (new_score < now_score) {
+                            cerr << "2 " << time_keeper.getNowTime() << " "
+                                 << new_score << el;
+                        }
                         now_score = new_score;
                     } else {
-                        actions[index].b = memo;
+                        actions[index].b = memo1;
+                        if (index + 1 < N) {
+                            actions[index + 1].b = memo2;
+                        }
                     }
+                }
+            } else if (false and mode == 1) {
+                continue;
+                int index = xorshift() % (N - 1) + 1;
+                int memo = actions[index].b;
+                if (actions[index].b == -1) {
+                    actions[index].b = index - 1;
+                } else {
+                    actions[index].b = -1;
+                }
+
+                int lim = now_score + diff_lim;
+                int new_score = evaluate(lim, wh);
+                if (new_score <= lim) {
+                    if (new_score < now_score) {
+                        cerr << "4 " << time_keeper.getNowTime() << " "
+                             << new_score << el;
+                    }
+                    now_score = new_score;
+                } else {
+                    actions[index].b = memo;
                 }
             } else {
                 int index = xorshift() % N;
@@ -1162,10 +1128,10 @@ struct Solver {
                 int lim = now_score + diff_lim;
                 int new_score = evaluate(lim, wh);
                 if (new_score <= lim) {
-                    // if (new_score < now_score) {
-                    //     cerr << time_keeper.getNowTime() << " " << new_score
-                    //          << el;
-                    // }
+                    if (new_score < now_score) {
+                        cerr << "3 " << time_keeper.getNowTime() << " "
+                             << new_score << el;
+                    }
                     now_score = new_score;
                 } else {
                     actions[index].r ^= 1;
@@ -1176,14 +1142,28 @@ struct Solver {
         // dump(cnt);
         return now_score;
     }
-    void solve() {
-        beam_search::State state = beam_search::State(input.wh);
-        beam_search::Config config = {N, beam_width, tour_capacity,
-                                      hash_map_capacity};
 
-        vector<beam_search::Action> a = beam_search::beam_search(config, state);
-        rep(i, T) { auto wh = output.query(a); }
-        return;
+    bool trans(vector<Action_> &actions) {
+        // 右端のものを左スライドに変更してスコアが改善する可能性があるかを判定
+        vector<int> tmp(1, N);
+        rep(i, N) {
+            if (actions[i].b != -1) {
+                tmp[actions[i].b] = 0;
+            }
+        }
+
+        for (auto i : tmp) {
+            actions[i].d = "L";
+        }
+    }
+    void solve() {
+        // beam_search::State state = beam_search::State(input.wh);
+        // beam_search::Config config = {N, beam_width, tour_capacity,
+        //                               hash_map_capacity};
+
+        // vector<beam_search::Action> a = beam_search::beam_search(config,
+        // state); rep(i, T) { auto wh = output.query(a); } return;
+
         // vector<pair<int, int>> actual_wh(N);
         // ifstream file("actual/" + seed + ".txt");
         // if (!file) { // ファイルが開けない場合のエラーチェック
@@ -1196,7 +1176,7 @@ struct Solver {
         //     actual_wh[i] = {x, y};
         // }
 
-        int size = 18000 / N;
+        int size = 200;
         make_init_sol();
         int time = 2900 / size;
         vector<vector<Action_>> cands;
@@ -1273,6 +1253,7 @@ struct Solver {
             // actions = cands[scores[i % (int)scores.size()].second];
             // int actual_score = evaluate(1000000000, actual_wh);
             // int predicted_score = scores[i % (int)scores.size()].first;
+            // cout << "#" << predicted_score << el;
             // cerr << predicted_score << " " << actual_score << " " <<
             // query_score
             //      << el;

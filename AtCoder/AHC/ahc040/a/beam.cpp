@@ -291,7 +291,7 @@ struct Evaluator {
     Evaluator(int w, int h) : w(w), h(h) {}
 
     // 低いほどよい
-    Cost evaluate() const { return w + h; }
+    Cost evaluate() const { return w + h + (int)(sqrt((ll)w * (ll)h)); }
 };
 
 // 展開するノードの候補を表す構造体
@@ -1171,24 +1171,6 @@ struct Solver {
         }
     }
     void solve() {
-        // beam_search::State state = beam_search::State(input.wh);
-        // beam_search::Config config = {N, beam_width, tour_capacity,
-        //                               hash_map_capacity};
-
-        // vector<beam_search::Action> a = beam_search::beam_search(config,
-        // state); rep(i, T) { auto wh = output.query(a); } return;
-
-        // vector<pair<int, int>> actual_wh(N);
-        // ifstream file("actual/" + seed + ".txt");
-        // if (!file) { // ファイルが開けない場合のエラーチェック
-        //     cerr << "Error: Could not open the file!" << el;
-        //     return;
-        // }
-        // int x, y;
-        // rep(i, N) {
-        //     file >> x >> y;
-        //     actual_wh[i] = {x, y};
-        // }
         vector<vector<Action_>> queryes;
         queryes.reserve(T);
         vector<tuple<int, int, int>> results;
@@ -1196,7 +1178,7 @@ struct Solver {
 
         vector<vector<pair<int, int>>> tmp_wh_vec(N);
         rep(i, N) { tmp_wh_vec[i].emplace_back(wh[i]); }
-        rep(i, T - 50) {
+        rep(i, T - 1) {
             auto tmp = output.query({Action_(i % N, 0, "U", -1)});
             chmin(tmp.first, 100000);
             chmax(tmp.first, 10000);
@@ -1217,126 +1199,179 @@ struct Solver {
         }
         wh = tmp_wh;
 
-        int size = 200;
-        make_init_sol();
-        int time = 2900 / size;
-        vector<vector<Action_>> cands;
-        vector<pair<int, int>> scores;
-        cands.reserve(size);
-        vector<int> tmp(N / sqrt_, sqrt_);
-        rep(i, N % sqrt_) { tmp[i] += 1; }
-        vector<int> sp1;
-        sp1.emplace_back(0);
-        for (auto i : tmp) {
-            sp1.emplace_back(*(sp1.rbegin()) + i);
-        }
-        vector<double> p = {0.65, 0.8, 0.95};
-        rep(i, size) {
-            rep(i, N) {
-                actions[i].r = xorshift() & 1;
-                actions[i].b = i - 1;
-            }
-            if ((xorshift() & 1) == 0) {
-                for (auto i : sp1) {
-                    if (i < N) {
-                        actions[i].b = -1;
-                    }
-                }
-            } else {
-                int r = 0;
-                best_wh = sqrt(sum_s / p[xorshift() % 3]);
-                rep(i, N) {
-                    if (actions[i].r == 0) {
-                        if (r + wh[i].first <= best_wh) {
-                            r += wh[i].first;
-                        } else {
-                            actions[i].b = -1;
-                            r = wh[i].first;
-                        }
-                    } else {
-                        if (r + wh[i].second <= best_wh) {
-                            r += wh[i].second;
-                        } else {
-                            actions[i].b = -1;
-                            r = wh[i].second;
-                        }
-                    }
-                }
-            }
+        beam_search::State state = beam_search::State(input.wh);
+        beam_search::Config config = {N, beam_width, tour_capacity,
+                                      hash_map_capacity};
 
-            // int c = xorshift() % 2;
-            // rep(i, c) { actions[xorshift() % N].b = -1; }
+        vector<beam_search::Action> a = beam_search::beam_search(config, state);
+        output.query(a);
+        return;
 
-            int predicted_score = sa(time * (i + 1));
-            cands.emplace_back(actions);
-            scores.emplace_back(predicted_score, (int)scores.size());
-            // pair<int, int> tmp = output.query(actions);
-            // int query_score = tmp.first + tmp.second;
-            // int actual_score = evaluate(1000000000, actual_wh);
-            // cerr << predicted_score << " " << actual_score << " " <<
-            // query_score
-            //      << el;
-        }
-        sort(all(scores));
+        //     // vector<pair<int, int>> actual_wh(N);
+        //     // ifstream file("actual/" + seed + ".txt");
+        //     // if (!file) { // ファイルが開けない場合のエラーチェック
+        //     //     cerr << "Error: Could not open the file!" << el;
+        //     //     return;
+        //     // }
+        //     // int x, y;
+        //     // rep(i, N) {
+        //     //     file >> x >> y;
+        //     //     actual_wh[i] = {x, y};
+        //     // }
 
-        int best_score = inf;
-        rep(i, size) {
-            if (i % (int)scores.size() > 0 and
-                scores[i % (int)scores.size()].first ==
-                    scores[i % (int)scores.size() - 1].first) {
-                continue;
-            }
-            if (scores[i].first < best_score + (double)Sig) {
-                pair<int, int> tmp = output.query(cands[scores[i].second]);
-                chmin(best_score, tmp.first + tmp.second);
-                queryes.emplace_back(cands[scores[i].second]);
-                results.emplace_back(tmp.first, tmp.second, results.size());
-            }
-            if (queryes.size() >= T) {
-                break;
-            }
+        //     vector<vector<Action_>> queryes;
+        //     queryes.reserve(T);
+        //     vector<tuple<int, int, int>> results;
+        //     results.reserve(T);
 
-            // int query_score = tmp.first + tmp.second;
-            // actions = cands[scores[i % (int)scores.size()].second];
-            // int actual_score = evaluate(1000000000, actual_wh);
-            // int predicted_score = scores[i % (int)scores.size()].first;
-            // cout << "#" << predicted_score << el;
-            // cerr << predicted_score << " " << actual_score << " " <<
-            // query_score
-            //      << el;
-            // cerr << (predicted_score < query_score) << el;
-        }
-        cerr << "query_times: " << queryes.size() << el;
-        sort(all(results), [](tuple<int, int, int> a, tuple<int, int, int> b) {
-            return (get<0>(a) + get<1>(a) < get<0>(b) + get<1>(b));
-        });
-        auto best_ans = queryes[get<2>(results[0])];
-        int W = get<0>(results[0]);
-        int H = get<1>(results[0]);
-        int cnt = queryes.size();
-        while (cnt < T) {
-            int index = xorshift() % N;
-            int w = wh[index].first;
-            int h = wh[index].second;
-            if (actions[index].r == 1) {
-                swap(w, h);
-            }
-            if (W < H and ((double)h * 2 < (double)w)) {
-                continue;
-            }
-            if (H < W and ((double)w * 2 < (double)h)) {
-                continue;
-            }
-            best_ans[index].r ^= 1;
-            auto [new_w, new_h] = output.query(best_ans);
-            cnt++;
-            if (new_w + new_h < W + H) {
-                W = new_w;
-                H = new_h;
-            } else {
-                best_ans[index].r ^= 1;
-            }
-        };
+        //     vector<vector<pair<int, int>>> tmp_wh_vec(N);
+        //     rep(i, N) { tmp_wh_vec[i].emplace_back(wh[i]); }
+        //     rep(i, T - 100) {
+        //         auto tmp = output.query({Action_(i % N, 0, "U", -1)});
+        //         chmin(tmp.first, 100000);
+        //         chmax(tmp.first, 10000);
+        //         chmin(tmp.second, 100000);
+        //         chmax(tmp.second, 10000);
+        //         tmp_wh_vec[i % N].emplace_back(tmp);
+        //         queryes.push_back({Action_(i % N, 0, "U", -1)});
+        //         results.emplace_back(1000000000, 1000000000, results.size());
+        //     }
+        //     vector<pair<int, int>> tmp_wh(N);
+        //     rep(i, N) {
+        //         for (auto [w, h] : tmp_wh_vec[i]) {
+        //             tmp_wh[i].first += w;
+        //             tmp_wh[i].second += h;
+        //         }
+        //         tmp_wh[i].first /= tmp_wh_vec[i].size();
+        //         tmp_wh[i].second /= tmp_wh_vec[i].size();
+        //     }
+        //     wh = tmp_wh;
+
+        //     int size = 200;
+        //     make_init_sol();
+        //     int time = 2900 / size;
+        //     vector<vector<Action_>> cands;
+        //     vector<pair<int, int>> scores;
+        //     cands.reserve(size);
+        //     vector<int> tmp(N / sqrt_, sqrt_);
+        //     rep(i, N % sqrt_) { tmp[i] += 1; }
+        //     vector<int> sp1;
+        //     sp1.emplace_back(0);
+        //     for (auto i : tmp) {
+        //         sp1.emplace_back(*(sp1.rbegin()) + i);
+        //     }
+        //     vector<double> p = {0.65, 0.8, 0.95};
+        //     rep(i, size) {
+        //         rep(i, N) {
+        //             actions[i].r = xorshift() & 1;
+        //             actions[i].b = i - 1;
+        //         }
+        //         if ((xorshift() & 1) == 0) {
+        //             for (auto i : sp1) {
+        //                 if (i < N) {
+        //                     actions[i].b = -1;
+        //                 }
+        //             }
+        //         } else {
+        //             int r = 0;
+        //             best_wh = sqrt(sum_s / p[xorshift() % 3]);
+        //             rep(i, N) {
+        //                 if (actions[i].r == 0) {
+        //                     if (r + wh[i].first <= best_wh) {
+        //                         r += wh[i].first;
+        //                     } else {
+        //                         actions[i].b = -1;
+        //                         r = wh[i].first;
+        //                     }
+        //                 } else {
+        //                     if (r + wh[i].second <= best_wh) {
+        //                         r += wh[i].second;
+        //                     } else {
+        //                         actions[i].b = -1;
+        //                         r = wh[i].second;
+        //                     }
+        //                 }
+        //             }
+        //         }
+
+        //         // int c = xorshift() % 2;
+        //         // rep(i, c) { actions[xorshift() % N].b = -1; }
+
+        //         int predicted_score = sa(time * (i + 1));
+        //         cands.emplace_back(actions);
+        //         scores.emplace_back(predicted_score, (int)scores.size());
+        //         // pair<int, int> tmp = output.query(actions);
+        //         // int query_score = tmp.first + tmp.second;
+        //         // int actual_score = evaluate(1000000000, actual_wh);
+        //         // cerr << predicted_score << " " << actual_score << " " <<
+        //         // query_score
+        //         //      << el;
+        //     }
+        //     sort(all(scores));
+
+        //     int best_score = inf;
+        //     rep(i, size) {
+        //         if (i % (int)scores.size() > 0 and
+        //             scores[i % (int)scores.size()].first ==
+        //                 scores[i % (int)scores.size() - 1].first) {
+        //             continue;
+        //         }
+        //         if (scores[i].first < best_score + (double)Sig) {
+        //             pair<int, int> tmp =
+        //             output.query(cands[scores[i].second]); chmin(best_score,
+        //             tmp.first + tmp.second);
+        //             queryes.emplace_back(cands[scores[i].second]);
+        //             results.emplace_back(tmp.first, tmp.second,
+        //             results.size());
+        //         }
+        //         if (queryes.size() >= T) {
+        //             break;
+        //         }
+
+        //         // int query_score = tmp.first + tmp.second;
+        //         // actions = cands[scores[i % (int)scores.size()].second];
+        //         // int actual_score = evaluate(1000000000, actual_wh);
+        //         // int predicted_score = scores[i %
+        //         (int)scores.size()].first;
+        //         // cout << "#" << predicted_score << el;
+        //         // cerr << predicted_score << " " << actual_score << " " <<
+        //         // query_score
+        //         //      << el;
+        //         // cerr << (predicted_score < query_score) << el;
+        //     }
+        //     cerr << "query_times: " << queryes.size() << el;
+        //     sort(all(results), [](tuple<int, int, int> a, tuple<int, int,
+        //     int> b) {
+        //         return (get<0>(a) + get<1>(a) < get<0>(b) + get<1>(b));
+        //     });
+        //     auto best_ans = queryes[get<2>(results[0])];
+        //     int W = get<0>(results[0]);
+        //     int H = get<1>(results[0]);
+        //     int cnt = queryes.size();
+        //     while (cnt < T) {
+        //         int index = xorshift() % N;
+        //         int w = wh[index].first;
+        //         int h = wh[index].second;
+        //         if (actions[index].r == 1) {
+        //             swap(w, h);
+        //         }
+        //         if (W < H and ((double)h * 2 < (double)w)) {
+        //             continue;
+        //         }
+        //         if (H < W and ((double)w * 2 < (double)h)) {
+        //             continue;
+        //         }
+        //         best_ans[index].r ^= 1;
+        //         auto [new_w, new_h] = output.query(best_ans);
+        //         cnt++;
+        //         if (new_w + new_h < W + H) {
+        //             W = new_w;
+        //             H = new_h;
+        //         } else {
+        //             best_ans[index].r ^= 1;
+        //         }
+        //     };
+        // }
     }
 };
 

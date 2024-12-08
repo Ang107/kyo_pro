@@ -66,6 +66,10 @@ for i in primes:
         ans += 1
 primes_ = [i**2 for i in primes]
 for index, i in enumerate(primes_):
-    tmp = n // i
-    ans += max(0, bisect_right(primes_, tmp) - index - 1)
+    for j in range(index + 1, len(primes_)):
+        if i * primes_[j] <= n:
+            ans += 1
+        else:
+            break
+
 print(ans)

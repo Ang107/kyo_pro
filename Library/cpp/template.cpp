@@ -107,8 +107,5 @@ template <typename T> T ipow(T x, T n) {
 }
 int main() {
     // code
-    vector<pair<pii, pii>> a;
-    a.emplace_back(make_pair(1, 2), make_pair(3, 4));
-    dump(a);
     return 0;
 }

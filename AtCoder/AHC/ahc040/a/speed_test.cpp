@@ -1033,18 +1033,20 @@ struct Solver {
                 d = u + h;
                 horizon.erase(l_, r_);
                 if (l_l.l < l) {
-                    Nodo_horizon node = Nodo_horizon(l_l.l, l, l_l.d);
-                    auto it = lower_bound(all(horizon), node);
-                    horizon.insert(it, node);
+                    // Nodo_horizon node = Nodo_horizon(l_l.l, l, l_l.d);
+                    // auto it = lower_bound(all(horizon), node);
+                    // horizon.insert(it, node);
+                    horizon.emplace_back(l_l.l, l, l_l.d);
                 }
-
-                Nodo_horizon node = Nodo_horizon(l, r, d);
-                auto it = lower_bound(all(horizon), node);
-                horizon.insert(it, node);
+                horizon.emplace_back(l, r, d);
+                // Nodo_horizon node = Nodo_horizon(l, r, d);
+                // auto it = lower_bound(all(horizon), node);
+                // horizon.insert(it, node);
                 if (r < r_r.r) {
-                    Nodo_horizon node = Nodo_horizon(r, r_r.r, r_r.d);
-                    auto it = lower_bound(all(horizon), node);
-                    horizon.insert(it, node);
+                    // Nodo_horizon node = Nodo_horizon(r, r_r.r, r_r.d);
+                    // auto it = lower_bound(all(horizon), node);
+                    // horizon.insert(it, node);
+                    horizon.emplace_back(r, r_r.r, r_r.d);
                 }
                 r_vec.emplace_back(r);
             }

@@ -148,7 +148,7 @@ template <typename T> T ipow(T x, T n) {
     }
     return ret;
 }
-constexpr double TIME_LIMIT = 2950;
+constexpr double TIME_LIMIT = 2900;
 int N, T, Sig;
 int best_len;
 const array<string, 2> UL = {"U", "L"};
@@ -160,10 +160,6 @@ struct Input {
         rep(i, N) {
             int w, h;
             cin >> w >> h;
-            chmin(w, 100000);
-            chmax(w, 10000);
-            chmin(h, 100000);
-            chmax(h, 10000);
             wh[i] = {w, h};
         }
     }
@@ -817,7 +813,6 @@ class Tree {
 
     // 根からのパスを取得する
     vector<Action> calculate_path(int parent, int turn) const {
-        // cerr << curr_tour_.size() << endl;
 
         vector<Action> ret = direct_road_;
         ret.reserve(turn);
@@ -988,18 +983,40 @@ struct Solver {
             }
         }
     }
-    int evaluate(int lim, const vector<pair<int, int>> &wh) {
+    pair<int, int> correction(int w, int h) {
+        static int wk =
+            -14282.5229 + 2.6291 * Sig + 152.3290 * N - -48.7463 * T;
+        static int hk = 14571.8451 + 3.6552 * Sig + 797.8275 * N + -38.3880 * T;
+        return {w, h};
+    }
+    pair<int, int> evaluate(int lim, const vector<pair<int, int>> &wh,
+                            const vector<deque<int>> &state_l,
+                            const vector<deque<int>> &state_m,
+                            const vector<deque<int>> &state_r) {
+        int s = state_l.size();
+        rep(i, s) {
+            int prev = -1;
+            for (auto j : state_l[i]) {
+                actions[j].b = prev;
+                prev = j;
+            }
+            for (auto j : state_m[i]) {
+                actions[j].b = prev;
+                prev = j;
+            }
+            for (auto j : state_r[i]) {
+                actions[j].b = prev;
+                prev = j;
+            }
+        }
+
         static vector<Nodo_horizon> horizon;
         static vector<int> r_vec;
-        // static map<pair<int, int>, int> vertical;
-        int max_ = 1000000000;
+        static int max_ = 1000000000;
         horizon.clear();
         r_vec.clear();
-        // vertical.clear();
         horizon.emplace_back(0, max_, 0);
-        // vertical[{0, max_}] = 0;
 
-        // int prev_d = 0;
         int W = 0;
         int H = 0;
         rep(i, N) {
@@ -1020,7 +1037,8 @@ struct Solver {
                 Nodo_horizon l_l = Nodo_horizon(0, 0, 0);
                 Nodo_horizon r_r = Nodo_horizon(max_, max_, 0);
 
-                auto l_ = lower_bound(all(horizon), Nodo_horizon(l, l, 0));
+                auto l_ = prev(
+                    lower_bound(all(horizon), Nodo_horizon(l, 1000000001, 0)));
                 l_l = *l_;
                 auto r_ = lower_bound(all(horizon), Nodo_horizon(r, r, 0));
                 r_r = *prev(r_);
@@ -1036,7 +1054,6 @@ struct Solver {
                     auto it = lower_bound(all(horizon), node);
                     horizon.insert(it, node);
                 }
-
                 Nodo_horizon node = Nodo_horizon(l, r, d);
                 auto it = lower_bound(all(horizon), node);
                 horizon.insert(it, node);
@@ -1050,290 +1067,248 @@ struct Solver {
 
             chmax(W, r);
             chmax(H, d);
-            if (W + H > lim) {
-                return lim + 1;
+            auto [cW, cH] = correction(W, H);
+            if (cW + cH > lim) {
+                return {cW, cH};
             }
         }
-        return W + H;
+        auto [cW, cH] = correction(W, H);
+        return {cW, cH};
     }
-    // int evaluate(int lim, const vector<pair<int, int>> &wh) {
-    //     static map<pair<int, int>, int> horizon;
-    //     static vector<int> r_vec;
-    //     // static map<pair<int, int>, int> vertical;
-    //     int max_ = 1000000000;
-    //     horizon.clear();
-    //     r_vec.clear();
-    //     // vertical.clear();
-    //     horizon[{0, max_}] = 0;
-    //     // vertical[{0, max_}] = 0;
 
-    //     // int prev_d = 0;
-    //     int W = 0;
-    //     int H = 0;
-    //     rep(i, N) {
-    //         auto [w, h] = wh[i];
-    //         if (actions[i].r == 1) {
-    //             swap(w, h);
-    //         }
-    //         int l, r, u, d;
-    //         if (actions[i].d == "U") {
-    //             u = 0;
-    //             if (actions[i].b == -1) {
-    //                 l = 0;
-    //                 r = l + w;
-    //             } else {
-    //                 l = r_vec[actions[i].b];
-    //                 r = l + w;
-    //             }
-    //             pair<pair<int, int>, int> l_l = {{0, 0}, 0};
-    //             pair<pair<int, int>, int> r_r = {{max_, max_}, 0};
-
-    //             auto l_ = horizon.lower_bound({l, l});
-    //             l_l = *l_;
-    //             auto r_ = horizon.lower_bound({r, r});
-    //             r_r = *prev(r_);
-
-    //             for (auto it = l_; it != r_; it++) {
-    //                 chmax(u, (*it).second);
-    //             }
-
-    //             d = u + h;
-    //             horizon.erase(l_, r_);
-    //             if (l_l.first.first < l) {
-    //                 horizon[{l_l.first.first, l}] = l_l.second;
-    //             }
-    //             horizon[{l, r}] = d;
-    //             if (r < r_r.first.second) {
-    //                 horizon[{r, r_r.first.second}] = r_r.second;
-    //             }
-    //             r_vec.emplace_back(r);
-    //         }
-
-    //         chmax(W, r);
-    //         chmax(H, d);
-    //         if (W + H > lim) {
-    //             return lim + 1;
-    //         }
-    //     }
-    //     return W + H;
-    // }
-    int sa(int time_lim) {
+    pair<int, int> sa(int time_lim, vector<deque<int>> &state_l,
+                      vector<deque<int>> &state_m,
+                      vector<deque<int>> &state_r) {
         int cnt = 0;
+        // double start_temp = 1000;
+        // double end_temp = 0.0;
+        // double now_temp = -1.0;
         int now_score = inf;
+        auto [W, H] = evaluate(1000000000, wh, state_l, state_m, state_r);
         int diff_lim = 0;
-        // static vector<pair<int, int>> cand;
-        // cand.reserve(N);
+        int s = state_m.size();
+        static int max_cycle = N * 20;
+        int cycle_cnt = 0;
+        static vector<int> ok_cnt(5);
         while (true) {
-            if ((cnt & 63) == 0) {
+            cycle_cnt++;
+            if (cycle_cnt > max_cycle) {
+                break;
+            }
+            if ((cnt & 127) == 0) {
                 time_keeper.setNowTime();
                 if (time_keeper.getNowTime() > time_lim) {
                     break;
                 }
             }
             int mode = xorshift() % 15;
-            if (false and mode == 0) {
-                int index = xorshift() % (N - 1) + 1;
-                if (actions[index].b == -1) {
-                    continue;
-                    //  改行の前後の移動
-                    int pm = xorshift() & 1;
-                    if (pm == 0) {
-                        pm = -1;
-                    }
-                    if (index + pm < 0 or index + pm >= N) {
-                        continue;
-                    }
-                    actions[index].b = index - 1;
-                    int memo = actions[index + pm].b;
-                    actions[index + pm].b = -1;
-                    int lim = now_score + diff_lim;
-                    int new_score = evaluate(lim, wh);
-                    if (new_score <= lim) {
-                        if (new_score < now_score) {
-                            cerr << "1 " << time_keeper.getNowTime() << " "
-                                 << new_score << el;
-                        }
-                        now_score = new_score;
-                    } else {
-                        actions[index].b = -1;
-                        actions[index + pm].b = memo;
-                    }
-                } else {
-                    // 自身を横なら縦に、縦なら横に積むようにする
-                    if (Sig > 2000) {
-                        continue;
-                    }
-                    int cnt = 0;
-                    int memo1 = actions[index].b;
-                    int memo2 = -2;
-                    if (actions[index].b == actions[index - 1].b) {
-                        actions[index].b = index - 1;
-                        if (index + 1 < N) {
-                            memo2 = actions[index + 1].b;
-                            actions[index + 1].b = index;
-                        }
-                    } else {
-                        actions[index].b = actions[index - 1].b;
-                        if (index + 1 < N) {
-                            memo2 = actions[index + 1].b;
-                        }
-                        if (memo2 == index) {
-                            int w1, w2;
-                            if (actions[index].r == 1) {
-                                w1 = wh[index].second;
-                            } else {
-                                w1 = wh[index].first;
-                            }
-                            if (actions[index - 1].r == 1) {
-                                w2 = wh[index - 1].second;
-                            } else {
-                                w2 = wh[index - 1].first;
-                            }
-                            if (w1 < w2) {
-                                actions[index + 1].b = index - 1;
-                            } else {
-                                actions[index + 1].b = index;
-                            }
-                        }
-                    }
-
-                    int lim = now_score + diff_lim;
-                    int new_score = evaluate(lim, wh);
-                    if (new_score <= lim) {
-                        if (new_score < now_score) {
-                            cerr << "2 " << time_keeper.getNowTime() << " "
-                                 << new_score << el;
-                        }
-                        now_score = new_score;
-                    } else {
-                        actions[index].b = memo1;
-                        if (memo2 != -2) {
-                            actions[index + 1].b = memo2;
-                        }
-                    }
-                }
-
-            } else if (mode == 1) {
-                int index = xorshift() % (N - 2) + 1;
-                if (actions[index].b != -1) {
-                    continue;
-                }
-                int d;
-                int memo = -2;
-                if (actions[index + 1].b < index) {
-                    d = 1;
-                    if (index + 2 < N and actions[index + 2].b == index) {
-                        memo = actions[index + 2].b;
-                        actions[index + 2].b = index + 1;
-                    }
-                } else {
-                    d = -1;
-                    if (index + 1 < N and actions[index + 1].b == index) {
-                        memo = actions[index + 1].b;
-                        actions[index + 1].b = index - 1;
-                    }
-                }
-
-                swap(actions[index].b, actions[index + d].b);
-
-                int lim = now_score + diff_lim;
-                int new_score = evaluate(lim, wh);
-                cerr << new_score << " " << lim << el;
-                if (new_score <= lim) {
-                    if (new_score < now_score) {
-                        cerr << "3 " << time_keeper.getNowTime() << " "
-                             << new_score << el;
-                    }
-                    now_score = new_score;
-                } else {
-                    swap(actions[index].b, actions[index + d].b);
-                    if (d == 1 and memo != -2) {
-                        actions[index + 2].b = memo;
-                    } else if (d == -1 and memo != -2) {
-                        actions[index + 1].b = memo;
-                    }
-                }
-            }
-
-            else if (false and Sig <= 2000 and mode == 2) {
-                // 連結している二個をまとめて回転する
-                int index = xorshift() % (N - 1);
-                int memo1;
-                int memo2;
-                if (actions[index + 1].b != index) {
-                    memo1 = actions[index + 1].b;
-                    actions[index + 1].b = actions[index].b;
-                    actions[index].r ^= 1;
-                    actions[index + 1].r ^= 1;
-                    memo2 = -2;
-                    if (index + 2 < N and (actions[index + 2].b == index + 1 or
-                                           actions[index + 2].b == index)) {
-                        memo2 = actions[index + 2].b;
-                        int w1, w2;
-                        if (actions[index].r == 1) {
-                            w1 = wh[index].second;
-                        } else {
-                            w1 = wh[index].first;
-                        }
-                        if (actions[index + 1].r == 1) {
-                            w2 = wh[index + 1].second;
-                        } else {
-                            w2 = wh[index + 1].first;
-                        }
-                        if (w1 < w2) {
-                            actions[index + 2].b = index + 1;
-                        } else {
-                            actions[index + 2].b = index;
-                        }
-                    }
-                } else if (actions[index].b == actions[index + 1].b) {
-                    memo1 = actions[index + 1].b;
-                    actions[index + 1].b = index;
-                    memo2 = -2;
-                    if (index + 2 < N and (actions[index + 2].b == index + 1 or
-                                           actions[index + 2].b == index)) {
-                        actions[index + 2].b = index;
-                    }
-                } else {
-                    continue;
-                }
-
-                int lim = now_score + diff_lim;
-                int new_score = evaluate(lim, wh);
-                if (new_score <= lim) {
-                    if (new_score < now_score) {
-                        cerr << "4 " << time_keeper.getNowTime() << " "
-                             << new_score << el;
-                    }
-                    now_score = new_score;
-                } else {
-                    actions[index + 1].b = memo1;
-                    actions[index].r ^= 1;
-                    actions[index + 1].r ^= 1;
-                    if (memo2 != -2) {
-                        actions[index + 2].b = memo2;
-                    }
-                }
-            } else {
+            // rotate合っても良いかも
+            if (mode >= 6) {
                 // 一個を回転
                 int index = xorshift() % N;
                 actions[index].r ^= 1;
                 int lim = now_score + diff_lim;
-                int new_score = evaluate(lim, wh);
-                if (new_score <= lim) {
+                auto [newW, newH] =
+                    evaluate(lim, wh, state_l, state_m, state_r);
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
+                    ok_cnt[4]++;
                     if (new_score < now_score) {
-                        cerr << "5 " << time_keeper.getNowTime() << " "
+                        cycle_cnt = 0;
+                        cerr << "4 " << time_keeper.getNowTime() << " "
                              << new_score << el;
                     }
+                    W = newW;
+                    H = newH;
                     now_score = new_score;
                 } else {
                     actions[index].r ^= 1;
+                }
+            } else if (mode <= 1) {
+                // スワップ追加
+                int index = xorshift() % (s - 1);
+                if (state_m[index].size() == 0 or
+                    state_m[index + 1].size() == 0) {
+                    continue;
+                }
+                int back = state_m[index].back();
+                state_m[index].pop_back();
+                state_l[index + 1].push_front(back);
+
+                int front = state_m[index + 1].front();
+                state_m[index + 1].pop_front();
+                state_r[index].push_back(front);
+
+                int r1 = xorshift() % 2;
+                int r2 = xorshift() % 2;
+                actions[back].r ^= r1;
+                actions[front].r ^= r2;
+
+                int lim = now_score + diff_lim;
+                auto [newW, newH] =
+                    evaluate(lim, wh, state_l, state_m, state_r);
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
+                    ok_cnt[0]++;
+                    if (new_score < now_score) {
+                        cycle_cnt = 0;
+                        cerr << "0 " << time_keeper.getNowTime() << " "
+                             << new_score << el;
+                    }
+                    W = newW;
+                    H = newH;
+                    now_score = new_score;
+                } else {
+                    int back = state_r[index].back();
+                    state_r[index].pop_back();
+                    state_m[index + 1].push_front(back);
+
+                    int front = state_l[index + 1].front();
+                    state_l[index + 1].pop_front();
+                    state_m[index].push_back(front);
+
+                    actions[back].r ^= r2;
+                    actions[front].r ^= r1;
+                }
+            } else if (mode <= 3) {
+                // スワップ減少
+                int index = xorshift() % (s - 1);
+                if (state_r[index].size() == 0 or
+                    state_l[index + 1].size() == 0) {
+                    continue;
+                }
+
+                int back = state_r[index].back();
+                state_r[index].pop_back();
+                state_m[index + 1].push_front(back);
+
+                int front = state_l[index + 1].front();
+                state_l[index + 1].pop_front();
+                state_m[index].push_back(front);
+
+                int r1 = xorshift() % 2;
+                int r2 = xorshift() % 2;
+                actions[back].r ^= r1;
+                actions[front].r ^= r2;
+
+                int lim = now_score + diff_lim;
+                auto [newW, newH] =
+                    evaluate(lim, wh, state_l, state_m, state_r);
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
+                    ok_cnt[1]++;
+                    if (new_score < now_score) {
+                        cycle_cnt = 0;
+                        cerr << "1 " << time_keeper.getNowTime() << " "
+                             << new_score << el;
+                    }
+                    W = newW;
+                    H = newH;
+                    now_score = new_score;
+                } else {
+                    int back = state_m[index].back();
+                    state_m[index].pop_back();
+                    state_l[index + 1].push_front(back);
+
+                    int front = state_m[index + 1].front();
+                    state_m[index + 1].pop_front();
+                    state_r[index].push_back(front);
+
+                    actions[back].r ^= r2;
+                    actions[front].r ^= r1;
+                }
+            } else if (mode == 4) {
+                // 下に移動
+                int index = xorshift() % (s - 1);
+                if (state_m[index].size() == 0) {
+                    continue;
+                }
+
+                int back = state_m[index].back();
+                state_m[index].pop_back();
+                state_l[index + 1].push_front(back);
+
+                int r1 = xorshift() % 2;
+                actions[back].r ^= r1;
+
+                int lim = now_score + diff_lim;
+                auto [newW, newH] =
+                    evaluate(lim, wh, state_l, state_m, state_r);
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
+                    ok_cnt[2]++;
+                    if (new_score < now_score) {
+                        cycle_cnt = 0;
+                        cerr << "2 " << time_keeper.getNowTime() << " "
+                             << new_score << el;
+                    }
+                    W = newW;
+                    H = newH;
+                    now_score = new_score;
+                } else {
+                    int front = state_l[index + 1].front();
+                    state_l[index + 1].pop_front();
+                    state_m[index].push_back(front);
+
+                    actions[front].r ^= r1;
+                }
+            } else if (mode == 5) {
+                // 上へ移動
+                int index = xorshift() % (s - 1) + 1;
+                if (state_m[index].size() == 0) {
+                    continue;
+                }
+                int front = state_m[index].front();
+                state_m[index].pop_front();
+                state_r[index - 1].push_back(front);
+
+                int r2 = xorshift() % 2;
+                actions[front].r ^= r2;
+
+                int lim = now_score + diff_lim;
+                auto [newW, newH] =
+                    evaluate(lim, wh, state_l, state_m, state_r);
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
+                    ok_cnt[3]++;
+                    if (new_score < now_score) {
+                        cycle_cnt = 0;
+                        cerr << "3 " << time_keeper.getNowTime() << " "
+                             << new_score << el;
+                    }
+                    W = newW;
+                    H = newH;
+                    now_score = new_score;
+                } else {
+                    int back = state_r[index - 1].back();
+                    state_r[index - 1].pop_back();
+                    state_m[index].push_front(back);
+
+                    actions[back].r ^= r2;
                 }
             }
             cnt++;
         }
         // dump(cnt);
-        return now_score;
+        rep(i, s) {
+            int prev = -1;
+            for (auto j : state_l[i]) {
+                actions[j].b = prev;
+                prev = j;
+            }
+            for (auto j : state_m[i]) {
+                actions[j].b = prev;
+                prev = j;
+            }
+            for (auto j : state_r[i]) {
+                actions[j].b = prev;
+                prev = j;
+            }
+        }
+        cerr << "ok_cnt: ";
+        rep(i, 5) { cerr << ok_cnt[i] << " "; }
+        cerr << el;
+        return {W, H};
     }
 
     bool trans(vector<Action_> &actions) {
@@ -1531,24 +1506,26 @@ struct Solver {
         return res;
     }
     void solve() {
-        // beam_search::State state = beam_search::State(input.wh);
-        // beam_search::Config config = {N, beam_width, tour_capacity,
-        //                               hash_map_capacity};
-
-        // vector<beam_search::Action> a = beam_search::beam_search(config,
-        // state); rep(i, T) { auto wh = output.query(a); } return;
-
-        // vector<pair<int, int>> actual_wh(N);
-        // ifstream file("actual/" + seed + ".txt");
-        // if (!file) { // ファイルが開けない場合のエラーチェック
-        //     cerr << "Error: Could not open the file!" << el;
-        //     return;
+        // denug----------------
+        // vector<pair<int, int>> er(T);
+        // ifstream file("in/" + seed + ".txt");
+        // {
+        //     if (!file) { // ファイルが開けない場合のエラーチェック
+        //         cerr << "Error: Could not open the file!" << el;
+        //         return;
+        //     }
+        //     int n, t, sig;
+        //     file >> n >> t >> sig;
+        //     int x, y;
+        //     rep(i, 2 * N) { file >> x >> y; }
+        //     int ew, eh;
+        //     rep(i, t) {
+        //         file >> ew >> eh;
+        //         er[i] = {ew, eh};
+        //     }
         // }
-        // int x, y;
-        // rep(i, N) {
-        //     file >> x >> y;
-        //     actual_wh[i] = {x, y};
-        // }
+        // denug--------------------
+
         vector<vector<Action_>> queryes;
         queryes.reserve(T);
         vector<tuple<int, int, int>> results;
@@ -1556,14 +1533,11 @@ struct Solver {
 
         vector<vector<pair<int, int>>> tmp_wh_vec(N);
         rep(i, N) { tmp_wh_vec[i].emplace_back(wh[i]); }
-        rep(i, T - 100) {
-            auto tmp = output.query({Action_(i % N, 0, "U", -1)});
-            chmin(tmp.first, 100000);
-            chmax(tmp.first, 10000);
-            chmin(tmp.second, 100000);
-            chmax(tmp.second, 10000);
-            tmp_wh_vec[i % N].emplace_back(tmp);
-            queryes.push_back({Action_(i % N, 0, "U", -1)});
+        rep(i, T - 20) {
+            int j = (-i % N + N) % N;
+            auto tmp = output.query({Action_(j, 0, "U", -1)});
+            tmp_wh_vec[j].emplace_back(tmp);
+            queryes.push_back({Action_(j, 0, "U", -1)});
             results.emplace_back(1000000000, 1000000000, results.size());
         }
         vector<pair<int, int>> tmp_wh(N);
@@ -1574,29 +1548,37 @@ struct Solver {
             }
             tmp_wh[i].first /= tmp_wh_vec[i].size();
             tmp_wh[i].second /= tmp_wh_vec[i].size();
+            chmin(tmp_wh[i].first, 100000);
+            chmax(tmp_wh[i].first, 10000);
+            chmin(tmp_wh[i].second, 100000);
+            chmax(tmp_wh[i].second, 10000);
         }
+
         wh = tmp_wh;
 
         int size = 300;
         make_init_sol();
         int time = 2900 / size;
         vector<vector<Action_>> cands;
-        vector<pair<int, int>> scores;
+        vector<tuple<int, int, int>> scores;
         cands.reserve(size);
         vector<int> tmp(N / sqrt_, sqrt_);
-        rep(i, N % sqrt_) { tmp[i] += 1; }
+        rep(i, N % (N / sqrt_)) { tmp[xorshift() % (N / sqrt_)] += 1; }
         vector<int> sp1;
         sp1.emplace_back(0);
         for (auto i : tmp) {
             sp1.emplace_back(*(sp1.rbegin()) + i);
         }
         vector<double> p = {0.65, 0.8, 0.95};
-        rep(i, size) {
+        int i = 0;
+        while (true) {
             rep(i, N) {
                 actions[i].r = xorshift() & 1;
                 actions[i].b = i - 1;
             }
+            int height = 0;
             if ((xorshift() & 1) == 0) {
+                height = sp1.size();
                 for (auto i : sp1) {
                     if (i < N) {
                         actions[i].b = -1;
@@ -1604,12 +1586,14 @@ struct Solver {
                 }
             } else {
                 int r = 0;
+                height = 1;
                 best_wh = sqrt(sum_s / p[xorshift() % 3]);
                 rep(i, N) {
                     if (actions[i].r == 0) {
                         if (r + wh[i].first <= best_wh) {
                             r += wh[i].first;
                         } else {
+                            height++;
                             actions[i].b = -1;
                             r = wh[i].first;
                         }
@@ -1617,76 +1601,72 @@ struct Solver {
                         if (r + wh[i].second <= best_wh) {
                             r += wh[i].second;
                         } else {
+                            height++;
                             actions[i].b = -1;
                             r = wh[i].second;
                         }
                     }
                 }
             }
+            // 右上から左にきたもの
+            vector<deque<int>> state_l(height);
+            // 元々あるもの
+            vector<deque<int>> state_m(height);
+            // 左下から右にきたもの
+            vector<deque<int>> state_r(height);
+            int j = -1;
             rep(i, N) {
-                if (actions[i].b == -1 and i > 0 and (xorshift() & 1) == 1) {
-                    swap(actions[i].b, actions[i - 1].b);
-                    if (i + 1 < N) {
-                        actions[i + 1].b = i - 1;
+                if (actions[i].b == -1) {
+                    j++;
+                }
+                state_m[j].push_back(i);
+            }
+            int max_ = (int)(sqrt(N) / 2);
+            rep(i, height - 1) {
+                int cnt = xorshift() % max(1, (max_ - 1));
+                rep(j, cnt) {
+                    if (state_m[i].empty() or state_m[i + 1].empty()) {
+                        break;
                     }
+                    int back = state_m[i].back();
+                    state_m[i].pop_back();
+                    state_l[i + 1].push_front(back);
+                    int front = state_m[i + 1].front();
+                    state_m[i + 1].pop_front();
+                    state_r[i].push_back(front);
                 }
             }
 
-            // int c = xorshift() % 2;
-            // rep(i, c) { actions[xorshift() % N].b = -1; }
+            auto [W, H] = sa(time * (i + 1), state_l, state_m, state_r);
 
-            int predicted_score = sa(time * (i + 1));
             cands.emplace_back(actions);
-            scores.emplace_back(predicted_score, (int)scores.size());
-            // pair<int, int> tmp = output.query(actions);
-            // int query_score = tmp.first + tmp.second;
-            // int actual_score = evaluate(1000000000, actual_wh);
-            // cerr << predicted_score << " " << actual_score << " " <<
-            // query_score
-            //      << el;
+            scores.emplace_back(W, H, (int)scores.size());
+            i++;
+            time_keeper.setNowTime();
+            if (time_keeper.isTimeOver()) {
+                break;
+            }
         }
-        sort(all(scores));
+        sort(all(scores), [](tuple<int, int, int> a, tuple<int, int, int> b) {
+            return (get<0>(a) + get<1>(a) < get<0>(b) + get<1>(b));
+        });
 
         int best_score = inf;
         rep(i, size) {
-            if (i % (int)scores.size() > 0 and
-                scores[i % (int)scores.size()].first ==
-                    scores[i % (int)scores.size() - 1].first) {
+            if (i > 0 and get<0>(scores[i]) == get<0>(scores[i - 1]) and
+                get<1>(scores[i]) == get<1>(scores[i - 1])) {
                 continue;
             }
-            if (scores[i].first < best_score + (double)Sig) {
-                pair<int, int> tmp = output.query(cands[scores[i].second]);
-                if (chmin(best_score, tmp.first + tmp.second) and
-                    queryes.size() < T - 1) {
-                    if (trans(cands[scores[i].second])) {
-                        cerr << "transed" << el;
-                        cout << "#transed" << el;
-                        pair<int, int> tmp =
-                            output.query(cands[scores[i].second]);
-                        queryes.emplace_back(cands[scores[i].second]);
-                        results.emplace_back(tmp.first, tmp.second,
-                                             results.size());
-                        chmin(best_score, tmp.first + tmp.second);
-                    }
-                }
-                queryes.emplace_back(cands[scores[i].second]);
+            if (true or get<0>(scores[i]) + get<1>(scores[i]) <
+                            best_score + (double)Sig) {
+                pair<int, int> tmp = output.query(cands[get<2>(scores[i])]);
+                queryes.emplace_back(cands[get<2>(scores[i])]);
                 results.emplace_back(tmp.first, tmp.second, results.size());
             }
             if (queryes.size() >= T) {
                 break;
             }
-
-            // int query_score = tmp.first + tmp.second;
-            // actions = cands[scores[i % (int)scores.size()].second];
-            // int actual_score = evaluate(1000000000, actual_wh);
-            // int predicted_score = scores[i % (int)scores.size()].first;
-            // cout << "#" << predicted_score << el;
-            // cerr << predicted_score << " " << actual_score << " " <<
-            // query_score
-            //      << el;
-            // cerr << (predicted_score < query_score) << el;
         }
-        cerr << "query_times: " << queryes.size() << el;
         sort(all(results), [](tuple<int, int, int> a, tuple<int, int, int> b) {
             return (get<0>(a) + get<1>(a) < get<0>(b) + get<1>(b));
         });

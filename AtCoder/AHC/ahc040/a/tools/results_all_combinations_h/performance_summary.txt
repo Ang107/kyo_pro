@@ -1,0 +1,23 @@
+Using h, sigma, n, t: RMSE = 22193.2854
+Model formula: hp = 14571.8451 + 0.9093 * h + 3.6552 * sigma + 797.8275 * n + -38.3880 * t
+
+Using h, sigma, n: RMSE = 22313.9841
+Model formula: hp = 12710.5042 + 0.9107 * h + 3.7255 * sigma + 746.2569 * n
+
+Using h, sigma, t: RMSE = 23826.7265
+Model formula: hp = -11146.7396 + 1.0440 * h + 3.9925 * sigma + -3.6660 * t
+
+Using h, sigma: RMSE = 23827.8184
+Model formula: hp = -11166.9161 + 1.0432 * h + 3.9975 * sigma
+
+Using h, n, t: RMSE = 23985.1751
+Model formula: hp = 33511.2861 + 0.9044 * h + 878.8752 * n + -49.7542 * t
+
+Using h, n: RMSE = 24173.6295
+Model formula: hp = 31559.5678 + 0.9062 * h + 813.6833 * n
+
+Using h, t: RMSE = 25833.5278
+Model formula: hp = 6855.5540 + 1.0537 * h + -12.3095 * t
+
+
+Using h = hp assumption: RMSE = 43033.3831

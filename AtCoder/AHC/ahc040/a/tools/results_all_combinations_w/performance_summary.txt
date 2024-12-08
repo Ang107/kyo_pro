@@ -1,0 +1,23 @@
+Using w, sigma, n, t: RMSE = 9234.1861
+Model formula: wp = -14282.5229 + 1.0131 * w + 2.6291 * sigma + 152.3290 * n + -48.7463 * t
+
+Using w, sigma, t: RMSE = 9394.2130
+Model formula: wp = -18072.2144 + 1.0355 * w + 2.7175 * sigma + -40.9565 * t
+
+Using w, sigma, n: RMSE = 9690.7411
+Model formula: wp = -16898.7861 + 1.0160 * w + 2.7215 * sigma + 81.7742 * n
+
+Using w, sigma: RMSE = 9738.4915
+Model formula: wp = -18853.4273 + 1.0286 * w + 2.7641 * sigma
+
+Using w, n, t: RMSE = 11311.4180
+Model formula: wp = 99.5740 + 1.0067 * w + 225.6245 * n + -57.2025 * t
+
+Using w, t: RMSE = 11601.5364
+Model formula: wp = -4878.1296 + 1.0400 * w + -45.9027 * t
+
+Using w, n: RMSE = 11828.7402
+Model formula: wp = -2393.0046 + 1.0097 * w + 145.3620 * n
+
+
+Using w = wp assumption: RMSE = 17524.9592

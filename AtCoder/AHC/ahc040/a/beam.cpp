@@ -291,7 +291,7 @@ struct Evaluator {
     Evaluator(int w, int h) : w(w), h(h) {}
 
     // 低いほどよい
-    Cost evaluate() const { return w + h + (int)(sqrt((ll)w * (ll)h)); }
+    Cost evaluate() const { return (int)(sqrt((ll)w * (ll)h)); }
 };
 
 // 展開するノードの候補を表す構造体
@@ -471,7 +471,7 @@ class State {
                   int lower, int upper, int &other_lower, int &other_upper,
                   int len) {
         {
-            auto start_it = vh.lower_bound({lower, lower});
+            auto start_it = prev(vh.lower_bound({lower, 1000000001}));
             auto end_it = vh.lower_bound({upper, upper});
 
             for (auto it = start_it; it != end_it; it++) {
@@ -492,7 +492,8 @@ class State {
             }
         }
         {
-            auto start_it = other_vh.lower_bound({other_lower, other_lower});
+            auto start_it =
+                prev(other_vh.lower_bound({other_lower, 1000000001}));
             auto end_it = other_vh.lower_bound({other_upper, other_upper});
             for (auto it = start_it; it != end_it; it++) {
                 if ((*it).second.first <= upper) {

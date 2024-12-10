@@ -48,10 +48,10 @@ class LazySegTree:
             self._update(i)
 
     def __str__(self) -> str:
-        return f"LazySegTree: {[self.get(i) for i in range(self._size)]}"
+        return f"LazySegTree: {[self.get(i) for i in range(self._n)]}"
 
     def __iter__(self) -> typing.Iterator[typing.Any]:
-        return iter(self.get(i) for i in range(self._size))
+        return iter(self.get(i) for i in range(self._n))
 
     def __setitem__(self, p: int, x: typing.Any) -> typing.Any:
         assert 0 <= p < self._n

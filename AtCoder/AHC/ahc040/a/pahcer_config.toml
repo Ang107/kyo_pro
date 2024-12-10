@@ -7,8 +7,8 @@ objective = "Min"
 score_regex = '(?m)^\s*Score\s*=\s*(?P<score>\d+)\s*$'
 
 [test]
-start_seed = 500
-end_seed = 1000
+start_seed = 0
+end_seed = 100
 threads = 1
 out_dir = "./pahcer"
 

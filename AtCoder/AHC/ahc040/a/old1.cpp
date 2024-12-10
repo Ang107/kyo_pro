@@ -35,20 +35,20 @@ CPP_DUMP_SET_OPTION_GLOBAL(enable_asterisk, true);
 #define CPP_DUMP_DEFINE_EXPORT_ENUM(...)
 #define CPP_DUMP_DEFINE_EXPORT_OBJECT_GENERIC(...)
 #endif
-namespace xorshift64 {
 
-inline static uint64_t a = 12345;
-
-uint64_t next() {
-    uint64_t x = a;
-    x ^= x << 13;
-    x ^= x >> 7;
-    x ^= x << 17;
-    return a = x;
+uint64_t xorshift64() {
+    static uint64_t y = 88172645463325252ULL;
+    y ^= y << 13;
+    y ^= y >> 7;
+    y ^= y << 17;
+    return y;
 }
-
-} // namespace xorshift64
-
+inline uint32_t xorshift() {
+    static uint32_t y = 2463534242;
+    y = y ^ (y << 13);
+    y = y ^ (y >> 17);
+    return y = y ^ (y << 5);
+}
 // 時間をDouble型で管理し、経過時間も取り出せるクラス
 class TimeKeeperDouble {
   private:
@@ -148,6 +148,7 @@ template <typename T> T ipow(T x, T n) {
 }
 constexpr double TIME_LIMIT = 2900;
 int N, T, Sig;
+int best_len;
 const array<string, 2> UL = {"U", "L"};
 struct Input {
     vector<pii> wh;
@@ -161,20 +162,19 @@ struct Input {
         }
     }
 };
-struct Action {
+struct Action_ {
     int p;
     int r;
     string d;
     int b;
-    array<int, 4> udlr;
-    Action(int p, int r, string d, int b) : p(p), r(r), d(d), b(b) {};
-    bool operator==(const Action &other) const {
+    Action_(int p, int r, string d, int b) : p(p), r(r), d(d), b(b) {};
+    bool operator==(const Action_ &other) const {
         return (p == other.p and r == other.r and d == other.d and
                 b == other.b);
     }
 };
 struct Output {
-    pair<int, int> query(const vector<Action> &actions) {
+    pair<int, int> query(const vector<Action_> &actions) {
         int size = actions.size();
         cout << size << el;
         rep(i, size) {
@@ -191,32 +191,79 @@ struct Output {
         return {w, h};
     }
 };
+constexpr double kSqrt2 = 1.41421356237309514547;
 
-uint32_t xorshift() {
-    static uint32_t y = 2463534242;
-    y = y ^ (y << 13);
-    y = y ^ (y >> 17);
-    return y = y ^ (y << 15);
+inline double calc_norm_cdf(double mu, double sigma, double x) {
+    return 0.5 * (1.0 + erf((x - mu) / (kSqrt2 * sigma)));
 }
+
+inline double calc_pr(double mu, double sigma, double vs) {
+    return calc_norm_cdf(mu, sigma, vs + 0.5) -
+           calc_norm_cdf(mu, sigma, vs - 0.5);
+}
+constexpr double kLogLogPrThreshold = -200.0;
+
+inline double calc_fix_log_pr(double pr) {
+    double log_pr = (pr <= 0.0) ? DBL_MIN_EXP : log2(pr);
+    if (log_pr < kLogLogPrThreshold) {
+        return kLogLogPrThreshold;
+    } else {
+        return log_pr;
+    }
+}
+
+struct Nodo_horizon {
+    int l;
+    int r;
+    int d;
+    Nodo_horizon(int l, int r, int d) : l(l), r(r), d(d) {}
+    bool operator<(const Nodo_horizon &other) const {
+        if (l != other.l) {
+            return l < other.l;
+        } else {
+            return r < other.r;
+        }
+    }
+};
+struct Nodo_horizon2 {
+    int l;
+    int r;
+    int d;
+    int i;
+    Nodo_horizon2(int l, int r, int d, int i) : l(l), r(r), d(d), i(i) {}
+    bool operator<(const Nodo_horizon2 &other) const {
+        if (l != other.l) {
+            return l < other.l;
+        } else {
+            return r < other.r;
+        }
+    }
+};
+string seed;
 struct Solver {
     Input input;
     Output output;
     vector<pair<int, int>> wh;
-    vector<Action> actions;
-    vector<int> split;
+    vector<Action_> actions;
+    int best_wh;
+    int lim_wh;
+    // vector<int> split;
+    int sqrt_;
     int id = 0;
+    ll sum_s;
     Solver(const Input &input) : input(input) {
         wh = input.wh;
-        split = vector<int>(N, 0);
+        sum_s = 0;
+        for (auto [w, h] : input.wh) {
+            sum_s += (ll)w * (ll)h;
+        }
+        best_wh = sqrt(sum_s / 0.65);
+        lim_wh = sqrt(sum_s / 0.7);
+        best_len = sqrt(sum_s / 0.9);
     }
     void make_init_sol() {
-        int sqrt_ = (int)ceil(sqrt(N));
+        sqrt_ = (int)ceil(sqrt(N));
         actions.reserve(N);
-        rep(i, sqrt_) {
-            if (i * sqrt_ < N) {
-                split[i * sqrt_] = 1;
-            }
-        }
         rep(i, N) {
             if (i % sqrt_ == 0) {
                 actions.emplace_back(i, 0, "U", -1);
@@ -225,178 +272,682 @@ struct Solver {
             }
         }
     }
-    int evaluate(int lim) {
-        static map<pair<int, int>, int> horizon;
-        static vector<int> rs;
-        int max_ = 1000000000;
-        horizon.clear();
-        rs.clear();
-        horizon[{0, max_}] = 0;
-        // int prev_ = 0;
+    pair<int, int> evaluate2(int lim, const vector<pair<int, int>> &wh,
+                             int index, int &new_pearent) {
         int W = 0;
         int H = 0;
+
+        static vector<Nodo_horizon2> horizon;
+        static vector<int> r_vec;
+        static int max_ = 1000000000;
+        horizon.reserve(N);
+        horizon.clear();
+        r_vec.clear();
+        horizon.emplace_back(0, max_, 0, -1);
+
+        vector<Nodo_horizon2>::iterator l_;
+        vector<Nodo_horizon2>::iterator r_;
+        vector<Nodo_horizon2>::iterator it;
         rep(i, N) {
             auto [w, h] = wh[i];
             if (actions[i].r == 1) {
                 swap(w, h);
             }
             int l, r, u, d;
+
             u = 0;
+
             if (actions[i].b == -1) {
                 l = 0;
                 r = l + w;
+                l_ = horizon.begin();
             } else {
-                l = rs[actions[i].b];
+                l = r_vec[actions[i].b];
                 r = l + w;
+                l_ = prev(lower_bound(all(horizon),
+                                      Nodo_horizon2(l, 1000000001, 0, 0)));
             }
-            pair<pair<int, int>, int> l_l = {{0, 0}, 0};
-            pair<pair<int, int>, int> r_r = {{max_, max_}, 0};
 
-            auto l_ = horizon.lower_bound({l, l});
-            l_l = *l_;
-            auto r_ = horizon.lower_bound({r, r});
-            r_r = *prev(r_);
+            if (index != -1) {
+                new_pearent = l_->i;
+                if (0 > new_pearent or new_pearent >= index) {
+                    return {lim + 1, lim + 1};
+                }
+                l = r_vec[new_pearent];
+                r = l + w;
+                l_ = prev(lower_bound(all(horizon),
+                                      Nodo_horizon2(l, 1000000001, 0, 0)));
+            }
+
+            auto l_l = *l_;
+            r_ = l_;
+            while (r_ != horizon.end() and r_->l < r) {
+                r_++;
+            }
+            auto r_r = *prev(r_);
 
             for (auto it = l_; it != r_; it++) {
-                chmax(u, (*it).second);
+                chmax(u, it->d);
             }
 
             d = u + h;
-            horizon.erase(l_, r_);
-            if (l_l.first.first < l) {
-                horizon[{l_l.first.first, l}] = l_l.second;
+            int cnt = 1 + (l_l.l < l) + (r < r_r.r);
+            it = l_;
+            if (distance(l_, r_) >= cnt) {
+                horizon.erase(next(l_, cnt), r_);
+                if (l_l.l < l) {
+                    *it = {l_l.l, l, l_l.d, l_l.i};
+                    it++;
+                }
+                *it = Nodo_horizon2(l, r, d, i);
+                it++;
+                if (r < r_r.r) {
+                    *it = {r, r_r.r, r_r.d, r_r.i};
+                }
+            } else {
+                horizon.erase(next(l_), r_);
+                *it = {l, r, d, i};
+                if (l_l.l < l) {
+                    it = horizon.insert(it, {l_l.l, l, l_l.d, l_l.i});
+                    it++;
+                }
+                if (r < r_r.r) {
+                    horizon.insert(next(it), {r, r_r.r, r_r.d, r_r.i});
+                }
             }
-            horizon[{l, r}] = d;
-            if (r < r_r.first.second) {
-                horizon[{r, r_r.first.second}] = r_r.second;
-            }
-            // prev_ = r;
-            rs.emplace_back(r);
-            chmax(W, r);
+
+            r_vec.emplace_back(r);
+
             chmax(H, d);
+            chmax(W, r);
+
             if (W + H > lim) {
-                return W + H;
+                return {W, H};
             }
         }
-        return W + H;
+        return {W, H};
     }
-    void sa() {
-        int cnt = 0;
-        double start_temp = 0;
-        double end_temp = 0.0;
-        double now_temp = -1.0;
-        int now_score = inf;
+    pair<int, int> sa2(int time_lim, const vector<pair<int, int>> &wh, int W,
+                       int H) {
+        static int cnt = 0;
+        int now_score = W + H;
         int diff_lim = 0;
+        static int max_cycle = N * 2;
+        int cycle_cnt = 0;
+        vector<int> pearents(N);
+        rep(i, N) { pearents[i] = actions[i].b; }
+
         while (true) {
-            if ((cnt & 31) == 0) {
+            cycle_cnt++;
+            cnt++;
+            if (cycle_cnt > max_cycle) {
+                break;
+            }
+            if ((cnt & 127) == 0) {
                 time_keeper.setNowTime();
-                now_temp = start_temp + (end_temp - start_temp) *
-                                            time_keeper.getNowTime() /
-                                            TIME_LIMIT;
-                diff_lim = ceil(now_temp * log(xorshift() / double(1ll << 32)));
-                if (time_keeper.isTimeOver()) {
+                if (time_keeper.getNowTime() > time_lim) {
                     break;
                 }
             }
-            int mode = xorshift() % 10;
-            if (mode <= 1) {
-                int index = xorshift() % (N - 1) + 1;
-                // if (actions[index].b == -1 and mode == 0) {
-                //     //  改行位置スライド
-                //     int pm = xorshift() & 1;
-                //     if (pm == 0) {
-                //         pm = -1;
-                //     }
-                //     if (index + pm < 0 or index + pm >= N) {
-                //         continue;
-                //     }
-                //     memo =
-                //     actions[index].b = xorshift() % (index + 1) - 1;
-                //     // split[index] = 0;
-                //     // bool memo = split[index + pm];
-                //     // split[index + pm] = 1;
-                //     int lim = now_score + diff_lim;
-                //     int new_score = evaluate(lim);
-                //     if (new_score <= lim) {
-                //         if (new_score < now_score) {
-                //             cerr << time_keeper.getNowTime() << " " <<
-                //             new_score
-                //                  << el;
-                //         }
-                //         now_score = new_score;
-                //     } else {
-                //         // split[index] = 1;
-                //         // split[index + pm] = memo;
-                //     }
-                // } else {
-                // split[index] ^= 1;
-                int memo = actions[index].b;
-                int j = xorshift() % (index + 1) - 1;
-                actions[index].b = j;
-                int lim = now_score + diff_lim;
-                int new_score = evaluate(lim);
-                if (new_score <= lim) {
-                    if (new_score < now_score) {
-                        cerr << time_keeper.getNowTime() << " " << new_score
-                             << el;
-                    }
-                    now_score = new_score;
-                } else {
-                    // split[index] ^= 1;
-                    actions[index].b = memo;
-                }
-            }
-            // }
-            else {
+            int mode = xorshift() % 2;
+            if (mode == 0) {
+                // 一個を回転
                 int index = xorshift() % N;
                 actions[index].r ^= 1;
                 int lim = now_score + diff_lim;
-                int new_score = evaluate(lim);
-                if (new_score <= lim) {
+                int new_pearent = -1;
+                auto [newW, newH] = evaluate2(lim, wh, -1, new_pearent);
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
                     if (new_score < now_score) {
-                        cerr << time_keeper.getNowTime() << " " << new_score
-                             << el;
+                        cycle_cnt = 0;
                     }
+                    W = newW;
+                    H = newH;
                     now_score = new_score;
                 } else {
                     actions[index].r ^= 1;
                 }
+            } else {
+                // 親のスライド
+                int index = xorshift() % N;
+                if (actions[index].b == 0) {
+                    continue;
+                }
+                int newW;
+                int newH;
+                int lim = now_score + diff_lim;
+                int new_pearent = -1;
+                int m = -1;
+                if (actions[index].b == pearents[index]) {
+                    new_pearent = actions[index].b;
+                    m = 0;
+                    auto [nW, nH] = evaluate2(lim, wh, index, new_pearent);
+                    newW = nW;
+                    newH = nH;
+                } else {
+                    new_pearent = actions[index].b;
+                    m = 1;
+                    actions[index].b = pearents[index];
+                    auto [nW, nH] = evaluate2(lim, wh, -1, new_pearent);
+                    newW = nW;
+                    newH = nH;
+                }
+
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
+                    if (new_score < now_score) {
+                        cycle_cnt = 0;
+                    }
+                    W = newW;
+                    H = newH;
+                    now_score = new_score;
+                    if (m == 0) {
+                        actions[index].b = new_pearent;
+                    }
+                } else {
+                    if (m == 1) {
+                        actions[index].b = new_pearent;
+                    }
+                }
             }
-            cnt++;
         }
-        dump(cnt);
+        return {W, H};
+    }
+
+    pair<int, int> evaluate(int lim, const vector<pair<int, int>> &wh,
+                            const vector<vector<int>> &state_l,
+                            const vector<vector<int>> &state_r) {
+        int s = state_l.size();
+        int W = 0;
+        int H = 0;
+        rep(i, s) {
+            int w = 0;
+            int prev = -1;
+            for (auto j : state_l[i]) {
+                actions[j].b = prev;
+                prev = j;
+                if (actions[j].r == 0) {
+                    w += wh[j].first;
+                } else {
+                    w += wh[j].second;
+                }
+            }
+            for (auto j : state_r[i]) {
+                actions[j].b = prev;
+                prev = j;
+                if (actions[j].r == 0) {
+                    w += wh[j].first;
+                } else {
+                    w += wh[j].second;
+                }
+            }
+            chmax(W, w);
+        }
+
+        static vector<Nodo_horizon> horizon;
+        static vector<int> r_vec;
+        static int max_ = 1000000000;
+        horizon.reserve(N);
+        horizon.clear();
+        r_vec.clear();
+        horizon.emplace_back(0, max_, 0);
+
+        vector<Nodo_horizon>::iterator l_;
+        vector<Nodo_horizon>::iterator r_;
+        vector<Nodo_horizon>::iterator it;
+        rep(i, N) {
+            auto [w, h] = wh[i];
+            if (actions[i].r == 1) {
+                swap(w, h);
+            }
+            int l, r, u, d;
+
+            u = 0;
+            if (actions[i].b == -1) {
+                l = 0;
+                r = l + w;
+                l_ = horizon.begin();
+            } else {
+                l = r_vec[actions[i].b];
+                r = l + w;
+                l_ = prev(
+                    lower_bound(all(horizon), Nodo_horizon(l, 1000000001, 0)));
+            }
+
+            auto l_l = *l_;
+            r_ = l_;
+            while (r_ != horizon.end() and r_->l < r) {
+                r_++;
+            }
+            auto r_r = *prev(r_);
+
+            for (auto it = l_; it != r_; it++) {
+                chmax(u, it->d);
+            }
+
+            d = u + h;
+            int cnt = 1 + (l_l.l < l) + (r < r_r.r);
+            it = l_;
+            if (distance(l_, r_) >= cnt) {
+                horizon.erase(next(l_, cnt), r_);
+                if (l_l.l < l) {
+                    *it = {l_l.l, l, l_l.d};
+                    it++;
+                }
+                *it = Nodo_horizon(l, r, d);
+                it++;
+                if (r < r_r.r) {
+                    *it = {r, r_r.r, r_r.d};
+                }
+            } else {
+                horizon.erase(next(l_), r_);
+                *it = {l, r, d};
+                if (l_l.l < l) {
+                    it = horizon.insert(it, {l_l.l, l, l_l.d});
+                    it++;
+                }
+                if (r < r_r.r) {
+                    horizon.insert(next(it), {r, r_r.r, r_r.d});
+                }
+            }
+
+            r_vec.emplace_back(r);
+
+            chmax(H, d);
+
+            if (W + H > lim) {
+                return {W, H};
+            }
+        }
+        return {W, H};
+    }
+
+    pair<int, int> sa(int time_lim, const vector<pair<int, int>> &wh,
+                      vector<vector<int>> &state_l,
+                      vector<vector<int>> &state_r) {
+        static int cnt = 0;
+        auto [W, H] = evaluate(1000000000, wh, state_l, state_r);
+        int now_score = W + H;
+        int diff_lim = 0;
+        int s = state_l.size();
+        static int max_cycle = N * 20;
+        int cycle_cnt = 0;
+        while (true) {
+            cycle_cnt++;
+            cnt++;
+            if (cycle_cnt > max_cycle) {
+                break;
+            }
+            if ((cnt & 127) == 0) {
+                time_keeper.setNowTime();
+                if (time_keeper.getNowTime() > time_lim) {
+                    break;
+                }
+            }
+            int mode = xorshift() % 15;
+            if (mode >= 6) {
+                // 一個を回転
+                int index = xorshift() % N;
+                actions[index].r ^= 1;
+                int lim = now_score + diff_lim;
+                auto [newW, newH] = evaluate(lim, wh, state_l, state_r);
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
+                    if (new_score < now_score) {
+                        cycle_cnt = 0;
+                    }
+                    W = newW;
+                    H = newH;
+                    now_score = new_score;
+                } else {
+                    actions[index].r ^= 1;
+                }
+            } else if (mode <= 3) {
+                // スワップ追加
+                int index = xorshift() % (s - 1);
+                if (state_r[index].size() == 0 or
+                    state_l[index + 1].size() == 0) {
+                    continue;
+                }
+                int i1 = xorshift() % state_r[index].size();
+                int i2 = xorshift() % state_l[index + 1].size();
+                int v1 = state_r[index][i1];
+                int v2 = state_l[index + 1][i2];
+                state_r[index].erase(state_r[index].begin() + i1);
+                state_l[index + 1].erase(state_l[index + 1].begin() + i2);
+                auto it1 = state_r[index].begin();
+                auto it2 = state_l[index + 1].begin();
+
+                while (it2 != state_l[index + 1].end() and *it2 < v1) {
+                    it2++;
+                }
+                while (it1 != state_r[index].end() and *it1 < v2) {
+                    it1++;
+                }
+                it2 = state_l[index + 1].insert(it2, v1);
+                it1 = state_r[index].insert(it1, v2);
+
+                int r1 = xorshift() % 2;
+                int r2 = xorshift() % 2;
+                actions[v1].r ^= r1;
+                actions[v2].r ^= r2;
+
+                int lim = now_score + diff_lim;
+                auto [newW, newH] = evaluate(lim, wh, state_l, state_r);
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
+                    if (new_score < now_score) {
+                        cycle_cnt = 0;
+                    }
+                    W = newW;
+                    H = newH;
+                    now_score = new_score;
+                } else {
+                    state_r[index].erase(it1);
+                    state_l[index + 1].erase(it2);
+                    auto it1 = state_r[index].begin() + i1;
+                    auto it2 = state_l[index + 1].begin() + i2;
+                    state_l[index + 1].insert(it2, v2);
+                    state_r[index].insert(it1, v1);
+                    actions[v1].r ^= r1;
+                    actions[v2].r ^= r2;
+                }
+            } else if (mode == 4) {
+                // 下に移動
+                int index = xorshift() % (s - 1);
+                if (state_r[index].size() == 0) {
+                    continue;
+                }
+                int i1 = xorshift() % state_r[index].size();
+                int v1 = state_r[index][i1];
+                state_r[index].erase(state_r[index].begin() + i1);
+                auto it2 = state_l[index + 1].begin();
+                while (it2 != state_l[index + 1].end() and *it2 < v1) {
+                    it2++;
+                }
+                it2 = state_l[index + 1].insert(it2, v1);
+
+                int r1 = xorshift() % 2;
+                actions[v1].r ^= r1;
+
+                int lim = now_score + diff_lim;
+                auto [newW, newH] = evaluate(lim, wh, state_l, state_r);
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
+                    if (new_score < now_score) {
+                        cycle_cnt = 0;
+                    }
+                    W = newW;
+                    H = newH;
+                    now_score = new_score;
+                } else {
+                    state_l[index + 1].erase(it2);
+                    auto it1 = state_r[index].begin() + i1;
+                    state_r[index].insert(it1, v1);
+                    actions[v1].r ^= r1;
+                }
+            } else if (mode == 5) {
+                // 上へ移動
+                int index = xorshift() % (s - 1);
+                if (state_l[index + 1].size() == 0) {
+                    continue;
+                }
+                int i2 = xorshift() % state_l[index + 1].size();
+                int v2 = state_l[index + 1][i2];
+                state_l[index + 1].erase(state_l[index + 1].begin() + i2);
+                auto it1 = state_r[index].begin();
+                while (it1 != state_r[index].end() and *it1 < v2) {
+                    it1++;
+                }
+                it1 = state_r[index].insert(it1, v2);
+                int r2 = xorshift() % 2;
+                actions[v2].r ^= r2;
+                int lim = now_score + diff_lim;
+                auto [newW, newH] = evaluate(lim, wh, state_l, state_r);
+                int new_score = newW + newH;
+                if (newW + newH <= lim) {
+                    if (new_score < now_score) {
+                        cycle_cnt = 0;
+                    }
+                    W = newW;
+                    H = newH;
+                    now_score = new_score;
+                } else {
+                    state_r[index].erase(it1);
+                    auto it2 = state_l[index + 1].begin() + i2;
+                    state_l[index + 1].insert(it2, v2);
+                    actions[v2].r ^= r2;
+                }
+            }
+        }
+
+        rep(i, s) {
+            int prev = -1;
+            for (auto j : state_l[i]) {
+                actions[j].b = prev;
+                prev = j;
+            }
+            for (auto j : state_r[i]) {
+                actions[j].b = prev;
+                prev = j;
+            }
+        }
+        return {W, H};
     }
     void solve() {
-        make_init_sol();
-        vector<vector<pair<int, int>>> wh_tmp(N, vector<pair<int, int>>());
-        rep(i, N) { wh_tmp[i].emplace_back(wh[i]); }
-        rep(i, T - 1) {
-            auto wh = output.query({Action(i % N, 0, "U", -1)});
-            wh_tmp[i % N].emplace_back(wh);
-        }
-        rep(i, N) {
-            int w = 0;
-            int h = 0;
-            for (auto [p, q] : wh_tmp[i]) {
-                w += p;
-                h += q;
-            }
-            wh[i].first = w / (int)wh_tmp[i].size();
-            wh[i].second = h / (int)wh_tmp[i].size();
-        }
-        sa();
-        // rep(i, N) {
-        //     if (split[i] == 1) {
-        //         actions[i].b = -1;
-        //     } else {
-        //         actions[i].b = i - 1;
-        //     }
-        // }
+        vector<vector<Action_>> queryes;
+        queryes.reserve(T);
+        vector<tuple<int, int, int>> results;
+        results.reserve(T);
 
-        output.query(actions);
+        vector<vector<pair<int, int>>> tmp_wh_vec(N);
+        rep(i, N) { tmp_wh_vec[i].emplace_back(wh[i]); }
+        int num;
+        num = 20;
+        rep(i, T - num) {
+            int j = (-i % N + N) % N;
+            auto tmp = output.query({Action_(j, 0, "U", -1)});
+            tmp_wh_vec[j].emplace_back(tmp);
+            queryes.push_back({Action_(j, 0, "U", -1)});
+            results.emplace_back(1000000000, 1000000000, results.size());
+            int new_Sig = Sig / sqrt(1 + i / (double)N);
+        }
+        vector<pair<int, int>> tmp_wh(N);
+        rep(i, N) {
+            for (auto [w, h] : tmp_wh_vec[i]) {
+                tmp_wh[i].first += w;
+                tmp_wh[i].second += h;
+            }
+            tmp_wh[i].first /= tmp_wh_vec[i].size();
+            tmp_wh[i].second /= tmp_wh_vec[i].size();
+            chmin(tmp_wh[i].first, 100000);
+            chmax(tmp_wh[i].first, 10000);
+            chmin(tmp_wh[i].second, 100000);
+            chmax(tmp_wh[i].second, 10000);
+        }
+
+        wh = tmp_wh;
+
+        int size = 150;
+        make_init_sol();
+        int time = TIME_LIMIT / size;
+        vector<vector<Action_>> cands;
+        vector<tuple<int, int, int>> scores;
+        cands.reserve(size);
+        vector<int> tmp(N / sqrt_, sqrt_);
+        rep(i, N % (N / sqrt_)) { tmp[xorshift() % (N / sqrt_)] += 1; }
+        vector<int> sp1;
+        sp1.emplace_back(0);
+        for (auto i : tmp) {
+            sp1.emplace_back(*(sp1.rbegin()) + i);
+        }
+        vector<double> p = {0.65, 0.8, 0.95};
+        int i = 0;
+        vector<vector<int>> state_l;
+        vector<vector<int>> state_r;
+        while (true) {
+            rep(i, N) {
+                actions[i].r = xorshift() & 1;
+                actions[i].b = i - 1;
+            }
+            int height = 0;
+            if ((xorshift() & 1) == 0) {
+                height = 0;
+                for (auto i : sp1) {
+                    if (i < N) {
+                        actions[i].b = -1;
+                        height++;
+                    }
+                }
+            } else {
+                int r = 0;
+                height = 1;
+                best_wh = sqrt(sum_s / p[xorshift() % 3]);
+                rep(i, N) {
+                    if (actions[i].r == 0) {
+                        if (r + wh[i].first <= best_wh) {
+                            r += wh[i].first;
+                        } else {
+                            height++;
+                            actions[i].b = -1;
+                            r = wh[i].first;
+                        }
+                    } else {
+                        if (r + wh[i].second <= best_wh) {
+                            r += wh[i].second;
+                        } else {
+                            height++;
+                            actions[i].b = -1;
+                            r = wh[i].second;
+                        }
+                    }
+                }
+            }
+
+            int j = -1;
+            // 左半分(少し大きめ)
+            // 右半分
+            // i行目の右半分と、i+1行目の左半分は交換可能とする
+            state_l.assign(height, vector<int>());
+            state_r.assign(height, vector<int>());
+            int sum_w = 0;
+            int prev_ = 0;
+            rep(i, N) {
+                if (actions[i].b == -1) {
+                    int tmp = 0;
+                    for (int k = prev_; k < i; k++) {
+                        if (actions[k].r == 1) {
+                            tmp += wh[k].second;
+                        } else {
+                            tmp += wh[k].first;
+                        }
+                        if (tmp < sum_w * 0.6 and j > 0) {
+                            state_l[j].push_back(k);
+                        } else {
+                            state_r[j].push_back(k);
+                        }
+                    }
+                    j++;
+                    sum_w = 0;
+                    prev_ = i;
+                }
+                if (actions[i].r == 1) {
+                    sum_w += wh[i].second;
+                } else {
+                    sum_w += wh[i].first;
+                }
+            }
+            for (int i = prev_; i < N; i++) {
+                state_l[j].push_back(i);
+            }
+            int max_ = (int)(sqrt(N) / 2);
+            rep(i, height - 1) {
+                int cnt = xorshift() % max(1, max_);
+                rep(j, cnt) {
+                    swap(state_r[i][xorshift() % state_r[i].size()],
+                         state_l[i + 1][xorshift() % state_l[i + 1].size()]);
+                }
+                sort(all(state_r[i]));
+                sort(all(state_l[i + 1]));
+            }
+
+            auto [W, H] = sa(time * (i + 1), wh, state_l, state_r);
+            // auto [nW, nH] = sa2(time * (i + 2), wh, W, H);
+            // cerr << W << " " << H << " " << nW << " " << nH << el;
+            cands.emplace_back(actions);
+            scores.emplace_back(W, H, scores.size());
+            i++;
+            time_keeper.setNowTime();
+            if (time_keeper.isTimeOver()) {
+                break;
+            }
+        }
+        sort(all(scores));
+        sort(all(scores), [](tuple<int, int, int> a, tuple<int, int, int> b) {
+            return (get<0>(a) + get<1>(a) < get<0>(b) + get<1>(b));
+        });
+
+        int best_score = inf;
+        rep(i, size) {
+            if (i > 0 and get<0>(scores[i]) == get<0>(scores[i - 1]) and
+                get<1>(scores[i]) == get<1>(scores[i - 1])) {
+                continue;
+            }
+            if (true or
+                get<0>(scores[i]) + get<1>(scores[i]) < best_score + Sig * 2) {
+                // cout << "# " << get<0>(scores[i]) << " " << get<1>(scores[i])
+                //      << " "
+                //      << sum_s / (double)((ll)get<0>(scores[i]) *
+                //                          (ll)get<1>(scores[i]))
+                //      << el;
+                pair<int, int> tmp = output.query(cands[get<2>(scores[i])]);
+                queryes.emplace_back(cands[get<2>(scores[i])]);
+                results.emplace_back(tmp.first, tmp.second, results.size());
+
+                if (chmin(best_score, tmp.first + tmp.second)) {
+                    cout << "# is best_score\n";
+                }
+            }
+            if (queryes.size() >= T) {
+                break;
+            }
+        }
+        sort(all(results), [](tuple<int, int, int> a, tuple<int, int, int> b) {
+            return (get<0>(a) + get<1>(a) < get<0>(b) + get<1>(b));
+        });
+        auto best_ans = queryes[get<2>(results[0])];
+        int W = get<0>(results[0]);
+        int H = get<1>(results[0]);
+        int cnt = queryes.size();
+        while (cnt < T) {
+            int index = xorshift() % N;
+            int w = wh[index].first;
+            int h = wh[index].second;
+            if (actions[index].r == 1) {
+                swap(w, h);
+            }
+            if (W < H and ((double)h * 2 < (double)w)) {
+                continue;
+            }
+            if (H < W and ((double)w * 2 < (double)h)) {
+                continue;
+            }
+            best_ans[index].r ^= 1;
+            auto [new_w, new_h] = output.query(best_ans);
+            cnt++;
+            if (new_w + new_h < W + H) {
+                W = new_w;
+                H = new_h;
+            } else {
+                best_ans[index].r ^= 1;
+            }
+        };
     }
 };
-int main() {
+
+int main(int argc, char *argv[]) {
+    // seed = argv[1];
     time_keeper = TimeKeeperDouble(TIME_LIMIT);
     Input input;
     input.input();

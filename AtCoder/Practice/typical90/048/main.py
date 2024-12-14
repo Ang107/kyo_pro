@@ -33,3 +33,17 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+n, k = MII()
+ab = [LMII() for _ in range(n)]
+heap = []
+for i, (a, b) in enumerate(ab):
+    heap.append((-b, i))
+heapify(heap)
+ans = 0
+while heap and k:
+    p, i = heappop(heap)
+    ans += p
+    if i != -1:
+        heappush(heap, (-(ab[i][0] - ab[i][1]), -1))
+    k -= 1
+print(-ans)

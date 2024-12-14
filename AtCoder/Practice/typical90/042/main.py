@@ -11,9 +11,10 @@ import math
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 import string
-import pypyjit
 
-pypyjit.set_param("max_unroll_recursion=-1")
+# import pypyjit
+
+# pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 sys.setrecursionlimit(10**7)
@@ -33,3 +34,19 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+k = int(input())
+if k % 9 != 0:
+    print(0)
+    exit()
+mod = 10**9 + 7
+dp = [0] * (k + 1)
+# 各桁の和がiになるときの通り数
+dp[0] = 1
+for i in range(k + 1):
+    for j in range(1, 10):
+        if i + j <= k:
+            dp[i + j] += dp[i]
+            dp[i + j] %= mod
+
+
+print(dp[k])

@@ -547,6 +547,22 @@ struct Solver {
         }
 
         wh = tmp_wh;
+        // denug----------------
+        vector<pair<int, int>> sig0_wh(N);
+        ifstream file("in/" + seed + ".txt");
+        {
+            if (!file) { // ファイルが開けない場合のエラーチェック
+                cerr << "Error: Could not open the file!" << el;
+                return;
+            }
+            int n, t, sig;
+            file >> n >> t >> sig;
+            int x, y;
+            rep(i, N) { file >> x >> y; }
+            rep(i, N) { file >> sig0_wh[i].first >> sig0_wh[i].second; }
+        }
+        wh = sig0_wh;
+        // denug--------------------
 
         int size = 150;
         make_init_sol();
@@ -681,7 +697,8 @@ struct Solver {
     }
 };
 
-int main() {
+int main(int argc, char *argv[]) {
+    seed = argv[1];
     time_keeper = TimeKeeperDouble(TIME_LIMIT);
     Input input;
     input.input();

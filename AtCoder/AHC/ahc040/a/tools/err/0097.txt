@@ -1,3 +1,7 @@
-    Finished release [optimized] target(s) in 0.02s
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Finished release [optimized] target(s) in 0.04s
      Running `target/release/tester ../a.out 0097`
-Score = 1279748
+Score = 1222379

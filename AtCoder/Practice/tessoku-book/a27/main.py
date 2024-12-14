@@ -58,5 +58,38 @@ def is_not_Index_Er(x, y, h, w):
     return 0 <= x < h and 0 <= y < w  # 範囲外参照
 
 
+# 素因数分解
+# 戻り値は(素因数、指数)のタプル)
+def factorization(n):
+    arr = []
+    temp = n
+    for i in range(2, int(-(-(n**0.5) // 1)) + 1):
+        if temp % i == 0:
+            cnt = 0
+            while temp % i == 0:
+                cnt += 1
+                temp //= i
+            arr.append([i, cnt])
+
+    if temp != 1:
+        arr.append([temp, 1])
+
+    if arr == []:
+        arr.append([n, 1])
+
+    return arr
+
+
 a, b = MII()
-print(math.gcd(a, b))
+fa = factorization(a)
+fb = factorization(b)
+da = defaultdict(int)
+db = defaultdict(int)
+for i, j in fa:
+    da[i] = j
+for i, j in fb:
+    db[i] = j
+ans = 1
+for i in list(da.keys()):
+    ans *= i ** min(da[i], db[i])
+print(ans)

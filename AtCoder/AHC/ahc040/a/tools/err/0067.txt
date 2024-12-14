@@ -1,4 +1,12 @@
+<<<<<<< HEAD
     Blocking waiting for file lock on package cache
     Finished release [optimized] target(s) in 0.05s
      Running `target/release/tester ../a.out 0067`
 Score = 1131523
+=======
+    Finished `release` profile [optimized] target(s) in 0.02s
+     Running `target/release/tester ../a.out 0067`
+evaluate: 4890728
+sa: 163
+Score = 1141633
+>>>>>>> f78d164d4069e321c30aa33fedc51a591c414a76

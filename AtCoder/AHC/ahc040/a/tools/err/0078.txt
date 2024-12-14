@@ -1,3 +1,9 @@
-    Finished release [optimized] target(s) in 0.02s
+    Finished `release` profile [optimized] target(s) in 0.02s
      Running `target/release/tester ../a.out 0078`
+<<<<<<< HEAD
 Score = 815173
+=======
+evaluate: 8496192
+sa: 234
+Score = 822396
+>>>>>>> f78d164d4069e321c30aa33fedc51a591c414a76

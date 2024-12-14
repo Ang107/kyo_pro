@@ -1,4 +1,9 @@
-    Blocking waiting for file lock on package cache
-    Finished release [optimized] target(s) in 0.04s
+    Finished `release` profile [optimized] target(s) in 0.02s
      Running `target/release/tester ../a.out 0012`
+<<<<<<< HEAD
 Score = 1056410
+=======
+evaluate: 3112101
+sa: 159
+Score = 1094611
+>>>>>>> f78d164d4069e321c30aa33fedc51a591c414a76

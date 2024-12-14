@@ -197,7 +197,7 @@ struct Nodo_horizon {
         }
     }
 };
-string seed;
+int evcnt = 0;
 struct Solver {
     Input input;
     Output output;
@@ -229,6 +229,7 @@ struct Solver {
                             const vector<vector<int>> &state_l,
                             const vector<vector<int>> &state_r) {
         int s = state_l.size();
+        evcnt += 1;
         int W = 0;
         int H = 0;
         rep(i, s) {
@@ -581,7 +582,9 @@ struct Solver {
         int i = 0;
         vector<vector<int>> state_l;
         vector<vector<int>> state_r;
+        int sacnt = 0;
         while (true) {
+            sacnt++;
             rep(i, N) {
                 actions[i].r = xorshift() & 1;
                 actions[i].b = i - 1;
@@ -694,6 +697,8 @@ struct Solver {
                 break;
             }
         }
+        cerr << "evaluate: " << evcnt << el;
+        cerr << "sa: " << sacnt << el;
     }
 };
 

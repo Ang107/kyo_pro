@@ -1,17 +1,16 @@
 # 90度右回転させたリストを返す
 def list_rotate_R90(l):
-    return list(zip(*l[::-1]))
+    return [list(i) for i in zip(*l[::-1])]
 
 
 # 90度左回転させたリストを返す
 def list_rotate_L90(l):
-    return (list(zip(*l)))[::-1]
+    return ([list(i) for i in zip(*l)])[::-1]
 
 
 # 転置
 def tenti(l):
-    l = list(zip(*l))
-    return l
+    return [list(i) for i in zip(*l)]
 
 
 # 斜めに取得し、二つのリストを返す

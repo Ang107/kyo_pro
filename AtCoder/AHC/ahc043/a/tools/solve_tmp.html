@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>solve.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="ahc043-%E8%A7%A3%E6%B3%95-%E3%83%97%E3%83%AC%E3%83%86%E3%82%B9%E3%83%8820%E4%BD%8D">AHC043 解法 (プレテスト20位)</h1>
+<h2 id="0-%E5%89%8D%E6%8F%90">0. 前提</h2>
+<ul>
+<li>駅・路線は一つの木のように配置する</li>
+<li>駅の配置を止めるタイミングの考え方: 各駅を立てた時点で，得られる収益と損失は確定するので，利得の累積和を取り，それが最大値となる所まで駅を建てるのが最善になる．</li>
+</ul>
+<h2 id="1-%E3%83%87%E3%83%BC%E3%82%BF%E6%95%B4%E7%90%86">1. データ整理</h2>
+<p>駅の配置可能な場所は $N^2=2500$ あるが，含まれる家・職場の集合がユニークな置き方はもっと少ない．<br>
+例: seed 0: 150 通り, seed 8: 1638 通り</p>
+<p>後述するビームサーチでの遷移先の数を制限するためにも，ユニークな置き方のみを考えることにした．</p>
+<h2 id="2-%E5%88%9D%E6%9C%9F%E8%A7%A3%E9%A7%85%E3%81%AE%E9%85%8D%E7%BD%AE%E5%A0%B4%E6%89%80%E3%81%AE%E5%88%97%E7%94%9F%E6%88%90-%E5%B7%AE%E5%88%86%E6%9B%B4%E6%96%B0%E3%83%93%E3%83%BC%E3%83%A0%E3%82%B5%E3%83%BC%E3%83%81">2. 初期解（駅の配置場所の列）生成: 差分更新ビームサーチ</h2>
+<p>初期解を差分更新ビームサーチを用いて作った．<br>
+ビームサーチに，約 $1$ 秒を使った．</p>
+<ul>
+<li>
+<p>評価関数<br>
+$1$ ターン当たりの収益 / 現在のターン数</p>
+</li>
+<li>
+<p>遷移<br>
+ユニークな配置方法の全通りについて，そこに駅を置くことを遷移とする．</p>
+</li>
+<li>
+<p>現在のターン数の推定<br>
+路線設置にかかるターン数は，それより前に置いた駅とのマンハッタン距離の最小値とした．<br>
+駅・路線設置にかかる金額が貯まるまでのターン数については，現在の所持金と1ターン当たりの収益を管理することで計算可能．<br>
+上の二つを元に，指定した場所に駅の設置が完了するまでにかかる経過ターン数を計算し，それを用いた．</p>
+</li>
+<li>
+<p>重複除去<br>
+既に訪問済みの座標の集合を zobrist_hash で管理した．</p>
+</li>
+<li>
+<p>ビーム幅<br>
+私の実装では，実行時間が概ね $M,|unique|$ に比例しているようだったので，実行時間を揃えるために<br>
+ビーム幅 = 定数 / $M$ / $|unique|$ とした．</p>
+</li>
+<li>
+<p>解の列挙<br>
+全ての家・職場を含むように駅を配置する，もしくは $T$ ターン経過した全てのノードについて，解を列挙した．(生スコアで重複除去)<br>
+列挙した解のうち，最もスコアが良いものを，山登りに用いる初期解とした．</p>
+</li>
+</ul>
+<h2 id="3-%E8%A7%A3%E3%81%AE%E6%94%B9%E5%96%84-%E5%B1%B1%E7%99%BB%E3%82%8A">3. 解の改善: 山登り</h2>
+<p>残った $2$ 秒を山登りに使う．<br>
+約 $10^4$ 回程度は回った．</p>
+<ul>
+<li>
+<p>近傍</p>
+<ol>
+<li>$i$ 番目に設置する予定の駅を， $j$ 番目に設置するように変更する．</li>
+<li>$i$ 番目に設置する予定の駅の場所を，マンハッタン距離 $2$ の範囲でランダムに移動する．</li>
+</ol>
+<p>確率は同じ．<br>
+$1$ の近傍はスコア改善に繋がる．<br>
+$2$ の近傍は，スコアは改善しないものの，同スコアで異なる状態を作ることができるので，結果的に1の近傍による改善を促進する効果があった．</p>
+</li>
+<li>
+<p>評価関数<br>
+シミュレートして生スコアを評価値とする．</p>
+</li>
+<li>
+<p>路線の配置の決め方<br>
+BFSして最も近い駅と繋ぐ．<br>
+後で駅を置く予定のマスに重みづけを行い，通ったマスの重みの総和が大きくなるようなルートを採用した．</p>
+</li>
+</ul>
+<h2 id="4-%E5%85%A8%E4%BD%93%E3%82%92%E9%80%9A%E3%81%97%E3%81%A6">4. 全体を通して</h2>
+<p>ビーム &amp; 山登りということで，速度がそのままスコアに直結する &amp; 少しのスコア差が順位に響くので，定数倍高速化を頑張った．</p>
+
+</body>
+</html>

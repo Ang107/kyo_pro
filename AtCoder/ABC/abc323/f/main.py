@@ -38,3 +38,50 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
+xa, ya, xb, yb, xc, yc = MII()
+ans = 0
+
+if xb == xc and yb == yc:
+    pass
+elif xb == xc:
+    ans += abs(yb - yc)
+    tx = xb
+    if yb < yc:
+        ty = yb - 1
+    else:
+        ty = yb + 1
+    ans += abs(xa - tx) + abs(ya - ty)
+    if xa == xb and ((yb < ya and yb < yc) or (yb > ya and yb > yc)):
+        ans += 2
+elif yb == yc:
+    ans += abs(xb - xc)
+    ty = yb
+    if xb < xc:
+        tx = xb - 1
+    else:
+        tx = xb + 1
+    ans += abs(xa - tx) + abs(ya - ty)
+    if ya == yb and ((xb < xa and xb < xc) or (xb > xa and xb > xc)):
+        ans += 2
+else:
+    ans += abs(yb - yc)
+    ans += abs(xb - xc)
+    ans += 2
+    tmp = inf
+
+    tx = xb
+    if yb < yc:
+        ty = yb - 1
+    else:
+        ty = yb + 1
+    tmp = min(tmp, abs(xa - tx) + abs(ya - ty))
+
+    ty = yb
+    if xb < xc:
+        tx = xb - 1
+    else:
+        tx = xb + 1
+    tmp = min(tmp, abs(xa - tx) + abs(ya - ty))
+
+    ans += tmp
+print(ans)

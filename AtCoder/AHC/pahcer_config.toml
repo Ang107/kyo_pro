@@ -17,7 +17,7 @@ program = "g++"
 args = [
     "-std=c++20",
     "-O2",
-    "best.cpp",
+    "best.cpp",W
 ]
 
 [[test.test_steps]]

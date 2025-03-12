@@ -9,11 +9,7 @@ score_regex = '(?m)^\s*Score\s*=\s*(?P<score>\d+)\s*$'
 [test]
 start_seed = 0
 end_seed = 100
-<<<<<<< HEAD
 threads = 0
-=======
-threads = 1
->>>>>>> f78d164d4069e321c30aa33fedc51a591c414a76
 out_dir = "./pahcer"
 
 [[test.compile_steps]]

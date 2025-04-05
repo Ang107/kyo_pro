@@ -1,0 +1,77 @@
+Input = [
+    "8,0,950,0,850,0,750,0,650,0,550,0,450,0,350,0,250",
+    "7,0,850,100,850,-100,850,200,850,-200,850,300,850,-300,850",
+    "10,0,350,-100,550,100,550,-200,750,0,750,200,750,-300,950,-100,950,100,950,300,950",
+    "10,-300,650,300,650,-255,550,255,550,-210,450,210,450,-165,350,165,350,-120,250,120,250",
+    "18,-300,350,-175,350,-50,350,75,350,200,350,325,350,-325,550,-200,550,-75,550,50,550,175,550,300,550,-300,750,-175,750,-50,750,75,750,200,750,325,750",
+]
+
+g = 9.807
+
+
+def solve(n, xy):
+
+    ans = [(1, 5000, 0, 0, 2000)] * 21
+    xy = [(i, xy[i][0], xy[i][1]) for i in range(n)]
+    xy.sort(key=lambda x: xy[2], reverse=True)
+    h = [20 * i for i in range(21)]
+    h = h[(21 - n) // 2 :]
+    while len(h) > n:
+        h.pop()
+    for i in range(n):
+        t, x, y = xy[i]
+        hh = h[i]
+        idx = hh // 20
+        v0 = g * ((700 - h) / g) ** 0.5
+        t2 = ()
+
+
+import random
+
+random.seed(0)
+
+
+def native(n, xy):
+    ans = [[1, 5000, 0, 0, 2000] for _ in range(21)]
+    js = list(range(21))
+    random.shuffle(js)
+    ts = []
+    for i in range(n):
+        if xy[i][0] == 0:
+            ts.append(i + 1)
+
+    for i in range(n):
+        j = js[i]
+        ans[j][3] = 1
+        t = random.choice(ts)
+        ans[j][0] = t
+        ans[j][1] = random.randrange(5000, 45000)
+    for i in range(21):
+        if i == 20:
+            print(",".join(map(str, ans[i])), end=";\n")
+        else:
+            print(",".join(map(str, ans[i])))
+
+    # xy = [(i, xy[i][0], xy[i][1]) for i in range(n)]
+    # xy.sort(key=lambda x: xy[2], reverse=True)
+    # h = [20 * i for i in range(21)]
+    # h = h[(21 - n) // 2 :]
+    # while len(h) > n:
+    #     h.pop()
+    # for i in range(n):
+    #     t, 0,500 = xy[i]
+    #     hh = h[i]
+    #     idx = hh // 20
+    #     v0 = g * ((700-h) / g) ** 0.5
+    #     t2 =
+
+
+for i in range(5):
+    n = int(Input[i][0])
+    xy = []
+    a = [int(j) for j in Input[i].split(",")[1:]]
+    for j in range(0, 2 * n, 2):
+        tmp = (a[j], a[j + 1])
+        xy.append(tmp)
+    # solve(n, xy)
+    native(n, xy)

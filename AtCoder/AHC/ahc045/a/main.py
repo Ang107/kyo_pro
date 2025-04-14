@@ -10,6 +10,7 @@ from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 from functools import cache
 from string import ascii_lowercase, ascii_uppercase
+import random
 
 DEBUG = False
 # import pypyjit
@@ -142,6 +143,7 @@ N, M, Q, L, W = MII()
 G = list(map(int, input().split()))
 sq = []
 pos = []
+# 雑な場所の計算
 for _ in range(N):
     lx, rx, ly, ry = MII()
     sq.append((lx, rx, ly, ry))
@@ -155,25 +157,36 @@ edges = []
 for i in range(N):
     for j in range(i + 1, N):
         edges.append((dis[i][j], i, j))
-edges.sort(key=lambda x: x[0])
+edges.sort(key=lambda x: x[0], reverse=True)
 mst = [[] for _ in range(N)]
-for _, i, j in edges:
+for _, i, j in edges[::-1]:
     if uf.same(i, j):
         continue
     uf.merge(i, j)
     mst[i].append(j)
     mst[j].append(i)
 
-for _ in range(Q):
+first_times = 200
+second_times = Q - first_times
+query_times = [int(second_times * (i / N)) for i in G]
+first_times = Q - sum(query_times)
+
+# 全体の最適化
+for _ in range(first_times):
     cand = [random.randrange(N)]
     deq = deque()
     deq.append(cand[0])
     visited = [False] * N
     visited[cand[0]] = True
     dell_ed = []
-
     while len(cand) < L:
-        v = deq.popleft()
+        # bfs,dfsを混ぜる
+        if random.randrange(2) == 0:
+            v = deq.popleft()
+        else:
+            v = deq.pop()
+        # 辺の順番をランダムに
+        random.shuffle(mst[v])
         for next in mst[v]:
             if visited[next] == False and len(cand) < L:
                 visited[next] = True
@@ -188,32 +201,93 @@ for _ in range(Q):
         u, v = MII()
         mst[u].append(v)
         mst[v].append(u)
-print("!")
+        edges.append((-1, u, v))
+random.seed(0)
+# 分割
 used = [False] * N
+vv = []
+ee = []
+cnt2 = N
 for i in G:
-    c = []
-    ed = []
+    vs = []
+    es = [[] for _ in range(N)]
     prev = -1
-    while len(c) < i:
-        for j in range(N):
-            if not used[j]:
+    s = -1
+    for j in range(N):
+        if not used[j]:
+            cnt = 0
+            s = j
+            for next in mst[j]:
+                if used[next] == False:
+                    cnt += 1
+            if cnt == 1:
                 s = j
                 break
-        if prev != -1:
-            ed.append((prev, s))
-        prev = s
-        c = [s]
+    vs.append(s)
+    deq = deque()
+    deq.append(s)
+    used[s] = True
+    while deq:
+        v = deq.popleft()
+        for next in mst[v]:
+            if used[next] == False and len(vs) < i:
+                used[next] = True
+                vs.append(next)
+                deq.append(next)
+                es[v].append(next)
+                es[next].append(v)
+    uf = UnionFind(N)
+    for j in range(N):
+        for next in mst[j]:
+            if used[j] == used[next] == False:
+                uf.merge(j, next)
+    for _, j, k in edges[::-1]:
+        if not uf.same(j, k) and used[j] == used[k] == False:
+            uf.merge(j, k)
+            mst[j].append(k)
+            mst[k].append(j)
+
+    vv.append(vs)
+    ee.append(es)
+
+# 分割ごとの最適化
+for i in range(M):
+    t = query_times[i]
+    for _ in range(t):
+        cand = [random.choice(vv[i])]
         deq = deque()
-        deq.append(s)
-        used[s] = True
-        while deq:
-            v = deq.popleft()
-            for next in mst[v]:
-                if used[next] == False and len(c) < i:
-                    used[next] = True
-                    c.append(next)
+        deq.append(cand[0])
+        visited = [False] * N
+        visited[cand[0]] = True
+        dell_ed = []
+        while len(cand) < L and deq:
+            # bfs,dfsを混ぜる
+            if random.randrange(2) == 0:
+                v = deq.popleft()
+            else:
+                v = deq.pop()
+            # 辺の順番をランダムに
+            random.shuffle(ee[i][v])
+            for next in ee[i][v]:
+                if visited[next] == False and len(cand) < L:
+                    visited[next] = True
                     deq.append(next)
-                    ed.append((v, next))
-    print(*c, flush=True)
-    for u, v in ed:
-        print(u, v, flush=True)
+                    cand.append(next)
+                    dell_ed.append((v, next))
+        for u, v in dell_ed:
+            ee[i][u].remove(v)
+            ee[i][v].remove(u)
+        print("?", len(cand), *cand, flush=True)
+        for _ in range(len(cand) - 1):
+            u, v = MII()
+            ee[i][u].append(v)
+            ee[i][v].append(u)
+
+# 出力
+print("!")
+for i in range(M):
+    print(*vv[i], flush=True)
+    for j in range(N):
+        for next in ee[i][j]:
+            if j < next:
+                print(j, next, flush=True)

@@ -35,6 +35,7 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+<<<<<<< HEAD
 
 n, k = MII()
 m = n * k
@@ -52,3 +53,5 @@ for i in range(m):
     if len(ed[i]) == 1:
         
         
+=======
+>>>>>>> 518b309b (tmp)

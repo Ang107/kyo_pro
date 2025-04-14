@@ -1,0 +1,712 @@
+{
+  "start_time": "2025-04-06T19:11:30.114361494+09:00",
+  "case_count": 100,
+  "total_score": 26076912,
+  "total_score_log10": 540.2144859353181,
+  "total_relative_score": 9660.036866218705,
+  "max_execution_time": 0.862089149,
+  "comment": "",
+  "wa_seeds": [],
+  "cases": [
+    {
+      "seed": 0,
+      "score": 310145,
+      "relative_score": 101.66051363072111,
+      "execution_time": 0.414411561,
+      "error_message": ""
+    },
+    {
+      "seed": 1,
+      "score": 257781,
+      "relative_score": 94.84950403637195,
+      "execution_time": 0.292747699,
+      "error_message": ""
+    },
+    {
+      "seed": 2,
+      "score": 230700,
+      "relative_score": 97.4022540095362,
+      "execution_time": 0.26692305,
+      "error_message": ""
+    },
+    {
+      "seed": 3,
+      "score": 192261,
+      "relative_score": 98.45314442346603,
+      "execution_time": 0.508517729,
+      "error_message": ""
+    },
+    {
+      "seed": 4,
+      "score": 278060,
+      "relative_score": 87.02797957275408,
+      "execution_time": 0.427675207,
+      "error_message": ""
+    },
+    {
+      "seed": 5,
+      "score": 300488,
+      "relative_score": 91.2695348899124,
+      "execution_time": 0.503854556,
+      "error_message": ""
+    },
+    {
+      "seed": 6,
+      "score": 235467,
+      "relative_score": 98.40826952396726,
+      "execution_time": 0.162074461,
+      "error_message": ""
+    },
+    {
+      "seed": 7,
+      "score": 486617,
+      "relative_score": 97.65236315212991,
+      "execution_time": 0.187092122,
+      "error_message": ""
+    },
+    {
+      "seed": 8,
+      "score": 228653,
+      "relative_score": 91.63667216262196,
+      "execution_time": 0.186356813,
+      "error_message": ""
+    },
+    {
+      "seed": 9,
+      "score": 448252,
+      "relative_score": 96.69739343048107,
+      "execution_time": 0.32107296,
+      "error_message": ""
+    },
+    {
+      "seed": 10,
+      "score": 204663,
+      "relative_score": 99.73175415194734,
+      "execution_time": 0.173724282,
+      "error_message": ""
+    },
+    {
+      "seed": 11,
+      "score": 282396,
+      "relative_score": 89.23285032365898,
+      "execution_time": 0.222079329,
+      "error_message": ""
+    },
+    {
+      "seed": 12,
+      "score": 231622,
+      "relative_score": 97.78518448161229,
+      "execution_time": 0.214204298,
+      "error_message": ""
+    },
+    {
+      "seed": 13,
+      "score": 286246,
+      "relative_score": 97.20904396917336,
+      "execution_time": 0.446881894,
+      "error_message": ""
+    },
+    {
+      "seed": 14,
+      "score": 295817,
+      "relative_score": 94.96851093750529,
+      "execution_time": 0.472428019,
+      "error_message": ""
+    },
+    {
+      "seed": 15,
+      "score": 216253,
+      "relative_score": 93.02252454301212,
+      "execution_time": 0.588375345,
+      "error_message": ""
+    },
+    {
+      "seed": 16,
+      "score": 239781,
+      "relative_score": 96.59439238304954,
+      "execution_time": 0.225638335,
+      "error_message": ""
+    },
+    {
+      "seed": 17,
+      "score": 292205,
+      "relative_score": 89.50531305076915,
+      "execution_time": 0.234157883,
+      "error_message": ""
+    },
+    {
+      "seed": 18,
+      "score": 226753,
+      "relative_score": 98.25889844897311,
+      "execution_time": 0.151918512,
+      "error_message": ""
+    },
+    {
+      "seed": 19,
+      "score": 153688,
+      "relative_score": 98.85156941335693,
+      "execution_time": 0.814024953,
+      "error_message": ""
+    },
+    {
+      "seed": 20,
+      "score": 204891,
+      "relative_score": 98.95212576443085,
+      "execution_time": 0.150817641,
+      "error_message": ""
+    },
+    {
+      "seed": 21,
+      "score": 230325,
+      "relative_score": 100.14761749701509,
+      "execution_time": 0.234419386,
+      "error_message": ""
+    },
+    {
+      "seed": 22,
+      "score": 217847,
+      "relative_score": 95.16495522086602,
+      "execution_time": 0.228938987,
+      "error_message": ""
+    },
+    {
+      "seed": 23,
+      "score": 278930,
+      "relative_score": 95.51679632882802,
+      "execution_time": 0.185147242,
+      "error_message": ""
+    },
+    {
+      "seed": 24,
+      "score": 261487,
+      "relative_score": 94.4299334192522,
+      "execution_time": 0.403454927,
+      "error_message": ""
+    },
+    {
+      "seed": 25,
+      "score": 498772,
+      "relative_score": 96.60686646403566,
+      "execution_time": 0.2972328,
+      "error_message": ""
+    },
+    {
+      "seed": 26,
+      "score": 303025,
+      "relative_score": 97.34576355086215,
+      "execution_time": 0.501488998,
+      "error_message": ""
+    },
+    {
+      "seed": 27,
+      "score": 248352,
+      "relative_score": 96.60723489241077,
+      "execution_time": 0.230361206,
+      "error_message": ""
+    },
+    {
+      "seed": 28,
+      "score": 222265,
+      "relative_score": 97.48993318786134,
+      "execution_time": 0.519052135,
+      "error_message": ""
+    },
+    {
+      "seed": 29,
+      "score": 246155,
+      "relative_score": 93.98915317584449,
+      "execution_time": 0.3870921,
+      "error_message": ""
+    },
+    {
+      "seed": 30,
+      "score": 218410,
+      "relative_score": 99.90018772034247,
+      "execution_time": 0.629917935,
+      "error_message": ""
+    },
+    {
+      "seed": 31,
+      "score": 286033,
+      "relative_score": 100.40240112154892,
+      "execution_time": 0.248144475,
+      "error_message": ""
+    },
+    {
+      "seed": 32,
+      "score": 213561,
+      "relative_score": 96.7470652413128,
+      "execution_time": 0.397512411,
+      "error_message": ""
+    },
+    {
+      "seed": 33,
+      "score": 215639,
+      "relative_score": 92.50460259971527,
+      "execution_time": 0.162829478,
+      "error_message": ""
+    },
+    {
+      "seed": 34,
+      "score": 139258,
+      "relative_score": 98.94440534834624,
+      "execution_time": 0.862089149,
+      "error_message": ""
+    },
+    {
+      "seed": 35,
+      "score": 198471,
+      "relative_score": 100.00403081558515,
+      "execution_time": 0.159399449,
+      "error_message": ""
+    },
+    {
+      "seed": 36,
+      "score": 225658,
+      "relative_score": 92.06675588722757,
+      "execution_time": 0.229284465,
+      "error_message": ""
+    },
+    {
+      "seed": 37,
+      "score": 236233,
+      "relative_score": 99.65500162974689,
+      "execution_time": 0.608377949,
+      "error_message": ""
+    },
+    {
+      "seed": 38,
+      "score": 260216,
+      "relative_score": 98.53621606665232,
+      "execution_time": 0.248958076,
+      "error_message": ""
+    },
+    {
+      "seed": 39,
+      "score": 208139,
+      "relative_score": 97.19178049284373,
+      "execution_time": 0.389267556,
+      "error_message": ""
+    },
+    {
+      "seed": 40,
+      "score": 226238,
+      "relative_score": 98.68191904100992,
+      "execution_time": 0.412734776,
+      "error_message": ""
+    },
+    {
+      "seed": 41,
+      "score": 229587,
+      "relative_score": 97.79038011734113,
+      "execution_time": 0.167113839,
+      "error_message": ""
+    },
+    {
+      "seed": 42,
+      "score": 209778,
+      "relative_score": 93.41112986109124,
+      "execution_time": 0.677574268,
+      "error_message": ""
+    },
+    {
+      "seed": 43,
+      "score": 275988,
+      "relative_score": 94.06822035740684,
+      "execution_time": 0.270214462,
+      "error_message": ""
+    },
+    {
+      "seed": 44,
+      "score": 284612,
+      "relative_score": 97.43721276685451,
+      "execution_time": 0.294489999,
+      "error_message": ""
+    },
+    {
+      "seed": 45,
+      "score": 279654,
+      "relative_score": 100.82316004777331,
+      "execution_time": 0.33448826,
+      "error_message": ""
+    },
+    {
+      "seed": 46,
+      "score": 475496,
+      "relative_score": 97.64645759375473,
+      "execution_time": 0.196255803,
+      "error_message": ""
+    },
+    {
+      "seed": 47,
+      "score": 248445,
+      "relative_score": 95.80309525247036,
+      "execution_time": 0.407184658,
+      "error_message": ""
+    },
+    {
+      "seed": 48,
+      "score": 402665,
+      "relative_score": 97.92855102877081,
+      "execution_time": 0.22010161,
+      "error_message": ""
+    },
+    {
+      "seed": 49,
+      "score": 266971,
+      "relative_score": 94.7881979690678,
+      "execution_time": 0.199168459,
+      "error_message": ""
+    },
+    {
+      "seed": 50,
+      "score": 222373,
+      "relative_score": 95.86640464444875,
+      "execution_time": 0.202700201,
+      "error_message": ""
+    },
+    {
+      "seed": 51,
+      "score": 227895,
+      "relative_score": 99.86353364488032,
+      "execution_time": 0.246047287,
+      "error_message": ""
+    },
+    {
+      "seed": 52,
+      "score": 195626,
+      "relative_score": 99.06914213857054,
+      "execution_time": 0.466240296,
+      "error_message": ""
+    },
+    {
+      "seed": 53,
+      "score": 327363,
+      "relative_score": 90.67976527585586,
+      "execution_time": 0.308560301,
+      "error_message": ""
+    },
+    {
+      "seed": 54,
+      "score": 186121,
+      "relative_score": 92.38237490664675,
+      "execution_time": 0.51986035,
+      "error_message": ""
+    },
+    {
+      "seed": 55,
+      "score": 320767,
+      "relative_score": 96.61685896616548,
+      "execution_time": 0.408824242,
+      "error_message": ""
+    },
+    {
+      "seed": 56,
+      "score": 229118,
+      "relative_score": 94.45700468754092,
+      "execution_time": 0.393300716,
+      "error_message": ""
+    },
+    {
+      "seed": 57,
+      "score": 182295,
+      "relative_score": 99.77508982692888,
+      "execution_time": 0.528675029,
+      "error_message": ""
+    },
+    {
+      "seed": 58,
+      "score": 251417,
+      "relative_score": 96.8912205618554,
+      "execution_time": 0.517680259,
+      "error_message": ""
+    },
+    {
+      "seed": 59,
+      "score": 319032,
+      "relative_score": 98.81673311768098,
+      "execution_time": 0.225411214,
+      "error_message": ""
+    },
+    {
+      "seed": 60,
+      "score": 247342,
+      "relative_score": 93.10509335252404,
+      "execution_time": 0.423667019,
+      "error_message": ""
+    },
+    {
+      "seed": 61,
+      "score": 354069,
+      "relative_score": 98.88722254701767,
+      "execution_time": 0.362228264,
+      "error_message": ""
+    },
+    {
+      "seed": 62,
+      "score": 265091,
+      "relative_score": 94.3807975374494,
+      "execution_time": 0.293300707,
+      "error_message": ""
+    },
+    {
+      "seed": 63,
+      "score": 255800,
+      "relative_score": 97.28733385457389,
+      "execution_time": 0.588647125,
+      "error_message": ""
+    },
+    {
+      "seed": 64,
+      "score": 256349,
+      "relative_score": 91.68672395835365,
+      "execution_time": 0.427582505,
+      "error_message": ""
+    },
+    {
+      "seed": 65,
+      "score": 205385,
+      "relative_score": 96.38337755921805,
+      "execution_time": 0.38540133,
+      "error_message": ""
+    },
+    {
+      "seed": 66,
+      "score": 211186,
+      "relative_score": 93.48678416182891,
+      "execution_time": 0.539011844,
+      "error_message": ""
+    },
+    {
+      "seed": 67,
+      "score": 294486,
+      "relative_score": 100.27641381933267,
+      "execution_time": 0.350696352,
+      "error_message": ""
+    },
+    {
+      "seed": 68,
+      "score": 266394,
+      "relative_score": 102.39945344114356,
+      "execution_time": 0.747112221,
+      "error_message": ""
+    },
+    {
+      "seed": 69,
+      "score": 210885,
+      "relative_score": 97.09652180098158,
+      "execution_time": 0.178558337,
+      "error_message": ""
+    },
+    {
+      "seed": 70,
+      "score": 173879,
+      "relative_score": 98.8503499560039,
+      "execution_time": 0.710968674,
+      "error_message": ""
+    },
+    {
+      "seed": 71,
+      "score": 132488,
+      "relative_score": 91.24977356439828,
+      "execution_time": 0.828341534,
+      "error_message": ""
+    },
+    {
+      "seed": 72,
+      "score": 437328,
+      "relative_score": 99.22826802765887,
+      "execution_time": 0.259291054,
+      "error_message": ""
+    },
+    {
+      "seed": 73,
+      "score": 324774,
+      "relative_score": 98.89307641621559,
+      "execution_time": 0.287392812,
+      "error_message": ""
+    },
+    {
+      "seed": 74,
+      "score": 282928,
+      "relative_score": 96.44361816433863,
+      "execution_time": 0.163047088,
+      "error_message": ""
+    },
+    {
+      "seed": 75,
+      "score": 208674,
+      "relative_score": 98.20629306957264,
+      "execution_time": 0.64144731,
+      "error_message": ""
+    },
+    {
+      "seed": 76,
+      "score": 278447,
+      "relative_score": 99.07989671283943,
+      "execution_time": 0.367636594,
+      "error_message": ""
+    },
+    {
+      "seed": 77,
+      "score": 210928,
+      "relative_score": 97.2071038458621,
+      "execution_time": 0.169985947,
+      "error_message": ""
+    },
+    {
+      "seed": 78,
+      "score": 253001,
+      "relative_score": 90.95379069647946,
+      "execution_time": 0.380508791,
+      "error_message": ""
+    },
+    {
+      "seed": 79,
+      "score": 275635,
+      "relative_score": 92.55101855714986,
+      "execution_time": 0.202744729,
+      "error_message": ""
+    },
+    {
+      "seed": 80,
+      "score": 250423,
+      "relative_score": 93.31011927818132,
+      "execution_time": 0.246729153,
+      "error_message": ""
+    },
+    {
+      "seed": 81,
+      "score": 321495,
+      "relative_score": 100.9866405387331,
+      "execution_time": 0.481717076,
+      "error_message": ""
+    },
+    {
+      "seed": 82,
+      "score": 242056,
+      "relative_score": 93.62089764352051,
+      "execution_time": 0.460373437,
+      "error_message": ""
+    },
+    {
+      "seed": 83,
+      "score": 246153,
+      "relative_score": 93.95416671744809,
+      "execution_time": 0.259169597,
+      "error_message": ""
+    },
+    {
+      "seed": 84,
+      "score": 263564,
+      "relative_score": 94.67226176564326,
+      "execution_time": 0.364714984,
+      "error_message": ""
+    },
+    {
+      "seed": 85,
+      "score": 171668,
+      "relative_score": 100.1619404897826,
+      "execution_time": 0.607044246,
+      "error_message": ""
+    },
+    {
+      "seed": 86,
+      "score": 197691,
+      "relative_score": 99.68385004881355,
+      "execution_time": 0.15624964,
+      "error_message": ""
+    },
+    {
+      "seed": 87,
+      "score": 405370,
+      "relative_score": 101.14808693292548,
+      "execution_time": 0.268498706,
+      "error_message": ""
+    },
+    {
+      "seed": 88,
+      "score": 256505,
+      "relative_score": 99.79142706769849,
+      "execution_time": 0.339333116,
+      "error_message": ""
+    },
+    {
+      "seed": 89,
+      "score": 187943,
+      "relative_score": 95.60079385771218,
+      "execution_time": 0.511780919,
+      "error_message": ""
+    },
+    {
+      "seed": 90,
+      "score": 304519,
+      "relative_score": 99.8719291735491,
+      "execution_time": 0.477848873,
+      "error_message": ""
+    },
+    {
+      "seed": 91,
+      "score": 365954,
+      "relative_score": 98.63234176973063,
+      "execution_time": 0.185136942,
+      "error_message": ""
+    },
+    {
+      "seed": 92,
+      "score": 228270,
+      "relative_score": 96.8265650326368,
+      "execution_time": 0.732674308,
+      "error_message": ""
+    },
+    {
+      "seed": 93,
+      "score": 194529,
+      "relative_score": 98.92303975242766,
+      "execution_time": 0.159027477,
+      "error_message": ""
+    },
+    {
+      "seed": 94,
+      "score": 449127,
+      "relative_score": 97.77568482856742,
+      "execution_time": 0.420558099,
+      "error_message": ""
+    },
+    {
+      "seed": 95,
+      "score": 237078,
+      "relative_score": 100.41969309678672,
+      "execution_time": 0.279167108,
+      "error_message": ""
+    },
+    {
+      "seed": 96,
+      "score": 253716,
+      "relative_score": 97.90356146242254,
+      "execution_time": 0.175099993,
+      "error_message": ""
+    },
+    {
+      "seed": 97,
+      "score": 198716,
+      "relative_score": 90.32035668994948,
+      "execution_time": 0.657623555,
+      "error_message": ""
+    },
+    {
+      "seed": 98,
+      "score": 244212,
+      "relative_score": 98.0684814833014,
+      "execution_time": 0.217060246,
+      "error_message": ""
+    },
+    {
+      "seed": 99,
+      "score": 239898,
+      "relative_score": 95.49516878006486,
+      "execution_time": 0.345523898,
+      "error_message": ""
+    }
+  ]
+}

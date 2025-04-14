@@ -1,59 +1,60 @@
-# Description: Calculate AHC rating ver.2
-# Usage: python calc_rating.py <user_name>
-# Requires: requests
-# ref) https://img.atcoder.jp/file/AHC_rating_v2.pdf
-import argparse
-import math
-from datetime import date, datetime
-
-import requests
+import tkinter as tk
+from tkinter import messagebox
 
 
-def download_json(user_name: str):
-    url = f"https://atcoder.jp/users/{user_name}/history/json?contestType=heuristic"
-    response = requests.get(url)
-    response.raise_for_status()
+class BinarySearchGUI:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("数字当てゲーム")
+        self.low = 1
+        self.high = 1000
+        self.query_count = 0
+        self.max_queries = 10
+        self.history = []
 
-    return response.json()
+        self.label = tk.Label(master, text="", font=("Arial", 16))
+        self.label.pack(pady=20)
 
+        self.yes_button = tk.Button(
+            master, text="Yes", font=("Arial", 14), width=10, command=self.yes_pressed
+        )
+        self.yes_button.pack(side="left", padx=20, pady=20)
 
-def calc_rating(json: list):
-    Q = []
-    S = 724.4744301
-    R = 0.8271973364
+        self.no_button = tk.Button(
+            master, text="No", font=("Arial", 14), width=10, command=self.no_pressed
+        )
+        self.no_button.pack(side="right", padx=20, pady=20)
 
-    for result in json:
-        if not result["IsRated"]:
-            continue
+        self.next_question()
 
-        end_date = datetime.fromisoformat(result["EndTime"]).date()
-        days = (date.today() - end_date).days
-        performance = result["Performance"] + 150 - 100 * days / 365
-        weight = 1
+    def next_question(self):
+        if self.query_count >= self.max_queries:
+            messagebox.showinfo("結果", f"正解は {self.low} だと思います！")
+            self.master.destroy()
+            return
 
-        for i in range(100):
-            Q.append((performance - S * math.log(i + 1), weight))
+        if self.low == self.high:
+            messagebox.showinfo("結果", f"正解は {self.low} です！")
+            self.master.destroy()
+            return
 
-    if len(Q) == 0:
-        return 0
+        self.mid = (self.low + self.high) // 2
+        self.query_count += 1
+        question = f"Q{self.query_count}: N は {self.mid} 以下？"
+        self.label.config(text=question)
 
-    Q.sort(reverse=True)
-    si = 0
-    rating = 0
+        self.history.append((self.low, self.high, self.mid))
 
-    for q, weight in Q:
-        rating += q * (math.pow(R, si) - math.pow(R, si + weight))
-        si += weight
+    def yes_pressed(self):
+        self.high = self.mid
+        self.next_question()
 
-    rating = 400 / (math.exp((400 - rating) / 400)) if rating < 400 else rating
-
-    return rating
+    def no_pressed(self):
+        self.low = self.mid + 1
+        self.next_question()
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("user_name", type=str, help="AtCoder user name")
-    args = parser.parse_args()
-    json = download_json(args.user_name)
-    rating = calc_rating(json)
-    print(f"rating: {rating}")
+    root = tk.Tk()
+    app = BinarySearchGUI(root)
+    root.mainloop()

@@ -39,7 +39,9 @@ def tree_dp_pretreatment(g: list[list[int]], s: int = 0):
     s: 根
     g: グラフ
     木DPの前処理
-    頂点sを根としたときに、子から順に頂点を並べる。
+    頂点sを根としたときに、子から順に頂点を並べた結果と、
+    親 to 子のグラフ
+    子 to 親のグラフを返す。
     """
     from collections import deque
 
@@ -48,6 +50,8 @@ def tree_dp_pretreatment(g: list[list[int]], s: int = 0):
     deq = deque([s])
     visited = [False] * n
     visited[s] = True
+    to_child = [[] for _ in range(n)]
+    to_pearent = [[] for _ in range(n)]
     while deq:
         v = deq.popleft()
         order.append(v)
@@ -55,5 +59,7 @@ def tree_dp_pretreatment(g: list[list[int]], s: int = 0):
             if visited[next] == False:
                 visited[next] = True
                 deq.append(next)
+                to_child[v].append(next)
+                to_pearent[next].append(v)
     order = order[::-1]
-    return order
+    return order, to_child, to_pearent

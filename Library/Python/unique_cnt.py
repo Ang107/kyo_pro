@@ -1,4 +1,5 @@
-# リストに含まれる要素の種類数を返す(O(N√N))
+# リストに含まれる要素の種類数を返す(O(NlogN))
+# setよりも早い場合あり
 def unique_cnt(a: list) -> int:
     if not a:
         return 0

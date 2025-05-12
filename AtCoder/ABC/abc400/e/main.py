@@ -35,10 +35,8 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-import time
 
-start = time.perf_counter()
-q = II()
+Q = II()
 
 
 def get_primes(n):
@@ -60,59 +58,34 @@ def get_primes(n):
     return primes
 
 
-primes = get_primes(10**6)
-n = len(primes)
-cand = []
-for i in primes:
-    for j in range(2, 64, 2):
-        if i**j > 10**12:
-            break
-        cand.append(i**j)
-cand.sort()
-print(len(cand))
-# print(time.perf_counter() - start)
-# print(n)
-# mx = 10**12
-# cand = []
-# for i in range(n):
-#     x = primes[i]
-#     for j in range(i + 1, n):
-#         y = primes[j]
-#         for p in range(2, 100, 2):
-#             if x**p > mx:
-#                 break
-#             for q in range(2, 100, 2):
-#                 # print(x, y, p, q)
-#                 tmp = x**p * y**q
-#                 if tmp > mx:
-#                     break
-#                 cand.append(tmp)
+# 以下
+def le(l, x):
+    idx = bisect_left(l, x)
+    if 0 <= idx < len(l) and l[idx] == x:
+        return x
+    elif 0 <= idx - 1 < len(l):
+        return l[idx - 1]
+    else:
+        return None
 
-# cand.sort()
-cnt = 0
-for _ in range(q):
-    a = II()
-    # print(cand[bisect_left(cand, a)])
-    ans = 0
-    for i in primes:
-        if i**4 > a:
+
+primes = get_primes(1000001)
+# print(len(primes))
+cand = []
+n = len(primes)
+for i in range(n):
+    for j in range(i + 1, n):
+        if primes[i] ** 2 * primes[j] ** 2 > 10**12:
             break
-        for p in range(2, 64, 2):
-            tmp = i**p
-            if tmp * i**2 >= a:
+        for p in range(2, 10**6, 2):
+            if primes[i] ** p * primes[j] ** 2 > 10**12:
                 break
-            idx2 = bisect_right(cand, a // tmp) - 1
-            # for j in range(idx2, -1, -1):
-            #     if cand[j] != i:
-            #         cnt += abs(j - idx2)
-            #         ans = max(ans, tmp * cand[j][0])
-            #         break
-            # for j in primes[idx + 1 :]:
-            #     if tmp * j**2 > a:
-            #         break
-            #     for q in range(2, 64, 2):
-            #         if tmp * j**q > a:
-            #             break
-            #         ans = max(ans, tmp * j**q)
-    print(ans)
-print(time.perf_counter() - start)
+            for q in range(2, 10**6, 2):
+                if primes[i] ** p * primes[j] ** q > 10**12:
+                    break
+                cand.append(primes[i] ** p * primes[j] ** q)
+cand.sort()
+
+for i in range(Q):
+    a = II()
+    print(le(cand, a))

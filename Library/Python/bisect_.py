@@ -1,7 +1,7 @@
 from bisect import bisect_left, insort_left, bisect_right, insort_right
 
 
-# 以下
+# lの中でx以下の要素のうちの最大のもの
 def le(l, x):
     idx = bisect_left(l, x)
     if 0 <= idx < len(l) and l[idx] == x:
@@ -12,7 +12,7 @@ def le(l, x):
         return None
 
 
-# 以上
+# lの中でx以上の要素のうちの最小のもの
 def ge(l, x):
     idx = bisect_right(l, x)
     if 0 <= idx - 1 < len(l) and l[idx - 1] == x:
@@ -23,7 +23,7 @@ def ge(l, x):
         return None
 
 
-# より小さい
+#  lの中でxより小さい要素のうち最大のもの
 def lt(l, x):
     idx = bisect_left(l, x)
     if 0 <= idx - 1 < len(l):
@@ -32,7 +32,7 @@ def lt(l, x):
         return None
 
 
-# より大きい
+# lの中でxより大きい要素のうち最小のもの
 def gt(l, x):
     idx = bisect_right(l, x)
     if 0 <= idx < len(l):

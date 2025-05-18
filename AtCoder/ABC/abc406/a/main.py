@@ -41,3 +41,7 @@ if c < a or (c == a and d < b):
     PY()
 else:
     PN()
+if (c, d) < (a, b):
+    PY()
+else:
+    PN()

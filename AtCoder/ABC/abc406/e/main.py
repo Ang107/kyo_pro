@@ -110,9 +110,52 @@ class Factorial:
 
 fac = Factorial()
 t = II()
-mask = [0]
-for i in range(64):
-    mask.append(mask[-1] | (1 << i))
+
+min_ = [0]
+for i in range(63):
+    min_.append(min_[-1] | (1 << i))
+# print([bin(i) for i in min_])
+
+
+def g(n, k):
+    global ans
+    if min_[k] > n:
+        return 0
+    if n == 0 and k == 0:
+        return 1
+
+    bn = bin(n)[2:]
+    res = 0
+    for i in range(len(bn) - 1):
+        ans += (1 << i) * fac.comb(len(bn) - 2, k - 1)
+        res += fac.comb(len(bn) - 2, k - 1)
+        ans %= mod
+        res %= mod
+    tmp = g(n - (1 << (len(bn) - 1)), k - 1)
+    ans += (1 << (len(bn) - 1)) * tmp
+    res += tmp
+    ans %= mod
+    res %= mod
+    print(n, k, res, ans)
+    return res
+
+
+def f(n, k):
+    global ans
+    bn = bin(n)[2:]
+    for i in range(len(bn) - 1):
+        ans += (1 << i) * fac.comb(len(bn) - 2, k - 1)
+        ans %= mod
+    # print(ans)
+    ans += (1 << (len(bn) - 1)) * g(n - (1 << (len(bn) - 1)), k - 1)
+
+    # print(ans, g(n - (1 << (len(bn) - 1)), k - 1))
+    # print(bn, bin(n - (1 << (len(bn) - 1)))[2:])
+
+    ans %= mod
+    return ans
+
+
 for _ in range(t):
     n, k = MII()
     ans = 0

@@ -1,5 +1,5 @@
+#include <atcoder/all>
 #include <bits/stdc++.h>
-
 // ────────────────────────────────────────────────────────────
 //   カラーミキサ・ソルバー（リファクタリング版／和訳コメント）
 //   ・アルゴリズムは元実装と同一。
@@ -167,6 +167,10 @@ struct Color {
     }
     Color operator*(double t) const { return {c * t, m * t, y * t}; }
 };
+inline double d2(const Color &a, const Color &b) {
+    return (a.c - b.c) * (a.c - b.c) + (a.m - b.m) * (a.m - b.m) +
+           (a.y - b.y) * (a.y - b.y);
+}
 inline double dot(const Color &a, const Color &b) {
     return a.c * b.c + a.m * b.m + a.y * b.y;
 }
@@ -186,6 +190,24 @@ struct MixState {
         m = (m * amt + dm * da) / (amt + da);
         y = (y * amt + dy * da) / (amt + da);
         amt += da;
+    }
+    void add(const Color &color, double da, double cap = 1e100) {
+        if (amt + da > cap) {
+            da = cap - amt;
+        }
+        if (da == 0.0)
+            return;
+        c = (c * amt + color.c * da) / (amt + da);
+        m = (m * amt + color.m * da) / (amt + da);
+        y = (y * amt + color.y * da) / (amt + da);
+        amt += da;
+    }
+    void dump() {
+        amt -= 1.0;
+        if (amt <= 0.0) {
+            amt = 0.0;
+            clear();
+        }
     }
     double error(const Color &tgt) const {
         double d2 = (tgt.c - c) * (tgt.c - c) + (tgt.m - m) * (tgt.m - m) +
@@ -219,21 +241,30 @@ struct MixState {
         y = 0;
         amt = 0;
     }
+    uint64_t hash() const {
+        uint64_t h_c = round(c * 10000);
+        uint64_t h_m = round(m * 10000);
+        uint64_t h_y = round(y * 10000);
+        uint64_t hash = (h_c << 28) | (h_m << 14) | (h_y);
+        return hash;
+    }
 };
 
 // ──────────────────────────────
 //  4. パレット上の 1 チューブ管理
 // ──────────────────────────────
-struct Action {          // 操作1回分
-    int tube_idx = 0;    // チューブ番号
-    int add_new = 0;     // 新規チューブを設置する個数
-    double real_amt = 0; // 実量
-    int use_blocks = 0;  // 分子
-    int blocks = 0;      // 分母
+struct Action {                   // 操作1回分
+    int tube_idx = 0;             // チューブ番号
+    int primary_or_secandary = 0; // 1: プライマリー 2 セカンダリー
+    int i = 0, j = 0;             // 追加する場所
+    int add_new = 0;              // 新規チューブを設置する個数
+    double real_amt = 0;          // 実量
+    int use_blocks = 0;           // 分子
+    int blocks = 0;               // 分母
 };
 
 struct Palette {
-    int tube_idx = 0;
+    int tube_idx = -1;
     int si = 0, sj = 0; // 左上座標
     int ti = 0,
         tj = 0;          // 一番後ろの座標(絵具を入れる場所)
@@ -298,7 +329,205 @@ struct Palette {
         return a;
     }
 };
+// ──────────────────────────────
+//  5.同色の複数分割したパレットを扱うクラス
+// ──────────────────────────────
+struct PaletteControler {
+    int tube_idx;
+    Palette primary;
+    Palette secondary;
+    // 連続量 → ブロック量 へ丸め込む(切り落とし，切り上げ双方で)
+    // プライマリー，セカンダリーの単体を用いる
+    pair<Action, Action> discretise_one(double amt) const {
+        Action best_l, best_r;
+        best_l.real_amt = 1e100;
+        best_l.real_amt = 1e100;
+        Action a;
+        assert(primary.tube_idx != -1 or secondary.tube_idx != -1);
+        if (primary.tube_idx != -1) {
+            a.i = primary.ti;
+            a.j = primary.tj;
+            a.primary_or_secandary = 1;
+            for (int use_blocks = primary.used_blocks;
+                 use_blocks <= primary.blocks; use_blocks++) {
+                a.add_new = 0;
+                a.tube_idx = tube_idx;
+                a.blocks = use_blocks;
+                double new_cap = primary.cap;
+                while (new_cap < amt) {
+                    new_cap += 1.0;
+                    a.add_new++;
+                }
 
+                double unit = new_cap / use_blocks;
+                a.use_blocks = int(floor(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_l.real_amt - amt)) {
+                    best_l = a;
+                }
+
+                a.use_blocks = int(ceil(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_r.real_amt - amt)) {
+                    best_r = a;
+                }
+            }
+        }
+        if (secondary.tube_idx != -1) {
+            a.i = secondary.ti;
+            a.j = secondary.tj;
+            a.primary_or_secandary = 2;
+            for (int use_blocks = secondary.used_blocks;
+                 use_blocks <= secondary.blocks; use_blocks++) {
+                a.add_new = 0;
+                a.tube_idx = tube_idx;
+                a.blocks = use_blocks;
+                double new_cap = primary.cap;
+                while (new_cap < amt) {
+                    new_cap += 1.0;
+                    a.add_new++;
+                }
+
+                double unit = new_cap / use_blocks;
+                a.use_blocks = int(floor(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_l.real_amt - amt)) {
+                    best_l = a;
+                }
+
+                a.use_blocks = int(ceil(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_r.real_amt - amt)) {
+                    best_r = a;
+                }
+            }
+        }
+        return {best_l, best_r};
+    }
+    pair<Action, Action> discretise_secondary(double amt) const {
+        Action best_l, best_r;
+        best_l.real_amt = 1e100;
+        best_l.real_amt = 1e100;
+        Action a;
+        assert(secondary.tube_idx != -1);
+        if (secondary.tube_idx != -1) {
+            a.i = secondary.ti;
+            a.j = secondary.tj;
+            a.primary_or_secandary = 2;
+            for (int use_blocks = secondary.used_blocks;
+                 use_blocks <= secondary.blocks; use_blocks++) {
+                a.add_new = 0;
+                a.tube_idx = tube_idx;
+                a.blocks = use_blocks;
+                double new_cap = primary.cap;
+                while (new_cap < amt) {
+                    new_cap += 1.0;
+                    a.add_new++;
+                }
+
+                double unit = new_cap / use_blocks;
+                a.use_blocks = int(floor(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_l.real_amt - amt)) {
+                    best_l = a;
+                }
+
+                a.use_blocks = int(ceil(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_r.real_amt - amt)) {
+                    best_r = a;
+                }
+            }
+        }
+        return {best_l, best_r};
+    }
+    // 連続量 → ブロック量 へ丸め込む(切り落とし，切り上げ双方で)
+    // プライマリー，セカンダリーの双方の和として用いる
+    pair<pair<Action, Action>, pair<Action, Action>>
+    discretise_two(double amt) const {
+        assert(primary.tube_idx != -1 and secondary.tube_idx != -1);
+        pair<Action, Action> best_l, best_r;
+        best_l.first.real_amt = 1e100;
+        best_l.second.real_amt = 1e100;
+        best_r.first.real_amt = 1e100;
+        best_r.second.real_amt = 1e100;
+        double min_diff_l = 1e100;
+        double min_diff_r = 1e100;
+        for (int blocks = primary.used_blocks; blocks <= primary.blocks;
+             blocks++) {
+            for (int use_blocks = 0; use_blocks <= blocks; use_blocks++) {
+                if (amt < primary.cap * (use_blocks - 1) / blocks) {
+                    break;
+                }
+                double primary_use_amt = primary.cap * use_blocks / blocks;
+                double need_amt = amt - primary_use_amt;
+                if (need_amt <= 0) {
+                    if (primary_use_amt - amt < min_diff_r) {
+                        min_diff_r = primary_use_amt - amt;
+                        Action a;
+                        a.i = primary.ti;
+                        a.j = primary.tj;
+                        a.tube_idx best_r.first =
+                    }
+                    continue;
+                }
+                auto [l, r] = discretise_secondary()
+            }
+            for (int)
+                a.add_new = 0;
+            a.tube_idx = tube_idx;
+            a.blocks = use_blocks;
+            double new_cap = primary.cap;
+            while (new_cap < amt) {
+                new_cap += 1.0;
+                a.add_new++;
+            }
+
+            double unit = new_cap / use_blocks;
+            a.use_blocks = int(floor(amt / unit));
+            a.real_amt = new_cap * a.use_blocks / use_blocks;
+            if (abs(a.real_amt - amt) < abs(best_l.real_amt - amt)) {
+                best_l = a;
+            }
+
+            a.use_blocks = int(ceil(amt / unit));
+            a.real_amt = new_cap * a.use_blocks / use_blocks;
+            if (abs(a.real_amt - amt) < abs(best_r.real_amt - amt)) {
+                best_r = a;
+            }
+        }
+        if (secondary.tube_idx != -1) {
+            a.i = secondary.ti;
+            a.j = secondary.tj;
+            a.primary_or_secandary = 2;
+            for (int use_blocks = secondary.used_blocks;
+                 use_blocks <= secondary.blocks; use_blocks++) {
+                a.add_new = 0;
+                a.tube_idx = tube_idx;
+                a.blocks = use_blocks;
+                double new_cap = primary.cap;
+                while (new_cap < amt) {
+                    new_cap += 1.0;
+                    a.add_new++;
+                }
+
+                double unit = new_cap / use_blocks;
+                a.use_blocks = int(floor(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_l.real_amt - amt)) {
+                    best_l = a;
+                }
+
+                a.use_blocks = int(ceil(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_r.real_amt - amt)) {
+                    best_r = a;
+                }
+            }
+        }
+        return {best_l, best_r};
+    }
+};
 // ──────────────────────────────
 //  5. 入力
 // ──────────────────────────────
@@ -391,6 +620,12 @@ struct Well {
         y = 0.0;
     }
 };
+struct Well2 {
+    int i, j;    // 代表の座標
+    double cap;  // 絵具の上限
+    MixState ms; // 色とか量とか
+};
+
 // ──────────────────────────────
 //  6. Tが小さいときのための特殊ソルバー
 // ──────────────────────────────
@@ -399,6 +634,10 @@ class Small_T_Solver {
     int tubes_used = 0;
     double err_sum = 0;
     double eps = 1e-6;
+    int well_w = 1;
+    int well_h = 4;
+    double well_cap = well_w * well_h;
+    int well_num = in.N / well_w * in.N / well_h;
     int max_turn = 0;
     int max_well = 100;
     int max_iter = 1000;
@@ -499,7 +738,7 @@ class Small_T_Solver {
                 min_amt = well.amt;
                 dump_well_idx = well_idx;
             }
-            rep(i, min(5, max_turn + 1)) {
+            rep(i, min(2, max_turn + 1)) {
                 if (actions[i].size() > 1000) {
                     rep(_, max_iter) {
                         MixStateWithAction &action =
@@ -592,13 +831,13 @@ class Small_T_Solver {
     void init_wells() {
         used_wells.reserve(max_well);
         clean_wells.reserve(max_well);
-        for (int i = 0; i < in.N; i += 2) {
-            for (int j = 0; j < in.N; j += 2) {
+        for (int i = 0; i < in.N; i += well_h) {
+            for (int j = 0; j < in.N; j += well_w) {
                 Well well;
                 well.amt = 0;
                 well.i = i;
                 well.j = j;
-                well.cap = 400.0 / max_well;
+                well.cap = well_cap;
                 clean_wells.push_back(well);
             }
         }
@@ -608,7 +847,7 @@ class Small_T_Solver {
         sep_h = vector<string>(in.N - 1);
         rep(i, in.N) {
             rep(j, in.N - 1) {
-                if (j % 2 == 0) {
+                if (j % well_w != well_w - 1) {
                     sep_v[i] += "0";
                     if (j == in.N - 2) {
                         sep_v[i] += '\n';
@@ -622,7 +861,7 @@ class Small_T_Solver {
         }
         rep(i, in.N - 1) {
             rep(j, in.N) {
-                if (i % 2 == 0) {
+                if (i % well_h != well_h - 1) {
                     sep_h[i] += "0 ";
                 } else {
                     sep_h[i] += "1";
@@ -680,7 +919,6 @@ class Solver {
     vector<Palette> palettes;
     vector<vector<int>> cmds; // 出力コマンド蓄積
 
-    int max_colors = 0;
     int tubes_used = 0;
     double err_sum = 0;
     int random_iter = 0;
@@ -692,66 +930,59 @@ class Solver {
     // double anneal_tl;
     double discretise_tl;
     TimeKeeper tk;
+    vector<vector<vector<double>>> best_coefs;
+    vector<vector<double>> best_coefs_err;
     // vector<vector<double>> init_coefs;
 
   public:
     int final_cost;
 
-    Solver(const Input &_in, TimeKeeper tk) : in(_in), tk(tk) {}
+    Solver(const Input &_in, TimeKeeper tk) : in(_in), tk(tk) {
+        make_best_coefs();
+    }
 
     //----------------------------------
     void solve() {
-        vector<vector<double>> coefs;
-        coefs.reserve(in.T);
-        int used_turn = 0;
-        max_colors = max(1, int((ceil(in.T - 3 * in.H) / (4.0 * in.H))));
-        // make_init_coef();
-        rep(h, in.H) {
-            // tk.update();
-            // anneal_tl = (2600.0 - tk.now()) / (in.H - h);
-            Color tgt = in.targets[h];
-            int remains = in.T - used_turn - (in.H - h) * 3;
-            max_colors = max(1, int(floor(remains / (4.0 * (in.H - h)))));
-            auto coef = find_mix(tgt, h);
-            coefs.push_back(coef);
-            used_turn += 3;
-            rep(i, in.K) {
-                if (coef[i] > eps) {
-                    used_turn += 4;
-                }
-            }
-        }
+        // dpで各ターンの使用色数を暫定計算
+        vector<int> can_use_colors = calc_use_colors();
         vector<int> used_tube_cnt(in.K);
-        for (const auto &coef : coefs) {
+        rep(h, in.H) {
+            const vector<double> &coef = best_coefs[can_use_colors[h]][h];
             rep(i, in.K) {
-                if (coef[i] > eps) {
+                if (coef[i] > 0.0) {
                     used_tube_cnt[i]++;
                 }
             }
         }
+        // 色の使用頻度に合わせて行数を調整
         for (int idx : in.need_idxs) {
             used_tube_cnt[idx]++;
         }
+        for (auto &c : used_tube_cnt) {
+            c = sqrt(c);
+        }
+
         vector<int> lines_size = calc_lines_size(used_tube_cnt);
         init_palettes(lines_size);
         err_sum = 0;
         tubes_used = 0;
+        int expected_used_turn = 0;
         rep(h, in.H) {
-            // tk.update();
-            // anneal_tl = (2600.0 - tk.now()) / (in.H - h);
-            Color tgt = in.targets[h];
-            int remains = in.T - cmds.size() - (in.H - h) * 3;
-            if (h < 500)
-                max_colors = max(1, int(ceil(remains / (4.0 * (in.H - h)))));
-            else
-                max_colors = max(1, int(floor(remains / (4.0 * (in.H - h)))));
-
-            cerr << "Max_Colors: " << h + 1 << " " << max_colors << '\n';
-            auto coef = find_mix(tgt, h);
+            const Color &tgt = in.targets[h];
+            int colors = can_use_colors[h];
+            // ターン数に余裕があるなら追加
+            if (colors < 4 and expected_used_turn - cmds.size() >= 4) {
+                int can_add = (expected_used_turn - cmds.size()) / 4;
+                colors += min(can_add, 4 - colors);
+            }
+            cerr << "Use_Colors: " << h + 1 << " " << colors << '\n';
+            auto coef = best_coefs[colors][h];
             auto acts = discretise(tgt, coef);
             cerr << "連続値のエラー: " << error_only(tgt, coef)
                  << " 離散値のエラー: " << error_only(tgt, acts) << '\n';
             commit(tgt, acts);
+            expected_used_turn += 3;
+            expected_used_turn += can_use_colors[h] * 4;
         }
         while (cmds.size() > in.T) {
             cmds.pop_back();
@@ -782,16 +1013,57 @@ class Solver {
         cerr << "Random_iter: " << random_iter << '\n';
         cerr << "Anneal_iter: " << anneal_iter << '\n';
         cerr << "Used_Turn: " << cmds.size() << " / " << in.T << '\n';
-        // cerr << "Used_Tube_Cnt: \n";
-        // for (int i = 0; i < (int)used_tube_cnt.size(); ++i) {
-        //     cerr << used_tube_cnt[i]
-        //          << (i + 1 == (int)used_tube_cnt.size() ? '\n' : ' ');
-        // }
     }
 
   private:
+    vector<int> calc_use_colors() {
+        // dpで各ターンに使用すべき絵具の本数を計算する
+        if (in.T >= 20000) {
+            return vector<int>(in.H, 4);
+        }
+        // i個目の目標まででjターン使用した場合の(エラーの合計の最小値,
+        // iターン目に使用するターン数)
+        int can_use_turn = (in.T - 3000) / 4;
+        vector<vector<pair<double, int>>> dp(
+            in.H + 1,
+            vector<pair<double, int>>(can_use_turn + 1, make_pair(1e100, -1)));
+        dp[0][0] = {0.0, -1};
+        rep(i, in.H) {
+            rep(j, can_use_turn) {
+                if (dp[i][j].first == 1e100) {
+                    continue;
+                }
+                for (int k = 1; k <= 4; k++) {
+                    if (j + k > can_use_turn) {
+                        break;
+                    }
+                    if (dp[i][j].first + best_coefs_err[k][i] <
+                        dp[i + 1][j + k].first) {
+                        dp[i + 1][j + k].first =
+                            dp[i][j].first + best_coefs_err[k][i];
+                        dp[i + 1][j + k].second = k;
+                    }
+                }
+            }
+        }
+        pair<double, int> best_pair = {1e100, -1};
+        int now_turn;
+        rep(i, can_use_turn + 1) {
+            if (dp[in.H][i].first < best_pair.first) {
+                best_pair = dp[in.H][i];
+                now_turn = i;
+            }
+        }
+        vector<int> res(in.H);
+        for (int i = in.H; i > 0; i--) {
+            res[i - 1] = dp[i][now_turn].second;
+            now_turn -= dp[i][now_turn].second;
+        }
+        return res;
+    }
     //----------------------------------
     vector<int> calc_lines_size(vector<int> used_tube_cnt) {
+        // todo used_tube_cnt はsqrtとっても良いかも
         int total_lines = 20;
         int K = in.K;
 
@@ -802,9 +1074,7 @@ class Solver {
                 count_pos++;
             }
         }
-        // 確保分が total_lines を超えないように仮定
-        // （もし count_pos > total_lines
-        // になりうるなら別途エラーハンドリングを入れてください）
+
         int remaining = total_lines - count_pos;
 
         vector<int> lines_size(K, 0);
@@ -1021,197 +1291,109 @@ class Solver {
         return s.error(tgt);
     }
 
-    //----------------------------------
-    // void make_init_coef() {
-    //     vector<double> coef(in.K, 0);
-    //     init_coefs = vector<vector<double>>(in.H);
-    //     vector<double> best_costs(in.H, 1e100);
-    //     TimeKeeper tk(random_tl);
-    //     int it = 0;
-    //     MixState ms;
-    //     while (true) {
-    //         ++it;
-    //         ++random_iter;
-    //         if (it % 100 == 0) {
-    //             tk.update();
-    //             if (tk.over())
-    //                 break;
-    //         }
-    //         int choose = min(in.K, max_colors);
-    //         fill(coef.begin(), coef.end(), 0.0);
-    //         ms.clear();
-    //         rep(k, choose) {
-    //             int idx = in.need_idxs[rnd::xorshift32() % in.Q];
-    //             double am = rnd::uniform01();
-    //             coef[idx] += am;
-    //             ms.add(in.tubes[idx].c, in.tubes[idx].m, in.tubes[idx].y,
-    //             am);
-    //         }
-    //         rep(i, in.H) {
-    //             const Color &tgt = in.targets[i];
-    //             double c = ms.error(tgt);
-    //             if (c < best_costs[i]) {
-    //                 best_costs[i] = c;
-    //                 init_coefs[i] = coef;
-    //             }
-    //         }
-    //     }
-    //     rep(i, in.H) { normalise(init_coefs[i]); }
-    // }
+    void make_best_coefs() {
+        best_coefs = vector<vector<vector<double>>>(5);
+        best_coefs_err = vector<vector<double>>(5);
 
-    //----------------------------------
-    // vector<double> anneal(const Color &tgt, const vector<double> &init_c) {
-    //     vector<double> best_c = init_c, curr_c = init_c;
-    //     double best_cost = cost(tgt, best_c), curr_cost = best_cost;
-    //     int curr_nz = count_if(curr_c.begin(), curr_c.end(),
-    //                            [](double v) { return v > 0; });
-    //     const double T0 = 100.0, Tend = 1e-3;
-    //     TimeKeeper tk(anneal_tl);
-    //     int it = 0;
-    //     MixState ms;
-    //     rep(i, in.K) {
-    //         if (init_c[i] > 1e-9) {
-    //             ms.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y,
-    //             init_c[i]);
-    //         }
-    //     }
-    //     while (true and best_cost > 1.0) {
-    //         ++it;
-    //         ++anneal_iter;
-    //         if (it % 50 == 0) {
-    //             normalise(curr_c);
-    //             ms.clear();
-    //             rep(i, in.K) {
-    //                 if (curr_c[i] > 1e-9) {
-    //                     ms.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y,
-    //                            curr_c[i]);
-    //                 }
-    //             }
-    //             tk.update();
-    //             if (tk.over())
-    //                 break;
-    //         }
-    //         double frac = min(1.0, tk.now() / anneal_tl);
-    //         double T = T0 * (1 - frac) + Tend * frac;
-    //         int idx = in.need_idxs[rnd::xorshift32() % in.Q];
-    //         double diff = rnd::uniform_real(-0.2, 0.2);
-    //         if ((diff < 0 && curr_c[idx] == 0) ||
-    //             (diff > 0 && curr_nz == max_colors && curr_c[idx] == 0))
-    //             continue;
+        int M = (int)in.need_idxs.size();
+        rep(tgt_index, in.H) {
+            int K = in.K;
+            std::vector<double> best(K, 0.0);
+            double best_e2 = 1e300;
+            const Color &tgt = in.targets[tgt_index];
+            // ――――――――――――――――――――――――――――――――――――
+            //  1) 単色 (lim >= 1)
+            // ――――――――――――――――――――――――――――――――――――
+            if (M >= 1) {
+                double best1 = 1e300;
+                int bestIdx = -1;
+                for (int xi = 0; xi < M; ++xi) {
+                    int i = in.need_idxs[xi];
+                    double e2 = norm2(in.tubes[i] - tgt);
+                    if (e2 < best1) {
+                        best1 = e2;
+                        bestIdx = i;
+                    }
+                }
+                if (bestIdx >= 0 && best1 < best_e2) {
+                    std::fill(best.begin(), best.end(), 0.0);
+                    best[bestIdx] = 1.0;
+                }
+            }
+            best_coefs[1].push_back(best);
+            best_coefs_err[1].push_back(sqrt(best_e2) * 10000.0);
+            // ――――――――――――――――――――――――――――――――――――
+            //  2) 二色混合 (lim >= 2)
+            // ――――――――――――――――――――――――――――――――――――
+            if (M >= 2) {
+                for (int xi = 0; xi < M; ++xi) {
+                    int i = in.need_idxs[xi];
+                    for (int xj = xi + 1; xj < M; ++xj) {
+                        int j = in.need_idxs[xj];
 
-    //         // 変化した後のコスト
-    //         double nxt_cost;
-    //         if (diff < 0) {
-    //             diff = max(diff, -curr_c[idx]);
-    //             nxt_cost = ms.error_if_add(in.tubes[idx].c, in.tubes[idx].m,
-    //                                        in.tubes[idx].y, diff, tgt);
-    //         } else {
-    //             nxt_cost = ms.error_if_add(in.tubes[idx].c, in.tubes[idx].m,
-    //                                        in.tubes[idx].y, diff, tgt);
-    //         }
-    //         double d = nxt_cost - curr_cost;
-    //         bool accept =
-    //             (d < 0) || (exp(-d / max(T, 1e-9)) > rnd::uniform01());
-    //         if (accept) {
-    //             ms.add(in.tubes[idx].c, in.tubes[idx].m, in.tubes[idx].y,
-    //             diff); if (curr_c[idx] == 0 && diff > 0)
-    //                 ++curr_nz;
-    //             curr_c[idx] += diff;
-    //             curr_cost = nxt_cost;
-    //             if (curr_c[idx] <= 0) {
-    //                 curr_c[idx] = 0;
-    //                 --curr_nz;
-    //             }
-    //             if (curr_cost < best_cost) {
-    //                 best_cost = curr_cost;
-    //                 best_c = curr_c;
-    //             }
-    //         }
-    //     }
-    //     normalise(best_c);
-    //     return best_c;
-    // }
+                        Color p = in.tubes[i];
+                        Color q = in.tubes[j];
+                        Color dcol = q - p;
+                        Color tp = tgt - p;
 
-    std::vector<double> projection_subset4(const Color &tgt,
-                                           const std::vector<int> &need_idxs,
-                                           int lim) const {
-        int K = in.K;
-        std::vector<double> best(K, 0.0);
-        double best_e2 = 1e300;
+                        double dd = norm2(dcol);
+                        if (dd < 1e-12)
+                            continue;
 
-        int M = (int)need_idxs.size();
-        // ――――――――――――――――――――――――――――――――――――
-        //  1) 四色混合 (lim >= 4)
-        // ――――――――――――――――――――――――――――――――――――
-        if (lim >= 4 && M >= 4) {
-            for (int xi = 0; xi < M; ++xi) {
-                int i = need_idxs[xi];
-                for (int xj = xi + 1; xj < M; ++xj) {
-                    int j = need_idxs[xj];
-                    for (int xk = xj + 1; xk < M; ++xk) {
-                        int k = need_idxs[xk];
-                        for (int xl = xk + 1; xl < M; ++xl) {
-                            int l = need_idxs[xl];
+                        double u = dot(tp, dcol) / dd;
+                        u = clamp(u, 0.0, 1.0);
 
-                            // 基準色 4 点を取り出す
+                        Color mix = p * u;
+                        mix += q * (1.0 - u);
+
+                        double e2 = norm2(mix - tgt);
+                        if (e2 < best_e2) {
+                            best_e2 = e2;
+                            std::fill(best.begin(), best.end(), 0.0);
+                            best[i] = u;
+                            best[j] = 1.0 - u;
+                        }
+                    }
+                }
+            }
+            best_coefs[2].push_back(best);
+            best_coefs_err[2].push_back(sqrt(best_e2) * 10000.0);
+            // ――――――――――――――――――――――――――――――――――――
+            //  3) 三色混合 (lim >= 3)
+            // ――――――――――――――――――――――――――――――――――――
+            if (M >= 3) {
+                for (int xi = 0; xi < M; ++xi) {
+                    int i = in.need_idxs[xi];
+                    for (int xj = xi + 1; xj < M; ++xj) {
+                        int j = in.need_idxs[xj];
+                        for (int xk = xj + 1; xk < M; ++xk) {
+                            int k = in.need_idxs[xk];
+
                             Color pi = in.tubes[i];
                             Color pj = in.tubes[j];
                             Color pk = in.tubes[k];
-                            Color pl = in.tubes[l];
 
-                            // pl を原点にシフト
-                            Color ei = pi - pl;
-                            Color ej = pj - pl;
-                            Color ek = pk - pl;
-                            Color v = tgt - pl;
+                            Color ei = pi - pk;
+                            Color ej = pj - pk;
+                            Color v = tgt - pk;
 
-                            // 3×3 行列 M の要素
                             double m00 = dot(ei, ei);
                             double m01 = dot(ei, ej);
-                            double m02 = dot(ei, ek);
-                            double m10 = m01; // dot(ej,ei)
                             double m11 = dot(ej, ej);
-                            double m12 = dot(ej, ek);
-                            double m20 = m02; // dot(ek,ei)
-                            double m21 = m12; // dot(ek,ej)
-                            double m22 = dot(ek, ek);
-
-                            // 右辺ベクトル b
                             double b0 = dot(ei, v);
                             double b1 = dot(ej, v);
-                            double b2 = dot(ek, v);
-
-                            // 行列式 det(M)
-                            double det = m00 * (m11 * m22 - m12 * m21) -
-                                         m01 * (m10 * m22 - m12 * m20) +
-                                         m02 * (m10 * m21 - m11 * m20);
-                            if (std::abs(det) < 1e-12)
+                            double det2 = m00 * m11 - m01 * m01;
+                            if (std::abs(det2) < 1e-12)
                                 continue;
 
-                            // Cramer's rule で a, b, c を求める
-                            double det_a = b0 * (m11 * m22 - m12 * m21) -
-                                           m01 * (b1 * m22 - m12 * b2) +
-                                           m02 * (b1 * m21 - m11 * b2);
+                            double a = (b0 * m11 - b1 * m01) / det2;
+                            double b = (m00 * b1 - m01 * b0) / det2;
+                            double g = 1.0 - a - b;
 
-                            double det_b = m00 * (b1 * m22 - m12 * b2) -
-                                           b0 * (m10 * m22 - m12 * m20) +
-                                           m02 * (m10 * b2 - b1 * m20);
-
-                            double det_c = m00 * (m11 * b2 - b1 * m21) -
-                                           m01 * (m10 * b2 - b1 * m20) +
-                                           b0 * (m10 * m21 - m11 * m20);
-
-                            double a = det_a / det;
-                            double b = det_b / det;
-                            double c = det_c / det;
-                            double d = 1.0 - a - b - c;
-
-                            // 非負条件 (バリセンターが四面体内部)
-                            if (a >= 0 && b >= 0 && c >= 0 && d >= 0) {
+                            if (a >= 0 && b >= 0 && g >= 0) {
                                 Color mix = pi * a;
                                 mix += pj * b;
-                                mix += pk * c;
-                                mix += pl * d;
+                                mix += pk * g;
 
                                 double e2 = norm2(mix - tgt);
                                 if (e2 < best_e2) {
@@ -1219,146 +1401,108 @@ class Solver {
                                     std::fill(best.begin(), best.end(), 0.0);
                                     best[i] = a;
                                     best[j] = b;
-                                    best[k] = c;
-                                    best[l] = d;
+                                    best[k] = g;
                                 }
                             }
                         }
                     }
                 }
             }
-        }
+            best_coefs[3].push_back(best);
+            best_coefs_err[3].push_back(sqrt(best_e2) * 10000.0);
+            // ――――――――――――――――――――――――――――――――――――
+            //  4) 四色混合 (lim >= 4)
+            // ――――――――――――――――――――――――――――――――――――
+            if (M >= 4) {
+                for (int xi = 0; xi < M; ++xi) {
+                    int i = in.need_idxs[xi];
+                    for (int xj = xi + 1; xj < M; ++xj) {
+                        int j = in.need_idxs[xj];
+                        for (int xk = xj + 1; xk < M; ++xk) {
+                            int k = in.need_idxs[xk];
+                            for (int xl = xk + 1; xl < M; ++xl) {
+                                int l = in.need_idxs[xl];
 
-        // ――――――――――――――――――――――――――――――――――――
-        //  2) 三色混合 (lim >= 3)
-        // ――――――――――――――――――――――――――――――――――――
-        if (lim >= 3 && M >= 3) {
-            for (int xi = 0; xi < M; ++xi) {
-                int i = need_idxs[xi];
-                for (int xj = xi + 1; xj < M; ++xj) {
-                    int j = need_idxs[xj];
-                    for (int xk = xj + 1; xk < M; ++xk) {
-                        int k = need_idxs[xk];
+                                // 基準色 4 点を取り出す
+                                Color pi = in.tubes[i];
+                                Color pj = in.tubes[j];
+                                Color pk = in.tubes[k];
+                                Color pl = in.tubes[l];
 
-                        Color pi = in.tubes[i];
-                        Color pj = in.tubes[j];
-                        Color pk = in.tubes[k];
+                                // pl を原点にシフト
+                                Color ei = pi - pl;
+                                Color ej = pj - pl;
+                                Color ek = pk - pl;
+                                Color v = tgt - pl;
 
-                        Color ei = pi - pk;
-                        Color ej = pj - pk;
-                        Color v = tgt - pk;
+                                // 3×3 行列 M の要素
+                                double m00 = dot(ei, ei);
+                                double m01 = dot(ei, ej);
+                                double m02 = dot(ei, ek);
+                                double m10 = m01; // dot(ej,ei)
+                                double m11 = dot(ej, ej);
+                                double m12 = dot(ej, ek);
+                                double m20 = m02; // dot(ek,ei)
+                                double m21 = m12; // dot(ek,ej)
+                                double m22 = dot(ek, ek);
 
-                        double m00 = dot(ei, ei);
-                        double m01 = dot(ei, ej);
-                        double m11 = dot(ej, ej);
-                        double b0 = dot(ei, v);
-                        double b1 = dot(ej, v);
-                        double det2 = m00 * m11 - m01 * m01;
-                        if (std::abs(det2) < 1e-12)
-                            continue;
+                                // 右辺ベクトル b
+                                double b0 = dot(ei, v);
+                                double b1 = dot(ej, v);
+                                double b2 = dot(ek, v);
 
-                        double a = (b0 * m11 - b1 * m01) / det2;
-                        double b = (m00 * b1 - m01 * b0) / det2;
-                        double g = 1.0 - a - b;
+                                // 行列式 det(M)
+                                double det = m00 * (m11 * m22 - m12 * m21) -
+                                             m01 * (m10 * m22 - m12 * m20) +
+                                             m02 * (m10 * m21 - m11 * m20);
+                                if (std::abs(det) < 1e-12)
+                                    continue;
 
-                        if (a >= 0 && b >= 0 && g >= 0) {
-                            Color mix = pi * a;
-                            mix += pj * b;
-                            mix += pk * g;
+                                // Cramer's rule で a, b, c を求める
+                                double det_a = b0 * (m11 * m22 - m12 * m21) -
+                                               m01 * (b1 * m22 - m12 * b2) +
+                                               m02 * (b1 * m21 - m11 * b2);
 
-                            double e2 = norm2(mix - tgt);
-                            if (e2 < best_e2) {
-                                best_e2 = e2;
-                                std::fill(best.begin(), best.end(), 0.0);
-                                best[i] = a;
-                                best[j] = b;
-                                best[k] = g;
+                                double det_b = m00 * (b1 * m22 - m12 * b2) -
+                                               b0 * (m10 * m22 - m12 * m20) +
+                                               m02 * (m10 * b2 - b1 * m20);
+
+                                double det_c = m00 * (m11 * b2 - b1 * m21) -
+                                               m01 * (m10 * b2 - b1 * m20) +
+                                               b0 * (m10 * m21 - m11 * m20);
+
+                                double a = det_a / det;
+                                double b = det_b / det;
+                                double c = det_c / det;
+                                double d = 1.0 - a - b - c;
+
+                                // 非負条件 (バリセンターが四面体内部)
+                                if (a >= 0 && b >= 0 && c >= 0 && d >= 0) {
+                                    Color mix = pi * a;
+                                    mix += pj * b;
+                                    mix += pk * c;
+                                    mix += pl * d;
+                                    double e2 = norm2(mix - tgt);
+                                    if (e2 < best_e2) {
+                                        best_e2 = e2;
+                                        std::fill(best.begin(), best.end(),
+                                                  0.0);
+                                        best[i] = a;
+                                        best[j] = b;
+                                        best[k] = c;
+                                        best[l] = d;
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
+            best_coefs[4].push_back(best);
+            best_coefs_err[4].push_back(sqrt(best_e2) * 10000.0);
         }
-
-        // ――――――――――――――――――――――――――――――――――――
-        //  3) 二色混合 (lim >= 2)
-        // ――――――――――――――――――――――――――――――――――――
-        if (lim >= 2 && M >= 2) {
-            for (int xi = 0; xi < M; ++xi) {
-                int i = need_idxs[xi];
-                for (int xj = xi + 1; xj < M; ++xj) {
-                    int j = need_idxs[xj];
-
-                    Color p = in.tubes[i];
-                    Color q = in.tubes[j];
-                    Color dcol = q - p;
-                    Color tp = tgt - p;
-
-                    double dd = norm2(dcol);
-                    if (dd < 1e-12)
-                        continue;
-
-                    double u = dot(tp, dcol) / dd;
-                    u = clamp(u, 0.0, 1.0);
-
-                    Color mix = p * u;
-                    mix += q * (1.0 - u);
-
-                    double e2 = norm2(mix - tgt);
-                    if (e2 < best_e2) {
-                        best_e2 = e2;
-                        std::fill(best.begin(), best.end(), 0.0);
-                        best[i] = u;
-                        best[j] = 1.0 - u;
-                    }
-                }
-            }
-        }
-
-        // ――――――――――――――――――――――――――――――――――――
-        //  4) 単色 (lim >= 1)
-        // ――――――――――――――――――――――――――――――――――――
-        if (lim >= 1 && M >= 1) {
-            double best1 = 1e300;
-            int bestIdx = -1;
-            for (int xi = 0; xi < M; ++xi) {
-                int i = need_idxs[xi];
-                double e2 = norm2(in.tubes[i] - tgt);
-                if (e2 < best1) {
-                    best1 = e2;
-                    bestIdx = i;
-                }
-            }
-            if (bestIdx >= 0 && best1 < best_e2) {
-                std::fill(best.begin(), best.end(), 0.0);
-                best[bestIdx] = 1.0;
-            }
-        }
-
-        return best;
     }
-    //----------------------------------
 
-    vector<double> find_mix(const Color &tgt, int idx) {
-        // auto rand_c = init_coefs[idx];
-        // double rand_cost = error_only(tgt, rand_c);
-        auto proj_c = projection_subset4(tgt, in.need_idxs, max_colors);
-        return proj_c;
-        // double proj_cost = error_only(tgt, proj_c);
-        // if (proj_cost < rand_cost) {
-        //     auto anneal_c = anneal(tgt, proj_c);
-        //     double anneal_cost = error_only(tgt, anneal_c);
-        //     cerr << "random: " << rand_cost << " proj: " << proj_cost
-        //          << " anneal: " << anneal_cost << '\n';
-        //     return anneal_c;
-        // } else {
-        //     auto anneal_c = anneal(tgt, rand_c);
-        //     double anneal_cost = error_only(tgt, anneal_c);
-        //     cerr << "random: " << rand_cost << " proj: " << proj_cost
-        //          << " anneal: " << anneal_cost << '\n';
-        //     return anneal_c;
-        // }
-    }
     //----------------------------------
     void commit(const Color &tgt, const vector<Action> &acts) {
         // todo
@@ -1398,7 +1542,6 @@ class Solver {
             if (a.use_blocks == 0) {
                 continue;
             }
-            // used_tube_cnt[a.tube_idx]++;
             auto &p = palettes[a.tube_idx];
             // 分母の変更
             if (p.used_blocks != a.blocks) {
@@ -1406,13 +1549,11 @@ class Solver {
                 auto s = p.cmd_sep(p.blocks - a.blocks);
                 if (!s.empty()) {
                     cmds.push_back(s);
-                    // sep.push_back(s);
                 }
                 // 区切りを空ける
                 s = p.cmd_sep(p.blocks - p.used_blocks);
                 if (!s.empty()) {
                     cmds.push_back(s);
-                    // sep.push_back(s);
                 }
             }
             rep(_, a.add_new) {
@@ -1427,21 +1568,15 @@ class Solver {
             auto s = p.cmd_sep(p.blocks - (a.blocks - a.use_blocks));
             if (!s.empty() and (a.blocks - a.use_blocks) != 0) {
                 cmds.push_back(s);
-                // sep.push_back(s);
             }
             // 左を開ける
             s = p.cmd_sep(p.blocks - a.blocks);
             if (!s.empty()) {
-                // cmds.push_back(s);
                 sep.push_back(s);
             }
             p.used_blocks = a.blocks - a.use_blocks;
             p.cap = p.cap * p.used_blocks / a.blocks;
-            // p.cap -= a.real_amt;
             amt_sum += a.real_amt;
-            // auto oc = p.cmd_openclose();
-            // cmds.push_back(oc);
-            // sep.push_back(oc);
         }
         for (auto &v : sep)
             cmds.push_back(v);
@@ -1450,7 +1585,6 @@ class Solver {
             cmds.push_back({3, 0, 0});
             amt_sum -= 1.0;
         }
-        reverse(sep.begin(), sep.end());
     }
 };
 
@@ -1470,11 +1604,12 @@ int main() {
     auto need_idxs = removeInteriorPoints(xyzs);
     in.need_idxs = need_idxs;
     in.Q = need_idxs.size();
-    if (in.T < 17000) {
+    if (in.T < 19000) {
         Small_T_Solver sol(in);
+        // AddTubeSolver sol(in);
         sol.solve();
         tk.update();
-        if (tk.now() < 2000.0) {
+        if (tk.now() < 2000.0 and 12000 <= in.T) {
             Solver sol2(in, tk);
             sol2.solve();
             sol.cerr_report();

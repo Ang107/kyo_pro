@@ -329,56 +329,69 @@ struct Palette {
         return a;
     }
 };
-// ──────────────────────────────
-//  5.同色の複数分割したパレットを扱うクラス
-// ──────────────────────────────
 struct PaletteControler {
     int tube_idx;
     Palette primary;
     Palette secondary;
     // 連続量 → ブロック量 へ丸め込む(切り落とし，切り上げ双方で)
     // プライマリー，セカンダリーの単体を用いる
-    pair<Action, Action> discretise_one(double amt) const {
-        Action best_l, best_r;
-        best_l.real_amt = 1e100;
-        best_l.real_amt = 1e100;
-        Action a;
+    pair<Action, Action> discretise_one(double amt, bool almost_end) const {
         assert(primary.tube_idx != -1 or secondary.tube_idx != -1);
+        Action best_l, best_r;
+        best_l.tube_idx = -1;
+        best_r.tube_idx = -1;
+        best_l.real_amt = 1e100;
+        best_r.real_amt = 1e100;
+        Action a;
+        if (primary.tube_idx != -1) {
+            if (almost_end and primary.cap < amt and amt <= secondary.cap) {
+                // 何もしない
+            } else {
+                auto [l, r] = discretise_primary(amt);
+                if (abs(amt - l.real_amt) < abs(best_l.real_amt - amt)) {
+                    best_l = l;
+                }
+                if (abs(amt - r.real_amt) < abs(best_r.real_amt - amt)) {
+                    best_r = r;
+                }
+            }
+        }
+        if (secondary.tube_idx != -1) {
+            if (almost_end and secondary.cap < amt and amt <= primary.cap) {
+                // 何もしない
+            } else {
+                auto [l, r] = discretise_secondary(amt);
+                if (abs(amt - l.real_amt) < abs(best_l.real_amt - amt)) {
+                    best_l = l;
+                }
+                if (abs(amt - r.real_amt) < abs(best_r.real_amt - amt)) {
+                    best_r = r;
+                }
+            }
+        }
+        return {best_l, best_r};
+    }
+    pair<Action, Action> discretise_primary(double amt) const {
+        Action best_l, best_r;
+        best_l.tube_idx = -1;
+        best_r.tube_idx = -1;
+        best_l.real_amt = 1e100;
+        best_r.real_amt = 1e100;
+        if (primary.tube_idx == -1) {
+            return {best_l, best_r};
+        }
+        assert(primary.tube_idx != -1);
+
+        Action a;
         if (primary.tube_idx != -1) {
             a.i = primary.ti;
             a.j = primary.tj;
             a.primary_or_secandary = 1;
             for (int use_blocks = primary.used_blocks;
                  use_blocks <= primary.blocks; use_blocks++) {
-                a.add_new = 0;
-                a.tube_idx = tube_idx;
-                a.blocks = use_blocks;
-                double new_cap = primary.cap;
-                while (new_cap < amt) {
-                    new_cap += 1.0;
-                    a.add_new++;
+                if (use_blocks == 0) {
+                    continue;
                 }
-
-                double unit = new_cap / use_blocks;
-                a.use_blocks = int(floor(amt / unit));
-                a.real_amt = new_cap * a.use_blocks / use_blocks;
-                if (abs(a.real_amt - amt) < abs(best_l.real_amt - amt)) {
-                    best_l = a;
-                }
-
-                a.use_blocks = int(ceil(amt / unit));
-                a.real_amt = new_cap * a.use_blocks / use_blocks;
-                if (abs(a.real_amt - amt) < abs(best_r.real_amt - amt)) {
-                    best_r = a;
-                }
-            }
-        }
-        if (secondary.tube_idx != -1) {
-            a.i = secondary.ti;
-            a.j = secondary.tj;
-            a.primary_or_secandary = 2;
-            for (int use_blocks = secondary.used_blocks;
-                 use_blocks <= secondary.blocks; use_blocks++) {
                 a.add_new = 0;
                 a.tube_idx = tube_idx;
                 a.blocks = use_blocks;
@@ -406,8 +419,13 @@ struct PaletteControler {
     }
     pair<Action, Action> discretise_secondary(double amt) const {
         Action best_l, best_r;
+        best_l.tube_idx = -1;
+        best_r.tube_idx = -1;
         best_l.real_amt = 1e100;
-        best_l.real_amt = 1e100;
+        best_r.real_amt = 1e100;
+        if (secondary.tube_idx == -1) {
+            return {best_l, best_r};
+        }
         Action a;
         assert(secondary.tube_idx != -1);
         if (secondary.tube_idx != -1) {
@@ -416,10 +434,13 @@ struct PaletteControler {
             a.primary_or_secandary = 2;
             for (int use_blocks = secondary.used_blocks;
                  use_blocks <= secondary.blocks; use_blocks++) {
+                if (use_blocks == 0) {
+                    continue;
+                }
                 a.add_new = 0;
                 a.tube_idx = tube_idx;
                 a.blocks = use_blocks;
-                double new_cap = primary.cap;
+                double new_cap = secondary.cap;
                 while (new_cap < amt) {
                     new_cap += 1.0;
                     a.add_new++;
@@ -444,84 +465,141 @@ struct PaletteControler {
     // 連続量 → ブロック量 へ丸め込む(切り落とし，切り上げ双方で)
     // プライマリー，セカンダリーの双方の和として用いる
     pair<pair<Action, Action>, pair<Action, Action>>
-    discretise_two(double amt) const {
-        assert(primary.tube_idx != -1 and secondary.tube_idx != -1);
+    discretise_two(double amt, bool almost_end) const {
+        // assert(primary.tube_idx != -1 and secondary.tube_idx != -1);
+        bool can_add = true;
+        if (almost_end) {
+            double sum_amt = 0;
+            if (primary.tube_idx >= 0) {
+                sum_amt += primary.cap;
+            }
+            if (secondary.tube_idx >= 0) {
+                sum_amt += secondary.cap;
+            }
+            if (sum_amt >= amt) {
+                can_add = false;
+            }
+        }
         pair<Action, Action> best_l, best_r;
+        best_l.first.tube_idx = -1;
+        best_l.second.tube_idx = -1;
+        best_r.first.tube_idx = -1;
+        best_r.second.tube_idx = -1;
         best_l.first.real_amt = 1e100;
         best_l.second.real_amt = 1e100;
         best_r.first.real_amt = 1e100;
         best_r.second.real_amt = 1e100;
+        if (primary.tube_idx == -1) {
+            auto [l, r] = discretise_secondary(amt);
+            best_l.first = l;
+            best_r.first = r;
+            return {best_l, best_r};
+        } else if (secondary.tube_idx == -1) {
+            auto [l, r] = discretise_primary(amt);
+            best_l.first = l;
+            best_r.first = r;
+            return {best_l, best_r};
+        }
         double min_diff_l = 1e100;
         double min_diff_r = 1e100;
-        for (int blocks = primary.used_blocks; blocks <= primary.blocks;
-             blocks++) {
-            for (int use_blocks = 0; use_blocks <= blocks; use_blocks++) {
-                if (amt < primary.cap * (use_blocks - 1) / blocks) {
-                    break;
-                }
-                double primary_use_amt = primary.cap * use_blocks / blocks;
-                double need_amt = amt - primary_use_amt;
-                if (need_amt <= 0) {
-                    if (primary_use_amt - amt < min_diff_r) {
-                        min_diff_r = primary_use_amt - amt;
-                        Action a;
-                        a.i = primary.ti;
-                        a.j = primary.tj;
-                        a.tube_idx best_r.first =
-                    }
+        Action none_action;
+        none_action.tube_idx = -1;
+        none_action.real_amt = 1e100;
+        if (rnd::xorshift32() & 1) {
+            for (int blocks = primary.used_blocks; blocks <= primary.blocks;
+                 blocks++) {
+                if (blocks == 0) {
                     continue;
                 }
-                auto [l, r] = discretise_secondary()
-            }
-            for (int)
-                a.add_new = 0;
-            a.tube_idx = tube_idx;
-            a.blocks = use_blocks;
-            double new_cap = primary.cap;
-            while (new_cap < amt) {
-                new_cap += 1.0;
-                a.add_new++;
-            }
-
-            double unit = new_cap / use_blocks;
-            a.use_blocks = int(floor(amt / unit));
-            a.real_amt = new_cap * a.use_blocks / use_blocks;
-            if (abs(a.real_amt - amt) < abs(best_l.real_amt - amt)) {
-                best_l = a;
-            }
-
-            a.use_blocks = int(ceil(amt / unit));
-            a.real_amt = new_cap * a.use_blocks / use_blocks;
-            if (abs(a.real_amt - amt) < abs(best_r.real_amt - amt)) {
-                best_r = a;
-            }
-        }
-        if (secondary.tube_idx != -1) {
-            a.i = secondary.ti;
-            a.j = secondary.tj;
-            a.primary_or_secandary = 2;
-            for (int use_blocks = secondary.used_blocks;
-                 use_blocks <= secondary.blocks; use_blocks++) {
-                a.add_new = 0;
-                a.tube_idx = tube_idx;
-                a.blocks = use_blocks;
-                double new_cap = primary.cap;
-                while (new_cap < amt) {
-                    new_cap += 1.0;
-                    a.add_new++;
+                for (int use_blocks = 0; use_blocks <= blocks; use_blocks++) {
+                    if (min_diff_l < 1e-5 or min_diff_r < 1e-5) {
+                        return {best_l, best_r};
+                    }
+                    double primary_use_amt = primary.cap * use_blocks / blocks;
+                    double need_amt = amt - primary_use_amt;
+                    if (can_add == false and need_amt < secondary.cap) {
+                        continue;
+                    }
+                    Action primary_l_action;
+                    primary_l_action.i = primary.ti;
+                    primary_l_action.j = primary.tj;
+                    primary_l_action.tube_idx = tube_idx;
+                    primary_l_action.blocks = blocks;
+                    primary_l_action.use_blocks = use_blocks;
+                    primary_l_action.real_amt = primary_use_amt;
+                    primary_l_action.primary_or_secandary = 1;
+                    if (need_amt <= 0) {
+                        if (can_add and
+                            abs(primary_use_amt - amt) < min_diff_r) {
+                            min_diff_r = abs(primary_use_amt - amt);
+                            best_r.first = primary_l_action;
+                            best_r.second = none_action;
+                        }
+                        break;
+                    }
+                    auto [secondary_l_action, secondary_r_action] =
+                        discretise_secondary(need_amt);
+                    if (abs(amt - primary_use_amt -
+                            secondary_l_action.real_amt) < min_diff_l) {
+                        min_diff_l = abs(amt - primary_use_amt -
+                                         secondary_l_action.real_amt);
+                        best_l = {primary_l_action, secondary_l_action};
+                    }
+                    if (abs(amt - primary_use_amt -
+                            secondary_r_action.real_amt) < min_diff_r) {
+                        min_diff_r = abs(amt - primary_use_amt -
+                                         secondary_r_action.real_amt);
+                        best_r = {primary_l_action, secondary_r_action};
+                    }
                 }
-
-                double unit = new_cap / use_blocks;
-                a.use_blocks = int(floor(amt / unit));
-                a.real_amt = new_cap * a.use_blocks / use_blocks;
-                if (abs(a.real_amt - amt) < abs(best_l.real_amt - amt)) {
-                    best_l = a;
+            }
+        } else {
+            for (int blocks = secondary.used_blocks; blocks <= secondary.blocks;
+                 blocks++) {
+                if (blocks == 0) {
+                    continue;
                 }
-
-                a.use_blocks = int(ceil(amt / unit));
-                a.real_amt = new_cap * a.use_blocks / use_blocks;
-                if (abs(a.real_amt - amt) < abs(best_r.real_amt - amt)) {
-                    best_r = a;
+                for (int use_blocks = 0; use_blocks <= blocks; use_blocks++) {
+                    if (min_diff_l < 1e-5 or min_diff_r < 1e-5) {
+                        return {best_l, best_r};
+                    }
+                    double secondary_use_amt =
+                        secondary.cap * use_blocks / blocks;
+                    double need_amt = amt - secondary_use_amt;
+                    if (can_add == false and need_amt < primary.cap) {
+                        continue;
+                    }
+                    Action secondary_l_action;
+                    secondary_l_action.i = secondary.ti;
+                    secondary_l_action.j = secondary.tj;
+                    secondary_l_action.tube_idx = tube_idx;
+                    secondary_l_action.blocks = blocks;
+                    secondary_l_action.use_blocks = use_blocks;
+                    secondary_l_action.real_amt = secondary_use_amt;
+                    secondary_l_action.primary_or_secandary = 2;
+                    if (need_amt <= 0) {
+                        if (can_add and
+                            abs(secondary_use_amt - amt) < min_diff_r) {
+                            min_diff_r = abs(secondary_use_amt - amt);
+                            best_r.first = none_action;
+                            best_r.second = secondary_l_action;
+                        }
+                        break;
+                    }
+                    auto [primary_l_action, primary_r_action] =
+                        discretise_primary(need_amt);
+                    if (abs(amt - secondary_use_amt -
+                            primary_l_action.real_amt) < min_diff_l) {
+                        min_diff_l = abs(amt - secondary_use_amt -
+                                         primary_l_action.real_amt);
+                        best_l = {primary_l_action, secondary_l_action};
+                    }
+                    if (abs(amt - secondary_use_amt -
+                            primary_r_action.real_amt) < min_diff_r) {
+                        min_diff_r = abs(amt - secondary_use_amt -
+                                         primary_r_action.real_amt);
+                        best_r = {primary_r_action, secondary_l_action};
+                    }
                 }
             }
         }
@@ -916,7 +994,7 @@ class Small_T_Solver {
 // ──────────────────────────────
 class Solver {
     const Input &in;
-    vector<Palette> palettes;
+    vector<PaletteControler> palettes;
     vector<vector<int>> cmds; // 出力コマンド蓄積
 
     int tubes_used = 0;
@@ -933,6 +1011,7 @@ class Solver {
     vector<vector<vector<double>>> best_coefs;
     vector<vector<double>> best_coefs_err;
     // vector<vector<double>> init_coefs;
+    int max_palettes;
 
   public:
     int final_cost;
@@ -966,23 +1045,22 @@ class Solver {
         init_palettes(lines_size);
         err_sum = 0;
         tubes_used = 0;
-        int expected_used_turn = 0;
+
         rep(h, in.H) {
             const Color &tgt = in.targets[h];
             int colors = can_use_colors[h];
-            // ターン数に余裕があるなら追加
-            if (colors < 4 and expected_used_turn - cmds.size() >= 4) {
-                int can_add = (expected_used_turn - cmds.size()) / 4;
-                colors += min(can_add, 4 - colors);
-            }
+            max_palettes =
+                (in.T - cmds.size() - 3 * (in.H - h)) / (4 * (in.H - h));
+            colors = max(colors, max_palettes);
+            colors = min(colors, 4);
             cerr << "Use_Colors: " << h + 1 << " " << colors << '\n';
             auto coef = best_coefs[colors][h];
-            auto acts = discretise(tgt, coef);
+            tk.update();
+            double disc_tl = (2800 - tk.now()) / (in.H - h);
+            auto acts = discretise(tgt, coef, disc_tl, h);
             cerr << "連続値のエラー: " << error_only(tgt, coef)
                  << " 離散値のエラー: " << error_only(tgt, acts) << '\n';
             commit(tgt, acts);
-            expected_used_turn += 3;
-            expected_used_turn += can_use_colors[h] * 4;
         }
         while (cmds.size() > in.T) {
             cmds.pop_back();
@@ -1121,7 +1199,22 @@ class Solver {
     }
     void init_palettes(const vector<int> &lines_size) {
         palettes.assign(in.K, {});
-        rep(i, in.K) palettes[i].lines = lines_size[i];
+        if (27000 <= in.T) {
+            // 分割型
+            rep(i, in.K) {
+                palettes[i].tube_idx = i;
+                palettes[i].primary.lines =
+                    lines_size[i] / 2 + lines_size[i] % 2;
+                palettes[i].secondary.lines =
+                    lines_size[i] - palettes[i].primary.lines;
+            }
+        } else {
+            // 既存の
+            rep(i, in.K) {
+                palettes[i].tube_idx = i;
+                palettes[i].primary.lines = lines_size[i];
+            }
+        }
 
         sep_v = vector<string>(in.N);
         sep_h = vector<string>(in.N - 1);
@@ -1136,40 +1229,80 @@ class Solver {
         rep(k, in.K) {
             if (row < in.N)
                 sep_v[row][0] = '0';
-            auto &p = palettes[k];
-            p.tube_idx = k;
-            p.si = row;
-            p.sj = 1;
-            row += p.lines;
-            p.build();
+            if (palettes[k].primary.lines > 0) {
+                auto &p = palettes[k].primary;
+                p.tube_idx = k;
+                p.si = row;
+                p.sj = 1;
+                row += p.lines;
+                p.build();
+            }
+            if (row < in.N)
+                sep_v[row][0] = '0';
+            if (palettes[k].secondary.lines > 0) {
+                auto &p = palettes[k].secondary;
+                p.tube_idx = k;
+                p.si = row;
+                p.sj = 1;
+                row += p.lines;
+                p.build();
+            }
         }
 
         // 横仕切り
         row = 0;
         rep(k, in.K) {
-            auto &p = palettes[k];
-            if (p.lines == 0 or row == in.N - 1)
-                continue;
-            rep(j, p.lines - 1) {
-                sep_h[row] += "0 ";
-                if (j % 2 == 0) {
-                    rep(x, 18) sep_h[row] += "1 ";
-                    sep_h[row] += "0\n";
-                    row++;
-                } else {
-                    sep_h[row] += "0";
-                    rep(x, 18) sep_h[row] += " 1";
-                    sep_h[row] += "\n";
+            if (palettes[k].primary.lines > 0) {
+                auto &p = palettes[k].primary;
+                if (p.lines == 0 or row == in.N - 1)
+                    continue;
+                rep(j, p.lines - 1) {
+                    sep_h[row] += "0 ";
+                    if (j % 2 == 0) {
+                        rep(x, 18) sep_h[row] += "1 ";
+                        sep_h[row] += "0\n";
+                        row++;
+                    } else {
+                        sep_h[row] += "0";
+                        rep(x, 18) sep_h[row] += " 1";
+                        sep_h[row] += "\n";
+                        row++;
+                    }
+                }
+                if (row < in.N - 1) {
+                    sep_h[row] += "0 ";
+                    rep(x, 19) {
+                        sep_h[row] += '1';
+                        sep_h[row] += (x == 18 ? '\n' : ' ');
+                    }
                     row++;
                 }
             }
-            if (row < in.N - 1) {
-                sep_h[row] += "0 ";
-                rep(x, 19) {
-                    sep_h[row] += '1';
-                    sep_h[row] += (x == 18 ? '\n' : ' ');
+            if (palettes[k].secondary.lines > 0) {
+                auto &p = palettes[k].secondary;
+                if (p.lines == 0 or row == in.N - 1)
+                    continue;
+                rep(j, p.lines - 1) {
+                    sep_h[row] += "0 ";
+                    if (j % 2 == 0) {
+                        rep(x, 18) sep_h[row] += "1 ";
+                        sep_h[row] += "0\n";
+                        row++;
+                    } else {
+                        sep_h[row] += "0";
+                        rep(x, 18) sep_h[row] += " 1";
+                        sep_h[row] += "\n";
+                        row++;
+                    }
                 }
-                row++;
+                if (row < in.N - 1) {
+                    sep_h[row] += "0 ";
+                    rep(x, 19) {
+                        sep_h[row] += '1';
+                        sep_h[row] += (x == 18 ? '\n' : ' ');
+                    }
+                    row++;
+                }
             }
         }
     }
@@ -1184,68 +1317,205 @@ class Solver {
         return true;
     }
 
-    vector<Action> discretise(const Color &tgt, const vector<double> &coef) {
+    vector<Action> discretise(const Color &tgt, const vector<double> &coef,
+                              double tl, int now_turn) {
         vector<Action> best_acts;
         double min_cost = 1e100;
         vector<Action> new_acts;
         new_acts.reserve(in.K);
+        // プライマリ or セカンダリ
         vector<pair<Action, Action>> nearest_acts;
+        // 併用
+        vector<pair<pair<Action, Action>, pair<Action, Action>>>
+            nearest_acts_pair;
         vector<double> new_coef(in.K);
 
-        for (double alp = 1.0; alp < 5.0; alp += 0.1) {
+        // for (double alp = 1.0; alp < 2.0; alp += 0.001) {
+        int iter = 0;
+        TimeKeeper tk(tl);
+        double alp = 1.0;
+        while (true) {
+            if (iter > 0) {
+                alp = 1.0 + rnd::uniform_real(0.0, 0.5);
+            }
+            iter++;
+            if (iter % 3 == 0) {
+                tk.update();
+                if (tk.over()) {
+                    break;
+                }
+            }
             nearest_acts.clear();
-            fill(new_coef.begin(), new_coef.end(), 0.0);
+            nearest_acts_pair.clear();
             rep(i, in.K) { new_coef[i] = alp * coef[i]; }
             rep(i, in.K) {
                 if (new_coef[i] < 1e-9) {
                     continue;
                 }
                 double amt = new_coef[i];
-                Action best_l, best_r;
-                best_l.real_amt = 1e100;
-                best_r.real_amt = 1e100;
-                Palette &p = palettes[i];
-                assert(p.used_blocks <= p.blocks);
-                assert(p.blocks > 0);
-                for (int b = p.used_blocks; b <= p.blocks; b++) {
-                    if (b == 0)
-                        continue;
-                    Action new_l = p.discretise(amt, b, 0);
-                    if (abs(new_l.real_amt - amt) <
-                        abs(best_l.real_amt - amt)) {
-                        best_l = new_l;
-                    }
-                    Action new_r = p.discretise(amt, b, 1);
-                    if (abs(new_r.real_amt - amt) <
-                        abs(best_r.real_amt - amt)) {
-                        best_r = new_r;
-                    }
-                }
+                auto [best_l, best_r] =
+                    palettes[i].discretise_one(amt, now_turn >= 990);
                 nearest_acts.push_back({best_l, best_r});
+                if (in.T >= 27000) {
+                    auto [best_l, best_r] =
+                        palettes[i].discretise_two(amt, now_turn >= 990);
+                    nearest_acts_pair.push_back({best_l, best_r});
+                }
             }
-            rep(mask, 1 << nearest_acts.size()) {
-                double amt_sum = 0.0;
-                new_acts.clear();
-                rep(i, nearest_acts.size()) {
-                    if (mask >> i & 1) {
-                        amt_sum += nearest_acts[i].second.real_amt;
-                        new_acts.push_back(nearest_acts[i].second);
-                    } else {
-                        amt_sum += nearest_acts[i].first.real_amt;
-                        new_acts.push_back(nearest_acts[i].first);
+            if (in.T < 27000) {
+                rep(mask, 1 << nearest_acts.size()) {
+                    double amt_sum = 0.0;
+                    new_acts.clear();
+                    rep(i, nearest_acts.size()) {
+                        if (mask >> i & 1) {
+                            amt_sum += nearest_acts[i].second.real_amt;
+                            new_acts.push_back(nearest_acts[i].second);
+                        } else {
+                            amt_sum += nearest_acts[i].first.real_amt;
+                            new_acts.push_back(nearest_acts[i].first);
+                        }
+                    }
+                    if (amt_sum < 1.0 - eps) {
+                        continue;
+                    }
+                    double new_cost = cost(tgt, new_acts);
+                    if (new_cost < min_cost) {
+                        min_cost = new_cost;
+                        best_acts = new_acts;
                     }
                 }
-                if (amt_sum < 1.0 - eps) {
-                    continue;
-                }
-                double new_cost = cost(tgt, new_acts);
-                if (new_cost < min_cost) {
-                    min_cost = new_cost;
-                    best_acts = new_acts;
+            } else {
+                rep(mask, 1 << (nearest_acts.size() * 2)) {
+                    double amt_sum = 0.0;
+                    int used_palettes = 0;
+                    new_acts.clear();
+                    bool valid = true;
+                    rep(i, nearest_acts.size()) {
+                        if (max_palettes < used_palettes) {
+                            break;
+                        }
+                        if ((mask >> (2 * i) & 3) == 0) {
+                            // l 単数
+                            if (nearest_acts[i].first.tube_idx == -1)
+                                continue;
+                            used_palettes++;
+                            amt_sum += nearest_acts[i].first.real_amt;
+                            new_acts.push_back(nearest_acts[i].first);
+                        } else if ((mask >> (2 * i) & 3) == 1) {
+                            // l 複数
+                            if (nearest_acts_pair[i].first.first.tube_idx >=
+                                0) {
+                                used_palettes++;
+                                amt_sum +=
+                                    nearest_acts_pair[i].first.first.real_amt;
+                                new_acts.push_back(
+                                    nearest_acts_pair[i].first.first);
+                            }
+                            if (nearest_acts_pair[i].first.second.tube_idx >=
+                                0) {
+                                used_palettes++;
+                                amt_sum +=
+                                    nearest_acts_pair[i].first.second.real_amt;
+                                new_acts.push_back(
+                                    nearest_acts_pair[i].first.second);
+                            }
+
+                        } else if ((mask >> (2 * i) & 3) == 2) {
+                            // r 単数
+                            if (nearest_acts[i].second.tube_idx == -1)
+                                continue;
+                            used_palettes++;
+                            amt_sum += nearest_acts[i].second.real_amt;
+                            new_acts.push_back(nearest_acts[i].second);
+                        } else if ((mask >> (2 * i) & 3) == 3) {
+                            // r 複数
+                            if (nearest_acts_pair[i].second.first.tube_idx >=
+                                0) {
+                                used_palettes++;
+                                amt_sum +=
+                                    nearest_acts_pair[i].second.first.real_amt;
+                                new_acts.push_back(
+                                    nearest_acts_pair[i].second.first);
+                            }
+                            if (nearest_acts_pair[i].second.second.tube_idx >=
+                                0) {
+                                used_palettes++;
+                                amt_sum +=
+                                    nearest_acts_pair[i].second.second.real_amt;
+                                new_acts.push_back(
+                                    nearest_acts_pair[i].second.second);
+                            }
+                        }
+                    }
+                    if (amt_sum < 1.0 - eps) {
+                        continue;
+                    }
+                    if (max_palettes < used_palettes) {
+                        continue;
+                    }
+                    double new_cost = cost(tgt, new_acts);
+                    if (new_cost < min_cost) {
+                        min_cost = new_cost;
+                        best_acts = new_acts;
+                    }
                 }
             }
         }
+        cerr << "best_acts_size: " << best_acts.size() << '\n';
         return best_acts;
+    }
+
+    vector<double> optimize_continuous(const Color &tgt,
+                                       int max_iters = 10000) {
+        int K = in.K;
+        vector<double> coef(K, 0.0), best_coef(K, 0.0), max_coef(K, 0.0);
+        double sum = 0.0;
+
+        // 上限を設定しつつ初期coefにキャパを足してsumを計算
+        rep(i, K) {
+            double cap = 0;
+            if (palettes[i].primary.tube_idx >= 0)
+                cap += palettes[i].primary.cap;
+            if (palettes[i].secondary.tube_idx >= 0)
+                cap += palettes[i].secondary.cap;
+            max_coef[i] = cap;
+            coef[i] = cap;
+            sum += cap;
+        }
+        assert(sum >= 1 - 1e-6);
+
+        double best_cost = error_only(tgt, coef);
+        best_coef = coef;
+
+        // 温度スケジュール: t = 1.0 -> 0.001
+        for (int it = 0; it < max_iters; ++it) {
+            double t = 100.0 - double(it) / max_iters;
+            if (t < 0.001)
+                t = 0.001;
+
+            int idx = rnd::xorshift32() % K;
+            double diff = rnd::uniform_real(-0.3, 0.3);
+
+            if (coef[idx] + diff < 0 || coef[idx] + diff > max_coef[idx] ||
+                sum + diff < 1 - 1e-6) {
+                continue;
+            }
+
+            coef[idx] += diff;
+            sum += diff;
+            double new_cost = error_only(tgt, coef);
+
+            if (new_cost < best_cost ||
+                rnd::uniform_real(0.0, 1.0) < exp((best_cost - new_cost) / t)) {
+                best_cost = new_cost;
+                best_coef = coef;
+            } else {
+                coef[idx] -= diff;
+                sum -= diff;
+            }
+        }
+
+        return best_coef;
     }
 
     double cost(const Color &tgt, const vector<double> &coef) const {
@@ -1255,6 +1525,9 @@ class Solver {
         rep(i, in.K) {
             s.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, coef[i]);
             total += coef[i];
+        }
+        if (total < 1 - 1e-6) {
+            return 1e100;
         }
         return s.error(tgt) + max(0.0, (total - 1.0)) * in.D;
     }
@@ -1268,6 +1541,9 @@ class Solver {
             s.add(in.tubes[tube_idx].c, in.tubes[tube_idx].m,
                   in.tubes[tube_idx].y, a.real_amt);
             total += a.real_amt;
+        }
+        if (total < 1 - 1e-6) {
+            return 1e100;
         }
         return s.error(tgt) + max(0.0, (total - 1.0)) * in.D;
     }
@@ -1542,7 +1818,9 @@ class Solver {
             if (a.use_blocks == 0) {
                 continue;
             }
-            auto &p = palettes[a.tube_idx];
+            auto &p = a.primary_or_secandary == 1
+                          ? palettes[a.tube_idx].primary
+                          : palettes[a.tube_idx].secondary;
             // 分母の変更
             if (p.used_blocks != a.blocks) {
                 // 左を閉じる(分母を決める)

@@ -1,5 +1,5 @@
+#include <atcoder/all>
 #include <bits/stdc++.h>
-
 // ────────────────────────────────────────────────────────────
 //   カラーミキサ・ソルバー（リファクタリング版／和訳コメント）
 //   ・アルゴリズムは元実装と同一。
@@ -167,6 +167,10 @@ struct Color {
     }
     Color operator*(double t) const { return {c * t, m * t, y * t}; }
 };
+inline double d2(const Color &a, const Color &b) {
+    return (a.c - b.c) * (a.c - b.c) + (a.m - b.m) * (a.m - b.m) +
+           (a.y - b.y) * (a.y - b.y);
+}
 inline double dot(const Color &a, const Color &b) {
     return a.c * b.c + a.m * b.m + a.y * b.y;
 }
@@ -186,6 +190,24 @@ struct MixState {
         m = (m * amt + dm * da) / (amt + da);
         y = (y * amt + dy * da) / (amt + da);
         amt += da;
+    }
+    void add(const Color &color, double da, double cap = 1e100) {
+        if (amt + da > cap) {
+            da = cap - amt;
+        }
+        if (da == 0.0)
+            return;
+        c = (c * amt + color.c * da) / (amt + da);
+        m = (m * amt + color.m * da) / (amt + da);
+        y = (y * amt + color.y * da) / (amt + da);
+        amt += da;
+    }
+    void dump() {
+        amt -= 1.0;
+        if (amt <= 0.0) {
+            amt = 0.0;
+            clear();
+        }
     }
     double error(const Color &tgt) const {
         double d2 = (tgt.c - c) * (tgt.c - c) + (tgt.m - m) * (tgt.m - m) +
@@ -219,21 +241,30 @@ struct MixState {
         y = 0;
         amt = 0;
     }
+    uint64_t hash() const {
+        uint64_t h_c = round(c * 10000);
+        uint64_t h_m = round(m * 10000);
+        uint64_t h_y = round(y * 10000);
+        uint64_t hash = (h_c << 28) | (h_m << 14) | (h_y);
+        return hash;
+    }
 };
 
 // ──────────────────────────────
 //  4. パレット上の 1 チューブ管理
 // ──────────────────────────────
-struct Action {          // 操作1回分
-    int tube_idx = 0;    // チューブ番号
-    int add_new = 0;     // 新規チューブを設置する個数
-    double real_amt = 0; // 実量
-    int use_blocks = 0;  // 分子
-    int blocks = 0;      // 分母
+struct Action {                   // 操作1回分
+    int tube_idx = 0;             // チューブ番号
+    int primary_or_secandary = 0; // 1: プライマリー 2 セカンダリー
+    int i = 0, j = 0;             // 追加する場所
+    int add_new = 0;              // 新規チューブを設置する個数
+    double real_amt = 0;          // 実量
+    int use_blocks = 0;           // 分子
+    int blocks = 0;               // 分母
 };
 
 struct Palette {
-    int tube_idx = 0;
+    int tube_idx = -1;
     int si = 0, sj = 0; // 左上座標
     int ti = 0,
         tj = 0;          // 一番後ろの座標(絵具を入れる場所)
@@ -279,6 +310,7 @@ struct Palette {
     // 連続量 → ブロック量 へ丸め込む
     Action discretise(double amt, int use_blocks, int mode = 1) const {
         assert(mode == 0 or mode == 1);
+        assert(use_blocks > 0);
         Action a;
         a.tube_idx = tube_idx;
         a.blocks = use_blocks;
@@ -297,7 +329,307 @@ struct Palette {
         return a;
     }
 };
+struct PaletteControler {
+    int tube_idx;
+    Palette primary;
+    Palette secondary;
+    // 連続量 → ブロック量 へ丸め込む(切り落とし，切り上げ双方で)
+    // プライマリー，セカンダリーの単体を用いる
+    pair<Action, Action> discretise_one(double amt, bool not_add) const {
+        assert(primary.tube_idx != -1 or secondary.tube_idx != -1);
 
+        Action best_l, best_r;
+        best_l.tube_idx = -1;
+        best_r.tube_idx = -1;
+        best_l.real_amt = 1e100;
+        best_r.real_amt = 1e100;
+
+        Action a;
+        if (primary.tube_idx != -1) {
+            if (!not_add or primary.cap >= amt) {
+                auto [l, r] = discretise_primary(amt);
+                if (abs(amt - l.real_amt) < abs(best_l.real_amt - amt)) {
+                    best_l = l;
+                }
+                if (abs(amt - r.real_amt) < abs(best_r.real_amt - amt)) {
+                    best_r = r;
+                }
+            }
+        }
+        if (secondary.tube_idx != -1) {
+            if (!not_add or secondary.cap >= amt) {
+                auto [l, r] = discretise_secondary(amt);
+                if (abs(amt - l.real_amt) < abs(best_l.real_amt - amt)) {
+                    best_l = l;
+                }
+                if (abs(amt - r.real_amt) < abs(best_r.real_amt - amt)) {
+                    best_r = r;
+                }
+            }
+        }
+        return {best_l, best_r};
+    }
+    pair<Action, Action> discretise_primary(double amt) const {
+        Action best_l, best_r;
+        best_l.tube_idx = -1;
+        best_r.tube_idx = -1;
+        best_l.real_amt = 1e100;
+        best_r.real_amt = 1e100;
+        if (primary.tube_idx == -1) {
+            return {best_l, best_r};
+        }
+        assert(primary.tube_idx != -1);
+
+        Action a;
+        if (primary.tube_idx != -1) {
+            a.i = primary.ti;
+            a.j = primary.tj;
+            a.primary_or_secandary = 1;
+            for (int use_blocks = primary.used_blocks;
+                 use_blocks <= primary.blocks; use_blocks++) {
+                if (use_blocks == 0) {
+                    continue;
+                }
+                a.add_new = 0;
+                a.tube_idx = tube_idx;
+                a.blocks = use_blocks;
+                double new_cap = primary.cap;
+                while (new_cap < amt) {
+                    new_cap += 1.0;
+                    a.add_new++;
+                }
+
+                double unit = new_cap / use_blocks;
+                a.use_blocks = int(floor(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_l.real_amt - amt)) {
+                    best_l = a;
+                }
+
+                a.use_blocks = int(ceil(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_r.real_amt - amt)) {
+                    best_r = a;
+                }
+            }
+        }
+        return {best_l, best_r};
+    }
+    pair<Action, Action> discretise_secondary(double amt) const {
+        Action best_l, best_r;
+        best_l.tube_idx = -1;
+        best_r.tube_idx = -1;
+        best_l.real_amt = 1e100;
+        best_r.real_amt = 1e100;
+        if (secondary.tube_idx == -1) {
+            return {best_l, best_r};
+        }
+        Action a;
+        assert(secondary.tube_idx != -1);
+        if (secondary.tube_idx != -1) {
+            a.i = secondary.ti;
+            a.j = secondary.tj;
+            a.primary_or_secandary = 2;
+            for (int use_blocks = secondary.used_blocks;
+                 use_blocks <= secondary.blocks; use_blocks++) {
+                if (use_blocks == 0) {
+                    continue;
+                }
+                a.add_new = 0;
+                a.tube_idx = tube_idx;
+                a.blocks = use_blocks;
+                double new_cap = secondary.cap;
+                while (new_cap < amt) {
+                    new_cap += 1.0;
+                    a.add_new++;
+                }
+
+                double unit = new_cap / use_blocks;
+                a.use_blocks = int(floor(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_l.real_amt - amt)) {
+                    best_l = a;
+                }
+
+                a.use_blocks = int(ceil(amt / unit));
+                a.real_amt = new_cap * a.use_blocks / use_blocks;
+                if (abs(a.real_amt - amt) < abs(best_r.real_amt - amt)) {
+                    best_r = a;
+                }
+            }
+        }
+        return {best_l, best_r};
+    }
+    // 連続量 → ブロック量 へ丸め込む(切り落とし，切り上げ双方で)
+    // プライマリー，セカンダリーの双方の和として用いる
+    pair<pair<Action, Action>, pair<Action, Action>>
+    discretise_two(double amt, bool almost_end) const {
+        // assert(primary.tube_idx != -1 and secondary.tube_idx != -1);
+        bool can_add = true;
+        if (almost_end) {
+            double sum_amt = 0;
+            if (primary.tube_idx >= 0) {
+                sum_amt += primary.cap;
+            }
+            if (secondary.tube_idx >= 0) {
+                sum_amt += secondary.cap;
+            }
+            if (sum_amt >= amt) {
+                can_add = false;
+            }
+        }
+        pair<Action, Action> best_l, best_r;
+        best_l.first.tube_idx = -1;
+        best_l.second.tube_idx = -1;
+        best_r.first.tube_idx = -1;
+        best_r.second.tube_idx = -1;
+        best_l.first.real_amt = 1e100;
+        best_l.second.real_amt = 1e100;
+        best_r.first.real_amt = 1e100;
+        best_r.second.real_amt = 1e100;
+        if (primary.tube_idx == -1) {
+            auto [l, r] = discretise_secondary(amt);
+            best_l.first = l;
+            best_r.first = r;
+            return {best_l, best_r};
+        } else if (secondary.tube_idx == -1) {
+            auto [l, r] = discretise_primary(amt);
+            best_l.first = l;
+            best_r.first = r;
+            return {best_l, best_r};
+        }
+        double min_diff_l = 1e100;
+        double min_diff_r = 1e100;
+        Action none_action;
+        none_action.tube_idx = -1;
+        none_action.real_amt = 1e100;
+        if (rnd::xorshift32() & 1) {
+            for (int blocks = primary.used_blocks; blocks <= primary.blocks;
+                 blocks++) {
+                if (blocks == 0) {
+                    continue;
+                }
+                for (int use_blocks = 0; use_blocks <= blocks; use_blocks++) {
+                    if (min_diff_l < 1e-5 and min_diff_r < 1e-5) {
+                        return {best_l, best_r};
+                    }
+                    Action primary_l_action;
+                    double primary_use_amt;
+                    double need_amt;
+                    if (can_add and primary.cap < 0.2 and primary.cap < amt) {
+                        primary_l_action.add_new = 1;
+                        primary_use_amt =
+                            (primary.cap + 1) * use_blocks / blocks;
+                        need_amt = amt - primary_use_amt;
+                        if (secondary.cap < need_amt and almost_end) {
+                            continue;
+                        }
+                    } else {
+                        primary_use_amt = primary.cap * use_blocks / blocks;
+                        need_amt = amt - primary_use_amt;
+                    }
+
+                    if (can_add == false and secondary.cap < need_amt) {
+                        continue;
+                    }
+                    primary_l_action.i = primary.ti;
+                    primary_l_action.j = primary.tj;
+                    primary_l_action.tube_idx = tube_idx;
+                    primary_l_action.blocks = blocks;
+                    primary_l_action.use_blocks = use_blocks;
+                    primary_l_action.real_amt = primary_use_amt;
+                    primary_l_action.primary_or_secandary = 1;
+                    if (need_amt <= 0) {
+                        if (can_add and
+                            abs(primary_use_amt - amt) < min_diff_r) {
+                            min_diff_r = abs(primary_use_amt - amt);
+                            best_r.first = primary_l_action;
+                            best_r.second = none_action;
+                        }
+                        break;
+                    }
+                    auto [secondary_l_action, secondary_r_action] =
+                        discretise_secondary(need_amt);
+                    if (abs(amt - primary_use_amt -
+                            secondary_l_action.real_amt) < min_diff_l) {
+                        min_diff_l = abs(amt - primary_use_amt -
+                                         secondary_l_action.real_amt);
+                        best_l = {primary_l_action, secondary_l_action};
+                    }
+                    if (abs(amt - primary_use_amt -
+                            secondary_r_action.real_amt) < min_diff_r) {
+                        min_diff_r = abs(amt - primary_use_amt -
+                                         secondary_r_action.real_amt);
+                        best_r = {primary_l_action, secondary_r_action};
+                    }
+                }
+            }
+        } else {
+            for (int blocks = secondary.used_blocks; blocks <= secondary.blocks;
+                 blocks++) {
+                if (blocks == 0) {
+                    continue;
+                }
+                for (int use_blocks = 0; use_blocks <= blocks; use_blocks++) {
+                    if (min_diff_l < 1e-5 and min_diff_r < 1e-5) {
+                        return {best_l, best_r};
+                    }
+
+                    Action secondary_l_action;
+                    double secondary_use_amt;
+                    double need_amt;
+                    if (can_add and secondary.cap < 0.2 and
+                        secondary.cap < amt) {
+                        secondary_l_action.add_new = 1;
+                        secondary_use_amt =
+                            (secondary.cap + 1) * use_blocks / blocks;
+                        need_amt = amt - secondary_use_amt;
+                        if (primary.cap < need_amt and almost_end) {
+                            continue;
+                        }
+                    } else {
+                        secondary_use_amt = secondary.cap * use_blocks / blocks;
+                        need_amt = amt - secondary_use_amt;
+                    }
+                    if (can_add == false and primary.cap < need_amt) {
+                        continue;
+                    }
+                    secondary_l_action.i = secondary.ti;
+                    secondary_l_action.j = secondary.tj;
+                    secondary_l_action.tube_idx = tube_idx;
+                    secondary_l_action.blocks = blocks;
+                    secondary_l_action.use_blocks = use_blocks;
+                    secondary_l_action.real_amt = secondary_use_amt;
+                    secondary_l_action.primary_or_secandary = 2;
+                    if (need_amt <= 0) {
+                        if (can_add and
+                            abs(secondary_use_amt - amt) < min_diff_r) {
+                            min_diff_r = abs(secondary_use_amt - amt);
+                            best_r.first = none_action;
+                            best_r.second = secondary_l_action;
+                        }
+                        break;
+                    }
+                    auto [primary_l_action, primary_r_action] =
+                        discretise_primary(need_amt);
+                    if (abs(amt - secondary_use_amt -
+                            primary_l_action.real_amt) < min_diff_l) {
+                        min_diff_l = abs(amt - secondary_use_amt -
+                                         primary_l_action.real_amt);
+                        best_l = {primary_l_action, secondary_l_action};
+                    }
+                    if (abs(amt - secondary_use_amt -
+                            primary_r_action.real_amt) < min_diff_r) {
+                        min_diff_r = abs(amt - secondary_use_amt -
+                                         primary_r_action.real_amt);
+                        best_r = {primary_r_action, secondary_l_action};
+                    }
+                }
+            }
+        }
+        return {best_l, best_r};
+    }
+};
 // ──────────────────────────────
 //  5. 入力
 // ──────────────────────────────
@@ -390,6 +722,12 @@ struct Well {
         y = 0.0;
     }
 };
+struct Well2 {
+    int i, j;    // 代表の座標
+    double cap;  // 絵具の上限
+    MixState ms; // 色とか量とか
+};
+
 // ──────────────────────────────
 //  6. Tが小さいときのための特殊ソルバー
 // ──────────────────────────────
@@ -398,6 +736,10 @@ class Small_T_Solver {
     int tubes_used = 0;
     double err_sum = 0;
     double eps = 1e-6;
+    int well_w = 1;
+    int well_h = 4;
+    double well_cap = well_w * well_h;
+    int well_num = in.N / well_w * in.N / well_h;
     int max_turn = 0;
     int max_well = 100;
     int max_iter = 1000;
@@ -498,8 +840,11 @@ class Small_T_Solver {
                 min_amt = well.amt;
                 dump_well_idx = well_idx;
             }
-            rep(i, min(5, max_turn + 1)) {
-                if (actions[i].size() > 1000) {
+            rep(i, min(2, max_turn + 1)) {
+                if (i + well.amt > well.cap) {
+                    break;
+                }
+                if (false and actions[i].size() > 1000) {
                     rep(_, max_iter) {
                         MixStateWithAction &action =
                             actions[i][rnd::xorshift32() % actions[i].size()];
@@ -544,6 +889,9 @@ class Small_T_Solver {
             Well well;
             rep(i, min(5, (int)(max_turn + 1 -
                                 ceil(used_wells[dump_well_idx].amt)))) {
+                if (i + well.amt > well.cap) {
+                    break;
+                }
                 for (const auto &action : actions[i]) {
                     if (well.amt + action.amt < 1.0 - eps) {
                         continue;
@@ -566,6 +914,9 @@ class Small_T_Solver {
         } else {
             Well well = clean_wells.back();
             rep(i, min(5, max_turn + 1)) {
+                if (i + well.amt > well.cap) {
+                    break;
+                }
                 for (const auto &action : actions[i]) {
                     if (well.amt + action.amt < 1.0 - eps) {
                         continue;
@@ -591,13 +942,13 @@ class Small_T_Solver {
     void init_wells() {
         used_wells.reserve(max_well);
         clean_wells.reserve(max_well);
-        for (int i = 0; i < in.N; i += 2) {
-            for (int j = 0; j < in.N; j += 2) {
+        for (int i = 0; i < in.N; i += well_h) {
+            for (int j = 0; j < in.N; j += well_w) {
                 Well well;
                 well.amt = 0;
                 well.i = i;
                 well.j = j;
-                well.cap = 400.0 / max_well;
+                well.cap = well_cap;
                 clean_wells.push_back(well);
             }
         }
@@ -607,7 +958,7 @@ class Small_T_Solver {
         sep_h = vector<string>(in.N - 1);
         rep(i, in.N) {
             rep(j, in.N - 1) {
-                if (j % 2 == 0) {
+                if (j % well_w != well_w - 1) {
                     sep_v[i] += "0";
                     if (j == in.N - 2) {
                         sep_v[i] += '\n';
@@ -621,7 +972,7 @@ class Small_T_Solver {
         }
         rep(i, in.N - 1) {
             rep(j, in.N) {
-                if (i % 2 == 0) {
+                if (i % well_h != well_h - 1) {
                     sep_h[i] += "0 ";
                 } else {
                     sep_h[i] += "1";
@@ -676,10 +1027,9 @@ class Small_T_Solver {
 // ──────────────────────────────
 class Solver {
     const Input &in;
-    vector<Palette> palettes;
+    vector<PaletteControler> palettes;
     vector<vector<int>> cmds; // 出力コマンド蓄積
 
-    int max_colors = 0;
     int tubes_used = 0;
     double err_sum = 0;
     int random_iter = 0;
@@ -687,58 +1037,116 @@ class Solver {
     double eps = 1e-6;
     vector<string> sep_v;
     vector<string> sep_h;
-    double random_tl = 500;
-    double anneal_tl;
+    // double random_tl = 500;
+    // double anneal_tl;
     double discretise_tl;
     TimeKeeper tk;
-    vector<vector<double>> init_coefs;
+    vector<vector<vector<double>>> best_coefs;
+    vector<vector<double>> best_coefs_err;
+    // vector<vector<double>> init_coefs;
+    int max_palettes;
+    int MODE_THRESHOLD = 31000;
 
   public:
     int final_cost;
 
-    Solver(const Input &_in, TimeKeeper tk) : in(_in), tk(tk) {}
+    Solver(const Input &_in, TimeKeeper tk) : in(_in), tk(tk) {
+        make_best_coefs();
+    }
 
     //----------------------------------
     void solve() {
-        vector<vector<double>> coefs;
-        coefs.reserve(in.T);
-        int used_turn = 0;
-        max_colors = max(1, int((ceil(in.T - 3 * in.H) / (4.0 * in.H))));
-        make_init_coef();
-        rep(h, in.H) {
-            tk.update();
-            anneal_tl = (2600.0 - tk.now()) / (in.H - h);
-            Color tgt = in.targets[h];
-            int remains = in.T - used_turn - (in.H - h) * 3;
-            max_colors = max(1, int(floor(remains / (4.0 * (in.H - h)))));
-            cerr << "Max_Colors: " << h + 1 << " " << max_colors << '\n';
-            auto coef = find_mix(tgt, h);
-            coefs.push_back(coef);
-            used_turn += 3;
-            rep(i, in.K) {
-                if (coef[i] > eps) {
-                    used_turn += 4;
-                }
-            }
-        }
+        // dpで各ターンの使用色数を暫定計算
+        vector<int> can_use_colors = calc_use_colors();
         vector<int> used_tube_cnt(in.K);
-        for (const auto &coef : coefs) {
+        rep(h, in.H) {
+            const vector<double> &coef = best_coefs[can_use_colors[h]][h];
             rep(i, in.K) {
-                if (coef[i] > eps) {
+                if (coef[i] > 0.0) {
                     used_tube_cnt[i]++;
                 }
             }
         }
+        // 色の使用頻度に合わせて行数を調整
+        for (int idx : in.need_idxs) {
+            used_tube_cnt[idx]++;
+        }
+        for (auto &c : used_tube_cnt) {
+            c = sqrt(c);
+        }
+
         vector<int> lines_size = calc_lines_size(used_tube_cnt);
         init_palettes(lines_size);
-        discretise_tl = (2800.0 - tk.now()) / (in.H * 30);
+        err_sum = 0;
+        tubes_used = 0;
+
         rep(h, in.H) {
             const Color &tgt = in.targets[h];
-            const vector<double> &coef = coefs[h];
+            int colors = can_use_colors[h];
+            max_palettes =
+                (in.T - cmds.size() - 3 * (in.H - h)) / (4 * (in.H - h));
+            colors = max(colors, max_palettes);
+            colors = min(colors, 4);
+            cerr << "Use_Colors: " << h + 1 << " " << colors << '\n';
+            auto coef = best_coefs[colors][h];
             tk.update();
-            auto acts = discretise(tgt, coef);
+            double disc_tl = (2800 - tk.now()) / (in.H - h + 1);
+            auto acts = discretise(tgt, coef, disc_tl, h);
             cerr << "連続値のエラー: " << error_only(tgt, coef)
                  << " 離散値のエラー: " << error_only(tgt, acts) << '\n';
+            if (h == in.H - 1) {
+                double sum = 0;
+                for (const auto &p : palettes) {
+                    if (p.primary.tube_idx >= 0) {
+                        sum += p.primary.cap;
+                    }
+                    if (p.secondary.tube_idx >= 0) {
+                        sum += p.secondary.cap;
+                    }
+                }
+                cerr << "sum: " << sum << '\n';
+                if (sum >= 1 - eps) {
+                    tk.update();
+                    double disc_tl = (2800 - tk.now()) / (in.H - h + 1);
+                    auto tmp_coef = optimize_continuous(tgt);
+                    int cnt = 0;
+                    for (auto c : tmp_coef) {
+                        if (c > 1e-9) {
+                            cnt++;
+                        }
+                    }
+                    vector<Action> tmp_acts;
+                    bool ok = true;
+                    if (cnt <= 6) {
+                        tmp_acts = discretise(tgt, tmp_coef, disc_tl, h);
+                    } else {
+                        tie(ok, tmp_acts) = discretise_fast(tgt, tmp_coef, h);
+                    }
+                    if (ok) {
+                        double cost = error_only(tgt, acts);
+                        double tmp_cost = error_only(tgt, tmp_acts);
+                        {
+                            int add_tube = 0;
+                            for (const auto &a : acts) {
+                                add_tube += a.add_new;
+                            }
+                            cost += add_tube * in.D;
+                        }
+                        {
+                            int add_tube = 0;
+                            for (const auto &a : tmp_acts) {
+                                add_tube += a.add_new;
+                            }
+                            tmp_cost += add_tube * in.D;
+                        }
+                        cerr << "old_cost: " << cost
+                             << " new_cost: " << tmp_cost << '\n';
+                        if (tmp_cost < cost) {
+                            acts = tmp_acts;
+                        }
+                    }
+                }
+            }
             commit(tgt, acts);
         }
         while (cmds.size() > in.T) {
@@ -770,54 +1178,130 @@ class Solver {
         cerr << "Random_iter: " << random_iter << '\n';
         cerr << "Anneal_iter: " << anneal_iter << '\n';
         cerr << "Used_Turn: " << cmds.size() << " / " << in.T << '\n';
-        // cerr << "Used_Tube_Cnt: \n";
-        // for (int i = 0; i < (int)used_tube_cnt.size(); ++i) {
-        //     cerr << used_tube_cnt[i]
-        //          << (i + 1 == (int)used_tube_cnt.size() ? '\n' : ' ');
-        // }
     }
 
   private:
+    vector<int> calc_use_colors() {
+        // dpで各ターンに使用すべき絵具の本数を計算する
+        if (in.T >= 20000) {
+            return vector<int>(in.H, 4);
+        }
+        // i個目の目標まででjターン使用した場合の(エラーの合計の最小値,
+        // iターン目に使用するターン数)
+        int can_use_turn = (in.T - 3000) / 4;
+        vector<vector<pair<double, int>>> dp(
+            in.H + 1,
+            vector<pair<double, int>>(can_use_turn + 1, make_pair(1e100, -1)));
+        dp[0][0] = {0.0, -1};
+        rep(i, in.H) {
+            rep(j, can_use_turn) {
+                if (dp[i][j].first == 1e100) {
+                    continue;
+                }
+                for (int k = 1; k <= 4; k++) {
+                    if (j + k > can_use_turn) {
+                        break;
+                    }
+                    if (dp[i][j].first + best_coefs_err[k][i] <
+                        dp[i + 1][j + k].first) {
+                        dp[i + 1][j + k].first =
+                            dp[i][j].first + best_coefs_err[k][i];
+                        dp[i + 1][j + k].second = k;
+                    }
+                }
+            }
+        }
+        pair<double, int> best_pair = {1e100, -1};
+        int now_turn;
+        rep(i, can_use_turn + 1) {
+            if (dp[in.H][i].first < best_pair.first) {
+                best_pair = dp[in.H][i];
+                now_turn = i;
+            }
+        }
+        vector<int> res(in.H);
+        for (int i = in.H; i > 0; i--) {
+            res[i - 1] = dp[i][now_turn].second;
+            now_turn -= dp[i][now_turn].second;
+        }
+        return res;
+    }
     //----------------------------------
     vector<int> calc_lines_size(vector<int> used_tube_cnt) {
+        // todo used_tube_cnt はsqrtとっても良いかも
         int total_lines = 20;
+        int K = in.K;
 
-        // 1. 割合の合計
-        int total_used =
-            accumulate(used_tube_cnt.begin(), used_tube_cnt.end(), 0);
-        rep(i, in.K) { cerr << used_tube_cnt[i] << " "; }
-        cerr << '\n';
-        vector<int> lines_size(in.K, 0);
-        int remaining = total_lines;
+        // まず、used_tube_cnt[i] > 0 なら必ず 1 行を確保
+        int count_pos = 0;
+        for (int i = 0; i < K; ++i) {
+            if (used_tube_cnt[i] > 0) {
+                count_pos++;
+            }
+        }
 
-        // 3. 小数部分付きの比率を計算
-        vector<pair<double, int>> frac_with_index; // {小数部分, index}
+        int remaining = total_lines - count_pos;
+
+        vector<int> lines_size(K, 0);
+        for (int i = 0; i < K; ++i) {
+            if (used_tube_cnt[i] > 0) {
+                lines_size[i] = 1; // 最低 1 行
+            }
+        }
+
+        // used_tube_cnt[i] > 0 の合計値を計算
+        int sum_pos = 0;
+        for (int i = 0; i < K; ++i) {
+            if (used_tube_cnt[i] > 0) {
+                sum_pos += used_tube_cnt[i];
+            }
+        }
+        if (sum_pos == 0) {
+            return lines_size;
+        }
+
+        // 「残り remaining 行」を比率 exact に基づいて floor 割り振り
         int current_sum = 0;
+        vector<pair<double, int>> frac_with_index; // (小数部分, index)
 
-        for (int i = 0; i < in.K; ++i) {
-            double exact = (total_used == 0 ? 0
-                                            : double(used_tube_cnt[i]) *
-                                                  remaining / total_used);
-            int add = int(floor(exact));
-            lines_size[i] += add;
-            current_sum += add;
-            frac_with_index.emplace_back(exact - add, i);
+        for (int i = 0; i < K; ++i) {
+            if (used_tube_cnt[i] > 0) {
+                double exact = double(used_tube_cnt[i]) * remaining / sum_pos;
+                int add = int(floor(exact));
+                lines_size[i] += add;
+                current_sum += add;
+                frac_with_index.emplace_back(exact - add, i);
+            }
         }
 
-        // 4. 残っている分を小数部分の大きい順に足す
-        int remain_adjust = total_lines - current_sum;
+        // 足りない分を、小数部分の大きい順に +1 して埋める
+        int to_add = remaining - current_sum; // 余り行数
         sort(frac_with_index.rbegin(), frac_with_index.rend());
-
-        for (int i = 0; i < remain_adjust; ++i) {
-            lines_size[frac_with_index[i].second]++;
+        for (int t = 0; t < to_add; ++t) {
+            int idx = frac_with_index[t].second;
+            lines_size[idx]++;
         }
-        rep(i, in.K) { cerr << lines_size[i] << " "; }
-        cerr << '\n';
+
         return lines_size;
     }
     void init_palettes(const vector<int> &lines_size) {
         palettes.assign(in.K, {});
-        rep(i, in.K) palettes[i].lines = lines_size[i];
+        if (MODE_THRESHOLD <= in.T) {
+            // 分割型
+            rep(i, in.K) {
+                palettes[i].tube_idx = i;
+                palettes[i].primary.lines =
+                    lines_size[i] / 2 + lines_size[i] % 2;
+                palettes[i].secondary.lines =
+                    lines_size[i] - palettes[i].primary.lines;
+            }
+        } else {
+            // 既存の
+            rep(i, in.K) {
+                palettes[i].tube_idx = i;
+                palettes[i].primary.lines = lines_size[i];
+            }
+        }
 
         sep_v = vector<string>(in.N);
         sep_h = vector<string>(in.N - 1);
@@ -832,40 +1316,80 @@ class Solver {
         rep(k, in.K) {
             if (row < in.N)
                 sep_v[row][0] = '0';
-            auto &p = palettes[k];
-            p.tube_idx = k;
-            p.si = row;
-            p.sj = 1;
-            row += p.lines;
-            p.build();
+            if (palettes[k].primary.lines > 0) {
+                auto &p = palettes[k].primary;
+                p.tube_idx = k;
+                p.si = row;
+                p.sj = 1;
+                row += p.lines;
+                p.build();
+            }
+            if (row < in.N)
+                sep_v[row][0] = '0';
+            if (palettes[k].secondary.lines > 0) {
+                auto &p = palettes[k].secondary;
+                p.tube_idx = k;
+                p.si = row;
+                p.sj = 1;
+                row += p.lines;
+                p.build();
+            }
         }
 
         // 横仕切り
         row = 0;
         rep(k, in.K) {
-            auto &p = palettes[k];
-            if (p.lines == 0 or row == in.N - 1)
-                continue;
-            rep(j, p.lines - 1) {
-                sep_h[row] += "0 ";
-                if (j % 2 == 0) {
-                    rep(x, 18) sep_h[row] += "1 ";
-                    sep_h[row] += "0\n";
-                    row++;
-                } else {
-                    sep_h[row] += "0";
-                    rep(x, 18) sep_h[row] += " 1";
-                    sep_h[row] += "\n";
+            if (palettes[k].primary.lines > 0) {
+                auto &p = palettes[k].primary;
+                if (p.lines == 0 or row == in.N - 1)
+                    continue;
+                rep(j, p.lines - 1) {
+                    sep_h[row] += "0 ";
+                    if (j % 2 == 0) {
+                        rep(x, 18) sep_h[row] += "1 ";
+                        sep_h[row] += "0\n";
+                        row++;
+                    } else {
+                        sep_h[row] += "0";
+                        rep(x, 18) sep_h[row] += " 1";
+                        sep_h[row] += "\n";
+                        row++;
+                    }
+                }
+                if (row < in.N - 1) {
+                    sep_h[row] += "0 ";
+                    rep(x, 19) {
+                        sep_h[row] += '1';
+                        sep_h[row] += (x == 18 ? '\n' : ' ');
+                    }
                     row++;
                 }
             }
-            if (row < in.N - 1) {
-                sep_h[row] += "0 ";
-                rep(x, 19) {
-                    sep_h[row] += '1';
-                    sep_h[row] += (x == 18 ? '\n' : ' ');
+            if (palettes[k].secondary.lines > 0) {
+                auto &p = palettes[k].secondary;
+                if (p.lines == 0 or row == in.N - 1)
+                    continue;
+                rep(j, p.lines - 1) {
+                    sep_h[row] += "0 ";
+                    if (j % 2 == 0) {
+                        rep(x, 18) sep_h[row] += "1 ";
+                        sep_h[row] += "0\n";
+                        row++;
+                    } else {
+                        sep_h[row] += "0";
+                        rep(x, 18) sep_h[row] += " 1";
+                        sep_h[row] += "\n";
+                        row++;
+                    }
                 }
-                row++;
+                if (row < in.N - 1) {
+                    sep_h[row] += "0 ";
+                    rep(x, 19) {
+                        sep_h[row] += '1';
+                        sep_h[row] += (x == 18 ? '\n' : ' ');
+                    }
+                    row++;
+                }
             }
         }
     }
@@ -879,74 +1403,307 @@ class Solver {
             x /= sum;
         return true;
     }
+    pair<bool, vector<Action>> discretise_fast(const Color &tgt,
+                                               const vector<double> &coef,
+                                               int now_turn) {
+        // プライマリ or セカンダリ
+        vector<pair<Action, Action>> nearest_acts;
+        // 併用
+        vector<pair<pair<Action, Action>, pair<Action, Action>>>
+            nearest_acts_pair;
 
-    vector<Action> discretise(const Color &tgt, const vector<double> &coef) {
+        nearest_acts.clear();
+        nearest_acts_pair.clear();
+        rep(i, in.K) {
+            if (coef[i] < 1e-9) {
+                continue;
+            }
+            double amt = coef[i];
+            auto [best_l, best_r] = palettes[i].discretise_one(
+                amt, now_turn >= 980 and max_palettes >= 8 and
+                         in.T >= MODE_THRESHOLD);
+            nearest_acts.push_back({best_l, best_r});
+            if (in.T >= MODE_THRESHOLD) {
+                auto [best_l, best_r] =
+                    palettes[i].discretise_two(amt, now_turn >= 980);
+                nearest_acts_pair.push_back({best_l, best_r});
+            }
+        }
+
+        vector<Action> acts;
+        rep(i, nearest_acts.size()) {
+            const auto &a = nearest_acts[i];
+            const auto &p = nearest_acts_pair[i];
+            if (a.second.tube_idx >= 0) {
+                acts.push_back(a.second);
+            } else if (p.second.first.tube_idx >= 0 or
+                       p.second.second.tube_idx >= 0) {
+                if (p.second.first.tube_idx >= 0) {
+                    acts.push_back(p.second.first);
+                }
+                if (p.second.second.tube_idx >= 0) {
+                    acts.push_back(p.second.second);
+                }
+            } else {
+                return {false, {}};
+            }
+        }
+        if (max_palettes < acts.size()) {
+            return {false, acts};
+        }
+        return {true, acts};
+    }
+    vector<Action> discretise(const Color &tgt, const vector<double> &coef,
+                              double tl, int now_turn) {
         vector<Action> best_acts;
         double min_cost = 1e100;
         vector<Action> new_acts;
         new_acts.reserve(in.K);
+        // プライマリ or セカンダリ
         vector<pair<Action, Action>> nearest_acts;
+        // 併用
+        vector<pair<pair<Action, Action>, pair<Action, Action>>>
+            nearest_acts_pair;
         vector<double> new_coef(in.K);
-        for (double alp = 1.0; alp < 4.0; alp += 0.1) {
+
+        // cerr << "now palette" << '\n';
+        // for (const auto &p : palettes) {
+        //     if (p.primary.tube_idx >= 0) {
+        //         cerr << p.tube_idx << ' ' << p.primary.tube_idx << ' '
+        //              << p.primary.cap << ' ' << '\n';
+        //     }
+        //     if (p.secondary.tube_idx >= 0) {
+        //         cerr << p.tube_idx << ' ' << p.secondary.tube_idx << ' '
+        //              << p.secondary.cap << ' ' << '\n';
+        //     }
+        // }
+        int iter = 0;
+        TimeKeeper tk(tl);
+        double alp = 1.0;
+        while (true) {
+            if (iter > 0) {
+                alp = 1.0 + rnd::uniform_real(0.0, 0.5);
+            }
+            iter++;
+            if (iter % 3 == 0) {
+                tk.update();
+                if (tk.over()) {
+                    cerr << "iter: " << iter << '\n';
+                    break;
+                }
+            }
             nearest_acts.clear();
-            fill(new_coef.begin(), new_coef.end(), 0.0);
+            nearest_acts_pair.clear();
             rep(i, in.K) { new_coef[i] = alp * coef[i]; }
             rep(i, in.K) {
                 if (new_coef[i] < 1e-9) {
                     continue;
                 }
                 double amt = new_coef[i];
-                Action best_l, best_r;
-                best_l.real_amt = 1e100;
-                best_r.real_amt = 1e100;
-                Palette &p = palettes[i];
-                for (int b = p.used_blocks; b <= p.blocks; b++) {
-                    Action new_l = p.discretise(amt, b, 0);
-                    if (abs(new_l.real_amt - amt) <
-                        abs(best_l.real_amt - amt)) {
-                        best_l = new_l;
-                    }
-                    Action new_r = p.discretise(amt, b, 1);
-                    if (abs(new_r.real_amt - amt) <
-                        abs(best_r.real_amt - amt)) {
-                        best_r = new_r;
-                    }
-                }
+                auto [best_l, best_r] = palettes[i].discretise_one(
+                    amt, now_turn >= 980 and max_palettes >= 8 and
+                             in.T >= MODE_THRESHOLD);
                 nearest_acts.push_back({best_l, best_r});
+                if (in.T >= MODE_THRESHOLD) {
+                    auto [best_l, best_r] =
+                        palettes[i].discretise_two(amt, now_turn >= 980);
+                    nearest_acts_pair.push_back({best_l, best_r});
+                }
             }
-            TimeKeeper tk(discretise_tl);
-            int iter = 0;
-            while (true) {
-                iter++;
-                if (iter % 10 == 0) {
-                    tk.update();
-                    if (tk.over()) {
-                        break;
+            if (in.T < MODE_THRESHOLD) {
+                rep(mask, 1 << nearest_acts.size()) {
+                    double amt_sum = 0.0;
+                    new_acts.clear();
+                    rep(i, nearest_acts.size()) {
+                        if (mask >> i & 1) {
+                            amt_sum += nearest_acts[i].second.real_amt;
+                            new_acts.push_back(nearest_acts[i].second);
+                        } else {
+                            amt_sum += nearest_acts[i].first.real_amt;
+                            new_acts.push_back(nearest_acts[i].first);
+                        }
+                    }
+                    if (amt_sum < 1.0 - eps) {
+                        continue;
+                    }
+                    double new_cost = cost(tgt, new_acts);
+                    if (new_cost < min_cost) {
+                        min_cost = new_cost;
+                        best_acts = new_acts;
                     }
                 }
-                int mask = rnd::xorshift32() % (1 << nearest_acts.size());
-                double amt_sum = 0.0;
-                new_acts.clear();
-                rep(i, nearest_acts.size()) {
-                    if (mask >> i & 1) {
-                        amt_sum += nearest_acts[i].second.real_amt;
-                        new_acts.push_back(nearest_acts[i].second);
-                    } else {
-                        amt_sum += nearest_acts[i].first.real_amt;
-                        new_acts.push_back(nearest_acts[i].first);
+            } else {
+                // cerr << "now_turn: " << now_turn << '\n';
+                // vector<double> tmp1_coef(in.K, 0.0);
+                // vector<double> tmp2_coef(in.K, 0.0);
+                // for (auto &p : nearest_acts_pair) {
+                //     if (p.second.first.tube_idx >= 0) {
+                //         cerr << p.second.first.tube_idx << ' '
+                //              << p.second.first.primary_or_secandary << ' '
+                //              << p.second.first.real_amt << ' '
+                //              << p.second.first.add_new << '\n';
+                //         tmp1_coef[p.second.first.tube_idx] +=
+                //             p.second.first.real_amt;
+                //     }
+                //     if (p.second.second.tube_idx >= 0) {
+                //         cerr << p.second.second.tube_idx << ' '
+                //              << p.second.second.primary_or_secandary << ' '
+                //              << p.second.second.real_amt << ' '
+                //              << p.second.second.add_new << '\n';
+                //         tmp1_coef[p.second.second.tube_idx] +=
+                //             p.second.second.real_amt;
+                //     }
+                // }
+
+                // rep(i, in.K) {
+                //     cerr << new_coef[i] << ((i < in.K - 1) ? " " : "\n");
+                // }
+                // rep(i, in.K) {
+                //     cerr << tmp1_coef[i] << ((i < in.K - 1) ? " " : "\n");
+                // }
+
+                rep(mask, 1 << (nearest_acts.size() * 2)) {
+                    double amt_sum = 0.0;
+                    new_acts.clear();
+                    bool valid = true;
+                    rep(i, nearest_acts.size()) {
+                        if (max_palettes < new_acts.size()) {
+                            break;
+                        }
+                        if ((mask >> (2 * i) & 3) == 0) {
+                            // l 単数
+                            if (nearest_acts[i].first.tube_idx == -1)
+                                continue;
+                            amt_sum += nearest_acts[i].first.real_amt;
+                            new_acts.push_back(nearest_acts[i].first);
+                        } else if ((mask >> (2 * i) & 3) == 1) {
+                            // l 複数
+                            if (nearest_acts_pair[i].first.first.tube_idx >=
+                                0) {
+                                amt_sum +=
+                                    nearest_acts_pair[i].first.first.real_amt;
+                                new_acts.push_back(
+                                    nearest_acts_pair[i].first.first);
+                            }
+                            if (nearest_acts_pair[i].first.second.tube_idx >=
+                                0) {
+                                amt_sum +=
+                                    nearest_acts_pair[i].first.second.real_amt;
+                                new_acts.push_back(
+                                    nearest_acts_pair[i].first.second);
+                            }
+
+                        } else if ((mask >> (2 * i) & 3) == 2) {
+                            // r 単数
+                            if (nearest_acts[i].second.tube_idx == -1)
+                                continue;
+                            amt_sum += nearest_acts[i].second.real_amt;
+                            new_acts.push_back(nearest_acts[i].second);
+                        } else if ((mask >> (2 * i) & 3) == 3) {
+                            // r 複数
+                            if (nearest_acts_pair[i].second.first.tube_idx >=
+                                0) {
+                                amt_sum +=
+                                    nearest_acts_pair[i].second.first.real_amt;
+                                new_acts.push_back(
+                                    nearest_acts_pair[i].second.first);
+                            }
+                            if (nearest_acts_pair[i].second.second.tube_idx >=
+                                0) {
+                                amt_sum +=
+                                    nearest_acts_pair[i].second.second.real_amt;
+                                new_acts.push_back(
+                                    nearest_acts_pair[i].second.second);
+                            }
+                        }
                     }
-                }
-                if (amt_sum < 1.0 - eps) {
-                    continue;
-                }
-                double new_cost = cost(tgt, new_acts);
-                if (new_cost < min_cost) {
-                    min_cost = new_cost;
-                    best_acts = new_acts;
+                    if (amt_sum < 1.0 - eps) {
+                        continue;
+                    }
+                    if (max_palettes < new_acts.size()) {
+                        continue;
+                    }
+                    double new_cost = cost(tgt, new_acts);
+                    if (new_cost < min_cost) {
+                        // vector<double> tmp1_coef(in.K, 0.0);
+                        // vector<double> tmp2_coef(in.K, 0.0);
+                        // for (auto &a : new_acts) {
+                        //     cerr << a.tube_idx << ' ' <<
+                        //     a.primary_or_secandary
+                        //          << ' ' << a.real_amt << " " << a.add_new
+                        //          << '\n';
+                        //     tmp1_coef[a.tube_idx] += a.real_amt;
+                        // }
+
+                        // rep(i, in.K) {
+                        //     cerr << new_coef[i]
+                        //          << ((i < in.K - 1) ? " " : "\n");
+                        // }
+                        // rep(i, in.K) {
+                        //     cerr << tmp1_coef[i]
+                        //          << ((i < in.K - 1) ? " " : "\n");
+                        // }
+                        min_cost = new_cost;
+                        best_acts = new_acts;
+                    }
                 }
             }
         }
+        cerr << "best_acts_size: " << best_acts.size() << '\n';
         return best_acts;
+    }
+
+    vector<double> optimize_continuous(const Color &tgt,
+                                       int max_iters = 10000) {
+        int K = in.K;
+        vector<double> coef(K, 0.0), best_coef(K, 0.0), max_coef(K, 0.0);
+        double sum = 0.0;
+
+        // 上限を設定しつつ初期coefにキャパを足してsumを計算
+        rep(i, K) {
+            double cap = 0;
+            if (palettes[i].primary.tube_idx >= 0)
+                cap += palettes[i].primary.cap;
+            if (palettes[i].secondary.tube_idx >= 0)
+                cap += palettes[i].secondary.cap;
+            max_coef[i] = cap;
+            coef[i] = cap;
+            sum += cap;
+        }
+        assert(sum >= 1 - 1e-6);
+
+        double best_cost = error_only(tgt, coef);
+        best_coef = coef;
+
+        // 温度スケジュール: t = 1.0 -> 0.001
+        for (int it = 0; it < max_iters; ++it) {
+            double t = 100.0 - double(it) / max_iters;
+            if (t < 0.001)
+                t = 0.001;
+
+            int idx = rnd::xorshift32() % K;
+            double diff = rnd::uniform_real(-0.3, 0.3);
+
+            if (coef[idx] + diff < 0 || coef[idx] + diff > max_coef[idx] ||
+                sum + diff < 1 - 1e-6) {
+                continue;
+            }
+
+            coef[idx] += diff;
+            sum += diff;
+            double new_cost = error_only(tgt, coef);
+
+            if (new_cost < best_cost ||
+                rnd::uniform_real(0.0, 1.0) < exp((best_cost - new_cost) / t)) {
+                best_cost = new_cost;
+                best_coef = coef;
+            } else {
+                coef[idx] -= diff;
+                sum -= diff;
+            }
+        }
+
+        return best_coef;
     }
 
     double cost(const Color &tgt, const vector<double> &coef) const {
@@ -956,6 +1713,9 @@ class Solver {
         rep(i, in.K) {
             s.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, coef[i]);
             total += coef[i];
+        }
+        if (total < 1 - 1e-6) {
+            return 1e100;
         }
         return s.error(tgt) + max(0.0, (total - 1.0)) * in.D;
     }
@@ -969,6 +1729,9 @@ class Solver {
             s.add(in.tubes[tube_idx].c, in.tubes[tube_idx].m,
                   in.tubes[tube_idx].y, a.real_amt);
             total += a.real_amt;
+        }
+        if (total < 1 - 1e-6) {
+            return 1e100;
         }
         return s.error(tgt) + max(0.0, (total - 1.0)) * in.D;
     }
@@ -992,348 +1755,218 @@ class Solver {
         return s.error(tgt);
     }
 
-    //----------------------------------
-    void make_init_coef() {
-        vector<double> coef(in.K, 0);
-        init_coefs = vector<vector<double>>(in.H);
-        vector<double> best_costs(in.H, 1e100);
-        TimeKeeper tk(random_tl);
-        int it = 0;
-        MixState ms;
-        while (true) {
-            ++it;
-            ++random_iter;
-            if (it % 100 == 0) {
-                tk.update();
-                if (tk.over())
-                    break;
-            }
-            int choose = min(in.K, max_colors);
-            fill(coef.begin(), coef.end(), 0.0);
-            ms.clear();
-            rep(k, choose) {
-                int idx = in.need_idxs[rnd::xorshift32() % in.Q];
-                double am = rnd::uniform01();
-                coef[idx] += am;
-                ms.add(in.tubes[idx].c, in.tubes[idx].m, in.tubes[idx].y, am);
-            }
-            rep(i, in.H) {
-                const Color &tgt = in.targets[i];
-                double c = ms.error(tgt);
-                if (c < best_costs[i]) {
-                    best_costs[i] = c;
-                    init_coefs[i] = coef;
-                }
-            }
-        }
-        rep(i, in.H) { normalise(init_coefs[i]); }
-    }
+    void make_best_coefs() {
+        best_coefs = vector<vector<vector<double>>>(5);
+        best_coefs_err = vector<vector<double>>(5);
 
-    //----------------------------------
-    vector<double> anneal(const Color &tgt, const vector<double> &init_c) {
-        vector<double> best_c = init_c, curr_c = init_c;
-        double best_cost = cost(tgt, best_c), curr_cost = best_cost;
-        int curr_nz = count_if(curr_c.begin(), curr_c.end(),
-                               [](double v) { return v > 0; });
-        const double T0 = 100.0, Tend = 1e-3;
-        TimeKeeper tk(anneal_tl);
-        int it = 0;
-        MixState ms;
-        rep(i, in.K) {
-            if (init_c[i] > 1e-9) {
-                ms.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, init_c[i]);
-            }
-        }
-        while (true and best_cost > 1.0) {
-            ++it;
-            ++anneal_iter;
-            if (it % 50 == 0) {
-                normalise(curr_c);
-                ms.clear();
-                rep(i, in.K) {
-                    if (curr_c[i] > 1e-9) {
-                        ms.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y,
-                               curr_c[i]);
+        int M = (int)in.need_idxs.size();
+        rep(tgt_index, in.H) {
+            int K = in.K;
+            std::vector<double> best(K, 0.0);
+            double best_e2 = 1e300;
+            const Color &tgt = in.targets[tgt_index];
+            // ――――――――――――――――――――――――――――――――――――
+            //  1) 単色 (lim >= 1)
+            // ――――――――――――――――――――――――――――――――――――
+            if (M >= 1) {
+                double best1 = 1e300;
+                int bestIdx = -1;
+                for (int xi = 0; xi < M; ++xi) {
+                    int i = in.need_idxs[xi];
+                    double e2 = norm2(in.tubes[i] - tgt);
+                    if (e2 < best1) {
+                        best1 = e2;
+                        bestIdx = i;
                     }
                 }
-                tk.update();
-                if (tk.over())
-                    break;
-            }
-            double frac = min(1.0, tk.now() / anneal_tl);
-            double T = T0 * (1 - frac) + Tend * frac;
-            int idx = in.need_idxs[rnd::xorshift32() % in.Q];
-            double diff = rnd::uniform_real(-0.2, 0.2);
-            if ((diff < 0 && curr_c[idx] == 0) ||
-                (diff > 0 && curr_nz == max_colors && curr_c[idx] == 0))
-                continue;
-
-            // 変化した後のコスト
-            double nxt_cost;
-            if (diff < 0) {
-                diff = max(diff, -curr_c[idx]);
-                nxt_cost = ms.error_if_add(in.tubes[idx].c, in.tubes[idx].m,
-                                           in.tubes[idx].y, diff, tgt);
-            } else {
-                nxt_cost = ms.error_if_add(in.tubes[idx].c, in.tubes[idx].m,
-                                           in.tubes[idx].y, diff, tgt);
-            }
-            double d = nxt_cost - curr_cost;
-            bool accept =
-                (d < 0) || (exp(-d / max(T, 1e-9)) > rnd::uniform01());
-            if (accept) {
-                ms.add(in.tubes[idx].c, in.tubes[idx].m, in.tubes[idx].y, diff);
-                if (curr_c[idx] == 0 && diff > 0)
-                    ++curr_nz;
-                curr_c[idx] += diff;
-                curr_cost = nxt_cost;
-                if (curr_c[idx] <= 0) {
-                    curr_c[idx] = 0;
-                    --curr_nz;
-                }
-                if (curr_cost < best_cost) {
-                    best_cost = curr_cost;
-                    best_c = curr_c;
+                if (bestIdx >= 0 && best1 < best_e2) {
+                    std::fill(best.begin(), best.end(), 0.0);
+                    best[bestIdx] = 1.0;
                 }
             }
-        }
-        normalise(best_c);
-        return best_c;
-    }
+            best_coefs[1].push_back(best);
+            best_coefs_err[1].push_back(sqrt(best_e2) * 10000.0);
+            // ――――――――――――――――――――――――――――――――――――
+            //  2) 二色混合 (lim >= 2)
+            // ――――――――――――――――――――――――――――――――――――
+            if (M >= 2) {
+                for (int xi = 0; xi < M; ++xi) {
+                    int i = in.need_idxs[xi];
+                    for (int xj = xi + 1; xj < M; ++xj) {
+                        int j = in.need_idxs[xj];
 
-    //----------------------------------
-    // ----- ここから追加する関数 -----
-    // need_idxs に含まれる色インデックスだけで projection を行うバージョン
-    vector<double> projection_subset(const Color &tgt,
-                                     const vector<int> &need_idxs,
-                                     int lim) const {
-        int K = in.K;
-        // 最終的に返す「全 K 本分の混合比」ベクター (need_idxs
-        // に含まれないものは 0)
-        vector<double> best(K, 0.0);
+                        Color p = in.tubes[i];
+                        Color q = in.tubes[j];
+                        Color dcol = q - p;
+                        Color tp = tgt - p;
 
-        // (1) 初期状態：非常に大きな誤差値を設定
-        double best_e2 = 1e300;
-
-        // convenience: need_idxs.size() 分だけを loop するときの長さ
-        int M = (int)need_idxs.size();
-
-        // ――――――――――――――――――――――――――――――――――――
-        //  1) 三色混合 (lim >= 3)
-        // ――――――――――――――――――――――――――――――――――――
-        if (lim >= 3 && M >= 3) {
-            // need_idxs のインデックスを直接使う。たとえば need_idxs[i]
-            // は実際のチューブ番号
-            for (int xi = 0; xi < M; ++xi) {
-                int i = need_idxs[xi];
-                for (int xj = xi + 1; xj < M; ++xj) {
-                    int j = need_idxs[xj];
-                    for (int xk = xj + 1; xk < M; ++xk) {
-                        int k = need_idxs[xk];
-
-                        // 三つの基準色を取り出す
-                        Color pi = in.tubes[i];
-                        Color pj = in.tubes[j];
-                        Color pk = in.tubes[k];
-
-                        // pk を原点とした相対ベクトル
-                        Color ei = pi - pk;
-                        Color ej = pj - pk;
-                        Color v = tgt - pk;
-
-                        // 2×2 の正規方程式の係数行列要素
-                        double m00 = dot(ei, ei);
-                        double m01 = dot(ei, ej);
-                        double m11 = dot(ej, ej);
-                        double b0 = dot(ei, v);
-                        double b1 = dot(ej, v);
-                        double det = m00 * m11 - m01 * m01;
-
-                        // det = 0 → 3 点が退化しているのでスキップ
-                        if (std::abs(det) < 1e-12)
+                        double dd = norm2(dcol);
+                        if (dd < 1e-12)
                             continue;
 
-                        // a,b を解いて、g = 1 − a − b
-                        double a = (b0 * m11 - b1 * m01) / det;
-                        double b = (m00 * b1 - m01 * b0) / det;
-                        double g = 1.0 - a - b;
+                        double u = dot(tp, dcol) / dd;
+                        u = clamp(u, 0.0, 1.0);
 
-                        // バリセンターがすべて非負 → 三角形内部にある
-                        if (a >= 0 && b >= 0 && g >= 0) {
-                            // 実際に混合した色
-                            Color mix = pi * a;
-                            mix += pj * b;
-                            mix += pk * g;
+                        Color mix = p * u;
+                        mix += q * (1.0 - u);
 
-                            // 目標色との二乗誤差
-                            double e2 = norm2(mix - tgt);
-                            if (e2 < best_e2) {
-                                // 更新があったら「全て 0 にクリア」してから
-                                // i,j,k に対応する重みをセット
-                                best_e2 = e2;
-                                std::fill(best.begin(), best.end(), 0.0);
-                                best[i] = a;
-                                best[j] = b;
-                                best[k] = g;
+                        double e2 = norm2(mix - tgt);
+                        if (e2 < best_e2) {
+                            best_e2 = e2;
+                            std::fill(best.begin(), best.end(), 0.0);
+                            best[i] = u;
+                            best[j] = 1.0 - u;
+                        }
+                    }
+                }
+            }
+            best_coefs[2].push_back(best);
+            best_coefs_err[2].push_back(sqrt(best_e2) * 10000.0);
+            // ――――――――――――――――――――――――――――――――――――
+            //  3) 三色混合 (lim >= 3)
+            // ――――――――――――――――――――――――――――――――――――
+            if (M >= 3) {
+                for (int xi = 0; xi < M; ++xi) {
+                    int i = in.need_idxs[xi];
+                    for (int xj = xi + 1; xj < M; ++xj) {
+                        int j = in.need_idxs[xj];
+                        for (int xk = xj + 1; xk < M; ++xk) {
+                            int k = in.need_idxs[xk];
+
+                            Color pi = in.tubes[i];
+                            Color pj = in.tubes[j];
+                            Color pk = in.tubes[k];
+
+                            Color ei = pi - pk;
+                            Color ej = pj - pk;
+                            Color v = tgt - pk;
+
+                            double m00 = dot(ei, ei);
+                            double m01 = dot(ei, ej);
+                            double m11 = dot(ej, ej);
+                            double b0 = dot(ei, v);
+                            double b1 = dot(ej, v);
+                            double det2 = m00 * m11 - m01 * m01;
+                            if (std::abs(det2) < 1e-12)
+                                continue;
+
+                            double a = (b0 * m11 - b1 * m01) / det2;
+                            double b = (m00 * b1 - m01 * b0) / det2;
+                            double g = 1.0 - a - b;
+
+                            if (a >= 0 && b >= 0 && g >= 0) {
+                                Color mix = pi * a;
+                                mix += pj * b;
+                                mix += pk * g;
+
+                                double e2 = norm2(mix - tgt);
+                                if (e2 < best_e2) {
+                                    best_e2 = e2;
+                                    std::fill(best.begin(), best.end(), 0.0);
+                                    best[i] = a;
+                                    best[j] = b;
+                                    best[k] = g;
+                                }
                             }
                         }
                     }
                 }
             }
-        }
+            best_coefs[3].push_back(best);
+            best_coefs_err[3].push_back(sqrt(best_e2) * 10000.0);
+            // ――――――――――――――――――――――――――――――――――――
+            //  4) 四色混合 (lim >= 4)
+            // ――――――――――――――――――――――――――――――――――――
+            if (M >= 4) {
+                for (int xi = 0; xi < M; ++xi) {
+                    int i = in.need_idxs[xi];
+                    for (int xj = xi + 1; xj < M; ++xj) {
+                        int j = in.need_idxs[xj];
+                        for (int xk = xj + 1; xk < M; ++xk) {
+                            int k = in.need_idxs[xk];
+                            for (int xl = xk + 1; xl < M; ++xl) {
+                                int l = in.need_idxs[xl];
 
-        // ――――――――――――――――――――――――――――――――――――
-        //  2) 二色混合 (lim >= 2)
-        // ――――――――――――――――――――――――――――――――――――
-        if (lim >= 2 && M >= 2) {
-            for (int xi = 0; xi < M; ++xi) {
-                int i = need_idxs[xi];
-                for (int xj = xi + 1; xj < M; ++xj) {
-                    int j = need_idxs[xj];
+                                // 基準色 4 点を取り出す
+                                Color pi = in.tubes[i];
+                                Color pj = in.tubes[j];
+                                Color pk = in.tubes[k];
+                                Color pl = in.tubes[l];
 
-                    Color p = in.tubes[i];
-                    Color q = in.tubes[j];
-                    Color d = q - p;
-                    Color tp = tgt - p;
+                                // pl を原点にシフト
+                                Color ei = pi - pl;
+                                Color ej = pj - pl;
+                                Color ek = pk - pl;
+                                Color v = tgt - pl;
 
-                    // d の長さの二乗
-                    double dd = norm2(d);
-                    if (dd < 1e-12)
-                        continue; // p と q がほぼ同じ色ならスキップ
+                                // 3×3 行列 M の要素
+                                double m00 = dot(ei, ei);
+                                double m01 = dot(ei, ej);
+                                double m02 = dot(ei, ek);
+                                double m10 = m01; // dot(ej,ei)
+                                double m11 = dot(ej, ej);
+                                double m12 = dot(ej, ek);
+                                double m20 = m02; // dot(ek,ei)
+                                double m21 = m12; // dot(ek,ej)
+                                double m22 = dot(ek, ek);
 
-                    // 線分上のパラメータ
-                    double u = dot(tp, d) / dd;
-                    // 0～1 にクランプ
-                    u = clamp(u, 0.0, 1.0);
+                                // 右辺ベクトル b
+                                double b0 = dot(ei, v);
+                                double b1 = dot(ej, v);
+                                double b2 = dot(ek, v);
 
-                    // 線形補完で混色
-                    Color mix = p * u;
-                    mix += q * (1.0 - u);
+                                // 行列式 det(M)
+                                double det = m00 * (m11 * m22 - m12 * m21) -
+                                             m01 * (m10 * m22 - m12 * m20) +
+                                             m02 * (m10 * m21 - m11 * m20);
+                                if (std::abs(det) < 1e-12)
+                                    continue;
 
-                    double e2 = norm2(mix - tgt);
-                    if (e2 < best_e2) {
-                        best_e2 = e2;
-                        std::fill(best.begin(), best.end(), 0.0);
-                        best[i] = u;
-                        best[j] = 1.0 - u;
+                                // Cramer's rule で a, b, c を求める
+                                double det_a = b0 * (m11 * m22 - m12 * m21) -
+                                               m01 * (b1 * m22 - m12 * b2) +
+                                               m02 * (b1 * m21 - m11 * b2);
+
+                                double det_b = m00 * (b1 * m22 - m12 * b2) -
+                                               b0 * (m10 * m22 - m12 * m20) +
+                                               m02 * (m10 * b2 - b1 * m20);
+
+                                double det_c = m00 * (m11 * b2 - b1 * m21) -
+                                               m01 * (m10 * b2 - b1 * m20) +
+                                               b0 * (m10 * m21 - m11 * m20);
+
+                                double a = det_a / det;
+                                double b = det_b / det;
+                                double c = det_c / det;
+                                double d = 1.0 - a - b - c;
+
+                                // 非負条件 (バリセンターが四面体内部)
+                                if (a >= 0 && b >= 0 && c >= 0 && d >= 0) {
+                                    Color mix = pi * a;
+                                    mix += pj * b;
+                                    mix += pk * c;
+                                    mix += pl * d;
+                                    double e2 = norm2(mix - tgt);
+                                    if (e2 < best_e2) {
+                                        best_e2 = e2;
+                                        std::fill(best.begin(), best.end(),
+                                                  0.0);
+                                        best[i] = a;
+                                        best[j] = b;
+                                        best[k] = c;
+                                        best[l] = d;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
-        }
-
-        // ――――――――――――――――――――――――――――――――――――
-        //  3) 単色 (lim >= 1)
-        // ――――――――――――――――――――――――――――――――――――
-        if (lim >= 1 && M >= 1) {
-            double best1 = 1e300;
-            int bestIdx = -1;
-            for (int xi = 0; xi < M; ++xi) {
-                int i = need_idxs[xi];
-                // 完全に一色だけで近いものを探す
-                double e2 = norm2(in.tubes[i] - tgt);
-                if (e2 < best1) {
-                    best1 = e2;
-                    bestIdx = i;
-                }
-            }
-            // 単色の誤差がこれまでの best_e2 より小さければ更新
-            if (bestIdx >= 0 && best1 < best_e2) {
-                std::fill(best.begin(), best.end(), 0.0);
-                best[bestIdx] = 1.0;
-            }
-        }
-
-        return best;
-    }
-    // ----- ここまで -----
-    vector<double> projection(const Color &tgt, int lim) const {
-        int K = in.K;
-        vector<double> best(K, 0);
-        double best_e2 = 1e300;
-        // 3本
-        if (lim >= 3) {
-            rep(i, K) for (int j = i + 1; j < K; ++j) for (int k = j + 1; k < K;
-                                                           ++k) {
-                Color pi = in.tubes[i], pj = in.tubes[j], pk = in.tubes[k];
-                Color ei = pi - pk, ej = pj - pk, v = tgt - pk;
-                double m00 = dot(ei, ei), m01 = dot(ei, ej), m11 = dot(ej, ej),
-                       b0 = dot(ei, v), b1 = dot(ej, v),
-                       det = m00 * m11 - m01 * m01;
-                if (det == 0)
-                    continue;
-                double a = (b0 * m11 - b1 * m01) / det,
-                       b = (m00 * b1 - m01 * b0) / det, g = 1 - a - b;
-                if (a >= 0 && b >= 0 && g >= 0) {
-                    Color mix = pi * a + pj * b + pk * g;
-                    double e2 = norm2(mix - tgt);
-                    if (e2 < best_e2) {
-                        best_e2 = e2;
-                        fill(best.begin(), best.end(), 0);
-                        best[i] = a;
-                        best[j] = b;
-                        best[k] = g;
-                    }
-                }
-            }
-        }
-        // 2本
-        if (lim >= 2) {
-            rep(i, K) for (int j = i + 1; j < K; ++j) {
-                Color p = in.tubes[i], q = in.tubes[j], d = q - p, tp = tgt - p;
-                double dd = norm2(d);
-                if (dd == 0)
-                    continue;
-                double u = dot(tp, d) / dd;
-                u = clamp(u, 0.0, 1.0);
-                Color mix = p * u + q * (1 - u);
-                double e2 = norm2(mix - tgt);
-                if (e2 < best_e2) {
-                    best_e2 = e2;
-                    fill(best.begin(), best.end(), 0);
-                    best[i] = u;
-                    best[j] = 1 - u;
-                }
-            }
-        }
-        // 1本
-        if (lim >= 1) {
-            double best1 = 1e300;
-            int idx = 0;
-            rep(i, K) {
-                double e2 = norm2(in.tubes[i] - tgt);
-                if (e2 < best1) {
-                    best1 = e2;
-                    idx = i;
-                }
-            }
-            if (best1 < best_e2) {
-                fill(best.begin(), best.end(), 0);
-                best[idx] = 1;
-            }
-        }
-        return best;
-    }
-
-    //----------------------------------
-    vector<double> find_mix(const Color &tgt, int idx) {
-        auto rand_c = init_coefs[idx];
-        double rand_cost = error_only(tgt, rand_c);
-        auto proj_c = projection_subset(tgt, in.need_idxs, max_colors);
-        double proj_cost = error_only(tgt, proj_c);
-        if (proj_cost < rand_cost) {
-            auto anneal_c = anneal(tgt, proj_c);
-            double anneal_cost = error_only(tgt, anneal_c);
-            cerr << "random: " << rand_cost << " proj: " << proj_cost
-                 << " anneal: " << anneal_cost << '\n';
-            return anneal_c;
-        } else {
-            auto anneal_c = anneal(tgt, rand_c);
-            double anneal_cost = error_only(tgt, anneal_c);
-            cerr << "random: " << rand_cost << " proj: " << proj_cost
-                 << " anneal: " << anneal_cost << '\n';
-            return anneal_c;
+            best_coefs[4].push_back(best);
+            best_coefs_err[4].push_back(sqrt(best_e2) * 10000.0);
         }
     }
+
     //----------------------------------
     void commit(const Color &tgt, const vector<Action> &acts) {
         // todo
@@ -1373,21 +2006,20 @@ class Solver {
             if (a.use_blocks == 0) {
                 continue;
             }
-            // used_tube_cnt[a.tube_idx]++;
-            auto &p = palettes[a.tube_idx];
+            auto &p = a.primary_or_secandary == 1
+                          ? palettes[a.tube_idx].primary
+                          : palettes[a.tube_idx].secondary;
             // 分母の変更
             if (p.used_blocks != a.blocks) {
                 // 左を閉じる(分母を決める)
                 auto s = p.cmd_sep(p.blocks - a.blocks);
                 if (!s.empty()) {
                     cmds.push_back(s);
-                    // sep.push_back(s);
                 }
                 // 区切りを空ける
                 s = p.cmd_sep(p.blocks - p.used_blocks);
                 if (!s.empty()) {
                     cmds.push_back(s);
-                    // sep.push_back(s);
                 }
             }
             rep(_, a.add_new) {
@@ -1402,21 +2034,15 @@ class Solver {
             auto s = p.cmd_sep(p.blocks - (a.blocks - a.use_blocks));
             if (!s.empty() and (a.blocks - a.use_blocks) != 0) {
                 cmds.push_back(s);
-                // sep.push_back(s);
             }
             // 左を開ける
             s = p.cmd_sep(p.blocks - a.blocks);
             if (!s.empty()) {
-                // cmds.push_back(s);
                 sep.push_back(s);
             }
             p.used_blocks = a.blocks - a.use_blocks;
             p.cap = p.cap * p.used_blocks / a.blocks;
-            // p.cap -= a.real_amt;
             amt_sum += a.real_amt;
-            // auto oc = p.cmd_openclose();
-            // cmds.push_back(oc);
-            // sep.push_back(oc);
         }
         for (auto &v : sep)
             cmds.push_back(v);
@@ -1425,7 +2051,6 @@ class Solver {
             cmds.push_back({3, 0, 0});
             amt_sum -= 1.0;
         }
-        reverse(sep.begin(), sep.end());
     }
 };
 
@@ -1445,11 +2070,12 @@ int main() {
     auto need_idxs = removeInteriorPoints(xyzs);
     in.need_idxs = need_idxs;
     in.Q = need_idxs.size();
-    if (in.T < 17000) {
+    if (in.T < 19000) {
         Small_T_Solver sol(in);
+        // AddTubeSolver sol(in);
         sol.solve();
         tk.update();
-        if (tk.now() < 2000.0) {
+        if (tk.now() < 2000.0 and 12000 <= in.T) {
             Solver sol2(in, tk);
             sol2.solve();
             sol.cerr_report();

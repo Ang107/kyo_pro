@@ -335,18 +335,18 @@ struct PaletteControler {
     Palette secondary;
     // 連続量 → ブロック量 へ丸め込む(切り落とし，切り上げ双方で)
     // プライマリー，セカンダリーの単体を用いる
-    pair<Action, Action> discretise_one(double amt, bool almost_end) const {
+    pair<Action, Action> discretise_one(double amt, bool not_add) const {
         assert(primary.tube_idx != -1 or secondary.tube_idx != -1);
+
         Action best_l, best_r;
         best_l.tube_idx = -1;
         best_r.tube_idx = -1;
         best_l.real_amt = 1e100;
         best_r.real_amt = 1e100;
+
         Action a;
         if (primary.tube_idx != -1) {
-            if (almost_end and primary.cap < amt and amt <= secondary.cap) {
-                // 何もしない
-            } else {
+            if (!not_add or primary.cap >= amt) {
                 auto [l, r] = discretise_primary(amt);
                 if (abs(amt - l.real_amt) < abs(best_l.real_amt - amt)) {
                     best_l = l;
@@ -357,9 +357,7 @@ struct PaletteControler {
             }
         }
         if (secondary.tube_idx != -1) {
-            if (almost_end and secondary.cap < amt and amt <= primary.cap) {
-                // 何もしない
-            } else {
+            if (!not_add or secondary.cap >= amt) {
                 auto [l, r] = discretise_secondary(amt);
                 if (abs(amt - l.real_amt) < abs(best_l.real_amt - amt)) {
                     best_l = l;
@@ -512,15 +510,28 @@ struct PaletteControler {
                     continue;
                 }
                 for (int use_blocks = 0; use_blocks <= blocks; use_blocks++) {
-                    if (min_diff_l < 1e-5 or min_diff_r < 1e-5) {
+                    if (min_diff_l < 1e-5 and min_diff_r < 1e-5) {
                         return {best_l, best_r};
                     }
-                    double primary_use_amt = primary.cap * use_blocks / blocks;
-                    double need_amt = amt - primary_use_amt;
-                    if (can_add == false and need_amt < secondary.cap) {
+                    Action primary_l_action;
+                    double primary_use_amt;
+                    double need_amt;
+                    if (can_add and primary.cap < 0.2 and primary.cap < amt) {
+                        primary_l_action.add_new = 1;
+                        primary_use_amt =
+                            (primary.cap + 1) * use_blocks / blocks;
+                        need_amt = amt - primary_use_amt;
+                        if (secondary.cap < need_amt and almost_end) {
+                            continue;
+                        }
+                    } else {
+                        primary_use_amt = primary.cap * use_blocks / blocks;
+                        need_amt = amt - primary_use_amt;
+                    }
+
+                    if (can_add == false and secondary.cap < need_amt) {
                         continue;
                     }
-                    Action primary_l_action;
                     primary_l_action.i = primary.ti;
                     primary_l_action.j = primary.tj;
                     primary_l_action.tube_idx = tube_idx;
@@ -560,16 +571,29 @@ struct PaletteControler {
                     continue;
                 }
                 for (int use_blocks = 0; use_blocks <= blocks; use_blocks++) {
-                    if (min_diff_l < 1e-5 or min_diff_r < 1e-5) {
+                    if (min_diff_l < 1e-5 and min_diff_r < 1e-5) {
                         return {best_l, best_r};
                     }
-                    double secondary_use_amt =
-                        secondary.cap * use_blocks / blocks;
-                    double need_amt = amt - secondary_use_amt;
-                    if (can_add == false and need_amt < primary.cap) {
+
+                    Action secondary_l_action;
+                    double secondary_use_amt;
+                    double need_amt;
+                    if (can_add and secondary.cap < 0.2 and
+                        secondary.cap < amt) {
+                        secondary_l_action.add_new = 1;
+                        secondary_use_amt =
+                            (secondary.cap + 1) * use_blocks / blocks;
+                        need_amt = amt - secondary_use_amt;
+                        if (primary.cap < need_amt and almost_end) {
+                            continue;
+                        }
+                    } else {
+                        secondary_use_amt = secondary.cap * use_blocks / blocks;
+                        need_amt = amt - secondary_use_amt;
+                    }
+                    if (can_add == false and primary.cap < need_amt) {
                         continue;
                     }
-                    Action secondary_l_action;
                     secondary_l_action.i = secondary.ti;
                     secondary_l_action.j = secondary.tj;
                     secondary_l_action.tube_idx = tube_idx;
@@ -817,7 +841,10 @@ class Small_T_Solver {
                 dump_well_idx = well_idx;
             }
             rep(i, min(2, max_turn + 1)) {
-                if (actions[i].size() > 1000) {
+                if (i + well.amt > well.cap) {
+                    break;
+                }
+                if (false and actions[i].size() > 1000) {
                     rep(_, max_iter) {
                         MixStateWithAction &action =
                             actions[i][rnd::xorshift32() % actions[i].size()];
@@ -862,6 +889,9 @@ class Small_T_Solver {
             Well well;
             rep(i, min(5, (int)(max_turn + 1 -
                                 ceil(used_wells[dump_well_idx].amt)))) {
+                if (i + well.amt > well.cap) {
+                    break;
+                }
                 for (const auto &action : actions[i]) {
                     if (well.amt + action.amt < 1.0 - eps) {
                         continue;
@@ -884,6 +914,9 @@ class Small_T_Solver {
         } else {
             Well well = clean_wells.back();
             rep(i, min(5, max_turn + 1)) {
+                if (i + well.amt > well.cap) {
+                    break;
+                }
                 for (const auto &action : actions[i]) {
                     if (well.amt + action.amt < 1.0 - eps) {
                         continue;
@@ -1012,6 +1045,7 @@ class Solver {
     vector<vector<double>> best_coefs_err;
     // vector<vector<double>> init_coefs;
     int max_palettes;
+    int MODE_THRESHOLD = 27000;
 
   public:
     int final_cost;
@@ -1056,10 +1090,63 @@ class Solver {
             cerr << "Use_Colors: " << h + 1 << " " << colors << '\n';
             auto coef = best_coefs[colors][h];
             tk.update();
-            double disc_tl = (2800 - tk.now()) / (in.H - h);
+            double disc_tl = (2800 - tk.now()) / (in.H - h + 1);
             auto acts = discretise(tgt, coef, disc_tl, h);
             cerr << "連続値のエラー: " << error_only(tgt, coef)
                  << " 離散値のエラー: " << error_only(tgt, acts) << '\n';
+            if (h == in.H - 1) {
+                double sum = 0;
+                for (const auto &p : palettes) {
+                    if (p.primary.tube_idx >= 0) {
+                        sum += p.primary.cap;
+                    }
+                    if (p.secondary.tube_idx >= 0) {
+                        sum += p.secondary.cap;
+                    }
+                }
+                cerr << "sum: " << sum << '\n';
+                if (sum >= 1 - eps) {
+                    tk.update();
+                    double disc_tl = (2800 - tk.now()) / (in.H - h + 1);
+                    auto tmp_coef = optimize_continuous(tgt);
+                    int cnt = 0;
+                    for (auto c : tmp_coef) {
+                        if (c > 1e-9) {
+                            cnt++;
+                        }
+                    }
+                    vector<Action> tmp_acts;
+                    bool ok = true;
+                    if (cnt <= 6) {
+                        tmp_acts = discretise(tgt, tmp_coef, disc_tl, h);
+                    } else {
+                        tie(ok, tmp_acts) = discretise_fast(tgt, tmp_coef, h);
+                    }
+                    if (ok) {
+                        double cost = error_only(tgt, acts);
+                        double tmp_cost = error_only(tgt, tmp_acts);
+                        {
+                            int add_tube = 0;
+                            for (const auto &a : acts) {
+                                add_tube += a.add_new;
+                            }
+                            cost += add_tube * in.D;
+                        }
+                        {
+                            int add_tube = 0;
+                            for (const auto &a : tmp_acts) {
+                                add_tube += a.add_new;
+                            }
+                            tmp_cost += add_tube * in.D;
+                        }
+                        cerr << "old_cost: " << cost
+                             << " new_cost: " << tmp_cost << '\n';
+                        if (tmp_cost < cost) {
+                            acts = tmp_acts;
+                        }
+                    }
+                }
+            }
             commit(tgt, acts);
         }
         while (cmds.size() > in.T) {
@@ -1199,7 +1286,7 @@ class Solver {
     }
     void init_palettes(const vector<int> &lines_size) {
         palettes.assign(in.K, {});
-        if (27000 <= in.T) {
+        if (MODE_THRESHOLD <= in.T) {
             // 分割型
             rep(i, in.K) {
                 palettes[i].tube_idx = i;
@@ -1316,7 +1403,56 @@ class Solver {
             x /= sum;
         return true;
     }
+    pair<bool, vector<Action>> discretise_fast(const Color &tgt,
+                                               const vector<double> &coef,
+                                               int now_turn) {
+        // プライマリ or セカンダリ
+        vector<pair<Action, Action>> nearest_acts;
+        // 併用
+        vector<pair<pair<Action, Action>, pair<Action, Action>>>
+            nearest_acts_pair;
 
+        nearest_acts.clear();
+        nearest_acts_pair.clear();
+        rep(i, in.K) {
+            if (coef[i] < 1e-9) {
+                continue;
+            }
+            double amt = coef[i];
+            auto [best_l, best_r] = palettes[i].discretise_one(
+                amt, now_turn >= 980 and max_palettes >= 8 and
+                         in.T >= MODE_THRESHOLD);
+            nearest_acts.push_back({best_l, best_r});
+            if (in.T >= MODE_THRESHOLD) {
+                auto [best_l, best_r] =
+                    palettes[i].discretise_two(amt, now_turn >= 980);
+                nearest_acts_pair.push_back({best_l, best_r});
+            }
+        }
+
+        vector<Action> acts;
+        rep(i, nearest_acts.size()) {
+            const auto &a = nearest_acts[i];
+            const auto &p = nearest_acts_pair[i];
+            if (a.second.tube_idx >= 0) {
+                acts.push_back(a.second);
+            } else if (p.second.first.tube_idx >= 0 or
+                       p.second.second.tube_idx >= 0) {
+                if (p.second.first.tube_idx >= 0) {
+                    acts.push_back(p.second.first);
+                }
+                if (p.second.second.tube_idx >= 0) {
+                    acts.push_back(p.second.second);
+                }
+            } else {
+                return {false, {}};
+            }
+        }
+        if (max_palettes < acts.size()) {
+            return {false, acts};
+        }
+        return {true, acts};
+    }
     vector<Action> discretise(const Color &tgt, const vector<double> &coef,
                               double tl, int now_turn) {
         vector<Action> best_acts;
@@ -1330,7 +1466,17 @@ class Solver {
             nearest_acts_pair;
         vector<double> new_coef(in.K);
 
-        // for (double alp = 1.0; alp < 2.0; alp += 0.001) {
+        // cerr << "now palette" << '\n';
+        // for (const auto &p : palettes) {
+        //     if (p.primary.tube_idx >= 0) {
+        //         cerr << p.tube_idx << ' ' << p.primary.tube_idx << ' '
+        //              << p.primary.cap << ' ' << '\n';
+        //     }
+        //     if (p.secondary.tube_idx >= 0) {
+        //         cerr << p.tube_idx << ' ' << p.secondary.tube_idx << ' '
+        //              << p.secondary.cap << ' ' << '\n';
+        //     }
+        // }
         int iter = 0;
         TimeKeeper tk(tl);
         double alp = 1.0;
@@ -1342,6 +1488,7 @@ class Solver {
             if (iter % 3 == 0) {
                 tk.update();
                 if (tk.over()) {
+                    cerr << "iter: " << iter << '\n';
                     break;
                 }
             }
@@ -1353,16 +1500,17 @@ class Solver {
                     continue;
                 }
                 double amt = new_coef[i];
-                auto [best_l, best_r] =
-                    palettes[i].discretise_one(amt, now_turn >= 990);
+                auto [best_l, best_r] = palettes[i].discretise_one(
+                    amt, now_turn >= 980 and max_palettes >= 8 and
+                             in.T >= MODE_THRESHOLD);
                 nearest_acts.push_back({best_l, best_r});
-                if (in.T >= 27000) {
+                if (in.T >= MODE_THRESHOLD) {
                     auto [best_l, best_r] =
-                        palettes[i].discretise_two(amt, now_turn >= 990);
+                        palettes[i].discretise_two(amt, now_turn >= 980);
                     nearest_acts_pair.push_back({best_l, best_r});
                 }
             }
-            if (in.T < 27000) {
+            if (in.T < MODE_THRESHOLD) {
                 rep(mask, 1 << nearest_acts.size()) {
                     double amt_sum = 0.0;
                     new_acts.clear();
@@ -1385,27 +1533,53 @@ class Solver {
                     }
                 }
             } else {
+                // cerr << "now_turn: " << now_turn << '\n';
+                // vector<double> tmp1_coef(in.K, 0.0);
+                // vector<double> tmp2_coef(in.K, 0.0);
+                // for (auto &p : nearest_acts_pair) {
+                //     if (p.second.first.tube_idx >= 0) {
+                //         cerr << p.second.first.tube_idx << ' '
+                //              << p.second.first.primary_or_secandary << ' '
+                //              << p.second.first.real_amt << ' '
+                //              << p.second.first.add_new << '\n';
+                //         tmp1_coef[p.second.first.tube_idx] +=
+                //             p.second.first.real_amt;
+                //     }
+                //     if (p.second.second.tube_idx >= 0) {
+                //         cerr << p.second.second.tube_idx << ' '
+                //              << p.second.second.primary_or_secandary << ' '
+                //              << p.second.second.real_amt << ' '
+                //              << p.second.second.add_new << '\n';
+                //         tmp1_coef[p.second.second.tube_idx] +=
+                //             p.second.second.real_amt;
+                //     }
+                // }
+
+                // rep(i, in.K) {
+                //     cerr << new_coef[i] << ((i < in.K - 1) ? " " : "\n");
+                // }
+                // rep(i, in.K) {
+                //     cerr << tmp1_coef[i] << ((i < in.K - 1) ? " " : "\n");
+                // }
+
                 rep(mask, 1 << (nearest_acts.size() * 2)) {
                     double amt_sum = 0.0;
-                    int used_palettes = 0;
                     new_acts.clear();
                     bool valid = true;
                     rep(i, nearest_acts.size()) {
-                        if (max_palettes < used_palettes) {
+                        if (max_palettes < new_acts.size()) {
                             break;
                         }
                         if ((mask >> (2 * i) & 3) == 0) {
                             // l 単数
                             if (nearest_acts[i].first.tube_idx == -1)
                                 continue;
-                            used_palettes++;
                             amt_sum += nearest_acts[i].first.real_amt;
                             new_acts.push_back(nearest_acts[i].first);
                         } else if ((mask >> (2 * i) & 3) == 1) {
                             // l 複数
                             if (nearest_acts_pair[i].first.first.tube_idx >=
                                 0) {
-                                used_palettes++;
                                 amt_sum +=
                                     nearest_acts_pair[i].first.first.real_amt;
                                 new_acts.push_back(
@@ -1413,7 +1587,6 @@ class Solver {
                             }
                             if (nearest_acts_pair[i].first.second.tube_idx >=
                                 0) {
-                                used_palettes++;
                                 amt_sum +=
                                     nearest_acts_pair[i].first.second.real_amt;
                                 new_acts.push_back(
@@ -1424,14 +1597,12 @@ class Solver {
                             // r 単数
                             if (nearest_acts[i].second.tube_idx == -1)
                                 continue;
-                            used_palettes++;
                             amt_sum += nearest_acts[i].second.real_amt;
                             new_acts.push_back(nearest_acts[i].second);
                         } else if ((mask >> (2 * i) & 3) == 3) {
                             // r 複数
                             if (nearest_acts_pair[i].second.first.tube_idx >=
                                 0) {
-                                used_palettes++;
                                 amt_sum +=
                                     nearest_acts_pair[i].second.first.real_amt;
                                 new_acts.push_back(
@@ -1439,7 +1610,6 @@ class Solver {
                             }
                             if (nearest_acts_pair[i].second.second.tube_idx >=
                                 0) {
-                                used_palettes++;
                                 amt_sum +=
                                     nearest_acts_pair[i].second.second.real_amt;
                                 new_acts.push_back(
@@ -1450,11 +1620,29 @@ class Solver {
                     if (amt_sum < 1.0 - eps) {
                         continue;
                     }
-                    if (max_palettes < used_palettes) {
+                    if (max_palettes < new_acts.size()) {
                         continue;
                     }
                     double new_cost = cost(tgt, new_acts);
                     if (new_cost < min_cost) {
+                        // vector<double> tmp1_coef(in.K, 0.0);
+                        // vector<double> tmp2_coef(in.K, 0.0);
+                        // for (auto &a : new_acts) {
+                        //     cerr << a.tube_idx << ' ' <<
+                        //     a.primary_or_secandary
+                        //          << ' ' << a.real_amt << " " << a.add_new
+                        //          << '\n';
+                        //     tmp1_coef[a.tube_idx] += a.real_amt;
+                        // }
+
+                        // rep(i, in.K) {
+                        //     cerr << new_coef[i]
+                        //          << ((i < in.K - 1) ? " " : "\n");
+                        // }
+                        // rep(i, in.K) {
+                        //     cerr << tmp1_coef[i]
+                        //          << ((i < in.K - 1) ? " " : "\n");
+                        // }
                         min_cost = new_cost;
                         best_acts = new_acts;
                     }

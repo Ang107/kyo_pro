@@ -855,8 +855,9 @@ class Small_T_Solver {
                         if (tubes_used > 1000) {
                             cost += (action.actions.size() - 1.0) * in.D;
                         }
-                        cost +=
-                            max(0.0, well.amt + action.amt - well.cap) * in.D;
+                        // cost +=
+                        //     max(0.0, well.amt + action.amt - well.cap) *
+                        //     in.D;
                         cost += well.error_if_add(tgt, action);
                         if (cost < min_cost) {
                             min_cost = cost;
@@ -870,11 +871,12 @@ class Small_T_Solver {
                             continue;
                         }
                         double cost = 0;
-                        if (tubes_used > 1000) {
-                            cost += (action.actions.size() - 1.0) * in.D;
-                        }
-                        cost +=
-                            max(0.0, well.amt + action.amt - well.cap) * in.D;
+                        // if (tubes_used > 1000) {
+                        //     cost += (action.actions.size() - 1.0) * in.D;
+                        // }
+                        // cost +=
+                        //     max(0.0, well.amt + action.amt - well.cap) *
+                        //     in.D;
                         cost += well.error_if_add(tgt, action);
                         if (cost < min_cost) {
                             min_cost = cost;
@@ -922,10 +924,11 @@ class Small_T_Solver {
                         continue;
                     }
                     double cost = 0;
-                    if (tubes_used > 1000) {
-                        cost += (action.actions.size() - 1.0) * in.D;
-                    }
-                    cost += max(0.0, well.amt + action.amt - well.cap) * in.D;
+                    // if (tubes_used > 1000) {
+                    //     cost += (action.actions.size() - 1.0) * in.D;
+                    // }
+                    // cost += max(0.0, well.amt + action.amt - well.cap) *
+                    // in.D;
                     cost += well.error_if_add(tgt, action);
                     if (cost < min_cost) {
                         min_cost = cost;
@@ -935,7 +938,7 @@ class Small_T_Solver {
                 }
             }
         }
-
+        cerr << "min_cost: " << min_cost << '\n';
         return {best_well_idx, is_dump, best_action};
     }
 
@@ -1045,7 +1048,7 @@ class Solver {
     vector<vector<double>> best_coefs_err;
     // vector<vector<double>> init_coefs;
     int max_palettes;
-    int MODE_THRESHOLD = 31000;
+    int MODE_THRESHOLD = 27000;
 
   public:
     int final_cost;
@@ -1094,17 +1097,18 @@ class Solver {
             auto acts = discretise(tgt, coef, disc_tl, h);
             cerr << "連続値のエラー: " << error_only(tgt, coef)
                  << " 離散値のエラー: " << error_only(tgt, acts) << '\n';
-            if (h == in.H - 1) {
-                double sum = 0;
-                for (const auto &p : palettes) {
-                    if (p.primary.tube_idx >= 0) {
-                        sum += p.primary.cap;
-                    }
-                    if (p.secondary.tube_idx >= 0) {
-                        sum += p.secondary.cap;
-                    }
+            double sum = 0;
+            for (const auto &p : palettes) {
+                if (p.primary.tube_idx >= 0) {
+                    sum += p.primary.cap;
                 }
-                cerr << "sum: " << sum << '\n';
+                if (p.secondary.tube_idx >= 0) {
+                    sum += p.secondary.cap;
+                }
+            }
+            cerr << "turn: " << h << "sum: " << sum << '\n';
+
+            if (sum >= (double)(in.H - h)) {
                 if (sum >= 1 - eps) {
                     tk.update();
                     double disc_tl = (2800 - tk.now()) / (in.H - h + 1);
@@ -1465,7 +1469,7 @@ class Solver {
         vector<pair<pair<Action, Action>, pair<Action, Action>>>
             nearest_acts_pair;
         vector<double> new_coef(in.K);
-
+        double best_alph = -1;
         // cerr << "now palette" << '\n';
         // for (const auto &p : palettes) {
         //     if (p.primary.tube_idx >= 0) {
@@ -1482,7 +1486,8 @@ class Solver {
         double alp = 1.0;
         while (true) {
             if (iter > 0) {
-                alp = 1.0 + rnd::uniform_real(0.0, 0.5);
+                alp = 1.0 + rnd::uniform_real(
+                                0.0, 0.5 * (double)(10000 - in.D) / 10000.0);
             }
             iter++;
             if (iter % 3 == 0) {
@@ -1530,6 +1535,7 @@ class Solver {
                     if (new_cost < min_cost) {
                         min_cost = new_cost;
                         best_acts = new_acts;
+                        best_alph = alp;
                     }
                 }
             } else {
@@ -1645,11 +1651,13 @@ class Solver {
                         // }
                         min_cost = new_cost;
                         best_acts = new_acts;
+                        best_alph = alp;
                     }
                 }
             }
         }
         cerr << "best_acts_size: " << best_acts.size() << '\n';
+        cerr << "best_alp: " << best_alph << '\n';
         return best_acts;
     }
 

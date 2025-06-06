@@ -183,6 +183,8 @@ struct MixState {
     double c = 0, m = 0, y = 0; // 現在色
     double amt = 0;
     MixState() : c(0), m(0), y(0), amt(0) {} // 総量
+    MixState(double c, double m, double y, double amt)
+        : c(c), m(m), y(y), amt(amt) {} // 総量
     void add(double dc, double dm, double dy, double da) {
         if (da == 0)
             return;
@@ -242,6 +244,9 @@ struct MixState {
         amt = 0;
     }
     uint64_t hash() const {
+        if (amt == 0.0) {
+            return 0;
+        }
         uint64_t h_c = round(c * 10000);
         uint64_t h_m = round(m * 10000);
         uint64_t h_y = round(y * 10000);
@@ -669,10 +674,10 @@ struct MixStateWithAction {
     }
 };
 struct Well {
-    int i, j;       // 代表の座標
-    double amt;     // 絵具の量
-    double cap;     // ウェルの大きさ
-    double c, m, y; // 色
+    int i, j;                   // 代表の座標
+    double amt = 0;             // 絵具の量
+    double cap;                 // ウェルの大きさ
+    double c = 0, m = 0, y = 0; // 色
     bool is_clear = true;
     void add(const MixStateWithAction &action) {
         double da = action.amt;
@@ -688,24 +693,27 @@ struct Well {
         y = (y * amt + dy * da) / (amt + da);
         amt += da;
     }
-    double error(const Color &tgt) {
+    double error(const Color &tgt) const {
         double d2 = (tgt.c - c) * (tgt.c - c) + (tgt.m - m) * (tgt.m - m) +
                     (tgt.y - y) * (tgt.y - y);
         return sqrt(d2) * 10000.0;
     }
-    double error_if_add(const Color &tgt,
-                        const MixStateWithAction &action) const {
+    tuple<double, double, double, double>
+    error_if_add(const Color &tgt, const MixStateWithAction &action) const {
         double da = action.amt;
         double dc = action.c;
         double dm = action.m;
         double dy = action.y;
         da = min(da, cap - amt);
+        if (amt + da == 0.0) {
+            return {1e300, 0, 0, 0};
+        }
         double _c = (c * amt + dc * da) / (amt + da);
         double _m = (m * amt + dm * da) / (amt + da);
         double _y = (y * amt + dy * da) / (amt + da);
         double d2 = (tgt.c - _c) * (tgt.c - _c) + (tgt.m - _m) * (tgt.m - _m) +
                     (tgt.y - _y) * (tgt.y - _y);
-        return sqrt(d2) * 10000.0;
+        return {sqrt(d2) * 10000.0, _c, _m, _y};
     }
     void use_color() {
         assert(amt > 1 - 1e-6);
@@ -731,229 +739,954 @@ struct Well2 {
 // ──────────────────────────────
 //  6. Tが小さいときのための特殊ソルバー
 // ──────────────────────────────
-class Small_T_Solver {
-    const Input &in;
-    int tubes_used = 0;
-    double err_sum = 0;
-    double eps = 1e-6;
-    int well_w = 1;
-    int well_h = 4;
-    double well_cap = well_w * well_h;
-    int well_num = in.N / well_w * in.N / well_h;
-    int max_turn = 0;
-    int max_well = 100;
-    int max_iter = 1000;
-    vector<Well> used_wells;
-    vector<Well> clean_wells;
-    vector<vector<MixStateWithAction>> actions =
-        vector<vector<MixStateWithAction>>(5, vector<MixStateWithAction>(0));
-    vector<vector<int>> cmds; // 出力コマンド蓄積
-    vector<string> sep_v;
-    vector<string> sep_h;
+// class Small_T_Solver {
+//     const Input &in;
+//     int tubes_used = 0;
+//     double err_sum = 0;
+//     double eps = 1e-6;
+//     int well_w = 1;
+//     int well_h = 4;
+//     double well_cap = well_w * well_h;
+//     int well_num = in.N / well_w * in.N / well_h;
+//     int max_turn = 0;
+//     int max_well = 100;
+//     int max_iter = 1000;
+//     vector<Well> used_wells;
+//     vector<Well> clean_wells;
+//     vector<vector<MixStateWithAction>> actions =
+//         vector<vector<MixStateWithAction>>(5, vector<MixStateWithAction>(0));
+//     vector<vector<int>> cmds; // 出力コマンド蓄積
+//     vector<string> sep_v;
+//     vector<string> sep_h;
 
+//   public:
+//     int final_cost = 0;
+//     Small_T_Solver(const Input &_in) : in(_in) {}
+//     void solve() {
+//         init_wells();
+//         init_palettes();
+//         init_actions();
+//         rep(h, in.H) {
+//             Color tgt = in.targets[h];
+//             int remains = in.T - cmds.size();
+//             max_turn = max(1, int(floor(remains / (in.H - h))));
+//             auto [well_idx, is_dump, action] = calc_best_action(tgt);
+//             commit(tgt, well_idx, is_dump, action);
+//         }
+//         final_cost = (int)(err_sum + (tubes_used - in.H) * in.D);
+//     }
+//     void print() {
+//         for (auto s : sep_v) {
+//             cout << s;
+//         }
+//         for (auto s : sep_h) {
+//             cout << s;
+//         }
+//         for (auto &v : cmds) {
+//             rep(i, v.size()) {
+//                 cout << v[i] << (i + 1 < v.size() ? ' ' : '\n');
+//             }
+//         }
+//     }
+//     void cerr_report() {
+//         cerr << "Small_T Solve: \n";
+//         cerr << "Cost: " << (long long)(err_sum + (tubes_used - in.H) * in.D)
+//              << '\n';
+//         cerr << "Err: " << (long long)err_sum << '\n';
+//         cerr << "Tube: " << (tubes_used - in.H) * in.D << '\n';
+//         cerr << "Used_Tubes: " << tubes_used << '\n';
+//         cerr << "Used_Turn: " << cmds.size() << " / " << in.T << '\n';
+//     }
+
+//   private:
+//     void commit(const Color &tgt, int well_idx, bool is_dump,
+//                 const MixStateWithAction &action) {
+//         Well &well =
+//             (well_idx == -1 ? clean_wells.back() : used_wells[well_idx]);
+//         // 捨てる
+//         if (is_dump) {
+//             rep(cnt, (int)ceil(well.amt)) {
+//                 cmds.push_back({3, well.i, well.j});
+//             }
+//             well.clear();
+//         }
+//         // 絵具を入れる
+//         well.add(action);
+//         for (int tube_idx : action.actions) {
+//             cmds.push_back({1, well.i, well.j, tube_idx});
+//             tubes_used++;
+//         }
+//         err_sum += well.error(tgt);
+//         // 渡す
+//         well.use_color();
+//         cmds.push_back({2, well.i, well.j});
+//         // 事後処理
+//         if (well.is_clear) {
+//             if (well_idx == -1) {
+//             } else {
+//                 clean_wells.push_back(well);
+//                 used_wells.erase(used_wells.begin() + well_idx);
+//             }
+//         } else {
+//             if (well_idx == -1) {
+//                 used_wells.push_back(well);
+//                 clean_wells.pop_back();
+//             } else {
+//             }
+//         }
+//     }
+//     tuple<int, bool, MixStateWithAction> calc_best_action(const Color &tgt) {
+//         double min_cost = 1e100;
+//         int best_well_idx;
+//         MixStateWithAction best_action;
+//         double min_amt = 1e100;
+//         int dump_well_idx = 0;
+//         bool is_dump = false;
+//         rep(well_idx, used_wells.size()) {
+//             const auto &well = used_wells[well_idx];
+//             if (min_amt < well.amt) {
+//                 min_amt = well.amt;
+//                 dump_well_idx = well_idx;
+//             }
+//             rep(i, min(2, max_turn + 1)) {
+//                 if (i + well.amt > well.cap) {
+//                     break;
+//                 }
+//                 if (false and actions[i].size() > 1000) {
+//                     rep(_, max_iter) {
+//                         MixStateWithAction &action =
+//                             actions[i][rnd::xorshift32() %
+//                             actions[i].size()];
+//                         if (well.amt + action.amt < 1.0 - eps) {
+//                             continue;
+//                         }
+//                         double cost = 0;
+//                         if (tubes_used > 1000) {
+//                             cost += (action.actions.size() - 1.0) * in.D;
+//                         }
+//                         cost +=
+//                             max(0.0, well.amt + action.amt - well.cap) *
+//                             in.D;
+//                         cost += well.error_if_add(tgt, action);
+//                         if (cost < min_cost) {
+//                             min_cost = cost;
+//                             best_well_idx = well_idx;
+//                             best_action = action;
+//                         }
+//                     }
+//                 } else {
+//                     for (const auto &action : actions[i]) {
+//                         if (well.amt + action.amt < 1.0 - eps) {
+//                             continue;
+//                         }
+//                         double cost = 0;
+//                         if (tubes_used > 1000) {
+//                             cost += (action.actions.size() - 1.0) * in.D;
+//                         }
+//                         cost +=
+//                             max(0.0, well.amt + action.amt - well.cap) *
+//                             in.D;
+//                         cost += well.error_if_add(tgt, action);
+//                         if (cost < min_cost) {
+//                             min_cost = cost;
+//                             best_well_idx = well_idx;
+//                             best_action = action;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//         if (clean_wells.empty()) {
+//             Well well;
+//             rep(i, min(5, (int)(max_turn + 1 -
+//                                 ceil(used_wells[dump_well_idx].amt)))) {
+//                 if (i + well.amt > well.cap) {
+//                     break;
+//                 }
+//                 for (const auto &action : actions[i]) {
+//                     if (well.amt + action.amt < 1.0 - eps) {
+//                         continue;
+//                     }
+//                     double cost = 0;
+//                     if (tubes_used > 1000) {
+//                         cost += (action.actions.size() - 1.0) * in.D;
+//                     }
+//                     cost += max(0.0, well.amt + action.amt - well.cap) *
+//                     in.D; cost += ceil(used_wells[dump_well_idx].amt) * in.D;
+//                     cost += well.error_if_add(tgt, action);
+//                     if (cost < min_cost) {
+//                         is_dump = true;
+//                         min_cost = cost;
+//                         best_well_idx = dump_well_idx;
+//                         best_action = action;
+//                     }
+//                 }
+//             }
+//         } else {
+//             Well well = clean_wells.back();
+//             rep(i, min(5, max_turn + 1)) {
+//                 if (i + well.amt > well.cap) {
+//                     break;
+//                 }
+//                 for (const auto &action : actions[i]) {
+//                     if (well.amt + action.amt < 1.0 - eps) {
+//                         continue;
+//                     }
+//                     double cost = 0;
+//                     if (tubes_used > 1000) {
+//                         cost += (action.actions.size() - 1.0) * in.D;
+//                     }
+//                     cost += max(0.0, well.amt + action.amt - well.cap) *
+//                     in.D; cost += well.error_if_add(tgt, action); if (cost <
+//                     min_cost) {
+//                         min_cost = cost;
+//                         best_well_idx = -1;
+//                         best_action = action;
+//                     }
+//                 }
+//             }
+//         }
+
+//         return {best_well_idx, is_dump, best_action};
+//     }
+
+//     void init_wells() {
+//         used_wells.reserve(max_well);
+//         clean_wells.reserve(max_well);
+//         for (int i = 0; i < in.N; i += well_h) {
+//             for (int j = 0; j < in.N; j += well_w) {
+//                 Well well;
+//                 well.amt = 0;
+//                 well.i = i;
+//                 well.j = j;
+//                 well.cap = well_cap;
+//                 clean_wells.push_back(well);
+//             }
+//         }
+//     }
+//     void init_palettes() {
+//         sep_v = vector<string>(in.N);
+//         sep_h = vector<string>(in.N - 1);
+//         rep(i, in.N) {
+//             rep(j, in.N - 1) {
+//                 if (j % well_w != well_w - 1) {
+//                     sep_v[i] += "0";
+//                     if (j == in.N - 2) {
+//                         sep_v[i] += '\n';
+//                     } else {
+//                         sep_v[i] += ' ';
+//                     }
+//                 } else {
+//                     sep_v[i] += "1 ";
+//                 }
+//             }
+//         }
+//         rep(i, in.N - 1) {
+//             rep(j, in.N) {
+//                 if (i % well_h != well_h - 1) {
+//                     sep_h[i] += "0 ";
+//                 } else {
+//                     sep_h[i] += "1";
+//                     if (j == in.N - 1) {
+//                         sep_h[i] += '\n';
+//                     } else {
+//                         sep_h[i] += ' ';
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     void init_actions() {
+//         actions[0].push_back(MixStateWithAction());
+//         for (int i = 0; i < in.K; i++) {
+//             MixStateWithAction action;
+//             action.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, 1.0, i);
+//             actions[1].push_back(action);
+//             for (int j = i; j < in.K; j++) {
+//                 MixStateWithAction action;
+//                 action.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, 1.0,
+//                 i); action.add(in.tubes[j].c, in.tubes[j].m,
+//                 in.tubes[j].y, 1.0, j); actions[2].push_back(action); for
+//                 (int k = j; k < in.K; k++) {
+//                     MixStateWithAction action;
+//                     action.add(in.tubes[i].c, in.tubes[i].m,
+//                     in.tubes[i].y, 1.0,
+//                                i);
+//                     action.add(in.tubes[j].c, in.tubes[j].m,
+//                     in.tubes[j].y, 1.0,
+//                                j);
+//                     action.add(in.tubes[k].c, in.tubes[k].m,
+//                     in.tubes[k].y, 1.0,
+//                                k);
+//                     actions[3].push_back(action);
+//                     for (int l = k; l < in.K; l++) {
+//                         MixStateWithAction action;
+//                         action.add(in.tubes[i].c, in.tubes[i].m,
+//                         in.tubes[i].y,
+//                                    1.0, i);
+//                         action.add(in.tubes[j].c, in.tubes[j].m,
+//                         in.tubes[j].y,
+//                                    1.0, j);
+//                         action.add(in.tubes[k].c, in.tubes[k].m,
+//                         in.tubes[k].y,
+//                                    1.0, k);
+//                         action.add(in.tubes[l].c, in.tubes[l].m,
+//                         in.tubes[l].y,
+//                                    1.0, l);
+//                         actions[4].push_back(action);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// };
+namespace beam_search {
+
+// ビームサーチの設定
+struct Config {
+    int max_turn;
+    size_t beam_width;
+    size_t tour_capacity;
+    uint32_t hash_map_capacity;
+};
+
+// 連想配列
+// Keyにハッシュ関数を適用しない
+// open addressing with linear probing
+// unordered_mapよりも速い
+// nは格納する要素数よりも16倍ほど大きくする
+template <class Key, class T> struct HashMap {
   public:
-    int final_cost = 0;
-    Small_T_Solver(const Input &_in) : in(_in) {}
-    void solve() {
-        init_wells();
-        init_palettes();
-        init_actions();
-        rep(h, in.H) {
-            Color tgt = in.targets[h];
-            int remains = in.T - cmds.size();
-            max_turn = max(1, int(floor(remains / (in.H - h))));
-            auto [well_idx, is_dump, action] = calc_best_action(tgt);
-            commit(tgt, well_idx, is_dump, action);
+    explicit HashMap(uint32_t n) {
+        if (n % 2 == 0) {
+            ++n;
         }
-        final_cost = (int)(err_sum + (tubes_used - in.H) * in.D);
+        n_ = n;
+        valid_.resize(n_, false);
+        data_.resize(n_);
     }
-    void print() {
-        for (auto s : sep_v) {
-            cout << s;
+
+    // 戻り値
+    // - 存在するならtrue、存在しないならfalse
+    // - index
+    pair<bool, int> get_index(Key key) const {
+        Key i = key % n_;
+        while (valid_[i]) {
+            if (data_[i].first == key) {
+                return {true, i};
+            }
+            if (++i == n_) {
+                i = 0;
+            }
         }
-        for (auto s : sep_h) {
-            cout << s;
+        return {false, i};
+    }
+
+    // 指定したindexにkeyとvalueを格納する
+    void set(int i, Key key, T value) {
+        valid_[i] = true;
+        data_[i] = {key, value};
+    }
+
+    // 指定したindexのvalueを返す
+    T get(int i) const {
+        assert(valid_[i]);
+        return data_[i].second;
+    }
+
+    void clear() { fill(valid_.begin(), valid_.end(), false); }
+
+  private:
+    uint32_t n_;
+    vector<bool> valid_;
+    vector<pair<Key, T>> data_;
+};
+
+using Hash = uint64_t;
+
+// 状態遷移を行うために必要な情報
+// メモリ使用量をできるだけ小さくしてください
+struct Action {
+    int well_idx;
+    int action_idx;
+    int action_cnt;
+    MixState before;
+    MixState after;
+    Action(int well_idx, int action_idx, int action_cnt, MixState before,
+           MixState after)
+        : well_idx(well_idx), action_idx(action_idx), action_cnt(action_cnt),
+          before(before), after(after) {}
+    Action()
+        : well_idx(-1), action_idx(-1), action_cnt(-1), before(MixState()),
+          after(MixState()) {}
+    bool operator==(const Action &other) const {
+        return well_idx == other.well_idx and action_idx == other.action_idx and
+               action_cnt == other.action_cnt;
+    }
+};
+
+using Cost = double;
+
+// 状態のコストを評価するための構造体
+// メモリ使用量をできるだけ小さくしてください
+struct Evaluator {
+    Cost cost;
+    Evaluator() : cost(0) {}
+    Evaluator(Cost cost) : cost(cost) {}
+
+    // 低いほどよい
+    Cost evaluate() const { return cost; }
+};
+
+// 展開するノードの候補を表す構造体
+struct Candidate {
+    Action action;
+    Evaluator evaluator;
+    Hash hash;
+    int parent;
+
+    Candidate(Action action, Evaluator evaluator, Hash hash, int parent)
+        : action(action), evaluator(evaluator), hash(hash), parent(parent) {}
+};
+
+// ノードの候補から実際に追加するものを選ぶクラス
+// ビーム幅の個数だけ、評価がよいものを選ぶ
+// ハッシュ値が一致したものについては、評価がよいほうのみを残す
+class Selector {
+  public:
+    explicit Selector(const Config &config)
+        : hash_to_index_(config.hash_map_capacity) {
+        beam_width = config.beam_width;
+        candidates_.reserve(beam_width);
+        full_ = false;
+
+        costs_.resize(beam_width);
+        for (size_t i = 0; i < beam_width; ++i) {
+            costs_[i] = {0, i};
         }
-        for (auto &v : cmds) {
-            rep(i, v.size()) {
-                cout << v[i] << (i + 1 < v.size() ? ' ' : '\n');
+    }
+
+    // 候補を追加する
+    // ターン数最小化型の問題で、candidateによって実行可能解が得られる場合にのみ
+    // finished = true とする ビーム幅分の候補をCandidateを追加したときにsegment
+    // treeを構築する
+    void push(const Candidate &candidate, bool finished) {
+        if (finished) {
+            finished_candidates_.emplace_back(candidate);
+            return;
+        }
+        Cost cost = candidate.evaluator.evaluate();
+        if (full_ && cost >= st_.all_prod().first) {
+            // 保持しているどの候補よりもコストが小さくないとき
+            return;
+        }
+        auto [valid, i] = hash_to_index_.get_index(candidate.hash);
+
+        if (valid) {
+            int j = hash_to_index_.get(i);
+            if (candidate.hash == candidates_[j].hash) {
+                // ハッシュ値が等しいものが存在しているとき
+                if (full_) {
+                    // segment treeが構築されている場合
+                    if (cost < st_.get(j).first) {
+                        candidates_[j] = candidate;
+                        st_.set(j, {cost, j});
+                    }
+                } else {
+                    // segment treeが構築されていない場合
+                    if (cost < costs_[j].first) {
+                        candidates_[j] = candidate;
+                        costs_[j].first = cost;
+                    }
+                }
+                return;
+            }
+        }
+        if (full_) {
+            // segment treeが構築されている場合
+            int j = st_.all_prod().second;
+            hash_to_index_.set(i, candidate.hash, j);
+            candidates_[j] = candidate;
+            st_.set(j, {cost, j});
+        } else {
+            // segment treeが構築されていない場合
+            int j = candidates_.size();
+            hash_to_index_.set(i, candidate.hash, j);
+            candidates_.emplace_back(candidate);
+            costs_[j].first = cost;
+
+            if (candidates_.size() == beam_width) {
+                // 保持している候補がビーム幅分になったときにsegment
+                // treeを構築する
+                full_ = true;
+                st_ = MaxSegtree(costs_);
             }
         }
     }
-    void cerr_report() {
-        cerr << "Small_T Solve: \n";
-        cerr << "Cost: " << (long long)(err_sum + (tubes_used - in.H) * in.D)
-             << '\n';
-        cerr << "Err: " << (long long)err_sum << '\n';
-        cerr << "Tube: " << (tubes_used - in.H) * in.D << '\n';
-        cerr << "Used_Tubes: " << tubes_used << '\n';
-        cerr << "Used_Turn: " << cmds.size() << " / " << in.T << '\n';
+
+    // 選んだ候補を返す
+    const vector<Candidate> &select() const { return candidates_; }
+
+    // 実行可能解が見つかったか
+    bool have_finished() const { return !finished_candidates_.empty(); }
+
+    // 実行可能解に到達するCandidateを返す
+    vector<Candidate> get_finished_candidates() const {
+        return finished_candidates_;
+    }
+
+    // 最もよいCandidateを返す
+    Candidate calculate_best_candidate() const {
+        if (full_) {
+            size_t best = 0;
+            for (size_t i = 0; i < beam_width; ++i) {
+                if (st_.get(i).first < st_.get(best).first) {
+                    best = i;
+                }
+            }
+            return candidates_[best];
+        } else {
+            size_t best = 0;
+            for (size_t i = 0; i < candidates_.size(); ++i) {
+                if (costs_[i].first < costs_[best].first) {
+                    best = i;
+                }
+            }
+            return candidates_[best];
+        }
+    }
+
+    void clear() {
+        candidates_.clear();
+        hash_to_index_.clear();
+        full_ = false;
     }
 
   private:
-    void commit(const Color &tgt, int well_idx, bool is_dump,
-                const MixStateWithAction &action) {
-        Well &well =
-            (well_idx == -1 ? clean_wells.back() : used_wells[well_idx]);
-        // 捨てる
-        if (is_dump) {
-            rep(cnt, (int)ceil(well.amt)) {
-                cmds.push_back({3, well.i, well.j});
-            }
-            well.clear();
-        }
-        // 絵具を入れる
-        well.add(action);
-        for (int tube_idx : action.actions) {
-            cmds.push_back({1, well.i, well.j, tube_idx});
-            tubes_used++;
-        }
-        err_sum += well.error(tgt);
-        // 渡す
-        well.use_color();
-        cmds.push_back({2, well.i, well.j});
-        // 事後処理
-        if (well.is_clear) {
-            if (well_idx == -1) {
+    using S = std::pair<Cost, int>;
+    static constexpr S seg_op(S a, S b) { return (a.first >= b.first) ? a : b; }
+    static constexpr S seg_e() {
+        return {std::numeric_limits<Cost>::min(), -1};
+    }
+    using MaxSegtree = atcoder::segtree<S, seg_op, seg_e>;
+
+    size_t beam_width;
+    vector<Candidate> candidates_;
+    HashMap<Hash, int> hash_to_index_;
+    bool full_;
+    vector<pair<Cost, int>> costs_;
+    MaxSegtree st_;
+    vector<Candidate> finished_candidates_;
+};
+
+// 深さ優先探索に沿って更新する情報をまとめたクラス
+class State {
+  public:
+    const Input &in;
+    int now_turn;
+    int used_tube_cnt;
+    vector<Well> well_list;
+    int well_h;
+    int well_w;
+    int well_cap = well_h * well_w;
+    int well_num = (in.N / well_h) * (in.N / well_w);
+    vector<vector<MixStateWithAction>> actions_list;
+    explicit State(const Input &input, int now_turn, int used_tube_cnt,
+                   int well_h, int well_w)
+        : in(input), now_turn(now_turn), used_tube_cnt(used_tube_cnt),
+          well_h(well_h), well_w(well_w) {
+        well_cap = well_h * well_w;
+        well_num = (in.N / well_h) * (in.N / well_w);
+        make_init_actions_list();
+        make_init_well_list();
+    }
+
+    // EvaluatorとHashの初期値を返す
+    pair<Evaluator, Hash> make_initial_node() {
+        Hash hash = 0;
+        Evaluator evaluator(0);
+        return {evaluator, hash};
+    }
+
+    // 次の状態候補を全てselectorに追加する
+    // 引数
+    //   evaluator : 今の評価器
+    //   hash      : 今のハッシュ値
+    //   parent    : 今のノードID（次のノードにとって親となる）
+    void expand(const Evaluator &evaluator, Hash hash, int parent,
+                Selector &selector) {
+        bool checked_clean_well = false;
+        Well tmp_well;
+        const Color &tgt = in.targets[now_turn];
+        Cost init_cost = evaluator.evaluate();
+        rep(well_idx, well_num) {
+            const Well &well = well_list[well_idx];
+            Action new_action;
+            new_action.well_idx = well_idx;
+            auto tmp = MixState(well.c, well.m, well.y, well.amt);
+            new_action.before = tmp;
+            Evaluator new_evaluator(1e300);
+            Hash after_hash = 0;
+            if (well.is_clear) {
+                if (checked_clean_well) {
+                    continue;
+                }
+                checked_clean_well = true;
+                rep(action_cnt, 5) {
+                    if ((double)(well.amt + action_cnt) > well_cap) {
+                        break;
+                    }
+                    rep(action_idx, (int)actions_list[action_cnt].size()) {
+                        const MixStateWithAction &a =
+                            actions_list[action_cnt][action_idx];
+                        Cost cost = init_cost;
+                        auto [err, new_c, new_m, new_y] =
+                            well.error_if_add(tgt, a);
+                        cost += err;
+                        if (in.H <= used_tube_cnt) {
+                            cost += in.D * action_cnt;
+                        } else if (in.H < used_tube_cnt + action_cnt) {
+                            cost += in.D * (used_tube_cnt + action_cnt - in.H);
+                        }
+                        if (cost < new_evaluator.evaluate()) {
+                            new_evaluator.cost = cost;
+                            new_action.action_idx = action_idx;
+                            new_action.action_cnt = action_cnt;
+                            auto tmp =
+                                MixState(new_c, new_m, new_y,
+                                         well.amt + (double)action_cnt - 1.0);
+                            new_action.after = tmp;
+                            after_hash = tmp.hash();
+                        }
+                    }
+                }
             } else {
-                clean_wells.push_back(well);
-                used_wells.erase(used_wells.begin() + well_idx);
+                rep(action_cnt, 2) {
+                    if ((double)(well.amt + action_cnt) > well_cap) {
+                        break;
+                    }
+                    rep(action_idx, (int)actions_list[action_cnt].size()) {
+                        const MixStateWithAction &a =
+                            actions_list[action_cnt][action_idx];
+                        Cost cost = init_cost;
+                        auto [err, new_c, new_m, new_y] =
+                            well.error_if_add(tgt, a);
+                        cost += err;
+                        if (in.H <= used_tube_cnt) {
+                            cost += in.D * action_cnt;
+                        } else if (in.H < used_tube_cnt + action_cnt) {
+                            cost += in.D * (used_tube_cnt + action_cnt - in.H);
+                        }
+                        if (cost < new_evaluator.evaluate()) {
+                            new_evaluator.cost = cost;
+                            new_action.action_idx = action_idx;
+                            new_action.action_cnt = action_cnt;
+                            auto tmp =
+                                MixState(new_c, new_m, new_y,
+                                         well.amt + (double)action_cnt - 1.0);
+                            new_action.after = tmp;
+                            after_hash = tmp.hash();
+                        }
+                    }
+                }
             }
+            selector.push(
+                Candidate(new_action, new_evaluator, after_hash, parent),
+                false);
+        }
+    }
+
+    // actionを実行して次の状態に遷移する
+    void move_forward(Action action) {
+        now_turn++;
+        used_tube_cnt += action.action_cnt;
+        well_list[action.well_idx].amt = action.after.amt;
+        well_list[action.well_idx].c = action.after.c;
+        well_list[action.well_idx].m = action.after.m;
+        well_list[action.well_idx].y = action.after.y;
+        if (action.after.amt == 0.0) {
+            well_list[action.well_idx].is_clear = true;
+            well_list[action.well_idx].c = 0.0;
+            well_list[action.well_idx].m = 0.0;
+            well_list[action.well_idx].y = 0.0;
         } else {
-            if (well_idx == -1) {
-                used_wells.push_back(well);
-                clean_wells.pop_back();
-            } else {
+            well_list[action.well_idx].is_clear = false;
+        }
+    }
+
+    // actionを実行する前の状態に遷移する
+    // 今の状態は、親からactionを実行して遷移した状態である
+    void move_backward(Action action) {
+        now_turn--;
+        used_tube_cnt -= action.action_cnt;
+        well_list[action.well_idx].amt = action.before.amt;
+        well_list[action.well_idx].c = action.before.c;
+        well_list[action.well_idx].m = action.before.m;
+        well_list[action.well_idx].y = action.before.y;
+        if (action.before.amt == 0.0) {
+            well_list[action.well_idx].is_clear = true;
+            well_list[action.well_idx].c = 0.0;
+            well_list[action.well_idx].m = 0.0;
+            well_list[action.well_idx].y = 0.0;
+        } else {
+            well_list[action.well_idx].is_clear = false;
+        }
+    }
+
+  private:
+    void make_init_actions_list() {
+        actions_list.resize(5);
+        rep(i, 5) { actions_list[i].reserve((int)pow((double)in.K, i)); }
+        actions_list[0].push_back(MixStateWithAction());
+        for (int i = 0; i < in.K; i++) {
+            MixStateWithAction action;
+            action.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, 1.0, i);
+            actions_list[1].push_back(action);
+            for (int j = i; j < in.K; j++) {
+                MixStateWithAction action;
+                action.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, 1.0, i);
+                action.add(in.tubes[j].c, in.tubes[j].m, in.tubes[j].y, 1.0, j);
+                actions_list[2].push_back(action);
+                for (int k = j; k < in.K; k++) {
+                    MixStateWithAction action;
+                    action.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, 1.0,
+                               i);
+                    action.add(in.tubes[j].c, in.tubes[j].m, in.tubes[j].y, 1.0,
+                               j);
+                    action.add(in.tubes[k].c, in.tubes[k].m, in.tubes[k].y, 1.0,
+                               k);
+                    actions_list[3].push_back(action);
+                    for (int l = k; l < in.K; l++) {
+                        MixStateWithAction action;
+                        action.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y,
+                                   1.0, i);
+                        action.add(in.tubes[j].c, in.tubes[j].m, in.tubes[j].y,
+                                   1.0, j);
+                        action.add(in.tubes[k].c, in.tubes[k].m, in.tubes[k].y,
+                                   1.0, k);
+                        action.add(in.tubes[l].c, in.tubes[l].m, in.tubes[l].y,
+                                   1.0, l);
+                        actions_list[4].push_back(action);
+                    }
+                }
             }
         }
     }
-    tuple<int, bool, MixStateWithAction> calc_best_action(const Color &tgt) {
-        double min_cost = 1e100;
-        int best_well_idx;
-        MixStateWithAction best_action;
-        double min_amt = 1e100;
-        int dump_well_idx = 0;
-        bool is_dump = false;
-        rep(well_idx, used_wells.size()) {
-            const auto &well = used_wells[well_idx];
-            if (min_amt < well.amt) {
-                min_amt = well.amt;
-                dump_well_idx = well_idx;
-            }
-            rep(i, min(2, max_turn + 1)) {
-                if (i + well.amt > well.cap) {
-                    break;
-                }
-                if (false and actions[i].size() > 1000) {
-                    rep(_, max_iter) {
-                        MixStateWithAction &action =
-                            actions[i][rnd::xorshift32() % actions[i].size()];
-                        if (well.amt + action.amt < 1.0 - eps) {
-                            continue;
-                        }
-                        double cost = 0;
-                        if (tubes_used > 1000) {
-                            cost += (action.actions.size() - 1.0) * in.D;
-                        }
-                        cost +=
-                            max(0.0, well.amt + action.amt - well.cap) * in.D;
-                        cost += well.error_if_add(tgt, action);
-                        if (cost < min_cost) {
-                            min_cost = cost;
-                            best_well_idx = well_idx;
-                            best_action = action;
-                        }
-                    }
-                } else {
-                    for (const auto &action : actions[i]) {
-                        if (well.amt + action.amt < 1.0 - eps) {
-                            continue;
-                        }
-                        double cost = 0;
-                        if (tubes_used > 1000) {
-                            cost += (action.actions.size() - 1.0) * in.D;
-                        }
-                        cost +=
-                            max(0.0, well.amt + action.amt - well.cap) * in.D;
-                        cost += well.error_if_add(tgt, action);
-                        if (cost < min_cost) {
-                            min_cost = cost;
-                            best_well_idx = well_idx;
-                            best_action = action;
-                        }
-                    }
-                }
-            }
-        }
-        if (clean_wells.empty()) {
-            Well well;
-            rep(i, min(5, (int)(max_turn + 1 -
-                                ceil(used_wells[dump_well_idx].amt)))) {
-                if (i + well.amt > well.cap) {
-                    break;
-                }
-                for (const auto &action : actions[i]) {
-                    if (well.amt + action.amt < 1.0 - eps) {
-                        continue;
-                    }
-                    double cost = 0;
-                    if (tubes_used > 1000) {
-                        cost += (action.actions.size() - 1.0) * in.D;
-                    }
-                    cost += max(0.0, well.amt + action.amt - well.cap) * in.D;
-                    cost += ceil(used_wells[dump_well_idx].amt) * in.D;
-                    cost += well.error_if_add(tgt, action);
-                    if (cost < min_cost) {
-                        is_dump = true;
-                        min_cost = cost;
-                        best_well_idx = dump_well_idx;
-                        best_action = action;
-                    }
-                }
-            }
-        } else {
-            Well well = clean_wells.back();
-            rep(i, min(5, max_turn + 1)) {
-                if (i + well.amt > well.cap) {
-                    break;
-                }
-                for (const auto &action : actions[i]) {
-                    if (well.amt + action.amt < 1.0 - eps) {
-                        continue;
-                    }
-                    double cost = 0;
-                    if (tubes_used > 1000) {
-                        cost += (action.actions.size() - 1.0) * in.D;
-                    }
-                    cost += max(0.0, well.amt + action.amt - well.cap) * in.D;
-                    cost += well.error_if_add(tgt, action);
-                    if (cost < min_cost) {
-                        min_cost = cost;
-                        best_well_idx = -1;
-                        best_action = action;
-                    }
-                }
-            }
-        }
-
-        return {best_well_idx, is_dump, best_action};
-    }
-
-    void init_wells() {
-        used_wells.reserve(max_well);
-        clean_wells.reserve(max_well);
+    void make_init_well_list() {
+        well_list.reserve(well_num);
         for (int i = 0; i < in.N; i += well_h) {
             for (int j = 0; j < in.N; j += well_w) {
                 Well well;
-                well.amt = 0;
                 well.i = i;
                 well.j = j;
                 well.cap = well_cap;
-                clean_wells.push_back(well);
+                well_list.push_back(well);
             }
         }
     }
-    void init_palettes() {
+};
+
+// Euler Tourを管理するためのクラス
+class Tree {
+  public:
+    explicit Tree(const State &state, const Config &config) : state_(state) {
+        curr_tour_.reserve(config.tour_capacity);
+        next_tour_.reserve(config.tour_capacity);
+        leaves_.reserve(config.beam_width);
+        buckets_.assign(config.beam_width, {});
+    }
+
+    // 状態を更新しながら深さ優先探索を行い、次のノードの候補を全てselectorに追加する
+    void dfs(Selector &selector) {
+        if (curr_tour_.empty()) {
+            // 最初のターン
+            auto [evaluator, hash] = state_.make_initial_node();
+            state_.expand(evaluator, hash, 0, selector);
+            return;
+        }
+
+        for (auto [leaf_index, action] : curr_tour_) {
+            if (leaf_index >= 0) {
+                // 葉
+                state_.move_forward(action);
+                auto &[evaluator, hash] = leaves_[leaf_index];
+                state_.expand(evaluator, hash, leaf_index, selector);
+                state_.move_backward(action);
+            } else if (leaf_index == -1) {
+                // 前進辺
+                state_.move_forward(action);
+            } else {
+                // 後退辺
+                state_.move_backward(action);
+            }
+        }
+    }
+
+    // 木を更新する
+    void update(const vector<Candidate> &candidates) {
+        leaves_.clear();
+
+        if (curr_tour_.empty()) {
+            // 最初のターン
+            for (const Candidate &candidate : candidates) {
+                curr_tour_.push_back({(int)leaves_.size(), candidate.action});
+                leaves_.push_back({candidate.evaluator, candidate.hash});
+            }
+            return;
+        }
+
+        for (const Candidate &candidate : candidates) {
+            buckets_[candidate.parent].push_back(
+                {candidate.action, candidate.evaluator, candidate.hash});
+        }
+
+        auto it = curr_tour_.begin();
+
+        // 一本道を反復しないようにする
+        while (it->first == -1 && it->second == curr_tour_.back().second) {
+            Action action = (it++)->second;
+            state_.move_forward(action);
+            direct_road_.push_back(action);
+            curr_tour_.pop_back();
+        }
+
+        // 葉の追加や不要な辺の削除をする
+        while (it != curr_tour_.end()) {
+            auto [leaf_index, action] = *(it++);
+            if (leaf_index >= 0) {
+                // 葉
+                if (buckets_[leaf_index].empty()) {
+                    continue;
+                }
+                next_tour_.push_back({-1, action});
+                for (auto [new_action, evaluator, hash] :
+                     buckets_[leaf_index]) {
+                    int new_leaf_index = leaves_.size();
+                    next_tour_.push_back({new_leaf_index, new_action});
+                    leaves_.push_back({evaluator, hash});
+                }
+                buckets_[leaf_index].clear();
+                next_tour_.push_back({-2, action});
+            } else if (leaf_index == -1) {
+                // 前進辺
+                next_tour_.push_back({-1, action});
+            } else {
+                // 後退辺
+                auto [old_leaf_index, old_action] = next_tour_.back();
+                if (old_leaf_index == -1) {
+                    next_tour_.pop_back();
+                } else {
+                    next_tour_.push_back({-2, action});
+                }
+            }
+        }
+        swap(curr_tour_, next_tour_);
+        next_tour_.clear();
+    }
+
+    // 根からのパスを取得する
+    vector<Action> calculate_path(int parent, int turn) const {
+        // cerr << curr_tour_.size() << endl;
+
+        vector<Action> ret = direct_road_;
+        ret.reserve(turn);
+        for (auto [leaf_index, action] : curr_tour_) {
+            if (leaf_index >= 0) {
+                if (leaf_index == parent) {
+                    ret.push_back(action);
+                    return ret;
+                }
+            } else if (leaf_index == -1) {
+                ret.push_back(action);
+            } else {
+                ret.pop_back();
+            }
+        }
+
+        // unreachable();
+    }
+
+  private:
+    State state_;
+    vector<pair<int, Action>> curr_tour_;
+    vector<pair<int, Action>> next_tour_;
+    vector<pair<Evaluator, Hash>> leaves_;
+    vector<vector<tuple<Action, Evaluator, Hash>>> buckets_;
+    vector<Action> direct_road_;
+};
+
+// ビームサーチを行う関数
+pair<Cost, vector<Action>> beam_search(const Config &config,
+                                       const State &state) {
+    Tree tree(state, config);
+
+    // 新しいノード候補の集合
+    Selector selector(config);
+
+    for (int turn = 0; turn < config.max_turn; ++turn) {
+        // Euler Tourでselectorに候補を追加する
+        tree.dfs(selector);
+
+        assert(!selector.select().empty());
+
+        if (turn == config.max_turn - 1) {
+            // ターン数固定型の問題で全ターンが終了したとき
+            Candidate best_candidate = selector.calculate_best_candidate();
+            vector<Action> ret =
+                tree.calculate_path(best_candidate.parent, turn + 1);
+            ret.push_back(best_candidate.action);
+            return {best_candidate.evaluator.evaluate(), ret};
+        }
+
+        // 木を更新する
+        tree.update(selector.select());
+
+        selector.clear();
+    }
+
+    // unreachable();
+}
+
+} // namespace beam_search
+
+class BeamSearchSolver {
+  public:
+    const Input &in;
+    int now_turn;
+    int used_tube_cnt;
+    vector<string> sep_v;
+    vector<string> sep_h;
+    vector<vector<int>> cmds;
+    int well_h = 1;
+    int well_w = 4;
+    double final_cost;
+    int max_turn = 1000;
+    size_t beam_width = 1;
+    size_t tour_capacity = 15 * beam_width;
+    uint32_t hash_map_capacity = 16 * 3 * beam_width;
+    BeamSearchSolver(const Input &in, int now_turn, int used_tube_cnt)
+        : in(in), now_turn(now_turn), used_tube_cnt(used_tube_cnt) {}
+    void solve() {
+        make_palette();
+        max_turn = in.H - now_turn;
+        beam_search::Config config = {max_turn, beam_width, tour_capacity,
+                                      hash_map_capacity};
+        beam_search::State state(in, now_turn, used_tube_cnt, well_h, well_w);
+        auto [cost, actions] = beam_search::beam_search(config, state);
+        final_cost = cost;
+        cerr << "final cost by beam: " << final_cost << '\n';
+        for (const auto &a : actions) {
+            int i = state.well_list[a.well_idx].i;
+            int j = state.well_list[a.well_idx].j;
+            for (auto b :
+                 state.actions_list[a.action_cnt][a.action_idx].actions) {
+
+                cmds.push_back({1, i, j, b});
+            }
+            cmds.push_back({2, i, j});
+        }
+    }
+    void make_palette() {
         sep_v = vector<string>(in.N);
         sep_h = vector<string>(in.N - 1);
         rep(i, in.N) {
@@ -985,39 +1718,18 @@ class Small_T_Solver {
             }
         }
     }
-    void init_actions() {
-        actions[0].push_back(MixStateWithAction());
-        for (int i = 0; i < in.K; i++) {
-            MixStateWithAction action;
-            action.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, 1.0, i);
-            actions[1].push_back(action);
-            for (int j = i; j < in.K; j++) {
-                MixStateWithAction action;
-                action.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, 1.0, i);
-                action.add(in.tubes[j].c, in.tubes[j].m, in.tubes[j].y, 1.0, j);
-                actions[2].push_back(action);
-                for (int k = j; k < in.K; k++) {
-                    MixStateWithAction action;
-                    action.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y, 1.0,
-                               i);
-                    action.add(in.tubes[j].c, in.tubes[j].m, in.tubes[j].y, 1.0,
-                               j);
-                    action.add(in.tubes[k].c, in.tubes[k].m, in.tubes[k].y, 1.0,
-                               k);
-                    actions[3].push_back(action);
-                    for (int l = k; l < in.K; l++) {
-                        MixStateWithAction action;
-                        action.add(in.tubes[i].c, in.tubes[i].m, in.tubes[i].y,
-                                   1.0, i);
-                        action.add(in.tubes[j].c, in.tubes[j].m, in.tubes[j].y,
-                                   1.0, j);
-                        action.add(in.tubes[k].c, in.tubes[k].m, in.tubes[k].y,
-                                   1.0, k);
-                        action.add(in.tubes[l].c, in.tubes[l].m, in.tubes[l].y,
-                                   1.0, l);
-                        actions[4].push_back(action);
-                    }
-                }
+    void print_palette() const {
+        for (auto s : sep_v) {
+            cout << s;
+        }
+        for (auto s : sep_h) {
+            cout << s;
+        }
+    }
+    void print_operate() const {
+        for (auto &v : cmds) {
+            rep(i, v.size()) {
+                cout << v[i] << (i + 1 < v.size() ? ' ' : '\n');
             }
         }
     }
@@ -1046,6 +1758,8 @@ class Solver {
     // vector<vector<double>> init_coefs;
     int max_palettes;
     int MODE_THRESHOLD = 27000;
+    vector<vector<int>> separator_v;
+    vector<vector<int>> separator_h;
 
   public:
     int final_cost;
@@ -1056,45 +1770,44 @@ class Solver {
 
     //----------------------------------
     void solve() {
-        // dpで各ターンの使用色数を暫定計算
-        vector<int> can_use_colors = calc_use_colors();
-        vector<int> used_tube_cnt(in.K);
-        rep(h, in.H) {
-            const vector<double> &coef = best_coefs[can_use_colors[h]][h];
-            rep(i, in.K) {
-                if (coef[i] > 0.0) {
-                    used_tube_cnt[i]++;
+        if (in.T >= 15000) { // dpで各ターンの使用色数を暫定計算
+            vector<int> can_use_colors = calc_use_colors();
+            vector<int> used_tube_cnt(in.K);
+            rep(h, in.H) {
+                const vector<double> &coef = best_coefs[can_use_colors[h]][h];
+                rep(i, in.K) {
+                    if (coef[i] > 0.0) {
+                        used_tube_cnt[i]++;
+                    }
                 }
             }
-        }
-        // 色の使用頻度に合わせて行数を調整
-        for (int idx : in.need_idxs) {
-            used_tube_cnt[idx]++;
-        }
-        for (auto &c : used_tube_cnt) {
-            c = sqrt(c);
-        }
+            // 色の使用頻度に合わせて行数を調整
+            for (int idx : in.need_idxs) {
+                used_tube_cnt[idx]++;
+            }
+            for (auto &c : used_tube_cnt) {
+                c = sqrt(c);
+            }
 
-        vector<int> lines_size = calc_lines_size(used_tube_cnt);
-        init_palettes(lines_size);
-        err_sum = 0;
-        tubes_used = 0;
+            vector<int> lines_size = calc_lines_size(used_tube_cnt);
+            init_palettes(lines_size);
+            err_sum = 0;
+            tubes_used = 0;
 
-        rep(h, in.H) {
-            const Color &tgt = in.targets[h];
-            int colors = can_use_colors[h];
-            max_palettes =
-                (in.T - cmds.size() - 3 * (in.H - h)) / (4 * (in.H - h));
-            colors = max(colors, max_palettes);
-            colors = min(colors, 4);
-            cerr << "Use_Colors: " << h + 1 << " " << colors << '\n';
-            auto coef = best_coefs[colors][h];
-            tk.update();
-            double disc_tl = (2800 - tk.now()) / (in.H - h + 1);
-            auto acts = discretise(tgt, coef, disc_tl, h);
-            cerr << "連続値のエラー: " << error_only(tgt, coef)
-                 << " 離散値のエラー: " << error_only(tgt, acts) << '\n';
-            if (h == in.H - 1) {
+            rep(h, in.H) {
+                const Color &tgt = in.targets[h];
+                int colors = can_use_colors[h];
+                max_palettes =
+                    (in.T - cmds.size() - 3 * (in.H - h)) / (4 * (in.H - h));
+                colors = max(colors, max_palettes);
+                colors = min(colors, 4);
+                cerr << "Use_Colors: " << h + 1 << " " << colors << '\n';
+                auto coef = best_coefs[colors][h];
+                tk.update();
+                double disc_tl = (2800 - tk.now()) / (in.H - h + 1);
+                auto acts = discretise(tgt, coef, disc_tl, h);
+                cerr << "連続値のエラー: " << error_only(tgt, coef)
+                     << " 離散値のエラー: " << error_only(tgt, acts) << '\n';
                 double sum = 0;
                 for (const auto &p : palettes) {
                     if (p.primary.tube_idx >= 0) {
@@ -1104,62 +1817,103 @@ class Solver {
                         sum += p.secondary.cap;
                     }
                 }
-                cerr << "sum: " << sum << '\n';
-                if (sum >= 1 - eps) {
-                    tk.update();
-                    double disc_tl = (2800 - tk.now()) / (in.H - h + 1);
-                    auto tmp_coef = optimize_continuous(tgt);
-                    int cnt = 0;
-                    for (auto c : tmp_coef) {
-                        if (c > 1e-9) {
-                            cnt++;
-                        }
-                    }
-                    vector<Action> tmp_acts;
-                    bool ok = true;
-                    if (cnt <= 6) {
-                        tmp_acts = discretise(tgt, tmp_coef, disc_tl, h);
-                    } else {
-                        tie(ok, tmp_acts) = discretise_fast(tgt, tmp_coef, h);
-                    }
-                    if (ok) {
-                        double cost = error_only(tgt, acts);
-                        double tmp_cost = error_only(tgt, tmp_acts);
-                        {
-                            int add_tube = 0;
-                            for (const auto &a : acts) {
-                                add_tube += a.add_new;
+                cerr << "turn: " << h << "sum: " << sum << '\n';
+
+                if (sum >= (double)(in.H - h)) {
+                    if (sum >= 1 - eps) {
+                        tk.update();
+                        double disc_tl = (2800 - tk.now()) / (in.H - h + 1);
+                        auto tmp_coef = optimize_continuous(tgt);
+                        int cnt = 0;
+                        for (auto c : tmp_coef) {
+                            if (c > 1e-9) {
+                                cnt++;
                             }
-                            cost += add_tube * in.D;
                         }
-                        {
-                            int add_tube = 0;
-                            for (const auto &a : tmp_acts) {
-                                add_tube += a.add_new;
+                        vector<Action> tmp_acts;
+                        bool ok = true;
+                        if (cnt <= 6) {
+                            tmp_acts = discretise(tgt, tmp_coef, disc_tl, h);
+                        } else {
+                            tie(ok, tmp_acts) =
+                                discretise_fast(tgt, tmp_coef, h);
+                        }
+                        if (ok) {
+                            double cost = error_only(tgt, acts);
+                            double tmp_cost = error_only(tgt, tmp_acts);
+                            {
+                                int add_tube = 0;
+                                for (const auto &a : acts) {
+                                    add_tube += a.add_new;
+                                }
+                                cost += add_tube * in.D;
                             }
-                            tmp_cost += add_tube * in.D;
-                        }
-                        cerr << "old_cost: " << cost
-                             << " new_cost: " << tmp_cost << '\n';
-                        if (tmp_cost < cost) {
-                            acts = tmp_acts;
+                            {
+                                int add_tube = 0;
+                                for (const auto &a : tmp_acts) {
+                                    add_tube += a.add_new;
+                                }
+                                tmp_cost += add_tube * in.D;
+                            }
+                            cerr << "old_cost: " << cost
+                                 << " new_cost: " << tmp_cost << '\n';
+                            if (tmp_cost < cost) {
+                                acts = tmp_acts;
+                            }
                         }
                     }
                 }
+                commit(tgt, acts);
             }
-            commit(tgt, acts);
+            while (cmds.size() > in.T) {
+                cmds.pop_back();
+            }
+            final_cost = (int)(err_sum + (tubes_used - in.H) * in.D);
+            print();
+        } else {
+            vector<int> tmp(in.K);
+            for (auto i : in.need_idxs) {
+                tmp[i]++;
+            }
+            vector<int> lines_size = calc_lines_size(tmp);
+            init_palettes(lines_size);
+            err_sum = 0;
+            tubes_used = 0;
+            int now_turn;
+            rep(h, in.H) {
+                cerr << in.T - (int)cmds.size() - 500 - 2 * (in.H - h - 1) - 19
+                     << '\n';
+                if ((in.T - (int)cmds.size() - 500 - 2 * (in.H - h - 1) - 19) >
+                    0) {
+                    const Color &tgt = in.targets[h];
+                    int colors = 4;
+                    auto coef = best_coefs[colors][h];
+                    tk.update();
+                    double disc_tl = (2000 - tk.now()) / (in.H - h + 1);
+                    auto acts = discretise(tgt, coef, disc_tl, h);
+                    commit(tgt, acts);
+                } else {
+                    now_turn = h;
+                    break;
+                }
+            }
+            change_palette();
+            BeamSearchSolver beam(in, now_turn, tubes_used);
+            beam.solve();
+            print();
+            beam.print_operate();
         }
-        while (cmds.size() > in.T) {
-            cmds.pop_back();
-        }
-        final_cost = (int)(err_sum + (tubes_used - in.H) * in.D);
     }
     void print() const {
         for (auto s : sep_v) {
-            cout << s;
+            rep(j, s.size()) {
+                cout << s[j] << (j < s.size() - 1 ? " " : "\n");
+            }
         }
         for (auto s : sep_h) {
-            cout << s;
+            rep(j, s.size()) {
+                cout << s[j] << (j < s.size() - 1 ? " " : "\n");
+            }
         }
         for (auto &v : cmds) {
             rep(i, v.size()) {
@@ -1168,6 +1922,75 @@ class Solver {
         }
     }
     //----------------------------------
+    void change_palette() {
+        for (auto &p : palettes) {
+            while (p.primary.cap > 0) {
+                p.primary.cap -= 1.0;
+                auto tmp = p.primary.cmd_add_tube();
+                cmds.push_back({3, tmp[1], tmp[2]});
+            }
+            while (p.secondary.cap > 0) {
+                p.secondary.cap -= 1.0;
+                auto tmp = p.secondary.cmd_add_tube();
+                cmds.push_back({3, tmp[1], tmp[2]});
+            }
+        }
+        // ビーム用の盤面に変更する
+        vector<vector<int>> target_v(in.N, vector<int>(in.N - 1, 0));
+        vector<vector<int>> target_h(in.N - 1, vector<int>(in.N, 1));
+        rep(i, in.N) {
+            rep(j, in.N - 1) {
+                if (j % 4 == 3) {
+                    target_v[i][j] = 1;
+                }
+            }
+        }
+        cerr << "---- Debug: target_v (縦セパレータ target) ----\n";
+        for (int ii = 0; ii < in.N; ++ii) {
+            for (int jj = 0; jj < in.N - 1; ++jj) {
+                cerr << target_v[ii][jj] << ' ';
+            }
+            cerr << '\n';
+        }
+        cerr << "---- Debug: target_h (横セパレータ target) ----\n";
+        for (int ii = 0; ii < in.N - 1; ++ii) {
+            for (int jj = 0; jj < in.N; ++jj) {
+                cerr << target_h[ii][jj] << ' ';
+            }
+            cerr << '\n';
+        }
+        // 次に、現状の separator_v／separator_h
+        cerr << "---- Debug: separator_v (現在の縦セパレータ) ----\n";
+        for (int ii = 0; ii < in.N; ++ii) {
+            for (int jj = 0; jj < in.N - 1; ++jj) {
+                cerr << separator_v[ii][jj] << ' ';
+            }
+            cerr << '\n';
+        }
+        cerr << "---- Debug: separator_h (現在の横セパレータ) ----\n";
+        for (int ii = 0; ii < in.N - 1; ++ii) {
+            for (int jj = 0; jj < in.N; ++jj) {
+                cerr << separator_h[ii][jj] << ' ';
+            }
+            cerr << '\n';
+        }
+        cerr << "---- End Debug ----\n";
+
+        rep(i, in.N) {
+            rep(j, in.N - 1) {
+                if (target_v[i][j] != separator_v[i][j]) {
+                    cmds.push_back({4, i, j, i, j + 1});
+                }
+            }
+        }
+        rep(i, in.N - 1) {
+            rep(j, in.N) {
+                if (target_h[i][j] != separator_h[i][j]) {
+                    cmds.push_back({4, i, j, i + 1, j});
+                }
+            }
+        }
+    }
     void cerr_report() {
         cerr << "Main Solve: \n";
         cerr << "Cost: " << (long long)(err_sum + (tubes_used - in.H) * in.D)
@@ -1308,7 +2131,7 @@ class Solver {
         // 縦仕切り
         rep(i, 20) {
             sep_v[i] += "1";
-            rep(j, 18) sep_v[i] += " 0";
+            rep(j, 18) sep_v[i] += "0";
             sep_v[i] += "\n";
         }
 
@@ -1344,23 +2167,23 @@ class Solver {
                 if (p.lines == 0 or row == in.N - 1)
                     continue;
                 rep(j, p.lines - 1) {
-                    sep_h[row] += "0 ";
+                    sep_h[row] += "0";
                     if (j % 2 == 0) {
-                        rep(x, 18) sep_h[row] += "1 ";
+                        rep(x, 18) sep_h[row] += "1";
                         sep_h[row] += "0\n";
                         row++;
                     } else {
                         sep_h[row] += "0";
-                        rep(x, 18) sep_h[row] += " 1";
+                        rep(x, 18) sep_h[row] += "1";
                         sep_h[row] += "\n";
                         row++;
                     }
                 }
                 if (row < in.N - 1) {
-                    sep_h[row] += "0 ";
+                    sep_h[row] += "0";
                     rep(x, 19) {
                         sep_h[row] += '1';
-                        sep_h[row] += (x == 18 ? '\n' : ' ');
+                        sep_h[row] += (x == 18 ? "\n" : "");
                     }
                     row++;
                 }
@@ -1370,25 +2193,43 @@ class Solver {
                 if (p.lines == 0 or row == in.N - 1)
                     continue;
                 rep(j, p.lines - 1) {
-                    sep_h[row] += "0 ";
+                    sep_h[row] += "0";
                     if (j % 2 == 0) {
-                        rep(x, 18) sep_h[row] += "1 ";
+                        rep(x, 18) sep_h[row] += "1";
                         sep_h[row] += "0\n";
                         row++;
                     } else {
                         sep_h[row] += "0";
-                        rep(x, 18) sep_h[row] += " 1";
+                        rep(x, 18) sep_h[row] += "1";
                         sep_h[row] += "\n";
                         row++;
                     }
                 }
                 if (row < in.N - 1) {
-                    sep_h[row] += "0 ";
+                    sep_h[row] += "0";
                     rep(x, 19) {
                         sep_h[row] += '1';
-                        sep_h[row] += (x == 18 ? '\n' : ' ');
+                        sep_h[row] += (x == 18 ? "\n" : "");
                     }
                     row++;
+                }
+            }
+        }
+        separator_v = vector<vector<int>>(in.N, vector<int>(in.N - 1, 0));
+        separator_h = vector<vector<int>>(in.N - 1, vector<int>(in.N, 0));
+        rep(i, in.N) {
+            rep(j, in.N - 1) {
+                if (sep_v[i][j] == '0') {
+                } else {
+                    separator_v[i][j] ^= 1;
+                }
+            }
+        }
+        rep(i, in.N - 1) {
+            rep(j, in.N) {
+                if (sep_h[i][j] == '0') {
+                } else {
+                    separator_h[i][j] ^= 1;
                 }
             }
         }
@@ -1465,7 +2306,7 @@ class Solver {
         vector<pair<pair<Action, Action>, pair<Action, Action>>>
             nearest_acts_pair;
         vector<double> new_coef(in.K);
-
+        double best_alph = -1;
         // cerr << "now palette" << '\n';
         // for (const auto &p : palettes) {
         //     if (p.primary.tube_idx >= 0) {
@@ -1482,7 +2323,7 @@ class Solver {
         double alp = 1.0;
         while (true) {
             if (iter > 0) {
-                alp = 1.0 + rnd::uniform_real(0.0, 0.5);
+                alp = 1.0 + rnd::uniform_real(0.0, 0.3);
             }
             iter++;
             if (iter % 3 == 0) {
@@ -1530,6 +2371,7 @@ class Solver {
                     if (new_cost < min_cost) {
                         min_cost = new_cost;
                         best_acts = new_acts;
+                        best_alph = alp;
                     }
                 }
             } else {
@@ -1645,11 +2487,13 @@ class Solver {
                         // }
                         min_cost = new_cost;
                         best_acts = new_acts;
+                        best_alph = alp;
                     }
                 }
             }
         }
         cerr << "best_acts_size: " << best_acts.size() << '\n';
+        cerr << "best_alp: " << best_alph << '\n';
         return best_acts;
     }
 
@@ -2014,11 +2858,29 @@ class Solver {
                 // 左を閉じる(分母を決める)
                 auto s = p.cmd_sep(p.blocks - a.blocks);
                 if (!s.empty()) {
+                    int i = s[1];
+                    int j = s[2];
+                    int ii = s[3];
+                    int jj = s[4];
+                    if (i == ii) {
+                        separator_v[i][min(j, jj)] ^= 1;
+                    } else {
+                        separator_h[min(i, ii)][j] ^= 1;
+                    }
                     cmds.push_back(s);
                 }
                 // 区切りを空ける
                 s = p.cmd_sep(p.blocks - p.used_blocks);
                 if (!s.empty()) {
+                    int i = s[1];
+                    int j = s[2];
+                    int ii = s[3];
+                    int jj = s[4];
+                    if (i == ii) {
+                        separator_v[i][min(j, jj)] ^= 1;
+                    } else {
+                        separator_h[min(i, ii)][j] ^= 1;
+                    }
                     cmds.push_back(s);
                 }
             }
@@ -2033,11 +2895,29 @@ class Solver {
             // 区切りを閉める
             auto s = p.cmd_sep(p.blocks - (a.blocks - a.use_blocks));
             if (!s.empty() and (a.blocks - a.use_blocks) != 0) {
+                int i = s[1];
+                int j = s[2];
+                int ii = s[3];
+                int jj = s[4];
+                if (i == ii) {
+                    separator_v[i][min(j, jj)] ^= 1;
+                } else {
+                    separator_h[min(i, ii)][j] ^= 1;
+                }
                 cmds.push_back(s);
             }
             // 左を開ける
             s = p.cmd_sep(p.blocks - a.blocks);
             if (!s.empty()) {
+                int i = s[1];
+                int j = s[2];
+                int ii = s[3];
+                int jj = s[4];
+                if (i == ii) {
+                    separator_v[i][min(j, jj)] ^= 1;
+                } else {
+                    separator_h[min(i, ii)][j] ^= 1;
+                }
                 sep.push_back(s);
             }
             p.used_blocks = a.blocks - a.use_blocks;
@@ -2070,25 +2950,38 @@ int main() {
     auto need_idxs = removeInteriorPoints(xyzs);
     in.need_idxs = need_idxs;
     in.Q = need_idxs.size();
-    if (in.T < 19000) {
-        Small_T_Solver sol(in);
-        // AddTubeSolver sol(in);
-        sol.solve();
+    tk.update();
+    Solver sol(in, tk);
+    sol.solve();
+    sol.cerr_report();
+    return 0;
+    if (in.T < 15000) {
         tk.update();
-        if (tk.now() < 2000.0 and 12000 <= in.T) {
-            Solver sol2(in, tk);
-            sol2.solve();
-            sol.cerr_report();
-            sol2.cerr_report();
-            if (sol.final_cost < sol2.final_cost) {
-                sol.print();
-            } else {
-                sol2.print();
-            }
-        } else {
-            sol.cerr_report();
-            sol.print();
-        }
+        Solver sol(in, tk);
+        sol.solve();
+        sol.cerr_report();
+        sol.print();
+        // BeamSearchSolver sol(in, 0, 0);
+        // // AddTubeSolver sol(in);
+        // sol.solve();
+        // tk.update();
+        // if (tk.now() < 2000.0 and 12000 <= in.T) {
+        //     Solver sol2(in, tk);
+        //     sol2.solve();
+        //     // sol.cerr_report();
+        //     sol2.cerr_report();
+        //     if (sol.final_cost < sol2.final_cost) {
+        //         sol.print_palette();
+        //         sol.print_operate();
+        //     } else {
+        //         sol2.print();
+        //     }
+        // } else {
+        //     // sol.cerr_report();
+        //     // sol.print();
+        //     sol.print_palette();
+        //     sol.print_operate();
+        // }
     } else {
         tk.update();
         Solver sol(in, tk);

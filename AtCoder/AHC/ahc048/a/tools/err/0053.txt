@@ -1,4010 +1,6013 @@
 Use_Colors: 1 4
-iter: 36
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 6.579
+iter: 1812
+best_acts_size: 4
+best_alp: 1.0095
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.5381
+turn: 0sum: 0
 Use_Colors: 2 4
-iter: 42
+iter: 2337
 best_acts_size: 4
-連続値のエラー: 0 離散値のエラー: 68.561
+best_alp: 1.02611
+連続値のエラー: 0 離散値のエラー: 38.2833
+turn: 1sum: 2.99135
 Use_Colors: 3 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 4.07922e-12 離散値のエラー: 1.9729
+iter: 1581
+best_acts_size: 4
+best_alp: 1.01028
+連続値のエラー: 4.07922e-12 離散値のエラー: 1.81955
+turn: 2sum: 1.95343
 Use_Colors: 4 4
-iter: 42
+iter: 1881
 best_acts_size: 4
-連続値のエラー: 2.98937e-12 離散値のエラー: 44.4119
+best_alp: 1.018
+連続値のエラー: 2.98937e-12 離散値のエラー: 3.2017
+turn: 3sum: 4.94006
 Use_Colors: 5 4
-iter: 108
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.66104
+iter: 2916
+best_acts_size: 4
+best_alp: 1.00275
+連続値のエラー: 0 離散値のエラー: 2.45055
+turn: 4sum: 5.91942
 Use_Colors: 6 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.738028
+iter: 2523
+best_acts_size: 4
+best_alp: 1.00373
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.821027
+turn: 5sum: 4.91932
 Use_Colors: 7 4
-iter: 81
+iter: 2286
 best_acts_size: 4
-連続値のエラー: 1.66533e-12 離散値のエラー: 5.43806
+best_alp: 1.01903
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.140302
+turn: 6sum: 3.91625
 Use_Colors: 8 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 4.04127e-12 離散値のエラー: 1.1497
+iter: 2889
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 4.04127e-12 離散値のエラー: 1.11209
+turn: 7sum: 3.89649
 Use_Colors: 9 4
-iter: 99
-best_acts_size: 6
-連続値のエラー: 3.33067e-12 離散値のエラー: 1.05949
+iter: 3009
+best_acts_size: 4
+best_alp: 1.00432
+連続値のエラー: 3.33067e-12 離散値のエラー: 0.956311
+turn: 8sum: 3.89643
 Use_Colors: 10 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 3.34698
+iter: 2889
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.07523
+turn: 9sum: 3.89115
 Use_Colors: 11 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 2.77556e-12 離散値のエラー: 3.07423
+iter: 3102
+best_acts_size: 4
+best_alp: 1.00222
+連続値のエラー: 2.77556e-12 離散値のエラー: 1.19061
+turn: 10sum: 2.89113
 Use_Colors: 12 4
-iter: 63
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 3.68448
+iter: 2607
+best_acts_size: 4
+best_alp: 1.00938
+連続値のエラー: 1.66533e-12 離散値のエラー: 6.71749
+turn: 11sum: 2.8885
 Use_Colors: 13 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.27682
+iter: 3606
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 1.43401
+turn: 12sum: 4.88374
 Use_Colors: 14 4
-iter: 111
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 1.81733
+iter: 4338
+best_acts_size: 4
+best_alp: 1.00372
+連続値のエラー: 2.00148e-12 離散値のエラー: 2.74893
+turn: 13sum: 3.88374
 Use_Colors: 15 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 5.08768e-12 離散値のエラー: 2.91316
+iter: 2700
+best_acts_size: 4
+best_alp: 1.00913
+連続値のエラー: 5.08768e-12 離散値のエラー: 6.14045
+turn: 14sum: 2.87856
 Use_Colors: 16 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.987303
+iter: 3537
+best_acts_size: 4
+best_alp: 1.00943
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.67847
+turn: 15sum: 4.86928
 Use_Colors: 17 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 2.6037e-12 離散値のエラー: 0.644663
+iter: 2424
+best_acts_size: 4
+best_alp: 1.01654
+連続値のエラー: 2.6037e-12 離散値のエラー: 1.52486
+turn: 16sum: 3.86141
 Use_Colors: 18 4
-iter: 30
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.0814
+iter: 1983
+best_acts_size: 4
+best_alp: 1.00299
+連続値のエラー: 0 離散値のエラー: 1.13201
+turn: 17sum: 3.84815
 Use_Colors: 19 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 1.02436
+iter: 1614
+best_acts_size: 4
+best_alp: 1.00376
+連続値のエラー: 2.00148e-12 離散値のエラー: 2.10227
+turn: 18sum: 3.84564
 Use_Colors: 20 4
-iter: 129
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.574203
+iter: 2067
+best_acts_size: 4
+best_alp: 1.01355
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.95217
+turn: 19sum: 4.83987
 Use_Colors: 21 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.526996
+iter: 1824
+best_acts_size: 4
+best_alp: 1.0081
+連続値のエラー: 0 離散値のエラー: 3.59084
+turn: 20sum: 5.82676
 Use_Colors: 22 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 1.46014
+iter: 1926
+best_acts_size: 4
+best_alp: 1.01128
+連続値のエラー: 2.48253e-12 離散値のエラー: 3.68777
+turn: 21sum: 6.82482
 Use_Colors: 23 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.18176
+iter: 1941
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 5.27417
+turn: 22sum: 5.81364
 Use_Colors: 24 4
-iter: 93
-best_acts_size: 6
-連続値のエラー: 1.14439e-12 離散値のエラー: 2.32136
+iter: 2091
+best_acts_size: 4
+best_alp: 1.01514
+連続値のエラー: 1.14439e-12 離散値のエラー: 1.94617
+turn: 23sum: 5.81047
 Use_Colors: 25 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 3.55445e-12 離散値のエラー: 1.88034
+iter: 1824
+best_acts_size: 4
+best_alp: 1.02484
+連続値のエラー: 3.55445e-12 離散値のエラー: 2.60886
+turn: 24sum: 4.79389
 Use_Colors: 26 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.91508
+iter: 1905
+best_acts_size: 4
+best_alp: 1.01283
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.16068
+turn: 25sum: 5.76989
 Use_Colors: 27 4
-iter: 69
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 3.17052
+iter: 2187
+best_acts_size: 4
+best_alp: 1.02095
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.368336
+turn: 26sum: 5.75508
 Use_Colors: 28 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.14192
+iter: 1674
+best_acts_size: 4
+best_alp: 1.00175
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.6236
+turn: 27sum: 4.73515
 Use_Colors: 29 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.718565
+iter: 1545
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.24755
+turn: 28sum: 5.73471
 Use_Colors: 30 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.69775
+iter: 2013
+best_acts_size: 4
+best_alp: 1.01883
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.21478
+turn: 29sum: 4.73257
 Use_Colors: 31 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.837053
+iter: 1941
+best_acts_size: 4
+best_alp: 1.00097
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.931262
+turn: 30sum: 4.71462
 Use_Colors: 32 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.978962
+iter: 1737
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.00148e-12 離散値のエラー: 0.521977
+turn: 31sum: 3.71124
 Use_Colors: 33 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 2.28878e-12 離散値のエラー: 1.28441
+iter: 2847
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.68609
+turn: 32sum: 4.71014
 Use_Colors: 34 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.69761
+iter: 3228
+best_acts_size: 4
+best_alp: 1.00434
+連続値のエラー: 0 離散値のエラー: 2.49873
+turn: 33sum: 4.71
 Use_Colors: 35 4
-iter: 108
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.15715
+iter: 3615
+best_acts_size: 4
+best_alp: 1.00106
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.46759
+turn: 34sum: 4.70592
 Use_Colors: 36 4
-iter: 63
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 3.09426
+iter: 2796
+best_acts_size: 4
+best_alp: 1.00736
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.26378
+turn: 35sum: 3.70092
 Use_Colors: 37 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.474788
+iter: 3069
+best_acts_size: 4
+best_alp: 1.00119
+連続値のエラー: 0 離散値のエラー: 7.12619
+turn: 36sum: 5.69367
 Use_Colors: 38 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.27144
+iter: 2547
+best_acts_size: 4
+best_alp: 1.00663
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.50566
+turn: 37sum: 4.68858
 Use_Colors: 39 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.313281
+iter: 2364
+best_acts_size: 4
+best_alp: 1.00057
+連続値のエラー: 1.24127e-12 離散値のエラー: 22.9731
+turn: 38sum: 4.68212
 Use_Colors: 40 4
-iter: 105
-best_acts_size: 6
-連続値のエラー: 3.55445e-12 離散値のエラー: 0.357156
+iter: 3099
+best_acts_size: 4
+best_alp: 1.03029
+連続値のエラー: 3.55445e-12 離散値のエラー: 19.1527
+turn: 39sum: 4.66762
 Use_Colors: 41 4
-iter: 96
-best_acts_size: 6
-連続値のエラー: 2.54384e-12 離散値のエラー: 0.681136
+iter: 2802
+best_acts_size: 4
+best_alp: 1.00256
+連続値のエラー: 2.54384e-12 離散値のエラー: 4.09619
+turn: 40sum: 4.65127
 Use_Colors: 42 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 3.2785
+iter: 3168
+best_acts_size: 4
+best_alp: 1.00862
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.2475
+turn: 41sum: 4.64844
 Use_Colors: 43 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.163837
+iter: 3237
+best_acts_size: 4
+best_alp: 1.00558
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.2419
+turn: 42sum: 3.63722
 Use_Colors: 44 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.752632
+iter: 2754
+best_acts_size: 4
+best_alp: 1.00499
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.48088
+turn: 43sum: 3.63373
 Use_Colors: 45 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.85377
+iter: 2742
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.983529
+turn: 44sum: 4.63274
 Use_Colors: 46 4
-iter: 78
-best_acts_size: 5
-連続値のエラー: 1.38778e-12 離散値のエラー: 2.26449
+iter: 2391
+best_acts_size: 4
+best_alp: 1.009
+連続値のエラー: 1.38778e-12 離散値のエラー: 11.6171
+turn: 45sum: 3.63109
 Use_Colors: 47 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.654877
+iter: 2604
+best_acts_size: 4
+best_alp: 1.00328
+連続値のエラー: 1.92296e-12 離散値のエラー: 0.558368
+turn: 46sum: 5.63027
 Use_Colors: 48 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.38091
+iter: 2568
+best_acts_size: 4
+best_alp: 1.02327
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.399788
+turn: 47sum: 4.62726
 Use_Colors: 49 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 2.60277
+iter: 1935
+best_acts_size: 4
+best_alp: 1.01873
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.14277
+turn: 48sum: 5.60331
 Use_Colors: 50 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 1.05886
+iter: 1992
+best_acts_size: 4
+best_alp: 1.03263
+連続値のエラー: 2.48253e-12 離散値のエラー: 7.93893
+turn: 49sum: 5.58443
 Use_Colors: 51 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 2.58495
+iter: 1851
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.48253e-12 離散値のエラー: 2.21403
+turn: 50sum: 5.54774
 Use_Colors: 52 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.51887
+iter: 2565
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.58209
+turn: 51sum: 6.54689
 Use_Colors: 53 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.768484
+iter: 2256
+best_acts_size: 4
+best_alp: 1.00321
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.27764
+turn: 52sum: 5.54277
 Use_Colors: 54 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 2.07704e-12 離散値のエラー: 0.879904
+iter: 1884
+best_acts_size: 4
+best_alp: 1.0037
+連続値のエラー: 2.07704e-12 離散値のエラー: 4.39801
+turn: 53sum: 4.53941
 Use_Colors: 55 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.962639
+iter: 2319
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 12.1848
+turn: 54sum: 5.52878
 Use_Colors: 56 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.35974e-12 離散値のエラー: 5.07435
+iter: 4041
+best_acts_size: 4
+best_alp: 1.02943
+連続値のエラー: 1.35974e-12 離散値のエラー: 1.71417
+turn: 55sum: 5.51928
 Use_Colors: 57 4
-iter: 45
+iter: 3213
 best_acts_size: 4
-連続値のエラー: 1.57009e-12 離散値のエラー: 69.3448
+best_alp: 1.00541
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.03735
+turn: 56sum: 5.49131
 Use_Colors: 58 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 7.85046e-13 離散値のエラー: 1.72931
+iter: 2739
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 7.85046e-13 離散値のエラー: 3.91281
+turn: 57sum: 5.48709
 Use_Colors: 59 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.38778e-12 離散値のエラー: 0.26864
+iter: 3018
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.38778e-12 離散値のエラー: 0.998637
+turn: 58sum: 6.48577
 Use_Colors: 60 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 3.14018e-12 離散値のエラー: 1.90079
+iter: 3228
+best_acts_size: 4
+best_alp: 1.0084
+連続値のエラー: 3.14018e-12 離散値のエラー: 0.991408
+turn: 59sum: 5.4853
 Use_Colors: 61 4
-iter: 114
-best_acts_size: 6
-連続値のエラー: 2.98937e-12 離散値のエラー: 1.26909
+iter: 2613
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.98937e-12 離散値のエラー: 1.72378
+turn: 60sum: 4.4774
 Use_Colors: 62 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.04854
+iter: 2385
+best_acts_size: 4
+best_alp: 1.01442
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.406639
+turn: 61sum: 3.47688
 Use_Colors: 63 4
-iter: 33
-best_acts_size: 6
-連続値のエラー: 2.22045e-12 離散値のエラー: 1.74885
+iter: 2256
+best_acts_size: 4
+best_alp: 1.00304
+連続値のエラー: 2.22045e-12 離散値のエラー: 1.81646
+turn: 62sum: 4.4604
 Use_Colors: 64 4
-iter: 57
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 3.51681
+iter: 2361
+best_acts_size: 4
+best_alp: 1.00163
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.53254
+turn: 63sum: 4.46003
 Use_Colors: 65 4
-iter: 99
+iter: 2391
 best_acts_size: 4
-連続値のエラー: 1.57009e-12 離散値のエラー: 30.9281
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.353468
+turn: 64sum: 3.45646
 Use_Colors: 66 4
-iter: 54
+iter: 2280
 best_acts_size: 4
-連続値のエラー: 2.48253e-12 離散値のエラー: 26.2117
+best_alp: 1.00155
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.66081
+turn: 65sum: 3.45588
 Use_Colors: 67 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.493437
+iter: 2574
+best_acts_size: 4
+best_alp: 1.0024
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.486223
+turn: 66sum: 4.45419
 Use_Colors: 68 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.250268
+iter: 2145
+best_acts_size: 4
+best_alp: 1.00112
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.27703
+turn: 67sum: 3.45061
 Use_Colors: 69 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.50065
+iter: 2169
+best_acts_size: 4
+best_alp: 1.00679
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.24079
+turn: 68sum: 2.44996
 Use_Colors: 70 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 2.22045e-12 離散値のエラー: 0.507069
+iter: 2100
+best_acts_size: 4
+best_alp: 1.0221
+連続値のエラー: 2.22045e-12 離散値のエラー: 3.32156
+turn: 69sum: 3.44095
 Use_Colors: 71 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 3.08717
+iter: 2316
+best_acts_size: 4
+best_alp: 1.00213
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.13641
+turn: 70sum: 4.42173
 Use_Colors: 72 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 4.74287e-12 離散値のエラー: 2.8245
+iter: 2205
+best_acts_size: 4
+best_alp: 1.00493
+連続値のエラー: 4.74287e-12 離散値のエラー: 4.43224
+turn: 71sum: 3.41652
 Use_Colors: 73 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 1.09781
+iter: 2604
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.51878
+turn: 72sum: 5.4124
 Use_Colors: 74 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.62283
+iter: 2478
+best_acts_size: 4
+best_alp: 1.00595
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.6856
+turn: 73sum: 4.40952
 Use_Colors: 75 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 3.14018e-12 離散値のエラー: 0.185218
+iter: 2535
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.14018e-12 離散値のエラー: 0.767548
+turn: 74sum: 5.40341
 Use_Colors: 76 4
-iter: 93
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 3.36198
+iter: 2718
+best_acts_size: 4
+best_alp: 1.01161
+連続値のエラー: 1.57009e-12 離散値のエラー: 3.69892
+turn: 75sum: 4.40115
 Use_Colors: 77 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 2.53934
+iter: 1647
+best_acts_size: 4
+best_alp: 1.00773
+連続値のエラー: 0 離散値のエラー: 0.676482
+turn: 76sum: 4.3857
 Use_Colors: 78 4
-iter: 63
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 7.9341
+iter: 1635
+best_acts_size: 4
+best_alp: 1.07273
+連続値のエラー: 1.57009e-12 離散値のエラー: 18.8823
+turn: 77sum: 4.37801
 Use_Colors: 79 4
-iter: 33
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 2.40511
+iter: 2193
+best_acts_size: 4
+best_alp: 1.00693
+連続値のエラー: 0 離散値のエラー: 8.80209
+turn: 78sum: 5.30581
 Use_Colors: 80 4
-iter: 42
+iter: 2007
 best_acts_size: 4
-連続値のエラー: 0 離散値のエラー: 25.0973
+best_alp: 1.01683
+連続値のエラー: 0 離散値のエラー: 27.6037
+turn: 79sum: 5.30463
 Use_Colors: 81 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.73993
+iter: 2178
+best_acts_size: 4
+best_alp: 1.02107
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.47739
+turn: 80sum: 5.28637
 Use_Colors: 82 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.238873
+iter: 1671
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.28878e-12 離散値のエラー: 6.26951
+turn: 81sum: 4.26162
 Use_Colors: 83 4
-iter: 39
-best_acts_size: 6
-連続値のエラー: 2.77556e-12 離散値のエラー: 0.7788
+iter: 1893
+best_acts_size: 4
+best_alp: 1.02256
+連続値のエラー: 2.77556e-12 離散値のエラー: 2.3197
+turn: 82sum: 5.2602
 Use_Colors: 84 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 2.22045e-12 離散値のエラー: 2.43765
+iter: 1980
+best_acts_size: 4
+best_alp: 1.04737
+連続値のエラー: 2.22045e-12 離散値のエラー: 1.06442
+turn: 83sum: 5.23845
 Use_Colors: 85 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.6008
+iter: 1995
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.91638
+turn: 84sum: 5.18961
 Use_Colors: 86 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.762791
+iter: 1908
+best_acts_size: 4
+best_alp: 1.02238
+連続値のエラー: 1.66533e-12 離散値のエラー: 3.0123
+turn: 85sum: 4.18959
 Use_Colors: 87 4
-iter: 78
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 3.64102
+iter: 1881
+best_acts_size: 4
+best_alp: 1.00113
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.84021
+turn: 86sum: 4.17141
 Use_Colors: 88 4
-iter: 45
-best_acts_size: 5
-連続値のエラー: 2.28878e-12 離散値のエラー: 3.5168
+iter: 1881
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.28878e-12 離散値のエラー: 2.42406
+turn: 87sum: 4.16839
 Use_Colors: 89 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.51716
+iter: 1491
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.0771
+turn: 88sum: 3.16803
 Use_Colors: 90 4
-iter: 42
-best_acts_size: 5
-連続値のエラー: 3.33067e-12 離散値のエラー: 4.52558
+iter: 1830
+best_acts_size: 4
+best_alp: 1.02214
+連続値のエラー: 3.33067e-12 離散値のエラー: 0.212047
+turn: 89sum: 4.16627
 Use_Colors: 91 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.467554
+iter: 1575
+best_acts_size: 4
+best_alp: 1.00498
+連続値のエラー: 1.11022e-12 離散値のエラー: 28.6401
+turn: 90sum: 4.14556
 Use_Colors: 92 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.607617
+iter: 1953
+best_acts_size: 4
+best_alp: 1.0106
+連続値のエラー: 2.28878e-12 離散値のエラー: 0.756298
+turn: 91sum: 4.14436
 Use_Colors: 93 4
-iter: 150
-best_acts_size: 5
-連続値のエラー: 2.23773e-12 離散値のエラー: 2.83258
+iter: 1818
+best_acts_size: 4
+best_alp: 1.00406
+連続値のエラー: 2.23773e-12 離散値のエラー: 1.24233
+turn: 92sum: 4.13589
 Use_Colors: 94 4
-iter: 48
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 3.44401
+iter: 1686
+best_acts_size: 4
+best_alp: 1.01178
+連続値のエラー: 1.24127e-12 離散値のエラー: 15.4762
+turn: 93sum: 4.1305
 Use_Colors: 95 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.08918
+iter: 1527
+best_acts_size: 4
+best_alp: 1.00555
+連続値のエラー: 1.57009e-12 離散値のエラー: 3.54766
+turn: 94sum: 3.12012
 Use_Colors: 96 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.34471
+iter: 2253
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.61796
+turn: 95sum: 5.11914
 Use_Colors: 97 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.576638
+iter: 1593
+best_acts_size: 4
+best_alp: 1.00003
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.405298
+turn: 96sum: 4.11852
 Use_Colors: 98 4
-iter: 99
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.34064
+iter: 2085
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 2.26392
+turn: 97sum: 4.11745
 Use_Colors: 99 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 4.74736
+iter: 1968
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.29768
+turn: 98sum: 4.11387
 Use_Colors: 100 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 2.77202
+iter: 1893
+best_acts_size: 4
+best_alp: 1.00457
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.685698
+turn: 99sum: 3.11357
 Use_Colors: 101 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.43584
+iter: 1677
+best_acts_size: 4
+best_alp: 1.00711
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.06073
+turn: 100sum: 4.10822
 Use_Colors: 102 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 6.37997
+iter: 1827
+best_acts_size: 4
+best_alp: 1.00435
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.42356
+turn: 101sum: 5.10135
 Use_Colors: 103 4
-iter: 93
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 2.81814
+iter: 2073
+best_acts_size: 4
+best_alp: 1.00319
+連続値のエラー: 2.00148e-12 離散値のエラー: 3.65145
+turn: 102sum: 5.09951
 Use_Colors: 104 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 2.63799
+iter: 1725
+best_acts_size: 4
+best_alp: 1.02053
+連続値のエラー: 2.48253e-12 離散値のエラー: 42.1936
+turn: 103sum: 4.09923
 Use_Colors: 105 4
-iter: 147
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.60249
+iter: 1707
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.59148
+turn: 104sum: 5.07857
 Use_Colors: 106 4
-iter: 105
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.76372
+iter: 1983
+best_acts_size: 4
+best_alp: 1.02141
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.90164
+turn: 105sum: 6.07758
 Use_Colors: 107 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.403033
+iter: 1659
+best_acts_size: 4
+best_alp: 1.00582
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.45123
+turn: 106sum: 5.05511
 Use_Colors: 108 4
-iter: 111
-best_acts_size: 6
-連続値のエラー: 2.77556e-12 離散値のエラー: 1.4089
+iter: 1686
+best_acts_size: 4
+best_alp: 1.01252
+連続値のエラー: 2.77556e-12 離散値のエラー: 1.23232
+turn: 107sum: 5.04987
 Use_Colors: 109 4
-iter: 141
-best_acts_size: 6
-連続値のエラー: 4.74287e-12 離散値のエラー: 0.510972
+iter: 1827
+best_acts_size: 4
+best_alp: 1.00365
+連続値のエラー: 4.74287e-12 離散値のエラー: 5.88262
+turn: 108sum: 6.04215
 Use_Colors: 110 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 2.88444e-12 離散値のエラー: 0.765701
+iter: 1941
+best_acts_size: 4
+best_alp: 1.00619
+連続値のエラー: 2.88444e-12 離散値のエラー: 2.02666
+turn: 109sum: 6.04039
 Use_Colors: 111 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.33455
+iter: 2061
+best_acts_size: 4
+best_alp: 1.01279
+連続値のエラー: 0 離散値のエラー: 0.930559
+turn: 110sum: 6.03647
 Use_Colors: 112 4
-iter: 105
-best_acts_size: 5
-連続値のエラー: 1.59444e-12 離散値のエラー: 2.66371
+iter: 1773
+best_acts_size: 4
+best_alp: 1.00625
+連続値のエラー: 1.59444e-12 離散値のエラー: 2.39697
+turn: 111sum: 5.02319
 Use_Colors: 113 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 3.52179e-12 離散値のエラー: 0.508051
+iter: 2103
+best_acts_size: 4
+best_alp: 1.01193
+連続値のエラー: 3.52179e-12 離散値のエラー: 0.799638
+turn: 112sum: 5.01944
 Use_Colors: 114 4
-iter: 87
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 0.811023
+iter: 1602
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 1.64086
+turn: 113sum: 4.00701
 Use_Colors: 115 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 2.07704e-12 離散値のエラー: 2.57879
+iter: 1587
+best_acts_size: 4
+best_alp: 1.00348
+連続値のエラー: 2.07704e-12 離散値のエラー: 3.4446
+turn: 114sum: 4.00619
 Use_Colors: 116 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.351218
+iter: 2049
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.666216
+turn: 115sum: 4.00235
 Use_Colors: 117 4
-iter: 39
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.87073
+iter: 1587
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 1.28139
+turn: 116sum: 4.00189
 Use_Colors: 118 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 2.22045e-12 離散値のエラー: 0.401452
+iter: 1944
+best_acts_size: 4
+best_alp: 1.00801
+連続値のエラー: 2.22045e-12 離散値のエラー: 0.929966
+turn: 117sum: 6.00096
 Use_Colors: 119 4
-iter: 87
-best_acts_size: 5
-連続値のエラー: 3.51083e-12 離散値のエラー: 1.91761
+iter: 2292
+best_acts_size: 4
+best_alp: 1.00823
+連続値のエラー: 3.51083e-12 離散値のエラー: 2.78482
+turn: 118sum: 4.99427
 Use_Colors: 120 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 3.33067e-12 離散値のエラー: 5.07933
+iter: 1914
+best_acts_size: 4
+best_alp: 1.01034
+連続値のエラー: 3.33067e-12 離散値のエラー: 4.69813
+turn: 119sum: 3.98764
 Use_Colors: 121 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 3.73413e-12 離散値のエラー: 1.42939
+iter: 1692
+best_acts_size: 4
+best_alp: 1.00616
+連続値のエラー: 3.73413e-12 離散値のエラー: 1.1001
+turn: 120sum: 3.982
 Use_Colors: 122 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.419836
+iter: 1641
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 0.983947
+turn: 121sum: 3.97634
 Use_Colors: 123 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 2.22045e-12 離散値のエラー: 0.556151
+iter: 1593
+best_acts_size: 4
+best_alp: 1.01779
+連続値のエラー: 2.22045e-12 離散値のエラー: 0.912203
+turn: 122sum: 3.97549
 Use_Colors: 124 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.36076
+iter: 1938
+best_acts_size: 4
+best_alp: 1.00182
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.01095
+turn: 123sum: 4.96208
 Use_Colors: 125 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.94651
+iter: 1593
+best_acts_size: 4
+best_alp: 1.01247
+連続値のエラー: 0 離散値のエラー: 1.28945
+turn: 124sum: 3.95982
 Use_Colors: 126 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.30873
+iter: 2043
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.0036
+turn: 125sum: 4.9496
 Use_Colors: 127 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 1.78262
+iter: 1728
+best_acts_size: 4
+best_alp: 1.00837
+連続値のエラー: 0 離散値のエラー: 0.96297
+turn: 126sum: 3.94683
 Use_Colors: 128 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.11679
+iter: 1689
+best_acts_size: 4
+best_alp: 1.0235
+連続値のエラー: 0 離散値のエラー: 4.98128
+turn: 127sum: 2.93807
 Use_Colors: 129 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.22976
+iter: 2022
+best_acts_size: 4
+best_alp: 1.0068
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.923041
+turn: 128sum: 3.91401
 Use_Colors: 130 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 2.77556e-12 離散値のエラー: 1.09292
+iter: 2685
+best_acts_size: 4
+best_alp: 1.00136
+連続値のエラー: 2.77556e-12 離散値のエラー: 0.891691
+turn: 129sum: 3.90924
 Use_Colors: 131 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.33428
+iter: 2697
+best_acts_size: 4
+best_alp: 1.00981
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.54777
+turn: 130sum: 2.90701
 Use_Colors: 132 4
-iter: 93
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.22088
+iter: 2781
+best_acts_size: 4
+best_alp: 1.01973
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.851132
+turn: 131sum: 2.89914
 Use_Colors: 133 4
-iter: 69
-best_acts_size: 5
-連続値のエラー: 2.43554e-12 離散値のエラー: 10.3413
+iter: 2988
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.43554e-12 離散値のエラー: 2.23243
+turn: 132sum: 3.88133
 Use_Colors: 134 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 1.35974e-12 離散値のエラー: 2.1777
+iter: 2259
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.35974e-12 離散値のエラー: 1.29487
+turn: 133sum: 3.87891
 Use_Colors: 135 4
-iter: 147
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.42669
+iter: 2031
+best_acts_size: 4
+best_alp: 1.01173
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.99576
+turn: 134sum: 5.87861
 Use_Colors: 136 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.77556e-12 離散値のエラー: 3.93438
+iter: 1713
+best_acts_size: 4
+best_alp: 1.02416
+連続値のエラー: 2.77556e-12 離散値のエラー: 1.78739
+turn: 135sum: 5.86716
 Use_Colors: 137 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.983586
+iter: 2058
+best_acts_size: 4
+best_alp: 1.02106
+連続値のエラー: 2.00148e-12 離散値のエラー: 0.0642791
+turn: 136sum: 5.84238
 Use_Colors: 138 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.769765
+iter: 1956
+best_acts_size: 4
+best_alp: 1.00991
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.513785
+turn: 137sum: 5.81917
 Use_Colors: 139 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 3.59753e-12 離散値のエラー: 0.465083
+iter: 1680
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.59753e-12 離散値のエラー: 0.435217
+turn: 138sum: 4.81077
 Use_Colors: 140 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.6862
+iter: 2421
+best_acts_size: 4
+best_alp: 1.00624
+連続値のエラー: 1.57009e-12 離散値のエラー: 3.93737
+turn: 139sum: 5.81028
 Use_Colors: 141 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 2.22045e-12 離散値のエラー: 1.4991
+iter: 2682
+best_acts_size: 4
+best_alp: 1.00243
+連続値のエラー: 2.22045e-12 離散値のエラー: 3.9785
+turn: 140sum: 5.80751
 Use_Colors: 142 4
-iter: 30
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 4.40153
+iter: 2547
+best_acts_size: 4
+best_alp: 1.01063
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.381839
+turn: 141sum: 5.80722
 Use_Colors: 143 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 2.94488
+iter: 3348
+best_acts_size: 4
+best_alp: 1.0134
+連続値のエラー: 2.71948e-12 離散値のエラー: 3.44704
+turn: 142sum: 5.79511
 Use_Colors: 144 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 2.54384e-12 離散値のエラー: 1.87539
+iter: 3081
+best_acts_size: 4
+best_alp: 1.00932
+連続値のエラー: 2.54384e-12 離散値のエラー: 1.14611
+turn: 143sum: 4.78407
 Use_Colors: 145 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.84587
+iter: 2886
+best_acts_size: 4
+best_alp: 1.00251
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.20815
+turn: 144sum: 4.77389
 Use_Colors: 146 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.134292
+iter: 2376
+best_acts_size: 4
+best_alp: 1.0098
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.72108
+turn: 145sum: 4.76722
 Use_Colors: 147 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.11608
+iter: 2076
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.07828
+turn: 146sum: 4.75475
 Use_Colors: 148 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.17386
+iter: 2787
+best_acts_size: 4
+best_alp: 1.02061
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.638839
+turn: 147sum: 4.75428
 Use_Colors: 149 4
-iter: 51
+iter: 2121
 best_acts_size: 4
-連続値のエラー: 1.11022e-12 離散値のエラー: 34.5299
+best_alp: 1.00375
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.530919
+turn: 148sum: 4.73258
 Use_Colors: 150 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 4.7997
+iter: 2400
+best_acts_size: 4
+best_alp: 1.00376
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.815548
+turn: 149sum: 4.72701
 Use_Colors: 151 4
-iter: 33
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.638597
+iter: 2340
+best_acts_size: 4
+best_alp: 1.00322
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.07968
+turn: 150sum: 4.72499
 Use_Colors: 152 4
-iter: 33
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 3.48564
+iter: 2160
+best_acts_size: 4
+best_alp: 1.00234
+連続値のエラー: 0 離散値のエラー: 0.855799
+turn: 151sum: 4.72316
 Use_Colors: 153 4
-iter: 120
-best_acts_size: 6
-連続値のエラー: 2.98937e-12 離散値のエラー: 0.705248
+iter: 2457
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.98937e-12 離散値のエラー: 3.15073
+turn: 152sum: 5.71955
 Use_Colors: 154 4
-iter: 39
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.2533
+iter: 2367
+best_acts_size: 4
+best_alp: 1.02073
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.51625
+turn: 153sum: 4.71793
 Use_Colors: 155 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 1.18393
+iter: 2205
+best_acts_size: 4
+best_alp: 1.00217
+連続値のエラー: 2.71948e-12 離散値のエラー: 3.0341
+turn: 154sum: 4.69754
 Use_Colors: 156 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.530394
+iter: 2529
+best_acts_size: 4
+best_alp: 1.00454
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.92374
+turn: 155sum: 4.69218
 Use_Colors: 157 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.873385
+iter: 2415
+best_acts_size: 4
+best_alp: 1.02667
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.17724
+turn: 156sum: 4.68602
 Use_Colors: 158 4
-iter: 33
-best_acts_size: 6
-連続値のエラー: 2.54384e-12 離散値のエラー: 2.4571
+iter: 2583
+best_acts_size: 4
+best_alp: 1.00508
+連続値のエラー: 2.54384e-12 離散値のエラー: 1.57941
+turn: 157sum: 4.65805
 Use_Colors: 159 4
-iter: 30
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.41545
+iter: 2565
+best_acts_size: 4
+best_alp: 1.00095
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.497722
+turn: 158sum: 4.65261
 Use_Colors: 160 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.868244
+iter: 2664
+best_acts_size: 4
+best_alp: 1.01289
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.51516
+turn: 159sum: 4.65046
 Use_Colors: 161 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 1.02997
+iter: 2832
+best_acts_size: 4
+best_alp: 1.00145
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.39665
+turn: 160sum: 3.63684
 Use_Colors: 162 4
-iter: 54
-best_acts_size: 5
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.2088
+iter: 2784
+best_acts_size: 4
+best_alp: 1.00424
+連続値のエラー: 1.92296e-12 離散値のエラー: 2.12451
+turn: 161sum: 3.63333
 Use_Colors: 163 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.2286
+iter: 2463
+best_acts_size: 4
+best_alp: 1.00251
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.45695
+turn: 162sum: 4.62657
 Use_Colors: 164 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 3.07603
+iter: 2874
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.92296e-12 離散値のエラー: 5.37686
+turn: 163sum: 5.62414
 Use_Colors: 165 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 1.73723
+iter: 3402
+best_acts_size: 4
+best_alp: 1.00671
+連続値のエラー: 2.71948e-12 離散値のエラー: 2.77031
+turn: 164sum: 5.62326
 Use_Colors: 166 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 4.4544
+iter: 2814
+best_acts_size: 4
+best_alp: 1.00269
+連続値のエラー: 1.57009e-12 離散値のエラー: 4.25993
+turn: 165sum: 4.62067
 Use_Colors: 167 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.22045e-12 離散値のエラー: 1.00635
+iter: 2865
+best_acts_size: 4
+best_alp: 1.00292
+連続値のエラー: 2.22045e-12 離散値のエラー: 0.88984
+turn: 166sum: 3.61928
 Use_Colors: 168 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 2.0997
+iter: 3318
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.63331
+turn: 167sum: 4.61674
 Use_Colors: 169 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 2.00148e-12 離散値のエラー: 3.91626
+iter: 3186
+best_acts_size: 4
+best_alp: 1.00263
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.03613
+turn: 168sum: 4.61634
 Use_Colors: 170 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.602303
+iter: 3156
+best_acts_size: 4
+best_alp: 1.00258
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.56348
+turn: 169sum: 5.61475
 Use_Colors: 171 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 4.34492
+iter: 2940
+best_acts_size: 4
+best_alp: 1.00454
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.699105
+turn: 170sum: 4.61077
 Use_Colors: 172 4
-iter: 72
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 3.56695
+iter: 2607
+best_acts_size: 4
+best_alp: 1.00375
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.535383
+turn: 171sum: 4.60632
 Use_Colors: 173 4
-iter: 93
-best_acts_size: 5
-連続値のエラー: 3.51083e-12 離散値のエラー: 1.01649
+iter: 3732
+best_acts_size: 4
+best_alp: 1.039
+連続値のエラー: 3.51083e-12 離散値のエラー: 6.44614
+turn: 172sum: 4.60356
 Use_Colors: 174 4
-iter: 57
-best_acts_size: 5
-連続値のエラー: 1.92296e-12 離散値のエラー: 26.7225
+iter: 3114
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.01768
+turn: 173sum: 5.56928
 Use_Colors: 175 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 5.2847
+iter: 2997
+best_acts_size: 4
+best_alp: 1.02403
+連続値のエラー: 1.92296e-12 離散値のエラー: 3.7586
+turn: 174sum: 4.56738
 Use_Colors: 176 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 2.71574
+iter: 3327
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.28878e-12 離散値のエラー: 2.68379
+turn: 175sum: 5.54856
 Use_Colors: 177 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.44445
+iter: 2985
+best_acts_size: 4
+best_alp: 1.0027
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.36851
+turn: 176sum: 5.54844
 Use_Colors: 178 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.07615
+iter: 2904
+best_acts_size: 4
+best_alp: 1.00302
+連続値のエラー: 0 離散値のエラー: 1.60496
+turn: 177sum: 4.54798
 Use_Colors: 179 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.816431
+iter: 2592
+best_acts_size: 4
+best_alp: 1.00824
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.54672
+turn: 178sum: 4.54489
 Use_Colors: 180 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 3.20508
+iter: 2634
+best_acts_size: 4
+best_alp: 1.00132
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.32094
+turn: 179sum: 5.53713
 Use_Colors: 181 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.09148
+iter: 3966
+best_acts_size: 4
+best_alp: 1.01218
+連続値のエラー: 1.57009e-12 離散値のエラー: 48.0582
+turn: 180sum: 5.53405
 Use_Colors: 182 4
-iter: 27
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.151578
+iter: 2898
+best_acts_size: 4
+best_alp: 1.00754
+連続値のエラー: 0 離散値のエラー: 1.17584
+turn: 181sum: 5.50792
 Use_Colors: 183 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 3.14018e-12 離散値のエラー: 5.59067
+iter: 3543
+best_acts_size: 4
+best_alp: 1.04164
+連続値のエラー: 3.14018e-12 離散値のエラー: 1.16113
+turn: 182sum: 5.50127
 Use_Colors: 184 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.41576
+iter: 2829
+best_acts_size: 4
+best_alp: 1.02558
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.46093
+turn: 183sum: 5.46057
 Use_Colors: 185 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 2.77556e-12 離散値のエラー: 0.551999
+iter: 3003
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.77556e-12 離散値のエラー: 3.78748
+turn: 184sum: 5.43477
 Use_Colors: 186 4
-iter: 54
-best_acts_size: 5
-連続値のエラー: 2.28878e-12 離散値のエラー: 4.84152
+iter: 2808
+best_acts_size: 4
+best_alp: 1.00387
+連続値のエラー: 2.28878e-12 離散値のエラー: 3.67762
+turn: 185sum: 5.43382
 Use_Colors: 187 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 3.51083e-12 離散値のエラー: 1.56383
+iter: 3156
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.51083e-12 離散値のエラー: 1.48893
+turn: 186sum: 5.43336
 Use_Colors: 188 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.35974e-12 離散値のエラー: 1.20795
+iter: 3414
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.35974e-12 離散値のエラー: 1.43567
+turn: 187sum: 4.43282
 Use_Colors: 189 4
-iter: 33
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 2.331
+iter: 2928
+best_acts_size: 4
+best_alp: 1.00371
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.0869
+turn: 188sum: 4.43255
 Use_Colors: 190 4
-iter: 39
+iter: 2871
 best_acts_size: 4
-連続値のエラー: 1.11022e-12 離散値のエラー: 3.82626
+best_alp: 1.01468
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.72569
+turn: 189sum: 3.42644
 Use_Colors: 191 4
-iter: 36
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 1.26889
+iter: 2988
+best_acts_size: 4
+best_alp: 1.00388
+連続値のエラー: 0 離散値のエラー: 2.84321
+turn: 190sum: 4.41323
 Use_Colors: 192 4
-iter: 42
+iter: 3393
 best_acts_size: 4
-連続値のエラー: 1.66533e-12 離散値のエラー: 13.3488
+best_alp: 1.02643
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.1772
+turn: 191sum: 4.40694
 Use_Colors: 193 4
-iter: 39
-best_acts_size: 6
-連続値のエラー: 3.33067e-12 離散値のエラー: 1.94821
+iter: 2817
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.33067e-12 離散値のエラー: 2.33404
+turn: 192sum: 4.38044
 Use_Colors: 194 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.220557
+iter: 3312
+best_acts_size: 4
+best_alp: 1.01241
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.26999
+turn: 193sum: 3.37934
 Use_Colors: 195 4
-iter: 99
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 7.13106
+iter: 2934
+best_acts_size: 4
+best_alp: 1.01327
+連続値のエラー: 0 離散値のエラー: 15.3749
+turn: 194sum: 3.36939
 Use_Colors: 196 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 2.13941
+iter: 3258
+best_acts_size: 4
+best_alp: 1.07607
+連続値のエラー: 5.55112e-13 離散値のエラー: 5.83804
+turn: 195sum: 4.35325
 Use_Colors: 197 4
-iter: 27
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.53341
+iter: 3336
+best_acts_size: 4
+best_alp: 1.00092
+連続値のエラー: 0 離散値のエラー: 4.90122
+turn: 196sum: 4.27517
 Use_Colors: 198 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 3.68219e-12 離散値のエラー: 0.428516
+iter: 2802
+best_acts_size: 4
+best_alp: 1.00398
+連続値のエラー: 3.68219e-12 離散値のエラー: 0.973501
+turn: 197sum: 3.27123
 Use_Colors: 199 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.35974e-12 離散値のエラー: 1.96318
+iter: 3126
+best_acts_size: 4
+best_alp: 1.01424
+連続値のエラー: 1.35974e-12 離散値のエラー: 2.51292
+turn: 198sum: 3.26802
 Use_Colors: 200 4
-iter: 93
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.48079
+iter: 3027
+best_acts_size: 4
+best_alp: 1.13293
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.17769
+turn: 199sum: 5.24335
 Use_Colors: 201 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.33639
+iter: 3516
+best_acts_size: 4
+best_alp: 1.08723
+連続値のエラー: 1.11022e-12 離散値のエラー: 12.4857
+turn: 200sum: 5.10778
 Use_Colors: 202 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.527347
+iter: 2982
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.06723
+turn: 201sum: 5.01476
 Use_Colors: 203 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.750597
+iter: 3048
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.8764
+turn: 202sum: 5.01434
 Use_Colors: 204 4
-iter: 114
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.962722
+iter: 3276
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.59274
+turn: 203sum: 5.01211
 Use_Colors: 205 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.781663
+iter: 2526
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.70707
+turn: 204sum: 4.01164
 Use_Colors: 206 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.935535
+iter: 3150
+best_acts_size: 4
+best_alp: 1.00571
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.88257
+turn: 205sum: 5.01026
 Use_Colors: 207 4
-iter: 57
+iter: 3294
 best_acts_size: 4
-連続値のエラー: 3.51083e-12 離散値のエラー: 44.1891
+best_alp: 1.01071
+連続値のエラー: 3.51083e-12 離散値のエラー: 6.38448
+turn: 206sum: 5.00355
 Use_Colors: 208 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 3.51083e-12 離散値のエラー: 3.73013
+iter: 3126
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.51083e-12 離散値のエラー: 1.32851
+turn: 207sum: 5.99178
 Use_Colors: 209 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 4.65464
+iter: 3423
+best_acts_size: 4
+best_alp: 1.03124
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.49863
+turn: 208sum: 4.99071
 Use_Colors: 210 4
-iter: 60
+iter: 3039
 best_acts_size: 4
-連続値のエラー: 2.28878e-12 離散値のエラー: 33.0865
+best_alp: 1.01812
+連続値のエラー: 2.28878e-12 離散値のエラー: 5.51761
+turn: 209sum: 3.95836
 Use_Colors: 211 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 3.42194e-12 離散値のエラー: 1.08115
+iter: 3918
+best_acts_size: 4
+best_alp: 1.00637
+連続値のエラー: 3.42194e-12 離散値のエラー: 0.924265
+turn: 210sum: 4.94029
 Use_Colors: 212 4
-iter: 63
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 2.00546
+iter: 2772
+best_acts_size: 4
+best_alp: 1.00369
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.33373
+turn: 211sum: 3.93414
 Use_Colors: 213 4
-iter: 96
-best_acts_size: 6
-連続値のエラー: 1.14439e-12 離散値のエラー: 1.01277
+iter: 3093
+best_acts_size: 4
+best_alp: 1.00831
+連続値のエラー: 1.14439e-12 離散値のエラー: 2.17327
+turn: 212sum: 2.9333
 Use_Colors: 214 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.81624
+iter: 2157
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.30565
+turn: 213sum: 2.92675
 Use_Colors: 215 4
-iter: 105
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.24519
+iter: 3522
+best_acts_size: 4
+best_alp: 1.01022
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.29537
+turn: 214sum: 4.92373
 Use_Colors: 216 4
-iter: 63
-best_acts_size: 5
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.05257
+iter: 2946
+best_acts_size: 4
+best_alp: 1.02029
+連続値のエラー: 1.92296e-12 離散値のエラー: 8.66212
+turn: 215sum: 3.91472
 Use_Colors: 217 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.01255
+iter: 3588
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.895126
+turn: 216sum: 4.90683
 Use_Colors: 218 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.3861
+iter: 3420
+best_acts_size: 4
+best_alp: 1.01052
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.25701
+turn: 217sum: 5.9032
 Use_Colors: 219 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.92434
+iter: 2928
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.677073
+turn: 218sum: 4.89463
 Use_Colors: 220 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 7.85046e-13 離散値のエラー: 0.489423
+iter: 2655
+best_acts_size: 4
+best_alp: 1.00324
+連続値のエラー: 7.85046e-13 離散値のエラー: 0.764681
+turn: 219sum: 4.89337
 Use_Colors: 221 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 4.05417
+iter: 3369
+best_acts_size: 4
+best_alp: 1.01151
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.69112
+turn: 220sum: 4.891
 Use_Colors: 222 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 2.77556e-12 離散値のエラー: 1.22492
+iter: 3201
+best_acts_size: 4
+best_alp: 1.00193
+連続値のエラー: 2.77556e-12 離散値のエラー: 1.23101
+turn: 221sum: 4.87222
 Use_Colors: 223 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 4.07462
+iter: 3204
+best_acts_size: 4
+best_alp: 1.01934
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.09671
+turn: 222sum: 3.87038
 Use_Colors: 224 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 2.00148e-12 離散値のエラー: 1.92338
+iter: 3258
+best_acts_size: 4
+best_alp: 1.0069
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.41817
+turn: 223sum: 3.85262
 Use_Colors: 225 4
-iter: 72
+iter: 3120
 best_acts_size: 4
-連続値のエラー: 1.57009e-12 離散値のエラー: 14.6007
+best_alp: 1.00618
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.60927
+turn: 224sum: 3.84761
 Use_Colors: 226 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.881506
+iter: 3642
+best_acts_size: 4
+best_alp: 1.00851
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.730905
+turn: 225sum: 4.84068
 Use_Colors: 227 4
-iter: 57
+iter: 2703
 best_acts_size: 4
-連続値のエラー: 1.92296e-12 離散値のエラー: 37.5896
+best_alp: 1.00128
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.9681
+turn: 226sum: 3.83213
 Use_Colors: 228 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 3.14018e-12 離散値のエラー: 2.33133
+iter: 3726
+best_acts_size: 4
+best_alp: 1.00931
+連続値のエラー: 3.14018e-12 離散値のエラー: 2.8176
+turn: 227sum: 4.82918
 Use_Colors: 229 4
-iter: 48
-best_acts_size: 5
-連続値のエラー: 2.54384e-12 離散値のエラー: 2.34664
+iter: 3537
+best_acts_size: 4
+best_alp: 1.00518
+連続値のエラー: 2.54384e-12 離散値のエラー: 17.3505
+turn: 228sum: 4.81945
 Use_Colors: 230 4
-iter: 108
-best_acts_size: 5
-連続値のエラー: 1.14439e-12 離散値のエラー: 3.07138
+iter: 3255
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.14439e-12 離散値のエラー: 0.814164
+turn: 229sum: 4.81537
 Use_Colors: 231 4
-iter: 72
+iter: 3387
 best_acts_size: 4
-連続値のエラー: 1.24127e-12 離散値のエラー: 12.127
+best_alp: 1.01316
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.11878
+turn: 230sum: 3.8153
 Use_Colors: 232 4
-iter: 132
-best_acts_size: 6
-連続値のエラー: 1.59444e-12 離散値のエラー: 2.22223
+iter: 3714
+best_acts_size: 4
+best_alp: 1.00629
+連続値のエラー: 1.59444e-12 離散値のエラー: 1.59221
+turn: 231sum: 3.8021
 Use_Colors: 233 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.931707
+iter: 2358
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.72617
+turn: 232sum: 2.79753
 Use_Colors: 234 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 1.44098
+iter: 1731
+best_acts_size: 4
+best_alp: 1.00484
+連続値のエラー: 2.00148e-12 離散値のエラー: 3.98448
+turn: 233sum: 4.79711
 Use_Colors: 235 4
-iter: 84
-best_acts_size: 5
-連続値のエラー: 2.71948e-12 離散値のエラー: 2.47589
+iter: 1881
+best_acts_size: 4
+best_alp: 1.0133
+連続値のエラー: 2.71948e-12 離散値のエラー: 3.66311
+turn: 234sum: 4.79528
 Use_Colors: 236 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 6.17954
+iter: 1935
+best_acts_size: 4
+best_alp: 1.00433
+連続値のエラー: 0 離散値のエラー: 1.10914
+turn: 235sum: 4.79052
 Use_Colors: 237 4
-iter: 54
+iter: 1905
 best_acts_size: 4
-連続値のエラー: 2.35514e-12 離散値のエラー: 6.20892
+best_alp: 1.00365
+連続値のエラー: 2.35514e-12 離散値のエラー: 2.079
+turn: 236sum: 3.7856
 Use_Colors: 238 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.375187
+iter: 1866
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.80671
+turn: 237sum: 3.78074
 Use_Colors: 239 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.17037
+iter: 2103
+best_acts_size: 4
+best_alp: 1.01283
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.602753
+turn: 238sum: 2.77849
 Use_Colors: 240 4
-iter: 102
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.76133
+iter: 1875
+best_acts_size: 4
+best_alp: 1.00591
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.96914
+turn: 239sum: 1.76526
 Use_Colors: 241 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 2.98937e-12 離散値のエラー: 2.625
+iter: 1944
+best_acts_size: 4
+best_alp: 1.0026
+連続値のエラー: 2.98937e-12 離散値のエラー: 2.45124
+turn: 240sum: 4.75763
 Use_Colors: 242 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 3.4494
+iter: 2142
+best_acts_size: 4
+best_alp: 1.00497
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.4202
+turn: 241sum: 5.75627
 Use_Colors: 243 4
-iter: 33
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.74181
+iter: 1623
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.238431
+turn: 242sum: 5.75237
 Use_Colors: 244 4
-iter: 51
+iter: 2271
 best_acts_size: 4
-連続値のエラー: 1.11022e-12 離散値のエラー: 12.7464
+best_alp: 1.00965
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.65844
+turn: 243sum: 5.7514
 Use_Colors: 245 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.609142
+iter: 1914
+best_acts_size: 4
+best_alp: 1.00462
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.806978
+turn: 244sum: 4.74409
 Use_Colors: 246 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.19678
+iter: 1950
+best_acts_size: 4
+best_alp: 1.00801
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.63144
+turn: 245sum: 5.73968
 Use_Colors: 247 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 2.61737
+iter: 1845
+best_acts_size: 4
+best_alp: 1.00531
+連続値のエラー: 2.71948e-12 離散値のエラー: 8.09918
+turn: 246sum: 4.73103
 Use_Colors: 248 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 5.08768e-12 離散値のエラー: 2.53903
+iter: 2112
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.08768e-12 離散値のエラー: 1.02442
+turn: 247sum: 4.72948
 Use_Colors: 249 4
-iter: 42
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 2.70547
+iter: 1980
+best_acts_size: 4
+best_alp: 1.01467
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.986063
+turn: 248sum: 4.72802
 Use_Colors: 250 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 3.97655
+iter: 2055
+best_acts_size: 4
+best_alp: 1.00175
+連続値のエラー: 2.28878e-12 離散値のエラー: 3.1069
+turn: 249sum: 5.71364
 Use_Colors: 251 4
-iter: 36
+iter: 2085
 best_acts_size: 4
-連続値のエラー: 5.08768e-12 離散値のエラー: 26.1084
+best_alp: 1.00966
+連続値のエラー: 5.08768e-12 離散値のエラー: 0.84104
+turn: 250sum: 4.71102
 Use_Colors: 252 4
-iter: 39
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.957999
+iter: 1740
+best_acts_size: 4
+best_alp: 1.01461
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.28516
+turn: 251sum: 3.70068
 Use_Colors: 253 4
-iter: 39
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 0.653596
+iter: 1692
+best_acts_size: 4
+best_alp: 1.02236
+連続値のエラー: 0 離散値のエラー: 1.91726
+turn: 252sum: 3.685
 Use_Colors: 254 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 2.23773e-12 離散値のエラー: 0.791613
+iter: 2157
+best_acts_size: 4
+best_alp: 1.007
+連続値のエラー: 2.23773e-12 離散値のエラー: 7.19341
+turn: 253sum: 4.66344
 Use_Colors: 255 4
-iter: 60
+iter: 1995
 best_acts_size: 4
-連続値のエラー: 3.7238e-12 離散値のエラー: 1.40005
+best_alp: 1.00089
+連続値のエラー: 3.7238e-12 離散値のエラー: 2.85424
+turn: 254sum: 4.65183
 Use_Colors: 256 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.935305
+iter: 1704
+best_acts_size: 4
+best_alp: 1.00285
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.2737
+turn: 255sum: 4.65127
 Use_Colors: 257 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.492028
+iter: 1494
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.91505
+turn: 256sum: 4.65069
 Use_Colors: 258 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 3.55445e-12 離散値のエラー: 0.988336
+iter: 2661
+best_acts_size: 4
+best_alp: 1.00765
+連続値のエラー: 3.55445e-12 離散値のエラー: 1.32918
+turn: 257sum: 5.64981
 Use_Colors: 259 4
-iter: 54
-best_acts_size: 5
-連続値のエラー: 1.92296e-12 離散値のエラー: 3.9562
+iter: 3261
+best_acts_size: 4
+best_alp: 1.00944
+連続値のエラー: 1.92296e-12 離散値のエラー: 4.58897
+turn: 258sum: 4.64458
 Use_Colors: 260 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.35974e-12 離散値のエラー: 1.60273
+iter: 2826
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.35974e-12 離散値のエラー: 0.2795
+turn: 259sum: 3.6335
 Use_Colors: 261 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 6.95401
+iter: 3012
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 3.3157
+turn: 260sum: 3.63205
 Use_Colors: 262 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 1.67723
+iter: 2997
+best_acts_size: 4
+best_alp: 1.01514
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.43457
+turn: 261sum: 4.63181
 Use_Colors: 263 4
-iter: 39
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.31617
+iter: 2361
+best_acts_size: 4
+best_alp: 1.00479
+連続値のエラー: 0 離散値のエラー: 6.4598
+turn: 262sum: 4.61547
 Use_Colors: 264 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.60946
+iter: 2334
+best_acts_size: 4
+best_alp: 1.0185
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.37766
+turn: 263sum: 5.61371
 Use_Colors: 265 4
-iter: 45
-best_acts_size: 5
-連続値のエラー: 3.88578e-12 離散値のエラー: 0.608078
+iter: 3216
+best_acts_size: 4
+best_alp: 1.02459
+連続値のエラー: 3.88578e-12 離散値のエラー: 2.95676
+turn: 264sum: 5.60351
 Use_Colors: 266 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 1.75033
+iter: 2838
+best_acts_size: 4
+best_alp: 1.00557
+連続値のエラー: 2.48253e-12 離散値のエラー: 0.306441
+turn: 265sum: 5.57801
 Use_Colors: 267 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 4.02407
+iter: 2943
+best_acts_size: 4
+best_alp: 1.01175
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.77386
+turn: 266sum: 5.57448
 Use_Colors: 268 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.319948
+iter: 2691
+best_acts_size: 4
+best_alp: 1.00544
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.99742
+turn: 267sum: 5.56192
 Use_Colors: 269 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.7559
+iter: 2841
+best_acts_size: 4
+best_alp: 1.02446
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.57071
+turn: 268sum: 4.55656
 Use_Colors: 270 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.236605
+iter: 2694
+best_acts_size: 4
+best_alp: 1.01171
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.46307
+turn: 269sum: 3.53218
 Use_Colors: 271 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 2.68966
+iter: 2682
+best_acts_size: 4
+best_alp: 1.00325
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.25732
+turn: 270sum: 3.52075
 Use_Colors: 272 4
-iter: 117
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 2.26885
+iter: 2718
+best_acts_size: 4
+best_alp: 1.00549
+連続値のエラー: 2.71948e-12 離散値のエラー: 2.71575
+turn: 271sum: 3.51699
 Use_Colors: 273 4
-iter: 69
+iter: 3177
 best_acts_size: 4
-連続値のエラー: 5.55112e-13 離散値のエラー: 53.6406
+best_alp: 1.01107
+連続値のエラー: 5.55112e-13 離散値のエラー: 23.3108
+turn: 272sum: 4.51249
 Use_Colors: 274 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.20424
+iter: 2097
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.441867
+turn: 273sum: 3.50845
 Use_Colors: 275 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 11.3459
+iter: 1710
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.82515
+turn: 274sum: 3.50747
 Use_Colors: 276 4
-iter: 69
-best_acts_size: 5
-連続値のエラー: 2.71948e-12 離散値のエラー: 0.0556082
+iter: 1860
+best_acts_size: 4
+best_alp: 1.02949
+連続値のエラー: 2.71948e-12 離散値のエラー: 1.36395
+turn: 275sum: 4.50619
 Use_Colors: 277 4
-iter: 102
-best_acts_size: 6
-連続値のエラー: 1.14439e-12 離散値のエラー: 2.52279
+iter: 1971
+best_acts_size: 4
+best_alp: 1.01004
+連続値のエラー: 1.14439e-12 離散値のエラー: 0.728746
+turn: 276sum: 5.47814
 Use_Colors: 278 4
-iter: 48
+iter: 1668
 best_acts_size: 4
-連続値のエラー: 5.55112e-13 離散値のエラー: 11.9739
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.800894
+turn: 277sum: 4.47002
 Use_Colors: 279 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.58002
+iter: 2229
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 9.42245
+turn: 278sum: 4.46897
 Use_Colors: 280 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.52984
+iter: 1947
+best_acts_size: 4
+best_alp: 1.00803
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.5248
+turn: 279sum: 3.46676
 Use_Colors: 281 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 2.98937e-12 離散値のエラー: 1.1832
+iter: 2094
+best_acts_size: 4
+best_alp: 1.01232
+連続値のエラー: 2.98937e-12 離散値のエラー: 2.23085
+turn: 280sum: 3.45816
 Use_Colors: 282 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.217428
+iter: 1467
+best_acts_size: 4
+best_alp: 1.0067
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.09917
+turn: 281sum: 2.44647
 Use_Colors: 283 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.36603
+iter: 1614
+best_acts_size: 4
+best_alp: 1.00151
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.6351
+turn: 282sum: 4.44111
 Use_Colors: 284 4
-iter: 81
+iter: 1767
 best_acts_size: 4
-連続値のエラー: 2.48253e-12 離散値のエラー: 17.8072
+best_alp: 1.00836
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.18565
+turn: 283sum: 3.43793
 Use_Colors: 285 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.42056
+iter: 1638
+best_acts_size: 4
+best_alp: 1.0175
+連続値のエラー: 0 離散値のエラー: 1.98417
+turn: 284sum: 3.42924
 Use_Colors: 286 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.0612703
+iter: 1413
+best_acts_size: 4
+best_alp: 1.00182
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.76297
+turn: 285sum: 5.41293
 Use_Colors: 287 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 1.73959
+iter: 2046
+best_acts_size: 4
+best_alp: 1.01212
+連続値のエラー: 2.71948e-12 離散値のエラー: 2.35573
+turn: 286sum: 5.4102
 Use_Colors: 288 4
-iter: 96
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.30007
+iter: 1959
+best_acts_size: 4
+best_alp: 1.0073
+連続値のエラー: 1.92296e-12 離散値のエラー: 4.92448
+turn: 287sum: 5.40173
 Use_Colors: 289 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 5.08768e-12 離散値のエラー: 11.7175
+iter: 1860
+best_acts_size: 4
+best_alp: 1.01411
+連続値のエラー: 5.08768e-12 離散値のエラー: 1.50755
+turn: 288sum: 4.40161
 Use_Colors: 290 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 1.00964
+iter: 1746
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.71948e-12 離散値のエラー: 2.02856
+turn: 289sum: 5.38852
 Use_Colors: 291 4
-iter: 102
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.719751
+iter: 1713
+best_acts_size: 4
+best_alp: 1.01443
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.480845
+turn: 290sum: 5.38546
 Use_Colors: 292 4
-iter: 93
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.703262
+iter: 1593
+best_acts_size: 4
+best_alp: 1.00309
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.11375
+turn: 291sum: 4.37164
 Use_Colors: 293 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.643849
+iter: 1599
+best_acts_size: 4
+best_alp: 1.00507
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.0937
+turn: 292sum: 5.37028
 Use_Colors: 294 4
-iter: 93
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.32436
+iter: 1827
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.12231
+turn: 293sum: 5.36219
 Use_Colors: 295 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 3.2799
+iter: 1809
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.01732
+turn: 294sum: 4.36087
 Use_Colors: 296 4
-iter: 99
-best_acts_size: 6
-連続値のエラー: 3.24871e-12 離散値のエラー: 1.64033
+iter: 1875
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.24871e-12 離散値のエラー: 7.37241
+turn: 295sum: 3.35947
 Use_Colors: 297 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.57981
+iter: 1659
+best_acts_size: 4
+best_alp: 1.00972
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.126
+turn: 296sum: 4.35898
 Use_Colors: 298 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.874556
+iter: 1917
+best_acts_size: 4
+best_alp: 1.00183
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.23312
+turn: 297sum: 5.34641
 Use_Colors: 299 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.21229
+iter: 1746
+best_acts_size: 4
+best_alp: 1.0045
+連続値のエラー: 0 離散値のエラー: 1.63894
+turn: 298sum: 4.34427
 Use_Colors: 300 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.863595
+iter: 1743
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.94473
+turn: 299sum: 5.33972
 Use_Colors: 301 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 4.43087
+iter: 1872
+best_acts_size: 4
+best_alp: 1.00726
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.57925
+turn: 300sum: 4.33963
 Use_Colors: 302 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.22299
+iter: 1641
+best_acts_size: 4
+best_alp: 1.00512
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.727964
+turn: 301sum: 3.33384
 Use_Colors: 303 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.431749
+iter: 1515
+best_acts_size: 4
+best_alp: 1.01954
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.75426
+turn: 302sum: 3.32838
 Use_Colors: 304 4
-iter: 99
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.28924
+iter: 1761
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.83273
+turn: 303sum: 5.3109
 Use_Colors: 305 4
-iter: 57
+iter: 1749
 best_acts_size: 4
-連続値のエラー: 2.00148e-12 離散値のエラー: 48.5763
+best_alp: 1.00201
+連続値のエラー: 2.00148e-12 離散値のエラー: 0.595182
+turn: 304sum: 5.31052
 Use_Colors: 306 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.845515
+iter: 1869
+best_acts_size: 4
+best_alp: 1.01704
+連続値のエラー: 1.92296e-12 離散値のエラー: 0.773203
+turn: 305sum: 4.30731
 Use_Colors: 307 4
-iter: 63
+iter: 1983
 best_acts_size: 4
-連続値のエラー: 1.92296e-12 離散値のエラー: 15.263
+best_alp: 1.00927
+連続値のエラー: 1.92296e-12 離散値のエラー: 21.769
+turn: 306sum: 4.28938
 Use_Colors: 308 4
-iter: 102
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.490118
+iter: 2508
+best_acts_size: 4
+best_alp: 1.00486
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.61412
+turn: 307sum: 5.26551
 Use_Colors: 309 4
-iter: 108
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 4.41628
+iter: 1728
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.67002
+turn: 308sum: 5.25609
 Use_Colors: 310 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.965529
+iter: 2397
+best_acts_size: 4
+best_alp: 1.00619
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.65657
+turn: 309sum: 5.25592
 Use_Colors: 311 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.848147
+iter: 2130
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.28878e-12 離散値のエラー: 9.65384
+turn: 310sum: 4.25187
 Use_Colors: 312 4
-iter: 45
+iter: 1806
 best_acts_size: 4
-連続値のエラー: 3.33067e-12 離散値のエラー: 21.9159
+best_alp: 1.00663
+連続値のエラー: 3.33067e-12 離散値のエラー: 1.37323
+turn: 311sum: 4.25138
 Use_Colors: 313 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.100969
+iter: 2403
+best_acts_size: 4
+best_alp: 1.00502
+連続値のエラー: 0 離散値のエラー: 1.96506
+turn: 312sum: 5.24533
 Use_Colors: 314 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 3.51083e-12 離散値のエラー: 8.4707
+iter: 2247
+best_acts_size: 4
+best_alp: 1.01858
+連続値のエラー: 3.51083e-12 離散値のエラー: 2.4923
+turn: 313sum: 4.23774
 Use_Colors: 315 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.723448
+iter: 1581
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.10216
+turn: 314sum: 3.21867
 Use_Colors: 316 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.498e-12 離散値のエラー: 0.66597
+iter: 1806
+best_acts_size: 4
+best_alp: 1.00277
+連続値のエラー: 2.498e-12 離散値のエラー: 0.957307
+turn: 315sum: 4.21865
 Use_Colors: 317 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.687436
+iter: 1992
+best_acts_size: 4
+best_alp: 1.00565
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.21843
+turn: 316sum: 4.21579
 Use_Colors: 318 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.419722
+iter: 1503
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 2.44529
+turn: 317sum: 3.21073
 Use_Colors: 319 4
-iter: 75
-best_acts_size: 5
-連続値のエラー: 1.14439e-12 離散値のエラー: 0.723239
+iter: 1884
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.14439e-12 離散値のエラー: 1.60895
+turn: 318sum: 5.20971
 Use_Colors: 320 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.21591
+iter: 1983
+best_acts_size: 4
+best_alp: 1.00276
+連続値のエラー: 1.11022e-12 離散値のエラー: 3.6521
+turn: 319sum: 5.20944
 Use_Colors: 321 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.944053
+iter: 2838
+best_acts_size: 4
+best_alp: 1.01974
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.11732
+turn: 320sum: 5.20633
 Use_Colors: 322 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 4.50646
+iter: 2835
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 15.7118
+turn: 321sum: 4.18676
 Use_Colors: 323 4
-iter: 63
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.87601
+iter: 2343
+best_acts_size: 4
+best_alp: 1.0104
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.06464
+turn: 322sum: 4.18632
 Use_Colors: 324 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.31872
+iter: 2325
+best_acts_size: 4
+best_alp: 1.00532
+連続値のエラー: 1.92296e-12 離散値のエラー: 2.98623
+turn: 323sum: 4.17472
 Use_Colors: 325 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 2.7894e-12 離散値のエラー: 1.11873
+iter: 2703
+best_acts_size: 4
+best_alp: 1.01157
+連続値のエラー: 2.7894e-12 離散値のエラー: 7.61943
+turn: 324sum: 4.17069
 Use_Colors: 326 4
-iter: 63
-best_acts_size: 5
-連続値のエラー: 7.85046e-13 離散値のエラー: 1.19197
+iter: 3231
+best_acts_size: 4
+best_alp: 1.0175
+連続値のエラー: 7.85046e-13 離散値のエラー: 3.52594
+turn: 325sum: 5.15565
 Use_Colors: 327 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 1.1235
+iter: 3558
+best_acts_size: 4
+best_alp: 1.0101
+連続値のエラー: 2.48253e-12 離散値のエラー: 3.90622
+turn: 326sum: 5.13965
 Use_Colors: 328 4
-iter: 48
-best_acts_size: 5
-連続値のエラー: 4.04127e-12 離散値のエラー: 3.91628
+iter: 2796
+best_acts_size: 4
+best_alp: 1.01699
+連続値のエラー: 4.04127e-12 離散値のエラー: 1.7451
+turn: 327sum: 5.13945
 Use_Colors: 329 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.24759
+iter: 3423
+best_acts_size: 4
+best_alp: 1.00574
+連続値のエラー: 1.24127e-12 離散値のエラー: 13.2035
+turn: 328sum: 5.12487
 Use_Colors: 330 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.769006
+iter: 3336
+best_acts_size: 4
+best_alp: 1.0136
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.38836
+turn: 329sum: 5.1228
 Use_Colors: 331 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.999445
+iter: 3114
+best_acts_size: 4
+best_alp: 1.00697
+連続値のエラー: 1.11022e-12 離散値のエラー: 37.9562
+turn: 330sum: 5.11084
 Use_Colors: 332 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 3.54879
+iter: 3162
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.11692
+turn: 331sum: 5.10944
 Use_Colors: 333 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 2.48253e-12 離散値のエラー: 74.3427
+iter: 3387
+best_acts_size: 4
+best_alp: 1.00256
+連続値のエラー: 2.48253e-12 離散値のエラー: 0.781945
+turn: 332sum: 5.10865
 Use_Colors: 334 4
-iter: 33
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.38165
+iter: 2994
+best_acts_size: 4
+best_alp: 1.00498
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.578246
+turn: 333sum: 5.10564
 Use_Colors: 335 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 4.191e-12 離散値のエラー: 2.59675
+iter: 3564
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 4.191e-12 離散値のエラー: 2.87329
+turn: 334sum: 4.10097
 Use_Colors: 336 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 2.93209
+iter: 2685
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.88143
+turn: 335sum: 3.10018
 Use_Colors: 337 4
-iter: 42
+iter: 2739
 best_acts_size: 4
-連続値のエラー: 2.98937e-12 離散値のエラー: 22.3908
+best_alp: 1.00143
+連続値のエラー: 2.98937e-12 離散値のエラー: 12.5102
+turn: 336sum: 4.09926
 Use_Colors: 338 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.04822
+iter: 3354
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.7856
+turn: 337sum: 5.0948
 Use_Colors: 339 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.56008
+iter: 2982
+best_acts_size: 4
+best_alp: 1.01764
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.772642
+turn: 338sum: 5.09461
 Use_Colors: 340 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 3.88578e-12 離散値のエラー: 2.00849
+iter: 3237
+best_acts_size: 4
+best_alp: 1.00918
+連続値のエラー: 3.88578e-12 離散値のエラー: 0.809828
+turn: 339sum: 4.07703
 Use_Colors: 341 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.08135
+iter: 2715
+best_acts_size: 4
+best_alp: 1.00199
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.41581
+turn: 340sum: 3.06637
 Use_Colors: 342 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 1.8803
+iter: 2670
+best_acts_size: 4
+best_alp: 1.00434
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.0366
+turn: 341sum: 3.06628
 Use_Colors: 343 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.68288
+iter: 2901
+best_acts_size: 4
+best_alp: 1.01278
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.61538
+turn: 342sum: 3.06231
 Use_Colors: 344 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.10232
+iter: 2457
+best_acts_size: 4
+best_alp: 1.00484
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.450291
+turn: 343sum: 3.04913
 Use_Colors: 345 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 2.70476
+iter: 2163
+best_acts_size: 4
+best_alp: 1.01608
+連続値のエラー: 2.28878e-12 離散値のエラー: 2.31724
+turn: 344sum: 2.04285
 Use_Colors: 346 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 2.54384e-12 離散値のエラー: 0.232372
+iter: 1641
+best_acts_size: 4
+best_alp: 1.01201
+連続値のエラー: 2.54384e-12 離散値のエラー: 1.19676
+turn: 345sum: 4.02379
 Use_Colors: 347 4
-iter: 87
-best_acts_size: 5
-連続値のエラー: 2.07704e-12 離散値のエラー: 18.4511
+iter: 1833
+best_acts_size: 4
+best_alp: 1.01308
+連続値のエラー: 2.07704e-12 離散値のエラー: 15.456
+turn: 346sum: 4.01264
 Use_Colors: 348 4
-iter: 36
+iter: 1536
 best_acts_size: 4
-連続値のエラー: 4.87108e-12 離散値のエラー: 3.69211
+best_alp: 1.00146
+連続値のエラー: 4.87108e-12 離散値のエラー: 3.69471
+turn: 347sum: 4.99891
 Use_Colors: 349 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.24978
+iter: 1626
+best_acts_size: 4
+best_alp: 1.00643
+連続値のエラー: 0 離散値のエラー: 4.01906
+turn: 348sum: 5.99682
 Use_Colors: 350 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.741364
+iter: 1731
+best_acts_size: 4
+best_alp: 1.00994
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.24677
+turn: 349sum: 5.99547
 Use_Colors: 351 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.48538
+iter: 1620
+best_acts_size: 4
+best_alp: 1.00322
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.30426
+turn: 350sum: 4.9853
 Use_Colors: 352 4
-iter: 33
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.07856
+iter: 1515
+best_acts_size: 4
+best_alp: 1.00859
+連続値のエラー: 1.92296e-12 離散値のエラー: 0.576256
+turn: 351sum: 4.98225
 Use_Colors: 353 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.77722e-12 離散値のエラー: 5.37388
+iter: 2100
+best_acts_size: 4
+best_alp: 1.01478
+連続値のエラー: 1.77722e-12 離散値のエラー: 3.70475
+turn: 352sum: 3.97416
 Use_Colors: 354 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 2.37321
+iter: 1764
+best_acts_size: 4
+best_alp: 1.01146
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.423387
+turn: 353sum: 3.96247
 Use_Colors: 355 4
-iter: 48
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 13.5337
+iter: 1518
+best_acts_size: 4
+best_alp: 1.0089
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.913857
+turn: 354sum: 3.95084
 Use_Colors: 356 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.904525
+iter: 1323
+best_acts_size: 4
+best_alp: 1.00144
+連続値のエラー: 1.57009e-12 離散値のエラー: 5.13727
+turn: 355sum: 3.94195
 Use_Colors: 357 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 1.01281
+iter: 1737
+best_acts_size: 4
+best_alp: 1.02127
+連続値のエラー: 2.71948e-12 離散値のエラー: 0.831529
+turn: 356sum: 4.93411
 Use_Colors: 358 4
-iter: 69
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 13.3579
+iter: 1944
+best_acts_size: 4
+best_alp: 1.0248
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.257534
+turn: 357sum: 4.91424
 Use_Colors: 359 4
-iter: 33
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 6.04337
+iter: 2601
+best_acts_size: 4
+best_alp: 1.00614
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.95253
+turn: 358sum: 4.88926
 Use_Colors: 360 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 3.00788
+iter: 2055
+best_acts_size: 4
+best_alp: 1.01911
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.06445
+turn: 359sum: 3.88573
 Use_Colors: 361 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.921729
+iter: 1698
+best_acts_size: 4
+best_alp: 1.01951
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.01254
+turn: 360sum: 3.86746
 Use_Colors: 362 4
-iter: 78
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 29.2621
+iter: 2139
+best_acts_size: 4
+best_alp: 1.00161
+連続値のエラー: 0 離散値のエラー: 0.759353
+turn: 361sum: 4.85226
 Use_Colors: 363 4
-iter: 117
-best_acts_size: 6
-連続値のエラー: 1.35974e-12 離散値のエラー: 0.514077
+iter: 2223
+best_acts_size: 4
+best_alp: 1.00533
+連続値のエラー: 1.35974e-12 離散値のエラー: 4.26245
+turn: 362sum: 3.8511
 Use_Colors: 364 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.924525
+iter: 2196
+best_acts_size: 4
+best_alp: 1.01094
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.734421
+turn: 363sum: 3.84444
 Use_Colors: 365 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.347068
+iter: 2925
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.35041
+turn: 364sum: 3.83011
 Use_Colors: 366 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 4.07503
+iter: 2625
+best_acts_size: 4
+best_alp: 1.01234
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.14336
+turn: 365sum: 3.82787
 Use_Colors: 367 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.535386
+iter: 3042
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.728119
+turn: 366sum: 4.81495
 Use_Colors: 368 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.167326
+iter: 2826
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 7.04304
+turn: 367sum: 4.8135
 Use_Colors: 369 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 1.92296e-12 離散値のエラー: 18.3012
+iter: 2316
+best_acts_size: 4
+best_alp: 1.0019
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.8652
+turn: 368sum: 4.81345
 Use_Colors: 370 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.447652
+iter: 2025
+best_acts_size: 4
+best_alp: 1.02248
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.08325
+turn: 369sum: 3.809
 Use_Colors: 371 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.3628
+iter: 2877
+best_acts_size: 4
+best_alp: 1.00587
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.745858
+turn: 370sum: 4.78417
 Use_Colors: 372 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.47594
+iter: 2679
+best_acts_size: 4
+best_alp: 1.01191
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.901053
+turn: 371sum: 4.77819
 Use_Colors: 373 4
-iter: 117
-best_acts_size: 6
-連続値のエラー: 5.23691e-12 離散値のエラー: 0.174006
+iter: 3399
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.23691e-12 離散値のエラー: 1.5201
+turn: 372sum: 4.76436
 Use_Colors: 374 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 1.0383
+iter: 2952
+best_acts_size: 4
+best_alp: 1.00353
+連続値のエラー: 2.28878e-12 離散値のエラー: 4.93152
+turn: 373sum: 3.75798
 Use_Colors: 375 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.64117
+iter: 2172
+best_acts_size: 4
+best_alp: 1.00418
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.163992
+turn: 374sum: 3.75475
 Use_Colors: 376 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 22.3326
+iter: 2355
+best_acts_size: 4
+best_alp: 1.01508
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.978104
+turn: 375sum: 2.75038
 Use_Colors: 377 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.43688
+iter: 3276
+best_acts_size: 4
+best_alp: 1.01586
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.08616
+turn: 376sum: 4.73462
 Use_Colors: 378 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 4.996e-12 離散値のエラー: 2.84309
+iter: 3555
+best_acts_size: 4
+best_alp: 1.00189
+連続値のエラー: 4.996e-12 離散値のエラー: 1.62981
+turn: 377sum: 4.72017
 Use_Colors: 379 4
-iter: 99
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.08568
+iter: 3165
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 6.00329
+turn: 378sum: 3.71748
 Use_Colors: 380 4
-iter: 99
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.72276
+iter: 2106
+best_acts_size: 4
+best_alp: 1.00463
+連続値のエラー: 1.66533e-12 離散値のエラー: 4.36261
+turn: 379sum: 4.71488
 Use_Colors: 381 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 3.51083e-12 離散値のエラー: 1.95468
+iter: 2184
+best_acts_size: 4
+best_alp: 1.02363
+連続値のエラー: 3.51083e-12 離散値のエラー: 2.36129
+turn: 380sum: 5.70834
 Use_Colors: 382 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.3063
+iter: 2562
+best_acts_size: 4
+best_alp: 1.01256
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.57267
+turn: 381sum: 4.68457
 Use_Colors: 383 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 2.34001
+iter: 3126
+best_acts_size: 4
+best_alp: 1.00458
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.31918
+turn: 382sum: 5.67218
 Use_Colors: 384 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 3.33067e-12 離散値のエラー: 2.22293
+iter: 3165
+best_acts_size: 4
+best_alp: 1.00507
+連続値のエラー: 3.33067e-12 離散値のエラー: 2.87528
+turn: 383sum: 4.66908
 Use_Colors: 385 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.35487
+iter: 3579
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.1364
+turn: 384sum: 4.66367
 Use_Colors: 386 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 1.49112
+iter: 2901
+best_acts_size: 4
+best_alp: 1.01217
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.65226
+turn: 385sum: 4.65905
 Use_Colors: 387 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.474235
+iter: 2445
+best_acts_size: 4
+best_alp: 1.00796
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.32338
+turn: 386sum: 4.65023
 Use_Colors: 388 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 2.15278
+iter: 2781
+best_acts_size: 4
+best_alp: 1.01552
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.37388
+turn: 387sum: 3.64391
 Use_Colors: 389 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.68048
+iter: 2982
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.36209
+turn: 388sum: 4.63088
 Use_Colors: 390 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.28896
+iter: 2466
+best_acts_size: 4
+best_alp: 1.00326
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.550442
+turn: 389sum: 3.62953
 Use_Colors: 391 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.24608
+iter: 3048
+best_acts_size: 4
+best_alp: 1.00116
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.763526
+turn: 390sum: 3.62779
 Use_Colors: 392 4
-iter: 120
-best_acts_size: 5
-連続値のエラー: 5.23691e-12 離散値のエラー: 10.7698
+iter: 2991
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.23691e-12 離散値のエラー: 2.74105
+turn: 391sum: 2.62562
 Use_Colors: 393 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 2.07704e-12 離散値のエラー: 0.828037
+iter: 1755
+best_acts_size: 4
+best_alp: 1.00642
+連続値のエラー: 2.07704e-12 離散値のエラー: 1.15894
+turn: 392sum: 2.61657
 Use_Colors: 394 4
-iter: 108
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.774467
+iter: 2712
+best_acts_size: 4
+best_alp: 1.00127
+連続値のエラー: 5.55112e-13 離散値のエラー: 9.68459
+turn: 393sum: 3.61151
 Use_Colors: 395 4
-iter: 120
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.711852
+iter: 3384
+best_acts_size: 4
+best_alp: 1.0323
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.59596
+turn: 394sum: 5.6114
 Use_Colors: 396 4
-iter: 81
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 2.75795
+iter: 3411
+best_acts_size: 4
+best_alp: 1.0067
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.34921
+turn: 395sum: 4.58033
 Use_Colors: 397 4
-iter: 87
-best_acts_size: 5
-連続値のエラー: 3.55445e-12 離散値のエラー: 19.0824
+iter: 3105
+best_acts_size: 4
+best_alp: 1.01057
+連続値のエラー: 3.55445e-12 離散値のエラー: 1.86462
+turn: 396sum: 4.57361
 Use_Colors: 398 4
-iter: 117
-best_acts_size: 6
-連続値のエラー: 2.98937e-12 離散値のエラー: 2.83687
+iter: 2289
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.98937e-12 離散値のエラー: 0.930583
+turn: 397sum: 4.56414
 Use_Colors: 399 4
-iter: 63
+iter: 1569
 best_acts_size: 4
-連続値のエラー: 1.11022e-12 離散値のエラー: 42.9557
+best_alp: 1.01278
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.35038
+turn: 398sum: 3.56203
 Use_Colors: 400 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.980561
+iter: 2427
+best_acts_size: 4
+best_alp: 1.00149
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.774528
+turn: 399sum: 4.5501
 Use_Colors: 401 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 3.33067e-12 離散値のエラー: 3.42535
+iter: 2094
+best_acts_size: 4
+best_alp: 1.0149
+連続値のエラー: 3.33067e-12 離散値のエラー: 1.27167
+turn: 400sum: 4.54902
 Use_Colors: 402 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 3.88578e-12 離散値のエラー: 1.311
+iter: 2061
+best_acts_size: 4
+best_alp: 1.00673
+連続値のエラー: 3.88578e-12 離散値のエラー: 2.55186
+turn: 401sum: 4.53541
 Use_Colors: 403 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.27192e-12 離散値のエラー: 0.642195
+iter: 2019
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.27192e-12 離散値のエラー: 2.52923
+turn: 402sum: 4.52971
 Use_Colors: 404 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.996249
+iter: 1875
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.08655
+turn: 403sum: 4.52957
 Use_Colors: 405 4
-iter: 114
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.469431
+iter: 2082
+best_acts_size: 4
+best_alp: 1.00406
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.41107
+turn: 404sum: 3.52929
 Use_Colors: 406 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.523995
+iter: 2178
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 0.653819
+turn: 405sum: 4.52453
 Use_Colors: 407 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.848694
+iter: 1809
+best_acts_size: 4
+best_alp: 1.01257
+連続値のエラー: 2.48253e-12 離散値のエラー: 3.19029
+turn: 406sum: 3.52395
 Use_Colors: 408 4
-iter: 96
-best_acts_size: 6
-連続値のエラー: 1.14439e-12 離散値のエラー: 0.416168
+iter: 2571
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.14439e-12 離散値のエラー: 7.97449
+turn: 407sum: 5.51129
 Use_Colors: 409 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 2.76403
+iter: 2121
+best_acts_size: 4
+best_alp: 1.01142
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.33438
+turn: 408sum: 5.50955
 Use_Colors: 410 4
-iter: 57
+iter: 2205
 best_acts_size: 4
-連続値のエラー: 1.24127e-12 離散値のエラー: 20.9621
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 13.6401
+turn: 409sum: 4.49359
 Use_Colors: 411 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.296111
+iter: 1854
+best_acts_size: 4
+best_alp: 1.00308
+連続値のエラー: 1.92296e-12 離散値のエラー: 3.63378
+turn: 410sum: 4.48877
 Use_Colors: 412 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 3.21412
+iter: 2091
+best_acts_size: 4
+best_alp: 1.00522
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.43371
+turn: 411sum: 4.48613
 Use_Colors: 413 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.363868
+iter: 1788
+best_acts_size: 4
+best_alp: 1.01266
+連続値のエラー: 2.00148e-12 離散値のエラー: 3.85029
+turn: 412sum: 3.48157
 Use_Colors: 414 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 3.18887e-12 離散値のエラー: 1.11309
+iter: 1974
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.18887e-12 離散値のエラー: 6.00879
+turn: 413sum: 4.46985
 Use_Colors: 415 4
-iter: 132
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.90118
+iter: 1917
+best_acts_size: 4
+best_alp: 1.00478
+連続値のエラー: 2.28878e-12 離散値のエラー: 3.94265
+turn: 414sum: 4.45883
 Use_Colors: 416 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 3.55445e-12 離散値のエラー: 0.848705
+iter: 1980
+best_acts_size: 4
+best_alp: 1.02132
+連続値のエラー: 3.55445e-12 離散値のエラー: 2.16269
+turn: 415sum: 4.45215
 Use_Colors: 417 4
-iter: 123
-best_acts_size: 5
-連続値のエラー: 5.5788e-12 離散値のエラー: 7.78751
+iter: 2451
+best_acts_size: 4
+best_alp: 1.00838
+連続値のエラー: 5.5788e-12 離散値のエラー: 8.72984
+turn: 416sum: 5.42896
 Use_Colors: 418 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.75542e-12 離散値のエラー: 0.128755
+iter: 2028
+best_acts_size: 4
+best_alp: 1.00196
+連続値のエラー: 1.75542e-12 離散値のエラー: 1.88762
+turn: 417sum: 4.42619
 Use_Colors: 419 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 2.77556e-12 離散値のエラー: 0.283246
+iter: 1770
+best_acts_size: 4
+best_alp: 1.00882
+連続値のエラー: 2.77556e-12 離散値のエラー: 0.372316
+turn: 418sum: 3.42484
 Use_Colors: 420 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.11889
+iter: 1764
+best_acts_size: 4
+best_alp: 1.00189
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.32409
+turn: 419sum: 4.41455
 Use_Colors: 421 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.717753
+iter: 1734
+best_acts_size: 4
+best_alp: 1.01574
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.324525
+turn: 420sum: 3.41422
 Use_Colors: 422 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.20358
+iter: 2358
+best_acts_size: 4
+best_alp: 1.00641
+連続値のエラー: 5.55112e-13 離散値のエラー: 31.0162
+turn: 421sum: 5.39747
 Use_Colors: 423 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.98035
+iter: 1578
+best_acts_size: 4
+best_alp: 1.00611
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.743574
+turn: 422sum: 4.38355
 Use_Colors: 424 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.87306
+iter: 2292
+best_acts_size: 4
+best_alp: 1.00349
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.08331
+turn: 423sum: 5.37725
 Use_Colors: 425 4
-iter: 63
+iter: 1944
 best_acts_size: 4
-連続値のエラー: 2.00148e-12 離散値のエラー: 34.6105
+best_alp: 1.03262
+連続値のエラー: 2.00148e-12 離散値のエラー: 4.20973
+turn: 424sum: 4.37513
 Use_Colors: 426 4
-iter: 87
-best_acts_size: 5
-連続値のエラー: 1.59444e-12 離散値のエラー: 1.60789
+iter: 2094
+best_acts_size: 4
+best_alp: 1.03039
+連続値のエラー: 1.59444e-12 離散値のエラー: 2.03333
+turn: 425sum: 4.34291
 Use_Colors: 427 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.784724
+iter: 1968
+best_acts_size: 4
+best_alp: 1.00561
+連続値のエラー: 0 離散値のエラー: 2.05135
+turn: 426sum: 4.30958
 Use_Colors: 428 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.52938
+iter: 2445
+best_acts_size: 4
+best_alp: 1.00415
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.51729
+turn: 427sum: 3.30117
 Use_Colors: 429 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.399924
+iter: 2418
+best_acts_size: 4
+best_alp: 1.00998
+連続値のエラー: 0 離散値のエラー: 2.25663
+turn: 428sum: 2.29642
 Use_Colors: 430 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 2.54384e-12 離散値のエラー: 4.12244
+iter: 2769
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.54384e-12 離散値のエラー: 4.69987
+turn: 429sum: 4.29109
 Use_Colors: 431 4
-iter: 201
-best_acts_size: 6
-連続値のエラー: 1.49468e-12 離散値のエラー: 0.587057
+iter: 3735
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.49468e-12 離散値のエラー: 3.20657
+turn: 430sum: 4.29105
 Use_Colors: 432 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.675813
+iter: 3585
+best_acts_size: 4
+best_alp: 1.02418
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.61316
+turn: 431sum: 4.29061
 Use_Colors: 433 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.0579049
+iter: 2877
+best_acts_size: 4
+best_alp: 1.01865
+連続値のエラー: 2.48253e-12 離散値のエラー: 0.546852
+turn: 432sum: 4.26354
 Use_Colors: 434 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.27192e-12 離散値のエラー: 2.95143
+iter: 3204
+best_acts_size: 4
+best_alp: 1.01514
+連続値のエラー: 1.27192e-12 離散値のエラー: 3.83923
+turn: 433sum: 4.24453
 Use_Colors: 435 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 3.33067e-12 離散値のエラー: 0.536518
+iter: 3219
+best_acts_size: 4
+best_alp: 1.00378
+連続値のエラー: 3.33067e-12 離散値のエラー: 5.09372
+turn: 434sum: 5.22661
 Use_Colors: 436 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 3.34582
+iter: 3015
+best_acts_size: 4
+best_alp: 1.00791
+連続値のエラー: 0 離散値のエラー: 1.27831
+turn: 435sum: 5.22344
 Use_Colors: 437 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.73477
+iter: 3270
+best_acts_size: 4
+best_alp: 1.00617
+連続値のエラー: 1.11022e-12 離散値のエラー: 3.94642
+turn: 436sum: 4.21518
 Use_Colors: 438 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 3.37661e-12 離散値のエラー: 1.13632
+iter: 2793
+best_acts_size: 4
+best_alp: 1.00403
+連続値のエラー: 3.37661e-12 離散値のエラー: 1.04946
+turn: 437sum: 5.20892
 Use_Colors: 439 4
-iter: 45
-best_acts_size: 5
-連続値のエラー: 3.14018e-12 離散値のエラー: 2.15497
+iter: 3483
+best_acts_size: 4
+best_alp: 1.0039
+連続値のエラー: 3.14018e-12 離散値のエラー: 1.10983
+turn: 438sum: 5.20373
 Use_Colors: 440 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 2.98937e-12 離散値のエラー: 2.13449
+iter: 2976
+best_acts_size: 4
+best_alp: 1.00083
+連続値のエラー: 2.98937e-12 離散値のエラー: 0.548283
+turn: 439sum: 4.19835
 Use_Colors: 441 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.87685
+iter: 3270
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 3.62511
+turn: 440sum: 4.19783
 Use_Colors: 442 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 4.33556e-12 離散値のエラー: 2.07705
+iter: 2661
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 4.33556e-12 離散値のエラー: 1.84689
+turn: 441sum: 5.19751
 Use_Colors: 443 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 3.51083e-12 離散値のエラー: 2.5862
+iter: 3345
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.51083e-12 離散値のエラー: 3.12767
+turn: 442sum: 5.19593
 Use_Colors: 444 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 2.28778
+iter: 2784
+best_acts_size: 4
+best_alp: 1.0167
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.12014
+turn: 443sum: 5.19298
 Use_Colors: 445 4
-iter: 60
+iter: 2835
 best_acts_size: 4
-連続値のエラー: 2.48253e-12 離散値のエラー: 10.5313
+best_alp: 1.00918
+連続値のエラー: 2.48253e-12 離散値のエラー: 0.796769
+turn: 444sum: 5.17256
 Use_Colors: 446 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 2.05881
+iter: 3327
+best_acts_size: 4
+best_alp: 1.00822
+連続値のエラー: 0 離散値のエラー: 1.71623
+turn: 445sum: 4.16651
 Use_Colors: 447 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.443609
+iter: 3090
+best_acts_size: 4
+best_alp: 1.02135
+連続値のエラー: 2.28878e-12 離散値のエラー: 0.926272
+turn: 446sum: 4.15948
 Use_Colors: 448 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.6631
+iter: 3039
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.02288
+turn: 447sum: 3.13846
 Use_Colors: 449 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.98937e-12 離散値のエラー: 2.59912
+iter: 2997
+best_acts_size: 4
+best_alp: 1.00671
+連続値のエラー: 2.98937e-12 離散値のエラー: 3.32819
+turn: 448sum: 3.13759
 Use_Colors: 450 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.256126
+iter: 2943
+best_acts_size: 4
+best_alp: 1.00317
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.49662
+turn: 449sum: 4.1317
 Use_Colors: 451 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.751662
+iter: 2895
+best_acts_size: 4
+best_alp: 1.01871
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.318099
+turn: 450sum: 4.13077
 Use_Colors: 452 4
-iter: 39
-best_acts_size: 6
-連続値のエラー: 3.14018e-12 離散値のエラー: 2.90977
+iter: 2619
+best_acts_size: 4
+best_alp: 1.00325
+連続値のエラー: 3.14018e-12 離散値のエラー: 1.31733
+turn: 451sum: 4.11382
 Use_Colors: 453 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.75369
+iter: 2811
+best_acts_size: 4
+best_alp: 1.02493
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.16319
+turn: 452sum: 4.11033
 Use_Colors: 454 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 4.47545e-12 離散値のエラー: 0.684711
+iter: 3030
+best_acts_size: 4
+best_alp: 1.01651
+連続値のエラー: 4.47545e-12 離散値のエラー: 2.1266
+turn: 453sum: 4.08513
 Use_Colors: 455 4
-iter: 111
-best_acts_size: 6
-連続値のエラー: 4.83935e-12 離散値のエラー: 1.78893
+iter: 3264
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 4.83935e-12 離散値のエラー: 3.24773
+turn: 454sum: 4.06828
 Use_Colors: 456 4
-iter: 84
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 4.63467
+iter: 2805
+best_acts_size: 4
+best_alp: 1.02309
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.04541
+turn: 455sum: 5.06725
 Use_Colors: 457 4
-iter: 108
-best_acts_size: 6
-連続値のエラー: 2.02064e-12 離散値のエラー: 0.900871
+iter: 2970
+best_acts_size: 4
+best_alp: 1.00817
+連続値のエラー: 2.02064e-12 離散値のエラー: 0.314622
+turn: 456sum: 5.04543
 Use_Colors: 458 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.22045e-12 離散値のエラー: 1.96004
+iter: 2637
+best_acts_size: 4
+best_alp: 1.02071
+連続値のエラー: 2.22045e-12 離散値のエラー: 0.486413
+turn: 457sum: 4.03629
 Use_Colors: 459 4
-iter: 135
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.38909
+iter: 2445
+best_acts_size: 4
+best_alp: 1.01132
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.803887
+turn: 458sum: 4.01815
 Use_Colors: 460 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.39559
+iter: 2364
+best_acts_size: 4
+best_alp: 1.00056
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.83985
+turn: 459sum: 4.00719
 Use_Colors: 461 4
-iter: 105
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 1.62326
+iter: 2127
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.48253e-12 離散値のエラー: 0.506394
+turn: 460sum: 4.00706
 Use_Colors: 462 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.358551
+iter: 1902
+best_acts_size: 4
+best_alp: 1.00053
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.18217
+turn: 461sum: 4.00673
 Use_Colors: 463 4
-iter: 63
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 2.06436
+iter: 2196
+best_acts_size: 4
+best_alp: 1.00443
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.696016
+turn: 462sum: 6.00535
 Use_Colors: 464 4
-iter: 78
-best_acts_size: 5
-連続値のエラー: 3.14018e-12 離散値のエラー: 14.9114
+iter: 2202
+best_acts_size: 4
+best_alp: 1.01905
+連続値のエラー: 3.14018e-12 離散値のエラー: 0.936506
+turn: 463sum: 5.00357
 Use_Colors: 465 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.61996
+iter: 2610
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.8001
+turn: 464sum: 4.98426
 Use_Colors: 466 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.05852
+iter: 2982
+best_acts_size: 4
+best_alp: 1.00946
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.41172
+turn: 465sum: 4.98395
 Use_Colors: 467 4
-iter: 42
-best_acts_size: 5
-連続値のエラー: 2.98937e-12 離散値のエラー: 3.77742
+iter: 3273
+best_acts_size: 4
+best_alp: 1.0022
+連続値のエラー: 2.98937e-12 離散値のエラー: 0.92609
+turn: 466sum: 4.97499
 Use_Colors: 468 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.674334
+iter: 2913
+best_acts_size: 4
+best_alp: 1.01289
+連続値のエラー: 2.28878e-12 離散値のエラー: 0.946395
+turn: 467sum: 4.97244
 Use_Colors: 469 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.683955
+iter: 2829
+best_acts_size: 4
+best_alp: 1.00669
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.69319
+turn: 468sum: 5.95814
 Use_Colors: 470 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 2.77556e-13 離散値のエラー: 0.172799
+iter: 3162
+best_acts_size: 4
+best_alp: 1.00366
+連続値のエラー: 2.77556e-13 離散値のエラー: 1.95206
+turn: 469sum: 4.94831
 Use_Colors: 471 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 3.68219e-12 離散値のエラー: 0.639812
+iter: 2859
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.68219e-12 離散値のエラー: 1.37225
+turn: 470sum: 4.94492
 Use_Colors: 472 4
-iter: 78
+iter: 3537
 best_acts_size: 4
-連続値のエラー: 2.61846e-12 離散値のエラー: 20.8672
+best_alp: 1.02133
+連続値のエラー: 2.61846e-12 離散値のエラー: 0.761336
+turn: 471sum: 4.94472
 Use_Colors: 473 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 15.925
+iter: 3435
+best_acts_size: 4
+best_alp: 1.00786
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.09607
+turn: 472sum: 4.92452
 Use_Colors: 474 4
-iter: 54
+iter: 2937
 best_acts_size: 4
-連続値のエラー: 2.71948e-12 離散値のエラー: 13.4586
+best_alp: 1.00896
+連続値のエラー: 2.71948e-12 離散値のエラー: 14.3358
+turn: 473sum: 3.91803
 Use_Colors: 475 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.584627
+iter: 3279
+best_acts_size: 4
+best_alp: 1.00184
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.705861
+turn: 474sum: 4.91765
 Use_Colors: 476 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.8524
+iter: 2847
+best_acts_size: 4
+best_alp: 1.02843
+連続値のエラー: 1.92296e-12 離散値のエラー: 2.37227
+turn: 475sum: 3.91688
 Use_Colors: 477 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.402547
+iter: 2931
+best_acts_size: 4
+best_alp: 1.00231
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.706711
+turn: 476sum: 5.88519
 Use_Colors: 478 4
-iter: 78
-best_acts_size: 5
-連続値のエラー: 2.28878e-12 離散値のエラー: 9.11661
+iter: 1824
+best_acts_size: 4
+best_alp: 1.00306
+連続値のエラー: 2.28878e-12 離散値のエラー: 7.14276
+turn: 477sum: 5.88021
 Use_Colors: 479 4
-iter: 75
+iter: 1716
 best_acts_size: 4
-連続値のエラー: 4.15407e-12 離散値のエラー: 47.7065
+best_alp: 1.00788
+連続値のエラー: 4.15407e-12 離散値のエラー: 0.703852
+turn: 478sum: 4.87555
 Use_Colors: 480 4
-iter: 60
+iter: 2022
 best_acts_size: 4
-連続値のエラー: 1.11022e-12 離散値のエラー: 27.8952
+best_alp: 1.00914
+連続値のエラー: 1.11022e-12 離散値のエラー: 15.8061
+turn: 479sum: 5.86675
 Use_Colors: 481 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.54525
+iter: 2187
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 3.37232
+turn: 480sum: 5.86641
 Use_Colors: 482 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 4.97169
+iter: 2172
+best_acts_size: 4
+best_alp: 1.01311
+連続値のエラー: 2.48253e-12 離散値のエラー: 4.72088
+turn: 481sum: 4.86614
 Use_Colors: 483 4
-iter: 66
+iter: 2922
 best_acts_size: 4
-連続値のエラー: 2.54384e-12 離散値のエラー: 45.3237
+best_alp: 1.00804
+連続値のエラー: 2.54384e-12 離散値のエラー: 5.51511
+turn: 482sum: 4.85238
 Use_Colors: 484 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.76417
+iter: 2682
+best_acts_size: 4
+best_alp: 1.02053
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.886865
+turn: 483sum: 3.84775
 Use_Colors: 485 4
-iter: 111
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 5.87402
+iter: 2550
+best_acts_size: 4
+best_alp: 1.00372
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.34834
+turn: 484sum: 4.83098
 Use_Colors: 486 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.56115
+iter: 3036
+best_acts_size: 4
+best_alp: 1.00131
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.95249
+turn: 485sum: 5.83061
 Use_Colors: 487 4
-iter: 57
-best_acts_size: 5
-連続値のエラー: 2.28878e-12 離散値のエラー: 2.91657
+iter: 2832
+best_acts_size: 4
+best_alp: 1.02502
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.44634
+turn: 486sum: 4.83017
 Use_Colors: 488 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.507194
+iter: 2925
+best_acts_size: 4
+best_alp: 1.01179
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.43013
+turn: 487sum: 5.80818
 Use_Colors: 489 4
-iter: 81
-best_acts_size: 5
-連続値のエラー: 2.71948e-12 離散値のエラー: 1.47586
+iter: 3510
+best_acts_size: 4
+best_alp: 1.01073
+連続値のエラー: 2.71948e-12 離散値のエラー: 1.08336
+turn: 488sum: 4.79643
 Use_Colors: 490 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.793942
+iter: 2601
+best_acts_size: 4
+best_alp: 1.0227
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.928642
+turn: 489sum: 3.78961
 Use_Colors: 491 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.580147
+iter: 3555
+best_acts_size: 4
+best_alp: 1.00561
+連続値のエラー: 2.00148e-12 離散値のエラー: 2.64747
+turn: 490sum: 4.76584
 Use_Colors: 492 4
-iter: 45
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 4.57912
+iter: 3057
+best_acts_size: 4
+best_alp: 1.00249
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.692468
+turn: 491sum: 3.76043
 Use_Colors: 493 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 1.55437
+iter: 2778
+best_acts_size: 4
+best_alp: 1.00683
+連続値のエラー: 2.00148e-12 離散値のエラー: 0.401309
+turn: 492sum: 3.75836
 Use_Colors: 494 4
-iter: 33
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.436011
+iter: 2949
+best_acts_size: 4
+best_alp: 1.00591
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.64415
+turn: 493sum: 3.7532
 Use_Colors: 495 4
-iter: 39
-best_acts_size: 6
-連続値のエラー: 2.54384e-12 離散値のエラー: 1.05039
+iter: 3126
+best_acts_size: 4
+best_alp: 1.0069
+連続値のエラー: 2.54384e-12 離散値のエラー: 8.21128
+turn: 494sum: 3.75017
 Use_Colors: 496 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.05249
+iter: 2670
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.67803
+turn: 495sum: 3.74974
 Use_Colors: 497 4
-iter: 36
-best_acts_size: 5
-連続値のエラー: 3.18887e-12 離散値のエラー: 1.21795
+iter: 2793
+best_acts_size: 4
+best_alp: 1.01422
+連続値のエラー: 3.18887e-12 離散値のエラー: 0.678405
+turn: 496sum: 4.74581
 Use_Colors: 498 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 3.68219e-12 離散値のエラー: 1.14978
+iter: 3417
+best_acts_size: 4
+best_alp: 1.00292
+連続値のエラー: 3.68219e-12 離散値のエラー: 2.46258
+turn: 497sum: 4.73211
 Use_Colors: 499 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 2.96501
+iter: 2742
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.28878e-12 離散値のエラー: 0.98722
+turn: 498sum: 3.73018
 Use_Colors: 500 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.140941
+iter: 2502
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.48253e-12 離散値のエラー: 2.02296
+turn: 499sum: 3.73015
 Use_Colors: 501 4
-iter: 33
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.16945
+iter: 3108
+best_acts_size: 4
+best_alp: 1.01689
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.3328
+turn: 500sum: 3.72989
 Use_Colors: 502 4
-iter: 33
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.760014
+iter: 2727
+best_acts_size: 4
+best_alp: 1.00299
+連続値のエラー: 2.48253e-12 離散値のエラー: 5.27285
+turn: 501sum: 4.71492
 Use_Colors: 503 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 3.48477
+iter: 3159
+best_acts_size: 4
+best_alp: 1.00092
+連続値のエラー: 0 離散値のエラー: 1.69193
+turn: 502sum: 5.7062
 Use_Colors: 504 4
-iter: 60
+iter: 2976
 best_acts_size: 4
-連続値のエラー: 1.57009e-12 離散値のエラー: 54.9799
+best_alp: 1.00439
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.48735
+turn: 503sum: 4.7041
 Use_Colors: 505 4
-iter: 63
+iter: 3138
 best_acts_size: 4
-連続値のエラー: 0 離散値のエラー: 12.3171
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 1.77912
+turn: 504sum: 4.69945
 Use_Colors: 506 4
-iter: 36
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 1.55944
+iter: 3432
+best_acts_size: 4
+best_alp: 1.01264
+連続値のエラー: 0 離散値のエラー: 0.317775
+turn: 505sum: 4.69699
 Use_Colors: 507 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 6.00445e-12 離散値のエラー: 2.48335
+iter: 3801
+best_acts_size: 4
+best_alp: 1.01949
+連続値のエラー: 6.00445e-12 離散値のエラー: 1.96682
+turn: 506sum: 4.6858
 Use_Colors: 508 4
-iter: 33
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 34.3545
+iter: 3141
+best_acts_size: 4
+best_alp: 1.00282
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.351149
+turn: 507sum: 4.66386
 Use_Colors: 509 4
-iter: 36
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 4.26027
+iter: 2994
+best_acts_size: 4
+best_alp: 1.02755
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.70072
+turn: 508sum: 4.66008
 Use_Colors: 510 4
-iter: 39
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 9.4356
+iter: 2712
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.73185
+turn: 509sum: 3.63434
 Use_Colors: 511 4
-iter: 42
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.20042
+iter: 2703
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.31647
+turn: 510sum: 4.63158
 Use_Colors: 512 4
-iter: 30
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.793858
+iter: 2853
+best_acts_size: 4
+best_alp: 1.00431
+連続値のエラー: 0 離散値のエラー: 1.31865
+turn: 511sum: 4.63088
 Use_Colors: 513 4
-iter: 39
+iter: 3294
 best_acts_size: 4
-連続値のエラー: 1.11022e-12 離散値のエラー: 27.7002
+best_alp: 1.01449
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.794039
+turn: 512sum: 4.62732
 Use_Colors: 514 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.38778e-12 離散値のエラー: 1.98402
+iter: 2955
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.38778e-12 離散値のエラー: 1.82485
+turn: 513sum: 3.61196
 Use_Colors: 515 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 1.56199
+iter: 2748
+best_acts_size: 4
+best_alp: 1.00268
+連続値のエラー: 2.71948e-12 離散値のエラー: 1.84517
+turn: 514sum: 2.61121
 Use_Colors: 516 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 1.60221
+iter: 2160
+best_acts_size: 4
+best_alp: 1.01087
+連続値のエラー: 2.00148e-12 離散値のエラー: 0.197038
+turn: 515sum: 3.61011
 Use_Colors: 517 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.77722e-12 離散値のエラー: 0.560841
+iter: 2877
+best_acts_size: 4
+best_alp: 1.00864
+連続値のエラー: 1.77722e-12 離散値のエラー: 2.35528
+turn: 516sum: 3.59862
 Use_Colors: 518 4
-iter: 105
-best_acts_size: 6
-連続値のエラー: 3.33067e-12 離散値のエラー: 1.54591
+iter: 3360
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.33067e-12 離散値のエラー: 2.30349
+turn: 517sum: 4.58903
 Use_Colors: 519 4
-iter: 90
+iter: 3420
 best_acts_size: 4
-連続値のエラー: 1.66533e-12 離散値のエラー: 6.67869
+best_alp: 1.01097
+連続値のエラー: 1.66533e-12 離散値のエラー: 11.8585
+turn: 518sum: 4.5888
 Use_Colors: 520 4
-iter: 54
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 5.97837
+iter: 3189
+best_acts_size: 4
+best_alp: 1.02807
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.05762
+turn: 519sum: 4.58405
 Use_Colors: 521 4
-iter: 93
-best_acts_size: 6
-連続値のエラー: 2.77556e-12 離散値のエラー: 2.55077
+iter: 3792
+best_acts_size: 4
+best_alp: 1.00664
+連続値のエラー: 2.77556e-12 離散値のエラー: 1.83508
+turn: 520sum: 4.55533
 Use_Colors: 522 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.309171
+iter: 2739
+best_acts_size: 4
+best_alp: 1.00377
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.818464
+turn: 521sum: 3.55141
 Use_Colors: 523 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.730297
+iter: 2751
+best_acts_size: 4
+best_alp: 1.02435
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.31653
+turn: 522sum: 3.54788
 Use_Colors: 524 4
-iter: 54
-best_acts_size: 5
-連続値のエラー: 5.66105e-12 離散値のエラー: 0.893699
+iter: 3393
+best_acts_size: 4
+best_alp: 1.0033
+連続値のエラー: 5.66105e-12 離散値のエラー: 0.611351
+turn: 523sum: 3.52396
 Use_Colors: 525 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.580589
+iter: 2703
+best_acts_size: 4
+best_alp: 1.00403
+連続値のエラー: 0 離散値のエラー: 5.59839
+turn: 524sum: 2.52274
 Use_Colors: 526 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 3.33067e-12 離散値のエラー: 1.83046
+iter: 3114
+best_acts_size: 4
+best_alp: 1.00723
+連続値のエラー: 3.33067e-12 離散値のエラー: 3.94762
+turn: 525sum: 2.51604
 Use_Colors: 527 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.61852
+iter: 2685
+best_acts_size: 4
+best_alp: 1.00731
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.35475
+turn: 526sum: 2.50661
 Use_Colors: 528 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 5.97591
+iter: 2484
+best_acts_size: 4
+best_alp: 1.0016
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.91853
+turn: 527sum: 2.49728
 Use_Colors: 529 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 3.18887e-12 離散値のエラー: 0.449504
+iter: 2082
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.18887e-12 離散値のエラー: 2.95872
+turn: 528sum: 3.49411
 Use_Colors: 530 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.149237
+iter: 2649
+best_acts_size: 4
+best_alp: 1.01058
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.480766
+turn: 529sum: 4.49191
 Use_Colors: 531 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 1.92296e-12 離散値のエラー: 4.00315
+iter: 2553
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.177
+turn: 530sum: 4.48125
 Use_Colors: 532 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.710219
+iter: 2421
+best_acts_size: 4
+best_alp: 1.00558
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.47404
+turn: 531sum: 4.47898
 Use_Colors: 533 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.75542e-12 離散値のエラー: 3.14852
+iter: 2334
+best_acts_size: 4
+best_alp: 1.00266
+連続値のエラー: 1.75542e-12 離散値のエラー: 2.27557
+turn: 532sum: 4.4728
 Use_Colors: 534 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 1.60702
+iter: 2214
+best_acts_size: 4
+best_alp: 1.01614
+連続値のエラー: 2.48253e-12 離散値のエラー: 2.06511
+turn: 533sum: 5.46881
 Use_Colors: 535 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.40788
+iter: 1533
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.43466
+turn: 534sum: 5.45355
 Use_Colors: 536 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.30194
+iter: 1638
+best_acts_size: 4
+best_alp: 1.01304
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.64062
+turn: 535sum: 5.45343
 Use_Colors: 537 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 3.33067e-12 離散値のエラー: 4.8726
+iter: 1791
+best_acts_size: 4
+best_alp: 1.01691
+連続値のエラー: 3.33067e-12 離散値のエラー: 1.00778
+turn: 536sum: 4.43898
 Use_Colors: 538 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 5.00736
+iter: 1917
+best_acts_size: 4
+best_alp: 1.00293
+連続値のエラー: 1.24127e-12 離散値のエラー: 16.3509
+turn: 537sum: 4.42172
 Use_Colors: 539 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.841878
+iter: 1992
+best_acts_size: 4
+best_alp: 1.01097
+連続値のエラー: 1.11022e-12 離散値のエラー: 3.40546
+turn: 538sum: 4.41564
 Use_Colors: 540 4
-iter: 159
-best_acts_size: 6
-連続値のエラー: 3.51083e-12 離散値のエラー: 33.0502
+iter: 2226
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.51083e-12 離散値のエラー: 4.49062
+turn: 539sum: 4.4121
 Use_Colors: 541 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 1.69747
+iter: 1725
+best_acts_size: 4
+best_alp: 1.00296
+連続値のエラー: 2.28878e-12 離散値のエラー: 3.35015
+turn: 540sum: 4.40717
 Use_Colors: 542 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.25811
+iter: 1584
+best_acts_size: 4
+best_alp: 1.00449
+連続値のエラー: 0 離散値のエラー: 0.617323
+turn: 541sum: 4.40482
 Use_Colors: 543 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 4.51408
+iter: 1677
+best_acts_size: 4
+best_alp: 1.00571
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.637176
+turn: 542sum: 4.39875
 Use_Colors: 544 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.77556e-12 離散値のエラー: 0.628958
+iter: 1722
+best_acts_size: 4
+best_alp: 1.0051
+連続値のエラー: 2.77556e-12 離散値のエラー: 0.702098
+turn: 543sum: 4.39382
 Use_Colors: 545 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 2.54384e-12 離散値のエラー: 0.566829
+iter: 2562
+best_acts_size: 4
+best_alp: 1.01174
+連続値のエラー: 2.54384e-12 離散値のエラー: 0.749717
+turn: 544sum: 4.38771
 Use_Colors: 546 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 3.33067e-12 離散値のエラー: 2.97774
+iter: 2232
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.33067e-12 離散値のエラー: 3.15294
+turn: 545sum: 4.37547
 Use_Colors: 547 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.412166
+iter: 2199
+best_acts_size: 4
+best_alp: 1.00137
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.94131
+turn: 546sum: 5.37152
 Use_Colors: 548 4
-iter: 195
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 3.48916
+iter: 3732
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.28805
+turn: 547sum: 5.37019
 Use_Colors: 549 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.906748
+iter: 3018
+best_acts_size: 4
+best_alp: 1.00797
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.72147
+turn: 548sum: 4.37015
 Use_Colors: 550 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.2477
+iter: 3078
+best_acts_size: 4
+best_alp: 1.02145
+連続値のエラー: 1.11022e-12 離散値のエラー: 3.65442
+turn: 549sum: 4.36129
 Use_Colors: 551 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 2.16953
+iter: 3576
+best_acts_size: 4
+best_alp: 1.00956
+連続値のエラー: 2.00148e-12 離散値のエラー: 0.453741
+turn: 550sum: 4.33702
 Use_Colors: 552 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.537729
+iter: 1983
+best_acts_size: 4
+best_alp: 1.0006
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.872547
+turn: 551sum: 4.3307
 Use_Colors: 553 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.667503
+iter: 1764
+best_acts_size: 4
+best_alp: 1.00555
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.11629
+turn: 552sum: 3.32949
 Use_Colors: 554 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.63985
+iter: 2196
+best_acts_size: 4
+best_alp: 1.01515
+連続値のエラー: 0 離散値のエラー: 0.928386
+turn: 553sum: 4.32403
 Use_Colors: 555 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 3.55445e-12 離散値のエラー: 1.3211
+iter: 2898
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.55445e-12 離散値のエラー: 1.74737
+turn: 554sum: 5.31078
 Use_Colors: 556 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.886714
+iter: 2757
+best_acts_size: 4
+best_alp: 1.02716
+連続値のエラー: 1.57009e-12 離散値のエラー: 5.61589
+turn: 555sum: 5.31027
 Use_Colors: 557 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.928705
+iter: 3198
+best_acts_size: 4
+best_alp: 1.01315
+連続値のエラー: 1.66533e-12 離散値のエラー: 4.44215
+turn: 556sum: 5.28007
 Use_Colors: 558 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.52111
+iter: 3216
+best_acts_size: 4
+best_alp: 1.01334
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.80726
+turn: 557sum: 6.26373
 Use_Colors: 559 4
-iter: 90
+iter: 2772
 best_acts_size: 4
-連続値のエラー: 2.54384e-12 離散値のエラー: 14.1865
+best_alp: 1
+連続値のエラー: 2.54384e-12 離散値のエラー: 1.03785
+turn: 558sum: 5.25252
 Use_Colors: 560 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 2.98937e-12 離散値のエラー: 2.09119
+iter: 2829
+best_acts_size: 4
+best_alp: 1.00583
+連続値のエラー: 2.98937e-12 離散値のエラー: 1.36512
+turn: 559sum: 4.25129
 Use_Colors: 561 4
-iter: 117
-best_acts_size: 6
-連続値のエラー: 2.498e-12 離散値のエラー: 1.58716
+iter: 2997
+best_acts_size: 4
+best_alp: 1.00436
+連続値のエラー: 2.498e-12 離散値のエラー: 7.69203
+turn: 560sum: 5.24603
 Use_Colors: 562 4
-iter: 87
+iter: 2958
 best_acts_size: 4
-連続値のエラー: 1.66533e-12 離散値のエラー: 11.8985
+best_alp: 1.00554
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.921672
+turn: 561sum: 4.24389
 Use_Colors: 563 4
-iter: 42
+iter: 2823
 best_acts_size: 4
-連続値のエラー: 2.71948e-12 離散値のエラー: 22.1674
+best_alp: 1
+連続値のエラー: 2.71948e-12 離散値のエラー: 3.45176
+turn: 562sum: 3.23985
 Use_Colors: 564 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 2.85304
+iter: 2676
+best_acts_size: 4
+best_alp: 1.02573
+連続値のエラー: 0 離散値のエラー: 0.841748
+turn: 563sum: 3.23768
 Use_Colors: 565 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 2.53944
+iter: 2334
+best_acts_size: 4
+best_alp: 1.00655
+連続値のエラー: 0 離散値のエラー: 0.814928
+turn: 564sum: 3.21357
 Use_Colors: 566 4
-iter: 39
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.76791
+iter: 2550
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.8187
+turn: 565sum: 5.20638
 Use_Colors: 567 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.96747
+iter: 1740
+best_acts_size: 4
+best_alp: 1.0015
+連続値のエラー: 1.92296e-12 離散値のエラー: 0.697432
+turn: 566sum: 4.20433
 Use_Colors: 568 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.43386
+iter: 1725
+best_acts_size: 4
+best_alp: 1.0145
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.70827
+turn: 567sum: 4.20156
 Use_Colors: 569 4
-iter: 48
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.20752
+iter: 1635
+best_acts_size: 4
+best_alp: 1.00081
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.16521
+turn: 568sum: 5.18436
 Use_Colors: 570 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.01014
+iter: 1971
+best_acts_size: 4
+best_alp: 1.01803
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.83953
+turn: 569sum: 5.18375
 Use_Colors: 571 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.41775
+iter: 2073
+best_acts_size: 4
+best_alp: 1.00737
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.849907
+turn: 570sum: 5.1683
 Use_Colors: 572 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.59078
+iter: 1476
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.97185
+turn: 571sum: 4.16076
 Use_Colors: 573 4
-iter: 102
-best_acts_size: 6
-連続値のエラー: 4.33556e-12 離散値のエラー: 3.23497
+iter: 1893
+best_acts_size: 4
+best_alp: 1.00302
+連続値のエラー: 4.33556e-12 離散値のエラー: 1.46267
+turn: 572sum: 5.15521
 Use_Colors: 574 4
-iter: 69
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 19.5998
+iter: 2301
+best_acts_size: 4
+best_alp: 1.00984
+連続値のエラー: 1.11022e-12 離散値のエラー: 24.581
+turn: 573sum: 5.14902
 Use_Colors: 575 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 3.82287
+iter: 1890
+best_acts_size: 4
+best_alp: 1.01763
+連続値のエラー: 2.28878e-12 離散値のエラー: 10.0221
+turn: 574sum: 4.13728
 Use_Colors: 576 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.957745
+iter: 1590
+best_acts_size: 4
+best_alp: 1.01622
+連続値のエラー: 1.92296e-12 離散値のエラー: 6.80688
+turn: 575sum: 4.12272
 Use_Colors: 577 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.2041
+iter: 1641
+best_acts_size: 4
+best_alp: 1.0075
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.618879
+turn: 576sum: 4.10462
 Use_Colors: 578 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 12.4072
+iter: 2007
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.81565
+turn: 577sum: 4.09834
 Use_Colors: 579 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 2.61575
+iter: 2160
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.28878e-12 離散値のエラー: 2.38217
+turn: 578sum: 3.09765
 Use_Colors: 580 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.30786
+iter: 1722
+best_acts_size: 4
+best_alp: 1.01481
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.5594
+turn: 579sum: 4.09654
 Use_Colors: 581 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 3.04047e-12 離散値のエラー: 0.551614
+iter: 1878
+best_acts_size: 4
+best_alp: 1.00018
+連続値のエラー: 3.04047e-12 離散値のエラー: 11.8026
+turn: 580sum: 6.08293
 Use_Colors: 582 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.46654
+iter: 1980
+best_acts_size: 4
+best_alp: 1.00374
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.4874
+turn: 581sum: 5.07428
 Use_Colors: 583 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.449086
+iter: 1914
+best_acts_size: 4
+best_alp: 1.00219
+連続値のエラー: 2.28878e-12 離散値のエラー: 15.5015
+turn: 582sum: 5.0685
 Use_Colors: 584 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 4.15407e-12 離散値のエラー: 0.77947
+iter: 1875
+best_acts_size: 4
+best_alp: 1.16807
+連続値のエラー: 4.15407e-12 離散値のエラー: 11.9846
+turn: 583sum: 5.04707
 Use_Colors: 585 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 2.14942
+iter: 1890
+best_acts_size: 4
+best_alp: 1.03469
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.72722
+turn: 584sum: 5.87691
 Use_Colors: 586 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.81358
+iter: 2250
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 3.57095
+turn: 585sum: 5.84642
 Use_Colors: 587 4
-iter: 93
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 1.61113
+iter: 1938
+best_acts_size: 4
+best_alp: 1.00442
+連続値のエラー: 2.28878e-12 離散値のエラー: 4.74614
+turn: 586sum: 4.84461
 Use_Colors: 588 4
-iter: 105
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.201631
+iter: 1698
+best_acts_size: 4
+best_alp: 1.01624
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.44322
+turn: 587sum: 4.84433
 Use_Colors: 589 4
-iter: 99
-best_acts_size: 6
-連続値のエラー: 2.54384e-12 離散値のエラー: 0.618586
+iter: 2163
+best_acts_size: 4
+best_alp: 1.00407
+連続値のエラー: 2.54384e-12 離散値のエラー: 1.6586
+turn: 588sum: 3.82675
 Use_Colors: 590 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.876935
+iter: 1698
+best_acts_size: 4
+best_alp: 1.00276
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.414957
+turn: 589sum: 3.82321
 Use_Colors: 591 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.877015
+iter: 1725
+best_acts_size: 4
+best_alp: 1.00469
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.65936
+turn: 590sum: 3.82108
 Use_Colors: 592 4
-iter: 75
+iter: 2280
 best_acts_size: 4
-連続値のエラー: 1.92296e-12 離散値のエラー: 29.7939
+best_alp: 1.01511
+連続値のエラー: 1.92296e-12 離散値のエラー: 4.85321
+turn: 591sum: 4.81548
 Use_Colors: 593 4
-iter: 57
-best_acts_size: 7
-連続値のエラー: 4.33556e-12 離散値のエラー: 0.63141
+iter: 2145
+best_acts_size: 4
+best_alp: 1.00317
+連続値のエラー: 4.33556e-12 離散値のエラー: 2.7402
+turn: 592sum: 4.79754
 Use_Colors: 594 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 1.14439e-12 離散値のエラー: 0.8694
+iter: 3177
+best_acts_size: 4
+best_alp: 1.00566
+連続値のエラー: 1.14439e-12 離散値のエラー: 1.15563
+turn: 593sum: 3.79222
 Use_Colors: 595 4
-iter: 99
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.58222
+iter: 2946
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.28455
+turn: 594sum: 2.78856
 Use_Colors: 596 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 0.773463
+iter: 3183
+best_acts_size: 4
+best_alp: 1.01246
+連続値のエラー: 0 離散値のエラー: 0.305183
+turn: 595sum: 3.78753
 Use_Colors: 597 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 3.71075
+iter: 3057
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.94427
+turn: 596sum: 3.7769
 Use_Colors: 598 4
-iter: 42
-best_acts_size: 5
-連続値のエラー: 1.92296e-12 離散値のエラー: 21.0228
+iter: 3345
+best_acts_size: 4
+best_alp: 1.01162
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.56872
+turn: 597sum: 4.77471
 Use_Colors: 599 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 0.542187
+iter: 3075
+best_acts_size: 4
+best_alp: 1.00895
+連続値のエラー: 0 離散値のエラー: 5.19967
+turn: 598sum: 3.76
 Use_Colors: 600 4
-iter: 57
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.75365
+iter: 2817
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.74796
+turn: 599sum: 3.75254
 Use_Colors: 601 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 2.54384e-12 離散値のエラー: 15.5451
+iter: 2643
+best_acts_size: 4
+best_alp: 1.00044
+連続値のエラー: 2.54384e-12 離散値のエラー: 0.496075
+turn: 600sum: 3.75174
 Use_Colors: 602 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.289492
+iter: 2553
+best_acts_size: 4
+best_alp: 1.01005
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.04704
+turn: 601sum: 3.75099
 Use_Colors: 603 4
-iter: 99
-best_acts_size: 7
-連続値のエラー: 2.54384e-12 離散値のエラー: 0.641727
+iter: 3249
+best_acts_size: 4
+best_alp: 1.00752
+連続値のエラー: 2.54384e-12 離散値のエラー: 2.86637
+turn: 602sum: 3.73785
 Use_Colors: 604 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.57143
+iter: 2868
+best_acts_size: 4
+best_alp: 1.01298
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.00543
+turn: 603sum: 4.73519
 Use_Colors: 605 4
-iter: 90
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.945905
+iter: 2466
+best_acts_size: 4
+best_alp: 1.00271
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.742043
+turn: 604sum: 5.72245
 Use_Colors: 606 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 2.0955e-12 離散値のエラー: 0.764224
+iter: 2835
+best_acts_size: 4
+best_alp: 1.00518
+連続値のエラー: 2.0955e-12 離散値のエラー: 1.25312
+turn: 605sum: 6.71904
 Use_Colors: 607 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.436816
+iter: 3231
+best_acts_size: 4
+best_alp: 1.03892
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.36114
+turn: 606sum: 5.71291
 Use_Colors: 608 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 2.98937e-12 離散値のエラー: 0.985717
+iter: 2808
+best_acts_size: 4
+best_alp: 1.01424
+連続値のエラー: 2.98937e-12 離散値のエラー: 0.538634
+turn: 607sum: 5.67972
 Use_Colors: 609 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.547098
+iter: 3084
+best_acts_size: 4
+best_alp: 1.00509
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.19589
+turn: 608sum: 4.666
 Use_Colors: 610 4
-iter: 84
-best_acts_size: 5
-連続値のエラー: 2.48253e-12 離散値のエラー: 85.8876
+iter: 2727
+best_acts_size: 4
+best_alp: 1.01533
+連続値のエラー: 2.48253e-12 離散値のエラー: 42.1604
+turn: 609sum: 4.66214
 Use_Colors: 611 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.134904
+iter: 2004
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 7.00931
+turn: 610sum: 4.65232
 Use_Colors: 612 4
-iter: 78
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 35.0078
+iter: 2436
+best_acts_size: 4
+best_alp: 1.01264
+連続値のエラー: 1.24127e-12 離散値のエラー: 9.50859
+turn: 611sum: 4.65224
 Use_Colors: 613 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 2.54384e-12 離散値のエラー: 0.686635
+iter: 1878
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.54384e-12 離散値のエラー: 2.95861
+turn: 612sum: 4.64054
 Use_Colors: 614 4
-iter: 39
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 3.31463
+iter: 2097
+best_acts_size: 4
+best_alp: 1.00833
+連続値のエラー: 1.66533e-12 離散値のエラー: 4.72065
+turn: 613sum: 4.6399
 Use_Colors: 615 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 2.98937e-12 離散値のエラー: 0.178567
+iter: 1689
+best_acts_size: 4
+best_alp: 1.00492
+連続値のエラー: 2.98937e-12 離散値のエラー: 1.99491
+turn: 614sum: 4.62894
 Use_Colors: 616 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 4.96507e-12 離散値のエラー: 0.316946
+iter: 3237
+best_acts_size: 4
+best_alp: 1.01545
+連続値のエラー: 4.96507e-12 離散値のエラー: 1.01095
+turn: 615sum: 5.62656
 Use_Colors: 617 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 2.0955e-12 離散値のエラー: 0.711042
+iter: 2565
+best_acts_size: 4
+best_alp: 1.0645
+連続値のエラー: 2.0955e-12 離散値のエラー: 0.955022
+turn: 616sum: 5.61142
 Use_Colors: 618 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.517128
+iter: 2277
+best_acts_size: 4
+best_alp: 1.0563
+連続値のエラー: 0 離散値のエラー: 0.570683
+turn: 617sum: 6.54623
 Use_Colors: 619 4
-iter: 72
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.574855
+iter: 1665
+best_acts_size: 4
+best_alp: 1.00423
+連続値のエラー: 1.11022e-12 離散値のエラー: 8.1871
+turn: 618sum: 5.48977
 Use_Colors: 620 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 3.59753e-12 離散値のエラー: 0.24867
+iter: 2391
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.59753e-12 離散値のエラー: 2.3689
+turn: 619sum: 5.48976
 Use_Colors: 621 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.200811
+iter: 1851
+best_acts_size: 4
+best_alp: 1.02159
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.1372
+turn: 620sum: 4.48796
 Use_Colors: 622 4
-iter: 39
-best_acts_size: 7
-連続値のエラー: 3.55445e-12 離散値のエラー: 0.631726
+iter: 1590
+best_acts_size: 4
+best_alp: 1.0013
+連続値のエラー: 3.55445e-12 離散値のエラー: 6.13679
+turn: 621sum: 4.46542
 Use_Colors: 623 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 2.35514e-12 離散値のエラー: 1.45866
+iter: 1935
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.35514e-12 離散値のエラー: 0.929315
+turn: 622sum: 5.46514
 Use_Colors: 624 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.35974e-12 離散値のエラー: 2.83976
+iter: 1911
+best_acts_size: 4
+best_alp: 1.0102
+連続値のエラー: 1.35974e-12 離散値のエラー: 2.91003
+turn: 623sum: 5.46468
 Use_Colors: 625 4
-iter: 57
+iter: 1599
 best_acts_size: 4
-連続値のエラー: 1.77722e-12 離散値のエラー: 45.1665
+best_alp: 1.02567
+連続値のエラー: 1.77722e-12 離散値のエラー: 0.86295
+turn: 624sum: 5.45596
 Use_Colors: 626 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.657619
+iter: 1911
+best_acts_size: 4
+best_alp: 1.00901
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.65163
+turn: 625sum: 6.43025
 Use_Colors: 627 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.243701
+iter: 1884
+best_acts_size: 4
+best_alp: 1.01458
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.68387
+turn: 626sum: 5.42363
 Use_Colors: 628 4
-iter: 72
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 4.93585
+iter: 2076
+best_acts_size: 4
+best_alp: 1.00356
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.01495
+turn: 627sum: 5.41216
 Use_Colors: 629 4
-iter: 96
-best_acts_size: 6
-連続値のエラー: 2.8441e-12 離散値のエラー: 0.692056
+iter: 2175
+best_acts_size: 4
+best_alp: 1.00688
+連続値のエラー: 2.8441e-12 離散値のエラー: 0.619176
+turn: 628sum: 5.40992
 Use_Colors: 630 4
-iter: 78
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.459305
+iter: 2208
+best_acts_size: 4
+best_alp: 1.01563
+連続値のエラー: 5.55112e-13 離散値のエラー: 3.47173
+turn: 629sum: 4.40674
 Use_Colors: 631 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.228177
+iter: 1842
+best_acts_size: 4
+best_alp: 1.01122
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.827109
+turn: 630sum: 4.38739
 Use_Colors: 632 4
-iter: 78
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.636713
+iter: 1791
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.92296e-12 離散値のエラー: 3.18367
+turn: 631sum: 5.37783
 Use_Colors: 633 4
-iter: 93
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.32686
+iter: 2190
+best_acts_size: 4
+best_alp: 1.02125
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.27234
+turn: 632sum: 5.37665
 Use_Colors: 634 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.66676
+iter: 1977
+best_acts_size: 4
+best_alp: 1.01909
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.312852
+turn: 633sum: 4.35466
 Use_Colors: 635 4
-iter: 96
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.475746
+iter: 1734
+best_acts_size: 4
+best_alp: 1.00755
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.756439
+turn: 634sum: 3.33506
 Use_Colors: 636 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 7.93925
+iter: 1962
+best_acts_size: 4
+best_alp: 1.00527
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.5797
+turn: 635sum: 4.32924
 Use_Colors: 637 4
-iter: 105
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 2.05036
+iter: 2190
+best_acts_size: 4
+best_alp: 1.01069
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.37594
+turn: 636sum: 4.32658
 Use_Colors: 638 4
-iter: 87
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.388126
+iter: 1785
+best_acts_size: 4
+best_alp: 1.01898
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.41968
+turn: 637sum: 3.31628
 Use_Colors: 639 4
-iter: 75
+iter: 2013
 best_acts_size: 4
-連続値のエラー: 1.57009e-12 離散値のエラー: 33.9844
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.12344
+turn: 638sum: 4.29929
 Use_Colors: 640 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.5637
+iter: 1842
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.25596
+turn: 639sum: 3.29719
 Use_Colors: 641 4
-iter: 81
-best_acts_size: 7
-連続値のエラー: 2.77556e-12 離散値のエラー: 0.71031
+iter: 1866
+best_acts_size: 4
+best_alp: 1.00336
+連続値のエラー: 2.77556e-12 離散値のエラー: 1.84509
+turn: 640sum: 3.29554
 Use_Colors: 642 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 7.85046e-13 離散値のエラー: 0.375004
+iter: 1887
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 7.85046e-13 離散値のエラー: 1.07374
+turn: 641sum: 4.29363
 Use_Colors: 643 4
-iter: 48
-best_acts_size: 7
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.173829
+iter: 1560
+best_acts_size: 4
+best_alp: 1.00183
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.73209
+turn: 642sum: 4.28813
 Use_Colors: 644 4
-iter: 84
-best_acts_size: 6
-連続値のエラー: 2.77556e-13 離散値のエラー: 7.60648
+iter: 1770
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.77556e-13 離散値のエラー: 1.47505
+turn: 643sum: 4.2848
 Use_Colors: 645 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.754578
+iter: 1836
+best_acts_size: 4
+best_alp: 1.04673
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.02712
+turn: 644sum: 3.28475
 Use_Colors: 646 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.288123
+iter: 1857
+best_acts_size: 4
+best_alp: 1.02044
+連続値のエラー: 2.28878e-12 離散値のエラー: 5.19233
+turn: 645sum: 5.23833
 Use_Colors: 647 4
-iter: 81
-best_acts_size: 7
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.727855
+iter: 2013
+best_acts_size: 4
+best_alp: 1.00716
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.99387
+turn: 646sum: 5.21683
 Use_Colors: 648 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.8963
+iter: 2193
+best_acts_size: 4
+best_alp: 1.00392
+連続値のエラー: 0 離散値のエラー: 1.1432
+turn: 647sum: 4.20827
 Use_Colors: 649 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 2.28878e-12 離散値のエラー: 1.29192
+iter: 1683
+best_acts_size: 4
+best_alp: 1.00879
+連続値のエラー: 2.28878e-12 離散値のエラー: 3.48519
+turn: 648sum: 3.20548
 Use_Colors: 650 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.521396
+iter: 1602
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.14184
+turn: 649sum: 4.20044
 Use_Colors: 651 4
-iter: 45
-best_acts_size: 5
-連続値のエラー: 2.00148e-12 離散値のエラー: 3.02399
+iter: 1923
+best_acts_size: 4
+best_alp: 1.00447
+連続値のエラー: 2.00148e-12 離散値のエラー: 0.55957
+turn: 650sum: 4.19868
 Use_Colors: 652 4
-iter: 63
-best_acts_size: 5
-連続値のエラー: 2.00148e-12 離散値のエラー: 7.88219
+iter: 1728
+best_acts_size: 4
+best_alp: 1.02187
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.25583
+turn: 651sum: 3.19407
 Use_Colors: 653 4
-iter: 57
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.08517
+iter: 1728
+best_acts_size: 4
+best_alp: 1.01626
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.839188
+turn: 652sum: 5.16982
 Use_Colors: 654 4
-iter: 54
-best_acts_size: 7
-連続値のエラー: 4.83935e-12 離散値のエラー: 1.02202
+iter: 2052
+best_acts_size: 4
+best_alp: 1.00464
+連続値のエラー: 4.83935e-12 離散値のエラー: 3.51485
+turn: 653sum: 6.15419
 Use_Colors: 655 4
-iter: 93
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.314488
+iter: 1953
+best_acts_size: 4
+best_alp: 1.00939
+連続値のエラー: 1.57009e-12 離散値のエラー: 4.8679
+turn: 654sum: 6.15253
 Use_Colors: 656 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 3.33067e-12 離散値のエラー: 0.48862
+iter: 1647
+best_acts_size: 4
+best_alp: 1.00904
+連続値のエラー: 3.33067e-12 離散値のエラー: 1.8152
+turn: 655sum: 5.14094
 Use_Colors: 657 4
-iter: 84
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 4.02567
+iter: 2142
+best_acts_size: 4
+best_alp: 1.00768
+連続値のエラー: 5.55112e-13 離散値のエラー: 3.74431
+turn: 656sum: 5.13037
 Use_Colors: 658 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 3.05983
+iter: 1950
+best_acts_size: 4
+best_alp: 1.0071
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.55547
+turn: 657sum: 5.12502
 Use_Colors: 659 4
-iter: 78
-best_acts_size: 5
-連続値のエラー: 8.32667e-13 離散値のエラー: 6.05524
+iter: 1833
+best_acts_size: 4
+best_alp: 1.00051
+連続値のエラー: 8.32667e-13 離散値のエラー: 7.99255
+turn: 658sum: 4.11876
 Use_Colors: 660 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.10698
+iter: 1752
+best_acts_size: 4
+best_alp: 1.00782
+連続値のエラー: 1.92296e-12 離散値のエラー: 2.62415
+turn: 659sum: 5.11372
 Use_Colors: 661 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 2.54384e-12 離散値のエラー: 2.63903
+iter: 1962
+best_acts_size: 4
+best_alp: 1.00746
+連続値のエラー: 2.54384e-12 離散値のエラー: 2.4088
+turn: 660sum: 5.1059
 Use_Colors: 662 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 25.0279
+iter: 1869
+best_acts_size: 4
+best_alp: 1.0008
+連続値のエラー: 1.66533e-12 離散値のエラー: 5.56571
+turn: 661sum: 5.094
 Use_Colors: 663 4
-iter: 69
+iter: 1866
 best_acts_size: 4
-連続値のエラー: 2.22045e-12 離散値のエラー: 57.1344
+best_alp: 1.00391
+連続値のエラー: 2.22045e-12 離散値のエラー: 1.90383
+turn: 662sum: 5.09152
 Use_Colors: 664 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.153552
+iter: 1656
+best_acts_size: 4
+best_alp: 1.01544
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.853948
+turn: 663sum: 5.08947
 Use_Colors: 665 4
-iter: 87
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.6719
+iter: 2115
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.33269
+turn: 664sum: 5.07233
 Use_Colors: 666 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.12106
+iter: 1884
+best_acts_size: 4
+best_alp: 1.04268
+連続値のエラー: 1.57009e-12 離散値のエラー: 34.1814
+turn: 665sum: 5.07165
 Use_Colors: 667 4
-iter: 33
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.336025
+iter: 1623
+best_acts_size: 4
+best_alp: 1.01512
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.40807
+turn: 666sum: 5.02158
 Use_Colors: 668 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.886834
+iter: 2412
+best_acts_size: 4
+best_alp: 1.01333
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.41011
+turn: 667sum: 6.00918
 Use_Colors: 669 4
-iter: 57
-best_acts_size: 5
-連続値のエラー: 2.48253e-12 離散値のエラー: 5.77235
+iter: 2496
+best_acts_size: 4
+best_alp: 1.00928
+連続値のエラー: 2.48253e-12 離散値のエラー: 42.618
+turn: 668sum: 4.99811
 Use_Colors: 670 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.69416
+iter: 1812
+best_acts_size: 4
+best_alp: 1.00051
+連続値のエラー: 1.57009e-12 離散値のエラー: 3.40498
+turn: 669sum: 3.9935
 Use_Colors: 671 4
-iter: 45
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 1.1545
+iter: 1755
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 0.832307
+turn: 670sum: 3.99306
 Use_Colors: 672 4
-iter: 42
-best_acts_size: 7
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.591631
+iter: 1860
+best_acts_size: 4
+best_alp: 1.01696
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.52083
+turn: 671sum: 3.9926
 Use_Colors: 673 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.56393
+iter: 1530
+best_acts_size: 4
+best_alp: 1.00609
+連続値のエラー: 1.24127e-12 離散値のエラー: 13.036
+turn: 672sum: 3.97535
 Use_Colors: 674 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.347848
+iter: 1629
+best_acts_size: 4
+best_alp: 1.00329
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.55408
+turn: 673sum: 3.97449
 Use_Colors: 675 4
-iter: 57
-best_acts_size: 7
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.290827
+iter: 2031
+best_acts_size: 4
+best_alp: 1.00023
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.23194
+turn: 674sum: 3.97354
 Use_Colors: 676 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.51663
+iter: 1680
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.63044
+turn: 675sum: 3.96824
 Use_Colors: 677 4
-iter: 87
-best_acts_size: 6
-連続値のエラー: 3.04047e-12 離散値のエラー: 0.745149
+iter: 1962
+best_acts_size: 4
+best_alp: 1.00408
+連続値のエラー: 3.04047e-12 離散値のエラー: 4.15482
+turn: 676sum: 3.96772
 Use_Colors: 678 4
-iter: 90
-best_acts_size: 7
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.951922
+iter: 2361
+best_acts_size: 4
+best_alp: 1.0233
+連続値のエラー: 2.48253e-12 離散値のエラー: 0.246654
+turn: 677sum: 3.96735
 Use_Colors: 679 4
-iter: 87
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.7332
+iter: 1677
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.00512
+turn: 678sum: 2.94922
 Use_Colors: 680 4
-iter: 96
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.353347
+iter: 1734
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.33777
+turn: 679sum: 3.94799
 Use_Colors: 681 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.1196
+iter: 1692
+best_acts_size: 4
+best_alp: 1.00375
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.870854
+turn: 680sum: 3.94673
 Use_Colors: 682 4
-iter: 78
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 0.0500523
+iter: 1497
+best_acts_size: 4
+best_alp: 1.00613
+連続値のエラー: 0 離散値のエラー: 0.50552
+turn: 681sum: 3.94178
 Use_Colors: 683 4
-iter: 75
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 14.0805
+iter: 1980
+best_acts_size: 4
+best_alp: 1.03304
+連続値のエラー: 1.24127e-12 離散値のエラー: 17.3645
+turn: 682sum: 3.93664
 Use_Colors: 684 4
-iter: 75
-best_acts_size: 7
-連続値のエラー: 2.07704e-12 離散値のエラー: 1.73273
+iter: 2820
+best_acts_size: 4
+best_alp: 1.00653
+連続値のエラー: 2.07704e-12 離散値のエラー: 1.3039
+turn: 683sum: 3.89958
 Use_Colors: 685 4
-iter: 66
+iter: 2502
 best_acts_size: 4
-連続値のエラー: 5.55112e-13 離散値のエラー: 39.8588
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.375522
+turn: 684sum: 3.89225
 Use_Colors: 686 4
-iter: 66
+iter: 2730
 best_acts_size: 4
-連続値のエラー: 4.57757e-12 離散値のエラー: 58.2888
+best_alp: 1.0051
+連続値のエラー: 4.57757e-12 離散値のエラー: 0.70692
+turn: 685sum: 3.89224
 Use_Colors: 687 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.60463
+iter: 2868
+best_acts_size: 4
+best_alp: 1.00464
+連続値のエラー: 2.48253e-12 離散値のエラー: 8.1002
+turn: 686sum: 2.88845
 Use_Colors: 688 4
-iter: 60
+iter: 2859
 best_acts_size: 4
-連続値のエラー: 1.92296e-12 離散値のエラー: 27.2184
+best_alp: 1.01044
+連続値のエラー: 1.92296e-12 離散値のエラー: 2.30247
+turn: 687sum: 3.88578
 Use_Colors: 689 4
-iter: 87
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 35.4816
+iter: 3597
+best_acts_size: 4
+best_alp: 1.00456
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.659895
+turn: 688sum: 4.87765
 Use_Colors: 690 4
-iter: 48
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.52754
+iter: 2331
+best_acts_size: 4
+best_alp: 1.00293
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.27185
+turn: 689sum: 3.8736
 Use_Colors: 691 4
-iter: 93
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.28513
+iter: 3600
+best_acts_size: 4
+best_alp: 1.01671
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.33232
+turn: 690sum: 4.86766
 Use_Colors: 692 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.28267
+iter: 3654
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.64148
+turn: 691sum: 4.84999
 Use_Colors: 693 4
-iter: 114
+iter: 3468
 best_acts_size: 4
-連続値のエラー: 1.92296e-12 離散値のエラー: 11.2371
+best_alp: 1.00517
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.39268
+turn: 692sum: 4.84384
 Use_Colors: 694 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.65146
+iter: 3375
+best_acts_size: 4
+best_alp: 1.00731
+連続値のエラー: 1.92296e-12 離散値のエラー: 3.45131
+turn: 693sum: 3.83993
 Use_Colors: 695 4
-iter: 57
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.309641
+iter: 2109
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 3.39528
+turn: 694sum: 3.83703
 Use_Colors: 696 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.538576
+iter: 1848
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.92296e-12 離散値のエラー: 2.62533
+turn: 695sum: 4.83486
 Use_Colors: 697 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.28357
+iter: 1770
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.02657
+turn: 696sum: 4.83286
 Use_Colors: 698 4
-iter: 87
-best_acts_size: 7
-連続値のエラー: 1.59444e-12 離散値のエラー: 0.559343
+iter: 2160
+best_acts_size: 4
+best_alp: 1.01172
+連続値のエラー: 1.59444e-12 離散値のエラー: 2.20251
+turn: 697sum: 4.83116
 Use_Colors: 699 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 0.910317
+iter: 1929
+best_acts_size: 4
+best_alp: 1.00281
+連続値のエラー: 0 離散値のエラー: 0.450568
+turn: 698sum: 4.81873
 Use_Colors: 700 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.863817
+iter: 1980
+best_acts_size: 4
+best_alp: 1.01225
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.92638
+turn: 699sum: 4.81558
 Use_Colors: 701 4
-iter: 54
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.10405
+iter: 1668
+best_acts_size: 4
+best_alp: 1.00646
+連続値のエラー: 1.57009e-12 離散値のエラー: 3.10751
+turn: 700sum: 3.80581
 Use_Colors: 702 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 10.8993
+iter: 1881
+best_acts_size: 4
+best_alp: 1.00833
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.17234
+turn: 701sum: 4.80263
 Use_Colors: 703 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 0.676113
+iter: 1632
+best_acts_size: 4
+best_alp: 1.01738
+連続値のエラー: 0 離散値のエラー: 0.400287
+turn: 702sum: 4.79259
 Use_Colors: 704 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.391919
+iter: 1755
+best_acts_size: 4
+best_alp: 1.00486
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.2406
+turn: 703sum: 4.77383
 Use_Colors: 705 4
-iter: 78
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.11155
+iter: 1638
+best_acts_size: 4
+best_alp: 1.0131
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.793896
+turn: 704sum: 5.76821
 Use_Colors: 706 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.889427
+iter: 1953
+best_acts_size: 4
+best_alp: 1.00284
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.79297
+turn: 705sum: 5.75391
 Use_Colors: 707 4
-iter: 87
-best_acts_size: 7
-連続値のエラー: 1.14439e-12 離散値のエラー: 0.500089
+iter: 1959
+best_acts_size: 4
+best_alp: 1.00799
+連続値のエラー: 1.14439e-12 離散値のエラー: 5.2212
+turn: 706sum: 4.75043
 Use_Colors: 708 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 1.92296e-12 離散値のエラー: 4.72027
+iter: 1836
+best_acts_size: 4
+best_alp: 1.01749
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.97635
+turn: 707sum: 4.74533
 Use_Colors: 709 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 1.41293
+iter: 1905
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.86642
+turn: 708sum: 4.72713
 Use_Colors: 710 4
-iter: 42
+iter: 1755
 best_acts_size: 4
-連続値のエラー: 2.54384e-12 離散値のエラー: 13.0124
+best_alp: 1.00597
+連続値のエラー: 2.54384e-12 離散値のエラー: 0.305466
+turn: 709sum: 4.72431
 Use_Colors: 711 4
-iter: 30
-best_acts_size: 7
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.340538
+iter: 1629
+best_acts_size: 4
+best_alp: 1.00085
+連続値のエラー: 1.66533e-12 離散値のエラー: 5.35311
+turn: 710sum: 3.7176
 Use_Colors: 712 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.333792
+iter: 1857
+best_acts_size: 4
+best_alp: 1.00715
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.779816
+turn: 711sum: 5.7162
 Use_Colors: 713 4
-iter: 75
-best_acts_size: 5
-連続値のエラー: 2.83052e-12 離散値のエラー: 5.50695
+iter: 1941
+best_acts_size: 4
+best_alp: 1.00084
+連続値のエラー: 2.83052e-12 離散値のエラー: 7.95947
+turn: 712sum: 5.71054
 Use_Colors: 714 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 1.35974e-12 離散値のエラー: 0.399547
+iter: 2061
+best_acts_size: 4
+best_alp: 1.00946
+連続値のエラー: 1.35974e-12 離散値のエラー: 1.48064
+turn: 713sum: 4.70927
 Use_Colors: 715 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.62236
+iter: 1878
+best_acts_size: 4
+best_alp: 1.01161
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.33147
+turn: 714sum: 4.7012
 Use_Colors: 716 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.71949
+iter: 1755
+best_acts_size: 4
+best_alp: 1.00974
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.743734
+turn: 715sum: 3.68847
 Use_Colors: 717 4
-iter: 78
-best_acts_size: 7
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.4091
+iter: 1554
+best_acts_size: 4
+best_alp: 1.01174
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.24677
+turn: 716sum: 4.68075
 Use_Colors: 718 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.565083
+iter: 1674
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.09029
+turn: 717sum: 4.66988
 Use_Colors: 719 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 2.02064e-12 離散値のエラー: 1.13004
+iter: 1638
+best_acts_size: 4
+best_alp: 1.01544
+連続値のエラー: 2.02064e-12 離散値のエラー: 1.81308
+turn: 718sum: 4.66809
 Use_Colors: 720 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.39265
+iter: 1689
+best_acts_size: 4
+best_alp: 1.00088
+連続値のエラー: 5.55112e-13 離散値のエラー: 4.55646
+turn: 719sum: 4.65049
 Use_Colors: 721 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 0.354384
+iter: 1812
+best_acts_size: 4
+best_alp: 1.01523
+連続値のエラー: 0 離散値のエラー: 28.3771
+turn: 720sum: 4.64983
 Use_Colors: 722 4
-iter: 60
+iter: 1752
 best_acts_size: 4
-連続値のエラー: 1.75542e-12 離散値のエラー: 17.1026
+best_alp: 1.00568
+連続値のエラー: 1.75542e-12 離散値のエラー: 0.278819
+turn: 721sum: 4.64596
 Use_Colors: 723 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.6505
+iter: 1953
+best_acts_size: 4
+best_alp: 1.00942
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.1341
+turn: 722sum: 4.6408
 Use_Colors: 724 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 2.83052e-12 離散値のエラー: 0.80331
+iter: 1746
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.83052e-12 離散値のエラー: 3.8857
+turn: 723sum: 4.63124
 Use_Colors: 725 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.22672
+iter: 1983
+best_acts_size: 4
+best_alp: 1.01938
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.70675
+turn: 724sum: 4.63087
 Use_Colors: 726 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.97861
+iter: 1785
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.88275
+turn: 725sum: 4.61159
 Use_Colors: 727 4
-iter: 45
-best_acts_size: 7
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.231635
+iter: 1707
+best_acts_size: 4
+best_alp: 1.01253
+連続値のエラー: 2.28878e-12 離散値のエラー: 4.56732
+turn: 726sum: 3.61157
 Use_Colors: 728 4
-iter: 51
+iter: 1788
 best_acts_size: 4
-連続値のエラー: 2.28878e-12 離散値のエラー: 43.4581
+best_alp: 1.01639
+連続値のエラー: 2.28878e-12 離散値のエラー: 2.13201
+turn: 727sum: 4.59762
 Use_Colors: 729 4
-iter: 39
-best_acts_size: 7
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.752229
+iter: 1437
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.73984
+turn: 728sum: 3.58086
 Use_Colors: 730 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.378953
+iter: 1692
+best_acts_size: 4
+best_alp: 1.02189
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.48337
+turn: 729sum: 4.57841
 Use_Colors: 731 4
-iter: 48
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.54617
+iter: 1770
+best_acts_size: 4
+best_alp: 1.00982
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.913607
+turn: 730sum: 4.55593
 Use_Colors: 732 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 3.18887e-12 離散値のエラー: 0.497658
+iter: 1812
+best_acts_size: 4
+best_alp: 1.01609
+連続値のエラー: 3.18887e-12 離散値のエラー: 1.91977
+turn: 731sum: 3.54605
 Use_Colors: 733 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.391802
+iter: 1695
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.583128
+turn: 732sum: 3.52973
 Use_Colors: 734 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 3.37661e-12 離散値のエラー: 0.819711
+iter: 1479
+best_acts_size: 4
+best_alp: 1.00431
+連続値のエラー: 3.37661e-12 離散値のエラー: 1.9429
+turn: 733sum: 3.52914
 Use_Colors: 735 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 2.00148e-12 離散値のエラー: 1.04138
+iter: 1878
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.82191
+turn: 734sum: 4.52711
 Use_Colors: 736 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.25546
+iter: 1674
+best_acts_size: 4
+best_alp: 1.00722
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.588843
+turn: 735sum: 4.52632
 Use_Colors: 737 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.17373
+iter: 1950
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.90246
+turn: 736sum: 4.51972
 Use_Colors: 738 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 3.18887e-12 離散値のエラー: 0.321263
+iter: 1623
+best_acts_size: 4
+best_alp: 1.02349
+連続値のエラー: 3.18887e-12 離散値のエラー: 0.368491
+turn: 737sum: 3.5157
 Use_Colors: 739 4
-iter: 81
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.54964
+iter: 1623
+best_acts_size: 4
+best_alp: 1.01707
+連続値のエラー: 1.92296e-12 離散値のエラー: 3.4573
+turn: 738sum: 4.49228
 Use_Colors: 740 4
-iter: 96
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.34542
+iter: 2076
+best_acts_size: 4
+best_alp: 1.00463
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.65978
+turn: 739sum: 5.4747
 Use_Colors: 741 4
-iter: 45
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.265761
+iter: 1752
+best_acts_size: 4
+best_alp: 1.01175
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.17129
+turn: 740sum: 4.47138
 Use_Colors: 742 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.648997
+iter: 1848
+best_acts_size: 4
+best_alp: 1.02349
+連続値のエラー: 2.28878e-12 離散値のエラー: 2.26345
+turn: 741sum: 3.46083
 Use_Colors: 743 4
-iter: 81
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 14.7456
+iter: 2055
+best_acts_size: 4
+best_alp: 1.00957
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.381857
+turn: 742sum: 3.43883
 Use_Colors: 744 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 2.98937e-12 離散値のエラー: 0.360651
+iter: 2166
+best_acts_size: 4
+best_alp: 1.02118
+連続値のエラー: 2.98937e-12 離散値のエラー: 1.04389
+turn: 743sum: 4.43035
 Use_Colors: 745 4
-iter: 102
-best_acts_size: 7
-連続値のエラー: 1.38778e-12 離散値のエラー: 0.845458
+iter: 1785
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.38778e-12 離散値のエラー: 1.00659
+turn: 744sum: 3.40974
 Use_Colors: 746 4
-iter: 72
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.01216
+iter: 1866
+best_acts_size: 4
+best_alp: 1.02457
+連続値のエラー: 1.92296e-12 離散値のエラー: 2.69327
+turn: 745sum: 3.40886
 Use_Colors: 747 4
-iter: 57
+iter: 1845
 best_acts_size: 4
-連続値のエラー: 1.57009e-12 離散値のエラー: 26.9488
+best_alp: 1.00639
+連続値のエラー: 1.57009e-12 離散値のエラー: 27.3161
+turn: 746sum: 4.3829
 Use_Colors: 748 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 2.83052e-12 離散値のエラー: 1.39135
+iter: 1767
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.83052e-12 離散値のエラー: 1.89878
+turn: 747sum: 3.38226
 Use_Colors: 749 4
-iter: 48
+iter: 1788
 best_acts_size: 4
-連続値のエラー: 0 離散値のエラー: 39.3297
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 0.695581
+turn: 748sum: 4.37958
 Use_Colors: 750 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.301316
+iter: 2679
+best_acts_size: 4
+best_alp: 1.00911
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.77692
+turn: 749sum: 4.37857
 Use_Colors: 751 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.804726
+iter: 2721
+best_acts_size: 4
+best_alp: 1.00536
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.437631
+turn: 750sum: 3.37058
 Use_Colors: 752 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.320968
+iter: 3294
+best_acts_size: 4
+best_alp: 1.00178
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.65675
+turn: 751sum: 3.36533
 Use_Colors: 753 4
-iter: 96
+iter: 2937
 best_acts_size: 4
-連続値のエラー: 2.54384e-12 離散値のエラー: 16.3126
+best_alp: 1.00343
+連続値のエラー: 2.54384e-12 離散値のエラー: 17.2175
+turn: 752sum: 3.36481
 Use_Colors: 754 4
-iter: 81
-best_acts_size: 6
-連続値のエラー: 2.00148e-12 離散値のエラー: 1.26736
+iter: 2556
+best_acts_size: 4
+best_alp: 1.00414
+連続値のエラー: 2.00148e-12 離散値のエラー: 2.0575
+turn: 753sum: 3.36216
 Use_Colors: 755 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 2.98937e-12 離散値のエラー: 1.10529
+iter: 3045
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.98937e-12 離散値のエラー: 2.40622
+turn: 754sum: 4.36063
 Use_Colors: 756 4
-iter: 78
-best_acts_size: 7
-連続値のエラー: 1.35974e-12 離散値のエラー: 1.04634
+iter: 3093
+best_acts_size: 4
+best_alp: 1.01511
+連続値のエラー: 1.35974e-12 離散値のエラー: 2.12329
+turn: 755sum: 4.36029
 Use_Colors: 757 4
-iter: 75
-best_acts_size: 7
-連続値のエラー: 3.14018e-12 離散値のエラー: 0.0805762
+iter: 2868
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.14018e-12 離散値のエラー: 1.07704
+turn: 756sum: 4.34287
 Use_Colors: 758 4
-iter: 81
-best_acts_size: 7
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.489313
+iter: 2931
+best_acts_size: 4
+best_alp: 1.00791
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.66547
+turn: 757sum: 5.3408
 Use_Colors: 759 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.477717
+iter: 2733
+best_acts_size: 4
+best_alp: 1.00544
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.07016
+turn: 758sum: 5.33549
 Use_Colors: 760 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 2.8526
+iter: 2910
+best_acts_size: 4
+best_alp: 1.00621
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.46745
+turn: 759sum: 5.33204
 Use_Colors: 761 4
-iter: 81
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.180606
+iter: 2943
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.39353
+turn: 760sum: 5.3269
 Use_Colors: 762 4
-iter: 87
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.74522
+iter: 2784
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.08965
+turn: 761sum: 4.3232
 Use_Colors: 763 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 2.54384e-12 離散値のエラー: 1.19603
+iter: 3246
+best_acts_size: 4
+best_alp: 1.01136
+連続値のエラー: 2.54384e-12 離散値のエラー: 0.468741
+turn: 762sum: 5.32115
 Use_Colors: 764 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.115651
+iter: 2970
+best_acts_size: 4
+best_alp: 1.12816
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.955895
+turn: 763sum: 4.30801
 Use_Colors: 765 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 7.85046e-13 離散値のエラー: 1.06118
+iter: 3321
+best_acts_size: 4
+best_alp: 1.0078
+連続値のエラー: 7.85046e-13 離散値のエラー: 0.913091
+turn: 764sum: 5.18133
 Use_Colors: 766 4
-iter: 48
-best_acts_size: 7
-連続値のエラー: 2.71948e-12 離散値のエラー: 0.436313
+iter: 3267
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.71948e-12 離散値のエラー: 3.80333
+turn: 765sum: 4.17304
 Use_Colors: 767 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.6243
+iter: 3045
+best_acts_size: 4
+best_alp: 1.0045
+連続値のエラー: 5.55112e-13 離散値のエラー: 3.17245
+turn: 766sum: 5.16499
 Use_Colors: 768 4
-iter: 54
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.778564
+iter: 3522
+best_acts_size: 4
+best_alp: 1.00215
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.564078
+turn: 767sum: 5.1643
 Use_Colors: 769 4
-iter: 90
-best_acts_size: 7
-連続値のエラー: 2.83052e-12 離散値のエラー: 0.353877
+iter: 3141
+best_acts_size: 4
+best_alp: 1.01025
+連続値のエラー: 2.83052e-12 離散値のエラー: 0.868913
+turn: 768sum: 4.16306
 Use_Colors: 770 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.674784
+iter: 3225
+best_acts_size: 4
+best_alp: 1.01361
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.97353
+turn: 769sum: 4.15405
 Use_Colors: 771 4
-iter: 78
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.133397
+iter: 2943
+best_acts_size: 4
+best_alp: 1.01431
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.787947
+turn: 770sum: 4.14112
 Use_Colors: 772 4
-iter: 90
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 0.354271
+iter: 3087
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 3.96958
+turn: 771sum: 5.12681
 Use_Colors: 773 4
-iter: 72
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.448535
+iter: 3084
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.94054
+turn: 772sum: 5.12673
 Use_Colors: 774 4
-iter: 72
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.512017
+iter: 2757
+best_acts_size: 4
+best_alp: 1.00973
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.04444
+turn: 773sum: 5.12619
 Use_Colors: 775 4
-iter: 78
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 0.284356
+iter: 2925
+best_acts_size: 4
+best_alp: 1.00981
+連続値のエラー: 0 離散値のエラー: 0.693919
+turn: 774sum: 5.11776
 Use_Colors: 776 4
-iter: 42
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.379931
+iter: 2802
+best_acts_size: 4
+best_alp: 1.00814
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.865803
+turn: 775sum: 4.10793
 Use_Colors: 777 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.688496
+iter: 2388
+best_acts_size: 4
+best_alp: 1.00704
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.19471
+turn: 776sum: 3.09902
 Use_Colors: 778 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.888345
+iter: 3156
+best_acts_size: 4
+best_alp: 1.00983
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.09917
+turn: 777sum: 5.09456
 Use_Colors: 779 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.793823
+iter: 2859
+best_acts_size: 4
+best_alp: 1.00739
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.46379
+turn: 778sum: 5.08437
 Use_Colors: 780 4
-iter: 48
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 2.60151
+iter: 2442
+best_acts_size: 4
+best_alp: 1.01682
+連続値のエラー: 0 離散値のエラー: 0.736097
+turn: 779sum: 4.07594
 Use_Colors: 781 4
-iter: 48
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.17924
+iter: 3042
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.15526
+turn: 780sum: 5.06262
 Use_Colors: 782 4
-iter: 72
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 4.68078
+iter: 3027
+best_acts_size: 4
+best_alp: 1.00765
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.66336
+turn: 781sum: 4.0616
 Use_Colors: 783 4
-iter: 90
-best_acts_size: 7
-連続値のエラー: 2.07704e-12 離散値のエラー: 0.0977211
+iter: 3327
+best_acts_size: 4
+best_alp: 1.00407
+連続値のエラー: 2.07704e-12 離散値のエラー: 1.99922
+turn: 782sum: 5.05773
 Use_Colors: 784 4
-iter: 48
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.60831
+iter: 2694
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.76343
+turn: 783sum: 4.05149
 Use_Colors: 785 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.80953
+iter: 2826
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.94351
+turn: 784sum: 4.05061
 Use_Colors: 786 4
-iter: 72
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 6.25186
+iter: 2787
+best_acts_size: 4
+best_alp: 1.0122
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.553251
+turn: 785sum: 4.04836
 Use_Colors: 787 4
-iter: 102
-best_acts_size: 6
-連続値のエラー: 2.77556e-13 離散値のエラー: 4.05382
+iter: 2850
+best_acts_size: 4
+best_alp: 1.00944
+連続値のエラー: 2.77556e-13 離散値のエラー: 0.22767
+turn: 786sum: 4.03644
 Use_Colors: 788 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 2.5721
+iter: 2628
+best_acts_size: 4
+best_alp: 1.00992
+連続値のエラー: 0 離散値のエラー: 2.92526
+turn: 787sum: 4.02762
 Use_Colors: 789 4
-iter: 120
-best_acts_size: 7
-連続値のエラー: 2.07704e-12 離散値のエラー: 0.896902
+iter: 3054
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.07704e-12 離散値のエラー: 3.6178
+turn: 788sum: 4.01715
 Use_Colors: 790 4
-iter: 105
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.383148
+iter: 3129
+best_acts_size: 4
+best_alp: 1.00669
+連続値のエラー: 5.55112e-13 離散値のエラー: 3.46847
+turn: 789sum: 4.01676
 Use_Colors: 791 4
-iter: 78
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 2.046
+iter: 2427
+best_acts_size: 4
+best_alp: 1.0065
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.233374
+turn: 790sum: 4.01098
 Use_Colors: 792 4
-iter: 63
-best_acts_size: 7
-連続値のエラー: 7.85046e-13 離散値のエラー: 0.48482
+iter: 2745
+best_acts_size: 4
+best_alp: 1.0162
+連続値のエラー: 7.85046e-13 離散値のエラー: 1.20429
+turn: 791sum: 4.00422
 Use_Colors: 793 4
-iter: 87
-best_acts_size: 7
-連続値のエラー: 2.71948e-12 離散値のエラー: 0.175072
+iter: 2490
+best_acts_size: 4
+best_alp: 1.00663
+連続値のエラー: 2.71948e-12 離散値のエラー: 1.03384
+turn: 792sum: 3.98899
 Use_Colors: 794 4
-iter: 51
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 4.99298
+iter: 2847
+best_acts_size: 4
+best_alp: 1.00518
+連続値のエラー: 0 離散値のエラー: 16.0869
+turn: 793sum: 3.98415
 Use_Colors: 795 4
-iter: 78
-best_acts_size: 8
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.42491
+iter: 3429
+best_acts_size: 4
+best_alp: 1.01472
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.31042
+turn: 794sum: 3.97203
 Use_Colors: 796 4
-iter: 123
-best_acts_size: 7
-連続値のエラー: 6.30485e-12 離散値のエラー: 0.138489
+iter: 2934
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 6.30485e-12 離散値のエラー: 1.64151
+turn: 795sum: 2.95659
 Use_Colors: 797 4
-iter: 102
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.596358
+iter: 2454
+best_acts_size: 4
+best_alp: 1.01734
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.46437
+turn: 796sum: 3.95639
 Use_Colors: 798 4
-iter: 78
-best_acts_size: 8
-連続値のエラー: 4.47545e-12 離散値のエラー: 0.134694
+iter: 2034
+best_acts_size: 4
+best_alp: 1.01296
+連続値のエラー: 4.47545e-12 離散値のエラー: 3.09855
+turn: 797sum: 4.94106
 Use_Colors: 799 4
-iter: 48
+iter: 2151
 best_acts_size: 4
-連続値のエラー: 0 離散値のエラー: 36.539
+best_alp: 1.01576
+連続値のエラー: 0 離散値のエラー: 39.7655
+turn: 798sum: 5.92893
 Use_Colors: 800 4
-iter: 39
-best_acts_size: 8
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.133039
+iter: 2181
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.99423
+turn: 799sum: 4.92328
 Use_Colors: 801 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.69396
+iter: 2481
+best_acts_size: 4
+best_alp: 1.00406
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.695501
+turn: 800sum: 4.92139
 Use_Colors: 802 4
-iter: 51
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.226233
+iter: 2973
+best_acts_size: 4
+best_alp: 1.003
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.98985
+turn: 801sum: 5.9151
 Use_Colors: 803 4
-iter: 93
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.301126
+iter: 3381
+best_acts_size: 4
+best_alp: 1.01478
+連続値のエラー: 5.55112e-13 離散値のエラー: 4.7171
+turn: 802sum: 4.912
 Use_Colors: 804 4
-iter: 78
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.317227
+iter: 2760
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 5.41658
+turn: 803sum: 4.89476
 Use_Colors: 805 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 2.98937e-12 離散値のエラー: 0.312125
+iter: 2130
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.98937e-12 離散値のエラー: 1.98821
+turn: 804sum: 3.89059
 Use_Colors: 806 4
-iter: 102
-best_acts_size: 7
-連続値のエラー: 2.48253e-12 離散値のエラー: 2.34172
+iter: 3306
+best_acts_size: 4
+best_alp: 1.00682
+連続値のエラー: 2.48253e-12 離散値のエラー: 18.9353
+turn: 805sum: 4.88987
 Use_Colors: 807 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.482164
+iter: 2145
+best_acts_size: 4
+best_alp: 1.0045
+連続値のエラー: 2.28878e-12 離散値のエラー: 5.14727
+turn: 806sum: 4.8875
 Use_Colors: 808 4
-iter: 78
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 6.19843
+iter: 1863
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 0 離散値のエラー: 4.03145
+turn: 807sum: 4.88522
 Use_Colors: 809 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 0.270033
+iter: 1953
+best_acts_size: 4
+best_alp: 1.01639
+連続値のエラー: 0 離散値のエラー: 0.783894
+turn: 808sum: 4.88443
 Use_Colors: 810 4
-iter: 87
-best_acts_size: 8
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.0280339
+iter: 1887
+best_acts_size: 4
+best_alp: 1.01297
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.63273
+turn: 809sum: 4.87001
 Use_Colors: 811 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 3.51083e-12 離散値のエラー: 1.31862
+iter: 1647
+best_acts_size: 4
+best_alp: 1.00815
+連続値のエラー: 3.51083e-12 離散値のエラー: 3.76442
+turn: 810sum: 4.85556
 Use_Colors: 812 4
-iter: 57
-best_acts_size: 8
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.393493
+iter: 1479
+best_acts_size: 4
+best_alp: 1.00403
+連続値のエラー: 2.00148e-12 離散値のエラー: 1.30244
+turn: 811sum: 4.84713
 Use_Colors: 813 4
-iter: 66
-best_acts_size: 8
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.0788921
+iter: 1782
+best_acts_size: 4
+best_alp: 1.00698
+連続値のエラー: 2.28878e-12 離散値のエラー: 4.04866
+turn: 812sum: 4.84425
 Use_Colors: 814 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 20.8658
+iter: 1878
+best_acts_size: 4
+best_alp: 1.00476
+連続値のエラー: 1.57009e-12 離散値のエラー: 27.7319
+turn: 813sum: 5.83769
 Use_Colors: 815 4
-iter: 78
-best_acts_size: 8
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.239133
+iter: 2001
+best_acts_size: 4
+best_alp: 1.0505
+連続値のエラー: 2.48253e-12 離散値のエラー: 0.869856
+turn: 814sum: 5.82792
 Use_Colors: 816 4
-iter: 120
-best_acts_size: 8
-連続値のエラー: 1.27192e-12 離散値のエラー: 0.370372
+iter: 2181
+best_acts_size: 4
+best_alp: 1.00956
+連続値のエラー: 1.27192e-12 離散値のエラー: 3.20547
+turn: 815sum: 5.78142
 Use_Colors: 817 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 39.0736
+iter: 2226
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 21.5906
+turn: 816sum: 5.77012
 Use_Colors: 818 4
-iter: 72
+iter: 2046
 best_acts_size: 4
-連続値のエラー: 5.55112e-13 離散値のエラー: 6.09065
+best_alp: 1.0065
+連続値のエラー: 5.55112e-13 離散値のエラー: 6.43033
+turn: 817sum: 5.7691
 Use_Colors: 819 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.761824
+iter: 1743
+best_acts_size: 4
+best_alp: 1.02026
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.96936
+turn: 818sum: 4.76559
 Use_Colors: 820 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 7.75285
+iter: 1614
+best_acts_size: 4
+best_alp: 1.0126
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.447919
+turn: 819sum: 4.74602
 Use_Colors: 821 4
-iter: 60
+iter: 2031
 best_acts_size: 4
-連続値のエラー: 1.66533e-12 離散値のエラー: 4.21938
+best_alp: 1.02408
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.91181
+turn: 820sum: 5.73201
 Use_Colors: 822 4
-iter: 48
-best_acts_size: 7
-連続値のエラー: 2.28878e-12 離散値のエラー: 1.5692
+iter: 1887
+best_acts_size: 4
+best_alp: 1.0047
+連続値のエラー: 2.28878e-12 離散値のエラー: 0.874477
+turn: 821sum: 5.70701
 Use_Colors: 823 4
-iter: 48
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.225843
+iter: 1839
+best_acts_size: 4
+best_alp: 1.00324
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.2294
+turn: 822sum: 4.70149
 Use_Colors: 824 4
-iter: 48
+iter: 2190
 best_acts_size: 4
-連続値のエラー: 4.87108e-12 離散値のエラー: 6.84023
+best_alp: 1
+連続値のエラー: 4.87108e-12 離散値のエラー: 2.66807
+turn: 823sum: 3.6974
 Use_Colors: 825 4
-iter: 57
+iter: 2088
 best_acts_size: 4
-連続値のエラー: 2.22045e-12 離散値のエラー: 70.9993
+best_alp: 1
+連続値のエラー: 2.22045e-12 離散値のエラー: 34.2869
+turn: 824sum: 3.69701
 Use_Colors: 826 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.14439e-12 離散値のエラー: 1.35108
+iter: 1575
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.14439e-12 離散値のエラー: 1.71147
+turn: 825sum: 3.69552
 Use_Colors: 827 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.393349
+iter: 1554
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.01103
+turn: 826sum: 3.69347
 Use_Colors: 828 4
-iter: 42
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 2.2804
+iter: 1602
+best_acts_size: 4
+best_alp: 1.01196
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.771162
+turn: 827sum: 4.69323
 Use_Colors: 829 4
-iter: 48
+iter: 2034
 best_acts_size: 4
-連続値のエラー: 1.24127e-12 離散値のエラー: 20.8528
+best_alp: 1.00454
+連続値のエラー: 1.24127e-12 離散値のエラー: 24.0147
+turn: 828sum: 4.68221
 Use_Colors: 830 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 2.28145
+iter: 1599
+best_acts_size: 4
+best_alp: 1.0094
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.31742
+turn: 829sum: 4.68126
 Use_Colors: 831 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 2.35514e-12 離散値のエラー: 3.56351
+iter: 1986
+best_acts_size: 4
+best_alp: 1.00934
+連続値のエラー: 2.35514e-12 離散値のエラー: 0.911249
+turn: 830sum: 4.66967
 Use_Colors: 832 4
-iter: 39
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.538775
+iter: 1929
+best_acts_size: 4
+best_alp: 1.07922
+連続値のエラー: 2.48253e-12 離散値のエラー: 5.08488
+turn: 831sum: 4.66231
 Use_Colors: 833 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.524902
+iter: 1968
+best_acts_size: 4
+best_alp: 1.07212
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.09854
+turn: 832sum: 4.58714
 Use_Colors: 834 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 3.34987
+iter: 2085
+best_acts_size: 4
+best_alp: 1.00091
+連続値のエラー: 2.71948e-12 離散値のエラー: 6.56496
+turn: 833sum: 3.51271
 Use_Colors: 835 4
-iter: 39
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.251956
+iter: 1509
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.41905
+turn: 834sum: 3.5076
 Use_Colors: 836 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 5.37112
+iter: 2205
+best_acts_size: 4
+best_alp: 1.00644
+連続値のエラー: 1.66533e-12 離散値のエラー: 2.35441
+turn: 835sum: 3.5047
 Use_Colors: 837 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.13897
+iter: 1629
+best_acts_size: 4
+best_alp: 1.00932
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.17984
+turn: 836sum: 3.49805
 Use_Colors: 838 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.00583
+iter: 1773
+best_acts_size: 4
+best_alp: 1.00695
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.246016
+turn: 837sum: 3.48784
 Use_Colors: 839 4
-iter: 48
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.531445
+iter: 1776
+best_acts_size: 4
+best_alp: 1.01099
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.5437
+turn: 838sum: 2.4805
 Use_Colors: 840 4
-iter: 45
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.14925
+iter: 1686
+best_acts_size: 4
+best_alp: 1.00288
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.26207
+turn: 839sum: 4.47114
 Use_Colors: 841 4
-iter: 66
-best_acts_size: 8
-連続値のエラー: 0 離散値のエラー: 1.93133
+iter: 1764
+best_acts_size: 4
+best_alp: 1.00078
+連続値のエラー: 0 離散値のエラー: 3.84645
+turn: 840sum: 5.46898
 Use_Colors: 842 4
-iter: 93
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 4.46818
+iter: 1968
+best_acts_size: 4
+best_alp: 1.00733
+連続値のエラー: 1.66533e-12 離散値のエラー: 5.64677
+turn: 841sum: 5.46799
 Use_Colors: 843 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.107405
+iter: 1983
+best_acts_size: 4
+best_alp: 1.02855
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.533262
+turn: 842sum: 4.45542
 Use_Colors: 844 4
-iter: 96
-best_acts_size: 7
-連続値のエラー: 1.14439e-12 離散値のエラー: 0.295292
+iter: 2271
+best_acts_size: 4
+best_alp: 1.02945
+連続値のエラー: 1.14439e-12 離散値のエラー: 1.03312
+turn: 843sum: 3.42788
 Use_Colors: 845 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.287656
+iter: 1464
+best_acts_size: 4
+best_alp: 1.02189
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.10607
+turn: 844sum: 3.39781
 Use_Colors: 846 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 8.32667e-13 離散値のエラー: 0.441447
+iter: 1662
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 8.32667e-13 離散値のエラー: 0.695037
+turn: 845sum: 4.37234
 Use_Colors: 847 4
-iter: 69
-best_acts_size: 8
-連続値のエラー: 2.22045e-12 離散値のエラー: 0.0256841
+iter: 2208
+best_acts_size: 4
+best_alp: 1.01033
+連続値のエラー: 2.22045e-12 離散値のエラー: 2.11237
+turn: 846sum: 4.37045
 Use_Colors: 848 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 3.33067e-12 離散値のエラー: 0.0597032
+iter: 2721
+best_acts_size: 4
+best_alp: 1.00295
+連続値のエラー: 3.33067e-12 離散値のエラー: 1.29859
+turn: 847sum: 4.35828
 Use_Colors: 849 4
-iter: 42
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.832508
+iter: 2631
+best_acts_size: 4
+best_alp: 1.006
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.1666
+turn: 848sum: 4.35535
 Use_Colors: 850 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 1.91624
+iter: 2967
+best_acts_size: 4
+best_alp: 1.00082
+連続値のエラー: 0 離散値のエラー: 1.41893
+turn: 849sum: 4.34917
 Use_Colors: 851 4
-iter: 48
+iter: 3126
 best_acts_size: 4
-連続値のエラー: 1.24127e-12 離散値のエラー: 18.7505
+best_alp: 1.01236
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.790912
+turn: 850sum: 4.34636
 Use_Colors: 852 4
-iter: 54
-best_acts_size: 8
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.578604
+iter: 2568
+best_acts_size: 4
+best_alp: 1.0037
+連続値のエラー: 5.55112e-13 離散値のエラー: 3.05831
+turn: 851sum: 4.33416
 Use_Colors: 853 4
-iter: 48
+iter: 3399
 best_acts_size: 4
-連続値のエラー: 1.11022e-12 離散値のエラー: 15.5235
+best_alp: 1.01072
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.32183
+turn: 852sum: 4.33368
 Use_Colors: 854 4
-iter: 72
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.0640666
+iter: 2769
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.911638
+turn: 853sum: 3.32252
 Use_Colors: 855 4
-iter: 57
-best_acts_size: 7
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.973664
+iter: 3063
+best_acts_size: 4
+best_alp: 1.00493
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.84803
+turn: 854sum: 4.32007
 Use_Colors: 856 4
-iter: 81
-best_acts_size: 8
-連続値のエラー: 2.77556e-12 離散値のエラー: 0.508415
+iter: 3330
+best_acts_size: 4
+best_alp: 1.01093
+連続値のエラー: 2.77556e-12 離散値のエラー: 2.83947
+turn: 855sum: 4.31327
 Use_Colors: 857 4
-iter: 84
-best_acts_size: 8
-連続値のエラー: 2.98937e-12 離散値のエラー: 0.957109
+iter: 3123
+best_acts_size: 4
+best_alp: 1.01058
+連続値のエラー: 2.98937e-12 離散値のエラー: 1.98033
+turn: 856sum: 4.30018
 Use_Colors: 858 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 19.7433
+iter: 2631
+best_acts_size: 4
+best_alp: 1.01033
+連続値のエラー: 5.55112e-13 離散値のエラー: 22.6253
+turn: 857sum: 4.28799
 Use_Colors: 859 4
-iter: 111
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 2.00172
+iter: 2148
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.22572
+turn: 858sum: 5.28646
 Use_Colors: 860 4
-iter: 69
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.151586
+iter: 1740
+best_acts_size: 4
+best_alp: 1.02408
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.93793
+turn: 859sum: 5.28421
 Use_Colors: 861 4
-iter: 54
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.712045
+iter: 1497
+best_acts_size: 4
+best_alp: 1.01936
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.37798
+turn: 860sum: 4.26046
 Use_Colors: 862 4
-iter: 45
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.0756
+iter: 1551
+best_acts_size: 4
+best_alp: 1.00327
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.15844
+turn: 861sum: 4.24024
 Use_Colors: 863 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 2.23773e-12 離散値のエラー: 0.707856
+iter: 1602
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.23773e-12 離散値のエラー: 1.91262
+turn: 862sum: 3.23759
 Use_Colors: 864 4
-iter: 114
-best_acts_size: 7
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.361947
+iter: 1962
+best_acts_size: 4
+best_alp: 1.01961
+連続値のエラー: 1.66533e-12 離散値のエラー: 3.35849
+turn: 863sum: 3.23698
 Use_Colors: 865 4
-iter: 66
-best_acts_size: 7
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.52786
+iter: 1776
+best_acts_size: 4
+best_alp: 1.0084
+連続値のエラー: 1.92296e-12 離散値のエラー: 2.11298
+turn: 864sum: 4.21423
 Use_Colors: 866 4
-iter: 63
-best_acts_size: 8
-連続値のエラー: 0 離散値のエラー: 0.381848
+iter: 1599
+best_acts_size: 4
+best_alp: 1.00691
+連続値のエラー: 0 離散値のエラー: 1.71508
+turn: 865sum: 3.20632
 Use_Colors: 867 4
-iter: 69
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.12811
+iter: 1443
+best_acts_size: 4
+best_alp: 1.01105
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.16592
+turn: 866sum: 3.19791
 Use_Colors: 868 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.24127e-12 離散値のエラー: 7.859
+iter: 1767
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 14.9904
+turn: 867sum: 5.18623
 Use_Colors: 869 4
-iter: 66
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.359939
+iter: 1989
+best_acts_size: 4
+best_alp: 1.01002
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.21486
+turn: 868sum: 5.18265
 Use_Colors: 870 4
-iter: 135
-best_acts_size: 7
-連続値のエラー: 2.8441e-12 離散値のエラー: 0.326478
+iter: 2004
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.8441e-12 離散値のエラー: 3.73074
+turn: 869sum: 4.17318
 Use_Colors: 871 4
-iter: 132
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.05869
+iter: 1794
+best_acts_size: 4
+best_alp: 1.03085
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.19827
+turn: 870sum: 4.17092
 Use_Colors: 872 4
-iter: 84
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.52133
+iter: 1854
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 6.95062
+turn: 871sum: 4.14153
 Use_Colors: 873 4
-iter: 51
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.353044
+iter: 1452
+best_acts_size: 4
+best_alp: 1.00527
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.6298
+turn: 872sum: 3.13715
 Use_Colors: 874 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 2.09389
+iter: 2037
+best_acts_size: 4
+best_alp: 1.00914
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.78568
+turn: 873sum: 5.12954
 Use_Colors: 875 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 1.23901
+iter: 1761
+best_acts_size: 4
+best_alp: 1.00325
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.817751
+turn: 874sum: 4.12051
 Use_Colors: 876 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.372614
+iter: 1890
+best_acts_size: 4
+best_alp: 1.00799
+連続値のエラー: 1.24127e-12 離散値のエラー: 29.6689
+turn: 875sum: 4.11621
 Use_Colors: 877 4
-iter: 57
-best_acts_size: 7
-連続値のエラー: 9.61481e-13 離散値のエラー: 0.391097
+iter: 1689
+best_acts_size: 4
+best_alp: 1.02232
+連続値のエラー: 9.61481e-13 離散値のエラー: 1.94015
+turn: 876sum: 5.10045
 Use_Colors: 878 4
-iter: 60
+iter: 1596
 best_acts_size: 4
-連続値のエラー: 1.24127e-12 離散値のエラー: 16.98
+best_alp: 1.00335
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.07887
+turn: 877sum: 5.07826
 Use_Colors: 879 4
-iter: 84
+iter: 2172
 best_acts_size: 4
-連続値のエラー: 2.54384e-12 離散値のエラー: 56.8402
+best_alp: 1
+連続値のエラー: 2.54384e-12 離散値のエラー: 11.9694
+turn: 878sum: 4.07429
 Use_Colors: 880 4
-iter: 99
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 1.5102
+iter: 1848
+best_acts_size: 4
+best_alp: 1.01107
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.82224
+turn: 879sum: 5.07276
 Use_Colors: 881 4
-iter: 57
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.274931
+iter: 1542
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.711171
+turn: 880sum: 5.06405
 Use_Colors: 882 4
-iter: 57
-best_acts_size: 5
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.26959
+iter: 2040
+best_acts_size: 4
+best_alp: 1.0036
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.98713
+turn: 881sum: 6.06304
 Use_Colors: 883 4
-iter: 48
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.63944
+iter: 2139
+best_acts_size: 4
+best_alp: 1.00309
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.07387
+turn: 882sum: 6.05727
 Use_Colors: 884 4
-iter: 45
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.546514
+iter: 1713
+best_acts_size: 4
+best_alp: 1.00243
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.7382
+turn: 883sum: 5.05396
 Use_Colors: 885 4
-iter: 60
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 0.109596
+iter: 2010
+best_acts_size: 4
+best_alp: 1.00115
+連続値のエラー: 0 離散値のエラー: 2.74563
+turn: 884sum: 5.05007
 Use_Colors: 886 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 2.13945
+iter: 1545
+best_acts_size: 4
+best_alp: 1.00399
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.397237
+turn: 885sum: 4.05
 Use_Colors: 887 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 3.18887e-12 離散値のエラー: 1.21339
+iter: 2052
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.18887e-12 離散値のエラー: 1.17231
+turn: 886sum: 4.04502
 Use_Colors: 888 4
-iter: 45
-best_acts_size: 6
-連続値のエラー: 3.14018e-12 離散値のエラー: 1.07674
+iter: 1836
+best_acts_size: 4
+best_alp: 1.01822
+連続値のエラー: 3.14018e-12 離散値のエラー: 20.7192
+turn: 887sum: 4.04467
 Use_Colors: 889 4
-iter: 42
-best_acts_size: 5
-連続値のエラー: 0 離散値のエラー: 5.18864
+iter: 1653
+best_acts_size: 4
+best_alp: 1.01723
+連続値のエラー: 0 離散値のエラー: 0.715562
+turn: 888sum: 4.02131
 Use_Colors: 890 4
-iter: 48
-best_acts_size: 8
-連続値のエラー: 3.42194e-12 離散値のエラー: 0.480629
+iter: 1665
+best_acts_size: 4
+best_alp: 1.00185
+連続値のエラー: 3.42194e-12 離散値のエラー: 5.11394
+turn: 889sum: 4.00372
 Use_Colors: 891 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.0868651
+iter: 1500
+best_acts_size: 4
+best_alp: 1.00524
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.591841
+turn: 890sum: 4.00179
 Use_Colors: 892 4
-iter: 42
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.104812
+iter: 1716
+best_acts_size: 4
+best_alp: 1.00486
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.53698
+turn: 891sum: 3.99602
 Use_Colors: 893 4
-iter: 81
-best_acts_size: 7
-連続値のエラー: 2.6037e-12 離散値のエラー: 0.116169
+iter: 2856
+best_acts_size: 4
+best_alp: 1.00221
+連続値のエラー: 2.6037e-12 離散値のエラー: 2.2692
+turn: 892sum: 3.99098
 Use_Colors: 894 4
-iter: 69
-best_acts_size: 5
-連続値のエラー: 2.00148e-12 離散値のエラー: 3.93659
+iter: 2745
+best_acts_size: 4
+best_alp: 1.00383
+連続値のエラー: 2.00148e-12 離散値のエラー: 2.22626
+turn: 893sum: 4.9877
 Use_Colors: 895 4
-iter: 63
-best_acts_size: 8
-連続値のエラー: 3.14018e-12 離散値のエラー: 0.900289
+iter: 2871
+best_acts_size: 4
+best_alp: 1.01028
+連続値のエラー: 3.14018e-12 離散値のエラー: 2.79286
+turn: 894sum: 4.98405
 Use_Colors: 896 4
-iter: 45
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.112322
+iter: 2589
+best_acts_size: 4
+best_alp: 1.01126
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.45219
+turn: 895sum: 3.97101
 Use_Colors: 897 4
-iter: 51
-best_acts_size: 8
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.281804
+iter: 2268
+best_acts_size: 4
+best_alp: 1.0146
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.905986
+turn: 896sum: 3.95798
 Use_Colors: 898 4
-iter: 33
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.520946
+iter: 2175
+best_acts_size: 4
+best_alp: 1.01141
+連続値のエラー: 2.48253e-12 離散値のエラー: 1.10618
+turn: 897sum: 3.94384
 Use_Colors: 899 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 2.28878e-12 離散値のエラー: 1.85704
+iter: 2769
+best_acts_size: 4
+best_alp: 1.00403
+連続値のエラー: 2.28878e-12 離散値のエラー: 2.13487
+turn: 898sum: 5.92911
 Use_Colors: 900 4
-iter: 45
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.595931
+iter: 2589
+best_acts_size: 4
+best_alp: 1.00824
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.09839
+turn: 899sum: 4.92621
 Use_Colors: 901 4
-iter: 75
-best_acts_size: 8
-連続値のエラー: 0 離散値のエラー: 1.08464
+iter: 2388
+best_acts_size: 4
+best_alp: 1.00319
+連続値のエラー: 0 離散値のエラー: 0.73523
+turn: 900sum: 4.9172
 Use_Colors: 902 4
-iter: 54
-best_acts_size: 5
-連続値のエラー: 5.55112e-13 離散値のエラー: 21.177
+iter: 2358
+best_acts_size: 4
+best_alp: 1.00296
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.65415
+turn: 901sum: 3.91527
 Use_Colors: 903 4
-iter: 39
-best_acts_size: 5
-連続値のエラー: 1.11022e-12 離散値のエラー: 4.99169
+iter: 3078
+best_acts_size: 4
+best_alp: 1.00408
+連続値のエラー: 1.11022e-12 離散値のエラー: 3.43792
+turn: 902sum: 3.91255
 Use_Colors: 904 4
-iter: 90
-best_acts_size: 7
-連続値のエラー: 3.55445e-12 離散値のエラー: 0.316312
+iter: 2502
+best_acts_size: 4
+best_alp: 1.00147
+連続値のエラー: 3.55445e-12 離散値のエラー: 1.40843
+turn: 903sum: 3.91132
 Use_Colors: 905 4
-iter: 51
+iter: 2610
 best_acts_size: 4
-連続値のエラー: 1.57009e-12 離散値のエラー: 3.80749
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.48594
+turn: 904sum: 3.9103
 Use_Colors: 906 4
-iter: 108
-best_acts_size: 6
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.607525
-Use_Colors: 907 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 1.77722e-12 離散値のエラー: 0.238606
-Use_Colors: 908 4
-iter: 69
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.606488
-Use_Colors: 909 4
-iter: 87
-best_acts_size: 7
-連続値のエラー: 2.48253e-12 離散値のエラー: 0.189188
-Use_Colors: 910 4
-iter: 66
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.194396
-Use_Colors: 911 4
-iter: 84
-best_acts_size: 8
-連続値のエラー: 1.77722e-12 離散値のエラー: 0.41069
-Use_Colors: 912 4
-iter: 72
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.0692118
-Use_Colors: 913 4
-iter: 51
-best_acts_size: 8
-連続値のエラー: 0 離散値のエラー: 0.572796
-Use_Colors: 914 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 3.55445e-12 離散値のエラー: 0.359772
-Use_Colors: 915 4
-iter: 57
-best_acts_size: 8
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.299665
-Use_Colors: 916 4
-iter: 54
-best_acts_size: 8
-連続値のエラー: 3.37661e-12 離散値のエラー: 0.484513
-Use_Colors: 917 4
-iter: 54
+iter: 2628
 best_acts_size: 4
-連続値のエラー: 1.66533e-12 離散値のエラー: 2.57295
+best_alp: 1.0286
+連続値のエラー: 2.48253e-12 離散値のエラー: 2.13268
+turn: 905sum: 3.90911
+Use_Colors: 907 4
+iter: 2637
+best_acts_size: 4
+best_alp: 1.00505
+連続値のエラー: 1.77722e-12 離散値のエラー: 0.495704
+turn: 906sum: 5.88204
+Use_Colors: 908 4
+iter: 2748
+best_acts_size: 4
+best_alp: 1.01706
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.59955
+turn: 907sum: 4.87767
+Use_Colors: 909 4
+iter: 2952
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.48253e-12 離散値のエラー: 2.94582
+turn: 908sum: 4.86111
+Use_Colors: 910 4
+iter: 2352
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.74201
+turn: 909sum: 4.86003
+Use_Colors: 911 4
+iter: 3021
+best_acts_size: 4
+best_alp: 1.00711
+連続値のエラー: 1.77722e-12 離散値のエラー: 1.24081
+turn: 910sum: 4.85764
+Use_Colors: 912 4
+iter: 2514
+best_acts_size: 4
+best_alp: 1.00314
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.577446
+turn: 911sum: 4.85031
+Use_Colors: 913 4
+iter: 2463
+best_acts_size: 4
+best_alp: 1.00188
+連続値のエラー: 0 離散値のエラー: 0.496598
+turn: 912sum: 4.84712
+Use_Colors: 914 4
+iter: 2718
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.55445e-12 離散値のエラー: 2.30736
+turn: 913sum: 4.84579
+Use_Colors: 915 4
+iter: 2619
+best_acts_size: 4
+best_alp: 1.01984
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.12834
+turn: 914sum: 4.84408
+Use_Colors: 916 4
+iter: 2754
+best_acts_size: 4
+best_alp: 1.02363
+連続値のエラー: 3.37661e-12 離散値のエラー: 0.46021
+turn: 915sum: 5.82324
+Use_Colors: 917 4
+iter: 1764
+best_acts_size: 4
+best_alp: 1.00317
+連続値のエラー: 1.66533e-12 離散値のエラー: 7.66491
+turn: 916sum: 4.79987
 Use_Colors: 918 4
-iter: 63
-best_acts_size: 8
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.4379
+iter: 2199
+best_acts_size: 4
+best_alp: 1.00767
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.86133
+turn: 917sum: 4.79946
 Use_Colors: 919 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.780473
+iter: 1989
+best_acts_size: 4
+best_alp: 1.02942
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.13017
+turn: 918sum: 3.79393
 Use_Colors: 920 4
-iter: 78
-best_acts_size: 8
-連続値のエラー: 7.85046e-13 離散値のエラー: 0.913896
+iter: 3099
+best_acts_size: 4
+best_alp: 1.00628
+連続値のエラー: 7.85046e-13 離散値のエラー: 2.10851
+turn: 919sum: 3.76048
 Use_Colors: 921 4
-iter: 51
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.132824
+iter: 3294
+best_acts_size: 4
+best_alp: 1.00044
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.29801
+turn: 920sum: 4.75222
 Use_Colors: 922 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 3.68219e-12 離散値のエラー: 0.231017
+iter: 3000
+best_acts_size: 4
+best_alp: 1.01894
+連続値のエラー: 3.68219e-12 離散値のエラー: 0.94147
+turn: 921sum: 3.74958
 Use_Colors: 923 4
-iter: 57
-best_acts_size: 7
-連続値のエラー: 3.33067e-12 離散値のエラー: 0.473667
+iter: 2478
+best_acts_size: 4
+best_alp: 1.02085
+連続値のエラー: 3.33067e-12 離散値のエラー: 3.88033
+turn: 922sum: 3.73201
 Use_Colors: 924 4
-iter: 84
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 1.49923
+iter: 2898
+best_acts_size: 4
+best_alp: 1.00291
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.272876
+turn: 923sum: 3.71008
 Use_Colors: 925 4
-iter: 69
-best_acts_size: 8
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.281774
+iter: 2568
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 5.55112e-13 離散値のエラー: 2.43291
+turn: 924sum: 3.70819
 Use_Colors: 926 4
-iter: 66
-best_acts_size: 8
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.248445
+iter: 2871
+best_acts_size: 4
+best_alp: 1.02109
+連続値のエラー: 1.92296e-12 離散値のエラー: 3.03125
+turn: 925sum: 3.70733
 Use_Colors: 927 4
-iter: 54
-best_acts_size: 5
-連続値のエラー: 1.57009e-12 離散値のエラー: 1.98366
+iter: 2718
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 3.85843
+turn: 926sum: 3.6832
 Use_Colors: 928 4
-iter: 81
-best_acts_size: 8
-連続値のエラー: 2.28878e-12 離散値のエラー: 0.718076
+iter: 3396
+best_acts_size: 4
+best_alp: 1.02508
+連続値のエラー: 2.28878e-12 離散値のエラー: 1.87914
+turn: 927sum: 4.6796
 Use_Colors: 929 4
-iter: 75
-best_acts_size: 6
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.996241
+iter: 2376
+best_acts_size: 4
+best_alp: 1.00292
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.631984
+turn: 928sum: 3.65411
 Use_Colors: 930 4
-iter: 45
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.134222
+iter: 3066
+best_acts_size: 4
+best_alp: 1.00562
+連続値のエラー: 1.57009e-12 離散値のエラー: 3.11967
+turn: 929sum: 4.65192
 Use_Colors: 931 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 3.14018e-12 離散値のエラー: 1.43009
+iter: 2841
+best_acts_size: 4
+best_alp: 1.00445
+連続値のエラー: 3.14018e-12 離散値のエラー: 1.00447
+turn: 930sum: 4.64558
 Use_Colors: 932 4
-iter: 57
-best_acts_size: 8
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.212433
+iter: 2736
+best_acts_size: 4
+best_alp: 1.01898
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.12537
+turn: 931sum: 4.64134
 Use_Colors: 933 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 0 離散値のエラー: 0.917982
+iter: 2640
+best_acts_size: 4
+best_alp: 1.02048
+連続値のエラー: 0 離散値のエラー: 12.7066
+turn: 932sum: 4.62279
 Use_Colors: 934 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.352865
+iter: 2454
+best_acts_size: 4
+best_alp: 1.00667
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.33657
+turn: 933sum: 3.62095
 Use_Colors: 935 4
-iter: 51
-best_acts_size: 8
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.146428
+iter: 2838
+best_acts_size: 4
+best_alp: 1.00445
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.455345
+turn: 934sum: 4.61599
 Use_Colors: 936 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 3.12829
+iter: 2916
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.74786
+turn: 935sum: 3.6099
 Use_Colors: 937 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 2.98937e-12 離散値のエラー: 0.627617
+iter: 2475
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.98937e-12 離散値のエラー: 0.708815
+turn: 936sum: 3.6096
 Use_Colors: 938 4
-iter: 42
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.82368
+iter: 2703
+best_acts_size: 4
+best_alp: 1.02444
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.12337
+turn: 937sum: 3.60794
 Use_Colors: 939 4
-iter: 42
-best_acts_size: 5
-連続値のエラー: 1.38778e-12 離散値のエラー: 1.32047
+iter: 2349
+best_acts_size: 4
+best_alp: 1.03898
+連続値のエラー: 1.38778e-12 離散値のエラー: 11.7947
+turn: 938sum: 3.58935
 Use_Colors: 940 4
-iter: 81
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.984555
+iter: 2775
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.09164
+turn: 939sum: 3.5736
 Use_Colors: 941 4
-iter: 54
-best_acts_size: 7
-連続値のエラー: 3.33067e-12 離散値のエラー: 0.168793
+iter: 2397
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 3.33067e-12 離散値のエラー: 4.51179
+turn: 940sum: 2.57314
 Use_Colors: 942 4
-iter: 39
-best_acts_size: 8
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.630237
+iter: 2280
+best_acts_size: 4
+best_alp: 1.01436
+連続値のエラー: 5.55112e-13 離散値のエラー: 1.02813
+turn: 941sum: 3.57231
 Use_Colors: 943 4
-iter: 75
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.0600247
+iter: 2508
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.57009e-12 離散値のエラー: 0.710808
+turn: 942sum: 5.55922
 Use_Colors: 944 4
-iter: 78
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.145766
+iter: 2565
+best_acts_size: 4
+best_alp: 1.00492
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.18776
+turn: 943sum: 5.55847
 Use_Colors: 945 4
-iter: 87
-best_acts_size: 8
-連続値のエラー: 1.35974e-12 離散値のエラー: 0.640458
+iter: 1908
+best_acts_size: 4
+best_alp: 1.0004
+連続値のエラー: 1.35974e-12 離散値のエラー: 4.70594
+turn: 944sum: 5.5517
 Use_Colors: 946 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 2.00148e-12 離散値のエラー: 13.1542
+iter: 1824
+best_acts_size: 4
+best_alp: 1.00869
+連続値のエラー: 2.00148e-12 離散値のエラー: 6.64359
+turn: 945sum: 4.5512
 Use_Colors: 947 4
-iter: 45
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.0668904
+iter: 1851
+best_acts_size: 4
+best_alp: 1.00978
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.36715
+turn: 946sum: 5.5498
 Use_Colors: 948 4
-iter: 63
-best_acts_size: 8
-連続値のエラー: 2.98937e-12 離散値のエラー: 0.640627
+iter: 1815
+best_acts_size: 4
+best_alp: 1.01334
+連続値のエラー: 2.98937e-12 離散値のエラー: 2.0641
+turn: 947sum: 6.5441
 Use_Colors: 949 4
-iter: 69
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.871499
+iter: 2220
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.67465
+turn: 948sum: 5.53184
 Use_Colors: 950 4
-iter: 57
-best_acts_size: 8
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.111513
+iter: 1956
+best_acts_size: 4
+best_alp: 1.00411
+連続値のエラー: 2.00148e-12 離散値のエラー: 10.4421
+turn: 949sum: 4.53068
 Use_Colors: 951 4
-iter: 54
-best_acts_size: 6
-連続値のエラー: 3.60822e-12 離散値のエラー: 0.0684479
+iter: 1830
+best_acts_size: 4
+best_alp: 1.00387
+連続値のエラー: 3.60822e-12 離散値のエラー: 1.56613
+turn: 950sum: 4.53044
 Use_Colors: 952 4
-iter: 72
-best_acts_size: 7
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.576777
+iter: 2001
+best_acts_size: 4
+best_alp: 1.00208
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.66834
+turn: 951sum: 4.5275
 Use_Colors: 953 4
-iter: 72
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.215968
+iter: 1668
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.81446
+turn: 952sum: 3.52535
 Use_Colors: 954 4
-iter: 60
-best_acts_size: 6
-連続値のエラー: 0 離散値のエラー: 1.31337
+iter: 1917
+best_acts_size: 4
+best_alp: 1.08911
+連続値のエラー: 0 離散値のエラー: 3.52814
+turn: 953sum: 5.52467
 Use_Colors: 955 4
-iter: 66
-best_acts_size: 5
-連続値のエラー: 1.66533e-12 離散値のエラー: 61.3918
+iter: 2781
+best_acts_size: 4
+best_alp: 1.0251
+連続値のエラー: 1.66533e-12 離散値のエラー: 5.15131
+turn: 954sum: 5.43143
 Use_Colors: 956 4
-iter: 36
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.405782
+iter: 1404
+best_acts_size: 4
+best_alp: 1.00126
+連続値のエラー: 1.11022e-12 離散値のエラー: 4.0622
+turn: 955sum: 4.41152
 Use_Colors: 957 4
-iter: 45
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.28593
+iter: 1785
+best_acts_size: 4
+best_alp: 1.01233
+連続値のエラー: 1.57009e-12 離散値のエラー: 4.35445
+turn: 956sum: 5.41125
 Use_Colors: 958 4
-iter: 63
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.419192
+iter: 1839
+best_acts_size: 4
+best_alp: 1.00269
+連続値のエラー: 1.24127e-12 離散値のエラー: 4.20728
+turn: 957sum: 5.39521
 Use_Colors: 959 4
-iter: 57
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.141142
+iter: 1812
+best_acts_size: 4
+best_alp: 1.01922
+連続値のエラー: 1.57009e-12 離散値のエラー: 1.39092
+turn: 958sum: 4.39519
 Use_Colors: 960 4
-iter: 54
-best_acts_size: 5
-連続値のエラー: 1.92296e-12 離散値のエラー: 10.1141
+iter: 1509
+best_acts_size: 4
+best_alp: 1.02174
+連続値のエラー: 1.92296e-12 離散値のエラー: 2.20818
+turn: 959sum: 3.37629
 Use_Colors: 961 4
-iter: 60
-best_acts_size: 5
-連続値のエラー: 1.24127e-12 離散値のエラー: 8.28054
+iter: 1854
+best_acts_size: 4
+best_alp: 1.00433
+連続値のエラー: 1.24127e-12 離散値のエラー: 10.9605
+turn: 960sum: 4.35447
 Use_Colors: 962 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 1.9804
+iter: 2049
+best_acts_size: 4
+best_alp: 1.00292
+連続値のエラー: 5.55112e-13 離散値のエラー: 0.77415
+turn: 961sum: 4.35389
 Use_Colors: 963 4
-iter: 66
-best_acts_size: 6
-連続値のエラー: 1.35974e-12 離散値のエラー: 1.15552
+iter: 1740
+best_acts_size: 4
+best_alp: 1.00395
+連続値のエラー: 1.35974e-12 離散値のエラー: 2.15876
+turn: 962sum: 3.35044
 Use_Colors: 964 4
-iter: 63
-best_acts_size: 8
-連続値のエラー: 2.35514e-12 離散値のエラー: 1.02121
+iter: 1632
+best_acts_size: 4
+best_alp: 1.00961
+連続値のエラー: 2.35514e-12 離散値のエラー: 0.710818
+turn: 963sum: 3.34346
 Use_Colors: 965 4
-iter: 30
-best_acts_size: 6
-連続値のエラー: 2.83052e-12 離散値のエラー: 1.08919
+iter: 1332
+best_acts_size: 4
+best_alp: 1.00781
+連続値のエラー: 2.83052e-12 離散値のエラー: 1.56939
+turn: 964sum: 2.33324
 Use_Colors: 966 4
-iter: 51
-best_acts_size: 8
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.140356
+iter: 1857
+best_acts_size: 4
+best_alp: 1.00652
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.28544
+turn: 965sum: 4.32442
 Use_Colors: 967 4
-iter: 69
-best_acts_size: 8
-連続値のエラー: 3.84593e-12 離散値のエラー: 0.332361
+iter: 1677
+best_acts_size: 4
+best_alp: 1.01336
+連続値のエラー: 3.84593e-12 離散値のエラー: 1.20614
+turn: 966sum: 3.31852
 Use_Colors: 968 4
-iter: 57
-best_acts_size: 6
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.864801
+iter: 1536
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.75023
+turn: 967sum: 3.30404
 Use_Colors: 969 4
-iter: 60
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.422248
+iter: 1770
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 3.64575
+turn: 968sum: 3.30364
 Use_Colors: 970 4
-iter: 90
-best_acts_size: 6
-連続値のエラー: 2.71948e-12 離散値のエラー: 1.51557
+iter: 1689
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.71948e-12 離散値のエラー: 0.777037
+turn: 969sum: 3.3035
 Use_Colors: 971 4
-iter: 75
-best_acts_size: 7
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.703765
+iter: 1704
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.66533e-12 離散値のエラー: 3.17239
+turn: 970sum: 2.30197
 Use_Colors: 972 4
-iter: 69
-best_acts_size: 7
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.324466
+iter: 1590
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.6544
+turn: 971sum: 3.30148
 Use_Colors: 973 4
-iter: 57
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.185569
+iter: 1404
+best_acts_size: 4
+best_alp: 1.00259
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.84028
+turn: 972sum: 3.29911
 Use_Colors: 974 4
-iter: 69
-best_acts_size: 6
-連続値のエラー: 1.94289e-12 離散値のエラー: 0.415861
+iter: 1920
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.94289e-12 離散値のエラー: 1.34264
+turn: 973sum: 4.2957
 Use_Colors: 975 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 2.35514e-12 離散値のエラー: 0.641418
+iter: 1596
+best_acts_size: 4
+best_alp: 1.00832
+連続値のエラー: 2.35514e-12 離散値のエラー: 2.66476
+turn: 974sum: 3.29458
 Use_Colors: 976 4
-iter: 51
-best_acts_size: 6
-連続値のエラー: 7.85046e-13 離散値のエラー: 1.37545
+iter: 1629
+best_acts_size: 4
+best_alp: 1.0073
+連続値のエラー: 7.85046e-13 離散値のエラー: 0.450895
+turn: 975sum: 3.28867
 Use_Colors: 977 4
-iter: 39
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.0885883
+iter: 1833
+best_acts_size: 4
+best_alp: 1.00581
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.971339
+turn: 976sum: 3.28166
 Use_Colors: 978 4
-iter: 63
-best_acts_size: 6
-連続値のエラー: 1.92296e-12 離散値のエラー: 1.20664
+iter: 1638
+best_acts_size: 4
+best_alp: 1.01398
+連続値のエラー: 1.92296e-12 離散値のエラー: 1.64462
+turn: 977sum: 3.27495
 Use_Colors: 979 4
-iter: 60
-best_acts_size: 8
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.456923
+iter: 1584
+best_acts_size: 4
+best_alp: 1.00133
+連続値のエラー: 5.55112e-13 離散値のエラー: 5.20519
+turn: 978sum: 4.26274
 Use_Colors: 980 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 2.71948e-12 離散値のエラー: 0.288928
+iter: 2319
+best_acts_size: 4
+best_alp: 1.0109
+連続値のエラー: 2.71948e-12 離散値のエラー: 1.67319
+turn: 979sum: 3.26106
 Use_Colors: 981 4
-iter: 78
-best_acts_size: 6
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.787301
+iter: 2721
+best_acts_size: 4
+best_alp: 1.00433
+連続値のエラー: 1.66533e-12 離散値のエラー: 1.51998
+turn: 980sum: 4.25118
 Use_Colors: 982 4
-iter: 42
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.125293
+iter: 2706
+best_acts_size: 4
+best_alp: 1.00417
+連続値のエラー: 1.11022e-12 離散値のエラー: 2.10449
+turn: 981sum: 4.24771
 Use_Colors: 983 4
-iter: 63
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.469153
+iter: 3048
+best_acts_size: 4
+best_alp: 1.00531
+連続値のエラー: 1.24127e-12 離散値のエラー: 2.54422
+turn: 982sum: 5.24464
 Use_Colors: 984 4
-iter: 57
-best_acts_size: 8
-連続値のエラー: 3.33067e-12 離散値のエラー: 0.78195
+iter: 2916
+best_acts_size: 4
+best_alp: 1.01914
+連続値のエラー: 3.33067e-12 離散値のエラー: 1.01022
+turn: 983sum: 4.23975
 Use_Colors: 985 4
-iter: 42
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.443153
+iter: 2877
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.666877
+turn: 984sum: 4.22151
 Use_Colors: 986 4
-iter: 51
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.0642693
+iter: 2868
+best_acts_size: 4
+best_alp: 1.01498
+連続値のエラー: 1.11022e-12 離散値のエラー: 0.817452
+turn: 985sum: 3.21936
 Use_Colors: 987 4
-iter: 33
-best_acts_size: 8
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.0490001
+iter: 2250
+best_acts_size: 4
+best_alp: 1.0001
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.58539
+turn: 986sum: 2.20384
 Use_Colors: 988 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 6.49741e-12 離散値のエラー: 0.25393
+iter: 2523
+best_acts_size: 4
+best_alp: 1.01617
+連続値のエラー: 6.49741e-12 離散値のエラー: 1.54434
+turn: 987sum: 3.2017
 Use_Colors: 989 4
-iter: 33
-best_acts_size: 7
-連続値のエラー: 5.55112e-13 離散値のエラー: 0.343866
+iter: 2490
+best_acts_size: 4
+best_alp: 1.01634
+連続値のエラー: 5.55112e-13 離散値のエラー: 13.9098
+turn: 988sum: 4.18391
 Use_Colors: 990 4
-iter: 57
-best_acts_size: 8
-連続値のエラー: 1.66533e-12 離散値のエラー: 0.093516
+iter: 2817
+best_acts_size: 4
+best_alp: 1.00414
+連続値のエラー: 1.66533e-12 離散値のエラー: 0.721397
+turn: 989sum: 4.16841
 Use_Colors: 991 4
-iter: 66
-best_acts_size: 8
-連続値のエラー: 2.00148e-12 離散値のエラー: 0.0916839
+iter: 2391
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 2.00148e-12 離散値のエラー: 2.99289
+turn: 990sum: 4.16572
 Use_Colors: 992 4
-iter: 54
-best_acts_size: 8
-連続値のエラー: 1.92296e-12 離散値のエラー: 0.143853
+iter: 3042
+best_acts_size: 4
+best_alp: 1.00754
+連続値のエラー: 1.92296e-12 離散値のエラー: 3.91234
+turn: 991sum: 5.16081
 Use_Colors: 993 4
-iter: 36
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.441547
+iter: 2421
+best_acts_size: 4
+best_alp: 1.01205
+連続値のエラー: 1.24127e-12 離散値のエラー: 0.183092
+turn: 992sum: 4.15425
 Use_Colors: 994 4
-iter: 42
-best_acts_size: 8
-連続値のエラー: 1.24127e-12 離散値のエラー: 0.13473
+iter: 3024
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 1.24127e-12 離散値のエラー: 1.37435
+turn: 993sum: 5.14361
 Use_Colors: 995 4
-iter: 39
-best_acts_size: 8
-連続値のエラー: 0 離散値のエラー: 0.0163151
+iter: 2502
+best_acts_size: 4
+best_alp: 1.0051
+連続値のエラー: 0 離散値のエラー: 2.25498
+turn: 994sum: 4.14092
 Use_Colors: 996 4
-iter: 99
-best_acts_size: 8
-連続値のエラー: 1.57009e-12 離散値のエラー: 0.0792187
+iter: 2424
+best_acts_size: 4
+best_alp: 1.00293
+連続値のエラー: 1.57009e-12 離散値のエラー: 2.53627
+turn: 995sum: 5.13344
+old_cost: 2.53627 new_cost: 146.008
 Use_Colors: 997 4
-iter: 72
-best_acts_size: 7
-連続値のエラー: 4.44089e-12 離散値のエラー: 0.271248
+iter: 2505
+best_acts_size: 4
+best_alp: 1
+連続値のエラー: 4.44089e-12 離散値のエラー: 2.27147
+turn: 996sum: 4.1291
+old_cost: 2.27147 new_cost: 209.407
 Use_Colors: 998 4
-iter: 75
-best_acts_size: 7
-連続値のエラー: 2.35514e-12 離散値のエラー: 0.706584
+iter: 1404
+best_acts_size: 4
+best_alp: 1.02113
+連続値のエラー: 2.35514e-12 離散値のエラー: 1.55195
+turn: 997sum: 3.12902
+old_cost: 353.552 new_cost: 811.716
 Use_Colors: 999 4
-iter: 78
-best_acts_size: 8
-連続値のエラー: 1.68831e-12 離散値のエラー: 0.0152033
+iter: 1509
+best_acts_size: 4
+best_alp: 1.01212
+連続値のエラー: 1.68831e-12 離散値のエラー: 4.5782
+turn: 998sum: 4.10687
+old_cost: 356.578 new_cost: 506.288
 Use_Colors: 1000 4
-iter: 51
-best_acts_size: 7
-連続値のエラー: 1.11022e-12 離散値のエラー: 0.315603
-sum: 4.24051
-old_cost: 352.316 new_cost: 700.283
+iter: 1095
+best_acts_size: 4
+best_alp: 1.00182
+連続値のエラー: 1.11022e-12 離散値のエラー: 1.44549
+turn: 999sum: 5.09626
+old_cost: 177.445 new_cost: 271.801
 Main Solve: 
-Cost: 6151
-Err: 4039
-Tube: 2112
-Used_Tubes: 1012
+Cost: 5713
+Err: 3249
+Tube: 2464
+Used_Tubes: 1014
 Random_iter: 0
 Anneal_iter: 0
-Used_Turn: 25634 / 26998
+Used_Turn: 18339 / 26998

@@ -36,7 +36,7 @@ args = [
   "-I/usr/include/eigen3",
   "-I/home/kosuke/lib/cpp-dump",
   "-I/home/kosuke/lib/ac-library-master",
-  "main.cpp",
+  "best.cpp",
 ]
 
 

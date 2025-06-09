@@ -1,0 +1,1 @@
+/home/kosuke/projects/kyo_pro/AtCoder/AHC/ahc048/a/tools/target/release/gen: /home/kosuke/projects/kyo_pro/AtCoder/AHC/ahc048/a/tools/src/bin/gen.rs /home/kosuke/projects/kyo_pro/AtCoder/AHC/ahc048/a/tools/src/lib.rs

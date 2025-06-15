@@ -3025,7 +3025,7 @@ class Solver {
         int iter = 0;
 
         while (true) {
-            alp = 1.0 + rnd::uniform_real(0.0, 0.1);
+            alp = 1.0 + rnd::uniform_real(0.0, 0.001);
             iter++;
             if (iter % 3 == 0) {
                 tk.update();

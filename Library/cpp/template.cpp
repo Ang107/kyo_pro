@@ -105,37 +105,9 @@ template <typename T> T ipow(T x, T n) {
     }
     return ret;
 }
-int n;
-vector<ll> a;
-vector<vector<ll>> g;
-unordered_set<ll> ans;
-void f(int x) {
-    if (x == n) {
-        ll res = 0;
-        rep(i, g.size()) {
-            ll tmp = 0;
-            for (auto j : g[i]) {
-                tmp += j;
-            }
-            res ^= tmp;
-        }
-        ans.insert(res);
-    } else {
-        rep(i, g.size()) {
-            g[i].push_back(a[x]);
-            f(x + 1);
-            g[i].pop_back();
-        }
-        g.push_back({a[x]});
-        f(x + 1);
-        g.pop_back();
-    }
-}
+
 int main() {
-    cin >> n;
-    a = vector<ll>(n);
-    rep(i, n) { cin >> a[i]; }
-    f(0);
-    cout << ans.size() << el;
-    return 0;
+    double a = 0.5;
+    double b = 0.7;
+    cout << abs(a - b) << '\n';
 }

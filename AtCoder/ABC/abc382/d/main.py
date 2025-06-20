@@ -39,35 +39,30 @@ LMII = lambda: list(map(int, input().split()))
 n, m = MII()
 l = []
 ans = []
-
-
-def f():
-
-    if len(l) == n:
-        if l[-1] <= m:
-            # print(*l)
-            ans.append(tuple(l))
-        return
-    if not l:
-        b = 0
-        for i in range(1, 10**8):
-            if b + i + 10 * (n - len(l) - 1) > m:
-                break
-            l.append(b + i)
-            f()
-            l.pop()
+l = []
+ans = []
+deq = deque()
+for i in range(1, m + 1):
+    if i + 10 * (n - 1) <= m:
+        deq.append(-1)
+        deq.append(i)
     else:
-        b = l[-1]
-        for i in range(10, 10**8):
-            if b + i + 10 * (n - len(l) - 1) > m:
+        break
+while deq:
+    v = deq.pop()
+    if v < 0:
+        l.pop()
+    else:
+        l.append(v)
+        if len(l) == n:
+            ans.append(tuple(l))
+        for i in range(v + 10, m + 1):
+            if i + (n - len(l) - 1) * 10 <= m:
+                deq.append(-1)
+                deq.append(i)
+            else:
                 break
-            l.append(b + i)
-            f()
-            l.pop()
-
-
-f()
-ans.sort()
+ans = ans[::-1]
 print(len(ans))
 for i in ans:
     print(*i)

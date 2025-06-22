@@ -38,41 +38,79 @@ LMII = lambda: list(map(int, input().split()))
 
 n = II()
 a = [LMII() for _ in range(n)]
-cnt = defaultdict(lambda: 1)
-cnt2 = defaultdict(lambda: 1)
-p6 = pow(6, -1, mod)
+# 目がiのサイコロの集合について，目がiの個数
+b = defaultdict(list)
+c = []
 for i in a:
     tmp = defaultdict(int)
-    tmp2 = defaultdict(int)
     for j in i:
-        tmp[j] += p6
-        tmp2[j] += 1 / 6
+        tmp[j] += 1
+        c.append(j)
     for k, v in tmp.items():
-        cnt[k] *= 1 - v
-        cnt[k] %= mod
-    print(cnt2)
-    print(tmp2)
-    for k, v in tmp2.items():
-        cnt2[k] *= 1 - v
-print(cnt)
-print(cnt2)
-b = sorted(cnt.keys(), reverse=True)
+        b[k].append(v)
+c = sorted(set(c), reverse=True)
 ans = 0
-print(n, -1, mod)
-c = pow(6 * n, -1, mod)
-tmp = 1
-ans2 = 0
-tmp2 = 1
-for i in b:
-    print(1 - cnt2[i], tmp2)
-    ans += i * (1 - cnt[i]) % mod * (tmp)
-    tmp *= cnt[i]
-    tmp2 *= cnt2[i]
-    print(tmp)
-    # print(i, cnt[i] / (6 * n))
+sum_ = 0
+inv_6 = pow(6, -1, mod)
+print(b)
+print(c)
+sum2 = 0
+min_ = min(c)
+for i in c:
+    tmp = 1 - sum_
+    tmp2 = 1
+    tmp3 = 1
+    tmp4 = 1 - sum2
+    for j in b[i]:
+        tmp2 *= (6 - j) * inv_6 % mod
+        tmp3 *= (6 - j) / 6
+        tmp2 %= mod
+    tmp *= 1 - tmp2
+    tmp4 *= 1 - tmp3
+    tmp %= mod
+    print(tmp3, tmp4, sum2)
+    ans += tmp * i % mod
     ans %= mod
-    print(ans)
+    sum_ += tmp
+    sum2 += tmp4
 print(ans)
+
+
+# cnt = defaultdict(lambda: 1)
+# cnt2 = defaultdict(lambda: 1)
+# p6 = pow(6, -1, mod)
+# for i in a:
+#     tmp = defaultdict(int)
+#     tmp2 = defaultdict(int)
+#     for j in i:
+#         tmp[j] += p6
+#         tmp2[j] += 1 / 6
+#     for k, v in tmp.items():
+#         cnt[k] *= 1 - v
+#         cnt[k] %= mod
+#     print(cnt2)
+#     print(tmp2)
+#     for k, v in tmp2.items():
+#         cnt2[k] *= 1 - v
+# print(cnt)
+# print(cnt2)
+# b = sorted(cnt.keys(), reverse=True)
+# ans = 0
+# print(n, -1, mod)
+# c = pow(6 * n, -1, mod)
+# tmp = 1
+# ans2 = 0
+# tmp2 = 1
+# for i in b:
+#     print(1 - cnt2[i], tmp2)
+#     ans += i * (1 - cnt[i]) % mod * (tmp)
+#     tmp *= cnt[i]
+#     tmp2 *= cnt2[i]
+#     print(tmp)
+#     # print(i, cnt[i] / (6 * n))
+#     ans %= mod
+#     print(ans)
+# print(ans)
 # # i個目までで出目の最大値がjの確立
 # dp = [defaultdict(int) for _ in range(n + 1)]
 # dp[0][0] = 1

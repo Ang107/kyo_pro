@@ -323,8 +323,10 @@ class Selector {
 
   private:
     using S = std::pair<Cost, int>;
-    constexpr S seg_op(S a, S b) { return (a.first >= b.first) ? a : b; }
-    constexpr S seg_e() { return {std::numeric_limits<Cost>::min(), -1}; }
+    static constexpr S seg_op(S a, S b) { return (a.first >= b.first) ? a : b; }
+    static constexpr S seg_e() {
+        return {std::numeric_limits<Cost>::min(), -1};
+    }
     using MaxSegtree = atcoder::segtree<S, seg_op, seg_e>;
 
     size_t beam_width;

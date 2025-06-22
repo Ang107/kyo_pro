@@ -1,0 +1,1 @@
+/home/kosuke/projects/kyo_pro/AtCoder/AHC/ahc049/a/tools/target/release/vis: /home/kosuke/projects/kyo_pro/AtCoder/AHC/ahc049/a/tools/src/bin/vis.rs /home/kosuke/projects/kyo_pro/AtCoder/AHC/ahc049/a/tools/src/lib.rs

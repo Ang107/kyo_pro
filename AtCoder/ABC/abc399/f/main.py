@@ -35,3 +35,19 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+
+n, k = MII()
+a = LMII()
+# i番目までの箱でそれまでに仕切りをj個置いたときにシールをk個はったときの通り数
+dp = [[[0] * (k + 1) for _ in range(3)] for _ in range(n + 1)]
+dp[0][0][0] = 1
+for i in range(n):
+    for j in range(3):
+        for l in range(k+1):
+            if j == 0:
+                
+            elif j == 1:
+                
+            elif j == 2:
+                
+                

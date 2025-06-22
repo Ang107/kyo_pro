@@ -13,9 +13,9 @@ from string import ascii_lowercase, ascii_uppercase
 
 
 DEBUG = False
-import pypyjit
+# import pypyjit
 
-pypyjit.set_param("max_unroll_recursion=-1")
+# pypyjit.set_param("max_unroll_recursion=-1")
 # 外部ライブラリ
 # from sortedcontainers import SortedSet, SortedList, SortedDict
 setrecursionlimit(10**7)
@@ -99,41 +99,41 @@ for _ in range(n - 1):
     ed.append((u, v))
     g[u].append(v)
     g[v].append(u)
-dis = [-1] * n
-dis[0] = 0
-times = [[-1] * 2 for _ in range(n)]
-time = 0
+l = [-1] * n
+r = [-1] * n
+cnt = 0
+st = [~0, 0]
 visited = [False] * n
-tmp = []
-
-
-def dfs(v):
-    global time
-    times[v][0] = time
-    time += 1
-    visited[v] = True
-    tmp.append(v)
-    for next in g[v]:
-        if visited[next] == False:
-            dis[next] = dis[v] + 1
-            dfs(next)
-    times[v][1] = time
-
-
-dfs(0)
-sum_ = n
+while st:
+    v = st.pop()
+    if v < 0:
+        r[~v] = cnt
+    else:
+        if visited[v]:
+            continue
+        visited[v] = True
+        l[v] = cnt
+        for next in g[v]:
+            if visited[next] == False:
+                st.append(~next)
+                st.append(next)
+        cnt += 1
+q = II()
 bit = BIT([1] * n)
-for _ in range(II()):
+# print(l)
+# print(r)
+for _ in range(q):
     tmp = LMII()
     if tmp[0] == 1:
         x, w = tmp[1:]
         x -= 1
-        bit.add(times[x][0], w)
-        sum_ += w
+        bit.add(l[x], w)
     else:
         y = tmp[1]
         y -= 1
         u, v = ed[y]
-        if dis[u] < dis[v]:
-            u = v
-        print(abs(bit.sum(times[u][0], times[u][1]) * 2 - sum_))
+        if l[u] > l[v]:
+            u, v = v, u
+        # print(u, v, bit.sum(l[0], r[0]), bit.sum(l[v], r[v]), bit.sum(l[v], r[v]))
+        print(abs(bit.sum(l[0], r[0]) - bit.sum(l[v], r[v]) * 2))
+    # print(bit)

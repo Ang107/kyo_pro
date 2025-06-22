@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "arc200",
+    "title": "AtCoder Regular Contest 200 (Div. 2)",
+    "url": "https://atcoder.jp/contests/arc200"
+  },
+  "tasks": [
+    {
+      "id": "arc200_a",
+      "label": "A",
+      "title": "Dot Product",
+      "url": "https://atcoder.jp/contests/arc200/tasks/arc200_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc200_b",
+      "label": "B",
+      "title": "LCM",
+      "url": "https://atcoder.jp/contests/arc200/tasks/arc200_b",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc200_c",
+      "label": "C",
+      "title": "Movie Theater",
+      "url": "https://atcoder.jp/contests/arc200/tasks/arc200_c",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc200_d",
+      "label": "D",
+      "title": "|A + A|",
+      "url": "https://atcoder.jp/contests/arc200/tasks/arc200_d",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc200_e",
+      "label": "E",
+      "title": "popcount <= 2",
+      "url": "https://atcoder.jp/contests/arc200/tasks/arc200_e",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

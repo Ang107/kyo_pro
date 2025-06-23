@@ -37,10 +37,32 @@ MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
 n = II()
-a = LMII()
-a.sort(reverse=True)
 
-for cnt, x in enumerate(a, start=1):
-    if x <= cnt:
-        print(x)
-        exit()
+
+dd = defaultdict(int)
+cnt = [0] * 500001
+cnt[0] = 1
+child_cnt = defaultdict(int)
+ans = 0
+tmp = defaultdict(int)
+used = set()
+for _ in range(n):
+    s = II()
+    if s[-1] == "A":
+        other = s[:-1] + "B"
+    else:
+        other = s[:-1] + "A"
+
+    cnt[len(s)] += 1
+    ans *= 2
+    if cnt[len(s)] == 1 << len(s):
+        ans += 1
+    parent = s[:-1]
+    tmp[s] = 1
+    child_cnt[parent] += 1
+    if parent in used:
+        tmp[parent] = tmp[s] * tmp[other]
+        if tmp[s] > 0 and tmp[other] > 0:
+            tmp[parent] += 1
+
+    used.add(s)

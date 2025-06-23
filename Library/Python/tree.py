@@ -34,6 +34,37 @@ def get_diameter(g: list[list[int]]):
     return (d[v], u, v)
 
 
+def euler_tour(g: list[list[int]], s: int = 0):
+    """
+    sを根としてオイラーツアーを行う。
+    頂点sを根とする木について、頂点iの部分木は、[l[i], r[i])となる。
+    vsは訪問順ごとに頂点番号を並べている。
+    """
+    n = len(g)
+    l = [-1] * n
+    r = [-1] * n
+    order = [-1] * n
+    cnt = 0
+    st = [~s, s]
+    visited = [False] * n
+    while st:
+        v = st.pop()
+        if v < 0:
+            r[~v] = cnt
+        else:
+            if visited[v]:
+                continue
+            visited[v] = True
+            l[v] = cnt
+            order[cnt] = v
+            for next in g[v]:
+                if visited[next] == False:
+                    st.append(~next)
+                    st.append(next)
+            cnt += 1
+    return l, r, order
+
+
 def tree_dp_pretreatment(g: list[list[int]], s: int = 0):
     """
     s: 根

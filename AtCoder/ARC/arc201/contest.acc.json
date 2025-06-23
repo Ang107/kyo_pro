@@ -1,0 +1,75 @@
+{
+  "contest": {
+    "id": "arc201",
+    "title": "AtCoder Regular Contest 201",
+    "url": "https://atcoder.jp/contests/arc201"
+  },
+  "tasks": [
+    {
+      "id": "arc201_a",
+      "label": "A",
+      "title": "CatCoder Double Contest",
+      "url": "https://atcoder.jp/contests/arc201/tasks/arc201_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc201_b",
+      "label": "B",
+      "title": "Binary Knapsack",
+      "url": "https://atcoder.jp/contests/arc201/tasks/arc201_b",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc201_c",
+      "label": "C",
+      "title": "Prefix Covering",
+      "url": "https://atcoder.jp/contests/arc201/tasks/arc201_c",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc201_d",
+      "label": "D",
+      "title": "Match, Mod, Minimize",
+      "url": "https://atcoder.jp/contests/arc201/tasks/arc201_d",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc201_e",
+      "label": "E",
+      "title": "Total Area of Bounding Boxes",
+      "url": "https://atcoder.jp/contests/arc201/tasks/arc201_e",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    },
+    {
+      "id": "arc201_f",
+      "label": "F",
+      "title": "CatCoder Triple Contest",
+      "url": "https://atcoder.jp/contests/arc201/tasks/arc201_f",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "main.py"
+      }
+    }
+  ]
+}

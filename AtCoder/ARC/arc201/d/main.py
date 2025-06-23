@@ -35,12 +35,3 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-
-n = II()
-a = LMII()
-a.sort(reverse=True)
-
-for cnt, x in enumerate(a, start=1):
-    if x <= cnt:
-        print(x)
-        exit()

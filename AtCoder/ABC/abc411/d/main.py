@@ -36,27 +36,29 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 n, q = MII()
-# pc = [[] for _ in range(n + 1)]
-query = [input().split() for _ in range(q)]
-now = 0
-tmp = []
+# 状態のプール: (親ノードのインデックス，追加する文字列)
+node = [(-1, "")]
+pos = [0] * (n + 1)
+
+for _ in range(q):
+    query = input().split()
+    if query[0] == "1":
+        p = int(query[1])
+        pos[p] = pos[0]
+    elif query[0] == "2":
+        p, s = query[1:]
+        p = int(p)
+        node.append((pos[p], s))
+        pos[p] = len(node) - 1
+    elif query[0] == "3":
+        p = int(query[1])
+        pos[0] = pos[p]
+
 ans = []
-last = -1
-for q in query[::-1]:
-    if q[0] == "1":
-        p = int(q[1])
-        if p == now:
-            now = 0
-    elif q[0] == "2":
-        p, s = q[1:]
-        p = int(p)
-
-        if now == p:
-            ans.append(s)
-    else:
-        p = q[1]
-        p = int(p)
-        if now == 0:
-            now = p
-
+now = pos[0]
+while True:
+    if now == -1:
+        break
+    ans.append(node[now][1])
+    now = node[now][0]
 print("".join(ans[::-1]))

@@ -36,11 +36,29 @@ II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
-n = II()
-a = LMII()
-a.sort(reverse=True)
+t = II()
+for _ in range(t):
+    n = II()
+    abc = [LMII() for _ in range(n)]
+    cnt = [0, 0]
+    # (合計の最大値, ハードの最大値, イージーの最大値)
+    tmp = []
+    for a, b, c in abc:
+        if a + c <= b:
+            cnt[0] += a
+            cnt[1] += c
+        else:
+            tmp.append((b, min(a, b), min(c, b)))
+    # div1重視
+    for sum_max, a_max, c_max in tmp:
+        cnt[0] += a_max
+        cnt[1] += sum_max - a_max
 
-for cnt, x in enumerate(a, start=1):
-    if x <= cnt:
-        print(x)
-        exit()
+    # div2に調整
+    for sum_max, a_max, c_max in tmp:
+        if cnt[0] > cnt[1]:
+            diff = cnt[0] - cnt[1]
+            c = min(a_max, c_max - (sum_max - a_max), diff // 2)
+            cnt[0] -= c
+            cnt[1] += c
+    print(min(cnt))

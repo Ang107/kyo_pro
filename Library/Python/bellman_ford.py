@@ -1,5 +1,3 @@
-# edge u->v、重みcの有向辺
-# O(EV)
 def bellman_ford(
     n: int, edge: list[tuple[int, int, int]], s: int
 ) -> tuple[bool, list[int]]:

@@ -106,8 +106,4 @@ template <typename T> T ipow(T x, T n) {
     return ret;
 }
 
-int main() {
-    double a = 0.5;
-    double b = 0.7;
-    cout << abs(a - b) << '\n';
-}
+int main() {}

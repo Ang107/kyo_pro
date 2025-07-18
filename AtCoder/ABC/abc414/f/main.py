@@ -22,7 +22,7 @@ abc = ascii_lowercase
 ABC = ascii_uppercase
 dxy4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 dxy8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-inf = float("inf")
+inf = 1 << 60
 mod = 998244353
 input = lambda: stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
@@ -35,6 +35,16 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
+MASK = (1 << 32) - 1
+
+
+def h(v, frm):
+    return v << 32 | frm
+
+
+def restore(hashed):
+    return hashed >> 32, hashed & MASK
+
 
 t = II()
 for _ in range(t):
@@ -46,38 +56,34 @@ for _ in range(t):
         v -= 1
         g[u].append(v)
         g[v].append(u)
-    ng = [[] for _ in range(n)]
-    visited = [-1] * n
-    dis = [-1] * n
+    # 考える辺
+    visited = []
     for i in range(n):
-        deq = deque([i])
-        visited[i] = i
-        dis[i] = 0
-        while deq:
-            v = deq.popleft()
-            for next in g[v]:
-                if visited[next] == i:
-                    continue
-                visited[next] = i
-                dis[next] = dis[v] + 1
-                if dis[next] == k:
-                    ng[i].append(next)
-                else:
-                    deq.append(next)
+        visited.append([[inf] * k for _ in range(len(g[i]) + 1)])
 
-    visited = [inf] * n
-    deq = deque([0])
-    visited[0] = 0
+    deq = deque([(0, 0, 0)])
+    # now, frm, mod
+    visited[0][-1][0] = 0
     while deq:
-        v = deq.popleft()
-        for next in ng[v]:
-            if visited[next] != inf:
+        v, mod, frm = deq.popleft()
+        now_ = h(v, frm)
+        # print(v, mod, frm, visited[now_][mod])
+        for i, next in enumerate(g[v]):
+            if visited[next][][(mod + 1) % k] != inf:
                 continue
-            visited[next] = visited[v] + 1
-            deq.append(next)
-
-    ans = [-1] * (n - 1)
+            if next == frm:
+                continue
+            if (mod + 1) % k == 0:
+                visited[next_][(mod + 1) % k] = visited[now_][mod] + 1
+                visited[h(next, next)][(mod + 1) % k] = visited[now_][mod] + 1
+                deq.append((next, (mod + 1) % k, next))
+            else:
+                visited[next_][(mod + 1) % k] = visited[now_][mod] + 1
+                deq.append((next, (mod + 1) % k, v))
+    ans = [inf] * (n - 1)
     for i in range(1, n):
-        if visited[i] != inf:
-            ans[i - 1] = visited[i]
+        for j in g[i]:
+            ans[i - 1] = min(ans[i - 1], visited[h(i, j)][0] // k)
+        if ans[i - 1] == inf:
+            ans[i - 1] = -1
     print(*ans)

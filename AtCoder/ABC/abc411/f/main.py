@@ -163,18 +163,20 @@ for i in x:
         v = uf.leader(v)
         if len(g[u]) < len(g[v]):
             u, v = v, u
+        uf.merge(u, v)
         ans -= 1
         for j in g[v]:
-            if uf.leader(j) == u:
+            if j == u:
                 continue
-            if uf.leader(j) in g[u]:
+            if j in g[u]:
                 ans -= 1
             else:
-                g[u].add(uf.leader(j))
-            g[uf.leader(j)].discard(v)
+                g[u].add(j)
+            g[j].discard(v)
+            g[j].add(u)
         g[u].discard(v)
-        uf.merge(u, v)
-
         g[v] = set()
+        # for i in range(n):
+        #     print(i, uf.leader(i), g[i])
 
     print(ans)

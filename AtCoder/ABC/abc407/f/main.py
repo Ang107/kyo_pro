@@ -35,7 +35,9 @@ IS = lambda: input().split()
 II = lambda: int(input())
 MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
-# https://github.com/tatyam-prime/SortedSet/blob/main/SortedMultiset.py
+
+
+# https://github.com/tatyam-prime/SortedSet/blob/main/SortedSet.py
 import math
 from bisect import bisect_left, bisect_right
 from typing import Generic, Iterable, Iterator, List, Tuple, TypeVar, Optional
@@ -43,16 +45,22 @@ from typing import Generic, Iterable, Iterator, List, Tuple, TypeVar, Optional
 T = TypeVar("T")
 
 
-class SortedMultiset(Generic[T]):
+class SortedSet(Generic[T]):
     BUCKET_RATIO = 16
     SPLIT_RATIO = 24
 
     def __init__(self, a: Iterable[T] = []) -> None:
-        "Make a new SortedMultiset from iterable. / O(N) if sorted / O(N log N)"
+        "Make a new SortedSet from iterable. / O(N) if sorted and unique / O(N log N)"
         a = list(a)
-        n = self.size = len(a)
+        n = len(a)
         if any(a[i] > a[i + 1] for i in range(n - 1)):
             a.sort()
+        if any(a[i] >= a[i + 1] for i in range(n - 1)):
+            a, b = [], a
+            for x in b:
+                if not a or a[-1] != x:
+                    a.append(x)
+        n = self.size = len(a)
         num_bucket = int(math.ceil(math.sqrt(n / self.BUCKET_RATIO)))
         self.a = [
             a[n * i // num_bucket : n * (i + 1) // num_bucket]
@@ -76,7 +84,7 @@ class SortedMultiset(Generic[T]):
         return self.size
 
     def __repr__(self) -> str:
-        return "SortedMultiset" + str(self.a)
+        return "SortedSet" + str(self.a)
 
     def __str__(self) -> str:
         s = str(list(self))
@@ -95,22 +103,21 @@ class SortedMultiset(Generic[T]):
         a, _, i = self._position(x)
         return i != len(a) and a[i] == x
 
-    def count(self, x: T) -> int:
-        "Count the number of x."
-        return self.index_right(x) - self.index(x)
-
-    def add(self, x: T) -> None:
-        "Add an element. / O(√N)"
+    def add(self, x: T) -> bool:
+        "Add an element and return True if added. / O(√N)"
         if self.size == 0:
             self.a = [[x]]
             self.size = 1
-            return
+            return True
         a, b, i = self._position(x)
+        if i != len(a) and a[i] == x:
+            return False
         a.insert(i, x)
         self.size += 1
         if len(a) > len(self.a) * self.SPLIT_RATIO:
             mid = len(a) >> 1
             self.a[b : b + 1] = [a[:mid], a[mid:]]
+        return True
 
     def _pop(self, a: List[T], b: int, i: int) -> T:
         ans = a.pop(i)
@@ -202,10 +209,24 @@ class SortedMultiset(Generic[T]):
 
 n = II()
 a = LMII()
-pos = [(i, j) for i, j in enumerate(a)]
-sa = sorted(a, key=lambda x: x[1])
-ans = [0] * n
-for i in range(1,n+1):
-    ss = SortedMultiset()
-    while 
-    
+b = [(i, j) for i, j in enumerate(a)]
+b.sort(key=lambda x: x[1], reverse=True)
+visited = SortedSet([-1, n])
+# st = LazySegTree(op, e, mapping, composition, id_, [0] * (n + 1))
+imos = [0] * (n + 2)
+for idx, value in b:
+    # 閉区間
+    l = visited.lt(idx) + 1
+    r = visited.gt(idx) - 1
+    # 短いほうを採用
+    if idx - l < r - idx:
+        for i in range(idx - l + 1):
+            imos[i + 1] += value
+            imos[r - idx + 2 + i] -= value
+    else:
+        for i in range(r - idx + 1):
+            imos[i + 1] += value
+            imos[idx - l + 2 + i] -= value
+    visited.add(idx)
+imos = list(accumulate(imos))
+print(*imos[1:-1], sep="\n")

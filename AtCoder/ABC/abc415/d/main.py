@@ -38,36 +38,14 @@ MII = lambda: map(int, input().split())
 LMII = lambda: list(map(int, input().split()))
 
 
-# lの中でx以下の要素のうちの最大のもの
-def le(l, x):
-    idx = bisect_left(l, x)
-    if 0 <= idx < len(l) and l[idx] == x:
-        return x
-    elif 0 <= idx - 1 < len(l):
-        return l[idx - 1]
-    else:
-        return None
-
-
 n, m = MII()
-ab = [tuple(LMII()) for _ in range(m)]
-# print(ab)
-ab.sort(key=lambda x: x[0])
-
-dd = defaultdict(lambda: inf)
-min_ = inf
-for a, b in ab:
-    min_ = min(min_, a - b)
-    dd[a] = min(dd[a], min_)
-# print(dd)
-a = sorted(set(i for i, j in ab))
+ab = [LMII() for _ in range(m)]
+ab.sort(key=lambda x: x[0] - x[1])
 ans = 0
-while True:
-    i = le(a, n)
-    if i == None:
-        break
-    tmp = (n - i) // dd[i] + 1
-    n -= dd[i] * tmp
-    ans += tmp
-    # print(i, tmp)
+for a, b in ab:
+    if n - a >= 0:
+        tmp = (n - b) // (a - b)
+        ans += tmp
+        n -= (a - b) * tmp
+    # print(tmp)
 print(ans)

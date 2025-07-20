@@ -47,7 +47,8 @@ for _ in range(t):
             continue
         for i in range(n):
             next = mask | (1 << i)
-            dp[next] |= s[next] == "0"
+            if s[next] == "0":
+                dp[next] = True
     if dp[-1]:
         PY()
     else:

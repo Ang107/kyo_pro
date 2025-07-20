@@ -43,3 +43,7 @@ for i in range(len(s)):
 
 for i in range(0, len(tmp), 2):
     print(f"{tmp[i]},{tmp[i+1]}")
+
+
+def LMII():
+    return list(map(int, input().split()))

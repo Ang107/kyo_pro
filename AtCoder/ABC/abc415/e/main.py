@@ -22,7 +22,7 @@ abc = ascii_lowercase
 ABC = ascii_uppercase
 dxy4 = ((-1, 0), (1, 0), (0, -1), (0, 1))  # 上下左右
 dxy8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-inf = float("inf")
+inf = 1 << 60
 mod = 998244353
 input = lambda: stdin.readline().rstrip()
 pritn = lambda *x: print(*x)
@@ -40,26 +40,40 @@ h, w = MII()
 a = [LMII() for _ in range(h)]
 p = LMII()
 
+dp = [[-inf] * w for _ in range(h)]
+cnts = [[-1] * w for _ in range(h)]
+cnt = 0
+
 
 def isOK(mid):
+    global cnt
     # (i,j)の時点での所持コインの最大値
-    dp = [[-inf] * w for _ in range(h)]
     dp[0][0] = mid + a[0][0] - p[0]
+    cnts[0][0] = cnt
     if dp[0][0] < 0:
         return False
     for i in range(h):
         for j in range(w):
+            if cnts[i][j] != cnt:
+                continue
             if i + 1 in range(h):
                 if dp[i][j] + a[i + 1][j] - p[i + j + 1] >= 0:
+                    if cnts[i + 1][j] != cnt:
+                        cnts[i + 1][j] = cnt
+                        dp[i + 1][j] = -inf
                     dp[i + 1][j] = max(
                         dp[i + 1][j], dp[i][j] + a[i + 1][j] - p[i + j + 1]
                     )
             if j + 1 in range(w):
                 if dp[i][j] + a[i][j + 1] - p[i + j + 1] >= 0:
+                    if cnts[i][j + 1] != cnt:
+                        cnts[i][j + 1] = cnt
+                        dp[i][j + 1] = -inf
                     dp[i][j + 1] = max(
                         dp[i][j + 1], dp[i][j] + a[i][j + 1] - p[i + j + 1]
                     )
-    return dp[h - 1][w - 1] >= 0
+    cnt += 1
+    return cnts[h - 1][w - 1] == cnt - 1
 
 
 def meguru(ng, ok):

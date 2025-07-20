@@ -48,7 +48,7 @@ template <typename K, typename Hash = uint64_hash>
 using hash_set = hash_map<K, __gnu_pbds::null_type, Hash>;
 
 // Constant
-constexpr bool DEBUG = true;
+constexpr bool DEBUG = false;
 const double pi = 3.141592653589793238;
 const i32 inf32 = 1073741823;
 const i64 inf64 = 1LL << 60;
@@ -264,4 +264,87 @@ struct Init {
 
 int main() {
     // todo
+    int n;
+    cin >> n;
+    vector<vector<int>> g(n, vector<int>());
+    set<pair<int, int>> ed;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            ed.insert({i, j});
+        }
+    }
+    rep(i, n - 1) {
+        int u, v;
+        cin >> u >> v;
+        u--;
+        v--;
+        g[u].push_back(v);
+        g[v].push_back(u);
+        int l = min(u, v);
+        int r = max(u, v);
+        ed.erase({l, r});
+    }
+    vector<int> dis(n, -1);
+    dis[0] = 0;
+    vector<int> deq;
+    deq.reserve(n);
+    deq.push_back(0);
+    while (!deq.empty()) {
+        auto v = deq.back();
+        deq.pop_back();
+        for (auto next : g[v]) {
+            if (dis[next] != -1) {
+                continue;
+            }
+            dis[next] = dis[v] ^ 1;
+            deq.push_back(next);
+        }
+    }
+    set<pair<int, int>> cand;
+    for (auto [u, v] : ed) {
+        if (dis[u] != dis[v]) {
+            cand.insert({u, v});
+        }
+    }
+    debug(cand);
+    debug(dis);
+    if ((int)cand.size() % 2 == 1) {
+        cout << "First" << endl;
+        flush(cout);
+        while (!cand.empty()) {
+            auto tmp = *cand.begin();
+            cand.erase(tmp);
+            cout << tmp.first + 1 << " " << tmp.second + 1 << endl;
+            flush(cout);
+            int u, v;
+            cin >> u >> v;
+            if (u == -1 and v == -1) {
+                break;
+            }
+            u--;
+            v--;
+            auto l = min(u, v);
+            auto r = max(u, v);
+            cand.erase({l, r});
+        }
+    } else {
+        cout << "Second" << endl;
+        while (!cand.empty()) {
+            int u, v;
+            cin >> u >> v;
+            if (u == -1 and v == -1) {
+                break;
+            }
+            u--;
+            v--;
+            auto l = min(u, v);
+            auto r = max(u, v);
+            cand.erase({l, r});
+            auto tmp = *cand.begin();
+            cand.erase(tmp);
+            cout << tmp.first + 1 << " " << tmp.second + 1 << endl;
+            flush(cout);
+        }
+    }
+    return 0;
 }

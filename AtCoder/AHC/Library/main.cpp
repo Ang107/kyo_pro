@@ -262,6 +262,16 @@ struct Init {
     }
 } init;
 
+struct Input {
+    // todo
+    void input() {}
+};
+class Solver {
+    // to do
+    Solver() {}
+    void solve() {}
+    void print() {}
+};
 int main() {
     // todo
 }
